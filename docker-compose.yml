@@ -1,0 +1,184 @@
+# Resource allocation is identical for all four database services, and is
+# declared here rather than left implicit.
+#
+# It was previously implicit: no service set any CPU or memory limit, so each
+# container could use the whole VM - 10 CPUs and 11.7 GB - and the allocation
+# was equal only because nothing constrained it. That is true but not
+# checkable, and "were the four systems given the same resources?" is the first
+# question a reviewer asks about a cross-DBMS comparison. Now it can be
+# answered by reading the file.
+#
+# mem_limit is 6g rather than the VM's full 11.7 GB, and that is a correction
+# rather than a tidy-up. Only PostgreSQL uses buffered I/O: SQL Server uses
+# direct I/O and self-caps at its max server memory, and MySQL is configured
+# innodb_flush_method = O_DIRECT, so both consume roughly their 4 GB cache and
+# stop. Linux page cache counts against the cgroup, so PostgreSQL alone was free
+# to take a second cache of everything up to the limit - 4 GB of shared_buffers
+# plus up to 7 GB of page cache, against SQL Server's 4 GB total. Measured
+# consequence: the host, which has 16 GB, was down to 0.1 GB free with 4.5 GB of
+# its 5 GB swap in use while a campaign ran.
+#
+# 6g leaves each engine its 4 GB cache plus room for workspace, and caps the
+# second cache PostgreSQL would otherwise get for free. It binds on nothing that
+# has already been measured: SQL Server peaked at 4.89 GB and MySQL at about
+# 4.5 GB, both well under it.
+#
+# Only one database is ever resident at a time (PLAN.md blocker B2), so each
+# really does get all of it.
+#
+# The engine-level data cache is aligned separately, at 4 GB in each of the
+# three configuration files:
+#   docker/postgresql/postgresql.conf   shared_buffers          = 4GB
+#   docker/mysql/my.cnf                 innodb_buffer_pool_size = 4G
+#   docker/sqlserver/setup.sql          max server memory (MB)  = 4096
+#
+# What resource parity cannot fix is that the engines differ in how much of a
+# core count they can bring to one query: MySQL 8 has no intra-query
+# parallelism for these queries at all, PostgreSQL 14 defaults to 2 workers per
+# gather, and SQL Server is set to MAXDOP 8. That is engine behaviour given
+# equal resources, not an unequal allocation, and it is recorded in PLAN.md as
+# a stated limitation on cross-system comparison.
+
+services:
+  # PostgreSQL 14
+  postgresql:
+    image: postgres:14
+    container_name: orm-bench-postgresql
+    cpus: "10"
+    mem_limit: 6g
+    environment:
+      POSTGRES_DB: tpch
+      POSTGRES_USER: benchmark
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-benchmark_pass}
+      POSTGRES_INITDB_ARGS: "-E UTF8"
+    ports:
+      - "${POSTGRES_PORT:-55432}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./data/tpch-raw:/tpch-data:ro
+      - ./docker/postgresql/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh:ro
+      - ./docker/postgresql/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+    networks:
+      - benchmark-network
+    command: ["-c", "config_file=/etc/postgresql/postgresql.conf"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U benchmark -d tpch"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # 4 GB, not 2. PostgreSQL puts the dynamic shared memory that parallel hash
+    # joins use in /dev/shm, so this is a hard ceiling on intra-query
+    # parallelism, not a tuning knob. At max_parallel_workers_per_gather = 8 a
+    # single segment asked for 2 GB against a 2 GB tmpfs and Q04 and Q21 failed
+    # validation outright. Paired with work_mem halved to 128MB in
+    # docker/postgresql/postgresql.conf; 4 GB here plus 4 GB of shared_buffers
+    # stays inside the 6 GB mem_limit even if every parallel node fills.
+    shm_size: 4gb
+
+  # MySQL 8.0
+  mysql:
+    image: mysql:8.0
+    container_name: orm-bench-mysql
+    cpus: "10"
+    mem_limit: 6g
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-benchmark_pass}
+      MYSQL_DATABASE: tpch
+      MYSQL_USER: benchmark
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-benchmark_pass}
+    ports:
+      - "${MYSQL_PORT:-33306}:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./data/tpch-raw:/tpch-data:ro
+      - ./docker/mysql/init-db.sql:/docker-entrypoint-initdb.d/01-init-db.sql:ro
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/custom.cnf:ro
+    networks:
+      - benchmark-network
+    command: 
+      - "--default-authentication-plugin=mysql_native_password"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "benchmark", "-pbenchmark_pass"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Oracle Free 23ai.
+  #
+  # Was gvenzl/oracle-xe:21-slim with APP_USER "benchmark", which disagreed with
+  # the code in two ways at once: settings_oracle.py and the loaders connect as
+  # "tpch" to service FREEPDB1, and FREEPDB1 is the Free image's pluggable
+  # database — Express 21c serves XEPDB1. Nothing here connected.
+  #
+  # The edition is also a publication decision, not just a technical one.
+  # Oracle's Technology Network licence, which covers the Enterprise downloads
+  # and images, forbids disclosing "results of any Program benchmark tests
+  # without Oracle's prior consent"; a thesis and a conference paper are exactly
+  # that disclosure. The Free Use Terms covering this image carry no such
+  # clause, so the free image is the safer publication path as well as the
+  # cheaper one. Its 12 GB user-data cap is handled by the working-set grouping
+  # in scripts/1-setup/oracle_groups.py.
+  oracle:
+    image: gvenzl/oracle-free:23-slim
+    container_name: orm-bench-oracle
+    cpus: "10"
+    mem_limit: 6g
+    environment:
+      ORACLE_PASSWORD: ${ORACLE_PASSWORD:-bench}
+      APP_USER: tpch
+      APP_USER_PASSWORD: ${ORACLE_PASSWORD:-bench}
+    ports:
+      - "${ORACLE_PORT:-41521}:1521"
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+      - ./data/tpch-raw:/tpch-data:ro
+      - ./docker/oracle/init.sql:/container-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - benchmark-network
+    shm_size: 2gb
+    healthcheck:
+      # Use OS authentication inside the container to avoid password mismatch issues
+      # when the database has already been initialized.
+      test: ["CMD-SHELL", "echo 'SELECT 1 FROM DUAL;' | sqlplus -s / as sysdba || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Microsoft SQL Server 2019
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: orm-bench-sqlserver
+    cpus: "10"
+    mem_limit: 6g
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: ${SQLSERVER_SA_PASSWORD:-YourStrong!Passw0rd}
+      MSSQL_PID: "Developer"
+    ports:
+      - "${SQLSERVER_PORT:-1433}:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+      - ./data/tpch-raw:/tpch-data:ro
+      - ./docker/sqlserver/setup.sql:/docker-entrypoint-initdb.d/setup.sql:ro
+    networks:
+      - benchmark-network
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P ${SQLSERVER_SA_PASSWORD:-YourStrong!Passw0rd} -C -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  postgres-data:
+    driver: local
+  mysql-data:
+    driver: local
+  oracle-data:
+    driver: local
+  sqlserver-data:
+    driver: local
+
+networks:
+  benchmark-network:
+    driver: bridge

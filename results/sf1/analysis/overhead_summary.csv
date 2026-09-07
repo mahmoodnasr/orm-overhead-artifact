@@ -1,0 +1,13 @@
+dbms,schema_config,framework,overhead_pct,ci_low_pct,ci_high_pct,n_cells,n_censored_queries,log_ratio_median
+PostgreSQL,indexed,django,0.85,0.39,3.82,22,0,0.0085
+PostgreSQL,indexed,sqlalchemy,0.44,0.11,0.74,22,0,0.0044
+PostgreSQL,non-indexed,django,0.19,-0.0,0.74,18,4,0.0019
+PostgreSQL,non-indexed,sqlalchemy,0.06,0.01,0.27,19,3,0.0006
+MySQL,indexed,django,0.95,0.13,1.8,22,0,0.0095
+MySQL,indexed,sqlalchemy,0.26,0.05,0.47,22,0,0.0026
+MySQL,non-indexed,django,-0.09,-0.74,1.77,19,3,-0.0009
+MySQL,non-indexed,sqlalchemy,0.02,-0.08,0.13,20,2,0.0002
+Oracle,indexed,django,1.42,-5.64,13.06,21,1,0.0141
+Oracle,indexed,sqlalchemy,1.4,0.33,4.79,22,0,0.0139
+Oracle,non-indexed,django,3.73,0.42,72.89,21,1,0.0366
+Oracle,non-indexed,sqlalchemy,1.13,0.51,3.1,22,0,0.0112

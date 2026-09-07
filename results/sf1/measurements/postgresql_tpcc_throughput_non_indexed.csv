@@ -1,0 +1,121 @@
+benchmark,dbms,schema_config,transaction_id,name,framework,path,concurrency,duration_s,committed,aborted,abort_pct,qpm,qps,p50_ms,p95_ms,note
+tpcc,postgresql,non-indexed,T1,New-Order,django,orm,1,60,1613,0,0.0,1612.2,26.87,43.366,60.478,
+tpcc,postgresql,non-indexed,T1,New-Order,django,sql,1,60,4441,0,0.0,4440.9,74.01,15.341,23.189,
+tpcc,postgresql,non-indexed,T1,New-Order,sqlalchemy,orm,1,60,1768,0,0.0,1767.8,29.46,39.755,54.907,
+tpcc,postgresql,non-indexed,T1,New-Order,sqlalchemy,sql,1,60,2821,0,0.0,2820.6,47.01,24.759,33.929,
+tpcc,postgresql,non-indexed,T2,Payment,django,orm,1,60,5771,0,0.0,5770.4,96.17,12.152,12.418,
+tpcc,postgresql,non-indexed,T2,Payment,django,sql,1,60,16782,0,0.0,16781.0,279.68,4.114,4.596,
+tpcc,postgresql,non-indexed,T2,Payment,sqlalchemy,orm,1,60,6296,0,0.0,6295.7,104.93,11.157,11.527,
+tpcc,postgresql,non-indexed,T2,Payment,sqlalchemy,sql,1,60,11799,0,0.0,11798.1,196.63,5.964,6.202,
+tpcc,postgresql,non-indexed,T3,Order-Status,django,orm,1,60,9687,0,0.0,9686.8,161.45,6.781,9.751,
+tpcc,postgresql,non-indexed,T3,Order-Status,django,sql,1,60,18172,0,0.0,18171.7,302.86,3.433,6.247,
+tpcc,postgresql,non-indexed,T3,Order-Status,sqlalchemy,orm,1,60,10365,0,0.0,10364.0,172.73,6.413,9.044,
+tpcc,postgresql,non-indexed,T3,Order-Status,sqlalchemy,sql,1,60,16643,0,0.0,16642.2,277.37,3.801,6.963,
+tpcc,postgresql,non-indexed,T4,Delivery,django,orm,1,60,786,0,0.0,785.2,13.09,89.003,90.398,new_order 788301 -> 780441
+tpcc,postgresql,non-indexed,T4,Delivery,django,sql,1,60,2592,0,0.0,2591.9,43.2,27.406,28.511,new_order 788301 -> 762381
+tpcc,postgresql,non-indexed,T4,Delivery,sqlalchemy,orm,1,60,559,0,0.0,559.0,9.32,125.035,133.579,new_order 788301 -> 782711
+tpcc,postgresql,non-indexed,T4,Delivery,sqlalchemy,sql,1,60,1664,0,0.0,1663.3,27.72,42.013,43.005,new_order 788301 -> 771661
+tpcc,postgresql,non-indexed,T5,Stock-Level,django,orm,1,60,7610,0,0.0,7609.5,126.82,9.145,9.5,
+tpcc,postgresql,non-indexed,T5,Stock-Level,django,sql,1,60,19354,0,0.0,19352.7,322.54,3.606,3.836,
+tpcc,postgresql,non-indexed,T5,Stock-Level,sqlalchemy,orm,1,60,9105,0,0.0,9104.5,151.74,7.656,8.084,
+tpcc,postgresql,non-indexed,T5,Stock-Level,sqlalchemy,sql,1,60,14771,0,0.0,14770.7,246.18,4.735,4.942,
+tpcc,postgresql,non-indexed,T1,New-Order,django,orm,4,60,2605,0,0.0,2601.1,43.35,107.052,152.934,
+tpcc,postgresql,non-indexed,T1,New-Order,django,sql,4,60,18024,0,0.0,18019.1,300.32,15.3,21.432,
+tpcc,postgresql,non-indexed,T1,New-Order,sqlalchemy,orm,4,60,2506,0,0.0,2501.6,41.69,111.745,158.009,
+tpcc,postgresql,non-indexed,T1,New-Order,sqlalchemy,sql,4,60,5938,0,0.0,5935.2,98.92,46.538,66.868,
+tpcc,postgresql,non-indexed,T2,Payment,django,orm,4,60,9353,0,0.0,9350.2,155.84,28.383,41.015,
+tpcc,postgresql,non-indexed,T2,Payment,django,sql,4,60,57023,0,0.0,57013.7,950.23,4.347,7.733,
+tpcc,postgresql,non-indexed,T2,Payment,sqlalchemy,orm,4,60,10766,0,0.0,10762.7,179.38,25.633,32.138,
+tpcc,postgresql,non-indexed,T2,Payment,sqlalchemy,sql,4,60,31227,0,0.0,31220.7,520.34,8.108,13.839,
+tpcc,postgresql,non-indexed,T3,Order-Status,django,orm,4,60,18353,0,0.0,18349.7,305.83,15.073,20.053,
+tpcc,postgresql,non-indexed,T3,Order-Status,django,sql,4,60,49083,0,0.0,49075.0,817.92,5.255,10.297,
+tpcc,postgresql,non-indexed,T3,Order-Status,sqlalchemy,orm,4,60,19783,0,0.0,19779.2,329.65,13.916,18.926,
+tpcc,postgresql,non-indexed,T3,Order-Status,sqlalchemy,sql,4,60,41530,0,0.0,41526.0,692.1,6.307,11.353,
+tpcc,postgresql,non-indexed,T4,Delivery,django,orm,4,60,1084,0,0.0,1080.8,18.01,248.879,410.278,new_order 817374 -> 806799
+tpcc,postgresql,non-indexed,T4,Delivery,django,sql,4,60,8000,0,0.0,7990.2,133.17,30.722,58.21,new_order 817374 -> 739253
+tpcc,postgresql,non-indexed,T4,Delivery,sqlalchemy,orm,4,60,946,0,0.0,942.6,15.71,281.418,475.361,new_order 817374 -> 808141
+tpcc,postgresql,non-indexed,T4,Delivery,sqlalchemy,sql,4,60,3625,0,0.0,3622.1,60.37,72.052,125.407,new_order 817374 -> 782058
+tpcc,postgresql,non-indexed,T5,Stock-Level,django,orm,4,60,11015,0,0.0,11012.3,183.54,24.971,31.074,
+tpcc,postgresql,non-indexed,T5,Stock-Level,django,sql,4,60,51177,0,0.0,51170.4,852.84,5.344,7.306,
+tpcc,postgresql,non-indexed,T5,Stock-Level,sqlalchemy,orm,4,60,13550,0,0.0,13547.4,225.79,20.293,26.019,
+tpcc,postgresql,non-indexed,T5,Stock-Level,sqlalchemy,sql,4,60,32491,0,0.0,32488.4,541.47,8.414,11.006,
+tpcc,postgresql,non-indexed,T1,New-Order,django,orm,8,60,2502,0,0.0,2494.9,41.58,220.686,337.925,
+tpcc,postgresql,non-indexed,T1,New-Order,django,sql,8,60,22805,0,0.0,22786.1,379.77,23.974,34.975,
+tpcc,postgresql,non-indexed,T1,New-Order,sqlalchemy,orm,8,60,2439,0,0.0,2435.2,40.59,226.136,345.284,
+tpcc,postgresql,non-indexed,T1,New-Order,sqlalchemy,sql,8,60,5361,0,0.0,5355.5,89.26,102.96,155.724,
+tpcc,postgresql,non-indexed,T2,Payment,django,orm,8,60,9119,0,0.0,9112.3,151.87,58.056,96.1,
+tpcc,postgresql,non-indexed,T2,Payment,django,sql,8,60,75194,0,0.0,75176.2,1252.94,6.096,13.75,
+tpcc,postgresql,non-indexed,T2,Payment,sqlalchemy,orm,8,60,10263,0,0.0,10258.5,170.98,53.197,77.389,
+tpcc,postgresql,non-indexed,T2,Payment,sqlalchemy,sql,8,60,32942,0,0.0,32934.9,548.91,15.334,29.202,
+tpcc,postgresql,non-indexed,T3,Order-Status,django,orm,8,60,17588,0,0.0,17581.4,293.02,30.296,50.969,
+tpcc,postgresql,non-indexed,T3,Order-Status,django,sql,8,60,52222,0,0.0,52202.1,870.03,9.407,21.453,
+tpcc,postgresql,non-indexed,T3,Order-Status,sqlalchemy,orm,8,60,18811,0,0.0,18803.2,313.39,28.699,45.507,
+tpcc,postgresql,non-indexed,T3,Order-Status,sqlalchemy,sql,8,60,46616,0,0.0,46609.6,776.83,11.24,21.264,
+tpcc,postgresql,non-indexed,T4,Delivery,django,orm,8,60,1060,0,0.0,1054.5,17.57,455.711,984.755,new_order 850481 -> 840449
+tpcc,postgresql,non-indexed,T4,Delivery,django,sql,8,60,9824,0,0.0,9807.6,163.46,46.683,109.433,new_order 850481 -> 757378
+tpcc,postgresql,non-indexed,T4,Delivery,sqlalchemy,orm,8,60,928,0,0.0,922.3,15.37,512.603,1143.494,new_order 850481 -> 841706
+tpcc,postgresql,non-indexed,T4,Delivery,sqlalchemy,sql,8,60,3579,0,0.0,3572.7,59.54,134.328,287.0,new_order 850481 -> 816533
+tpcc,postgresql,non-indexed,T5,Stock-Level,django,orm,8,60,10493,0,0.0,10487.9,174.8,50.884,85.204,
+tpcc,postgresql,non-indexed,T5,Stock-Level,django,sql,8,60,59903,0,0.0,59886.1,998.1,9.015,13.578,
+tpcc,postgresql,non-indexed,T5,Stock-Level,sqlalchemy,orm,8,60,12793,0,0.0,12787.2,213.12,41.649,69.275,
+tpcc,postgresql,non-indexed,T5,Stock-Level,sqlalchemy,sql,8,60,28957,0,0.0,28950.2,482.5,18.47,29.198,
+tpcc,postgresql,non-indexed,T1,New-Order,django,orm,16,60,2598,0,0.0,2587.9,43.13,419.052,688.149,
+tpcc,postgresql,non-indexed,T1,New-Order,django,sql,16,60,18169,0,0.0,18133.8,302.23,58.805,99.543,
+tpcc,postgresql,non-indexed,T1,New-Order,sqlalchemy,orm,16,60,2510,0,0.0,2496.7,41.61,434.857,701.227,
+tpcc,postgresql,non-indexed,T1,New-Order,sqlalchemy,sql,16,60,5587,0,0.0,5578.2,92.97,193.485,315.227,
+tpcc,postgresql,non-indexed,T2,Payment,django,orm,16,60,9106,0,0.0,9092.9,151.55,110.446,228.709,
+tpcc,postgresql,non-indexed,T2,Payment,django,sql,16,60,84666,0,0.0,84584.8,1409.75,10.392,30.276,
+tpcc,postgresql,non-indexed,T2,Payment,sqlalchemy,orm,16,60,10502,0,0.0,10490.9,174.85,102.327,164.229,
+tpcc,postgresql,non-indexed,T2,Payment,sqlalchemy,sql,16,60,33505,0,0.0,33487.8,558.13,28.1,71.193,
+tpcc,postgresql,non-indexed,T3,Order-Status,django,orm,16,60,18059,0,0.0,18036.9,300.62,58.337,106.665,
+tpcc,postgresql,non-indexed,T3,Order-Status,django,sql,16,60,51220,0,0.0,51171.5,852.86,18.755,45.52,
+tpcc,postgresql,non-indexed,T3,Order-Status,sqlalchemy,orm,16,60,19949,0,0.0,19938.2,332.3,53.784,90.201,
+tpcc,postgresql,non-indexed,T3,Order-Status,sqlalchemy,sql,16,60,49026,0,0.0,49014.8,816.91,21.028,42.114,
+tpcc,postgresql,non-indexed,T4,Delivery,django,orm,16,60,1072,0,0.0,1057.4,17.62,849.783,2570.589,new_order 879345 -> 869587
+tpcc,postgresql,non-indexed,T4,Delivery,django,sql,16,60,10110,0,0.0,10059.6,167.66,89.595,255.426,new_order 879345 -> 787423
+tpcc,postgresql,non-indexed,T4,Delivery,sqlalchemy,orm,16,60,942,0,0.0,929.5,15.49,985.822,2776.075,new_order 879345 -> 870782
+tpcc,postgresql,non-indexed,T4,Delivery,sqlalchemy,sql,16,60,3621,0,0.0,3604.6,60.08,257.334,669.904,new_order 879345 -> 846359
+tpcc,postgresql,non-indexed,T5,Stock-Level,django,orm,16,60,10667,0,0.0,10652.2,177.54,99.159,180.08,
+tpcc,postgresql,non-indexed,T5,Stock-Level,django,sql,16,60,59650,0,0.0,59619.9,993.67,18.015,28.647,
+tpcc,postgresql,non-indexed,T5,Stock-Level,sqlalchemy,orm,16,60,12948,0,0.0,12932.3,215.54,82.351,143.76,
+tpcc,postgresql,non-indexed,T5,Stock-Level,sqlalchemy,sql,16,60,30029,0,0.0,30018.3,500.3,35.313,61.638,
+tpcc,postgresql,non-indexed,T1,New-Order,django,orm,32,60,2609,0,0.0,2583.7,43.06,810.973,1557.713,
+tpcc,postgresql,non-indexed,T1,New-Order,django,sql,32,60,17760,0,0.0,17647.6,294.13,117.503,230.286,
+tpcc,postgresql,non-indexed,T1,New-Order,sqlalchemy,orm,32,60,2557,0,0.0,2533.6,42.23,832.558,1555.826,
+tpcc,postgresql,non-indexed,T1,New-Order,sqlalchemy,sql,32,60,5606,0,0.0,5585.7,93.09,378.37,703.114,
+tpcc,postgresql,non-indexed,T2,Payment,django,orm,32,60,9148,0,0.0,9124.2,152.07,190.74,588.941,
+tpcc,postgresql,non-indexed,T2,Payment,django,sql,32,60,88046,0,0.0,87804.9,1463.41,17.045,73.92,
+tpcc,postgresql,non-indexed,T2,Payment,sqlalchemy,orm,32,60,10758,0,0.0,10739.5,178.99,189.69,371.062,
+tpcc,postgresql,non-indexed,T2,Payment,sqlalchemy,sql,32,60,33983,0,0.0,33941.4,565.69,47.319,180.737,
+tpcc,postgresql,non-indexed,T3,Order-Status,django,orm,32,60,18301,0,0.0,18265.7,304.43,114.768,220.926,
+tpcc,postgresql,non-indexed,T3,Order-Status,django,sql,32,60,48998,0,0.0,48924.7,815.41,38.782,95.677,
+tpcc,postgresql,non-indexed,T3,Order-Status,sqlalchemy,orm,32,60,20398,0,0.0,20373.7,339.56,104.402,184.292,
+tpcc,postgresql,non-indexed,T3,Order-Status,sqlalchemy,sql,32,60,49933,0,0.0,49898.6,831.64,40.097,87.963,
+tpcc,postgresql,non-indexed,T4,Delivery,django,orm,32,60,1077,0,0.0,1048.6,17.48,1487.903,5713.651,new_order 907877 -> 898551
+tpcc,postgresql,non-indexed,T4,Delivery,django,sql,32,60,9781,0,0.0,9673.6,161.23,177.504,589.843,new_order 907877 -> 823548
+tpcc,postgresql,non-indexed,T4,Delivery,sqlalchemy,orm,32,60,956,0,0.0,925.8,15.43,1813.664,6081.729,new_order 907877 -> 899620
+tpcc,postgresql,non-indexed,T4,Delivery,sqlalchemy,sql,32,60,3608,0,0.0,3578.9,59.65,477.961,1602.161,new_order 907877 -> 876684
+tpcc,postgresql,non-indexed,T5,Stock-Level,django,orm,32,60,10531,0,0.0,10496.5,174.94,200.949,375.269,
+tpcc,postgresql,non-indexed,T5,Stock-Level,django,sql,32,60,63116,0,0.0,63038.2,1050.64,34.439,51.156,
+tpcc,postgresql,non-indexed,T5,Stock-Level,sqlalchemy,orm,32,60,12920,0,0.0,12897.8,214.96,165.069,294.174,
+tpcc,postgresql,non-indexed,T5,Stock-Level,sqlalchemy,sql,32,60,30655,0,0.0,30624.4,510.41,69.353,124.495,
+tpcc,postgresql,non-indexed,T1,New-Order,django,orm,50,60,2635,0,0.0,2599.9,43.33,1214.121,2585.27,
+tpcc,postgresql,non-indexed,T1,New-Order,django,sql,50,60,18168,0,0.0,18003.5,300.06,173.29,372.582,
+tpcc,postgresql,non-indexed,T1,New-Order,sqlalchemy,orm,50,60,2539,0,0.0,2503.1,41.72,1268.177,2570.821,
+tpcc,postgresql,non-indexed,T1,New-Order,sqlalchemy,sql,50,60,5585,0,0.0,5548.1,92.47,581.82,1176.016,
+tpcc,postgresql,non-indexed,T2,Payment,django,orm,50,60,8914,2173,19.6,8877.4,147.96,260.88,1089.993,"OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c; OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c; OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c"
+tpcc,postgresql,non-indexed,T2,Payment,django,sql,50,60,63205,2952,4.46,62928.3,1048.81,32.843,174.482,"OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c; OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c; OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c"
+tpcc,postgresql,non-indexed,T2,Payment,sqlalchemy,orm,50,60,10782,0,0.0,10750.2,179.17,279.872,683.228,
+tpcc,postgresql,non-indexed,T2,Payment,sqlalchemy,sql,50,60,33709,0,0.0,33655.8,560.93,65.476,317.693,
+tpcc,postgresql,non-indexed,T3,Order-Status,django,orm,50,60,18110,912,4.79,18039.7,300.66,176.026,353.84,"OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c; OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c; OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c"
+tpcc,postgresql,non-indexed,T3,Order-Status,django,sql,50,60,45828,415,0.9,45494.1,758.23,62.554,162.202,"OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c; OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c; OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c"
+tpcc,postgresql,non-indexed,T3,Order-Status,sqlalchemy,orm,50,60,20433,0,0.0,20391.0,339.85,163.719,294.856,
+tpcc,postgresql,non-indexed,T3,Order-Status,sqlalchemy,sql,50,60,49606,0,0.0,49580.8,826.35,61.564,144.378,
+tpcc,postgresql,non-indexed,T4,Delivery,django,orm,50,60,1060,2519,70.38,1014.4,16.91,2564.735,8543.011,"OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c; OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c; OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c | new_order 936804 -> 927994"
+tpcc,postgresql,non-indexed,T4,Delivery,django,sql,50,60,7838,1741,18.18,7712.9,128.55,331.163,1155.634,"OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c; OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c; OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c | new_order 936804 -> 871543"
+tpcc,postgresql,non-indexed,T4,Delivery,sqlalchemy,orm,50,60,977,0,0.0,928.0,15.47,2717.307,9855.675,new_order 936804 -> 928625
+tpcc,postgresql,non-indexed,T4,Delivery,sqlalchemy,sql,50,60,3606,0,0.0,3553.4,59.22,726.413,2584.014,new_order 936804 -> 906730
+tpcc,postgresql,non-indexed,T5,Stock-Level,django,orm,50,60,10403,646,5.85,10369.4,172.82,310.729,602.241,"OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c; OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c; OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c"
+tpcc,postgresql,non-indexed,T5,Stock-Level,django,sql,50,60,59387,533,0.89,59036.0,983.93,56.101,73.681,"OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c; OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c; OperationalError: connection to server at ""127.0.0.1"", port 5432 failed: FATAL:  sorry, too many c"
+tpcc,postgresql,non-indexed,T5,Stock-Level,sqlalchemy,orm,50,60,12694,0,0.0,12657.0,210.95,260.242,489.522,
+tpcc,postgresql,non-indexed,T5,Stock-Level,sqlalchemy,sql,50,60,31045,0,0.0,31009.6,516.83,107.908,195.201,

@@ -1,0 +1,652 @@
+{
+"django_app.queries.q01": [
+[
+"SELECT \"lineitem\".\"l_returnflag\" AS \"returnflag\", \"lineitem\".\"l_linestatus\" AS \"linestatus\", SUM(\"lineitem\".\"l_quantity\") AS \"sum_qty\", SUM(\"lineitem\".\"l_extendedprice\") AS \"sum_base_price\", SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) AS \"sum_disc_price\", SUM(((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\")) * (%s + \"lineitem\".\"l_tax\"))) AS \"sum_charge\", AVG(\"lineitem\".\"l_quantity\") AS \"avg_qty\", AVG(\"lineitem\".\"l_extendedprice\") AS \"avg_price\", AVG(\"lineitem\".\"l_discount\") AS \"avg_disc\", COUNT(*) AS \"count_order\" FROM \"lineitem\" WHERE \"lineitem\".\"l_shipdate\" <= %s GROUP BY 1, 2 ORDER BY 1 ASC, 2 ASC",
+[
+"1",
+"1",
+"1",
+"1998-09-02"
+]
+]
+],
+"django_app.queries.q02": [
+[
+"SELECT \"supplier\".\"s_acctbal\" AS \"s_acctbal\", \"supplier\".\"s_name\" AS \"s_name\", \"nation\".\"n_name\" AS \"n_name\", \"partsupp\".\"ps_partkey\" AS \"p_partkey\", \"part\".\"p_mfgr\" AS \"p_mfgr\", \"supplier\".\"s_address\" AS \"s_address\", \"supplier\".\"s_phone\" AS \"s_phone\", \"supplier\".\"s_comment\" AS \"s_comment\" FROM \"partsupp\" INNER JOIN \"part\" ON (\"partsupp\".\"ps_partkey\" = \"part\".\"p_partkey\") INNER JOIN \"supplier\" ON (\"partsupp\".\"ps_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" ON (\"supplier\".\"s_nationkey\" = \"nation\".\"n_nationkey\") INNER JOIN \"region\" ON (\"nation\".\"n_regionkey\" = \"region\".\"r_regionkey\") WHERE (\"part\".\"p_size\" = %s AND \"part\".\"p_type\"::text LIKE %s AND \"region\".\"r_name\" = %s AND \"partsupp\".\"ps_supplycost\" = (SELECT MIN(U0.\"ps_supplycost\") AS \"min_cost\" FROM \"partsupp\" U0 INNER JOIN \"supplier\" U2 ON (U0.\"ps_suppkey\" = U2.\"s_suppkey\") INNER JOIN \"nation\" U3 ON (U2.\"s_nationkey\" = U3.\"n_nationkey\") INNER JOIN \"region\" U4 ON (U3.\"n_regionkey\" = U4.\"r_regionkey\") WHERE (U0.\"ps_partkey\" = (\"partsupp\".\"ps_partkey\") AND U4.\"r_name\" = %s) GROUP BY U0.\"ps_partkey\" LIMIT 1)) ORDER BY 1 DESC, 3 ASC, 2 ASC, 4 ASC LIMIT 100",
+[
+"15",
+"%BRASS",
+"EUROPE",
+"EUROPE"
+]
+]
+],
+"django_app.queries.q02_sqlserver": [
+[
+"SELECT \"supplier\".\"s_acctbal\" AS \"s_acctbal\", \"supplier\".\"s_name\" AS \"s_name\", \"nation\".\"n_name\" AS \"n_name\", \"partsupp\".\"ps_partkey\" AS \"p_partkey\", \"part\".\"p_mfgr\" AS \"p_mfgr\", \"supplier\".\"s_address\" AS \"s_address\", \"supplier\".\"s_phone\" AS \"s_phone\", \"supplier\".\"s_comment\" AS \"s_comment\" FROM \"partsupp\" INNER JOIN \"part\" ON (\"partsupp\".\"ps_partkey\" = \"part\".\"p_partkey\") INNER JOIN \"supplier\" ON (\"partsupp\".\"ps_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" ON (\"supplier\".\"s_nationkey\" = \"nation\".\"n_nationkey\") INNER JOIN \"region\" ON (\"nation\".\"n_regionkey\" = \"region\".\"r_regionkey\") WHERE (\"part\".\"p_size\" = %s AND \"part\".\"p_type\"::text LIKE %s AND \"region\".\"r_name\" = %s AND \"partsupp\".\"ps_supplycost\" = (SELECT MIN(U0.\"ps_supplycost\") AS \"min_cost\" FROM \"partsupp\" U0 INNER JOIN \"supplier\" U2 ON (U0.\"ps_suppkey\" = U2.\"s_suppkey\") INNER JOIN \"nation\" U3 ON (U2.\"s_nationkey\" = U3.\"n_nationkey\") INNER JOIN \"region\" U4 ON (U3.\"n_regionkey\" = U4.\"r_regionkey\") WHERE (U0.\"ps_partkey\" = (\"partsupp\".\"ps_partkey\") AND U4.\"r_name\" = %s) GROUP BY U0.\"ps_partkey\" LIMIT 1)) ORDER BY 1 DESC, 3 ASC, 2 ASC, 4 ASC LIMIT 100",
+[
+"15",
+"%BRASS",
+"EUROPE",
+"EUROPE"
+]
+]
+],
+"django_app.queries.q03": [
+[
+"SELECT \"lineitem\".\"l_orderkey\" AS \"orderkey\", \"orders\".\"o_orderdate\" AS \"orderkey__orderdate\", \"orders\".\"o_shippriority\" AS \"orderkey__shippriority\", SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) AS \"revenue\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"customer\" ON (\"orders\".\"o_custkey\" = \"customer\".\"c_custkey\") WHERE (\"customer\".\"c_mktsegment\" = %s AND \"orders\".\"o_orderdate\" < %s AND \"lineitem\".\"l_shipdate\" > %s) GROUP BY 1, 2, 3 ORDER BY 4 DESC, 2 ASC LIMIT 10",
+[
+"1",
+"BUILDING",
+"1995-03-15",
+"1995-03-15"
+]
+]
+],
+"django_app.queries.q03_sqlserver": [
+[
+"SELECT \"lineitem\".\"l_orderkey\" AS \"orderkey\", \"orders\".\"o_orderdate\" AS \"orderkey__orderdate\", \"orders\".\"o_shippriority\" AS \"orderkey__shippriority\", SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) AS \"revenue\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"customer\" ON (\"orders\".\"o_custkey\" = \"customer\".\"c_custkey\") WHERE (\"customer\".\"c_mktsegment\" = %s AND \"orders\".\"o_orderdate\" < %s AND \"lineitem\".\"l_shipdate\" > %s) GROUP BY 1, 2, 3 ORDER BY 4 DESC, 2 ASC LIMIT 10",
+[
+"1",
+"BUILDING",
+"1995-03-15",
+"1995-03-15"
+]
+]
+],
+"django_app.queries.q04": [
+[
+"SELECT \"orders\".\"o_orderpriority\" AS \"orderpriority\", COUNT(\"orders\".\"o_orderkey\") AS \"order_count\" FROM \"orders\" WHERE (\"orders\".\"o_orderdate\" >= %s AND \"orders\".\"o_orderdate\" < %s AND EXISTS(SELECT %s AS \"a\" FROM \"lineitem\" U0 WHERE (U0.\"l_commitdate\" < (U0.\"l_receiptdate\") AND U0.\"l_orderkey\" = (\"orders\".\"o_orderkey\")) LIMIT 1)) GROUP BY 1 ORDER BY 1 ASC",
+[
+"1993-07-01",
+"1993-10-01",
+"1"
+]
+]
+],
+"django_app.queries.q04_sqlserver": [
+[
+"SELECT \"orders\".\"o_orderpriority\" AS \"orderpriority\", COUNT(\"orders\".\"o_orderkey\") AS \"order_count\" FROM \"orders\" WHERE (\"orders\".\"o_orderdate\" >= %s AND \"orders\".\"o_orderdate\" < %s AND EXISTS(SELECT %s AS \"a\" FROM \"lineitem\" U0 WHERE (U0.\"l_commitdate\" < (U0.\"l_receiptdate\") AND U0.\"l_orderkey\" = (\"orders\".\"o_orderkey\")) LIMIT 1)) GROUP BY 1 ORDER BY 1 ASC",
+[
+"1993-07-01",
+"1993-10-01",
+"1"
+]
+]
+],
+"django_app.queries.q05": [
+[
+"SELECT T7.\"n_name\" AS \"n_name\", SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) AS \"total_revenue\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"customer\" ON (\"orders\".\"o_custkey\" = \"customer\".\"c_custkey\") INNER JOIN \"nation\" ON (\"customer\".\"c_nationkey\" = \"nation\".\"n_nationkey\") INNER JOIN \"region\" ON (\"nation\".\"n_regionkey\" = \"region\".\"r_regionkey\") INNER JOIN \"supplier\" ON (\"lineitem\".\"l_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" T7 ON (\"supplier\".\"s_nationkey\" = T7.\"n_nationkey\") WHERE (\"region\".\"r_name\" = %s AND \"orders\".\"o_orderdate\" >= %s AND \"orders\".\"o_orderdate\" < %s AND \"supplier\".\"s_nationkey\" = (\"customer\".\"c_nationkey\")) GROUP BY 1 ORDER BY 2 DESC",
+[
+"1",
+"ASIA",
+"1994-01-01",
+"1995-01-01"
+]
+]
+],
+"django_app.queries.q05_sqlserver": [
+[
+"SELECT T7.\"n_name\" AS \"n_name\", SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) AS \"total_revenue\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"customer\" ON (\"orders\".\"o_custkey\" = \"customer\".\"c_custkey\") INNER JOIN \"nation\" ON (\"customer\".\"c_nationkey\" = \"nation\".\"n_nationkey\") INNER JOIN \"region\" ON (\"nation\".\"n_regionkey\" = \"region\".\"r_regionkey\") INNER JOIN \"supplier\" ON (\"lineitem\".\"l_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" T7 ON (\"supplier\".\"s_nationkey\" = T7.\"n_nationkey\") WHERE (\"region\".\"r_name\" = %s AND \"orders\".\"o_orderdate\" >= %s AND \"orders\".\"o_orderdate\" < %s AND \"supplier\".\"s_nationkey\" = (\"customer\".\"c_nationkey\")) GROUP BY 1 ORDER BY 2 DESC",
+[
+"1",
+"ASIA",
+"1994-01-01",
+"1995-01-01"
+]
+]
+],
+"django_app.queries.q06": [
+[
+"SELECT SUM((\"lineitem\".\"l_extendedprice\" * \"lineitem\".\"l_discount\")) AS \"revenue\" FROM \"lineitem\" WHERE (\"lineitem\".\"l_discount\" >= %s AND \"lineitem\".\"l_discount\" <= %s AND \"lineitem\".\"l_quantity\" < %s AND \"lineitem\".\"l_shipdate\" >= %s AND \"lineitem\".\"l_shipdate\" < %s)",
+[
+"0.05",
+"0.07",
+"24",
+"1994-01-01",
+"1995-01-01"
+]
+]
+],
+"django_app.queries.q07": [
+[
+"SELECT \"nation\".\"n_name\" AS \"supp_nation\", T6.\"n_name\" AS \"cust_nation\", EXTRACT(YEAR FROM \"lineitem\".\"l_shipdate\") AS \"l_year\", SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) AS \"revenue\" FROM \"lineitem\" INNER JOIN \"supplier\" ON (\"lineitem\".\"l_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" ON (\"supplier\".\"s_nationkey\" = \"nation\".\"n_nationkey\") INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"customer\" ON (\"orders\".\"o_custkey\" = \"customer\".\"c_custkey\") INNER JOIN \"nation\" T6 ON (\"customer\".\"c_nationkey\" = T6.\"n_nationkey\") WHERE (((\"nation\".\"n_name\" = %s AND T6.\"n_name\" = %s) OR (\"nation\".\"n_name\" = %s AND T6.\"n_name\" = %s)) AND \"lineitem\".\"l_shipdate\" >= %s AND \"lineitem\".\"l_shipdate\" <= %s) GROUP BY 1, 2, 3 ORDER BY 1 ASC, 2 ASC, 3 ASC",
+[
+"1",
+"FRANCE",
+"GERMANY",
+"GERMANY",
+"FRANCE",
+"1995-01-01",
+"1996-12-31"
+]
+]
+],
+"django_app.queries.q07_oracle": [
+[
+"SELECT T6.\"n_name\" AS \"supp_nation\", \"nation\".\"n_name\" AS \"cust_nation\", EXTRACT(YEAR FROM \"lineitem\".\"l_shipdate\") AS \"l_year\", SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) AS \"revenue\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"customer\" ON (\"orders\".\"o_custkey\" = \"customer\".\"c_custkey\") INNER JOIN \"nation\" ON (\"customer\".\"c_nationkey\" = \"nation\".\"n_nationkey\") INNER JOIN \"supplier\" ON (\"lineitem\".\"l_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" T6 ON (\"supplier\".\"s_nationkey\" = T6.\"n_nationkey\") WHERE (((\"nation\".\"n_name\" = %s AND T6.\"n_name\" = %s) OR (\"nation\".\"n_name\" = %s AND T6.\"n_name\" = %s)) AND \"lineitem\".\"l_shipdate\" BETWEEN %s AND %s) GROUP BY 1, 2, 3 ORDER BY 1 ASC, 2 ASC, 3 ASC",
+[
+"1",
+"GERMANY",
+"FRANCE",
+"FRANCE",
+"GERMANY",
+"1995-01-01",
+"1996-12-31"
+]
+]
+],
+"django_app.queries.q07_sqlserver": [
+[
+"SELECT \"nation\".\"n_name\" AS \"supp_nation\", T6.\"n_name\" AS \"cust_nation\", EXTRACT(YEAR FROM \"lineitem\".\"l_shipdate\") AS \"l_year\", SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) AS \"revenue\" FROM \"lineitem\" INNER JOIN \"supplier\" ON (\"lineitem\".\"l_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" ON (\"supplier\".\"s_nationkey\" = \"nation\".\"n_nationkey\") INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"customer\" ON (\"orders\".\"o_custkey\" = \"customer\".\"c_custkey\") INNER JOIN \"nation\" T6 ON (\"customer\".\"c_nationkey\" = T6.\"n_nationkey\") WHERE (((\"nation\".\"n_name\" = %s AND T6.\"n_name\" = %s) OR (\"nation\".\"n_name\" = %s AND T6.\"n_name\" = %s)) AND \"lineitem\".\"l_shipdate\" >= %s AND \"lineitem\".\"l_shipdate\" <= %s) GROUP BY 1, 2, 3 ORDER BY 1 ASC, 2 ASC, 3 ASC",
+[
+"1",
+"FRANCE",
+"GERMANY",
+"GERMANY",
+"FRANCE",
+"1995-01-01",
+"1996-12-31"
+]
+]
+],
+"django_app.queries.q08": [
+[
+"SELECT EXTRACT(YEAR FROM \"orders\".\"o_orderdate\") AS \"o_year\", (SUM(CASE WHEN T8.\"n_name\" = %s THEN (\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\")) ELSE %s END) / SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\")))) AS \"mkt_share\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"customer\" ON (\"orders\".\"o_custkey\" = \"customer\".\"c_custkey\") INNER JOIN \"nation\" ON (\"customer\".\"c_nationkey\" = \"nation\".\"n_nationkey\") INNER JOIN \"region\" ON (\"nation\".\"n_regionkey\" = \"region\".\"r_regionkey\") INNER JOIN \"part\" ON (\"lineitem\".\"l_partkey\" = \"part\".\"p_partkey\") INNER JOIN \"supplier\" ON (\"lineitem\".\"l_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" T8 ON (\"supplier\".\"s_nationkey\" = T8.\"n_nationkey\") WHERE (\"region\".\"r_name\" = %s AND \"orders\".\"o_orderdate\" >= %s AND \"orders\".\"o_orderdate\" < %s AND \"part\".\"p_type\" = %s) GROUP BY 1 ORDER BY 1 ASC",
+[
+"BRAZIL",
+"1",
+"0",
+"1",
+"AMERICA",
+"1995-01-01",
+"1997-01-01",
+"ECONOMY ANODIZED STEEL"
+]
+]
+],
+"django_app.queries.q08_oracle": [
+[
+"SELECT EXTRACT(YEAR FROM \"orders\".\"o_orderdate\") AS \"o_year\", (SUM(CASE WHEN T8.\"n_name\" = %s THEN (\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\")) ELSE %s END) / SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\")))) AS \"mkt_share\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"customer\" ON (\"orders\".\"o_custkey\" = \"customer\".\"c_custkey\") INNER JOIN \"nation\" ON (\"customer\".\"c_nationkey\" = \"nation\".\"n_nationkey\") INNER JOIN \"region\" ON (\"nation\".\"n_regionkey\" = \"region\".\"r_regionkey\") INNER JOIN \"part\" ON (\"lineitem\".\"l_partkey\" = \"part\".\"p_partkey\") INNER JOIN \"supplier\" ON (\"lineitem\".\"l_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" T8 ON (\"supplier\".\"s_nationkey\" = T8.\"n_nationkey\") WHERE (\"region\".\"r_name\" = %s AND \"orders\".\"o_orderdate\" BETWEEN %s AND %s AND \"part\".\"p_type\" = %s) GROUP BY 1 ORDER BY 1 ASC",
+[
+"BRAZIL",
+"1",
+"0",
+"1",
+"AMERICA",
+"1995-01-01",
+"1996-12-31",
+"ECONOMY ANODIZED STEEL"
+]
+]
+],
+"django_app.queries.q08_sqlserver": [
+[
+"SELECT EXTRACT(YEAR FROM \"orders\".\"o_orderdate\") AS \"o_year\", (SUM(CASE WHEN T8.\"n_name\" = %s THEN (\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\")) ELSE %s END) / SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\")))) AS \"mkt_share\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"customer\" ON (\"orders\".\"o_custkey\" = \"customer\".\"c_custkey\") INNER JOIN \"nation\" ON (\"customer\".\"c_nationkey\" = \"nation\".\"n_nationkey\") INNER JOIN \"region\" ON (\"nation\".\"n_regionkey\" = \"region\".\"r_regionkey\") INNER JOIN \"part\" ON (\"lineitem\".\"l_partkey\" = \"part\".\"p_partkey\") INNER JOIN \"supplier\" ON (\"lineitem\".\"l_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" T8 ON (\"supplier\".\"s_nationkey\" = T8.\"n_nationkey\") WHERE (\"region\".\"r_name\" = %s AND \"orders\".\"o_orderdate\" >= %s AND \"orders\".\"o_orderdate\" < %s AND \"part\".\"p_type\" = %s) GROUP BY 1 ORDER BY 1 ASC",
+[
+"BRAZIL",
+"1",
+"0",
+"1",
+"AMERICA",
+"1995-01-01",
+"1997-01-01",
+"ECONOMY ANODIZED STEEL"
+]
+]
+],
+"django_app.queries.q09": [
+[
+"SELECT \"nation\".\"n_name\" AS \"nation\", EXTRACT(YEAR FROM \"orders\".\"o_orderdate\") AS \"o_year\", SUM(((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\")) - ((SELECT U0.\"ps_supplycost\" AS \"supplycost\" FROM \"partsupp\" U0 WHERE (U0.\"ps_partkey\" = (\"lineitem\".\"l_partkey\") AND U0.\"ps_suppkey\" = (\"lineitem\".\"l_suppkey\")) LIMIT 1) * \"lineitem\".\"l_quantity\"))) AS \"sum_profit\" FROM \"lineitem\" INNER JOIN \"part\" ON (\"lineitem\".\"l_partkey\" = \"part\".\"p_partkey\") INNER JOIN \"supplier\" ON (\"lineitem\".\"l_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" ON (\"supplier\".\"s_nationkey\" = \"nation\".\"n_nationkey\") INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") WHERE \"part\".\"p_name\"::text LIKE %s GROUP BY 1, 2 ORDER BY 1 ASC, 2 DESC",
+[
+"1",
+"%green%"
+]
+]
+],
+"django_app.queries.q09_oracle": [
+[
+"SELECT \"nation\".\"n_name\" AS \"nation\", EXTRACT(YEAR FROM \"orders\".\"o_orderdate\") AS \"o_year\", SUM(((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\")) - ((SELECT U0.\"ps_supplycost\" AS \"supplycost\" FROM \"partsupp\" U0 WHERE (U0.\"ps_partkey\" = (\"lineitem\".\"l_partkey\") AND U0.\"ps_suppkey\" = (\"lineitem\".\"l_suppkey\")) LIMIT 1) * \"lineitem\".\"l_quantity\"))) AS \"sum_profit\" FROM \"lineitem\" INNER JOIN \"part\" ON (\"lineitem\".\"l_partkey\" = \"part\".\"p_partkey\") INNER JOIN \"supplier\" ON (\"lineitem\".\"l_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" ON (\"supplier\".\"s_nationkey\" = \"nation\".\"n_nationkey\") INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") WHERE \"part\".\"p_name\"::text LIKE %s GROUP BY 1, 2 ORDER BY 1 ASC, 2 DESC",
+[
+"1",
+"%green%"
+]
+]
+],
+"django_app.queries.q09_sqlserver": [
+[
+"SELECT \"nation\".\"n_name\" AS \"nation\", EXTRACT(YEAR FROM \"orders\".\"o_orderdate\") AS \"o_year\", SUM(((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\")) - (\"partsupp\".\"ps_supplycost\" * \"lineitem\".\"l_quantity\"))) AS \"sum_profit\" FROM \"lineitem\" INNER JOIN \"part\" ON (\"lineitem\".\"l_partkey\" = \"part\".\"p_partkey\") INNER JOIN \"supplier\" ON (\"lineitem\".\"l_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"partsupp\" ON (\"part\".\"p_partkey\" = \"partsupp\".\"ps_partkey\") INNER JOIN \"nation\" ON (\"supplier\".\"s_nationkey\" = \"nation\".\"n_nationkey\") INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") WHERE (\"part\".\"p_name\"::text LIKE %s AND \"partsupp\".\"ps_suppkey\" = (\"lineitem\".\"l_suppkey\")) GROUP BY 1, 2 ORDER BY 1 ASC, 2 DESC",
+[
+"1",
+"%green%"
+]
+]
+],
+"django_app.queries.q10": [
+[
+"SELECT \"orders\".\"o_custkey\" AS \"c_custkey\", \"customer\".\"c_name\" AS \"c_name\", \"customer\".\"c_acctbal\" AS \"c_acctbal\", \"customer\".\"c_phone\" AS \"c_phone\", \"nation\".\"n_name\" AS \"n_name\", \"customer\".\"c_address\" AS \"c_address\", \"customer\".\"c_comment\" AS \"c_comment\", SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) AS \"total_revenue\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"customer\" ON (\"orders\".\"o_custkey\" = \"customer\".\"c_custkey\") INNER JOIN \"nation\" ON (\"customer\".\"c_nationkey\" = \"nation\".\"n_nationkey\") WHERE (\"orders\".\"o_orderdate\" >= %s AND \"orders\".\"o_orderdate\" < %s AND \"lineitem\".\"l_returnflag\" = %s) GROUP BY 1, 2, 3, 4, 5, 6, 7 ORDER BY 8 DESC LIMIT 20",
+[
+"1",
+"1993-10-01",
+"1994-01-01",
+"R"
+]
+]
+],
+"django_app.queries.q10_sqlserver": [
+[
+"SELECT \"orders\".\"o_custkey\" AS \"c_custkey\", \"customer\".\"c_name\" AS \"c_name\", \"customer\".\"c_acctbal\" AS \"c_acctbal\", \"customer\".\"c_phone\" AS \"c_phone\", \"nation\".\"n_name\" AS \"n_name\", \"customer\".\"c_address\" AS \"c_address\", \"customer\".\"c_comment\" AS \"c_comment\", SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) AS \"total_revenue\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"customer\" ON (\"orders\".\"o_custkey\" = \"customer\".\"c_custkey\") INNER JOIN \"nation\" ON (\"customer\".\"c_nationkey\" = \"nation\".\"n_nationkey\") WHERE (\"orders\".\"o_orderdate\" >= %s AND \"orders\".\"o_orderdate\" < %s AND \"lineitem\".\"l_returnflag\" = %s) GROUP BY 1, 2, 3, 4, 5, 6, 7 ORDER BY 8 DESC LIMIT 20",
+[
+"1",
+"1993-10-01",
+"1994-01-01",
+"R"
+]
+]
+],
+"django_app.queries.q11": [
+[
+"SELECT SUM((\"partsupp\".\"ps_supplycost\" * \"partsupp\".\"ps_availqty\")) AS \"total\" FROM \"partsupp\" INNER JOIN \"supplier\" ON (\"partsupp\".\"ps_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" ON (\"supplier\".\"s_nationkey\" = \"nation\".\"n_nationkey\") WHERE \"nation\".\"n_name\" = %s",
+[
+"GERMANY"
+]
+],
+[
+"SELECT \"partsupp\".\"ps_partkey\" AS \"ps_partkey\", SUM((\"partsupp\".\"ps_supplycost\" * \"partsupp\".\"ps_availqty\")) AS \"value\" FROM \"partsupp\" INNER JOIN \"supplier\" ON (\"partsupp\".\"ps_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" ON (\"supplier\".\"s_nationkey\" = \"nation\".\"n_nationkey\") WHERE \"nation\".\"n_name\" = %s GROUP BY 1 HAVING SUM((\"partsupp\".\"ps_supplycost\" * \"partsupp\".\"ps_availqty\")) > %s ORDER BY 2 DESC",
+[
+"GERMANY",
+"7874103.109405"
+]
+]
+],
+"django_app.queries.q12": [
+[
+"SELECT \"lineitem\".\"l_shipmode\" AS \"shipmode\", SUM(CASE WHEN (\"orders\".\"o_orderpriority\" = %s OR \"orders\".\"o_orderpriority\" = %s) THEN %s ELSE %s END) AS \"high_line_count\", SUM(CASE WHEN (NOT (\"orders\".\"o_orderpriority\" = %s) AND NOT (\"orders\".\"o_orderpriority\" = %s)) THEN %s ELSE %s END) AS \"low_line_count\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") WHERE (\"lineitem\".\"l_commitdate\" < (\"lineitem\".\"l_receiptdate\") AND \"lineitem\".\"l_receiptdate\" >= %s AND \"lineitem\".\"l_receiptdate\" < %s AND \"lineitem\".\"l_shipdate\" < (\"lineitem\".\"l_commitdate\") AND \"lineitem\".\"l_shipmode\" IN (%s, %s)) GROUP BY 1 ORDER BY 1 ASC",
+[
+"1-URGENT",
+"2-HIGH",
+"1",
+"0",
+"1-URGENT",
+"2-HIGH",
+"1",
+"0",
+"1994-01-01",
+"1995-01-01",
+"MAIL",
+"SHIP"
+]
+]
+],
+"django_app.queries.q12_sqlserver": [
+[
+"SELECT \"lineitem\".\"l_shipmode\" AS \"shipmode\", SUM(CASE WHEN (\"orders\".\"o_orderpriority\" = %s OR \"orders\".\"o_orderpriority\" = %s) THEN %s ELSE %s END) AS \"high_line_count\", SUM(CASE WHEN (NOT (\"orders\".\"o_orderpriority\" = %s) AND NOT (\"orders\".\"o_orderpriority\" = %s)) THEN %s ELSE %s END) AS \"low_line_count\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") WHERE (\"lineitem\".\"l_commitdate\" < (\"lineitem\".\"l_receiptdate\") AND \"lineitem\".\"l_receiptdate\" >= %s AND \"lineitem\".\"l_receiptdate\" < %s AND \"lineitem\".\"l_shipdate\" < (\"lineitem\".\"l_commitdate\") AND \"lineitem\".\"l_shipmode\" IN (%s, %s)) GROUP BY 1 ORDER BY 1 ASC",
+[
+"1-URGENT",
+"2-HIGH",
+"1",
+"0",
+"1-URGENT",
+"2-HIGH",
+"1",
+"0",
+"1994-01-01",
+"1995-01-01",
+"MAIL",
+"SHIP"
+]
+]
+],
+"django_app.queries.q13": [
+[
+"SELECT COALESCE((SELECT COUNT(U0.\"o_orderkey\") AS \"n\" FROM \"orders\" U0 WHERE (U0.\"o_custkey\" = (\"customer\".\"c_custkey\") AND NOT (U0.\"o_comment\" LIKE %s)) GROUP BY U0.\"o_custkey\" LIMIT 1), %s) AS \"c_count\", COUNT(*) AS \"custdist\" FROM \"customer\" GROUP BY 1 ORDER BY 2 DESC, 1 DESC",
+[
+"%special%requests%",
+"0"
+]
+]
+],
+"django_app.queries.q13_oracle": [
+[
+"EXC Q13NotExpressible: Django ORM cannot express Q13 on Oracle: no derived-table construct, and Oracle raises ORA-22818 for",
+[]
+]
+],
+"django_app.queries.q13_sqlserver": [
+[
+"EXC Q13NotExpressible: Django ORM cannot express Q13 on SQL Server: no derived-table construct, and SQL Server forbids GROU",
+[]
+]
+],
+"django_app.queries.q14": [
+[
+"SELECT ((%s * SUM(CASE WHEN \"part\".\"p_type\"::text LIKE %s THEN (\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\")) ELSE %s END)) / SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\")))) AS \"promo_revenue\" FROM \"lineitem\" INNER JOIN \"part\" ON (\"lineitem\".\"l_partkey\" = \"part\".\"p_partkey\") WHERE (\"lineitem\".\"l_shipdate\" >= %s AND \"lineitem\".\"l_shipdate\" < %s)",
+[
+"100.0",
+"PROMO%",
+"1",
+"0",
+"1",
+"1995-09-01",
+"1995-10-01"
+]
+]
+],
+"django_app.queries.q14_sqlserver": [
+[
+"SELECT ((%s * SUM(CASE WHEN \"part\".\"p_type\"::text LIKE %s THEN (\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\")) ELSE %s END)) / SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\")))) AS \"promo_revenue\" FROM \"lineitem\" INNER JOIN \"part\" ON (\"lineitem\".\"l_partkey\" = \"part\".\"p_partkey\") WHERE (\"lineitem\".\"l_shipdate\" >= %s AND \"lineitem\".\"l_shipdate\" < %s)",
+[
+"100.0",
+"PROMO%",
+"1",
+"0",
+"1",
+"1995-09-01",
+"1995-10-01"
+]
+]
+],
+"django_app.queries.q15": [
+[
+"SELECT MAX(\"total_revenue\") FROM (SELECT \"lineitem\".\"l_suppkey\" AS \"suppkey\", SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) AS \"total_revenue\" FROM \"lineitem\" WHERE (\"lineitem\".\"l_shipdate\" >= %s AND \"lineitem\".\"l_shipdate\" < %s) GROUP BY 1) subquery",
+[
+"1",
+"1996-01-01",
+"1996-04-01"
+]
+],
+[
+"SELECT \"lineitem\".\"l_suppkey\" AS \"suppkey\", SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) AS \"total_revenue\" FROM \"lineitem\" WHERE (\"lineitem\".\"l_shipdate\" >= %s AND \"lineitem\".\"l_shipdate\" < %s) GROUP BY 1 HAVING SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) = %s",
+[
+"1",
+"1996-01-01",
+"1996-04-01",
+"1",
+"1772627.2087"
+]
+],
+[
+"SELECT \"supplier\".\"s_suppkey\" AS \"s_suppkey\", \"supplier\".\"s_name\" AS \"s_name\", \"supplier\".\"s_address\" AS \"s_address\", \"supplier\".\"s_phone\" AS \"s_phone\" FROM \"supplier\" WHERE \"supplier\".\"s_suppkey\" IN (%s) ORDER BY 1 ASC",
+[
+"8449"
+]
+]
+],
+"django_app.queries.q15_sqlserver": [
+[
+"SELECT MAX(\"total_revenue\") FROM (SELECT \"lineitem\".\"l_suppkey\" AS \"suppkey\", SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) AS \"total_revenue\" FROM \"lineitem\" WHERE (\"lineitem\".\"l_shipdate\" >= %s AND \"lineitem\".\"l_shipdate\" < %s) GROUP BY 1) subquery",
+[
+"1",
+"1996-01-01",
+"1996-04-01"
+]
+],
+[
+"SELECT \"lineitem\".\"l_suppkey\" AS \"suppkey\", SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) AS \"total_revenue\" FROM \"lineitem\" WHERE (\"lineitem\".\"l_shipdate\" >= %s AND \"lineitem\".\"l_shipdate\" < %s) GROUP BY 1 HAVING SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) = %s",
+[
+"1",
+"1996-01-01",
+"1996-04-01",
+"1",
+"1772627.2087"
+]
+],
+[
+"SELECT \"supplier\".\"s_suppkey\" AS \"s_suppkey\", \"supplier\".\"s_name\" AS \"s_name\", \"supplier\".\"s_address\" AS \"s_address\", \"supplier\".\"s_phone\" AS \"s_phone\" FROM \"supplier\" WHERE \"supplier\".\"s_suppkey\" IN (%s) ORDER BY 1 ASC",
+[
+"8449"
+]
+]
+],
+"django_app.queries.q16": [
+[
+"SELECT \"part\".\"p_brand\" AS \"p_brand\", \"part\".\"p_type\" AS \"p_type\", \"part\".\"p_size\" AS \"p_size\", COUNT(DISTINCT \"partsupp\".\"ps_suppkey\") AS \"supplier_cnt\" FROM \"partsupp\" INNER JOIN \"part\" ON (\"partsupp\".\"ps_partkey\" = \"part\".\"p_partkey\") WHERE (NOT (\"part\".\"p_brand\" = %s) AND NOT (\"part\".\"p_type\"::text LIKE %s) AND \"part\".\"p_size\" IN (%s, %s, %s, %s, %s, %s, %s, %s) AND NOT (\"partsupp\".\"ps_suppkey\" IN (SELECT U0.\"s_suppkey\" AS \"suppkey\" FROM \"supplier\" U0 WHERE U0.\"s_comment\" LIKE %s))) GROUP BY 1, 2, 3 ORDER BY 4 DESC, 1 ASC, 2 ASC, 3 ASC",
+[
+"Brand#45",
+"MEDIUM POLISHED%",
+"49",
+"14",
+"23",
+"45",
+"19",
+"3",
+"36",
+"9",
+"%Customer%Complaints%"
+]
+]
+],
+"django_app.queries.q16_sqlserver": [
+[
+"SELECT \"part\".\"p_brand\" AS \"p_brand\", \"part\".\"p_type\" AS \"p_type\", \"part\".\"p_size\" AS \"p_size\", COUNT(DISTINCT \"partsupp\".\"ps_suppkey\") AS \"supplier_cnt\" FROM \"partsupp\" INNER JOIN \"part\" ON (\"partsupp\".\"ps_partkey\" = \"part\".\"p_partkey\") WHERE (NOT (\"part\".\"p_brand\" = %s) AND NOT (\"part\".\"p_type\"::text LIKE %s) AND \"part\".\"p_size\" IN (%s, %s, %s, %s, %s, %s, %s, %s) AND NOT (\"partsupp\".\"ps_suppkey\" IN (SELECT U0.\"s_suppkey\" AS \"suppkey\" FROM \"supplier\" U0 WHERE U0.\"s_comment\" LIKE %s))) GROUP BY 1, 2, 3 ORDER BY 4 DESC, 1 ASC, 2 ASC, 3 ASC",
+[
+"Brand#45",
+"MEDIUM POLISHED%",
+"49",
+"14",
+"23",
+"45",
+"19",
+"3",
+"36",
+"9",
+"%Customer%Complaints%"
+]
+]
+],
+"django_app.queries.q17": [
+[
+"SELECT (SUM(\"lineitem\".\"l_extendedprice\") / %s) AS \"avg_yearly\" FROM \"lineitem\" INNER JOIN \"part\" ON (\"lineitem\".\"l_partkey\" = \"part\".\"p_partkey\") WHERE (\"part\".\"p_brand\" = %s AND \"part\".\"p_container\" = %s AND \"lineitem\".\"l_quantity\" < ((SELECT AVG(U0.\"l_quantity\") AS \"avg_q\" FROM \"lineitem\" U0 WHERE U0.\"l_partkey\" = (\"lineitem\".\"l_partkey\") GROUP BY U0.\"l_partkey\") * %s))",
+[
+"7.0",
+"Brand#23",
+"MED BOX",
+"0.2"
+]
+]
+],
+"django_app.queries.q18": [
+[
+"SELECT \"customer\".\"c_name\" AS \"c_name\", \"orders\".\"o_custkey\" AS \"c_custkey\", \"lineitem\".\"l_orderkey\" AS \"o_orderkey\", \"orders\".\"o_orderdate\" AS \"o_orderdate\", \"orders\".\"o_totalprice\" AS \"o_totalprice\", SUM(\"lineitem\".\"l_quantity\") AS \"total_qty\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"customer\" ON (\"orders\".\"o_custkey\" = \"customer\".\"c_custkey\") WHERE \"lineitem\".\"l_orderkey\" IN (SELECT U0.\"l_orderkey\" AS \"orderkey\" FROM \"lineitem\" U0 GROUP BY 1 HAVING SUM(U0.\"l_quantity\") > %s) GROUP BY 1, 2, 3, 4, 5 ORDER BY 5 DESC, 4 ASC LIMIT 100",
+[
+"300"
+]
+]
+],
+"django_app.queries.q18_sqlserver": [
+[
+"SELECT \"customer\".\"c_name\" AS \"c_name\", \"orders\".\"o_custkey\" AS \"c_custkey\", \"lineitem\".\"l_orderkey\" AS \"o_orderkey\", \"orders\".\"o_orderdate\" AS \"o_orderdate\", \"orders\".\"o_totalprice\" AS \"o_totalprice\", SUM(\"lineitem\".\"l_quantity\") AS \"total_qty\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"customer\" ON (\"orders\".\"o_custkey\" = \"customer\".\"c_custkey\") WHERE \"lineitem\".\"l_orderkey\" IN (SELECT U0.\"l_orderkey\" AS \"orderkey\" FROM \"lineitem\" U0 GROUP BY 1 HAVING SUM(U0.\"l_quantity\") > %s) GROUP BY 1, 2, 3, 4, 5 ORDER BY 5 DESC, 4 ASC LIMIT 100",
+[
+"300"
+]
+]
+],
+"django_app.queries.q19": [
+[
+"SELECT SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) AS \"revenue\" FROM \"lineitem\" INNER JOIN \"part\" ON (\"lineitem\".\"l_partkey\" = \"part\".\"p_partkey\") WHERE ((\"part\".\"p_brand\" = %s AND \"part\".\"p_container\" IN (%s, %s, %s, %s) AND \"part\".\"p_size\" >= %s AND \"part\".\"p_size\" <= %s AND \"lineitem\".\"l_quantity\" >= %s AND \"lineitem\".\"l_quantity\" <= %s AND \"lineitem\".\"l_shipinstruct\" = %s AND \"lineitem\".\"l_shipmode\" IN (%s, %s)) OR (\"part\".\"p_brand\" = %s AND \"part\".\"p_container\" IN (%s, %s, %s, %s) AND \"part\".\"p_size\" >= %s AND \"part\".\"p_size\" <= %s AND \"lineitem\".\"l_quantity\" >= %s AND \"lineitem\".\"l_quantity\" <= %s AND \"lineitem\".\"l_shipinstruct\" = %s AND \"lineitem\".\"l_shipmode\" IN (%s, %s)) OR (\"part\".\"p_brand\" = %s AND \"part\".\"p_container\" IN (%s, %s, %s, %s) AND \"part\".\"p_size\" >= %s AND \"part\".\"p_size\" <= %s AND \"lineitem\".\"l_quantity\" >= %s AND \"lineitem\".\"l_quantity\" <= %s AND \"lineitem\".\"l_shipinstruct\" = %s AND \"lineitem\".\"l_shipmode\" IN (%s, %s)))",
+[
+"1",
+"Brand#12",
+"SM CASE",
+"SM BOX",
+"SM PACK",
+"SM PKG",
+"1",
+"5",
+"1",
+"11",
+"DELIVER IN PERSON",
+"AIR",
+"AIR REG",
+"Brand#23",
+"MED BAG",
+"MED BOX",
+"MED PKG",
+"MED PACK",
+"1",
+"10",
+"10",
+"20",
+"DELIVER IN PERSON",
+"AIR",
+"AIR REG",
+"Brand#34",
+"LG CASE",
+"LG BOX",
+"LG PACK",
+"LG PKG",
+"1",
+"15",
+"20",
+"30",
+"DELIVER IN PERSON",
+"AIR",
+"AIR REG"
+]
+]
+],
+"django_app.queries.q20": [
+[
+"SELECT \"supplier\".\"s_name\" AS \"s_name\", \"supplier\".\"s_address\" AS \"s_address\" FROM \"supplier\" INNER JOIN \"nation\" ON (\"supplier\".\"s_nationkey\" = \"nation\".\"n_nationkey\") WHERE (\"nation\".\"n_name\" = %s AND \"supplier\".\"s_suppkey\" IN (SELECT DISTINCT V0.\"ps_suppkey\" AS \"suppkey\" FROM \"partsupp\" V0 WHERE (V0.\"ps_availqty\" > (SELECT (SUM(U0.\"l_quantity\") * %s) AS \"half_qty\" FROM \"lineitem\" U0 WHERE (U0.\"l_partkey\" = (V0.\"ps_partkey\") AND U0.\"l_shipdate\" >= %s AND U0.\"l_shipdate\" < %s AND U0.\"l_suppkey\" = (V0.\"ps_suppkey\")) GROUP BY U0.\"l_partkey\", U0.\"l_suppkey\") AND V0.\"ps_partkey\" IN (SELECT U0.\"p_partkey\" AS \"partkey\" FROM \"part\" U0 WHERE U0.\"p_name\"::text LIKE %s)))) ORDER BY 1 ASC",
+[
+"CANADA",
+"0.5",
+"1994-01-01",
+"1995-01-01",
+"forest%"
+]
+]
+],
+"django_app.queries.q20_sqlserver": [
+[
+"SELECT \"supplier\".\"s_name\" AS \"s_name\", \"supplier\".\"s_address\" AS \"s_address\" FROM \"supplier\" INNER JOIN \"nation\" ON (\"supplier\".\"s_nationkey\" = \"nation\".\"n_nationkey\") WHERE (\"nation\".\"n_name\" = %s AND \"supplier\".\"s_suppkey\" IN (SELECT DISTINCT V0.\"ps_suppkey\" AS \"suppkey\" FROM \"partsupp\" V0 WHERE (V0.\"ps_availqty\" > (SELECT (SUM(U0.\"l_quantity\") * %s) AS \"half_qty\" FROM \"lineitem\" U0 WHERE (U0.\"l_partkey\" = (V0.\"ps_partkey\") AND U0.\"l_shipdate\" >= %s AND U0.\"l_shipdate\" < %s AND U0.\"l_suppkey\" = (V0.\"ps_suppkey\")) GROUP BY U0.\"l_partkey\", U0.\"l_suppkey\") AND V0.\"ps_partkey\" IN (SELECT U0.\"p_partkey\" AS \"partkey\" FROM \"part\" U0 WHERE U0.\"p_name\"::text LIKE %s)))) ORDER BY 1 ASC",
+[
+"CANADA",
+"0.5",
+"1994-01-01",
+"1995-01-01",
+"forest%"
+]
+]
+],
+"django_app.queries.q21": [
+[
+"SELECT \"supplier\".\"s_name\" AS \"s_name\", COUNT(DISTINCT \"lineitem\".\"l_orderkey\") AS \"numwait\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"supplier\" ON (\"lineitem\".\"l_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" ON (\"supplier\".\"s_nationkey\" = \"nation\".\"n_nationkey\") WHERE (\"orders\".\"o_orderstatus\" = %s AND \"lineitem\".\"l_receiptdate\" > (\"lineitem\".\"l_commitdate\") AND \"nation\".\"n_name\" = %s AND NOT EXISTS(SELECT %s AS \"a\" FROM \"lineitem\" U0 WHERE (U0.\"l_orderkey\" = (\"lineitem\".\"l_orderkey\") AND NOT (U0.\"l_suppkey\" = (\"lineitem\".\"l_suppkey\")) AND U0.\"l_receiptdate\" > (U0.\"l_commitdate\")) LIMIT 1) AND EXISTS(SELECT %s AS \"a\" FROM \"lineitem\" U0 WHERE (U0.\"l_orderkey\" = (\"lineitem\".\"l_orderkey\") AND NOT (U0.\"l_suppkey\" = (\"lineitem\".\"l_suppkey\"))) LIMIT 1)) GROUP BY 1 ORDER BY 2 DESC, 1 ASC LIMIT 100",
+[
+"F",
+"SAUDI ARABIA",
+"1",
+"1"
+]
+]
+],
+"django_app.queries.q21_sqlserver": [
+[
+"SELECT \"supplier\".\"s_name\" AS \"s_name\", COUNT(DISTINCT \"lineitem\".\"l_orderkey\") AS \"numwait\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"supplier\" ON (\"lineitem\".\"l_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" ON (\"supplier\".\"s_nationkey\" = \"nation\".\"n_nationkey\") WHERE (\"orders\".\"o_orderstatus\" = %s AND \"lineitem\".\"l_receiptdate\" > (\"lineitem\".\"l_commitdate\") AND \"nation\".\"n_name\" = %s AND NOT EXISTS(SELECT %s AS \"a\" FROM \"lineitem\" U0 WHERE (U0.\"l_orderkey\" = (\"lineitem\".\"l_orderkey\") AND NOT (U0.\"l_suppkey\" = (\"lineitem\".\"l_suppkey\")) AND U0.\"l_receiptdate\" > (U0.\"l_commitdate\")) LIMIT 1) AND EXISTS(SELECT %s AS \"a\" FROM \"lineitem\" U0 WHERE (U0.\"l_orderkey\" = (\"lineitem\".\"l_orderkey\") AND NOT (U0.\"l_suppkey\" = (\"lineitem\".\"l_suppkey\"))) LIMIT 1)) GROUP BY 1 ORDER BY 2 DESC, 1 ASC LIMIT 100",
+[
+"F",
+"SAUDI ARABIA",
+"1",
+"1"
+]
+]
+],
+"django_app.queries.q22": [
+[
+"SELECT AVG(\"customer\".\"c_acctbal\") AS \"avg_bal\" FROM \"customer\" WHERE ((\"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s) AND \"customer\".\"c_acctbal\" > %s)",
+[
+"13%",
+"31%",
+"23%",
+"29%",
+"30%",
+"18%",
+"17%",
+"0"
+]
+],
+[
+"SELECT SUBSTRING(\"customer\".\"c_phone\", %s, %s) AS \"cntrycode\", COUNT(\"customer\".\"c_custkey\") AS \"numcust\", SUM(\"customer\".\"c_acctbal\") AS \"totacctbal\" FROM \"customer\" WHERE (\"customer\".\"c_acctbal\" > %s AND SUBSTRING(\"customer\".\"c_phone\", %s, %s) IN (%s, %s, %s, %s, %s, %s, %s) AND NOT EXISTS(SELECT %s AS \"a\" FROM \"orders\" U0 WHERE U0.\"o_custkey\" = (\"customer\".\"c_custkey\") LIMIT 1)) GROUP BY 1 ORDER BY 1 ASC",
+[
+"1",
+"2",
+"5003.6857652151101784",
+"1",
+"2",
+"13",
+"31",
+"23",
+"29",
+"30",
+"18",
+"17",
+"1"
+]
+]
+],
+"django_app.queries.q22_oracle": [
+[
+"SELECT AVG(\"customer\".\"c_acctbal\") AS \"avg\" FROM \"customer\" WHERE (\"customer\".\"c_acctbal\" > %s AND (\"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s))",
+[
+"0",
+"13%",
+"31%",
+"23%",
+"29%",
+"30%",
+"18%",
+"17%"
+]
+],
+[
+"SELECT SUBSTRING(\"customer\".\"c_phone\", %s, %s) AS \"cntrycode\", COUNT(\"customer\".\"c_custkey\") AS \"numcust\", SUM(\"customer\".\"c_acctbal\") AS \"totacctbal\" FROM \"customer\" LEFT OUTER JOIN \"orders\" ON (\"customer\".\"c_custkey\" = \"orders\".\"o_custkey\") WHERE (\"customer\".\"c_acctbal\" > %s AND SUBSTRING(\"customer\".\"c_phone\", %s, %s) IN (%s, %s, %s, %s, %s, %s, %s) AND \"orders\".\"o_orderkey\" IS NULL) GROUP BY 1 ORDER BY 1 ASC",
+[
+"1",
+"2",
+"5003.6857652151101784",
+"1",
+"2",
+"13",
+"31",
+"23",
+"29",
+"30",
+"18",
+"17"
+]
+]
+],
+"django_app.queries.q22_sqlserver": [
+[
+"SELECT AVG(\"customer\".\"c_acctbal\") AS \"avg_bal\" FROM \"customer\" WHERE ((\"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s OR \"customer\".\"c_phone\"::text LIKE %s) AND \"customer\".\"c_acctbal\" > %s)",
+[
+"13%",
+"31%",
+"23%",
+"29%",
+"30%",
+"18%",
+"17%",
+"0"
+]
+],
+[
+"SELECT SUBSTRING(\"customer\".\"c_phone\", %s, %s) AS \"cntrycode\", COUNT(\"customer\".\"c_custkey\") AS \"numcust\", SUM(\"customer\".\"c_acctbal\") AS \"totacctbal\" FROM \"customer\" WHERE (\"customer\".\"c_acctbal\" > %s AND SUBSTRING(\"customer\".\"c_phone\", %s, %s) IN (%s, %s, %s, %s, %s, %s, %s) AND NOT EXISTS(SELECT %s AS \"a\" FROM \"orders\" U0 WHERE U0.\"o_custkey\" = (\"customer\".\"c_custkey\") LIMIT 1)) GROUP BY 1 ORDER BY 1 ASC",
+[
+"1",
+"2",
+"5003.6857652151101784",
+"1",
+"2",
+"13",
+"31",
+"23",
+"29",
+"30",
+"18",
+"17",
+"1"
+]
+]
+]
+}

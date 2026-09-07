@@ -1,0 +1,66 @@
+cff-version: 1.2.0
+message: "If you use this artifact, please cite it as below."
+type: software
+title: "ORM overhead on four database systems: harness, results and correction register"
+abstract: >-
+  The artifact behind a study of what Django and SQLAlchemy cost against each
+  framework's own hand-written SQL, measured on four database systems in two
+  schema configurations across workloads derived from the 22 queries of TPC-H
+  and the five transactions of TPC-C, at scale factor 1. It contains the
+  harness, both frameworks' implementations of all 27 workloads, the analysis
+  scripts that produce every table and figure in the manuscript, the resolution
+  bounds fixed before the pilot ran, and a register of 46 measurement defects
+  found while building and reviewing it. One system's 108 cells carry no timing:
+  its developer licence forbids disclosing benchmark results for it without
+  written approval. Those cells remain as rows with the reason recorded, so the
+  432-cell grid stays countable. MANIFEST.md gives the full account.
+authors:
+  - family-names: "Nasr"
+    given-names: "Mahmoud"
+    affiliation: "Faculty of Computers and Artificial Intelligence, Cairo University"
+  - family-names: "El-Ramly"
+    given-names: "Mohammed"
+    affiliation: "Faculty of Computers and Artificial Intelligence, Cairo University"
+  - family-names: "Abdelqawy"
+    given-names: "Desoky"
+    affiliation: "Faculty of Computers and Artificial Intelligence, Cairo University"
+keywords:
+  - "object-relational mapping"
+  - "database benchmarking"
+  - "TPC-H"
+  - "TPC-C"
+  - "reproducibility"
+  - "measurement error"
+  - "Django"
+  - "SQLAlchemy"
+license: MIT
+repository-code: "https://github.com/mahmoodnasr/orm-overhead-artifact"
+version: "1.0.0"
+date-released: "2026-09-07"
+# No preferred-citation. The manuscript this artifact accompanies is under
+# review and not published, and a citation entry naming a journal and a year
+# would assert a record that does not exist. One goes here when there is one.
+references:
+  - type: software
+    title: "Django"
+    authors:
+      - name: "Django Software Foundation"
+    version: "6.0.8"
+    url: "https://www.djangoproject.com/"
+  - type: software
+    title: "SQLAlchemy"
+    authors:
+      - family-names: "Bayer"
+        given-names: "Mike"
+    version: "2.0.52"
+    url: "https://www.sqlalchemy.org/"
+  - type: standard
+    title: "TPC Benchmark H Standard Specification"
+    authors:
+      - name: "Transaction Processing Performance Council"
+    url: "https://www.tpc.org/tpch/"
+  - type: standard
+    title: "TPC Benchmark C Standard Specification"
+    authors:
+      - name: "Transaction Processing Performance Council"
+    url: "https://www.tpc.org/tpcc/"

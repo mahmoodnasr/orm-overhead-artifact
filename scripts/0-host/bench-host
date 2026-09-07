@@ -1,0 +1,203 @@
+#!/bin/bash
+# SF1 campaign host state — SF1_RERUN_PLAN.md G3/G4.
+#
+# None of this survives a reboot, which is the point: the plan requires the
+# envelope re-applied AND re-verified before every campaign, because a
+# setting issued is not a setting in effect (§2.6 found three of those).
+#
+#   bench-host apply   [engine]   set it
+#   bench-host verify  [engine]   read it back off the running system
+#   bench-host release            hand the laptop back to normal use
+#
+# engine is postgresql (default), mysql, mssql or oracle — the one under
+# measurement.
+#
+# This file is the copy of record, under version control in the repo at
+# scripts/0-host/bench-host, and is installed to /usr/local/sbin/bench-host.
+# It used to exist on the campaign host only, which made the measurement rig
+# the one part of the experiment with no history.
+# verify exits non-zero if the host is not campaign-ready, so a campaign
+# script can gate on it rather than on someone reading the output.
+ENGINE="${2:-postgresql}"
+# "sqlserver" is what the rest of the repository calls this engine: it is the
+# --dbms value, the Django alias, the schema_config key and the string written
+# onto every results row. Only this script said "mssql", after the systemd unit
+# name, so `run_pilot.sh sqlserver indexed` gated on `bench-host verify
+# sqlserver` and got "unknown engine" - a refusal to start that looked like an
+# unsafe host rather than a spelling difference. Both names are accepted; the
+# canonical one downstream is sqlserver.
+case "$ENGINE" in
+  postgresql)         UNIT=postgresql@18-main.service ;;
+  mysql)              UNIT=mysql.service ;;
+  mssql|sqlserver)    UNIT=mssql-server.service; ENGINE=mssql ;;
+  oracle)             UNIT=oracle-free.service ;;
+  *) echo "unknown engine: $ENGINE (want postgresql|mysql|mssql/sqlserver|oracle)" >&2; exit 2 ;;
+esac
+
+# Oracle is not like the other three, in two ways that both matter here.
+#
+# 1. Its cgroup envelope cannot live on the service unit. The packaged init
+#    script starts the database through `su`, which triggers pam_systemd and
+#    moves every ora_* process into the invoking user's slice — out of the
+#    unit's cgroup entirely. The AllowedCPUs and MemoryMax written in
+#    oracle-free.service are therefore inert for the database processes, and
+#    reading them back off the unit would report an envelope that is not in
+#    force. G4 is applied to, and read from, the oracle user's slice.
+#
+# 2. Its unit is not a reliable liveness signal. oracle-free.service is a
+#    Type=forking wrapper, so it does read active when the database was started
+#    through it — but /etc/init.d/oracle-free-23ai and the sysv-generated
+#    oracle-free-23ai.service are both still present, and a database started
+#    either of those ways leaves the wrapper inactive while Oracle is up. An
+#    engine that reports "inactive" while running is worse than one that is not
+#    listed at all: the check looks like it passed. So liveness is the process,
+#    and the unit is only a hint.
+ORACLE_UID=$(id -u oracle 2>/dev/null)
+ORACLE_SLICE="user-${ORACLE_UID}.slice"
+ORACLE_PMON="ora_pmon_${ORACLE_SID:-FREE}"
+
+# Is this engine's server actually running? Exact-match on the process name for
+# Oracle: `pgrep -f ora_pmon` matches the shell that is asking the question, and
+# a check that always answers "yes" is not a check.
+engine_live() {
+  case "$1" in
+    oracle) pgrep -x "$ORACLE_PMON" >/dev/null 2>&1 && return 0
+            [ "$(systemctl is-active oracle-free.service 2>/dev/null)" = active ] ;;
+    *)      [ "$(systemctl is-active "$2" 2>/dev/null)" = active ] ;;
+  esac
+}
+
+# Every engine on this host. An engine that is not listed is not checked, and
+# an unchecked engine is exactly the thing this list exists to catch.
+UNITS="postgresql:postgresql@18-main.service mysql:mysql.service mssql:mssql-server.service oracle:oracle-free.service"
+
+case "${1:-verify}" in
+  apply)
+    cpupower frequency-set -g performance >/dev/null
+    echo 1   > /sys/devices/system/cpu/intel_pstate/no_turbo
+    echo off > /sys/devices/system/cpu/smt/control
+    if [ "$ENGINE" = oracle ]; then
+      # See the note above: the unit's own properties never reach the database
+      # processes, so the envelope goes on the slice they actually land in.
+      systemctl set-property "$ORACLE_SLICE" \
+          AllowedCPUs=0,1 MemoryMax=3G MemorySwapMax=0 2>/dev/null || true
+    else
+      systemctl set-property "$UNIT" \
+          AllowedCPUs=0,1 MemoryMax=3G MemorySwapMax=0 2>/dev/null || true
+    fi
+    # Stop the engines that are not under measurement. See the check below for
+    # why this is done rather than assumed.
+    for spec in $UNITS; do
+      name=${spec%%:*}
+      [ "$name" = "$ENGINE" ] && continue
+      systemctl stop "${spec#*:}" 2>/dev/null || true
+      # A database started outside its unit does not stop with the unit. For
+      # Oracle that is a live possibility - the init script is still on disk -
+      # so if pmon is still there afterwards, stop it the way it was started.
+      if [ "$name" = oracle ] && pgrep -x "$ORACLE_PMON" >/dev/null 2>&1; then
+        /etc/init.d/oracle-free-23ai stop >/dev/null 2>&1 || true
+      fi
+    done
+    systemctl restart "$UNIT" 2>/dev/null || true
+    sleep 2 ;;
+  release)
+    cpupower frequency-set -g powersave >/dev/null
+    echo 0  > /sys/devices/system/cpu/intel_pstate/no_turbo
+    echo on > /sys/devices/system/cpu/smt/control
+    echo "released: laptop back to normal (SMT on, powersave, turbo on)"
+    exit 0 ;;
+esac
+STATUS=0
+# An inactive unit has no cgroup, and ${CG} then expands to nothing — which
+# makes the two lines below read the ROOT cgroup and print "0-3 want 0-1", an
+# envelope failure that is really just a stopped service. Say which it is.
+if [ "$ENGINE" = oracle ]; then
+  CG=$(systemctl show "$ORACLE_SLICE" -p ControlGroup --value 2>/dev/null)
+else
+  CG=$(systemctl show "$UNIT" -p ControlGroup --value 2>/dev/null)
+fi
+if [ -n "$CG" ] && [ -d "/sys/fs/cgroup${CG}" ]; then
+  CPUSET=$(cat "/sys/fs/cgroup${CG}/cpuset.cpus.effective" 2>/dev/null)
+  MEMMAX=$(cat "/sys/fs/cgroup${CG}/memory.max" 2>/dev/null)
+else
+  # No live cgroup means the service is down - but the envelope may still be
+  # declared, and for Oracle it usually is: `systemctl set-property` on the
+  # slice writes a drop-in under /etc/systemd/system.control/, which persists
+  # across reboots even though the governor, turbo and SMT settings do not.
+  # Showing the configured value distinguishes "envelope missing" from
+  # "engine stopped", which the flat "(unit down)" did not.
+  TARGET=$([ "$ENGINE" = oracle ] && echo "$ORACLE_SLICE" || echo "$UNIT")
+  CFG_CPUS=$(systemctl show "$TARGET" -p AllowedCPUs --value 2>/dev/null)
+  CFG_MEM=$(systemctl show "$TARGET" -p MemoryMax --value 2>/dev/null)
+  CPUSET="${CFG_CPUS:+$CFG_CPUS (cfg)}"; CPUSET="${CPUSET:-(down, unset)}"
+  MEMMAX="${CFG_MEM:+$CFG_MEM (cfg)}"; MEMMAX="${MEMMAX:-(down, unset)}"
+fi
+# Each of these used to print "want X" beside the actual value and then set
+# nothing. Only the engines block below moved STATUS, so `verify` exited 0 -
+# campaign-ready - on a host running powersave with turbo and SMT on, as long
+# as the right engine happened to be up. The lines were a display; the exit
+# code was the gate; and they disagreed. A caller that gates on the exit code,
+# which is the entire reason the exit code exists, would have proceeded.
+#
+# The " (cfg)" suffix marks an envelope that is declared while the engine is
+# down; it is stripped before comparing, because the engine being down is
+# already reported by the engines block and should not be reported twice.
+check() {
+  local label="$1" actual="$2" want="$3" bare="${2% (cfg)}"
+  if [ "$bare" = "$want" ]; then
+    printf "  %-14s %-12s %s\n" "$label" "$actual" "want $want"
+  else
+    printf "  %-14s %-12s %s\n" "$label" "$actual" "want $want   <-- WRONG"
+    STATUS=1
+  fi
+}
+check governor:      "$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)" performance
+check no_turbo:      "$(cat /sys/devices/system/cpu/intel_pstate/no_turbo)"         1
+check SMT:           "$(cat /sys/devices/system/cpu/smt/control)"                   off
+check "online CPUs:" "$(cat /sys/devices/system/cpu/online)"                        0-3
+check "AllowedCPUs:" "$CPUSET"                                                      0-1
+check "MemoryMax:"   "$MEMMAX"                                                      3221225472
+check "AC power:"    "$(cat /sys/class/power_supply/AC/online)"                      1
+printf "  %-14s %s\n" "throttles:" "core=$(cat /sys/devices/system/cpu/cpu0/thermal_throttle/core_throttle_count) pkg=$(cat /sys/devices/system/cpu/cpu0/thermal_throttle/package_throttle_count)"
+if [ "$ENGINE" = oracle ]; then
+  # The cgroup says what should be true; the processes say what is. On this
+  # host they have disagreed once already, which is why both are printed.
+  if pgrep -x "$ORACLE_PMON" >/dev/null 2>&1; then
+    ORA_AFF=$(for pid in $(pgrep -u oracle 2>/dev/null); do
+                awk "/Cpus_allowed_list/{print \$2}" "/proc/$pid/status" 2>/dev/null
+              done | sort -u | paste -sd, -)
+    printf "  %-14s %-12s %s\n" "ora_* affinity:" "${ORA_AFF:-unknown}" "want 0-1"
+    [ "$ORA_AFF" = "0-1" ] || STATUS=1
+  else
+    printf "  %-14s %-12s %s\n" "ora_* affinity:" "(db down)" "want 0-1"
+  fi
+fi
+printf "  %-14s %s\n" "freq now:" "$(awk '/cpu MHz/{printf "%.0f ", $4}' /proc/cpuinfo)"
+
+# One engine at a time (G4). A second engine live inside the envelope is a §4
+# violation, and it has already cost a run: on 2026-09-01 mssql-server was up
+# for the first 15 min 57 s of the 68-minute full validation, which contaminated
+# the per-path timings for roughly q01-q16. Pass/fail survived the contention;
+# the numbers did not, and nothing in the log said so — it had to be recovered
+# from journalctl afterwards, against a log that prints UTC on a host at +03:00.
+# This check is here so that is never reconstructed from a journal again.
+printf "  %-14s %s\n" "engines:" "measuring $ENGINE"
+for spec in $UNITS; do
+  name=${spec%%:*}; unit=${spec#*:}
+  if engine_live "$name" "$unit"; then state=active; else
+    state=$(systemctl is-active "$unit" 2>/dev/null)
+    [ -z "$state" ] && state=absent
+    [ "$name" = oracle ] && [ "$state" != active ] && state="down"
+  fi
+  if [ "$name" = "$ENGINE" ]; then
+    want="want active"
+    [ "$state" = active ] || { want="want active     <-- NOT RUNNING"; STATUS=1; }
+  else
+    want="want inactive"
+    [ "$state" = active ] && { want="want inactive   <-- VIOLATION"; STATUS=1; }
+  fi
+  printf "    %-12s %-12s %s\n" "$name:" "$state" "$want"
+done
+
+[ "$STATUS" -ne 0 ] && echo "  NOT CAMPAIGN-READY — see the marked lines above" >&2
+exit $STATUS

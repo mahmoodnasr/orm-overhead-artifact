@@ -1,0 +1,21 @@
+benchmark,query_id,band,dbms,schema_config,scale_factor,framework,path,median_s,min_s,max_s,cv_pct,rows_returned,repetitions_measured,status,note
+tpcc,T1,Write-heavy,mysql,non-indexed,1,django,orm,0.054202,0.053564,0.068305,14.2,1,3,ok,"drift: new_order +16, order +16, order_line +167"
+tpcc,T1,Write-heavy,mysql,non-indexed,1,django,sql,0.026463,0.026076,0.031668,11.1,1,3,ok,"drift: new_order +16, order +16, order_line +167"
+tpcc,T1,Write-heavy,mysql,non-indexed,1,sqlalchemy,orm,0.033653,0.03294,0.048845,23.3,1,3,ok,"drift: new_order +16, order +16, order_line +167"
+tpcc,T1,Write-heavy,mysql,non-indexed,1,sqlalchemy,sql,0.038435,0.037163,0.059974,28.4,1,3,ok,"drift: new_order +16, order +16, order_line +167"
+tpcc,T2,Write-heavy,mysql,non-indexed,1,django,orm,0.01808,0.017631,0.018348,2.0,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,mysql,non-indexed,1,django,sql,0.009894,0.008565,0.011358,14.1,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,mysql,non-indexed,1,sqlalchemy,orm,0.01659,0.016286,0.017071,2.4,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,mysql,non-indexed,1,sqlalchemy,sql,0.011126,0.010149,0.011323,5.8,1,3,ok,drift: history +16
+tpcc,T3,Read-only,mysql,non-indexed,1,django,orm,0.013369,0.010538,0.013693,13.8,1,3,ok,
+tpcc,T3,Read-only,mysql,non-indexed,1,django,sql,0.013255,0.009426,0.016207,26.2,1,3,ok,
+tpcc,T3,Read-only,mysql,non-indexed,1,sqlalchemy,orm,0.017411,0.015123,0.019972,13.9,1,3,ok,
+tpcc,T3,Read-only,mysql,non-indexed,1,sqlalchemy,sql,0.010133,0.003161,0.012002,55.3,1,3,ok,
+tpcc,T4,Write-heavy,mysql,non-indexed,1,django,orm,0.166075,0.101403,0.167391,26.0,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,mysql,non-indexed,1,django,sql,0.100478,0.040621,0.10846,44.6,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,mysql,non-indexed,1,sqlalchemy,orm,0.141538,0.13749,0.143715,2.2,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,mysql,non-indexed,1,sqlalchemy,sql,0.061594,0.058599,0.082051,18.9,1,3,ok,drift: new_order -160
+tpcc,T5,Read-only,mysql,non-indexed,1,django,orm,0.018084,0.014354,0.019627,15.6,1,3,ok,
+tpcc,T5,Read-only,mysql,non-indexed,1,django,sql,0.011091,0.010786,0.013222,11.3,1,3,ok,
+tpcc,T5,Read-only,mysql,non-indexed,1,sqlalchemy,orm,0.015032,0.014945,0.016731,6.5,1,3,ok,
+tpcc,T5,Read-only,mysql,non-indexed,1,sqlalchemy,sql,0.014015,0.012873,0.014664,6.5,1,3,ok,

@@ -1,0 +1,21 @@
+benchmark,query_id,band,dbms,schema_config,scale_factor,framework,path,median_s,min_s,max_s,cv_pct,rows_returned,repetitions_measured,status,note
+tpcc,T1,Write-heavy,postgresql,non-indexed,1,django,orm,0.055748,0.052069,0.057505,5.0,1,3,ok,"drift: new_order +16, order +16, order_line +171"
+tpcc,T1,Write-heavy,postgresql,non-indexed,1,django,sql,0.021879,0.013841,0.02945,35.9,1,3,ok,"drift: new_order +16, order +16, order_line +171"
+tpcc,T1,Write-heavy,postgresql,non-indexed,1,sqlalchemy,orm,0.047276,0.036007,0.067914,32.1,1,3,ok,"drift: new_order +16, order +16, order_line +171"
+tpcc,T1,Write-heavy,postgresql,non-indexed,1,sqlalchemy,sql,0.029692,0.027834,0.036026,13.8,1,3,ok,"drift: new_order +16, order +16, order_line +171"
+tpcc,T2,Write-heavy,postgresql,non-indexed,1,django,orm,0.012383,0.012199,0.012841,2.6,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,postgresql,non-indexed,1,django,sql,0.005056,0.004465,0.005197,7.9,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,postgresql,non-indexed,1,sqlalchemy,orm,0.011967,0.011499,0.012016,2.4,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,postgresql,non-indexed,1,sqlalchemy,sql,0.006133,0.00527,0.006686,11.8,1,3,ok,drift: history +16
+tpcc,T3,Read-only,postgresql,non-indexed,1,django,orm,0.009398,0.006765,0.011237,24.6,1,3,ok,
+tpcc,T3,Read-only,postgresql,non-indexed,1,django,sql,0.004905,0.002272,0.01473,89.9,1,3,ok,
+tpcc,T3,Read-only,postgresql,non-indexed,1,sqlalchemy,orm,0.020072,0.010896,0.02152,32.9,1,3,ok,
+tpcc,T3,Read-only,postgresql,non-indexed,1,sqlalchemy,sql,0.008543,0.005884,0.018306,59.9,1,3,ok,
+tpcc,T4,Write-heavy,postgresql,non-indexed,1,django,orm,0.095688,0.09358,0.096875,1.7,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,postgresql,non-indexed,1,django,sql,0.027693,0.027535,0.027879,0.6,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,postgresql,non-indexed,1,sqlalchemy,orm,0.132728,0.132177,0.146617,6.0,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,postgresql,non-indexed,1,sqlalchemy,sql,0.044285,0.043491,0.045027,1.7,1,3,ok,drift: new_order -160
+tpcc,T5,Read-only,postgresql,non-indexed,1,django,orm,0.090448,0.071578,0.093513,13.9,1,3,ok,
+tpcc,T5,Read-only,postgresql,non-indexed,1,django,sql,0.06753,0.056721,0.068531,10.2,1,3,ok,
+tpcc,T5,Read-only,postgresql,non-indexed,1,sqlalchemy,orm,0.073815,0.064513,0.083648,12.9,1,3,ok,
+tpcc,T5,Read-only,postgresql,non-indexed,1,sqlalchemy,sql,0.073641,0.069434,0.073769,3.4,1,3,ok,

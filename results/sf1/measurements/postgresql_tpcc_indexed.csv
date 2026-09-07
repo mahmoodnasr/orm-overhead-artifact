@@ -1,0 +1,21 @@
+benchmark,query_id,band,dbms,schema_config,scale_factor,framework,path,median_s,min_s,max_s,cv_pct,rows_returned,repetitions_measured,status,note
+tpcc,T1,Write-heavy,postgresql,indexed,1,django,orm,0.035813,0.032886,0.059236,33.9,1,3,ok,"drift: new_order +16, order +16, order_line +148"
+tpcc,T1,Write-heavy,postgresql,indexed,1,django,sql,0.019842,0.019423,0.028853,23.5,1,3,ok,"drift: new_order +16, order +16, order_line +148"
+tpcc,T1,Write-heavy,postgresql,indexed,1,sqlalchemy,orm,0.064493,0.043911,0.071323,23.8,1,3,ok,"drift: new_order +16, order +16, order_line +148"
+tpcc,T1,Write-heavy,postgresql,indexed,1,sqlalchemy,sql,0.033186,0.019623,0.040679,34.2,1,3,ok,"drift: new_order +16, order +16, order_line +148"
+tpcc,T2,Write-heavy,postgresql,indexed,1,django,orm,0.012958,0.012143,0.013237,4.4,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,postgresql,indexed,1,django,sql,0.004643,0.004333,0.005002,7.2,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,postgresql,indexed,1,sqlalchemy,orm,0.011715,0.011075,0.012049,4.3,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,postgresql,indexed,1,sqlalchemy,sql,0.005594,0.005536,0.005784,2.3,1,3,ok,drift: history +16
+tpcc,T3,Read-only,postgresql,indexed,1,django,orm,0.018927,0.016384,0.020219,10.5,1,3,ok,
+tpcc,T3,Read-only,postgresql,indexed,1,django,sql,0.015955,0.006829,0.016149,41.0,1,3,ok,
+tpcc,T3,Read-only,postgresql,indexed,1,sqlalchemy,orm,0.018669,0.018087,0.020152,5.6,1,3,ok,
+tpcc,T3,Read-only,postgresql,indexed,1,sqlalchemy,sql,0.014402,0.007139,0.015888,37.5,1,3,ok,
+tpcc,T4,Write-heavy,postgresql,indexed,1,django,orm,0.109581,0.100161,0.111221,5.6,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,postgresql,indexed,1,django,sql,0.045671,0.031088,0.047781,21.9,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,postgresql,indexed,1,sqlalchemy,orm,0.135158,0.129601,0.153047,8.8,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,postgresql,indexed,1,sqlalchemy,sql,0.047447,0.046211,0.069817,24.4,1,3,ok,drift: new_order -160
+tpcc,T5,Read-only,postgresql,indexed,1,django,orm,0.084002,0.066846,0.084102,12.7,1,3,ok,
+tpcc,T5,Read-only,postgresql,indexed,1,django,sql,0.073284,0.068564,0.075005,4.6,1,3,ok,
+tpcc,T5,Read-only,postgresql,indexed,1,sqlalchemy,orm,0.065629,0.06384,0.074472,8.4,1,3,ok,
+tpcc,T5,Read-only,postgresql,indexed,1,sqlalchemy,sql,0.060732,0.005193,0.066408,76.7,1,3,ok,

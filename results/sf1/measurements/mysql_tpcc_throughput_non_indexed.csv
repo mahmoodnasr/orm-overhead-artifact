@@ -1,0 +1,121 @@
+benchmark,dbms,schema_config,transaction_id,name,framework,path,concurrency,duration_s,committed,aborted,abort_pct,qpm,qps,p50_ms,p95_ms,note
+tpcc,mysql,non-indexed,T1,New-Order,django,orm,1,60,1581,0,0.0,1580.1,26.33,43.331,59.537,
+tpcc,mysql,non-indexed,T1,New-Order,django,sql,1,60,3533,0,0.0,3532.4,58.87,19.063,25.746,
+tpcc,mysql,non-indexed,T1,New-Order,sqlalchemy,orm,1,60,1556,0,0.0,1555.7,25.93,44.194,60.375,
+tpcc,mysql,non-indexed,T1,New-Order,sqlalchemy,sql,1,60,2270,0,0.0,2269.6,37.83,29.956,44.359,
+tpcc,mysql,non-indexed,T2,Payment,django,orm,1,60,3978,0,0.0,3977.1,66.29,15.367,24.806,
+tpcc,mysql,non-indexed,T2,Payment,django,sql,1,60,7617,0,0.0,7616.4,126.94,7.468,16.664,
+tpcc,mysql,non-indexed,T2,Payment,sqlalchemy,orm,1,60,4536,0,0.0,4535.8,75.6,14.38,22.685,
+tpcc,mysql,non-indexed,T2,Payment,sqlalchemy,sql,1,60,6194,0,0.0,6193.8,103.23,9.039,18.678,
+tpcc,mysql,non-indexed,T3,Order-Status,django,orm,1,60,7982,0,0.0,7981.5,133.03,8.303,11.784,
+tpcc,mysql,non-indexed,T3,Order-Status,django,sql,1,60,14122,0,0.0,14120.8,235.35,4.586,7.532,
+tpcc,mysql,non-indexed,T3,Order-Status,sqlalchemy,orm,1,60,8874,0,0.0,8873.6,147.89,7.475,10.735,
+tpcc,mysql,non-indexed,T3,Order-Status,sqlalchemy,sql,1,60,15038,0,0.0,15037.0,250.62,4.127,7.628,
+tpcc,mysql,non-indexed,T4,Delivery,django,orm,1,60,681,0,0.0,680.8,11.35,101.462,109.849,new_order 736501 -> 729691
+tpcc,mysql,non-indexed,T4,Delivery,django,sql,1,60,1766,0,0.0,1765.0,29.42,38.377,40.828,new_order 736501 -> 718841
+tpcc,mysql,non-indexed,T4,Delivery,sqlalchemy,orm,1,60,484,0,0.0,483.3,8.06,142.692,154.435,new_order 736501 -> 731661
+tpcc,mysql,non-indexed,T4,Delivery,sqlalchemy,sql,1,60,1307,0,0.0,1306.2,21.77,51.008,62.614,new_order 736501 -> 723431
+tpcc,mysql,non-indexed,T5,Stock-Level,django,orm,1,60,6198,0,0.0,6197.4,103.29,11.247,11.64,
+tpcc,mysql,non-indexed,T5,Stock-Level,django,sql,1,60,13103,0,0.0,13101.7,218.36,5.324,5.624,
+tpcc,mysql,non-indexed,T5,Stock-Level,sqlalchemy,orm,1,60,7548,0,0.0,7546.9,125.78,9.246,9.664,
+tpcc,mysql,non-indexed,T5,Stock-Level,sqlalchemy,sql,1,60,9106,0,0.0,9105.6,151.76,7.665,8.076,
+tpcc,mysql,non-indexed,T1,New-Order,django,orm,4,60,2412,0,0.0,2410.1,40.17,114.951,164.574,
+tpcc,mysql,non-indexed,T1,New-Order,django,sql,4,60,12197,0,0.0,12192.2,203.2,22.014,30.3,
+tpcc,mysql,non-indexed,T1,New-Order,sqlalchemy,orm,4,60,2404,0,0.0,2400.4,40.01,115.146,164.214,
+tpcc,mysql,non-indexed,T1,New-Order,sqlalchemy,sql,4,60,5666,0,0.0,5661.4,94.36,45.196,76.77,
+tpcc,mysql,non-indexed,T2,Payment,django,orm,4,60,6999,0,0.0,6980.9,116.35,40.183,56.654,
+tpcc,mysql,non-indexed,T2,Payment,django,sql,4,60,16960,0,0.0,16956.3,282.61,14.34,31.102,
+tpcc,mysql,non-indexed,T2,Payment,sqlalchemy,orm,4,60,8097,0,0.0,8092.2,134.87,33.547,50.272,
+tpcc,mysql,non-indexed,T2,Payment,sqlalchemy,sql,4,60,16095,0,0.0,16090.8,268.18,14.337,30.868,
+tpcc,mysql,non-indexed,T3,Order-Status,django,orm,4,60,16793,0,0.0,16788.0,279.8,16.233,22.676,
+tpcc,mysql,non-indexed,T3,Order-Status,django,sql,4,60,38740,0,0.0,38734.4,645.57,6.669,12.416,
+tpcc,mysql,non-indexed,T3,Order-Status,sqlalchemy,orm,4,60,18886,0,0.0,18883.3,314.72,14.523,20.424,
+tpcc,mysql,non-indexed,T3,Order-Status,sqlalchemy,sql,4,60,37330,0,0.0,37327.5,622.12,7.021,12.566,
+tpcc,mysql,non-indexed,T4,Delivery,django,orm,4,60,1009,0,0.0,1006.6,16.78,274.008,445.334,new_order 759180 -> 749369
+tpcc,mysql,non-indexed,T4,Delivery,django,sql,4,60,4857,0,0.0,4854.0,80.9,50.897,91.79,new_order 759180 -> 711906
+tpcc,mysql,non-indexed,T4,Delivery,sqlalchemy,orm,4,60,855,0,0.0,851.7,14.2,310.995,519.455,new_order 759180 -> 752380
+tpcc,mysql,non-indexed,T4,Delivery,sqlalchemy,sql,4,60,3089,0,0.0,3083.8,51.4,82.939,150.121,new_order 759180 -> 733960
+tpcc,mysql,non-indexed,T5,Stock-Level,django,orm,4,60,10341,0,0.0,10339.3,172.32,26.385,34.752,
+tpcc,mysql,non-indexed,T5,Stock-Level,django,sql,4,60,33892,0,0.0,33886.6,564.78,8.094,10.596,
+tpcc,mysql,non-indexed,T5,Stock-Level,sqlalchemy,orm,4,60,13626,0,0.0,13622.4,227.04,20.035,26.801,
+tpcc,mysql,non-indexed,T5,Stock-Level,sqlalchemy,sql,4,60,16311,0,0.0,16308.7,271.81,16.497,22.436,
+tpcc,mysql,non-indexed,T1,New-Order,django,orm,8,60,2461,0,0.0,2456.0,40.93,221.595,333.577,
+tpcc,mysql,non-indexed,T1,New-Order,django,sql,8,60,15372,0,0.0,15364.8,256.08,34.775,51.982,
+tpcc,mysql,non-indexed,T1,New-Order,sqlalchemy,orm,8,60,2436,0,0.0,2430.0,40.5,223.646,340.62,
+tpcc,mysql,non-indexed,T1,New-Order,sqlalchemy,sql,8,60,5754,0,0.0,5748.0,95.8,91.927,148.583,
+tpcc,mysql,non-indexed,T2,Payment,django,orm,8,60,8266,0,0.0,8257.0,137.62,61.564,110.213,
+tpcc,mysql,non-indexed,T2,Payment,django,sql,8,60,22654,0,0.0,22645.8,377.43,23.826,46.189,
+tpcc,mysql,non-indexed,T2,Payment,sqlalchemy,orm,8,60,9777,0,0.0,9771.3,162.85,53.652,84.516,
+tpcc,mysql,non-indexed,T2,Payment,sqlalchemy,sql,8,60,21772,0,0.0,21766.3,362.77,21.543,48.021,
+tpcc,mysql,non-indexed,T3,Order-Status,django,orm,8,60,17590,0,0.0,17583.2,293.05,30.993,44.532,
+tpcc,mysql,non-indexed,T3,Order-Status,django,sql,8,60,41631,0,0.0,41622.4,693.71,12.074,25.078,
+tpcc,mysql,non-indexed,T3,Order-Status,sqlalchemy,orm,8,60,20274,0,0.0,20270.2,337.84,27.034,39.011,
+tpcc,mysql,non-indexed,T3,Order-Status,sqlalchemy,sql,8,60,43011,0,0.0,43005.9,716.76,12.075,23.201,
+tpcc,mysql,non-indexed,T4,Delivery,django,orm,8,60,986,0,0.0,980.5,16.34,486.249,1038.045,new_order 785203 -> 775867
+tpcc,mysql,non-indexed,T4,Delivery,django,sql,8,60,5585,0,0.0,5560.9,92.68,83.828,194.787,new_order 785203 -> 732399
+tpcc,mysql,non-indexed,T4,Delivery,sqlalchemy,orm,8,60,854,0,0.0,848.3,14.14,579.978,1151.969,new_order 785203 -> 779603
+tpcc,mysql,non-indexed,T4,Delivery,sqlalchemy,sql,8,60,3354,0,0.0,3348.1,55.8,149.51,287.829,new_order 785203 -> 762953
+tpcc,mysql,non-indexed,T5,Stock-Level,django,orm,8,60,10310,0,0.0,10306.1,171.77,52.288,78.532,
+tpcc,mysql,non-indexed,T5,Stock-Level,django,sql,8,60,38338,0,0.0,38327.9,638.8,14.307,19.637,
+tpcc,mysql,non-indexed,T5,Stock-Level,sqlalchemy,orm,8,60,13484,0,0.0,13477.7,224.63,40.091,61.191,
+tpcc,mysql,non-indexed,T5,Stock-Level,sqlalchemy,sql,8,60,16228,0,0.0,16223.5,270.39,32.363,49.605,
+tpcc,mysql,non-indexed,T1,New-Order,django,orm,16,60,2501,0,0.0,2489.8,41.5,432.108,740.873,
+tpcc,mysql,non-indexed,T1,New-Order,django,sql,16,60,16512,0,0.0,16500.7,275.01,63.447,111.718,
+tpcc,mysql,non-indexed,T1,New-Order,sqlalchemy,orm,16,60,2457,0,0.0,2443.1,40.72,443.373,711.279,
+tpcc,mysql,non-indexed,T1,New-Order,sqlalchemy,sql,16,60,5855,0,0.0,5845.3,97.42,184.148,296.965,
+tpcc,mysql,non-indexed,T2,Payment,django,orm,16,60,8580,0,0.0,8564.4,142.74,119.347,225.524,
+tpcc,mysql,non-indexed,T2,Payment,django,sql,16,60,25944,0,0.0,25915.9,431.93,34.527,99.611,
+tpcc,mysql,non-indexed,T2,Payment,sqlalchemy,orm,16,60,10030,0,0.0,10021.1,167.02,104.13,173.292,
+tpcc,mysql,non-indexed,T2,Payment,sqlalchemy,sql,16,60,24125,0,0.0,24108.6,401.81,37.617,104.357,
+tpcc,mysql,non-indexed,T3,Order-Status,django,orm,16,60,17903,0,0.0,17885.0,298.08,60.191,93.414,
+tpcc,mysql,non-indexed,T3,Order-Status,django,sql,16,60,41491,0,0.0,41477.0,691.28,23.561,51.557,
+tpcc,mysql,non-indexed,T3,Order-Status,sqlalchemy,orm,16,60,20770,0,0.0,20759.6,345.99,52.334,81.148,
+tpcc,mysql,non-indexed,T3,Order-Status,sqlalchemy,sql,16,60,44505,0,0.0,44494.1,741.57,22.449,48.387,
+tpcc,mysql,non-indexed,T4,Delivery,django,orm,16,60,995,0,0.0,980.6,16.34,946.02,2536.193,new_order 812528 -> 803490
+tpcc,mysql,non-indexed,T4,Delivery,django,sql,16,60,5755,0,0.0,5739.2,95.65,155.97,451.935,new_order 812528 -> 760253
+tpcc,mysql,non-indexed,T4,Delivery,sqlalchemy,orm,16,60,868,0,0.0,854.1,14.23,1022.615,2574.625,new_order 812528 -> 808238
+tpcc,mysql,non-indexed,T4,Delivery,sqlalchemy,sql,16,60,3407,0,0.0,3395.9,56.6,268.074,631.305,new_order 812528 -> 795148
+tpcc,mysql,non-indexed,T5,Stock-Level,django,orm,16,60,10267,0,0.0,10253.7,170.9,104.703,165.866,
+tpcc,mysql,non-indexed,T5,Stock-Level,django,sql,16,60,39206,0,0.0,39192.0,653.2,28.231,36.547,
+tpcc,mysql,non-indexed,T5,Stock-Level,sqlalchemy,orm,16,60,13461,0,0.0,13450.2,224.17,80.011,130.157,
+tpcc,mysql,non-indexed,T5,Stock-Level,sqlalchemy,sql,16,60,15953,0,0.0,15937.5,265.63,65.909,121.003,
+tpcc,mysql,non-indexed,T1,New-Order,django,orm,32,60,2541,0,0.0,2519.3,41.99,824.061,1624.888,
+tpcc,mysql,non-indexed,T1,New-Order,django,sql,32,60,15947,0,0.0,15916.8,265.28,129.458,249.452,
+tpcc,mysql,non-indexed,T1,New-Order,sqlalchemy,orm,32,60,2494,0,0.0,2470.6,41.18,853.988,1626.789,
+tpcc,mysql,non-indexed,T1,New-Order,sqlalchemy,sql,32,60,6055,0,0.0,6027.2,100.45,349.928,649.587,
+tpcc,mysql,non-indexed,T2,Payment,django,orm,32,60,8613,0,0.0,8589.3,143.16,214.939,575.801,
+tpcc,mysql,non-indexed,T2,Payment,django,sql,32,60,27067,0,0.0,27015.9,450.26,60.813,216.838,
+tpcc,mysql,non-indexed,T2,Payment,sqlalchemy,orm,32,60,10241,0,0.0,10220.9,170.35,202.218,380.333,
+tpcc,mysql,non-indexed,T2,Payment,sqlalchemy,sql,32,60,25340,0,0.0,25294.1,421.57,68.275,222.704,
+tpcc,mysql,non-indexed,T3,Order-Status,django,orm,32,60,17997,0,0.0,17971.9,299.53,118.159,199.044,
+tpcc,mysql,non-indexed,T3,Order-Status,django,sql,32,60,40723,0,0.0,40702.0,678.37,47.143,106.656,
+tpcc,mysql,non-indexed,T3,Order-Status,sqlalchemy,orm,32,60,21208,0,0.0,21189.0,353.15,101.718,170.831,
+tpcc,mysql,non-indexed,T3,Order-Status,sqlalchemy,sql,32,60,45300,0,0.0,45288.4,754.81,42.457,99.196,
+tpcc,mysql,non-indexed,T4,Delivery,django,orm,32,60,1014,0,0.0,982.8,16.38,1702.408,5788.466,new_order 839565 -> 830819
+tpcc,mysql,non-indexed,T4,Delivery,django,sql,32,60,5728,0,0.0,5696.8,94.95,296.13,1023.387,new_order 839565 -> 790028
+tpcc,mysql,non-indexed,T4,Delivery,sqlalchemy,orm,32,60,897,0,0.0,866.9,14.45,2108.97,5224.097,new_order 839565 -> 836165
+tpcc,mysql,non-indexed,T4,Delivery,sqlalchemy,sql,32,60,3549,0,0.0,3517.4,58.62,550.591,1290.122,new_order 839565 -> 826155
+tpcc,mysql,non-indexed,T5,Stock-Level,django,orm,32,60,10254,0,0.0,10224.3,170.4,208.379,347.892,
+tpcc,mysql,non-indexed,T5,Stock-Level,django,sql,32,60,38877,0,0.0,38852.4,647.54,56.775,66.134,
+tpcc,mysql,non-indexed,T5,Stock-Level,sqlalchemy,orm,32,60,13537,0,0.0,13512.0,225.2,159.311,275.214,
+tpcc,mysql,non-indexed,T5,Stock-Level,sqlalchemy,sql,32,60,15998,0,0.0,15976.2,266.27,133.247,237.848,
+tpcc,mysql,non-indexed,T1,New-Order,django,orm,50,60,2548,0,0.0,2505.7,41.76,1227.588,2831.962,
+tpcc,mysql,non-indexed,T1,New-Order,django,sql,50,60,16256,0,0.0,16209.7,270.16,191.413,409.828,
+tpcc,mysql,non-indexed,T1,New-Order,sqlalchemy,orm,50,60,2480,0,0.0,2443.2,40.72,1299.746,2713.765,
+tpcc,mysql,non-indexed,T1,New-Order,sqlalchemy,sql,50,60,6074,0,0.0,6034.6,100.58,530.842,1072.059,
+tpcc,mysql,non-indexed,T2,Payment,django,orm,50,60,8543,0,0.0,8502.1,141.7,332.657,962.719,
+tpcc,mysql,non-indexed,T2,Payment,django,sql,50,60,26821,0,0.0,26721.1,445.35,102.378,320.648,
+tpcc,mysql,non-indexed,T2,Payment,sqlalchemy,orm,50,60,10258,0,0.0,10229.4,170.49,299.114,682.16,
+tpcc,mysql,non-indexed,T2,Payment,sqlalchemy,sql,50,60,24441,0,0.0,24344.2,405.74,109.635,382.845,
+tpcc,mysql,non-indexed,T3,Order-Status,django,orm,50,60,17905,0,0.0,17876.9,297.95,182.461,332.765,
+tpcc,mysql,non-indexed,T3,Order-Status,django,sql,50,60,40165,0,0.0,40128.8,668.81,74.639,171.549,
+tpcc,mysql,non-indexed,T3,Order-Status,sqlalchemy,orm,50,60,21547,0,0.0,21475.2,357.92,155.761,282.983,
+tpcc,mysql,non-indexed,T3,Order-Status,sqlalchemy,sql,50,60,44675,0,0.0,44650.2,744.17,67.32,162.017,
+tpcc,mysql,non-indexed,T4,Delivery,django,orm,50,60,1026,0,0.0,977.0,16.28,2947.445,7892.437,new_order 866923 -> 858400
+tpcc,mysql,non-indexed,T4,Delivery,django,sql,50,60,5685,0,0.0,5568.1,92.8,470.906,1635.107,new_order 866923 -> 819534
+tpcc,mysql,non-indexed,T4,Delivery,sqlalchemy,orm,50,60,921,0,0.0,878.0,14.63,3363.946,8219.504,new_order 866923 -> 864123
+tpcc,mysql,non-indexed,T4,Delivery,sqlalchemy,sql,50,60,3602,0,0.0,3550.5,59.18,875.616,1991.168,new_order 866923 -> 856033
+tpcc,mysql,non-indexed,T5,Stock-Level,django,orm,50,60,10120,0,0.0,10092.5,168.21,326.627,571.851,
+tpcc,mysql,non-indexed,T5,Stock-Level,django,sql,50,60,38019,0,0.0,37982.1,633.03,90.185,103.213,
+tpcc,mysql,non-indexed,T5,Stock-Level,sqlalchemy,orm,50,60,13517,0,0.0,13461.6,224.36,250.398,457.13,
+tpcc,mysql,non-indexed,T5,Stock-Level,sqlalchemy,sql,50,60,15662,0,0.0,15630.7,260.51,214.38,390.28,

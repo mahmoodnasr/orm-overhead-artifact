@@ -1,0 +1,21 @@
+benchmark,query_id,band,dbms,schema_config,scale_factor,framework,path,median_s,min_s,max_s,cv_pct,rows_returned,repetitions_measured,status,note
+tpcc,T1,Write-heavy,oracle,indexed,1,django,orm,0.072501,0.054391,0.077122,17.7,1,3,ok,"drift: new_order +16, order +16, order_line +160"
+tpcc,T1,Write-heavy,oracle,indexed,1,django,sql,0.038294,0.03151,0.049362,22.7,1,3,ok,"drift: new_order +16, order +16, order_line +160"
+tpcc,T1,Write-heavy,oracle,indexed,1,sqlalchemy,orm,0.045568,0.037834,0.060159,23.7,1,3,ok,"drift: new_order +16, order +16, order_line +160"
+tpcc,T1,Write-heavy,oracle,indexed,1,sqlalchemy,sql,0.027604,0.026748,0.043701,29.2,1,3,ok,"drift: new_order +16, order +16, order_line +160"
+tpcc,T2,Write-heavy,oracle,indexed,1,django,orm,0.013169,0.012025,0.02348,38.9,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,oracle,indexed,1,django,sql,0.00515,0.005007,0.012383,56.1,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,oracle,indexed,1,sqlalchemy,orm,0.012296,0.012105,0.013529,6.1,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,oracle,indexed,1,sqlalchemy,sql,0.005973,0.005277,0.006499,10.4,1,3,ok,drift: history +16
+tpcc,T3,Read-only,oracle,indexed,1,django,orm,0.010524,0.007052,0.013497,31.1,1,3,ok,
+tpcc,T3,Read-only,oracle,indexed,1,django,sql,0.007946,0.002941,0.008988,48.8,1,3,ok,
+tpcc,T3,Read-only,oracle,indexed,1,sqlalchemy,orm,0.008772,0.007077,0.011868,26.3,1,3,ok,
+tpcc,T3,Read-only,oracle,indexed,1,sqlalchemy,sql,0.005526,0.003374,0.010568,56.9,1,3,ok,
+tpcc,T4,Write-heavy,oracle,indexed,1,django,orm,0.111551,0.107986,0.115032,3.2,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,oracle,indexed,1,django,sql,0.040919,0.039667,0.044763,6.4,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,oracle,indexed,1,sqlalchemy,orm,0.108424,0.106379,0.118452,5.8,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,oracle,indexed,1,sqlalchemy,sql,0.041892,0.041838,0.043568,2.3,1,3,ok,drift: new_order -160
+tpcc,T5,Read-only,oracle,indexed,1,django,orm,0.114356,0.098947,0.125202,11.7,1,3,ok,
+tpcc,T5,Read-only,oracle,indexed,1,django,sql,0.10158,0.09923,0.108258,4.5,1,3,ok,
+tpcc,T5,Read-only,oracle,indexed,1,sqlalchemy,orm,0.1032,0.020772,0.109324,63.6,1,3,ok,
+tpcc,T5,Read-only,oracle,indexed,1,sqlalchemy,sql,0.102811,0.085568,0.108515,12.1,1,3,ok,
