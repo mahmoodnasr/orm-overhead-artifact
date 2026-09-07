@@ -7,7 +7,7 @@
 Why this is generated rather than typed
 ---------------------------------------
 Section 6 says Django cannot express Q17's correlated subquery and emits a
-subquery correlated on the outer LINEITEM instead of on PART. That claim was
+subquery correlated through the outer LINEITEM rather than through PART. That claim was
 carried in prose across three drafts with nothing beside it, and a reader has no
 way to check a claim about a statement without the statement.
 
@@ -114,13 +114,15 @@ def main():
 \\begin{figure}[!t]
 \\footnotesize
 \\textbf{The specification's shape, as both hand-written baselines write it.}
-The subquery is correlated on \\texttt{PART}, so it is evaluated once per part.
+The subquery is correlated through \\texttt{PART}, which is a part-level
+correlation for the optimiser to work on.
 \\begin{lstlisting}
 %s
 \\end{lstlisting}
 \\textbf{The shape Django's ORM emits.} The same answer, but the subquery is
-correlated on the outer \\texttt{LINEITEM} and grouped, so it is evaluated once
-per line item of a matching part.
+correlated through the outer \\texttt{LINEITEM} and grouped one level out,
+which is a different correlation for the optimiser to work on. How often either
+subquery is evaluated is a question about plans, and we captured none.
 \\begin{lstlisting}
 %s
 \\end{lstlisting}
