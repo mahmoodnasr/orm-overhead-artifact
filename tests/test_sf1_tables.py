@@ -197,3 +197,39 @@ def test_transactional_rows_carry_a_range_and_not_a_bootstrap_interval(tmp_path)
             assert re.fullmatch(r"\[[+-][\d.]+, [+-][\d.]+\]", ci), ci
         else:
             assert re.fullmatch(r"[+-][\d.]+ to [+-][\d.]+", ci), ci
+
+
+def test_the_same_statistic_is_the_same_number_in_both_tables(tmp_path):
+    """C47. The headline and the sensitivity table's first row are one figure.
+
+    `tab_sensitivity`'s "none (as reported)" row removes no group, so it is by
+    construction the pooled median and interval that `tab_headline` prints. They
+    disagreed: [+0.5, +3.6] against [+0.5, +3.7]. One `random.Random(SEED)` was
+    threaded through the whole run, so a table's draws depended on how many
+    draws the tables built before it had taken.
+
+    `clustered_bootstrap` now seeds from the sample. The guard is that the two
+    agree, not that either equals a transcribed constant, because the point is
+    that one statistic has one value wherever the paper prints it.
+    """
+    import random
+    import re
+
+    ratios, _censored = sf1_tables.load_blocks(MEAS)
+    cells = sf1_tables.cell_estimates(ratios)
+    tpcc = sf1_tables.load_tpcc(MEAS)
+    out = str(tmp_path)
+    sf1_tables.t_headline(cells, tpcc, out, random.Random(0))
+    sf1_tables.t_sensitivity(cells, out, random.Random(0))
+
+    head = open(os.path.join(out, "tab_headline.tex")).read()
+    sens = open(os.path.join(out, "tab_sensitivity.tex")).read()
+    row = re.search(r"none \(as reported\) & (\S+) & (\[[^\]]+\]) & \d+ & "
+                    r"(\S+) & (\[[^\]]+\])", sens)
+    assert row, sens
+    for label, med, ci in (("Django", row.group(1), row.group(2)),
+                           ("SQLAlchemy", row.group(3), row.group(4))):
+        m = re.search(r"TPC-H, %s & (\S+) & (\[[^\]]+\])" % label, head)
+        assert m, head
+        assert m.group(1) == med, (label, m.group(1), med)
+        assert m.group(2) == ci, (label, m.group(2), ci)

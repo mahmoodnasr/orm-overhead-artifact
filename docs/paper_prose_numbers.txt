@@ -1,0 +1,39 @@
+# Numbers the paper states in prose that no table and no analysis script
+# produces, each with what stands behind it. `check_paper_numbers.py` reports
+# anything in the prose that is neither computed nor listed here, so an entry
+# is a claim that this number was checked some other way, and a number added to
+# the paper without one fails the check.
+#
+# Grid dimensions and counts derived from them
+432    # the grid: 4 systems x 2 frameworks x 2 schemas x 27 workloads
+416    # cells measured on both paths; 432 minus the 16 that carry no figure
+336    # analytical cells with a figure; 165 Django + 171 SQLAlchemy, tab_headline
+108    # cells belonging to the licence-restricted system; 432 / 4
+324    # cells outside that licence; 432 - 108
+139    # analytical cells inside +/-1%, counted over the 336
+1000   # the +1000% gridline of Fig. 3's axis, not a measurement
+#
+# Figures verified against the raw measurements rather than a generated table
+41600  # PostgreSQL, 32 clients, Django ORM, summed over the five transactions
+70.5   # worst abort share at 50 clients, from the throughput files
+12.4   # Payment baseline, Django against SQLAlchemy, over the 8 paired cells
+0.88   # Q17 SQLAlchemy ORM on the commercial system, its high block value
+1.95   # Q04 Django ORM on Oracle indexed, its eighth block
+7.1    # Q20 Oracle indexed, the slowest of the six hand-written slow blocks
+312    # Q20 Oracle non-indexed as a multiple: +31,103% is 312x its baseline
+65     # Fig. 3's axis and the 65 distinct medians of the SQLAlchemy bootstrap
+#
+# From the correction register, not from this campaign's measurements
+1466   # Oracle listener refusals, C29
+-47.8  # the cell the warmup asymmetry moved, C31, measured before this campaign
+#
+# Versions, read from the frozen specification (Section III says so)
+18.6   # PostgreSQL
+3.12   # Python
+5.3    # pyodbc 5.3.0
+23.26  # Oracle AI Database 26ai Free release 23.26.3
+99000    # PostgreSQL, 32 clients, SQLAlchemy hand-written, summed: 99,011
+204000   # PostgreSQL, 32 clients, Django hand-written, summed: 204,276
+-0.016   # Pearson r, baseline seconds against absolute overhead, over 336 cells
+6001215  # TPC-H line-item rows at scale factor 1, verified on all four systems
+4889141  # TPC-C rows from the fixed seed, 10 warehouses

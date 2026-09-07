@@ -540,7 +540,7 @@ def t_sensitivity(cells, out, rng):
                 row += ["--", "--", "--"]
                 continue
             med = statistics.median([th for _q, th in sel])
-            lo, hi = clustered_bootstrap(sel, rng)
+            lo, hi = clustered_bootstrap(sel)
             spans[fw].append(pct(med))
             row += ["%+.2f\%%" % pct(med),
                     "[%+.1f, %+.1f]" % (pct(lo), pct(hi)) if lo is not None else "--",
@@ -672,7 +672,7 @@ def t_headline(cells, tpcc, out, rng):
         sel = [(q, th) for (_d, _s, q, f), th in cells.items() if f == fw]
         thetas = [th for _q, th in sel]
         cl = cluster_medians(sel)
-        lo, hi = clustered_bootstrap(sel, rng)
+        lo, hi = clustered_bootstrap(sel)
         body.append(["TPC-H, " + FW_LABEL[fw],
                      "%+.2f\\%%" % pct(statistics.median(thetas)),
                      "[%+.1f, %+.1f]" % (pct(lo), pct(hi)),
@@ -692,19 +692,15 @@ def t_headline(cells, tpcc, out, rng):
           "Median ORM overhead over the framework's own hand-written SQL "
           "baseline, pooled across the four systems and both configurations. "
           "Each TPC-H cell contributes the median over its eight blocks of the "
-          "within-block log ratio; the TPC-C harness records a median per path "
-          "rather than per block, so those cells are a ratio of medians. Cells "
-          "are not independent -- one query contributes up to sixteen of them "
-          "-- so both the 2{,}000-resample bootstrap interval and the exact "
-          "two-sided Wilcoxon signed-rank test take the query or transaction as "
-          "the unit. The analytical rows give that interval. The transactional "
-          "rows give the range of their five transaction medians instead, "
-          "because a percentile interval over five clusters can take only 43 "
-          "and 65 distinct values and would read as more precision than five "
-          "numbers hold. Five clusters also stop the exact test below %.4f "
-          "whatever the effect size, so the transactional claim rests on the "
-          "effect against the resolution in Table~\\ref{tab_r_noise} and not "
-          "on its $p$." % floor,
+          "within-block log ratio; the TPC-C cells are a ratio of medians, "
+          "because that harness records no blocks. Cells are not independent, "
+          "so the interval and the exact two-sided Wilcoxon test both take the "
+          "query or transaction as the unit. The analytical rows give a "
+          "2{,}000-resample query-clustered interval. The transactional rows "
+          "give the range of their five transaction medians instead, and five "
+          "clusters also stop the exact test below %.4f whatever the effect "
+          "size; Section~\\ref{sec:results} says what follows from both."
+          % floor,
           "tab_r_headline", "l r r r r",
           ["Workload, framework", "Median", "95\\% CI / range",
            "$p$ vs.\\ zero", "Cells"],

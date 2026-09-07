@@ -13,7 +13,7 @@ results for it.
   block protocol, and the pre-flight checks.
 - The five validation checks and the test suite.
 - Every analysis script that produces a table or a figure in the paper.
-- `docs/CORRECTIONS.md`, the register of 46 defects.
+- `docs/CORRECTIONS.md`, the register of 47 defects.
 - `ANALYSIS_PLAN.md`, which fixes the resolution bounds the paper reports four
   campaigns as failing. It is dated before the pilot; that is the whole reason
   those bounds could fail.

@@ -41,6 +41,7 @@ import os
 import random
 import statistics
 import sys
+import zlib
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 sys.path.insert(0, os.path.join(REPO, "scripts", "utils"))
@@ -86,14 +87,39 @@ def cell_estimates(ratios):
     return {k: statistics.median(v) for k, v in ratios.items() if v}
 
 
-def clustered_bootstrap(cells, rng, n=BOOTSTRAP):
+def bootstrap_seed(cells):
+    """A seed determined by the sample, so the same sample gives the same interval.
+
+    C47. `clustered_bootstrap` used to take a caller's generator, and one
+    `random.Random(SEED)` was threaded through every table in the run. The draws
+    a table got then depended on how many draws the tables before it had taken,
+    so the same statistic computed in two places came out differently: the
+    pooled TPC-H Django interval printed [+0.5, +3.6] in the headline table and
+    [+0.5, +3.7] in the sensitivity table's "none (as reported)" row, which is
+    the same number by construction.
+
+    Seeding from the sample instead makes the interval a function of the data
+    and nothing else. Call order stops mattering, and so does which tables a
+    run happens to build.
+    """
+    key = "|".join("%s:%.12g" % (q, th) for q, th in sorted(cells))
+    return SEED ^ zlib.crc32(key.encode("utf-8"))
+
+
+def clustered_bootstrap(cells, rng=None, n=BOOTSTRAP):
     """Percentile interval on the median theta, resampling QUERIES not cells.
 
     The cells of one system share their queries, and query difficulty is the
     dominant source of between-cell variation. Resampling cells independently
     would treat 22 correlated observations as 22 independent ones and report an
     interval narrower than the data supports.
+
+    `rng` is accepted for callers that still pass one, but the default is a
+    generator seeded from the sample itself (C47), which is what keeps two
+    tables reporting the same statistic from disagreeing in the third digit.
     """
+    if rng is None:
+        rng = random.Random(bootstrap_seed(cells))
     by_query = collections.defaultdict(list)
     for (q, theta) in cells:
         by_query[q].append(theta)
@@ -159,7 +185,7 @@ def main():
                 if not sel:
                     continue
                 med = statistics.median([th for _q, th in sel])
-                lo, hi = clustered_bootstrap(sel, rng)
+                lo, hi = clustered_bootstrap(sel)
                 ncens = len({q for (q, p) in censored.get((dbms, schema), set())
                              if p.startswith(fw)})
                 ci = ("[%+6.1f%%, %+6.1f%%]" % (pct(lo), pct(hi))) if lo is not None else "".rjust(18)

@@ -303,6 +303,22 @@ def normalised_path_cvs(blocks, dbms, schema, exclude=("Q18",)):
     return sorted(plain), sorted(norm)
 
 
+def tpcc_ratio(lat):
+    """One log ratio per transactional cell, for the pooled figure.
+
+    `tpcc_latency` keys by path as well, so the two arms of a cell are two
+    entries and have to be brought back together here.
+    """
+    paths = collections.defaultdict(dict)
+    for (d, sch, q, f, path), row in lat.items():
+        paths[(d, sch, q, f)][path] = float(row["median_s"])
+    out = {}
+    for k, d in paths.items():
+        if d.get("orm") and d.get("sql"):
+            out[k] = math.log(d["orm"] / d["sql"])
+    return out
+
+
 # ------------------------------------------------------------------ main
 
 def main():
@@ -472,6 +488,32 @@ def main():
               "does not,")
         print("   and Section 7 reports that campaign as failing rather than "
               "explained.")
+
+    print()
+    print("=" * 74)
+    print("9. THE PER-CELL AND POOLED FIGURES THE PROSE QUOTES")
+    print("=" * 74)
+    ratios, _cens = load_blocks(meas)
+    cells = cell_estimates(ratios)
+    print("   pooled, all analytical cells:      %+.2f%%" %
+          pct(statistics.median(list(cells.values()))))
+    tp = tpcc_ratio(lat)
+    print("   pooled, all transactional cells:   %+.2f%%" %
+          pct(statistics.median(list(tp.values()))))
+    print("   by system, framework and schema:")
+    agg = collections.defaultdict(list)
+    for (d, sch, q, f), th in cells.items():
+        agg[(d, sch, f)].append(th)
+    for k in sorted(agg):
+        print("     %-11s %-12s %-11s %+8.2f%%  (n=%d)"
+              % (k[0], k[1], k[2], pct(statistics.median(agg[k])), len(agg[k])))
+    print("   the queries the prose names, cell by cell:")
+    NAMED = ("Q02", "Q04", "Q12", "Q13", "Q15", "Q17", "Q18", "Q20")
+    for q in NAMED:
+        rows = sorted((k for k in cells if k[2] == q))
+        for (d, sch, qq, f) in rows:
+            print("     %-4s %-11s %-12s %-11s %+12.2f%%"
+                  % (qq, d, sch, f, pct(cells[(d, sch, qq, f)])))
 
     return 0
 

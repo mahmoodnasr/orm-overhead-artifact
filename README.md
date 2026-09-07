@@ -21,7 +21,7 @@ defect this harness was rebuilt to remove.
 
 - `MANIFEST.md` - what this export contains, what it withholds and why, and what
   running the analysis over it reproduces.
-- `docs/CORRECTIONS.md` - the 46 defects found while building,
+- `docs/CORRECTIONS.md` - the 47 defects found while building,
   validating and reviewing the harness. This is the register the paper's
   Section 4 groups into six failure modes.
 - `ANALYSIS_PLAN.md` - the resolution bounds, fixed before the pilot ran. Four

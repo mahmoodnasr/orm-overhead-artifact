@@ -2235,3 +2235,46 @@ rows keep their interval: 22 query clusters is not five.
 
 Found by a referee reading the manuscript, like C43 to C45. It changed what the
 paper claims and not what it measured.
+
+---
+
+## C47 — one statistic, two values, because the tables shared a generator
+
+`tab_headline` prints the pooled TPC-H median and its query-clustered interval.
+`tab_sensitivity`'s first row, labelled "none (as reported)", removes no group,
+so it is that same figure by construction. They disagreed:
+
+    tab_headline      TPC-H, Django   +1.13%  [+0.5, +3.6]
+    tab_sensitivity   none (as rep.)  +1.13%  [+0.5, +3.7]
+
+The medians match because a median is deterministic. The intervals did not,
+because `main()` built one `random.Random(SEED)` and threaded it through every
+table in the run. `clustered_bootstrap` drew from wherever the stream happened
+to be, so a table's resamples depended on how many resamples the tables before
+it had taken. Adding or removing a table upstream moved the interval printed
+downstream, and C46 had done exactly that a few commits earlier: dropping two
+bootstrap calls from `t_headline` shifted every endpoint in `tab_sensitivity`
+by up to 0.6 points.
+
+The value was never wrong in the sense of being outside what the data support.
+Both endpoints are legitimate draws from the same 2,000-resample percentile
+interval. What was wrong is that the paper printed two of them for one quantity,
+in two tables a reader is invited to compare, and had no way to say which.
+
+`clustered_bootstrap` now seeds from the sample:
+
+    def bootstrap_seed(cells):
+        key = "|".join("%s:%.12g" % (q, th) for q, th in sorted(cells))
+        return SEED ^ zlib.crc32(key.encode("utf-8"))
+
+so the interval is a function of the data and nothing else. Call order stops
+mattering, and so does which tables a run happens to build. Every call site
+dropped the shared generator; the parameter survives for callers that still
+pass one, and nothing in the repository does.
+
+`tests/test_sf1_tables.py` now asserts that the two tables agree, rather than
+that either equals a transcribed constant. The property worth holding is that
+one statistic has one value wherever the paper prints it.
+
+Found during manuscript review, like C43 to C46, by a reader comparing two
+tables against each other rather than against the data.
