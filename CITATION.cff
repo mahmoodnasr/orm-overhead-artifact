@@ -46,8 +46,8 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.22649753"
     description: "Zenodo archive, v1.0.0"
-version: "1.0.0"
-date-released: "2026-09-07"
+version: "1.0.1"
+date-released: "2026-09-08"
 # No preferred-citation. The manuscript this artifact accompanies is under
 # review and not published, and a citation entry naming a journal and a year
 # would assert a record that does not exist. One goes here when there is one.
