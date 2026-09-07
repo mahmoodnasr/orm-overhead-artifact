@@ -35,6 +35,17 @@ keywords:
   - "SQLAlchemy"
 license: MIT
 repository-code: "https://github.com/mahmoodnasr/orm-overhead-artifact"
+# The concept DOI, which resolves to the latest version. The DOI for v1.0.0
+# alone is 10.5281/zenodo.22649753; cite the one above unless you mean that
+# release specifically.
+doi: "10.5281/zenodo.22649752"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22649752"
+    description: "Zenodo archive, all versions"
+  - type: doi
+    value: "10.5281/zenodo.22649753"
+    description: "Zenodo archive, v1.0.0"
 version: "1.0.0"
 date-released: "2026-09-07"
 # No preferred-citation. The manuscript this artifact accompanies is under

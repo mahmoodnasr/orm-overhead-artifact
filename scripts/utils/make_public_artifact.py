@@ -284,8 +284,12 @@ def write_readme(out, stats):
     with open(os.path.join(out, "README.md"), "w") as fh:
         fh.write("""# ORM overhead: Django and SQLAlchemy against hand-written SQL
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22649752.svg)](https://doi.org/10.5281/zenodo.22649752)
+
 The artifact for *Two Workloads, Two Orders of Magnitude: ORM Overhead on Four
-Database Systems*.
+Database Systems*. Archived at
+[10.5281/zenodo.22649752](https://doi.org/10.5281/zenodo.22649752), which
+resolves to the latest version.
 
     4 database systems
       x 2 frameworks (Django 6.0.8, SQLAlchemy 2.0.52)
