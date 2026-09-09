@@ -141,3 +141,25 @@ def test_table_comparison_requires_exact_text(tmp_path):
     left.write_text("0.72")
     right.write_text("0.73")
     assert not review.reference_matches(left, right)
+
+
+@pytest.mark.parametrize(
+    ("interval", "matches"),
+    [
+        ([0.25 + 1e-13, 0.75 - 1e-13], True),
+        ([0.25 + 1e-6, 0.75], False),
+        ([0.25], False),
+        (["0.25", 0.75], False),
+    ],
+)
+def test_csv_confidence_intervals_allow_only_roundoff(tmp_path, interval, matches):
+    import review
+
+    left = tmp_path / "reference.csv"
+    right = tmp_path / "actual.csv"
+    for path, ci in [(left, [0.25, 0.75]), (right, interval)]:
+        with path.open("w", newline="") as handle:
+            writer = csv.writer(handle)
+            writer.writerow(["system", "n", "median", "ci"])
+            writer.writerow(["commercial_a", 22, 0.5, json.dumps(ci)])
+    assert review.reference_matches(left, right) is matches

@@ -82,11 +82,23 @@ def reference_matches(expected: Path, actual: Path) -> bool:
         for arow, brow in zip(left[1:], right[1:]):
             if len(arow) != len(brow):
                 return False
-            for a, b in zip(arow, brow):
+            for column, a, b in zip(left[0], arow, brow):
                 if a == b:
                     continue
                 try:
-                    if not equal_numbers(float(a), float(b)):
+                    if column == "ci":
+                        # Confidence intervals are JSON arrays inside CSV cells.
+                        values = [json.loads(a), json.loads(b)]
+                        if not all(
+                            isinstance(value, list)
+                            and len(value) == 2
+                            and all(isinstance(v, (int, float)) for v in value)
+                            for value in values
+                        ):
+                            return False
+                    else:
+                        values = [float(a), float(b)]
+                    if not equal_numbers(*values):
                         return False
                 except ValueError:
                     return False
