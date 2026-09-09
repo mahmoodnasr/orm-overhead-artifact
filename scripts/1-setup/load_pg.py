@@ -10,22 +10,35 @@ are never named in the statement.
     python3 load_pg.py --tables partsupp,supplier,nation
     python3 load_pg.py                       # all eight
 """
+
 import argparse, io, os, sys, time
 
 import duckdb
 import psycopg2
 
 # Derived from this file's own location so the script runs from a clone at any
-# path; the default was /home/claude/bench/tpch10.duckdb, the sandbox path.
+# path; the default was a retired sandbox dataset, the sandbox path.
 DEFAULT_DUCKDB = os.path.join(
-    os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")),
-    "tpch10.duckdb")
+    os.path.abspath(
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
+    ),
+    "tpch10.duckdb",
+)
 
-DSN = os.environ.get("PG_DSN",
-                     "host=127.0.0.1 port=55432 dbname=tpch user=postgres password=bench")
+DSN = os.environ.get(
+    "PG_DSN", "host=127.0.0.1 port=55432 dbname=tpch user=postgres password=bench"
+)
 
-ORDER = ["region", "nation", "supplier", "customer", "part",
-         "partsupp", "orders", "lineitem"]
+ORDER = [
+    "region",
+    "nation",
+    "supplier",
+    "customer",
+    "part",
+    "partsupp",
+    "orders",
+    "lineitem",
+]
 
 
 def copy_table(duck, pg, table, batch=200_000):
@@ -44,8 +57,7 @@ def copy_table(duck, pg, table, batch=200_000):
             c.copy_expert("COPY %s FROM STDIN WITH (FORMAT text)" % table, buf)
             n += len(rows)
     pg.commit()
-    print("  %s: %s rows in %.0fs"
-          % (table, format(n, ","), time.perf_counter() - t0))
+    print("  %s: %s rows in %.0fs" % (table, format(n, ","), time.perf_counter() - t0))
 
 
 def main():
@@ -54,7 +66,7 @@ def main():
     ap.add_argument("--tables", default="")
     args = ap.parse_args()
 
-    want = ([t.strip() for t in args.tables.split(",")] if args.tables else ORDER)
+    want = [t.strip() for t in args.tables.split(",")] if args.tables else ORDER
     duck = duckdb.connect(args.duckdb, read_only=True)
     pg = psycopg2.connect(DSN)
     for t in ORDER:

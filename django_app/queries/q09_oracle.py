@@ -1,6 +1,7 @@
 """
 TPC-H Query 9: Product Type Profit Measure Query - Oracle Version
 """
+
 from django.db.models import Sum, F
 from django.db.models.functions import ExtractYear
 
@@ -42,16 +43,15 @@ def run_query_sql(connection, params=None):
         AND p_partkey = l_partkey
         AND o_orderkey = l_orderkey
         AND s_nationkey = n_nationkey
-        AND p_name LIKE '%{P['color']}%'
+        AND p_name LIKE '%{P["color"]}%'
     ) profit
     GROUP BY nation, o_year
     ORDER BY nation, o_year DESC
     """
-    
+
     with connection.cursor() as cursor:
         cursor.execute(sql)
         columns = [col[0] for col in cursor.description]
         results = [dict(zip(columns, row)) for row in cursor.fetchall()]
-    
-    return results
 
+    return results

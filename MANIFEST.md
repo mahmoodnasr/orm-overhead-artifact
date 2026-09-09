@@ -1,74 +1,54 @@
-# What is in this export, and what is not
+# Release scope and provenance
 
-This is the depositable subset of the artifact behind *Two Workloads, Two
-Orders of Magnitude: ORM Overhead on Four Database Systems*. It is an export
-rather than a mirror of the working repository, because that repository's files
-and its git history name a system whose licence forbids disclosing benchmark
-results for it.
+This update includes the complete retained measurements for the 9 September 2026
+revision of *How Portable Is ORM Query Performance? Evidence from Four Database
+Systems* in the existing public repository.
 
-## Here
+## Included data and results
 
-- The harness: both frameworks' implementations of all 27 queries and
-  transactions, the per-vendor overrides, the schema and load scripts, the
-  block protocol, and the pre-flight checks.
-- The five validation checks and the test suite.
-- Every analysis script that produces a table or a figure in the paper.
-- `docs/CORRECTIONS.md`, the register of 47 defects.
-- `ANALYSIS_PLAN.md`, which fixes the resolution bounds the paper reports four
-  campaigns as failing. It is dated before the pilot; that is the whole reason
-  those bounds could fail.
-- `results/sf1/all_results.csv`: all 432 cells.
-- Raw per-block timings for PostgreSQL, MySQL and Oracle: 18 files.
+- All 432 planned coverage rows: 416 measured, 12 timeouts and four inexpressible cells.
+- All 24 raw measurement CSVs across four systems and two index configurations.
+- All 108 Commercial System A coverage rows, including 106 measured cells.
+- Full four-system analytical, transaction and throughput results, including the
+  five paper tables, three figures and seven numerical exports rebuilt offline.
+- Query/model source, baseline SQL, setup and timing tools, tests and instructions.
 
-## Not here
+`PUBLIC_INPUTS.json` records the 18 raw inputs unchanged from public commit
+`e55d4977f45ef5e92644461120da42a6bca53e67`, the hashes of all 25 current input CSVs,
+and the preservation check. The complete manuscript inputs were compared row by
+row: all 13,104 rows and every measurement value are retained. Only 3,348 database
+labels and two diagnostic notes were relabeled. No measurements were replaced,
+rounded, inferred or removed.
 
-108 of the 432 cells belong to one system. Section 6 of that system's
-developer licence forbids disclosing benchmark results for it without the
-vendor's written approval, so this export carries no timing, ratio or
-percentage for it. The cells remain in `all_results.csv` as rows, with empty
-measurement columns and the reason in `status_note`, so the grid stays
-countable at 432 rather than silently becoming 324.
-`results/sf1/measurements/WITHHELD.md` lists the raw files that are absent.
+Commercial System A is named `commercial_a` in measurement filenames, raw data
+and derived CSVs, and “Commercial System A” in the coverage grid, tables and
+figures. Diagnostic notes retain their explanation with the system name changed.
 
-The harness itself ships whole and names that vendor, because the licence
-restricts disclosing results and not disclosing that the code supports it. A
-reader can therefore tell which system is withheld. The paper says as much: two
-of its four systems restrict publication and it names the other one. The
-anonymisation keeps results from being attributed to the product, which is what
-withholding the numbers enforces.
+The reference results come from the retained full manuscript analysis; only
+system identifiers and input paths/checksums were updated. Numeric comparisons
+allow `1e-12` absolute and relative tolerance for platform math libraries, while
+LaTeX tables must match exactly. All scientific estimates remain unchanged.
 
-## What this subset reproduces
+## Naming scope
 
-Running the analysis over this export does not return the paper's headline
-numbers, and it should not. Six of the eight campaigns are here, so the pooled
-analytical medians come back as +0.72% for Django over 123 cells and +0.30%
-for SQLAlchemy over 127, against the paper's +1.13% and +0.67% over 165 and
-171.
+The data and analysis use the anonymous label. Existing benchmark adapters,
+driver dependencies and historical technical documentation still identify the
+supported database. Earlier public commits and releases also contain identifying
+references. Relabeling results therefore does not make the repository anonymous.
 
-Those two figures are already in the paper. Table VII's sensitivity analysis
-reports the pooled medians with Commercial System A removed, and the row reads
-+0.72% and +0.30%. So this export reproduces a published row exactly, and the
-difference between it and the headline is the quantity that table exists to
-report rather than a discrepancy. The transactional medians come back as
-+88.3% and +71.2% over 30 cells against +90.5% and +69.2% over 40.
+## Integrity and source
 
-## The choice this export made, so it can be revisited
+`MANIFEST.json` records SHA-256 for every release file except itself. A separate
+SHA-256 file accompanies a ZIP built with `scripts/release.py`.
+`python review.py verify` checks file integrity and dataset completeness;
+`python review.py reproduce` additionally checks the full generated results.
 
-The paper prints that system's overheads under its anonymous label in three
-tables and one figure, and a journal will publish them. By that reading the
-already-anonymised `results/sf1/analysis/*.csv` could ship too, and 90
-more rows would be here.
+The prepared tree excludes local environments, caches, credentials, local database
+files and backup archives. The source formatting preserves executable query
+expressions and SQL constants. Small import-path fixes allow the analytical
+runner, validator and index manager to resolve their checkout. Parameter test
+failures raise assertions under pytest. These source fixes do not alter the
+retained historical measurements.
 
-This export withholds them. Beside a harness that names the vendor in a dozen
-paths, an anonymised number is anonymised in form only, and the reading is the
-authors' to make against their own licence rather than a script's to assume.
-Reversing it is one line: drop the anonymous label from `RESTRICTED` in
-`scripts/utils/make_public_artifact.py` and rebuild.
-
-## Rebuilding this
-
-    python3 scripts/utils/make_public_artifact.py --out <dir>
-
-The script re-reads everything it wrote and fails if any exported CSV carries a
-measurement on a restricted row, over the whole export rather than the part
-that suggested the check.
+The original public analysis plan and correction register remain as historical
+methodological evidence. Their older commands are superseded by `REPRODUCE.md`.

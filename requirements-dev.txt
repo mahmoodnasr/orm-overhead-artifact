@@ -1,0 +1,4 @@
+# Offline verification and development; no database client libraries are needed.
+-r requirements-analysis.txt
+pytest==9.1.1
+ruff==0.14.10

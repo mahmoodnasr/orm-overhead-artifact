@@ -1,0 +1,14 @@
+\begin{table*}[!t]
+\caption{Sensitivity of analytical median overhead (percent) with query-clustered 95\% intervals.}\label{tab:sensitivity}
+\centering\small\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{lrr rrrr}\toprule
+Subset & Django & 95\% interval & $n$ & SQLAlchemy & 95\% interval & $n$ \\\midrule
+All measured cells & 1.13 & [0.55, 3.57] & 165 & 0.67 & [0.33, 1.31] & 171 \\
+Exclude Oracle & 0.98 & [0.55, 3.47] & 123 & 0.51 & [0.20, 1.00] & 127 \\
+Three-system subset & 0.72 & [0.29, 1.79] & 123 & 0.30 & [0.15, 0.67] & 127 \\
+Exclude Q15 & 0.92 & [0.52, 2.49] & 157 & 0.67 & [0.33, 1.31] & 163 \\
+Exclude Q18 & 1.22 & [0.55, 5.16] & 157 & 0.69 & [0.42, 1.37] & 163 \\
+Exclude overhead above 100\% & 0.74 & [0.41, 1.85] & 147 & 0.57 & [0.25, 1.16] & 164 \\
+Indexed only & 1.47 & [0.67, 5.95] & 86 & 0.93 & [0.51, 1.42] & 88 \\
+Non-indexed only & 0.74 & [0.10, 3.13] & 79 & 0.44 & [0.15, 1.01] & 83 \\
+\bottomrule\end{tabular}\end{table*}

@@ -1,0 +1,18 @@
+\begin{table*}[!t]
+\caption{Selected analytical cases. Seconds are marginal path medians; the ratio is the paired estimate and need not equal the quotient of the displayed seconds.}\label{tab:cases}
+\centering\small\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{llllrrr}\toprule
+Query & System & Indexes & Framework & SQL (s) & ORM (s) & Paired ratio \\\midrule
+Q15 & PostgreSQL & yes & Django & 0.346 & 0.667 & 1.92$\times$ \\
+Q15 & Oracle & yes & Django & 0.770 & 1.632 & 2.07$\times$ \\
+Q15 & Oracle & yes & SQLAlchemy & 0.769 & 1.934 & 2.46$\times$ \\
+Q17 & PostgreSQL & yes & Django & 1.287 & 0.539 & 0.42$\times$ \\
+Q17 & Oracle & yes & Django & 0.047 & 0.054 & 1.15$\times$ \\
+Q17 & Oracle & no & Django & 0.733 & 560.953 & 759.00$\times$ \\
+Q20 & Oracle & yes & Django & 0.872 & 0.207 & 0.24$\times$ \\
+Q20 & Oracle & no & Django & 0.901 & 271.050 & 312.03$\times$ \\
+Q15 & Commercial System A & yes & SQLAlchemy & 1.088 & 3.826 & 3.52$\times$ \\
+Q17 & Commercial System A & yes & Django & 0.101 & 0.909 & 9.03$\times$ \\
+Q18 & Commercial System A & yes & Django & 3.374 & 220.449 & 64.09$\times$ \\
+Q21 & Commercial System A & no & Django & 3.025 & 52.259 & 17.20$\times$ \\
+\bottomrule\end{tabular}\end{table*}

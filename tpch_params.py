@@ -16,6 +16,7 @@ Set TPCH_SF in the environment to the scale factor of the loaded database. Both
 frameworks and both access paths read the value from here, so they cannot drift
 apart.
 """
+
 import os
 
 SCALE_FACTOR = float(os.environ.get("TPCH_SF", "1"))

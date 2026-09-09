@@ -26,6 +26,7 @@ SF10 keeps its historical layout exactly, including the `corrected/` level,
 because renaming it would invalidate every path printed in the paper, in
 `docs/CORRECTIONS.md` and in the plans. New scale factors get the simpler tree.
 """
+
 import os
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -45,12 +46,15 @@ def scale_factor(explicit=None):
     results cannot land in a directory that disagrees with the parameters they
     were measured with.
     """
-    sf = str(explicit if explicit not in (None, "") else os.environ.get("TPCH_SF", "")).strip()
+    sf = str(
+        explicit if explicit not in (None, "") else os.environ.get("TPCH_SF", "")
+    ).strip()
     if not sf:
         raise SystemExit(
             "TPCH_SF is not set. It selects both the query parameters (C6) and "
             "the results directory, so there is no safe default: guessing 10 "
-            "would write SF1 measurements over the completed SF10 campaign.")
+            "would write SF1 measurements over the completed SF10 campaign."
+        )
     return sf
 
 

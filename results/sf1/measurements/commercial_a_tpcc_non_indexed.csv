@@ -1,0 +1,21 @@
+benchmark,query_id,band,dbms,schema_config,scale_factor,framework,path,median_s,min_s,max_s,cv_pct,rows_returned,repetitions_measured,status,note
+tpcc,T1,Write-heavy,commercial_a,non-indexed,1,django,orm,0.107321,0.080738,0.119687,19.4,1,3,ok,"drift: new_order +16, order +16, order_line +186"
+tpcc,T1,Write-heavy,commercial_a,non-indexed,1,django,sql,0.042652,0.024549,0.044673,29.7,1,3,ok,"drift: new_order +16, order +16, order_line +186"
+tpcc,T1,Write-heavy,commercial_a,non-indexed,1,sqlalchemy,orm,0.090929,0.090196,0.111213,12.2,1,3,ok,"drift: new_order +16, order +16, order_line +186"
+tpcc,T1,Write-heavy,commercial_a,non-indexed,1,sqlalchemy,sql,0.054205,0.036971,0.062571,25.5,1,3,ok,"drift: new_order +16, order +16, order_line +186"
+tpcc,T2,Write-heavy,commercial_a,non-indexed,1,django,orm,0.022369,0.020954,0.031756,23.5,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,commercial_a,non-indexed,1,django,sql,0.010337,0.009635,0.011882,10.8,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,commercial_a,non-indexed,1,sqlalchemy,orm,0.026095,0.017266,0.029401,25.9,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,commercial_a,non-indexed,1,sqlalchemy,sql,0.010437,0.010415,0.011196,4.2,1,3,ok,drift: history +16
+tpcc,T3,Read-only,commercial_a,non-indexed,1,django,orm,0.010977,0.010778,0.011281,2.3,1,3,ok,
+tpcc,T3,Read-only,commercial_a,non-indexed,1,django,sql,0.006444,0.004238,0.009453,39.0,1,3,ok,
+tpcc,T3,Read-only,commercial_a,non-indexed,1,sqlalchemy,orm,0.00847,0.008408,0.008904,3.1,1,3,ok,
+tpcc,T3,Read-only,commercial_a,non-indexed,1,sqlalchemy,sql,0.003965,0.003398,0.005793,28.5,1,3,ok,
+tpcc,T4,Write-heavy,commercial_a,non-indexed,1,django,orm,0.15581,0.142128,0.157932,5.6,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,commercial_a,non-indexed,1,django,sql,0.062952,0.058687,0.068227,7.6,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,commercial_a,non-indexed,1,sqlalchemy,orm,0.202116,0.169594,0.20983,11.0,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,commercial_a,non-indexed,1,sqlalchemy,sql,0.076468,0.074213,0.09026,10.8,1,3,ok,drift: new_order -160
+tpcc,T5,Read-only,commercial_a,non-indexed,1,django,orm,0.173086,0.167251,0.190696,6.9,1,3,ok,
+tpcc,T5,Read-only,commercial_a,non-indexed,1,django,sql,0.186012,0.172028,0.201449,7.9,1,3,ok,
+tpcc,T5,Read-only,commercial_a,non-indexed,1,sqlalchemy,orm,0.153093,0.092704,0.170983,29.5,1,3,ok,
+tpcc,T5,Read-only,commercial_a,non-indexed,1,sqlalchemy,sql,0.171936,0.164683,0.196611,9.4,1,3,ok,

@@ -8,6 +8,7 @@ The original version of this file delegated run_query_orm to run_query_sql,
 so the benchmark timed raw SQL twice and reported the difference as ORM
 overhead. That delegation is removed.
 """
+
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 

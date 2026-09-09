@@ -17,7 +17,9 @@ Host and port match what `scripts/1-setup/load_mysql.py` hardcodes
 (127.0.0.1:33306, root/bench), which the repository `.env` maps the container
 onto, so the loader and the harness cannot address different databases.
 """
+
 import os
+
 SECRET_KEY = "benchmark-only"
 INSTALLED_APPS = ["django.contrib.contenttypes", "django.contrib.auth", "django_app"]
 

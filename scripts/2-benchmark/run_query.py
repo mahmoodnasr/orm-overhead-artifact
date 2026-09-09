@@ -18,23 +18,28 @@ Usage:
     # skip if this configuration is already recorded
     python3 run_query.py --query 10 ... --resume
 """
+
 import argparse, csv, os, statistics, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 
 import django
+
 django.setup()
 from django.db import connections
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-DSN = os.environ.get("SA_DSN", "postgresql+psycopg2://postgres:bench@127.0.0.1:55432/tpch")
+DSN = os.environ.get(
+    "SA_DSN", "postgresql+psycopg2://postgres:bench@127.0.0.1:55432/tpch"
+)
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                                "..", "utils"))
-import results_paths                                          # noqa: E402
+sys.path.insert(
+    0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "utils")
+)
+import results_paths  # noqa: E402
 
 # Raises if TPCH_SF is unset rather than assuming 10, which would write SF1
 # measurements into the completed SF10 campaign's files.
@@ -48,9 +53,22 @@ BANDS = {
 }
 
 FIELDS = [
-    "benchmark", "query_id", "band", "dbms", "schema_config", "framework",
-    "path", "median_s", "min_s", "max_s", "cv_pct", "rows_returned",
-    "repetitions_measured", "status", "note", "scale_factor",
+    "benchmark",
+    "query_id",
+    "band",
+    "dbms",
+    "schema_config",
+    "framework",
+    "path",
+    "median_s",
+    "min_s",
+    "max_s",
+    "cv_pct",
+    "rows_returned",
+    "repetitions_measured",
+    "status",
+    "note",
+    "scale_factor",
 ]
 
 # scale_factor is last so that appending to a file written before it existed
@@ -67,8 +85,11 @@ def already_done(path, qid, dbms, schema):
         return False
     with open(path) as fh:
         for row in csv.DictReader(fh):
-            if (row["query_id"] == qid and row["dbms"] == dbms
-                    and row["schema_config"] == schema):
+            if (
+                row["query_id"] == qid
+                and row["dbms"] == dbms
+                and row["schema_config"] == schema
+            ):
                 return True
     return False
 
@@ -88,12 +109,17 @@ def append(path, rows):
             existing = next(csv.reader(fh), None)
         if existing:
             header, write_header = existing, False
-            dropped = [c for c in FIELDS if c not in header
-                       and any(str(r.get(c, "")) != "" for r in rows)]
+            dropped = [
+                c
+                for c in FIELDS
+                if c not in header and any(str(r.get(c, "")) != "" for r in rows)
+            ]
             if dropped:
-                print(f"  note: {os.path.basename(path)} predates "
-                      f"{', '.join(dropped)}; those values are not recorded in "
-                      f"it. A new file gets the full header.")
+                print(
+                    f"  note: {os.path.basename(path)} predates "
+                    f"{', '.join(dropped)}; those values are not recorded in "
+                    f"it. A new file gets the full header."
+                )
     with open(path, "a", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=header, extrasaction="ignore")
         if write_header:
@@ -117,8 +143,10 @@ def set_timeouts(seconds, dj_conn, sa_session, dbms):
         # needs DBA rights the benchmark user does not have. python-oracledb
         # exposes a round-trip deadline on the connection instead, which is
         # enough to stop one pathological query taking the campaign with it.
-        for raw in (getattr(dj_conn, "connection", None),
-                    sa_session.connection().connection.dbapi_connection):
+        for raw in (
+            getattr(dj_conn, "connection", None),
+            sa_session.connection().connection.dbapi_connection,
+        ):
             try:
                 raw.call_timeout = ms
             except Exception:
@@ -137,10 +165,12 @@ def set_timeouts(seconds, dj_conn, sa_session, dbms):
         # above does, so the ceiling is a property of the campaign rather than
         # of which framework happens to be running.
         dj_conn.ensure_connection()
-        for raw in (getattr(dj_conn, "connection", None),
-                    sa_session.connection().connection.dbapi_connection):
+        for raw in (
+            getattr(dj_conn, "connection", None),
+            sa_session.connection().connection.dbapi_connection,
+        ):
             try:
-                raw.timeout = int(seconds)      # pyodbc, whole seconds
+                raw.timeout = int(seconds)  # pyodbc, whole seconds
             except Exception:
                 pass
         return
@@ -154,6 +184,7 @@ def set_timeouts(seconds, dj_conn, sa_session, dbms):
     with dj_conn.cursor() as c:
         c.execute(stmt)
     from sqlalchemy import text
+
     sa_session.execute(text(stmt))
 
 
@@ -172,8 +203,10 @@ def measure(label, fn, reps, timeout, cleanup=None, **kw):
             rows = fn(**kw)
         except Exception as e:
             elapsed = time.perf_counter() - t0
-            status, note = "timeout" if timeout and elapsed >= timeout * 0.9 else "error", \
-                           f"{type(e).__name__}: {str(e)[:120]}"
+            status, note = (
+                "timeout" if timeout and elapsed >= timeout * 0.9 else "error",
+                f"{type(e).__name__}: {str(e)[:120]}",
+            )
             print(f"    {label} rep {i}: {status} after {elapsed:.1f}s  {note}")
             if cleanup:
                 try:
@@ -201,48 +234,69 @@ def main():
     ap.add_argument("--query", type=int, required=True)
     ap.add_argument("--dbms", default="postgresql")
     ap.add_argument("--schema", default="indexed", choices=["indexed", "non-indexed"])
-    ap.add_argument("--repetitions", type=int, default=9,
-                    help="total runs; the first is a discarded warmup")
-    ap.add_argument("--timeout", type=float, default=0,
-                    help="server-side statement timeout in seconds, 0 to disable")
-    ap.add_argument("--out", default="",
-                    help="measurement CSV to append to. Default: the "
-                         "measurements directory for this TPCH_SF, named "
-                         "<dbms>_<schema>.csv — results/corrected/measurements "
-                         "at SF10, results/sf<N>/measurements otherwise. The "
-                         "old default was a bare results_by_query.csv in the "
-                         "working directory, which put a campaign's output "
-                         "wherever it happened to be launched from.")
-    ap.add_argument("--only", default="",
-                    help="measure only these paths, comma-separated as "
-                         "framework/path (django/sql, django/orm, sqlalchemy/sql, "
-                         "sqlalchemy/orm). Default: all four. For resuming a run "
-                         "that lost some paths to something external - a stopped "
-                         "container, a killed session - without paying for the "
-                         "paths that already completed. The protocol is unchanged: "
-                         "the same repetitions, the same warmup discard, the same "
-                         "timeout, in the same order. A partial run's rows are "
-                         "appended like any other, so the measurement file can end "
-                         "up holding two runs of one cell; the later rows win when "
-                         "make_all_results.py reads them, and both stay visible.")
-    ap.add_argument("--resume", action="store_true",
-                    help="exit immediately if this configuration is already in --out")
+    ap.add_argument(
+        "--repetitions",
+        type=int,
+        default=9,
+        help="total runs; the first is a discarded warmup",
+    )
+    ap.add_argument(
+        "--timeout",
+        type=float,
+        default=0,
+        help="server-side statement timeout in seconds, 0 to disable",
+    )
+    ap.add_argument(
+        "--out",
+        default="",
+        help="measurement CSV to append to. Default: the "
+        "measurements directory for this TPCH_SF, named "
+        "<dbms>_<schema>.csv — results/corrected/measurements "
+        "at SF10, results/sf<N>/measurements otherwise. The "
+        "old default was a bare results_by_query.csv in the "
+        "working directory, which put a campaign's output "
+        "wherever it happened to be launched from.",
+    )
+    ap.add_argument(
+        "--only",
+        default="",
+        help="measure only these paths, comma-separated as "
+        "framework/path (django/sql, django/orm, sqlalchemy/sql, "
+        "sqlalchemy/orm). Default: all four. For resuming a run "
+        "that lost some paths to something external - a stopped "
+        "container, a killed session - without paying for the "
+        "paths that already completed. The protocol is unchanged: "
+        "the same repetitions, the same warmup discard, the same "
+        "timeout, in the same order. A partial run's rows are "
+        "appended like any other, so the measurement file can end "
+        "up holding two runs of one cell; the later rows win when "
+        "make_all_results.py reads them, and both stay visible.",
+    )
+    ap.add_argument(
+        "--resume",
+        action="store_true",
+        help="exit immediately if this configuration is already in --out",
+    )
     args = ap.parse_args()
 
     if not args.out:
         args.out = os.path.join(
             results_paths.measurements_dir(SCALE_FACTOR),
-            f"{args.dbms}_{args.schema.replace('-', '_')}.csv")
+            f"{args.dbms}_{args.schema.replace('-', '_')}.csv",
+        )
 
     n, qid = args.query, f"Q{args.query:02d}"
     if args.resume and already_done(args.out, qid, args.dbms, args.schema):
         print(f"{qid} {args.dbms} {args.schema}: already recorded, skipping")
         return 0
 
-    print(f"\n=== {qid} ({BANDS[n]})  {args.dbms}  {args.schema}  "
-          f"{args.repetitions - 1} measured reps ===")
+    print(
+        f"\n=== {qid} ({BANDS[n]})  {args.dbms}  {args.schema}  "
+        f"{args.repetitions - 1} measured reps ==="
+    )
 
     from django_app.queries import get_query_module_for_db
+
     dj = get_query_module_for_db(n, args.dbms)
     sa = __import__(f"sqlalchemy_app.queries.q{n:02d}", fromlist=["x"])
 
@@ -267,12 +321,18 @@ def main():
                 print(f"unknown path(s): {', '.join(sorted(unknown))}", file=sys.stderr)
                 return 2
             specs = [s for s in specs if f"{s[0]}/{s[1]}" in want]
-            print(f"  measuring only: {', '.join(f'{f}/{p}' for f, p, _fn, _kw in specs)}")
+            print(
+                f"  measuring only: {', '.join(f'{f}/{p}' for f, p, _fn, _kw in specs)}"
+            )
 
         for fw, path, fn, kw in specs:
             key = list(kw)[0]
-            call = (lambda _f=fn, _k=key, _v=list(kw.values())[0]: _f(**{_k: _v})) \
-                if key != "connection" else (lambda _f=fn, _v=conn: _f(_v))
+            call = (
+                (lambda _f=fn, _k=key, _v=list(kw.values())[0]: _f(**{_k: _v}))
+                if key != "connection"
+                else (lambda _f=fn, _v=conn: _f(_v))
+            )
+
             def _cleanup(_fw=fw):
                 if _fw == "sqlalchemy":
                     sess.rollback()
@@ -282,20 +342,34 @@ def main():
                 set_timeouts(args.timeout, conn, sess, args.dbms)
 
             med, rows, times, status, note = measure(
-                f"{fw}/{path}", lambda **_: call(), args.repetitions,
-                args.timeout, cleanup=_cleanup)
-            out.append({
-                "benchmark": "tpch", "query_id": qid, "band": BANDS[n],
-                "dbms": args.dbms, "schema_config": args.schema,
-                "framework": fw, "path": path, "scale_factor": SCALE_FACTOR,
-                "median_s": round(med, 4) if med is not None else "",
-                "min_s": round(min(times), 4) if times else "",
-                "max_s": round(max(times), 4) if times else "",
-                "cv_pct": cv(times),
-                "rows_returned": len(rows) if isinstance(rows, list) else ("" if rows is None else 1),
-                "repetitions_measured": len(times),
-                "status": status, "note": note,
-            })
+                f"{fw}/{path}",
+                lambda **_: call(),
+                args.repetitions,
+                args.timeout,
+                cleanup=_cleanup,
+            )
+            out.append(
+                {
+                    "benchmark": "tpch",
+                    "query_id": qid,
+                    "band": BANDS[n],
+                    "dbms": args.dbms,
+                    "schema_config": args.schema,
+                    "framework": fw,
+                    "path": path,
+                    "scale_factor": SCALE_FACTOR,
+                    "median_s": round(med, 4) if med is not None else "",
+                    "min_s": round(min(times), 4) if times else "",
+                    "max_s": round(max(times), 4) if times else "",
+                    "cv_pct": cv(times),
+                    "rows_returned": len(rows)
+                    if isinstance(rows, list)
+                    else ("" if rows is None else 1),
+                    "repetitions_measured": len(times),
+                    "status": status,
+                    "note": note,
+                }
+            )
             # A failure in one path says nothing about the other three. The
             # earlier version broke out here, which meant a single Django SQL
             # timeout discarded both SQLAlchemy measurements for that query and
@@ -312,8 +386,10 @@ def main():
         s, o = by.get((fw, "sql")), by.get((fw, "orm"))
         if s and o and s["median_s"] != "" and o["median_s"] != "":
             oh = (o["median_s"] - s["median_s"]) / s["median_s"] * 100
-            print(f"  {fw:11s} sql {s['median_s']:8.3f}s  orm {o['median_s']:8.3f}s  "
-                  f"overhead {oh:+7.1f}%  rows {o['rows_returned']}")
+            print(
+                f"  {fw:11s} sql {s['median_s']:8.3f}s  orm {o['median_s']:8.3f}s  "
+                f"overhead {oh:+7.1f}%  rows {o['rows_returned']}"
+            )
     print(f"  appended {len(out)} rows to {args.out}")
     return 0 if all(r["status"] == "ok" for r in out) else 1
 

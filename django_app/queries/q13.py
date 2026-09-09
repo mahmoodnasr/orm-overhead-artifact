@@ -111,28 +111,26 @@ from ._lookups import Like  # noqa: F401
 from tpch_paramsets import resolve as _paramset
 
 
-def run_query_orm(using='default', params=None):
+def run_query_orm(using="default", params=None):
     """Execute Q13 via Django ORM."""
     P = _paramset(13, params)
 
     order_count = Subquery(
-        Orders.objects
-        .using(using)
-        .filter(custkey=OuterRef('custkey'))
-        .exclude(comment__like=P['like_pattern'])
-        .values('custkey')
-        .annotate(n=Count('orderkey'))
-        .values('n')[:1],
+        Orders.objects.using(using)
+        .filter(custkey=OuterRef("custkey"))
+        .exclude(comment__like=P["like_pattern"])
+        .values("custkey")
+        .annotate(n=Count("orderkey"))
+        .values("n")[:1],
         output_field=IntegerField(),
     )
 
     results = (
-        Customer.objects
-        .using(using)
+        Customer.objects.using(using)
         .annotate(c_count=Coalesce(order_count, 0))
-        .values('c_count')
-        .annotate(custdist=Count('*'))
-        .order_by('-custdist', '-c_count')
+        .values("c_count")
+        .annotate(custdist=Count("*"))
+        .order_by("-custdist", "-c_count")
     )
 
     return list(results)
@@ -148,7 +146,7 @@ def run_query_sql(connection, params=None):
         SELECT c_custkey, COUNT(o_orderkey) as c_count
         FROM customer LEFT OUTER JOIN orders
           ON c_custkey = o_custkey
-         AND o_comment NOT LIKE '{P['like_pattern']}'
+         AND o_comment NOT LIKE '{P["like_pattern"]}'
         GROUP BY c_custkey
     ) AS c_orders
     GROUP BY c_count
@@ -164,12 +162,12 @@ def run_query_sql(connection, params=None):
 def get_query_info():
     """Return metadata about this query."""
     return {
-        'number': 13,
-        'name': 'Customer Distribution',
-        'complexity': 'Complex',
-        'description': 'Distribution of customers by number of qualifying orders',
-        'tables': ['customer', 'orders'],
-        'joins': 1,
-        'aggregations': 2,
-        'subqueries': 1,
+        "number": 13,
+        "name": "Customer Distribution",
+        "complexity": "Complex",
+        "description": "Distribution of customers by number of qualifying orders",
+        "tables": ["customer", "orders"],
+        "joins": 1,
+        "aggregations": 2,
+        "subqueries": 1,
     }

@@ -12,6 +12,7 @@ while every path that went through settings_sqlserver.py kept working. That is
 the shape of C9 - two definitions of one thing, drifting the moment either side
 of the environment changes. Both modules now import this.
 """
+
 import os
 
 
@@ -26,11 +27,14 @@ def odbc_driver():
         return override
     try:
         import pyodbc
+
         found = [d for d in pyodbc.drivers() if "SQL Server" in d]
         if found:
+
             def version(name):
                 digits = "".join(c for c in name if c.isdigit())
                 return int(digits) if digits else 0
+
             return max(found, key=version)
     except ImportError:
         pass

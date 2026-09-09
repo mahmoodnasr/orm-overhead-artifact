@@ -2,16 +2,17 @@
 TPC-H Query 1: Pricing Summary Report Query
 Simple aggregation with filtering
 """
+
 from django.db.models import Sum, Avg, Count, F, Q
 from decimal import Decimal
 from datetime import date
 from tpch_paramsets import resolve as _paramset
 
 
-def run_query_orm(using='default', params=None):
+def run_query_orm(using="default", params=None):
     """
     Execute TPC-H Q1 via Django ORM
-    
+
     SELECT
         l_returnflag,
         l_linestatus,
@@ -30,41 +31,36 @@ def run_query_orm(using='default', params=None):
     """
     P = _paramset(1, params)
     from django_app.models import LineItem
-    
-    cutoff_date = P['date']
-    
+
+    cutoff_date = P["date"]
+
     results = (
-        LineItem.objects
-        .using(using)
+        LineItem.objects.using(using)
         .filter(shipdate__lte=cutoff_date)
-        .values('returnflag', 'linestatus')
+        .values("returnflag", "linestatus")
         .annotate(
-            sum_qty=Sum('quantity'),
-            sum_base_price=Sum('extendedprice'),
-            sum_disc_price=Sum(
-                F('extendedprice') * (1 - F('discount'))
-            ),
-            sum_charge=Sum(
-                F('extendedprice') * (1 - F('discount')) * (1 + F('tax'))
-            ),
-            avg_qty=Avg('quantity'),
-            avg_price=Avg('extendedprice'),
-            avg_disc=Avg('discount'),
-            count_order=Count('*')
+            sum_qty=Sum("quantity"),
+            sum_base_price=Sum("extendedprice"),
+            sum_disc_price=Sum(F("extendedprice") * (1 - F("discount"))),
+            sum_charge=Sum(F("extendedprice") * (1 - F("discount")) * (1 + F("tax"))),
+            avg_qty=Avg("quantity"),
+            avg_price=Avg("extendedprice"),
+            avg_disc=Avg("discount"),
+            count_order=Count("*"),
         )
-        .order_by('returnflag', 'linestatus')
+        .order_by("returnflag", "linestatus")
     )
-    
+
     return list(results)
 
 
 def run_query_sql(connection, params=None):
     """
     Execute TPC-H Q1 via direct SQL
-    
+
     Args:
         connection: Database connection object
-        
+
     Returns:
         List of result tuples
     """
@@ -82,28 +78,28 @@ def run_query_sql(connection, params=None):
         AVG(l_discount) as avg_disc,
         COUNT(*) as count_order
     FROM lineitem
-    WHERE l_shipdate <= '{P['date']}'
+    WHERE l_shipdate <= '{P["date"]}'
     GROUP BY l_returnflag, l_linestatus
     ORDER BY l_returnflag, l_linestatus
     """
-    
+
     with connection.cursor() as cursor:
         cursor.execute(sql)
         columns = [col[0] for col in cursor.description]
         results = [dict(zip(columns, row)) for row in cursor.fetchall()]
-    
+
     return results
 
 
 def get_query_info():
     """Return metadata about this query"""
     return {
-        'number': 1,
-        'name': 'Pricing Summary Report',
-        'complexity': 'Medium',
-        'description': 'Reports summary pricing information for shipped line items',
-        'tables': ['lineitem'],
-        'joins': 0,
-        'aggregations': 8,
-        'subqueries': 0,
+        "number": 1,
+        "name": "Pricing Summary Report",
+        "complexity": "Medium",
+        "description": "Reports summary pricing information for shipped line items",
+        "tables": ["lineitem"],
+        "joins": 0,
+        "aggregations": 8,
+        "subqueries": 0,
     }

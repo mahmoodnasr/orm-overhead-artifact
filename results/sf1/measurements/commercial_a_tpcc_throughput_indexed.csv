@@ -1,0 +1,121 @@
+benchmark,dbms,schema_config,transaction_id,name,framework,path,concurrency,duration_s,committed,aborted,abort_pct,qpm,qps,p50_ms,p95_ms,note
+tpcc,commercial_a,indexed,T1,New-Order,django,orm,1,60,866,0,0.0,866.0,14.43,78.933,112.161,
+tpcc,commercial_a,indexed,T1,New-Order,django,sql,1,60,2479,0,0.0,2478.5,41.31,26.485,36.582,
+tpcc,commercial_a,indexed,T1,New-Order,sqlalchemy,orm,1,60,888,0,0.0,886.6,14.78,76.158,107.138,
+tpcc,commercial_a,indexed,T1,New-Order,sqlalchemy,sql,1,60,1514,0,0.0,1512.8,25.21,46.662,63.568,
+tpcc,commercial_a,indexed,T2,Payment,django,orm,1,60,3337,0,0.0,3337.0,55.62,20.76,21.74,
+tpcc,commercial_a,indexed,T2,Payment,django,sql,1,60,7964,0,0.0,7963.8,132.73,8.594,9.353,
+tpcc,commercial_a,indexed,T2,Payment,sqlalchemy,orm,1,60,3932,0,0.0,3931.7,65.53,17.589,18.716,
+tpcc,commercial_a,indexed,T2,Payment,sqlalchemy,sql,1,60,6863,0,0.0,6862.0,114.37,10.013,10.846,
+tpcc,commercial_a,indexed,T3,Order-Status,django,orm,1,60,8215,0,0.0,8214.4,136.91,9.134,9.934,
+tpcc,commercial_a,indexed,T3,Order-Status,django,sql,1,60,17010,0,0.0,17009.3,283.49,4.013,5.043,
+tpcc,commercial_a,indexed,T3,Order-Status,sqlalchemy,orm,1,60,11062,0,0.0,11060.6,184.34,6.911,7.551,
+tpcc,commercial_a,indexed,T3,Order-Status,sqlalchemy,sql,1,60,19773,0,0.0,19772.0,329.53,3.549,3.647,
+tpcc,commercial_a,indexed,T4,Delivery,django,orm,1,60,509,0,0.0,508.6,8.48,136.559,139.588,new_order 305763 -> 300673
+tpcc,commercial_a,indexed,T4,Delivery,django,sql,1,60,1760,0,0.0,1758.9,29.32,39.684,40.787,new_order 305763 -> 288163
+tpcc,commercial_a,indexed,T4,Delivery,sqlalchemy,orm,1,60,398,0,0.0,397.4,6.62,176.103,185.729,new_order 305763 -> 301783
+tpcc,commercial_a,indexed,T4,Delivery,sqlalchemy,sql,1,60,973,0,0.0,972.5,16.21,72.323,74.019,new_order 305763 -> 296033
+tpcc,commercial_a,indexed,T5,Stock-Level,django,orm,1,60,4273,0,0.0,4271.9,71.2,15.099,15.841,
+tpcc,commercial_a,indexed,T5,Stock-Level,django,sql,1,60,8715,0,0.0,8714.3,145.24,7.579,7.997,
+tpcc,commercial_a,indexed,T5,Stock-Level,sqlalchemy,orm,1,60,5987,0,0.0,5986.6,99.78,11.014,11.702,
+tpcc,commercial_a,indexed,T5,Stock-Level,sqlalchemy,sql,1,60,6858,0,0.0,6857.2,114.29,9.573,10.178,
+tpcc,commercial_a,indexed,T1,New-Order,django,orm,4,60,1635,0,0.0,1632.8,27.21,169.296,240.753,
+tpcc,commercial_a,indexed,T1,New-Order,django,sql,4,60,8487,0,0.0,8483.6,141.39,32.591,44.252,
+tpcc,commercial_a,indexed,T1,New-Order,sqlalchemy,orm,4,60,1680,0,0.0,1676.0,27.93,164.37,233.377,
+tpcc,commercial_a,indexed,T1,New-Order,sqlalchemy,sql,4,60,3782,0,0.0,3778.2,62.97,73.834,103.263,
+tpcc,commercial_a,indexed,T2,Payment,django,orm,4,60,6114,0,0.0,6112.7,101.88,43.668,61.117,
+tpcc,commercial_a,indexed,T2,Payment,django,sql,4,60,26297,0,0.0,26294.2,438.24,9.653,15.427,
+tpcc,commercial_a,indexed,T2,Payment,sqlalchemy,orm,4,60,7643,0,0.0,7640.0,127.33,35.596,46.005,
+tpcc,commercial_a,indexed,T2,Payment,sqlalchemy,sql,4,60,17626,0,0.0,17600.1,293.34,14.007,26.171,
+tpcc,commercial_a,indexed,T3,Order-Status,django,orm,4,60,13255,0,0.0,13253.4,220.89,20.927,26.77,
+tpcc,commercial_a,indexed,T3,Order-Status,django,sql,4,60,47211,0,0.0,47207.2,786.79,5.888,7.395,
+tpcc,commercial_a,indexed,T3,Order-Status,sqlalchemy,orm,4,60,16808,0,0.0,16805.0,280.08,17.001,23.348,
+tpcc,commercial_a,indexed,T3,Order-Status,sqlalchemy,sql,4,60,47763,0,0.0,47757.8,795.96,5.779,7.334,
+tpcc,commercial_a,indexed,T4,Delivery,django,orm,4,60,762,0,0.0,757.2,12.62,353.767,589.417,new_order 321347 -> 313804
+tpcc,commercial_a,indexed,T4,Delivery,django,sql,4,60,4665,0,0.0,4660.2,77.67,54.574,93.658,new_order 321347 -> 275019
+tpcc,commercial_a,indexed,T4,Delivery,sqlalchemy,orm,4,60,667,0,0.0,663.8,11.06,397.128,717.046,new_order 321347 -> 314751
+tpcc,commercial_a,indexed,T4,Delivery,sqlalchemy,sql,4,60,2218,0,0.0,2215.3,36.92,117.805,207.06,new_order 321347 -> 299338
+tpcc,commercial_a,indexed,T5,Stock-Level,django,orm,4,60,6793,0,0.0,6790.3,113.17,40.482,50.194,
+tpcc,commercial_a,indexed,T5,Stock-Level,django,sql,4,60,19131,0,0.0,19128.5,318.81,15.099,18.665,
+tpcc,commercial_a,indexed,T5,Stock-Level,sqlalchemy,orm,4,60,8831,0,0.0,8828.6,147.14,31.368,41.063,
+tpcc,commercial_a,indexed,T5,Stock-Level,sqlalchemy,sql,4,60,10235,0,0.0,10232.7,170.54,26.673,34.094,
+tpcc,commercial_a,indexed,T1,New-Order,django,orm,8,60,1576,0,0.0,1570.8,26.18,347.721,513.557,
+tpcc,commercial_a,indexed,T1,New-Order,django,sql,8,60,9355,0,0.0,9347.5,155.79,58.184,85.61,
+tpcc,commercial_a,indexed,T1,New-Order,sqlalchemy,orm,8,60,1590,0,0.0,1585.5,26.42,344.755,503.571,
+tpcc,commercial_a,indexed,T1,New-Order,sqlalchemy,sql,8,60,3651,0,0.0,3646.1,60.77,150.789,220.532,
+tpcc,commercial_a,indexed,T2,Payment,django,orm,8,60,5996,0,0.0,5991.1,99.85,87.349,136.494,
+tpcc,commercial_a,indexed,T2,Payment,django,sql,8,60,34345,0,0.0,34337.8,572.3,14.087,27.115,
+tpcc,commercial_a,indexed,T2,Payment,sqlalchemy,orm,8,60,6952,0,0.0,6946.9,115.78,79.11,106.157,
+tpcc,commercial_a,indexed,T2,Payment,sqlalchemy,sql,8,60,21584,0,0.0,21577.7,359.63,22.107,47.656,
+tpcc,commercial_a,indexed,T3,Order-Status,django,orm,8,60,11074,0,0.0,11070.4,184.51,50.243,74.016,
+tpcc,commercial_a,indexed,T3,Order-Status,django,sql,8,60,51054,0,0.0,51049.6,850.83,10.808,15.214,
+tpcc,commercial_a,indexed,T3,Order-Status,sqlalchemy,orm,8,60,12273,0,0.0,12267.6,204.46,47.546,69.569,
+tpcc,commercial_a,indexed,T3,Order-Status,sqlalchemy,sql,8,60,40764,0,0.0,40757.8,679.3,13.525,18.648,
+tpcc,commercial_a,indexed,T4,Delivery,django,orm,8,60,747,0,0.0,743.7,12.4,629.508,1404.804,new_order 337519 -> 330211
+tpcc,commercial_a,indexed,T4,Delivery,django,sql,8,60,5731,0,0.0,5725.5,95.42,80.287,180.118,new_order 337519 -> 281269
+tpcc,commercial_a,indexed,T4,Delivery,sqlalchemy,orm,8,60,682,0,0.0,676.6,11.28,667.074,1598.288,new_order 337519 -> 330865
+tpcc,commercial_a,indexed,T4,Delivery,sqlalchemy,sql,8,60,2368,0,0.0,2359.7,39.33,194.606,454.178,new_order 337519 -> 314356
+tpcc,commercial_a,indexed,T5,Stock-Level,django,orm,8,60,5085,0,0.0,5079.7,84.66,111.569,141.932,
+tpcc,commercial_a,indexed,T5,Stock-Level,django,sql,8,60,15804,0,0.0,15797.9,263.3,30.773,64.761,
+tpcc,commercial_a,indexed,T5,Stock-Level,sqlalchemy,orm,8,60,6046,0,0.0,6041.1,100.68,93.444,121.713,
+tpcc,commercial_a,indexed,T5,Stock-Level,sqlalchemy,sql,8,60,8776,0,0.0,8764.2,146.07,62.557,92.575,
+tpcc,commercial_a,indexed,T1,New-Order,django,orm,16,60,1333,0,0.0,1325.7,22.09,805.823,1409.8,
+tpcc,commercial_a,indexed,T1,New-Order,django,sql,16,60,6894,0,0.0,6883.9,114.73,156.862,249.885,
+tpcc,commercial_a,indexed,T1,New-Order,sqlalchemy,orm,16,60,1346,0,0.0,1335.6,22.26,801.776,1339.095,
+tpcc,commercial_a,indexed,T1,New-Order,sqlalchemy,sql,16,60,3322,0,0.0,3308.6,55.14,329.83,521.887,
+tpcc,commercial_a,indexed,T2,Payment,django,orm,16,60,5274,0,0.0,5264.5,87.74,192.869,340.239,
+tpcc,commercial_a,indexed,T2,Payment,django,sql,16,60,39256,0,0.0,39233.1,653.88,24.024,56.547,
+tpcc,commercial_a,indexed,T2,Payment,sqlalchemy,orm,16,60,6034,0,0.0,6025.1,100.42,183.627,233.464,
+tpcc,commercial_a,indexed,T2,Payment,sqlalchemy,sql,16,60,22152,0,0.0,22131.6,368.86,43.479,105.585,
+tpcc,commercial_a,indexed,T3,Order-Status,django,orm,16,60,9273,0,0.0,9265.6,154.43,124.132,173.919,
+tpcc,commercial_a,indexed,T3,Order-Status,django,sql,16,60,30557,0,0.0,30546.7,509.11,37.51,54.243,
+tpcc,commercial_a,indexed,T3,Order-Status,sqlalchemy,orm,16,60,10897,0,0.0,10890.9,181.51,110.288,154.286,
+tpcc,commercial_a,indexed,T3,Order-Status,sqlalchemy,sql,16,60,37260,0,0.0,37246.4,620.77,29.644,41.221,
+tpcc,commercial_a,indexed,T4,Delivery,django,orm,16,60,696,0,0.0,682.6,11.38,1353.449,3610.89,new_order 350414 -> 343757
+tpcc,commercial_a,indexed,T4,Delivery,django,sql,16,60,6118,0,0.0,6099.3,101.65,144.673,416.503,new_order 350414 -> 291682
+tpcc,commercial_a,indexed,T4,Delivery,sqlalchemy,orm,16,60,631,0,0.0,616.2,10.27,1533.944,3822.159,new_order 350414 -> 344404
+tpcc,commercial_a,indexed,T4,Delivery,sqlalchemy,sql,16,60,2345,0,0.0,2324.8,38.75,390.939,1105.888,new_order 350414 -> 327988
+tpcc,commercial_a,indexed,T5,Stock-Level,django,orm,16,60,3799,0,0.0,3791.9,63.2,291.691,345.519,
+tpcc,commercial_a,indexed,T5,Stock-Level,django,sql,16,60,8734,0,0.0,8722.1,145.37,145.611,175.242,
+tpcc,commercial_a,indexed,T5,Stock-Level,sqlalchemy,orm,16,60,4481,0,0.0,4474.1,74.57,252.766,298.075,
+tpcc,commercial_a,indexed,T5,Stock-Level,sqlalchemy,sql,16,60,5810,0,0.0,5801.7,96.7,195.981,248.614,
+tpcc,commercial_a,indexed,T1,New-Order,django,orm,32,60,1336,0,0.0,1314.5,21.91,1530.649,3176.866,
+tpcc,commercial_a,indexed,T1,New-Order,django,sql,32,60,6504,0,0.0,6485.6,108.09,325.582,605.028,
+tpcc,commercial_a,indexed,T1,New-Order,sqlalchemy,orm,32,60,1322,0,0.0,1300.1,21.67,1568.207,3221.579,
+tpcc,commercial_a,indexed,T1,New-Order,sqlalchemy,sql,32,60,3508,0,0.0,3493.8,58.23,612.582,1103.897,
+tpcc,commercial_a,indexed,T2,Payment,django,orm,32,60,4995,0,0.0,4970.6,82.84,389.278,812.976,
+tpcc,commercial_a,indexed,T2,Payment,django,sql,32,60,41447,0,0.0,41394.7,689.91,44.596,122.78,
+tpcc,commercial_a,indexed,T2,Payment,sqlalchemy,orm,32,60,6128,0,0.0,6105.3,101.76,359.55,472.962,
+tpcc,commercial_a,indexed,T2,Payment,sqlalchemy,sql,32,60,22426,0,0.0,22387.0,373.12,79.56,245.697,
+tpcc,commercial_a,indexed,T3,Order-Status,django,orm,32,60,9213,0,0.0,9198.0,153.3,247.639,334.737,
+tpcc,commercial_a,indexed,T3,Order-Status,django,sql,32,60,31006,0,0.0,30980.3,516.34,75.581,107.27,
+tpcc,commercial_a,indexed,T3,Order-Status,sqlalchemy,orm,32,60,11312,0,0.0,11293.1,188.22,213.894,292.02,
+tpcc,commercial_a,indexed,T3,Order-Status,sqlalchemy,sql,32,60,39479,0,0.0,39456.2,657.6,55.995,78.815,
+tpcc,commercial_a,indexed,T4,Delivery,django,orm,32,60,653,0,0.0,627.0,10.45,2726.562,8492.331,new_order 363084 -> 357050
+tpcc,commercial_a,indexed,T4,Delivery,django,sql,32,60,6088,0,0.0,6042.1,100.7,274.241,892.178,new_order 363084 -> 306561
+tpcc,commercial_a,indexed,T4,Delivery,sqlalchemy,orm,32,60,603,0,0.0,575.4,9.59,3075.418,8884.037,new_order 363084 -> 357518
+tpcc,commercial_a,indexed,T4,Delivery,sqlalchemy,sql,32,60,2303,0,0.0,2271.2,37.85,762.437,2465.147,new_order 363084 -> 341692
+tpcc,commercial_a,indexed,T5,Stock-Level,django,orm,32,60,3625,0,0.0,3609.3,60.15,590.967,669.888,
+tpcc,commercial_a,indexed,T5,Stock-Level,django,sql,32,60,7302,0,0.0,7282.7,121.38,310.096,356.721,
+tpcc,commercial_a,indexed,T5,Stock-Level,sqlalchemy,orm,32,60,4451,0,0.0,4431.6,73.86,504.832,576.283,
+tpcc,commercial_a,indexed,T5,Stock-Level,sqlalchemy,sql,32,60,5472,0,0.0,5454.5,90.91,408.98,486.977,
+tpcc,commercial_a,indexed,T1,New-Order,django,orm,50,60,1317,0,0.0,1287.5,21.46,2303.609,5872.249,
+tpcc,commercial_a,indexed,T1,New-Order,django,sql,50,60,6477,0,0.0,6427.1,107.12,481.988,1027.479,
+tpcc,commercial_a,indexed,T1,New-Order,sqlalchemy,orm,50,60,1317,0,0.0,1280.5,21.34,2390.577,5440.171,
+tpcc,commercial_a,indexed,T1,New-Order,sqlalchemy,sql,50,60,3623,0,0.0,3586.7,59.78,894.632,1857.615,
+tpcc,commercial_a,indexed,T2,Payment,django,orm,50,60,4782,0,0.0,4749.7,79.16,616.53,1398.172,
+tpcc,commercial_a,indexed,T2,Payment,django,sql,50,60,42031,0,0.0,41857.8,697.63,65.751,213.218,
+tpcc,commercial_a,indexed,T2,Payment,sqlalchemy,orm,50,60,6233,0,0.0,6200.4,103.34,547.919,767.847,
+tpcc,commercial_a,indexed,T2,Payment,sqlalchemy,sql,50,60,22522,0,0.0,22416.1,373.6,120.284,405.436,
+tpcc,commercial_a,indexed,T3,Order-Status,django,orm,50,60,8973,0,0.0,8946.4,149.11,385.699,518.741,
+tpcc,commercial_a,indexed,T3,Order-Status,django,sql,50,60,30272,0,0.0,30238.2,503.97,116.856,165.961,
+tpcc,commercial_a,indexed,T3,Order-Status,sqlalchemy,orm,50,60,11317,0,0.0,11288.8,188.15,333.646,457.052,
+tpcc,commercial_a,indexed,T3,Order-Status,sqlalchemy,sql,50,60,40193,0,0.0,40146.8,669.11,86.148,121.568,
+tpcc,commercial_a,indexed,T4,Delivery,django,orm,50,60,650,0,0.0,605.1,10.09,4562.984,13642.944,new_order 375818 -> 369996
+tpcc,commercial_a,indexed,T4,Delivery,django,sql,50,60,5856,0,0.0,5781.9,96.37,417.487,1532.59,new_order 375818 -> 322837
+tpcc,commercial_a,indexed,T4,Delivery,sqlalchemy,orm,50,60,611,0,0.0,558.8,9.31,4828.472,14882.686,new_order 375818 -> 370357
+tpcc,commercial_a,indexed,T4,Delivery,sqlalchemy,sql,50,60,2299,0,0.0,2247.3,37.46,1105.893,4199.88,new_order 375818 -> 355022
+tpcc,commercial_a,indexed,T5,Stock-Level,django,orm,50,60,3584,0,0.0,3555.9,59.26,906.998,1030.641,
+tpcc,commercial_a,indexed,T5,Stock-Level,django,sql,50,60,7376,0,0.0,7334.8,122.25,473.347,548.652,
+tpcc,commercial_a,indexed,T5,Stock-Level,sqlalchemy,orm,50,60,4526,0,0.0,4494.5,74.91,777.651,884.67,
+tpcc,commercial_a,indexed,T5,Stock-Level,sqlalchemy,sql,50,60,5540,0,0.0,5507.1,91.79,632.832,750.619,

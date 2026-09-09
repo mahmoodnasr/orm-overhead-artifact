@@ -30,7 +30,7 @@ from ..models import Part, Supplier, LineItem, PartSupp, Orders, Nation
 from tpch_paramsets import resolve as _paramset
 
 
-def run_query_orm(using='default', params=None):
+def run_query_orm(using="default", params=None):
     """Execute Q9 via Django ORM.
 
     The same query as the shared `q09.py`, reaching PARTSUPP by a join rather
@@ -55,24 +55,23 @@ def run_query_orm(using='default', params=None):
     """
     P = _paramset(9, params)
     results = (
-        LineItem.objects
-        .using(using)
+        LineItem.objects.using(using)
         .filter(
-            partkey__name__contains=P['color'],
-            partkey__partsupp__suppkey=F('suppkey'),
+            partkey__name__contains=P["color"],
+            partkey__partsupp__suppkey=F("suppkey"),
         )
         .annotate(
-            nation=F('suppkey__nationkey__name'),
-            o_year=ExtractYear('orderkey__orderdate'),
+            nation=F("suppkey__nationkey__name"),
+            o_year=ExtractYear("orderkey__orderdate"),
             amount=ExpressionWrapper(
-                F('extendedprice') * (1 - F('discount'))
-                - F('partkey__partsupp__supplycost') * F('quantity'),
+                F("extendedprice") * (1 - F("discount"))
+                - F("partkey__partsupp__supplycost") * F("quantity"),
                 output_field=DecimalField(max_digits=25, decimal_places=4),
             ),
         )
-        .values('nation', 'o_year')
-        .annotate(sum_profit=Sum('amount'))
-        .order_by('nation', '-o_year')
+        .values("nation", "o_year")
+        .annotate(sum_profit=Sum("amount"))
+        .order_by("nation", "-o_year")
     )
 
     return list(results)
@@ -81,8 +80,8 @@ def run_query_orm(using='default', params=None):
 def run_query_sql(connection, params=None):
     """Execute Q9 via direct SQL."""
     P = _paramset(9, params)
-    
-    sql = f"""
+
+    sql = rf"""
     SELECT nation, o_year, SUM(amount) as sum_profit
     FROM (
         SELECT n_name as nation,
@@ -105,39 +104,37 @@ def run_query_sql(connection, params=None):
           -- by a quote leaves nothing for that regex to match; SQL Server folds
           -- the constants at compile time, so the plan is the literal's plan.
           -- See defect C14.
-          AND p_name LIKE '%' + '{P['color']}' + '%'
+          AND p_name LIKE '%' + '{P["color"]}' + '%'
     ) as profit
     GROUP BY nation, o_year
     ORDER BY nation, o_year DESC
     """
-    
+
     with connection.cursor() as cursor:
         cursor.execute(sql)
         columns = [col[0] for col in cursor.description]
         results = [dict(zip(columns, row)) for row in cursor.fetchall()]
-    
+
     return results
 
 
 def get_query_info():
     """Return metadata about this query."""
     return {
-        'number': 9,
-        'name': 'Product Type Profit Measure',
-        'complexity': 'Very Complex',
-        'description': 'Profit for a specific product type by nation and year',
-        'tables': ['part', 'supplier', 'lineitem', 'partsupp', 'orders', 'nation'],
-        'joins': 6,
-        'aggregations': 1,
-        'subqueries': 1,
-        'features': [
-            'Multi-table joins (6 tables)',
-            'Profit calculation with multiple fields',
-            'Date extraction',
-            'Pattern matching (LIKE)',
-            'Grouping by multiple dimensions'
+        "number": 9,
+        "name": "Product Type Profit Measure",
+        "complexity": "Very Complex",
+        "description": "Profit for a specific product type by nation and year",
+        "tables": ["part", "supplier", "lineitem", "partsupp", "orders", "nation"],
+        "joins": 6,
+        "aggregations": 1,
+        "subqueries": 1,
+        "features": [
+            "Multi-table joins (6 tables)",
+            "Profit calculation with multiple fields",
+            "Date extraction",
+            "Pattern matching (LIKE)",
+            "Grouping by multiple dimensions",
         ],
-        'parameters': {
-            'part_name_pattern': '%green%'
-        }
+        "parameters": {"part_name_pattern": "%green%"},
     }

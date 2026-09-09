@@ -29,6 +29,7 @@ transactions that measure it cannot disagree about how many warehouses exist -
 a mismatch there makes most transactions fail on a missing row, and a harness
 that counts a returned dict as success would report that as throughput.
 """
+
 import argparse
 import io
 import os
@@ -39,8 +40,12 @@ import time
 from datetime import datetime, timedelta
 from decimal import Decimal
 
-sys.path.insert(0, os.path.abspath(
-    os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")))
+sys.path.insert(
+    0,
+    os.path.abspath(
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
+    ),
+)
 
 import tpcc_config as cfg
 
@@ -48,16 +53,35 @@ ORDERS_PER_DISTRICT = int(os.environ.get("TPCC_ORDERS", "3000"))
 HISTORY_PER_DISTRICT = int(os.environ.get("TPCC_HISTORY", "1000"))
 
 # Load order respects the foreign keys in create_tpcc_schema_*.sql.
-ORDER = ["warehouse", "item", "district", "customer", "stock",
-         "order", "new_order", "order_line", "history"]
+ORDER = [
+    "warehouse",
+    "item",
+    "district",
+    "customer",
+    "stock",
+    "order",
+    "new_order",
+    "order_line",
+    "history",
+]
 
-NCOLS = {"warehouse": 9, "item": 5, "district": 11, "customer": 21,
-         "stock": 17, "order": 8, "new_order": 3, "order_line": 10,
-         "history": 8}
+NCOLS = {
+    "warehouse": 9,
+    "item": 5,
+    "district": 11,
+    "customer": 21,
+    "stock": 17,
+    "order": 8,
+    "new_order": 3,
+    "order_line": 10,
+    "history": 8,
+}
 
 
 def _s(rng, n, prefix=""):
-    return prefix + "".join(rng.choice(string.ascii_letters) for _ in range(max(0, n - len(prefix))))
+    return prefix + "".join(
+        rng.choice(string.ascii_letters) for _ in range(max(0, n - len(prefix)))
+    )
 
 
 def _phone(rng):
@@ -75,38 +99,75 @@ def rows(table, rng):
 
     if table == "warehouse":
         for w in range(1, W + 1):
-            yield (w, _s(rng, 10, "W"), _s(rng, 20), _s(rng, 20), _s(rng, 20),
-                   _s(rng, 2), _zip(rng), Decimal(rng.randrange(0, 2000)) / 10000,
-                   Decimal("300000.00"))
+            yield (
+                w,
+                _s(rng, 10, "W"),
+                _s(rng, 20),
+                _s(rng, 20),
+                _s(rng, 20),
+                _s(rng, 2),
+                _zip(rng),
+                Decimal(rng.randrange(0, 2000)) / 10000,
+                Decimal("300000.00"),
+            )
 
     elif table == "item":
         for i in range(1, I + 1):
-            yield (i, rng.randint(1, 10000), _s(rng, 24, "ITEM"),
-                   Decimal(rng.randrange(100, 10000)) / 100, _s(rng, 50))
+            yield (
+                i,
+                rng.randint(1, 10000),
+                _s(rng, 24, "ITEM"),
+                Decimal(rng.randrange(100, 10000)) / 100,
+                _s(rng, 50),
+            )
 
     elif table == "district":
         for w in range(1, W + 1):
             for d in range(1, D + 1):
                 # d_next_o_id starts one past the pre-loaded orders, so a
                 # New-Order transaction allocates an id that does not collide.
-                yield (d, w, _s(rng, 10, "D"), _s(rng, 20), _s(rng, 20),
-                       _s(rng, 20), _s(rng, 2), _zip(rng),
-                       Decimal(rng.randrange(0, 2000)) / 10000,
-                       Decimal("30000.00"), ORDERS_PER_DISTRICT + 1)
+                yield (
+                    d,
+                    w,
+                    _s(rng, 10, "D"),
+                    _s(rng, 20),
+                    _s(rng, 20),
+                    _s(rng, 20),
+                    _s(rng, 2),
+                    _zip(rng),
+                    Decimal(rng.randrange(0, 2000)) / 10000,
+                    Decimal("30000.00"),
+                    ORDERS_PER_DISTRICT + 1,
+                )
 
     elif table == "customer":
         base = datetime(2025, 1, 1)
         for w in range(1, W + 1):
             for d in range(1, D + 1):
                 for c in range(1, C + 1):
-                    yield (c, d, w, _s(rng, 16, "F"), "OE", _s(rng, 16, "L"),
-                           _s(rng, 20), _s(rng, 20), _s(rng, 20), _s(rng, 2),
-                           _zip(rng), _phone(rng), base,
-                           "GC" if rng.random() > 0.1 else "BC",
-                           Decimal("50000.00"),
-                           Decimal(rng.randrange(0, 5000)) / 10000,
-                           Decimal("-10.00"), Decimal("10.00"), 1, 0,
-                           _s(rng, 100))
+                    yield (
+                        c,
+                        d,
+                        w,
+                        _s(rng, 16, "F"),
+                        "OE",
+                        _s(rng, 16, "L"),
+                        _s(rng, 20),
+                        _s(rng, 20),
+                        _s(rng, 20),
+                        _s(rng, 2),
+                        _zip(rng),
+                        _phone(rng),
+                        base,
+                        "GC" if rng.random() > 0.1 else "BC",
+                        Decimal("50000.00"),
+                        Decimal(rng.randrange(0, 5000)) / 10000,
+                        Decimal("-10.00"),
+                        Decimal("10.00"),
+                        1,
+                        0,
+                        _s(rng, 100),
+                    )
 
     elif table == "stock":
         for w in range(1, W + 1):
@@ -119,10 +180,16 @@ def rows(table, rng):
         for w in range(1, W + 1):
             for d in range(1, D + 1):
                 for o in range(1, ORDERS_PER_DISTRICT + 1):
-                    yield (o, d, w, rng.randint(1, C),
-                           base + timedelta(seconds=o),
-                           rng.randint(1, 10) if o < ORDERS_PER_DISTRICT * 0.7 else None,
-                           rng.randint(5, 15), 1)
+                    yield (
+                        o,
+                        d,
+                        w,
+                        rng.randint(1, C),
+                        base + timedelta(seconds=o),
+                        rng.randint(1, 10) if o < ORDERS_PER_DISTRICT * 0.7 else None,
+                        rng.randint(5, 15),
+                        1,
+                    )
 
     elif table == "new_order":
         # The newest ~30% of each district's orders are undelivered, which is
@@ -139,34 +206,57 @@ def rows(table, rng):
             for d in range(1, D + 1):
                 for o in range(1, ORDERS_PER_DISTRICT + 1):
                     for n in range(1, rng.randint(5, 15) + 1):
-                        yield (o, d, w, n, rng.randint(1, I), w,
-                               base + timedelta(seconds=o), 5,
-                               Decimal(rng.randrange(0, 999999)) / 100,
-                               _s(rng, 24))
+                        yield (
+                            o,
+                            d,
+                            w,
+                            n,
+                            rng.randint(1, I),
+                            w,
+                            base + timedelta(seconds=o),
+                            5,
+                            Decimal(rng.randrange(0, 999999)) / 100,
+                            _s(rng, 24),
+                        )
 
     elif table == "history":
         base = datetime(2025, 1, 1)
         for w in range(1, W + 1):
             for d in range(1, D + 1):
                 for _ in range(HISTORY_PER_DISTRICT):
-                    yield (rng.randint(1, C), d, w, d, w, base,
-                           Decimal(rng.randrange(100, 500000)) / 100, _s(rng, 24))
+                    yield (
+                        rng.randint(1, C),
+                        d,
+                        w,
+                        d,
+                        w,
+                        base,
+                        Decimal(rng.randrange(100, 500000)) / 100,
+                        _s(rng, 24),
+                    )
 
 
 # ----------------------------------------------------------------- per vendor
+
 
 def quoted(table, dbms):
     """ORDER is reserved in every one of these dialects."""
     if table != "order":
         return table
-    return {"postgresql": '"order"', "mysql": "`order`",
-            "sqlserver": "[order]", "oracle": '"ORDER"'}[dbms]
+    return {
+        "postgresql": '"order"',
+        "mysql": "`order`",
+        "sqlserver": "[order]",
+        "oracle": '"ORDER"',
+    }[dbms]
 
 
 def load_postgresql(table, gen, batch=50_000):
     import psycopg2
+
     dsn = os.environ.get(
-        "PG_DSN", "host=127.0.0.1 port=55432 dbname=tpcc user=benchmark password=bench")
+        "PG_DSN", "host=127.0.0.1 port=55432 dbname=tpcc user=benchmark password=bench"
+    )
     cn = psycopg2.connect(dsn)
     n, t0 = 0, time.perf_counter()
     with cn.cursor() as cur:
@@ -177,13 +267,18 @@ def load_postgresql(table, gen, batch=50_000):
             n += 1
             if k >= batch:
                 buf.seek(0)
-                cur.copy_expert("COPY %s FROM STDIN WITH (FORMAT text)"
-                                % quoted(table, "postgresql"), buf)
+                cur.copy_expert(
+                    "COPY %s FROM STDIN WITH (FORMAT text)"
+                    % quoted(table, "postgresql"),
+                    buf,
+                )
                 buf, k = io.StringIO(), 0
         if k:
             buf.seek(0)
-            cur.copy_expert("COPY %s FROM STDIN WITH (FORMAT text)"
-                            % quoted(table, "postgresql"), buf)
+            cur.copy_expert(
+                "COPY %s FROM STDIN WITH (FORMAT text)" % quoted(table, "postgresql"),
+                buf,
+            )
     cn.commit()
     cn.close()
     return n, time.perf_counter() - t0
@@ -193,14 +288,17 @@ def load_dbapi(table, gen, dbms, batch=20_000):
     """MySQL, SQL Server and Oracle: batched executemany."""
     if dbms == "oracle":
         import oracledb
-        cn = oracledb.connect(user=os.environ.get("ORA_TPCC_USER", "tpcc"),
-                              password=os.environ.get("ORA_TPCC_PASS", "bench"),
-                              dsn=os.environ.get("ORA_DSN",
-                                                 "127.0.0.1:41521/FREEPDB1"))
+
+        cn = oracledb.connect(
+            user=os.environ.get("ORA_TPCC_USER", "tpcc"),
+            password=os.environ.get("ORA_TPCC_PASS", "bench"),
+            dsn=os.environ.get("ORA_DSN", "127.0.0.1:41521/FREEPDB1"),
+        )
         # Oracle binds by position with :1, :2, ...
         ph = ",".join(":%d" % i for i in range(1, NCOLS[table] + 1))
     elif dbms == "mysql":
-        import MySQLdb        # mysqlclient, not PyMySQL (C31)
+        import MySQLdb  # mysqlclient, not PyMySQL (C31)
+
         # Read from the environment, like the PostgreSQL branch above. These
         # were fixed at port 33306 and root/bench, which are the container's
         # values and belong to no engine on a host where the servers are
@@ -213,24 +311,33 @@ def load_dbapi(table, gen, dbms, batch=20_000):
             port=int(os.environ.get("MYSQL_PORT", "33306")),
             user=os.environ.get("MYSQL_USER", "root"),
             password=os.environ.get("MYSQL_PASSWORD", "bench"),
-            database=os.environ.get("MYSQL_DB", "tpcc"), autocommit=False)
+            database=os.environ.get("MYSQL_DB", "tpcc"),
+            autocommit=False,
+        )
         ph = ",".join(["%s"] * NCOLS[table])
     else:
         import pyodbc
-        drv = max((d for d in pyodbc.drivers() if "SQL Server" in d),
-                  key=lambda s: int("".join(c for c in s if c.isdigit()) or 0))
+
+        drv = max(
+            (d for d in pyodbc.drivers() if "SQL Server" in d),
+            key=lambda s: int("".join(c for c in s if c.isdigit()) or 0),
+        )
         cn = pyodbc.connect(
             "DRIVER={%s};SERVER=%s,%s;DATABASE=%s;UID=%s;PWD=%s;"
             "TrustServerCertificate=yes"
-            % (drv,
-               os.environ.get("SQLSERVER_HOST", "127.0.0.1"),
-               os.environ.get("SQLSERVER_PORT", "1433"),
-               os.environ.get("SQLSERVER_DB", "tpcc"),
-               os.environ.get("SQLSERVER_USER", "sa"),
-               os.environ.get("SQLSERVER_SA_PASSWORD",
-                              os.environ.get("SQLSERVER_PASSWORD",
-                                             "YourStrong!Passw0rd"))),
-            autocommit=False)
+            % (
+                drv,
+                os.environ.get("SQLSERVER_HOST", "127.0.0.1"),
+                os.environ.get("SQLSERVER_PORT", "1433"),
+                os.environ.get("SQLSERVER_DB", "tpcc"),
+                os.environ.get("SQLSERVER_USER", "sa"),
+                os.environ.get(
+                    "SQLSERVER_SA_PASSWORD",
+                    os.environ.get("SQLSERVER_PASSWORD", "YourStrong!Passw0rd"),
+                ),
+            ),
+            autocommit=False,
+        )
         ph = ",".join(["?"] * NCOLS[table])
 
     cur = cn.cursor()
@@ -256,13 +363,14 @@ def load_dbapi(table, gen, dbms, batch=20_000):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--dbms", required=True,
-                    choices=["postgresql", "mysql", "sqlserver", "oracle"])
+    ap.add_argument(
+        "--dbms", required=True, choices=["postgresql", "mysql", "sqlserver", "oracle"]
+    )
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--tables", default="")
     args = ap.parse_args()
 
-    want = ([t.strip() for t in args.tables.split(",")] if args.tables else ORDER)
+    want = [t.strip() for t in args.tables.split(",")] if args.tables else ORDER
     print("TPC-C load: %s, seed %d" % (args.dbms, args.seed))
     print(cfg.summary())
     print()

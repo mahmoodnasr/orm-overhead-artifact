@@ -2,6 +2,7 @@
 TPC-C Transaction 2: Payment
 Processes a customer payment
 """
+
 from django.db import transaction
 from django.db.models import F
 from decimal import Decimal
@@ -11,7 +12,7 @@ import random
 from tpcc_config import pick_keys
 
 
-def run_transaction_orm(using='default'):
+def run_transaction_orm(using="default"):
     """
     Execute TPC-C T2 (Payment) via Django ORM
     """
@@ -33,23 +34,27 @@ def run_transaction_orm(using='default'):
             # Get warehouse and district
             warehouse = Warehouse.objects.using(using).get(w_id=w_id)
             district = District.objects.using(using).get(d_w_id=w_id, d_id=d_id)
-            customer = Customer.objects.using(using).get(c_w_id=w_id, c_d_id=d_id, c_id=c_id)
+            customer = Customer.objects.using(using).get(
+                c_w_id=w_id, c_d_id=d_id, c_id=c_id
+            )
 
             # Update warehouse
             Warehouse.objects.using(using).filter(w_id=w_id).update(
-                w_ytd=F('w_ytd') + payment
+                w_ytd=F("w_ytd") + payment
             )
 
             # Update district
             District.objects.using(using).filter(d_w_id=w_id, d_id=d_id).update(
-                d_ytd=F('d_ytd') + payment
+                d_ytd=F("d_ytd") + payment
             )
 
             # Update customer
-            Customer.objects.using(using).filter(c_w_id=w_id, c_d_id=d_id, c_id=c_id).update(
-                c_balance=F('c_balance') - payment,
-                c_ytd_payment=F('c_ytd_payment') + payment,
-                c_payment_cnt=F('c_payment_cnt') + 1
+            Customer.objects.using(using).filter(
+                c_w_id=w_id, c_d_id=d_id, c_id=c_id
+            ).update(
+                c_balance=F("c_balance") - payment,
+                c_ytd_payment=F("c_ytd_payment") + payment,
+                c_payment_cnt=F("c_payment_cnt") + 1,
             )
 
             # Create history entry
@@ -61,7 +66,9 @@ def run_transaction_orm(using='default'):
                 h_w_id=w_id,
                 h_date=datetime.now(),
                 h_amount=payment,
-                h_data=f"Customer {c_id} paid {payment}"[:24]  # Truncate to 24 chars (TPC-C spec)
+                h_data=f"Customer {c_id} paid {payment}"[
+                    :24
+                ],  # Truncate to 24 chars (TPC-C spec)
             )
 
             # Re-read the customer through the whole key.
@@ -80,12 +87,12 @@ def run_transaction_orm(using='default'):
             )
 
             return {
-                'w_id': w_id,
-                'd_id': d_id,
-                'c_id': c_id,
-                'payment': float(payment),
-                'c_balance': float(customer.c_balance),
-                'c_ytd_payment': float(customer.c_ytd_payment)
+                "w_id": w_id,
+                "d_id": d_id,
+                "c_id": c_id,
+                "payment": float(payment),
+                "c_balance": float(customer.c_balance),
+                "c_ytd_payment": float(customer.c_ytd_payment),
             }
     except Exception:
         # Was: `return {'error': str(e)}`, which reported a failed transaction as
@@ -114,11 +121,11 @@ def run_transaction_sql(connection):
             # Execute updates separately (MySQL doesn't support multi-statement in single execute)
             cursor.execute(
                 "UPDATE warehouse SET w_ytd = w_ytd + %s WHERE w_id = %s",
-                [payment, w_id]
+                [payment, w_id],
             )
             cursor.execute(
                 "UPDATE district SET d_ytd = d_ytd + %s WHERE d_w_id = %s AND d_id = %s",
-                [payment, w_id, d_id]
+                [payment, w_id, d_id],
             )
             cursor.execute(
                 """UPDATE customer SET
@@ -126,54 +133,54 @@ def run_transaction_sql(connection):
                     c_ytd_payment = c_ytd_payment + %s,
                     c_payment_cnt = c_payment_cnt + 1
                 WHERE c_w_id = %s AND c_d_id = %s AND c_id = %s""",
-                [payment, payment, w_id, d_id, c_id]
+                [payment, payment, w_id, d_id, c_id],
             )
             # Prepare h_data (truncate to 24 chars max)
             h_data = f"C{c_id}P{payment:.2f}"[:24]
 
             # Use vendor-specific timestamp function
-            if connection.vendor == 'oracle':
+            if connection.vendor == "oracle":
                 # Oracle: Use SYSDATE directly in SQL, Django converts %s to :1, :2, etc.
                 cursor.execute(
                     """INSERT INTO history (h_c_id, h_c_d_id, h_c_w_id, h_d_id, h_w_id, h_date, h_amount, h_data)
                     VALUES (%s, %s, %s, %s, %s, SYSDATE, %s, %s)""",
-                    [c_id, d_id, w_id, d_id, w_id, payment, h_data]
+                    [c_id, d_id, w_id, d_id, w_id, payment, h_data],
                 )
             else:
                 # PostgreSQL, MySQL: Use NOW() in SQL
                 cursor.execute(
                     f"""INSERT INTO history (h_c_id, h_c_d_id, h_c_w_id, h_d_id, h_w_id, h_date, h_amount, h_data)
                     VALUES (%s, %s, %s, %s, %s, {now_func}, %s, %s)""",
-                    [c_id, d_id, w_id, d_id, w_id, payment, h_data]
+                    [c_id, d_id, w_id, d_id, w_id, payment, h_data],
                 )
 
             # Get customer balance
             cursor.execute(
                 "SELECT c_balance, c_ytd_payment FROM customer WHERE c_w_id = %s AND c_d_id = %s AND c_id = %s",
-                [w_id, d_id, c_id]
+                [w_id, d_id, c_id],
             )
 
             row = cursor.fetchone()
             if row:
                 return {
-                    'w_id': w_id,
-                    'd_id': d_id,
-                    'c_id': c_id,
-                    'payment': payment,
-                    'c_balance': float(row[0]),
-                    'c_ytd_payment': float(row[1])
+                    "w_id": w_id,
+                    "d_id": d_id,
+                    "c_id": c_id,
+                    "payment": payment,
+                    "c_balance": float(row[0]),
+                    "c_ytd_payment": float(row[1]),
                 }
-            return {'error': 'Customer not found'}
+            return {"error": "Customer not found"}
 
 
 def get_transaction_info():
     """Return metadata about this transaction"""
     return {
-        'number': 2,
-        'name': 'Payment',
-        'complexity': 'Simple',
-        'description': 'Processes a customer payment',
-        'tables': ['warehouse', 'district', 'customer', 'history'],
-        'writes': 4,
-        'reads': 3,
+        "number": 2,
+        "name": "Payment",
+        "complexity": "Simple",
+        "description": "Processes a customer payment",
+        "tables": ["warehouse", "district", "customer", "history"],
+        "writes": 4,
+        "reads": 3,
     }

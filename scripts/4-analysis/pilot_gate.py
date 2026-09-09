@@ -26,6 +26,7 @@ It also prints the estimand itself - the median within-block paired log ratio,
 per framework, per cell - because a gate that reports only variance tells you
 the run was quiet without telling you whether it measured anything.
 """
+
 import argparse
 import csv
 import math
@@ -36,13 +37,13 @@ import sys
 from collections import defaultdict
 
 # --- ANALYSIS_PLAN.md section 8. Quoted, not chosen. --------------------------
-CV_MEDIAN_MAX = 5.0        # 8.1
-CV_P90_MAX = 15.0          # 8.1
-CV_TAIL_FRACTION_MAX = 5.0 # 8.1, share of paths above CV_TAIL_CV
-CV_TAIL_CV = 25.0          # 8.1
-CEILING_MARGIN_MIN = 5.0   # 8.3
+CV_MEDIAN_MAX = 5.0  # 8.1
+CV_P90_MAX = 15.0  # 8.1
+CV_TAIL_FRACTION_MAX = 5.0  # 8.1, share of paths above CV_TAIL_CV
+CV_TAIL_CV = 25.0  # 8.1
+CEILING_MARGIN_MIN = 5.0  # 8.3
 DEFAULT_CEILING_S = 900.0  # 8.3
-N_BLOCKS = 8               # section 2
+N_BLOCKS = 8  # section 2
 N_PATHS = 4
 
 # Section 2.1: Q18's set 0 falls outside its own substitution range, so its
@@ -116,9 +117,13 @@ def line(status, label, detail=""):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("csv_path")
-    ap.add_argument("--ceiling", type=float, default=DEFAULT_CEILING_S,
-                    help="campaign ceiling in seconds, used where the server "
-                         "reports a client-side bound it cannot read back")
+    ap.add_argument(
+        "--ceiling",
+        type=float,
+        default=DEFAULT_CEILING_S,
+        help="campaign ceiling in seconds, used where the server "
+        "reports a client-side bound it cannot read back",
+    )
     args = ap.parse_args()
 
     if not os.path.exists(args.csv_path):
@@ -137,8 +142,10 @@ def main():
     print(f"PILOT GATE   {args.csv_path}")
     print("=" * 78)
     meta = lambda k: ", ".join(sorted({r.get(k, "") for r in rows}))
-    print(f"  campaign   {meta('campaign_id')}   host {meta('host')}   "
-          f"scale factor {meta('scale_factor')}")
+    print(
+        f"  campaign   {meta('campaign_id')}   host {meta('host')}   "
+        f"scale factor {meta('scale_factor')}"
+    )
     print(f"  systems    {meta('dbms')} / {meta('schema_config')}")
     print(f"  queries    {meta('query_id')}")
     print(f"  rows       {len(measured)} measured, {len(warmup)} warmup")
@@ -147,7 +154,9 @@ def main():
     failures = []
 
     # --- integrity: the design has to be in the data, not just in the script --
-    print("DESIGN INTEGRITY  (plan section 5: verified in the raw files, not just intended)")
+    print(
+        "DESIGN INTEGRITY  (plan section 5: verified in the raw files, not just intended)"
+    )
     # Keyed off every row, not only the measured ones. A cell whose four paths
     # all exceeded the ceiling in the cell warmup produces no measured row at
     # all, so building this from `measured` made a fully censored cell invisible
@@ -168,23 +177,33 @@ def main():
         # reported PostgreSQL non-indexed Q13 - django/orm over the ceiling,
         # the other three paths complete - as a broken design, which would have
         # excluded a whole campaign over a correctly recorded result.
-        censored_paths = {f"{r['framework']}/{r['path']}" for r in allrs
-                          if r.get("is_warmup") == "1"
-                          and r["status"] in DECLARED_ABSENT}
+        censored_paths = {
+            f"{r['framework']}/{r['path']}"
+            for r in allrs
+            if r.get("is_warmup") == "1" and r["status"] in DECLARED_ABSENT
+        }
         want_paths = N_PATHS - len(censored_paths)
         if want_paths == 0:
             censored_cells.append(key[0])
             if rs:
-                bad_shape.append(f"{key[0]}: fully censored but has "
-                                 f"{len(rs)} measured rows")
+                bad_shape.append(
+                    f"{key[0]}: fully censored but has {len(rs)} measured rows"
+                )
             continue
         blocks = defaultdict(list)
         for r in rs:
             blocks[int(r["block"])].append(r)
-        if len(blocks) != N_BLOCKS or any(len(v) != want_paths for v in blocks.values()):
-            bad_shape.append(f"{key[0]}: {len(blocks)} blocks"
-                             + (f" x {want_paths} uncensored paths expected"
-                                if censored_paths else ""))
+        if len(blocks) != N_BLOCKS or any(
+            len(v) != want_paths for v in blocks.values()
+        ):
+            bad_shape.append(
+                f"{key[0]}: {len(blocks)} blocks"
+                + (
+                    f" x {want_paths} uncensored paths expected"
+                    if censored_paths
+                    else ""
+                )
+            )
         if censored_paths:
             censored_cells.append(f"{key[0]} ({', '.join(sorted(censored_paths))})")
         # Every path once in every position, across the eight blocks.
@@ -198,23 +217,31 @@ def main():
         psets = {int(r["block"]): r["param_set_id"] for r in rs}
         if len(set(psets.values())) != N_BLOCKS:
             bad_paramsets.append(f"{key[0]}: {len(set(psets.values()))} distinct sets")
-        seqs = sorted(int(r["sequence_id"]) for r in
-                      {int(r["block"]): r for r in rs}.values())
+        seqs = sorted(
+            int(r["sequence_id"]) for r in {int(r["block"]): r for r in rs}.values()
+        )
         if sorted(seqs) != [0, 0, 1, 1, 2, 2, 3, 3]:
             bad_sequences.append(f"{key[0]}: {seqs}")
 
     for label, bad in (
-            (f"every cell has {N_BLOCKS} blocks x {N_PATHS} paths, "
-             f"less any censored in warmup", bad_shape),
-            ("every path appears in every sequence position", bad_positions),
-            (f"{N_BLOCKS} distinct parameter sets per cell", bad_paramsets),
-            ("each Williams sequence used exactly twice", bad_sequences)):
+        (
+            f"every cell has {N_BLOCKS} blocks x {N_PATHS} paths, "
+            f"less any censored in warmup",
+            bad_shape,
+        ),
+        ("every path appears in every sequence position", bad_positions),
+        (f"{N_BLOCKS} distinct parameter sets per cell", bad_paramsets),
+        ("each Williams sequence used exactly twice", bad_sequences),
+    ):
         line(PASS if not bad else FAIL, label, "" if not bad else "; ".join(bad[:3]))
         if bad:
             failures.append(label)
     if censored_cells:
-        line(INFO, f"{len(censored_cells)} cell(s) censored in warmup",
-             "; ".join(censored_cells))
+        line(
+            INFO,
+            f"{len(censored_cells)} cell(s) censored in warmup",
+            "; ".join(censored_cells),
+        )
     print()
 
     # --- 8.2 completeness ----------------------------------------------------
@@ -225,26 +252,36 @@ def main():
     unplanned = [r for r in measured if r["status"] not in ("ok",) + DECLARED_ABSENT]
     censored = [r for r in measured if r["status"] in DECLARED_ABSENT]
     line(INFO, "statuses", ", ".join(f"{k}={v}" for k, v in sorted(statuses.items())))
-    line(PASS if not unplanned else FAIL,
-         "zero executions failed for an undeclared reason",
-         "" if not unplanned else
-         f"{len(unplanned)}: " + "; ".join(sorted({r['note'][:60] for r in unplanned})[:2]))
+    line(
+        PASS if not unplanned else FAIL,
+        "zero executions failed for an undeclared reason",
+        ""
+        if not unplanned
+        else f"{len(unplanned)}: "
+        + "; ".join(sorted({r["note"][:60] for r in unplanned})[:2]),
+    )
     if unplanned:
         failures.append("8.2 completeness")
     if censored:
-        line(INFO, f"{len(censored)} censored execution(s)",
-             "handled as one-sided bounds under section 6")
+        line(
+            INFO,
+            f"{len(censored)} censored execution(s)",
+            "handled as one-sided bounds under section 6",
+        )
     print()
 
     # --- 8.1 noise -----------------------------------------------------------
-    print(f"SECTION 8.1  NOISE   (median CV <= {CV_MEDIAN_MAX}%, "
-          f"p90 <= {CV_P90_MAX}%, share > {CV_TAIL_CV}% <= {CV_TAIL_FRACTION_MAX}%)")
+    print(
+        f"SECTION 8.1  NOISE   (median CV <= {CV_MEDIAN_MAX}%, "
+        f"p90 <= {CV_P90_MAX}%, share > {CV_TAIL_CV}% <= {CV_TAIL_FRACTION_MAX}%)"
+    )
     paths = defaultdict(list)
     for r in measured:
         if r["status"] != "ok" or r["query_id"] in CV_EXCLUDED_QUERIES:
             continue
-        paths[(r["query_id"], r["dbms"], r["schema_config"],
-               r["framework"], r["path"])].append(float(r["elapsed_s"]))
+        paths[
+            (r["query_id"], r["dbms"], r["schema_config"], r["framework"], r["path"])
+        ].append(float(r["elapsed_s"]))
 
     cvs = []
     per_path_cv = {}
@@ -262,29 +299,46 @@ def main():
         med = statistics.median(cvs_sorted)
         p90 = percentile(cvs_sorted, 0.90)
         tail = sum(1 for c in cvs_sorted if c > CV_TAIL_CV) / len(cvs_sorted) * 100
-        line(PASS if med <= CV_MEDIAN_MAX else FAIL,
-             f"median CV {med:5.2f}%", f"bound {CV_MEDIAN_MAX}%")
-        line(PASS if p90 <= CV_P90_MAX else FAIL,
-             f"p90 CV    {p90:5.2f}%", f"bound {CV_P90_MAX}%")
-        line(PASS if tail <= CV_TAIL_FRACTION_MAX else FAIL,
-             f"share above {CV_TAIL_CV}%: {tail:4.1f}%", f"bound {CV_TAIL_FRACTION_MAX}%")
+        line(
+            PASS if med <= CV_MEDIAN_MAX else FAIL,
+            f"median CV {med:5.2f}%",
+            f"bound {CV_MEDIAN_MAX}%",
+        )
+        line(
+            PASS if p90 <= CV_P90_MAX else FAIL,
+            f"p90 CV    {p90:5.2f}%",
+            f"bound {CV_P90_MAX}%",
+        )
+        line(
+            PASS if tail <= CV_TAIL_FRACTION_MAX else FAIL,
+            f"share above {CV_TAIL_CV}%: {tail:4.1f}%",
+            f"bound {CV_TAIL_FRACTION_MAX}%",
+        )
         if med > CV_MEDIAN_MAX or p90 > CV_P90_MAX or tail > CV_TAIL_FRACTION_MAX:
             failures.append("8.1 noise")
-        line(INFO, f"n = {len(cvs_sorted)} paths",
-             f"min {cvs_sorted[0]:.2f}%  max {cvs_sorted[-1]:.2f}%")
+        line(
+            INFO,
+            f"n = {len(cvs_sorted)} paths",
+            f"min {cvs_sorted[0]:.2f}%  max {cvs_sorted[-1]:.2f}%",
+        )
         worst = sorted(per_path_cv.items(), key=lambda kv: -kv[1])[:3]
         for (q, _d, _s, fw, p), c in worst:
             line(INFO, f"  noisiest: {q} {fw}/{p}", f"CV {c:.2f}%")
     print()
 
     # --- 8.3 ceiling ---------------------------------------------------------
-    print(f"SECTION 8.3  CEILING   (margin >= {CEILING_MARGIN_MIN}x on every "
-          "non-censored path)")
+    print(
+        f"SECTION 8.3  CEILING   (margin >= {CEILING_MARGIN_MIN}x on every "
+        "non-censored path)"
+    )
     reported = {parse_ceiling(r.get("ceiling_s")) for r in measured}
     reported.discard(None)
     ceiling = min(reported) if reported else args.ceiling
-    source = ("read back off the server" if reported
-              else f"campaign default, server reports a client-side bound")
+    source = (
+        "read back off the server"
+        if reported
+        else f"campaign default, server reports a client-side bound"
+    )
     line(INFO, f"ceiling {ceiling:.0f} s", source)
 
     completed = [float(r["elapsed_s"]) for r in measured if r["status"] == "ok"]
@@ -292,13 +346,21 @@ def main():
         observed_max = max(completed)
         margin = ceiling / observed_max if observed_max else float("inf")
         ok = margin >= CEILING_MARGIN_MIN
-        line(PASS if ok else FAIL,
-             f"slowest completed execution {observed_max:.3f} s",
-             f"margin {margin:.0f}x, bound {CEILING_MARGIN_MIN}x")
+        line(
+            PASS if ok else FAIL,
+            f"slowest completed execution {observed_max:.3f} s",
+            f"margin {margin:.0f}x, bound {CEILING_MARGIN_MIN}x",
+        )
         if not ok:
             failures.append("8.3 ceiling")
-        slowest = max(((r["query_id"], r["framework"], r["path"], float(r["elapsed_s"]))
-                       for r in measured if r["status"] == "ok"), key=lambda t: t[3])
+        slowest = max(
+            (
+                (r["query_id"], r["framework"], r["path"], float(r["elapsed_s"]))
+                for r in measured
+                if r["status"] == "ok"
+            ),
+            key=lambda t: t[3],
+        )
         line(INFO, f"  slowest is {slowest[0]} {slowest[1]}/{slowest[2]}")
     print()
 
@@ -309,20 +371,28 @@ def main():
         if r["status"] != "ok":
             continue
         per_cell[(r["query_id"], r["dbms"], r["schema_config"])][
-            (r["framework"], int(r["block"]))][r["path"]] = float(r["elapsed_s"])
+            (r["framework"], int(r["block"]))
+        ][r["path"]] = float(r["elapsed_s"])
 
     print(f"    {'cell':22s} {'Django':>18s} {'SQLAlchemy':>18s}")
     for cell, blocks in sorted(per_cell.items()):
         out = {}
         for fw in ("django", "sqlalchemy"):
-            ratios = [math.log(v["orm"] / v["sql"])
-                      for (f, _b), v in blocks.items()
-                      if f == fw and "orm" in v and "sql" in v and v["sql"] > 0]
+            ratios = [
+                math.log(v["orm"] / v["sql"])
+                for (f, _b), v in blocks.items()
+                if f == fw and "orm" in v and "sql" in v and v["sql"] > 0
+            ]
             out[fw] = statistics.median(ratios) if ratios else None
-        fmt = lambda t: ("      n/a" if t is None
-                         else f"{(math.exp(t) - 1) * 100:+7.1f}%  ({t:+.3f})")
-        print(f"    {cell[0] + ' ' + cell[1]:22s} {fmt(out['django']):>18s} "
-              f"{fmt(out['sqlalchemy']):>18s}")
+        fmt = lambda t: (
+            "      n/a"
+            if t is None
+            else f"{(math.exp(t) - 1) * 100:+7.1f}%  ({t:+.3f})"
+        )
+        print(
+            f"    {cell[0] + ' ' + cell[1]:22s} {fmt(out['django']):>18s} "
+            f"{fmt(out['sqlalchemy']):>18s}"
+        )
     print()
     print("    Reported as percentage overhead and as the log ratio itself. The")
     print("    median is taken over the eight within-block ratios, never over a")
@@ -335,9 +405,12 @@ def main():
         print("SECTION 8.4  MICROBENCHMARK REPLICATION   (input, not a gate)")
         typical = statistics.median(cvs_sorted)
         n_needed = math.ceil((1.96 * typical / 10.0) ** 2)
-        line(INFO, f"typical within-path CV {typical:.2f}%",
-             f"=> n >= {max(n_needed, 100)} per block for a 10% relative "
-             f"half-width (floor 100, cap 2000)")
+        line(
+            INFO,
+            f"typical within-path CV {typical:.2f}%",
+            f"=> n >= {max(n_needed, 100)} per block for a 10% relative "
+            f"half-width (floor 100, cap 2000)",
+        )
         print()
 
     print("=" * 78)

@@ -18,6 +18,7 @@ sorts, so it still takes time and still looks like a successful measurement,
 which is what makes the error easy to miss. Set TPCH_SF to the scale factor in
 use.
 """
+
 import re
 
 from tpch_params import SCALE_FACTOR, Q11_FRACTION  # noqa: F401
@@ -54,9 +55,13 @@ def _placeholders(qnum, p):
         # The specification writes the predicate as DISCOUNT +/- 0.01. Rounding
         # to two places keeps 0.06 - 0.01 from rendering as 0.049999999999999996
         # and changing the emitted SQL for a parameter that did not change.
-        m.update(P_DATE=d, P_DATE_END=p["date_end"],
-                 P_DISC_LO="%.2f" % p["disc_lo"], P_DISC_HI="%.2f" % p["disc_hi"],
-                 P_QUANTITY=p["quantity"])
+        m.update(
+            P_DATE=d,
+            P_DATE_END=p["date_end"],
+            P_DISC_LO="%.2f" % p["disc_lo"],
+            P_DISC_HI="%.2f" % p["disc_hi"],
+            P_QUANTITY=p["quantity"],
+        )
     elif qnum == 7:
         m.update(P_NATION1=p["nation1"], P_NATION2=p["nation2"])
     elif qnum == 8:
@@ -68,8 +73,12 @@ def _placeholders(qnum, p):
     elif qnum == 11:
         m["P_NATION"] = p["nation"]
     elif qnum == 12:
-        m.update(P_MODE1=p["shipmode1"], P_MODE2=p["shipmode2"],
-                 P_DATE=d, P_DATE_END=p["date_end"])
+        m.update(
+            P_MODE1=p["shipmode1"],
+            P_MODE2=p["shipmode2"],
+            P_DATE=d,
+            P_DATE_END=p["date_end"],
+        )
     elif qnum == 13:
         m.update(P_WORD1=p["word1"], P_WORD2=p["word2"])
     elif qnum == 14:
@@ -77,23 +86,30 @@ def _placeholders(qnum, p):
     elif qnum == 15:
         m.update(P_DATE=d, P_DATE_END=p["date_end"])
     elif qnum == 16:
-        m.update(P_BRAND=p["brand"], P_TYPE=p["type"],
-                 P_SIZES=p["sizes_sql"])
+        m.update(P_BRAND=p["brand"], P_TYPE=p["type"], P_SIZES=p["sizes_sql"])
     elif qnum == 17:
         m.update(P_BRAND=p["brand"], P_CONTAINER=p["container"])
     elif qnum == 18:
         m["P_QUANTITY"] = p["quantity"]
     elif qnum == 19:
-        m.update(P_BRAND1=p["brand1"], P_BRAND2=p["brand2"], P_BRAND3=p["brand3"],
-                 P_QTY1=p["quantity1"], P_QTY2=p["quantity2"], P_QTY3=p["quantity3"])
+        m.update(
+            P_BRAND1=p["brand1"],
+            P_BRAND2=p["brand2"],
+            P_BRAND3=p["brand3"],
+            P_QTY1=p["quantity1"],
+            P_QTY2=p["quantity2"],
+            P_QTY3=p["quantity3"],
+        )
     elif qnum == 20:
-        m.update(P_COLOR=p["color"], P_NATION=p["nation"],
-                 P_DATE=d, P_DATE_END=p["date_end"])
+        m.update(
+            P_COLOR=p["color"], P_NATION=p["nation"], P_DATE=d, P_DATE_END=p["date_end"]
+        )
     elif qnum == 21:
         m["P_NATION"] = p["nation"]
     elif qnum == 22:
         m["P_CODES"] = p["codes_sql"]
     return m
+
 
 # ANSI form; {LIMIT_n} placeholders are replaced per dialect.
 _Q = {}
@@ -481,8 +497,9 @@ def sql_for(qnum: int, vendor: str, params=None) -> str:
         substr = "SUBSTRING(c_phone, 1, 2)"
     elif vendor in ("mssql", "microsoft", "sqlserver"):
         for n in (10, 20, 100):
-            sql = sql.replace("{LIMIT_%d}" % n,
-                              "OFFSET 0 ROWS FETCH NEXT %d ROWS ONLY" % n)
+            sql = sql.replace(
+                "{LIMIT_%d}" % n, "OFFSET 0 ROWS FETCH NEXT %d ROWS ONLY" % n
+            )
         sql = sql.replace("DATE '", "'")
         # Was: .replace("EXTRACT(YEAR FROM ", "YEAR((").replace("))", "))").
         # The first replacement opened two parentheses and closed one, so
@@ -497,8 +514,9 @@ def sql_for(qnum: int, vendor: str, params=None) -> str:
     elif vendor == "oracle":
         for n in (10, 20, 100):
             sql = sql.replace("{LIMIT_%d}" % n, "FETCH FIRST %d ROWS ONLY" % n)
-        sql = re.sub(r"DATE '(\d{4})-(\d{2})-(\d{2})'",
-                     r"TO_DATE('\1-\2-\3', 'YYYY-MM-DD')", sql)
+        sql = re.sub(
+            r"DATE '(\d{4})-(\d{2})-(\d{2})'", r"TO_DATE('\1-\2-\3', 'YYYY-MM-DD')", sql
+        )
         # Oracle accepts AS only before a *column* alias. A derived table or a
         # correlation name written `) AS x` raises ORA-03048. The previous
         # version listed the aliases it knew about one by one and silently
@@ -510,6 +528,8 @@ def sql_for(qnum: int, vendor: str, params=None) -> str:
             sql = sql.replace("{LIMIT_%d}" % n, "LIMIT %d" % n)
         substr = "SUBSTRING(c_phone FROM 1 FOR 2)"
 
-    return (sql.replace("{SUBSTR2}", substr)
-               .replace("{Q11_FRACTION}", "%.12f" % Q11_FRACTION)
-               .strip())
+    return (
+        sql.replace("{SUBSTR2}", substr)
+        .replace("{Q11_FRACTION}", "%.12f" % Q11_FRACTION)
+        .strip()
+    )

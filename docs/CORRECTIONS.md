@@ -1,5 +1,10 @@
 # Corrections
 
+Historical register retained from v1.0.1. Earlier campaign figures and commands
+below are historical context; the current public workflow is in the root README
+and REPRODUCE.md. This register does not establish equivalence for every
+historical SF1 timing.
+
 What was wrong in the earlier version of this package, how it was found, and what
 changed. Recorded here rather than quietly fixed, because the failures are
 instructive and because anyone holding a figure from the earlier version needs to

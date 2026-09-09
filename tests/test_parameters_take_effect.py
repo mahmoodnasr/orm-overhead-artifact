@@ -38,6 +38,7 @@ Requires a live PostgreSQL at SF1. Run with the campaign environment set:
     PYTHONPATH=. TPCH_SF=1 DJANGO_SETTINGS_MODULE=django_app.settings \
     SA_DSN=... venv/bin/python tests/test_parameters_take_effect.py
 """
+
 import glob
 import os
 import re
@@ -50,6 +51,7 @@ os.environ.setdefault("TPCH_SF", "1")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_app.settings")
 
 import django
+
 django.setup()
 from django.db.backends import utils as dbutils
 from sqlalchemy import create_engine, event
@@ -84,32 +86,52 @@ SETS = (0, 3)
 
 _DJ = []
 _orig = dbutils.CursorWrapper.execute
+
+
 def _hook(self, sql, params=None):
     _DJ.append((str(sql), tuple(str(x) for x in params) if params else ()))
     return _orig(self, sql, params)
+
+
 dbutils.CursorWrapper.execute = _hook
 
 _engine = create_engine(os.environ["SA_DSN"], future=True)
 _SA = []
+
+
 @event.listens_for(_engine, "before_cursor_execute")
 def _sa_hook(conn, cur, statement, parameters, context, executemany):
     _SA.append((str(statement), str(parameters)))
+
+
 _Session = sessionmaker(bind=_engine, future=True)
 
 
 class _FakeCursor:
     """Collects the statement without a database. Django's SQL path only."""
-    def __init__(self, sink): self.sink, self.description = sink, []
+
+    def __init__(self, sink):
+        self.sink, self.description = sink, []
+
     def execute(self, sql, params=None):
         self.sink.append((str(sql), tuple(map(str, params)) if params else ()))
-    def fetchall(self): return []
-    def __enter__(self): return self
-    def __exit__(self, *a): return False
+
+    def fetchall(self):
+        return []
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *a):
+        return False
 
 
 class _FakeConn:
-    def __init__(self, vendor, sink): self.vendor, self.sink = vendor, sink
-    def cursor(self): return _FakeCursor(self.sink)
+    def __init__(self, vendor, sink):
+        self.vendor, self.sink = vendor, sink
+
+    def cursor(self):
+        return _FakeCursor(self.sink)
 
 
 def _perturbations(qnum):
@@ -131,6 +153,7 @@ def _perturbations(qnum):
     a static scan and does not depend on emitted output at all.
     """
     import tpch_paramsets as ps
+
     raw_base = ps.PARAM_SETS[qnum][SETS[0]]
     raw_alt = ps.PARAM_SETS[qnum][SETS[1]]
     base = ps.params_of(qnum, SETS[0])
@@ -174,17 +197,25 @@ def _sqlalchemy(fn, params):
 # share over 1995..1996; neither window is a substitution parameter, so neither
 # appears in a parameter set and neither should be flagged.
 SPEC_CONSTANT_DATES = {
-    7:  {"1995-01-01", "1996-12-31", "1995, 1, 1", "1996, 12, 31"},
+    7: {"1995-01-01", "1996-12-31", "1995, 1, 1", "1996, 12, 31"},
     # Q08's window appears in two equivalent spellings across the modules: the
     # specification's own `BETWEEN '1995-01-01' AND '1996-12-31'`, and the
     # half-open `>= '1995-01-01' AND < '1997-01-01'`. On a DATE column with no
     # time component they select the same rows. Both are allowed; neither is a
     # substitution parameter.
-    8:  {"1995-01-01", "1997-01-01", "1996-12-31",
-         "1995, 1, 1", "1997, 1, 1", "1996, 12, 31"},
+    8: {
+        "1995-01-01",
+        "1997-01-01",
+        "1996-12-31",
+        "1995, 1, 1",
+        "1997, 1, 1",
+        "1996, 12, 31",
+    },
 }
 
-_DATE_LITERAL = re.compile(r"date\((\d{4}, \d{1,2}, \d{1,2})\)|['\"](\d{4}-\d{2}-\d{2})['\"]")
+_DATE_LITERAL = re.compile(
+    r"date\((\d{4}, \d{1,2}, \d{1,2})\)|['\"](\d{4}-\d{2}-\d{2})['\"]"
+)
 
 
 def test_no_leftover_substitution_literals():
@@ -202,10 +233,17 @@ def test_no_leftover_substitution_literals():
     filter expression did not look.
     """
     offenders = []
-    for path in sorted(glob.glob(os.path.join(
-            os.path.dirname(HERE_ROOT), "orm-benchmark-reproducibility",
-            "django_app/queries/q[0-9][0-9]*.py"))) or sorted(glob.glob(
-            os.path.join(HERE_ROOT, "django_app/queries/q[0-9][0-9]*.py"))):
+    for path in sorted(
+        glob.glob(
+            os.path.join(
+                os.path.dirname(HERE_ROOT),
+                "orm-benchmark-reproducibility",
+                "django_app/queries/q[0-9][0-9]*.py",
+            )
+        )
+    ) or sorted(
+        glob.glob(os.path.join(HERE_ROOT, "django_app/queries/q[0-9][0-9]*.py"))
+    ):
         base = os.path.basename(path)
         qnum = int(base[1:3])
         allowed = SPEC_CONSTANT_DATES.get(qnum, set())
@@ -223,8 +261,10 @@ def test_no_leftover_substitution_literals():
         for b, ln, v, src in offenders:
             print(f"    {b}:{ln}  {v}   {src}")
         return 1
-    print("ok    no query module carries a date literal outside the "
-          "specification's own fixed windows")
+    print(
+        "ok    no query module carries a date literal outside the "
+        "specification's own fixed windows"
+    )
     return 0
 
 
@@ -245,15 +285,20 @@ def main():
             except ModuleNotFoundError:
                 continue
             for vendor in ("postgresql", "mysql", "oracle", "microsoft"):
-                targets.append((name, f"django/sql/{vendor}",
-                                lambda pm, m=mod, v=vendor: _django_sql(m, v, pm)))
-            targets.append((name, "django/orm",
-                            lambda pm, m=mod: _django_orm(m, pm)))
+                targets.append(
+                    (
+                        name,
+                        f"django/sql/{vendor}",
+                        lambda pm, m=mod, v=vendor: _django_sql(m, v, pm),
+                    )
+                )
+            targets.append((name, "django/orm", lambda pm, m=mod: _django_orm(m, pm)))
         sa = importlib.import_module(f"sqlalchemy_app.queries.q{q:02d}")
-        for label, fn in (("sqlalchemy/sql", sa.run_query_sql),
-                          ("sqlalchemy/orm", sa.run_query_orm)):
-            targets.append((f"q{q:02d}", label,
-                            lambda pm, f=fn: _sqlalchemy(f, pm)))
+        for label, fn in (
+            ("sqlalchemy/sql", sa.run_query_sql),
+            ("sqlalchemy/orm", sa.run_query_orm),
+        ):
+            targets.append((f"q{q:02d}", label, lambda pm, f=fn: _sqlalchemy(f, pm)))
 
         for name, path, run in targets:
             try:
@@ -280,14 +325,18 @@ def main():
         print(f"  skip  {name:34s} {path:26s} {why}")
     if unvaried_report:
         print()
-        print("  keys that happen to coincide between the two source sets, so "
-              "they could not be varied:")
+        print(
+            "  keys that happen to coincide between the two source sets, so "
+            "they could not be varied:"
+        )
         for q, keys in unvaried_report:
             print(f"    Q{q:02d}: {', '.join(keys)}")
     print()
     if inert:
-        print(f"FAIL: {len(inert)} (path, parameter) pair(s) where changing the "
-              f"parameter changed nothing - it is being ignored:")
+        print(
+            f"FAIL: {len(inert)} (path, parameter) pair(s) where changing the "
+            f"parameter changed nothing - it is being ignored:"
+        )
         for name, path, key in inert:
             print(f"    {name:34s} {path:26s} {key}")
         return 1

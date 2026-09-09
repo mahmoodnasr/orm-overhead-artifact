@@ -23,6 +23,7 @@ to get wrong.
 SF10 is 59,986,052 lineitem rows and about 2.5 GB as DuckDB stores it. Expect a
 minute or two.
 """
+
 import argparse
 import os
 import sys
@@ -30,7 +31,9 @@ import time
 
 import duckdb
 
-REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+REPO = os.path.abspath(
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
+)
 DEFAULT = os.path.join(REPO, "tpch10.duckdb")
 
 EXPECTED = {  # per scale factor, the row count that says the generation worked
@@ -57,8 +60,9 @@ def main():
     # defect so far had to be found at full size.
     ap.add_argument("--sf", type=float, default=10, help="scale factor (default 10)")
     ap.add_argument("--out", default=DEFAULT)
-    ap.add_argument("--force", action="store_true",
-                    help="regenerate even if the file exists")
+    ap.add_argument(
+        "--force", action="store_true", help="regenerate even if the file exists"
+    )
     args = ap.parse_args()
 
     if os.path.exists(args.out) and not args.force:
@@ -81,11 +85,15 @@ def main():
     con.close()
 
     want = EXPECTED.get(args.sf)
-    print("  done in %.0fs, %s, lineitem = %s rows"
-          % (time.perf_counter() - t0, human(os.path.getsize(args.out)), format(n, ",")))
+    print(
+        "  done in %.0fs, %s, lineitem = %s rows"
+        % (time.perf_counter() - t0, human(os.path.getsize(args.out)), format(n, ","))
+    )
     if want and n != want:
-        print("FAIL: expected %s lineitem rows at SF%g" % (format(want, ","), args.sf),
-              file=sys.stderr)
+        print(
+            "FAIL: expected %s lineitem rows at SF%g" % (format(want, ","), args.sf),
+            file=sys.stderr,
+        )
         return 1
     return 0
 

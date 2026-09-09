@@ -43,6 +43,7 @@ One transaction, start to commit, through each of the four paths. The first
 repetition is discarded as warmup and the median of the rest is kept - the same
 protocol as TPC-H, so the two halves of the results file are comparable.
 """
+
 import argparse
 import csv
 import os
@@ -51,22 +52,27 @@ import statistics
 import sys
 import time
 
-sys.path.insert(0, os.path.abspath(
-    os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")))
+sys.path.insert(
+    0,
+    os.path.abspath(
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
+    ),
+)
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_app.settings")
 
 import django
+
 django.setup()
 
 from django.db import connections, transaction as dj_transaction
 import tpcc_config as cfg
 
 TXN = {
-    1: ("T1", "New-Order",    "Write-heavy", "t1_neworder", "t1"),
-    2: ("T2", "Payment",      "Write-heavy", "t2_payment",  "t2"),
-    3: ("T3", "Order-Status", "Read-only",   "t3_orderstatus", "t3"),
-    4: ("T4", "Delivery",     "Write-heavy", "t4_delivery", "t4"),
-    5: ("T5", "Stock-Level",  "Read-only",   "t5_stocklevel", "t5"),
+    1: ("T1", "New-Order", "Write-heavy", "t1_neworder", "t1"),
+    2: ("T2", "Payment", "Write-heavy", "t2_payment", "t2"),
+    3: ("T3", "Order-Status", "Read-only", "t3_orderstatus", "t3"),
+    4: ("T4", "Delivery", "Write-heavy", "t4_delivery", "t4"),
+    5: ("T5", "Stock-Level", "Read-only", "t5_stocklevel", "t5"),
 }
 
 # scale_factor is written for the same reason run_block.py writes it: a row
@@ -75,16 +81,35 @@ TXN = {
 # reported all eight TPC-C configurations as not_run while the measurements sat
 # in the directory next to the TPC-H ones.
 FIELDS = [
-    "benchmark", "query_id", "band", "dbms", "schema_config", "scale_factor",
+    "benchmark",
+    "query_id",
+    "band",
+    "dbms",
+    "schema_config",
+    "scale_factor",
     "framework",
-    "path", "median_s", "min_s", "max_s", "cv_pct", "rows_returned",
-    "repetitions_measured", "status", "note",
+    "path",
+    "median_s",
+    "min_s",
+    "max_s",
+    "cv_pct",
+    "rows_returned",
+    "repetitions_measured",
+    "status",
+    "note",
 ]
 
 # Tables a transaction can change, checked before and after so the note can say
 # how far the database moved while it was being measured.
-WATCHED = ["\"order\"", "new_order", "order_line", "history", "customer",
-           "district", "stock"]
+WATCHED = [
+    '"order"',
+    "new_order",
+    "order_line",
+    "history",
+    "customer",
+    "district",
+    "stock",
+]
 
 
 def already_done(path, tid, dbms, schema):
@@ -92,8 +117,11 @@ def already_done(path, tid, dbms, schema):
         return False
     with open(path, newline="") as fh:
         for row in csv.DictReader(fh):
-            if (row["query_id"] == tid and row["dbms"] == dbms
-                    and row["schema_config"] == schema):
+            if (
+                row["query_id"] == tid
+                and row["dbms"] == dbms
+                and row["schema_config"] == schema
+            ):
                 return True
     return False
 
@@ -118,11 +146,12 @@ def cv(xs):
 def snapshot(dj_conn, dbms):
     """Row counts of the tables the transactions write, for the drift note."""
     counts = {}
-    quote = {"postgresql": '"order"', "mysql": "`order`",
-             "sqlserver": "[order]"}.get(dbms, '"order"')
+    quote = {"postgresql": '"order"', "mysql": "`order`", "sqlserver": "[order]"}.get(
+        dbms, '"order"'
+    )
     with dj_conn.cursor() as c:
         for t in WATCHED:
-            name = quote if t == "\"order\"" else t
+            name = quote if t == '"order"' else t
             try:
                 c.execute("SELECT COUNT(*) FROM %s" % name)
                 counts[t.strip('"')] = c.fetchone()[0]
@@ -147,11 +176,11 @@ def measure(label, fn, reps, seed, timeout, cleanup=None):
             rows = fn(rng)
         except Exception as e:
             elapsed = time.perf_counter() - t0
-            status = ("timeout" if timeout and elapsed >= timeout * 0.9
-                      else "error")
+            status = "timeout" if timeout and elapsed >= timeout * 0.9 else "error"
             note = "%s: %s" % (type(e).__name__, str(e)[:120])
-            print("    %s rep %d: %s after %.1fs  %s"
-                  % (label, i, status, elapsed, note))
+            print(
+                "    %s rep %d: %s after %.1fs  %s" % (label, i, status, elapsed, note)
+            )
             if cleanup:
                 try:
                     cleanup()
@@ -170,8 +199,9 @@ def main():
     ap.add_argument("--transaction", type=int, required=True, choices=[1, 2, 3, 4, 5])
     ap.add_argument("--dbms", default="postgresql")
     ap.add_argument("--schema", default="indexed", choices=["indexed", "non-indexed"])
-    ap.add_argument("--repetitions", type=int, default=4,
-                    help="first is discarded as warmup")
+    ap.add_argument(
+        "--repetitions", type=int, default=4, help="first is discarded as warmup"
+    )
     ap.add_argument("--timeout", type=float, default=900)
     ap.add_argument("--seed", type=int, default=1000)
     ap.add_argument("--out", default="results_tpcc.csv")
@@ -185,8 +215,10 @@ def main():
         print("%s %s %s: already recorded, skipping" % (tid, args.dbms, args.schema))
         return 0
 
-    print("\n=== %s (%s, %s)  %s  %s  %d measured reps ==="
-          % (tid, name, band, args.dbms, args.schema, args.repetitions - 1))
+    print(
+        "\n=== %s (%s, %s)  %s  %s  %d measured reps ==="
+        % (tid, name, band, args.dbms, args.schema, args.repetitions - 1)
+    )
 
     conn = connections["default"]
 
@@ -199,6 +231,7 @@ def main():
 
     from sqlalchemy import create_engine
     from sqlalchemy.orm import Session
+
     dsn = os.environ.get("SA_DSN")
     if not dsn:
         print("SA_DSN is not set", file=sys.stderr)
@@ -222,30 +255,37 @@ def main():
         label = "%s/%s" % (framework, path)
         cleanup = sess.rollback if framework == "sqlalchemy" else None
         med, res, times, status, note = measure(
-            label, fn, args.repetitions, args.seed, args.timeout, cleanup)
-        out_rows.append({
-            "benchmark": "tpcc",
-            "query_id": tid,
-            "band": band,
-            "dbms": args.dbms,
-            "schema_config": args.schema,
-            "scale_factor": os.environ.get("TPCH_SF", ""),
-            "framework": framework,
-            "path": path,
-            "median_s": "" if med is None else round(med, 6),
-            "min_s": "" if not times else round(min(times), 6),
-            "max_s": "" if not times else round(max(times), 6),
-            "cv_pct": cv(times),
-            "rows_returned": (len(res) if isinstance(res, (list, tuple))
-                              else (1 if res else 0)),
-            "repetitions_measured": len(times),
-            "status": status,
-            "note": note,
-        })
+            label, fn, args.repetitions, args.seed, args.timeout, cleanup
+        )
+        out_rows.append(
+            {
+                "benchmark": "tpcc",
+                "query_id": tid,
+                "band": band,
+                "dbms": args.dbms,
+                "schema_config": args.schema,
+                "scale_factor": os.environ.get("TPCH_SF", ""),
+                "framework": framework,
+                "path": path,
+                "median_s": "" if med is None else round(med, 6),
+                "min_s": "" if not times else round(min(times), 6),
+                "max_s": "" if not times else round(max(times), 6),
+                "cv_pct": cv(times),
+                "rows_returned": (
+                    len(res) if isinstance(res, (list, tuple)) else (1 if res else 0)
+                ),
+                "repetitions_measured": len(times),
+                "status": status,
+                "note": note,
+            }
+        )
 
     after = snapshot(conn, args.dbms)
-    drift = ", ".join("%s %+d" % (t, after[t] - before[t])
-                      for t in sorted(before) if after.get(t, 0) != before[t])
+    drift = ", ".join(
+        "%s %+d" % (t, after[t] - before[t])
+        for t in sorted(before)
+        if after.get(t, 0) != before[t]
+    )
     if drift:
         print("  database drift over this cell: %s" % drift)
         for r in out_rows:

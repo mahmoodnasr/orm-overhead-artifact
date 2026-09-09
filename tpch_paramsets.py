@@ -44,12 +44,22 @@ must differ, Q16's eight sizes must be distinct, Q19's three quantity ranges
 are ordered, Q22's seven country codes are distinct), the constraint is
 enforced at generation, not hoped for.
 """
+
 import datetime as _dt
 import random as _random
 
 from tpch_domains import (
-    BRANDS, COLORS, CONTAINERS, NATIONS, NATION_REGION, REGIONS, SEGMENTS,
-    SHIPMODES, TYPE_SYLLABLE_1, TYPE_SYLLABLE_2, TYPE_SYLLABLE_3,
+    BRANDS,
+    COLORS,
+    CONTAINERS,
+    NATIONS,
+    NATION_REGION,
+    REGIONS,
+    SEGMENTS,
+    SHIPMODES,
+    TYPE_SYLLABLE_1,
+    TYPE_SYLLABLE_2,
+    TYPE_SYLLABLE_3,
 )
 from tpch_params import Q11_FRACTION
 
@@ -89,20 +99,22 @@ def _month_range(start, end):
 # Each returns the parameter dict for one draw. Set 0 never calls these; it is
 # the pinned validation instance in _VALIDATION below.
 
+
 def _q01(r):
     delta = r.randint(60, 120)
     return {"date": _D(1998, 12, 1) - _dt.timedelta(days=delta), "delta": delta}
 
 
 def _q02(r):
-    return {"size": r.randint(1, 50),
-            "type_suffix": r.choice(TYPE_SYLLABLE_3),
-            "region": r.choice(REGIONS)}
+    return {
+        "size": r.randint(1, 50),
+        "type_suffix": r.choice(TYPE_SYLLABLE_3),
+        "region": r.choice(REGIONS),
+    }
 
 
 def _q03(r):
-    return {"segment": r.choice(SEGMENTS),
-            "date": _D(1995, 3, r.randint(1, 31))}
+    return {"segment": r.choice(SEGMENTS), "date": _D(1995, 3, r.randint(1, 31))}
 
 
 def _q04(r):
@@ -117,9 +129,11 @@ def _q05(r):
 def _q06(r):
     y = r.randint(1993, 1997)
     # DISCOUNT is drawn in hundredths; the predicate is DISCOUNT +/- 0.01.
-    return {"date": _D(y, 1, 1),
-            "discount": round(r.randint(2, 9) / 100.0, 2),
-            "quantity": r.randint(24, 25)}
+    return {
+        "date": _D(y, 1, 1),
+        "discount": round(r.randint(2, 9) / 100.0, 2),
+        "quantity": r.randint(24, 25),
+    }
 
 
 def _q07(r):
@@ -129,11 +143,16 @@ def _q07(r):
 
 def _q08(r):
     nation = r.choice(NATIONS)
-    return {"nation": nation,
-            "region": NATION_REGION[nation],
-            "type": "%s %s %s" % (r.choice(TYPE_SYLLABLE_1),
-                                  r.choice(TYPE_SYLLABLE_2),
-                                  r.choice(TYPE_SYLLABLE_3))}
+    return {
+        "nation": nation,
+        "region": NATION_REGION[nation],
+        "type": "%s %s %s"
+        % (
+            r.choice(TYPE_SYLLABLE_1),
+            r.choice(TYPE_SYLLABLE_2),
+            r.choice(TYPE_SYLLABLE_3),
+        ),
+    }
 
 
 def _q09(r):
@@ -155,8 +174,10 @@ def _q12(r):
 
 
 def _q13(r):
-    return {"word1": r.choice(["special", "pending", "unusual", "express"]),
-            "word2": r.choice(["packages", "requests", "accounts", "deposits"])}
+    return {
+        "word1": r.choice(["special", "pending", "unusual", "express"]),
+        "word2": r.choice(["packages", "requests", "accounts", "deposits"]),
+    }
 
 
 def _q14(r):
@@ -168,10 +189,11 @@ def _q15(r):
 
 
 def _q16(r):
-    return {"brand": r.choice(BRANDS),
-            "type": "%s %s" % (r.choice(TYPE_SYLLABLE_1),
-                               r.choice(TYPE_SYLLABLE_2)),
-            "sizes": sorted(r.sample(range(1, 51), 8))}
+    return {
+        "brand": r.choice(BRANDS),
+        "type": "%s %s" % (r.choice(TYPE_SYLLABLE_1), r.choice(TYPE_SYLLABLE_2)),
+        "sizes": sorted(r.sample(range(1, 51), 8)),
+    }
 
 
 def _q17(r):
@@ -184,16 +206,19 @@ def _q18(r):
 
 def _q19(r):
     b1, b2, b3 = (r.choice(BRANDS) for _ in range(3))
-    return {"brand1": b1, "brand2": b2, "brand3": b3,
-            "quantity1": r.randint(1, 10),
-            "quantity2": r.randint(10, 20),
-            "quantity3": r.randint(20, 30)}
+    return {
+        "brand1": b1,
+        "brand2": b2,
+        "brand3": b3,
+        "quantity1": r.randint(1, 10),
+        "quantity2": r.randint(10, 20),
+        "quantity3": r.randint(20, 30),
+    }
 
 
 def _q20(r):
     y = r.randint(1993, 1997)
-    return {"color": r.choice(COLORS), "date": _D(y, 1, 1),
-            "nation": r.choice(NATIONS)}
+    return {"color": r.choice(COLORS), "date": _D(y, 1, 1), "nation": r.choice(NATIONS)}
 
 
 def _q21(r):
@@ -205,23 +230,42 @@ def _q22(r):
 
 
 _GEN = {
-    1: _q01, 2: _q02, 3: _q03, 4: _q04, 5: _q05, 6: _q06, 7: _q07, 8: _q08,
-    9: _q09, 10: _q10, 11: _q11, 12: _q12, 13: _q13, 14: _q14, 15: _q15,
-    16: _q16, 17: _q17, 18: _q18, 19: _q19, 20: _q20, 21: _q21, 22: _q22,
+    1: _q01,
+    2: _q02,
+    3: _q03,
+    4: _q04,
+    5: _q05,
+    6: _q06,
+    7: _q07,
+    8: _q08,
+    9: _q09,
+    10: _q10,
+    11: _q11,
+    12: _q12,
+    13: _q13,
+    14: _q14,
+    15: _q15,
+    16: _q16,
+    17: _q17,
+    18: _q18,
+    19: _q19,
+    20: _q20,
+    21: _q21,
+    22: _q22,
 }
 
 # The TPC-H validation-set instance for each query - what the harness measured
 # before this module existed. Pinned as set 0; see the module docstring.
 _VALIDATION = {
-    1:  {"date": _D(1998, 9, 2), "delta": 90},
-    2:  {"size": 15, "type_suffix": "BRASS", "region": "EUROPE"},
-    3:  {"segment": "BUILDING", "date": _D(1995, 3, 15)},
-    4:  {"date": _D(1993, 7, 1)},
-    5:  {"region": "ASIA", "date": _D(1994, 1, 1)},
-    6:  {"date": _D(1994, 1, 1), "discount": 0.06, "quantity": 24},
-    7:  {"nation1": "FRANCE", "nation2": "GERMANY"},
-    8:  {"nation": "BRAZIL", "region": "AMERICA", "type": "ECONOMY ANODIZED STEEL"},
-    9:  {"color": "green"},
+    1: {"date": _D(1998, 9, 2), "delta": 90},
+    2: {"size": 15, "type_suffix": "BRASS", "region": "EUROPE"},
+    3: {"segment": "BUILDING", "date": _D(1995, 3, 15)},
+    4: {"date": _D(1993, 7, 1)},
+    5: {"region": "ASIA", "date": _D(1994, 1, 1)},
+    6: {"date": _D(1994, 1, 1), "discount": 0.06, "quantity": 24},
+    7: {"nation1": "FRANCE", "nation2": "GERMANY"},
+    8: {"nation": "BRAZIL", "region": "AMERICA", "type": "ECONOMY ANODIZED STEEL"},
+    9: {"color": "green"},
     10: {"date": _D(1993, 10, 1)},
     11: {"nation": "GERMANY", "fraction": Q11_FRACTION},
     12: {"shipmode1": "MAIL", "shipmode2": "SHIP", "date": _D(1994, 1, 1)},
@@ -232,12 +276,21 @@ _VALIDATION = {
     # sorted: an IN list's order is semantically irrelevant but textually
     # visible, and set 0 has to reproduce the statement this harness has always
     # emitted, byte for byte. Sets 1..7 are sorted, which is only cosmetic.
-    16: {"brand": "Brand#45", "type": "MEDIUM POLISHED",
-         "sizes": [49, 14, 23, 45, 19, 3, 36, 9]},
+    16: {
+        "brand": "Brand#45",
+        "type": "MEDIUM POLISHED",
+        "sizes": [49, 14, 23, 45, 19, 3, 36, 9],
+    },
     17: {"brand": "Brand#23", "container": "MED BOX"},
     18: {"quantity": 300},
-    19: {"brand1": "Brand#12", "brand2": "Brand#23", "brand3": "Brand#34",
-         "quantity1": 1, "quantity2": 10, "quantity3": 20},
+    19: {
+        "brand1": "Brand#12",
+        "brand2": "Brand#23",
+        "brand3": "Brand#34",
+        "quantity1": 1,
+        "quantity2": 10,
+        "quantity3": 20,
+    },
     20: {"color": "forest", "date": _D(1994, 1, 1), "nation": "CANADA"},
     21: {"nation": "SAUDI ARABIA"},
     22: {"country_codes": ["13", "31", "23", "29", "30", "18", "17"]},
@@ -310,7 +363,7 @@ def _build_warmup():
     """
     out = {}
     for q, gen in _GEN.items():
-        r = _random.Random(SEED * 100 + q + 7919)   # a prime offset, far away
+        r = _random.Random(SEED * 100 + q + 7919)  # a prime offset, far away
         for _ in range(200):
             cand = gen(r)
             if cand not in PARAM_SETS[q]:
@@ -358,6 +411,7 @@ def expand(qnum, p):
       like_pattern  Q13's '%word1%word2%'
     """
     from decimal import Decimal
+
     e = dict(p)
     if qnum in DATE_WIDTH_MONTHS and "date" in e:
         e["date_end"] = add_months(e["date"], DATE_WIDTH_MONTHS[qnum])

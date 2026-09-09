@@ -1,0 +1,21 @@
+benchmark,query_id,band,dbms,schema_config,scale_factor,framework,path,median_s,min_s,max_s,cv_pct,rows_returned,repetitions_measured,status,note
+tpcc,T1,Write-heavy,commercial_a,indexed,1,django,orm,0.090729,0.072331,0.091938,12.9,1,3,ok,"drift: new_order +16, order +16, order_line +144"
+tpcc,T1,Write-heavy,commercial_a,indexed,1,django,sql,0.048881,0.032636,0.064594,32.8,1,3,ok,"drift: new_order +16, order +16, order_line +144"
+tpcc,T1,Write-heavy,commercial_a,indexed,1,sqlalchemy,orm,0.08481,0.053993,0.116296,36.6,1,3,ok,"drift: new_order +16, order +16, order_line +144"
+tpcc,T1,Write-heavy,commercial_a,indexed,1,sqlalchemy,sql,0.051042,0.049003,0.07584,25.5,1,3,ok,"drift: new_order +16, order +16, order_line +144"
+tpcc,T2,Write-heavy,commercial_a,indexed,1,django,orm,0.031581,0.022507,0.032127,18.8,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,commercial_a,indexed,1,django,sql,0.011091,0.00996,0.012053,9.5,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,commercial_a,indexed,1,sqlalchemy,orm,0.017869,0.017725,0.019553,5.5,1,3,ok,drift: history +16
+tpcc,T2,Write-heavy,commercial_a,indexed,1,sqlalchemy,sql,0.010967,0.010937,0.011379,2.2,1,3,ok,drift: history +16
+tpcc,T3,Read-only,commercial_a,indexed,1,django,orm,0.014458,0.012862,1.377796,168.2,1,3,ok,
+tpcc,T3,Read-only,commercial_a,indexed,1,django,sql,0.005479,0.004427,0.005628,12.6,1,3,ok,
+tpcc,T3,Read-only,commercial_a,indexed,1,sqlalchemy,orm,0.005274,0.005005,0.005484,4.6,1,3,ok,
+tpcc,T3,Read-only,commercial_a,indexed,1,sqlalchemy,sql,0.005244,0.003669,0.005533,20.8,1,3,ok,
+tpcc,T4,Write-heavy,commercial_a,indexed,1,django,orm,0.174539,0.174241,0.180122,1.9,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,commercial_a,indexed,1,django,sql,0.077879,0.049857,0.097864,32.1,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,commercial_a,indexed,1,sqlalchemy,orm,0.18919,0.178343,0.225078,12.4,1,3,ok,drift: new_order -160
+tpcc,T4,Write-heavy,commercial_a,indexed,1,sqlalchemy,sql,0.098647,0.078136,0.116923,19.8,1,3,ok,drift: new_order -160
+tpcc,T5,Read-only,commercial_a,indexed,1,django,orm,0.16888,0.152365,0.186758,10.2,1,3,ok,
+tpcc,T5,Read-only,commercial_a,indexed,1,django,sql,0.060766,0.007286,0.125013,91.6,1,3,ok,
+tpcc,T5,Read-only,commercial_a,indexed,1,sqlalchemy,orm,0.173119,0.084043,0.184457,37.4,1,3,ok,
+tpcc,T5,Read-only,commercial_a,indexed,1,sqlalchemy,sql,0.126915,0.120332,0.139485,7.5,1,3,ok,

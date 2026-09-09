@@ -9,13 +9,14 @@ The alias has to happen at settings-import time: Django imports the settings
 module before it resolves DATABASES['default']['ENGINE'], so this is the last
 point at which sys.modules can still be arranged.
 """
+
 import datetime
 import os
 import sys
 
 import oracledb
 
-oracledb.version = "8.3.0"          # the version Django 4.2 checks for
+oracledb.version = "8.3.0"  # the version Django 4.2 checks for
 
 # Django does `isinstance(param, (Database.Binary, datetime.timedelta))`, which
 # needs Binary to be a type. cx_Oracle bound it to `bytes`; python-oracledb
@@ -63,10 +64,13 @@ DATABASES = {
         # published port; against a native listener on 1521 every Django path
         # failed with DPY-6005 while SQLAlchemy connected, and the smoke test
         # reported n/a rather than a configuration error.
-        "NAME": os.getenv("ORACLE_DSN") or "%s:%s/%s" % (
+        "NAME": os.getenv("ORACLE_DSN")
+        or "%s:%s/%s"
+        % (
             os.getenv("ORACLE_HOST", "127.0.0.1"),
             os.getenv("ORACLE_PORT", "1521"),
-            os.getenv("ORACLE_SERVICE", "FREEPDB1")),
+            os.getenv("ORACLE_SERVICE", "FREEPDB1"),
+        ),
         "USER": os.getenv("ORACLE_USER", "tpch"),
         "PASSWORD": os.getenv("ORACLE_PASSWORD", "bench"),
         "CONN_MAX_AGE": 300,

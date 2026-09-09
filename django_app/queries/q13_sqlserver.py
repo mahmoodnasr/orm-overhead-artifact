@@ -52,7 +52,7 @@ class Q13NotExpressible(NotImplementedError):
     """Raised instead of measuring something that is not Q13."""
 
 
-def run_query_orm(using='default', params=None):
+def run_query_orm(using="default", params=None):
     """Not expressible through the Django ORM on SQL Server. Raises.
 
     Q13 aggregates twice: count the qualifying orders per customer, then count
@@ -124,7 +124,7 @@ def run_query_sql(connection, params=None):
         SELECT c_custkey, COUNT(o_orderkey) as c_count
         FROM customer LEFT OUTER JOIN orders
           ON c_custkey = o_custkey
-         AND o_comment NOT LIKE '%' + '{P['word1']}' + '%' + '{P['word2']}' + '%'
+         AND o_comment NOT LIKE '%' + '{P["word1"]}' + '%' + '{P["word2"]}' + '%'
         GROUP BY c_custkey
     ) AS c_orders
     GROUP BY c_count
@@ -140,12 +140,12 @@ def run_query_sql(connection, params=None):
 def get_query_info():
     """Return metadata about this query."""
     return {
-        'number': 13,
-        'name': 'Customer Distribution',
-        'complexity': 'Complex',
-        'description': 'Distribution of customers by number of qualifying orders',
-        'tables': ['customer', 'orders'],
-        'joins': 1,
-        'aggregations': 2,
-        'subqueries': 1,
+        "number": 13,
+        "name": "Customer Distribution",
+        "complexity": "Complex",
+        "description": "Distribution of customers by number of qualifying orders",
+        "tables": ["customer", "orders"],
+        "joins": 1,
+        "aggregations": 2,
+        "subqueries": 1,
     }

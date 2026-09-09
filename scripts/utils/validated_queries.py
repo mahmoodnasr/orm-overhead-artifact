@@ -23,6 +23,7 @@ than through either hand-written baseline and was timed anyway, and sat in the
 results file as a valid -0.6%. The rule "all five checks pass before any timing
 is kept" was stated in three documents and enforced by none. This is the code.
 """
+
 import os
 import re
 import sys
@@ -35,8 +36,10 @@ import sys
 # so the row is read rather than skipped, and it is not in the accepted set
 # below, so the query is still refused. Silence and "not checked" must not look
 # alike to this gate.
-ROW = re.compile(r"^(q\d\d)\s+(yes|NO|n/a)\s+(ok|DIFF|n/a)\s+(ok|DIFF|n/a)"
-                 r"\s+(ok|DIFF|n/a)\s+(ok|EMPTY|n/a)\s")
+ROW = re.compile(
+    r"^(q\d\d)\s+(yes|NO|n/a)\s+(ok|DIFF|n/a)\s+(ok|DIFF|n/a)"
+    r"\s+(ok|DIFF|n/a)\s+(ok|EMPTY|n/a)\s"
+)
 ERR = re.compile(r"^(q\d\d)\s+ERROR\s+(.*)$")
 NAMES = ("ORM?", "MATCH", "SQL=", "ORM=SQL", "ROWS>0")
 
@@ -50,9 +53,14 @@ def parse(path):
             m = ROW.match(s)
             if m:
                 cols = m.groups()
-                bad = [(n + "(not checked)" if v == "n/a" else n)
-                       for n, v in zip(NAMES, cols[1:]) if v not in ("yes", "ok")]
-                verdict[int(cols[0][1:])] = ("pass", "") if not bad else ("fail", ", ".join(bad))
+                bad = [
+                    (n + "(not checked)" if v == "n/a" else n)
+                    for n, v in zip(NAMES, cols[1:])
+                    if v not in ("yes", "ok")
+                ]
+                verdict[int(cols[0][1:])] = (
+                    ("pass", "") if not bad else ("fail", ", ".join(bad))
+                )
                 continue
             m = ERR.match(s)
             if m:
@@ -63,28 +71,38 @@ def parse(path):
 def main(argv):
     if len(argv) < 2 or argv[1] in ("-h", "--help"):
         print(__doc__.strip().splitlines()[0], file=sys.stderr)
-        print("usage: validated_queries.py LOG [--want \"1 2 3\"]", file=sys.stderr)
+        print('usage: validated_queries.py LOG [--want "1 2 3"]', file=sys.stderr)
         return 2
     log = argv[1]
     want = None
     if "--want" in argv:
-        raw = argv[argv.index("--want") + 1] if argv.index("--want") + 1 < len(argv) else ""
+        raw = (
+            argv[argv.index("--want") + 1]
+            if argv.index("--want") + 1 < len(argv)
+            else ""
+        )
         want = [int(x.lstrip("qQ")) for x in raw.split()]
 
     if not os.path.exists(log):
-        print(f"validated_queries: no validation log at {log}; nothing may be measured",
-              file=sys.stderr)
+        print(
+            f"validated_queries: no validation log at {log}; nothing may be measured",
+            file=sys.stderr,
+        )
         return 2
     verdict = parse(log)
     if not verdict:
-        print(f"validated_queries: no validation table in {log}; nothing may be measured",
-              file=sys.stderr)
+        print(
+            f"validated_queries: no validation table in {log}; nothing may be measured",
+            file=sys.stderr,
+        )
         return 2
 
     nums = want if want is not None else sorted(verdict)
     passed, lines = [], []
     for n in nums:
-        state, why = verdict.get(n, ("absent", "no row in the validation log - never validated"))
+        state, why = verdict.get(
+            n, ("absent", "no row in the validation log - never validated")
+        )
         if state == "pass":
             passed.append(n)
             lines.append(f"Q{n:02d}  measure")
@@ -94,7 +112,9 @@ def main(argv):
     gate_path = re.sub(r"\.log$", "", log) + ".gate.log"
     try:
         with open(gate_path, "w") as fh:
-            fh.write(f"gate for {os.path.basename(log)}: {len(passed)} of {len(nums)} may be measured\n")
+            fh.write(
+                f"gate for {os.path.basename(log)}: {len(passed)} of {len(nums)} may be measured\n"
+            )
             fh.write("\n".join(lines) + "\n")
     except OSError:
         pass

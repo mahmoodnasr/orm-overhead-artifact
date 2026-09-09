@@ -29,6 +29,7 @@ This patch is measurement-affecting and is disclosed as such. It changes only
 the declared type of a bound parameter, never a value or a query plan choice,
 and it is applied identically to every timed and untimed path on this system.
 """
+
 from decimal import Decimal
 
 
@@ -92,7 +93,7 @@ def apply():
 def _fit_decimal(value, max_precision=38, max_scale=10):
     """Return value quantised to something SQL Server can bind, or unchanged."""
     t = value.as_tuple()
-    if not isinstance(t.exponent, int):        # NaN / Infinity
+    if not isinstance(t.exponent, int):  # NaN / Infinity
         return value
     scale = -t.exponent if t.exponent < 0 else 0
     if len(t.digits) <= max_precision and scale <= max_scale:

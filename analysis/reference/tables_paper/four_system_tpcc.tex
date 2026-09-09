@@ -1,0 +1,12 @@
+\begin{table*}[!t]
+\caption{TPC-C-derived transaction latency across four systems and two index configurations. Each transaction/framework summary contains eight cells. Milliseconds are medians of cell latencies; overhead is the back-transformed median of within-cell log ratios and need not equal the ratio of the displayed milliseconds.}\label{tab:tpcc-latency}
+\centering\small\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{lrrrrrr}\toprule
+ & \multicolumn{3}{c}{Django} & \multicolumn{3}{c}{SQLAlchemy}\\
+Transaction & SQL (ms) & ORM (ms) & Overhead & SQL (ms) & ORM (ms) & Overhead\\\midrule
+New-Order & 28.73 & 55.48 & +88.7\% & 33.74 & 58.29 & +65.6\% \\
+Payment & 7.52 & 15.80 & +150.3\% & 8.38 & 14.53 & +96.4\% \\
+Order-Status & 7.45 & 13.91 & +79.2\% & 7.03 & 11.98 & +66.5\% \\
+Delivery & 47.68 & 126.07 & +143.7\% & 54.52 & 138.35 & +150.0\% \\
+Stock-Level & 70.41 & 102.40 & +23.9\% & 88.23 & 88.51 & +3.8\% \\
+\bottomrule\end{tabular}\end{table*}

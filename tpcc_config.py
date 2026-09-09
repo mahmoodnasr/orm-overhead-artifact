@@ -46,6 +46,7 @@ concurrency.
 Set `TPCC_LOCK_DISTRICT=0` to measure the unlocked policy deliberately — but
 then report it as an experimental factor, because it changes what is measured.
 """
+
 import os
 
 # --------------------------------------------------------------- cardinalities
@@ -104,24 +105,35 @@ def verify_against(cursor):
         cursor.execute("SELECT COUNT(*) FROM %s" % table)
         got = cursor.fetchone()[0]
         if got != want:
-            wrong.append("%s: config expects %s, database holds %s"
-                         % (table, format(want, ","), format(got, ",")))
+            wrong.append(
+                "%s: config expects %s, database holds %s"
+                % (table, format(want, ","), format(got, ","))
+            )
     if wrong:
         raise RuntimeError(
             "tpcc_config does not describe the loaded database:\n  "
             + "\n  ".join(wrong)
             + "\nSet TPCC_WAREHOUSES / TPCC_DISTRICTS / TPCC_CUSTOMERS / TPCC_ITEMS "
-              "to match, or reload the data. Measuring against a mismatch records "
-              "failed transactions as completed ones."
+            "to match, or reload the data. Measuring against a mismatch records "
+            "failed transactions as completed ones."
         )
     return True
 
 
 def summary():
     """One line for the run log, so a campaign records what it measured."""
-    return ("TPC-C: %d warehouses x %d districts x %d customers, %d items, "
-            "lock_district=%s" % (WAREHOUSES, DISTRICTS_PER_WAREHOUSE,
-                                  CUSTOMERS_PER_DISTRICT, ITEMS, LOCK_DISTRICT))
+    return (
+        "TPC-C: %d warehouses x %d districts x %d customers, %d items, "
+        "lock_district=%s"
+        % (
+            WAREHOUSES,
+            DISTRICTS_PER_WAREHOUSE,
+            CUSTOMERS_PER_DISTRICT,
+            ITEMS,
+            LOCK_DISTRICT,
+        )
+    )
+
 
 def district_lock_sql(vendor):
     """How to take an update lock on one district row, per dialect.
@@ -151,4 +163,3 @@ def district_lock_sql(vendor):
     if vendor in ("mssql", "microsoft", "sqlserver"):
         return " WITH (UPDLOCK, ROWLOCK)", ""
     return "", " FOR UPDATE"
-

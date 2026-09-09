@@ -32,12 +32,15 @@ Usage:
         --schema indexed --timeout 900 \
         --out results/sf1/measurements/postgresql_indexed.csv --resume
 """
+
 import argparse, csv, datetime, os, random, socket, sys, time, uuid
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
+# Resolve imports from the checkout, including when launched outside its root.
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_app.settings")
 
 import django
+
 django.setup()
 from django.db import connections
 
@@ -55,9 +58,10 @@ BANDS = {
     **{q: "Very Complex" for q in (8, 9, 21, 22)},
 }
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                                "..", "utils"))
-import results_paths                                          # noqa: E402
+sys.path.insert(
+    0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "utils")
+)
+import results_paths  # noqa: E402
 
 # Refuses rather than defaulting to 10: TPCH_SF already has to be right for the
 # query parameters (C6), and a default here would label an SF1 run as SF10.
@@ -77,11 +81,31 @@ WILLIAMS = (
 )
 
 FIELDS = [
-    "run_id", "campaign_id", "host", "benchmark", "query_id", "band",
-    "dbms", "schema_config", "scale_factor", "block", "sequence_id", "position",
-    "framework", "path", "param_set_id", "is_warmup",
-    "elapsed_s", "rows_returned", "status", "note",
-    "ceiling_s", "load1", "pid", "session_id", "timestamp",
+    "run_id",
+    "campaign_id",
+    "host",
+    "benchmark",
+    "query_id",
+    "band",
+    "dbms",
+    "schema_config",
+    "scale_factor",
+    "block",
+    "sequence_id",
+    "position",
+    "framework",
+    "path",
+    "param_set_id",
+    "is_warmup",
+    "elapsed_s",
+    "rows_returned",
+    "status",
+    "note",
+    "ceiling_s",
+    "load1",
+    "pid",
+    "session_id",
+    "timestamp",
 ]
 
 # scale_factor is recorded for the same reason param_set_id is: a row that does
@@ -116,12 +140,14 @@ def verify_affinity():
     """
     want = os.environ.get("BENCH_CLIENT_CPUS", "2,3")
     if os.environ.get("BENCH_SKIP_AFFINITY") == "1":
-        print(f"  affinity check SKIPPED by BENCH_SKIP_AFFINITY "
-              f"(would have required {want})")
+        print(
+            f"  affinity check SKIPPED by BENCH_SKIP_AFFINITY "
+            f"(would have required {want})"
+        )
         return
     try:
         actual = os.sched_getaffinity(0)
-    except AttributeError:                       # not Linux
+    except AttributeError:  # not Linux
         print("  affinity check unavailable on this platform")
         return
     expected = {int(c) for c in want.split(",") if c != ""}
@@ -156,7 +182,8 @@ def block_plan(seed):
     """
     r = random.Random(seed)
     first, second = [0, 1, 2, 3], [0, 1, 2, 3]
-    r.shuffle(first); r.shuffle(second)
+    r.shuffle(first)
+    r.shuffle(second)
     return list(enumerate(first + second, start=1))
 
 
@@ -164,9 +191,14 @@ def already_done(path, qid, dbms, schema):
     if not os.path.exists(path):
         return False
     with open(path) as fh:
-        rows = [r for r in csv.DictReader(fh)
-                if r["query_id"] == qid and r["dbms"] == dbms
-                and r["schema_config"] == schema and r["is_warmup"] == "0"]
+        rows = [
+            r
+            for r in csv.DictReader(fh)
+            if r["query_id"] == qid
+            and r["dbms"] == dbms
+            and r["schema_config"] == schema
+            and r["is_warmup"] == "0"
+        ]
     # A cell is done when all eight blocks have all four paths recorded.
     #
     # framework belongs in this key. "path" alone is "sql" or "orm", so the set
@@ -197,8 +229,10 @@ def set_timeouts(seconds, dj_conn, sa_session, dbms):
     ms = int(seconds * 1000)
     if dbms == "oracle":
         dj_conn.ensure_connection()
-        for raw in (getattr(dj_conn, "connection", None),
-                    sa_session.connection().connection.dbapi_connection):
+        for raw in (
+            getattr(dj_conn, "connection", None),
+            sa_session.connection().connection.dbapi_connection,
+        ):
             try:
                 raw.call_timeout = ms
             except Exception:
@@ -206,20 +240,25 @@ def set_timeouts(seconds, dj_conn, sa_session, dbms):
         return
     if dbms in ("mssql", "sqlserver"):
         dj_conn.ensure_connection()
-        for raw in (getattr(dj_conn, "connection", None),
-                    sa_session.connection().connection.dbapi_connection):
+        for raw in (
+            getattr(dj_conn, "connection", None),
+            sa_session.connection().connection.dbapi_connection,
+        ):
             try:
                 raw.timeout = int(seconds)
             except Exception:
                 pass
         return
-    stmt = {"postgresql": f"SET statement_timeout = {ms}",
-            "mysql": f"SET SESSION max_execution_time = {ms}"}.get(dbms)
+    stmt = {
+        "postgresql": f"SET statement_timeout = {ms}",
+        "mysql": f"SET SESSION max_execution_time = {ms}",
+    }.get(dbms)
     if not stmt:
         return
     with dj_conn.cursor() as c:
         c.execute(stmt)
     from sqlalchemy import text
+
     sa_session.execute(text(stmt))
 
 
@@ -261,15 +300,27 @@ def main():
     ap.add_argument("--query", type=int, required=True)
     ap.add_argument("--dbms", default="postgresql")
     ap.add_argument("--schema", default="indexed", choices=["indexed", "non-indexed"])
-    ap.add_argument("--blocks", type=int, default=8,
-                    help="measured blocks; the protocol is 8 and changing it "
-                         "changes the design, so it is recorded on every row")
-    ap.add_argument("--timeout", type=float, default=900,
-                    help="per-execution ceiling in seconds, 0 to disable")
+    ap.add_argument(
+        "--blocks",
+        type=int,
+        default=8,
+        help="measured blocks; the protocol is 8 and changing it "
+        "changes the design, so it is recorded on every row",
+    )
+    ap.add_argument(
+        "--timeout",
+        type=float,
+        default=900,
+        help="per-execution ceiling in seconds, 0 to disable",
+    )
     ap.add_argument("--out", required=True)
-    ap.add_argument("--seed", type=int, default=None,
-                    help="block-order seed; defaults to one derived from the "
-                         "cell so a rerun of the same cell repeats its order")
+    ap.add_argument(
+        "--seed",
+        type=int,
+        default=None,
+        help="block-order seed; defaults to one derived from the "
+        "cell so a rerun of the same cell repeats its order",
+    )
     ap.add_argument("--campaign-id", default=os.environ.get("CAMPAIGN_ID", "sf1"))
     ap.add_argument("--resume", action="store_true")
     args = ap.parse_args()
@@ -281,13 +332,20 @@ def main():
         print(f"{qid} {args.dbms} {args.schema}: all blocks recorded, skipping")
         return 0
 
-    seed = args.seed if args.seed is not None else abs(hash((n, args.dbms, args.schema))) % (2**31)
-    plan = block_plan(seed)[:args.blocks]
+    seed = (
+        args.seed
+        if args.seed is not None
+        else abs(hash((n, args.dbms, args.schema))) % (2**31)
+    )
+    plan = block_plan(seed)[: args.blocks]
 
-    print(f"=== {qid} ({BANDS[n]})  {args.dbms}  {args.schema}  "
-          f"{args.blocks} blocks x 4 paths, seed {seed} ===")
+    print(
+        f"=== {qid} ({BANDS[n]})  {args.dbms}  {args.schema}  "
+        f"{args.blocks} blocks x 4 paths, seed {seed} ==="
+    )
 
     from django_app.queries import get_query_module_for_db
+
     dj = get_query_module_for_db(n, args.dbms)
     sa = __import__(f"sqlalchemy_app.queries.q{n:02d}", fromlist=["x"])
 
@@ -348,8 +406,10 @@ def main():
                 # Every path exceeded the ceiling. There is nothing the eight
                 # measured blocks can add: the cell is a bound on all four
                 # arms, and running them would spend nine hours confirming it.
-                print(f"  all {len(PATHS)} paths exceeded the ceiling in warmup; "
-                      f"{qid} recorded as a fully censored cell, 8 blocks skipped")
+                print(
+                    f"  all {len(PATHS)} paths exceeded the ceiling in warmup; "
+                    f"{qid} recorded as a fully censored cell, 8 blocks skipped"
+                )
                 break
             if block == 0:
                 params = tpch_paramsets.warmup_params(n)
@@ -396,39 +456,58 @@ def main():
             # Warming all four costs eight executions per block instead of five.
             # That is the price of every path entering its timed run in the same
             # state, which is the only version of this that is symmetric.
-            for warm_path in (PATHS if block > 0 else []):
+            for warm_path in PATHS if block > 0 else []:
                 if warm_path not in censored_paths:
                     t0 = time.perf_counter()
                     try:
                         call(warm_path, params)
                         wstatus, wnote = "ok", ""
                     except Exception as e:
-                        wstatus = ("timeout" if args.timeout and
-                                   time.perf_counter() - t0 >= args.timeout * 0.9
-                                   else "error")
+                        wstatus = (
+                            "timeout"
+                            if args.timeout
+                            and time.perf_counter() - t0 >= args.timeout * 0.9
+                            else "error"
+                        )
                         wnote = f"{type(e).__name__}: {str(e)[:150]}"
                         cleanup(warm_path)
                     welapsed = time.perf_counter() - t0
                     wfw, wkind = warm_path.split("/")
                     print(f"      w {warm_path:16s} {welapsed:9.3f}s  (block warmup)")
-                    rows.append({
-                        "run_id": run_id, "campaign_id": args.campaign_id, "host": host,
-                        "benchmark": "tpch", "query_id": qid, "band": BANDS[n],
-                        "dbms": args.dbms, "schema_config": args.schema,
-                        "scale_factor": SCALE_FACTOR,
-                        "block": block, "sequence_id": seq_idx, "position": -1,
-                        "framework": wfw, "path": wkind, "param_set_id": pset,
-                        # 2 marks a block warmup, 1 the cell warmup, 0 measured.
-                        # Analysis keeps only 0; both warmups stay in the file so
-                        # a warmup that failed is visible rather than absent.
-                        "is_warmup": 2,
-                        "elapsed_s": round(welapsed, 6), "rows_returned": "",
-                        "status": wstatus, "note": wnote, "ceiling_s": ceiling,
-                        "load1": round(os.getloadavg()[0], 2),
-                        "pid": os.getpid(), "session_id": id(sess),
-                        "timestamp": datetime.datetime.now().astimezone()
-                                     .isoformat(timespec="milliseconds"),
-                    })
+                    rows.append(
+                        {
+                            "run_id": run_id,
+                            "campaign_id": args.campaign_id,
+                            "host": host,
+                            "benchmark": "tpch",
+                            "query_id": qid,
+                            "band": BANDS[n],
+                            "dbms": args.dbms,
+                            "schema_config": args.schema,
+                            "scale_factor": SCALE_FACTOR,
+                            "block": block,
+                            "sequence_id": seq_idx,
+                            "position": -1,
+                            "framework": wfw,
+                            "path": wkind,
+                            "param_set_id": pset,
+                            # 2 marks a block warmup, 1 the cell warmup, 0 measured.
+                            # Analysis keeps only 0; both warmups stay in the file so
+                            # a warmup that failed is visible rather than absent.
+                            "is_warmup": 2,
+                            "elapsed_s": round(welapsed, 6),
+                            "rows_returned": "",
+                            "status": wstatus,
+                            "note": wnote,
+                            "ceiling_s": ceiling,
+                            "load1": round(os.getloadavg()[0], 2),
+                            "pid": os.getpid(),
+                            "session_id": id(sess),
+                            "timestamp": datetime.datetime.now()
+                            .astimezone()
+                            .isoformat(timespec="milliseconds"),
+                        }
+                    )
             for position, path in enumerate(seq):
                 fw, kind = path.split("/")
                 if path in censored_paths:
@@ -438,7 +517,9 @@ def main():
                     # PostgreSQL is the standing example, where Django's ORM
                     # exceeds any practical ceiling while the other three return
                     # in about two seconds.
-                    print(f"      {position} {path:16s}   -- skipped, censored in warmup")
+                    print(
+                        f"      {position} {path:16s}   -- skipped, censored in warmup"
+                    )
                     continue
                 t0 = time.perf_counter()
                 status, note, nrows = "ok", "", ""
@@ -461,29 +542,50 @@ def main():
                         status = "not_expressible"
                         censored_paths.add(path)
                     else:
-                        status = ("timeout" if args.timeout and elapsed >= args.timeout * 0.9
-                                  else "error")
+                        status = (
+                            "timeout"
+                            if args.timeout and elapsed >= args.timeout * 0.9
+                            else "error"
+                        )
                         if status == "timeout" and block == 0:
                             censored_paths.add(path)
                     note = f"{type(e).__name__}: {str(e)[:150]}"
                     cleanup(path)
-                print(f"      {position} {path:16s} {elapsed:9.3f}s "
-                      f"{status if status != 'ok' else ''}")
-                rows.append({
-                    "run_id": run_id, "campaign_id": args.campaign_id, "host": host,
-                    "benchmark": "tpch", "query_id": qid, "band": BANDS[n],
-                    "dbms": args.dbms, "schema_config": args.schema,
-                    "scale_factor": SCALE_FACTOR,
-                    "block": block, "sequence_id": seq_idx, "position": position,
-                    "framework": fw, "path": kind, "param_set_id": pset,
-                    "is_warmup": 1 if block == 0 else 0,
-                    "elapsed_s": round(elapsed, 6), "rows_returned": nrows,
-                    "status": status, "note": note, "ceiling_s": ceiling,
-                    "load1": round(os.getloadavg()[0], 2),
-                    "pid": os.getpid(), "session_id": id(sess),
-                    "timestamp": datetime.datetime.now().astimezone()
-                                 .isoformat(timespec="milliseconds"),
-                })
+                print(
+                    f"      {position} {path:16s} {elapsed:9.3f}s "
+                    f"{status if status != 'ok' else ''}"
+                )
+                rows.append(
+                    {
+                        "run_id": run_id,
+                        "campaign_id": args.campaign_id,
+                        "host": host,
+                        "benchmark": "tpch",
+                        "query_id": qid,
+                        "band": BANDS[n],
+                        "dbms": args.dbms,
+                        "schema_config": args.schema,
+                        "scale_factor": SCALE_FACTOR,
+                        "block": block,
+                        "sequence_id": seq_idx,
+                        "position": position,
+                        "framework": fw,
+                        "path": kind,
+                        "param_set_id": pset,
+                        "is_warmup": 1 if block == 0 else 0,
+                        "elapsed_s": round(elapsed, 6),
+                        "rows_returned": nrows,
+                        "status": status,
+                        "note": note,
+                        "ceiling_s": ceiling,
+                        "load1": round(os.getloadavg()[0], 2),
+                        "pid": os.getpid(),
+                        "session_id": id(sess),
+                        "timestamp": datetime.datetime.now()
+                        .astimezone()
+                        .isoformat(timespec="milliseconds"),
+                    }
+                )
             # Written per block, not at the end: a cell can run for hours and
             # an all-or-nothing write loses everything to one hang.
             append(args.out, rows)

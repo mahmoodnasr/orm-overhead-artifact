@@ -2,6 +2,7 @@
 TPC-C Transaction 1: NewOrder
 Creates a new order transaction
 """
+
 from django.db import transaction
 from django.db.models import F
 from decimal import Decimal
@@ -11,13 +12,22 @@ import random
 from tpcc_config import ITEMS, LOCK_DISTRICT, district_lock_sql, pick_keys
 
 
-def run_transaction_orm(using='default'):
+def run_transaction_orm(using="default"):
     """
     Execute TPC-C T1 (NewOrder) via Django ORM
 
     This transaction creates a new order with random parameters.
     """
-    from django_app.tpcc_models import Warehouse, District, Customer, Item, Stock, Order, NewOrder, OrderLine
+    from django_app.tpcc_models import (
+        Warehouse,
+        District,
+        Customer,
+        Item,
+        Stock,
+        Order,
+        NewOrder,
+        OrderLine,
+    )
 
     # Was: w_id = randint(1, 10), d_id = randint(1, 10), c_id = randint(1, 3000),
     # ol_cnt = randint(5, 15), with the ranges written into this file. The
@@ -47,12 +57,14 @@ def run_transaction_orm(using='default'):
                 district_qs = district_qs.select_for_update()
             district = district_qs.get(d_w_id=w_id, d_id=d_id)
 
-            customer = Customer.objects.using(using).get(c_w_id=w_id, c_d_id=d_id, c_id=c_id)
+            customer = Customer.objects.using(using).get(
+                c_w_id=w_id, c_d_id=d_id, c_id=c_id
+            )
 
             # Get next order ID and increment
             next_o_id = district.d_next_o_id
             District.objects.using(using).filter(d_w_id=w_id, d_id=d_id).update(
-                d_next_o_id=F('d_next_o_id') + 1
+                d_next_o_id=F("d_next_o_id") + 1
             )
 
             # Create order
@@ -64,18 +76,16 @@ def run_transaction_orm(using='default'):
                 o_entry_d=datetime.now(),
                 o_carrier_id=None,
                 o_ol_cnt=ol_cnt,
-                o_all_local=1
+                o_all_local=1,
             )
 
             # Create new_order entry
             NewOrder.objects.using(using).create(
-                no_o_id=next_o_id,
-                no_d_id=d_id,
-                no_w_id=warehouse
+                no_o_id=next_o_id, no_d_id=d_id, no_w_id=warehouse
             )
 
             # Create order lines
-            total_amount = Decimal('0.00')
+            total_amount = Decimal("0.00")
             for ol_number in range(1, ol_cnt + 1):
                 # Was: randint(1, 100000) with the item count written into this
                 # file. ITEMS carries the same number, but from the shared config,
@@ -105,18 +115,18 @@ def run_transaction_orm(using='default'):
                     ol_delivery_d=None,
                     ol_quantity=ol_quantity,
                     ol_amount=ol_amount,
-                    ol_dist_info=stock.s_dist_01
+                    ol_dist_info=stock.s_dist_01,
                 )
 
                 total_amount += ol_amount
 
             return {
-                'w_id': w_id,
-                'd_id': d_id,
-                'c_id': c_id,
-                'o_id': next_o_id,
-                'ol_cnt': ol_cnt,
-                'total_amount': float(total_amount)
+                "w_id": w_id,
+                "d_id": d_id,
+                "c_id": c_id,
+                "o_id": next_o_id,
+                "ol_cnt": ol_cnt,
+                "total_amount": float(total_amount),
             }
     except Exception:
         # Was: `return {'error': str(e)}`. A returned dict is indistinguishable
@@ -145,7 +155,7 @@ def run_transaction_sql(connection):
     w_id, d_id, c_id, ol_cnt = pick_keys(random)
 
     # Get vendor-specific table name and timestamp function
-    order_table = get_table_name(connection, 'order')
+    order_table = get_table_name(connection, "order")
     now_func = get_current_timestamp(connection)
 
     # Was: no explicit transaction. See the ORM path above.
@@ -159,21 +169,29 @@ def run_transaction_sql(connection):
             # fragment, and the ORM necessarily looked slower. The statements
             # below now mirror run_transaction_orm one for one, in the same
             # order, so the difference between the two is the framework.
-            cursor.execute("""
+            cursor.execute(
+                """
                 SELECT w_tax FROM warehouse WHERE w_id = %s
-            """, [w_id])
+            """,
+                [w_id],
+            )
             if cursor.fetchone() is None:
-                raise LookupError(f"warehouse {w_id} not found; tpcc_config "
-                                  f"does not describe the loaded database")
+                raise LookupError(
+                    f"warehouse {w_id} not found; tpcc_config "
+                    f"does not describe the loaded database"
+                )
 
             # Was: an unlocked read, while SQLAlchemy's ORM path held
             # SELECT ... FOR UPDATE on this row. Both raw-SQL paths now follow
             # tpcc_config.LOCK_DISTRICT, the same as the ORM paths.
             # FOR UPDATE is not portable; see tpcc_config.district_lock_sql.
             hint, lock_clause = district_lock_sql(connection.vendor)
-            cursor.execute(f"""
+            cursor.execute(
+                f"""
                 SELECT d_next_o_id FROM district{hint} WHERE d_w_id = %s AND d_id = %s{lock_clause}
-            """, [w_id, d_id])
+            """,
+                [w_id, d_id],
+            )
             row = cursor.fetchone()
             if not row:
                 # Was: `return {'error': 'District not found'}`. Returning a dict
@@ -183,35 +201,47 @@ def run_transaction_sql(connection):
 
             next_o_id = row[0]
 
-            cursor.execute("""
+            cursor.execute(
+                """
                 SELECT c_discount FROM customer WHERE c_w_id = %s AND c_d_id = %s AND c_id = %s
-            """, [w_id, d_id, c_id])
+            """,
+                [w_id, d_id, c_id],
+            )
             if cursor.fetchone() is None:
                 raise LookupError(f"customer ({w_id}, {d_id}, {c_id}) not found")
 
             # Increment next order ID
-            cursor.execute("""
+            cursor.execute(
+                """
                 UPDATE district SET d_next_o_id = d_next_o_id + 1 WHERE d_w_id = %s AND d_id = %s
-            """, [w_id, d_id])
+            """,
+                [w_id, d_id],
+            )
 
             # Create order. The timestamp is the only vendor difference and
             # get_current_timestamp already carries it; this was previously an
             # if/else on connection.vendor whose two branches were identical.
-            cursor.execute(f"""
+            cursor.execute(
+                f"""
                 INSERT INTO {order_table} (o_id, o_d_id, o_w_id, o_c_id, o_entry_d, o_carrier_id, o_ol_cnt, o_all_local)
                 VALUES (%s, %s, %s, %s, {now_func}, NULL, %s, 1)
-            """, [next_o_id, d_id, w_id, c_id, ol_cnt])
+            """,
+                [next_o_id, d_id, w_id, c_id, ol_cnt],
+            )
 
             # Create new_order entry
-            cursor.execute("""
+            cursor.execute(
+                """
                 INSERT INTO new_order (no_o_id, no_d_id, no_w_id)
                 VALUES (%s, %s, %s)
-            """, [next_o_id, d_id, w_id])
+            """,
+                [next_o_id, d_id, w_id],
+            )
 
             # The order lines. Same loop, same draws in the same order and the
             # same two reads per line as the ORM path, so the two consume the
             # same values from `random` and touch the same rows.
-            total_amount = Decimal('0.00')
+            total_amount = Decimal("0.00")
             for ol_number in range(1, ol_cnt + 1):
                 ol_i_id = random.randint(1, ITEMS)
                 ol_supply_w_id = w_id
@@ -223,9 +253,12 @@ def run_transaction_sql(connection):
                     raise LookupError(f"item {ol_i_id} not found")
                 i_price = item_row[0]
 
-                cursor.execute("""
+                cursor.execute(
+                    """
                     SELECT s_dist_01 FROM stock WHERE s_w_id = %s AND s_i_id = %s
-                """, [w_id, ol_i_id])
+                """,
+                    [w_id, ol_i_id],
+                )
                 stock_row = cursor.fetchone()
                 if stock_row is None:
                     raise LookupError(f"stock ({w_id}, {ol_i_id}) not found")
@@ -233,34 +266,55 @@ def run_transaction_sql(connection):
 
                 ol_amount = i_price * ol_quantity
 
-                cursor.execute("""
+                cursor.execute(
+                    """
                     INSERT INTO order_line (ol_o_id, ol_d_id, ol_w_id, ol_number,
                                             ol_i_id, ol_supply_w_id, ol_delivery_d,
                                             ol_quantity, ol_amount, ol_dist_info)
                     VALUES (%s, %s, %s, %s, %s, %s, NULL, %s, %s, %s)
-                """, [next_o_id, d_id, w_id, ol_number, ol_i_id, ol_supply_w_id,
-                      ol_quantity, ol_amount, ol_dist_info])
+                """,
+                    [
+                        next_o_id,
+                        d_id,
+                        w_id,
+                        ol_number,
+                        ol_i_id,
+                        ol_supply_w_id,
+                        ol_quantity,
+                        ol_amount,
+                        ol_dist_info,
+                    ],
+                )
 
                 total_amount += ol_amount
 
             return {
-                'w_id': w_id,
-                'd_id': d_id,
-                'c_id': c_id,
-                'o_id': next_o_id,
-                'ol_cnt': ol_cnt,
-                'total_amount': float(total_amount)
+                "w_id": w_id,
+                "d_id": d_id,
+                "c_id": c_id,
+                "o_id": next_o_id,
+                "ol_cnt": ol_cnt,
+                "total_amount": float(total_amount),
             }
 
 
 def get_transaction_info():
     """Return metadata about this transaction"""
     return {
-        'number': 1,
-        'name': 'NewOrder',
-        'complexity': 'Medium',
-        'description': 'Creates a new order transaction',
-        'tables': ['warehouse', 'district', 'customer', 'item', 'stock', 'order', 'new_order', 'order_line'],
-        'writes': 3,
-        'reads': 5,
+        "number": 1,
+        "name": "NewOrder",
+        "complexity": "Medium",
+        "description": "Creates a new order transaction",
+        "tables": [
+            "warehouse",
+            "district",
+            "customer",
+            "item",
+            "stock",
+            "order",
+            "new_order",
+            "order_line",
+        ],
+        "writes": 3,
+        "reads": 5,
     }

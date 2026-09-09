@@ -33,6 +33,7 @@ Each worker gets its own connection, its own SQLAlchemy Session - Session is not
 thread-safe - and its own seeded RNG, offset by worker index so the workers do
 not all contend for the same district. Warmup runs first and is not counted.
 """
+
 import argparse
 import csv
 import os
@@ -42,11 +43,16 @@ import sys
 import threading
 import time
 
-sys.path.insert(0, os.path.abspath(
-    os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")))
+sys.path.insert(
+    0,
+    os.path.abspath(
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
+    ),
+)
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_app.settings")
 
 import django
+
 django.setup()
 
 from django.db import connections
@@ -60,9 +66,25 @@ TXN = {
     5: ("T5", "Stock-Level", "t5_stocklevel", "t5"),
 }
 
-FIELDS = ["benchmark", "dbms", "schema_config", "transaction_id", "name",
-          "framework", "path", "concurrency", "duration_s", "committed",
-          "aborted", "abort_pct", "qpm", "qps", "p50_ms", "p95_ms", "note"]
+FIELDS = [
+    "benchmark",
+    "dbms",
+    "schema_config",
+    "transaction_id",
+    "name",
+    "framework",
+    "path",
+    "concurrency",
+    "duration_s",
+    "committed",
+    "aborted",
+    "abort_pct",
+    "qpm",
+    "qps",
+    "p50_ms",
+    "p95_ms",
+    "note",
+]
 
 
 def append_rows(path, rows):
@@ -107,6 +129,7 @@ def worker(fn, stop, seed, committed, aborted, latencies, lock, errors):
     # charged to Django as a lower QPM.
     try:
         from django.db import connections as _dj_conns
+
         _dj_conns.close_all()
     except Exception:
         pass
@@ -156,15 +179,22 @@ def replenish(dj_conn, dbms):
     # quoted identifier is case-sensitive. load_tpcc.py creates Oracle's as
     # "ORDER", so the lowercase default that serves the other three raises
     # ORA-00942 here. Same table, same quoting rule, opposite folding.
-    q = {"postgresql": '"order"', "mysql": "`order`",
-         "sqlserver": "[order]", "oracle": '"ORDER"'}.get(dbms, '"order"')
+    q = {
+        "postgresql": '"order"',
+        "mysql": "`order`",
+        "sqlserver": "[order]",
+        "oracle": '"ORDER"',
+    }.get(dbms, '"order"')
     with dj_conn.cursor() as c:
-        c.execute("""INSERT INTO new_order (no_o_id, no_d_id, no_w_id)
+        c.execute(
+            """INSERT INTO new_order (no_o_id, no_d_id, no_w_id)
                      SELECT o_id, o_d_id, o_w_id FROM %s o
                       WHERE NOT EXISTS (SELECT 1 FROM new_order n
                                         WHERE n.no_w_id = o.o_w_id
                                           AND n.no_d_id = o.o_d_id
-                                          AND n.no_o_id = o.o_id)""" % q)
+                                          AND n.no_o_id = o.o_id)"""
+            % q
+        )
         c.execute("SELECT COUNT(*) FROM new_order")
         return c.fetchone()[0]
 
@@ -186,9 +216,18 @@ def run_path(make_fn, concurrency, duration, warmup, seed_base):
         fn = make_fn(i)
         t = threading.Thread(
             target=worker,
-            args=(fn, stop, seed_base + i * 7919, committed, aborted,
-                  latencies, lock, errors),
-            daemon=True)
+            args=(
+                fn,
+                stop,
+                seed_base + i * 7919,
+                committed,
+                aborted,
+                latencies,
+                lock,
+                errors,
+            ),
+            daemon=True,
+        )
         threads.append(t)
 
     # Warmup is inside the same worker loop; discard whatever accumulated.
@@ -236,8 +275,10 @@ def main():
     conn = connections["default"]
     with conn.cursor() as c:
         cfg.verify_against(c)
-    print("TPC-C throughput  %s %s  concurrency=%d  duration=%ds (+%ds warmup)"
-          % (args.dbms, args.schema, args.concurrency, args.duration, args.warmup))
+    print(
+        "TPC-C throughput  %s %s  concurrency=%d  duration=%ds (+%ds warmup)"
+        % (args.dbms, args.schema, args.concurrency, args.duration, args.warmup)
+    )
     print("  %s\n" % cfg.summary())
 
     dsn = os.environ.get("SA_DSN")
@@ -246,11 +287,13 @@ def main():
         return 2
     from sqlalchemy import create_engine
     from sqlalchemy.orm import Session
+
     # The pool must be able to give every worker its own connection, or workers
     # queue on the pool and the number measured is the pool size, not the
     # database's throughput.
-    engine = create_engine(dsn, pool_size=args.concurrency + 5,
-                           max_overflow=10, pool_pre_ping=True)
+    engine = create_engine(
+        dsn, pool_size=args.concurrency + 5, max_overflow=10, pool_pre_ping=True
+    )
 
     rows = []
     for n in [int(x) for x in args.transactions.split(",")]:
@@ -266,11 +309,13 @@ def main():
                     return dj.run_transaction_orm(using="default")
                 finally:
                     pass
+
             return f
 
         def dj_sql(i):
             def f(rng):
                 return dj.run_transaction_sql(connections["default"])
+
             return f
 
         # `f._session` is how worker() finds the Session to close when the thread
@@ -283,47 +328,57 @@ def main():
         # throughput differs by a factor of 3.4. Defect C25.
         def sa_orm(i):
             sess = Session(engine)
+
             def f(rng):
                 try:
                     return sa.run_transaction_orm(sess)
                 except Exception:
                     sess.rollback()
                     raise
+
             f._session = sess
             return f
 
         def sa_sql(i):
             sess = Session(engine)
+
             def f(rng):
                 try:
                     return sa.run_transaction_sql(sess)
                 except Exception:
                     sess.rollback()
                     raise
+
             f._session = sess
             return f
 
-        for framework, path, mk in (("django", "orm", dj_orm),
-                                    ("django", "sql", dj_sql),
-                                    ("sqlalchemy", "orm", sa_orm),
-                                    ("sqlalchemy", "sql", sa_sql)):
+        for framework, path, mk in (
+            ("django", "orm", dj_orm),
+            ("django", "sql", dj_sql),
+            ("sqlalchemy", "orm", sa_orm),
+            ("sqlalchemy", "sql", sa_sql),
+        ):
             print("  %s %s/%s ..." % (tid, framework, path), end="", flush=True)
             before_no = None
             if tid in CONSUMES_ROWS:
                 before_no = replenish(conn, args.dbms)
-            r = run_path(mk, args.concurrency, args.duration, args.warmup,
-                         args.seed + n * 101)
+            r = run_path(
+                mk, args.concurrency, args.duration, args.warmup, args.seed + n * 101
+            )
             if tid in CONSUMES_ROWS:
                 after_no = new_order_count(conn)
-                r["note"] = ((r["note"] + " | " if r["note"] else "")
-                             + "new_order %d -> %d" % (before_no, after_no))
+                r["note"] = (
+                    r["note"] + " | " if r["note"] else ""
+                ) + "new_order %d -> %d" % (before_no, after_no)
                 # Below ~1 row per (warehouse, district) there is nothing left to
                 # deliver and the rest of the window measured an empty table.
                 if after_no < cfg.WAREHOUSES * cfg.DISTRICTS_PER_WAREHOUSE:
                     r["note"] += " | INVALID: starved, ran out of new_order rows"
                     print("  STARVED", end="")
-            print("  %8.1f QPM   %d committed, %d aborted (%.1f%%)"
-                  % (r["qpm"], r["committed"], r["aborted"], r["abort_pct"]))
+            print(
+                "  %8.1f QPM   %d committed, %d aborted (%.1f%%)"
+                % (r["qpm"], r["committed"], r["aborted"], r["abort_pct"])
+            )
             if r["note"]:
                 # "note", not "first errors". The note field carries the
                 # new_order row-count drift that Delivery necessarily causes,
@@ -332,10 +387,15 @@ def main():
                 # new_order 452849 -> 445899" on a curve with zero aborts.
                 print("      note: %s" % r["note"])
             row = {
-                "benchmark": "tpcc", "dbms": args.dbms,
-                "schema_config": args.schema, "transaction_id": tid,
-                "name": name, "framework": framework, "path": path,
-                "concurrency": args.concurrency, "duration_s": args.duration,
+                "benchmark": "tpcc",
+                "dbms": args.dbms,
+                "schema_config": args.schema,
+                "transaction_id": tid,
+                "name": name,
+                "framework": framework,
+                "path": path,
+                "concurrency": args.concurrency,
+                "duration_s": args.duration,
                 **r,
             }
             rows.append(row)

@@ -1,0 +1,36 @@
+# Local environments and Python caches
+.venv*/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Rebuilt outputs and new measurements
+outputs/
+results/*
+!results/sf1/
+results/sf1/*
+!results/sf1/README.md
+!results/sf1/all_results.csv
+!results/sf1/measurements/
+results/sf1/measurements/*
+!results/sf1/measurements/*.csv
+dist/
+validation_results.json
+*.duckdb
+*.duckdb.wal
+*.tbl
+*.log
+
+# Local credentials and editor state
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+.DS_Store
+*.swp
+*~

@@ -11,6 +11,7 @@ believable time for a query that was not Q11. sql_baseline_pre_paramsets.json
 is a snapshot of all 88 statements (22 queries x 4 vendors) taken immediately
 before the refactor, and set 0 has to reproduce every one of them exactly.
 """
+
 import json
 import os
 import sys
@@ -27,18 +28,31 @@ failures = []
 
 
 def check(name, cond, detail=""):
-    print(("  ok   " if cond else "  FAIL ") + name + (f"  {detail}" if detail and not cond else ""))
+    print(
+        ("  ok   " if cond else "  FAIL ")
+        + name
+        + (f"  {detail}" if detail and not cond else "")
+    )
     if not cond:
         failures.append(name)
+        # Pytest ignores this module's final __main__ block. Fail at the check
+        # itself so an invalid SQL baseline cannot be reported as a passing test.
+        raise AssertionError(f"{name}: {detail}")
 
 
 def test_set0_is_byte_identical():
     """Set 0 must emit exactly the SQL the harness emitted before parameters."""
     snap = json.load(open(os.path.join(HERE, "sql_baseline_pre_paramsets.json")))
-    bad = [k for k, want in snap.items()
-           if _sql.sql_for(int(k.split(":")[0]), k.split(":")[1]) != want]
-    check(f"set 0 reproduces all {len(snap)} pre-refactor statements",
-          not bad, f"differ: {bad}")
+    bad = [
+        k
+        for k, want in snap.items()
+        if _sql.sql_for(int(k.split(":")[0]), k.split(":")[1]) != want
+    ]
+    check(
+        f"set 0 reproduces all {len(snap)} pre-refactor statements",
+        not bad,
+        f"differ: {bad}",
+    )
 
 
 def test_every_placeholder_is_substituted():
@@ -62,8 +76,9 @@ def test_parameters_actually_move_the_sql():
     inert = []
     for q in range(1, 23):
         base = _sql.sql_for(q, "postgresql", ps.params(q, 0))
-        variants = {_sql.sql_for(q, "postgresql", ps.params(q, i))
-                    for i in range(1, ps.N_SETS)}
+        variants = {
+            _sql.sql_for(q, "postgresql", ps.params(q, i)) for i in range(1, ps.N_SETS)
+        }
         if base in variants or len(variants) < 2:
             if q not in ps._SMALL_DOMAIN:
                 inert.append(q)
@@ -80,13 +95,17 @@ def test_set_count_and_distinctness():
             if s in seen and q not in ps._SMALL_DOMAIN:
                 dup.append((q, s))
             seen.append(s)
-    check(f"{ps.N_SETS} distinct sets per query (Q18 exempt, four legal values)",
-          not dup, str(dup))
+    check(
+        f"{ps.N_SETS} distinct sets per query (Q18 exempt, four legal values)",
+        not dup,
+        str(dup),
+    )
 
 
 def test_determinism():
     """Regenerating must give the same sets, or the artifact is not reproducible."""
     import importlib
+
     first = {q: list(v) for q, v in ps.PARAM_SETS.items()}
     importlib.reload(ps)
     check("regeneration is deterministic", first == ps.PARAM_SETS)
@@ -103,13 +122,21 @@ def test_parameters_are_in_the_data():
     for q in range(1, 23):
         for i in range(ps.N_SETS):
             p = ps.params(q, i)
-            for key, pool in (("region", domains.REGIONS), ("nation", domains.NATIONS),
-                              ("nation1", domains.NATIONS), ("nation2", domains.NATIONS),
-                              ("segment", domains.SEGMENTS), ("color", domains.COLORS),
-                              ("container", domains.CONTAINERS), ("brand", domains.BRANDS),
-                              ("brand1", domains.BRANDS), ("brand2", domains.BRANDS),
-                              ("brand3", domains.BRANDS), ("shipmode1", domains.SHIPMODES),
-                              ("shipmode2", domains.SHIPMODES)):
+            for key, pool in (
+                ("region", domains.REGIONS),
+                ("nation", domains.NATIONS),
+                ("nation1", domains.NATIONS),
+                ("nation2", domains.NATIONS),
+                ("segment", domains.SEGMENTS),
+                ("color", domains.COLORS),
+                ("container", domains.CONTAINERS),
+                ("brand", domains.BRANDS),
+                ("brand1", domains.BRANDS),
+                ("brand2", domains.BRANDS),
+                ("brand3", domains.BRANDS),
+                ("shipmode1", domains.SHIPMODES),
+                ("shipmode2", domains.SHIPMODES),
+            ):
                 if key in p and p[key] not in pool:
                     bad.append((q, i, key, p[key]))
     check("every drawn value exists in the data's domain", not bad, str(bad[:5]))
@@ -123,8 +150,10 @@ def test_q18_set0_is_declared_out_of_range():
     include a parameter effect the other 21 queries do not have. Measured on
     SF1: 57 order groups at 300, 9-10 at 312-315.
     """
-    check("Q18 declared in _SET0_OUTSIDE_RANGE",
-          18 in ps._SET0_OUTSIDE_RANGE and ps.PARAM_SETS[18][0]["quantity"] == 300)
+    check(
+        "Q18 declared in _SET0_OUTSIDE_RANGE",
+        18 in ps._SET0_OUTSIDE_RANGE and ps.PARAM_SETS[18][0]["quantity"] == 300,
+    )
 
 
 def test_williams_design_is_actually_williams():
@@ -135,32 +164,44 @@ def test_williams_design_is_actually_williams():
     conditions are checked: every path once in every position, and every
     ordered adjacent pair exactly once.
     """
-    src = open(os.path.join(os.path.dirname(HERE), "scripts/2-benchmark/run_block.py")).read()
+    src = open(
+        os.path.join(os.path.dirname(HERE), "scripts/2-benchmark/run_block.py")
+    ).read()
     ns = {}
-    exec(src[src.index("PATHS = ("):src.index("FIELDS = [")], ns)
+    exec(src[src.index("PATHS = (") : src.index("FIELDS = [")], ns)
     W, P = ns["WILLIAMS"], ns["PATHS"]
     positions = all(sorted(seq[i] for seq in W) == sorted(P) for i in range(4))
     pairs = [(seq[i], seq[i + 1]) for seq in W for i in range(3)]
     check("Williams: every path once in every position", positions)
-    check("Williams: every ordered adjacent pair exactly once",
-          len(pairs) == len(set(pairs)) == 12)
+    check(
+        "Williams: every ordered adjacent pair exactly once",
+        len(pairs) == len(set(pairs)) == 12,
+    )
 
 
 def test_warmup_instance_is_not_a_measured_one():
     """Warming with a measured set would start that block warmer than the rest."""
     overlap = [q for q in range(1, 23) if ps.WARMUP_SETS[q] in ps.PARAM_SETS[q]]
-    check("warmup parameters distinct from all eight measured sets",
-          overlap == [18], f"unexpected overlap: {[q for q in overlap if q != 18]}")
+    check(
+        "warmup parameters distinct from all eight measured sets",
+        overlap == [18],
+        f"unexpected overlap: {[q for q in overlap if q != 18]}",
+    )
 
 
 if __name__ == "__main__":
     print(__doc__.strip().splitlines()[0])
-    for fn in (test_set0_is_byte_identical, test_every_placeholder_is_substituted,
-               test_parameters_actually_move_the_sql, test_set_count_and_distinctness,
-               test_determinism, test_parameters_are_in_the_data,
-               test_q18_set0_is_declared_out_of_range,
-               test_williams_design_is_actually_williams,
-               test_warmup_instance_is_not_a_measured_one):
+    for fn in (
+        test_set0_is_byte_identical,
+        test_every_placeholder_is_substituted,
+        test_parameters_actually_move_the_sql,
+        test_set_count_and_distinctness,
+        test_determinism,
+        test_parameters_are_in_the_data,
+        test_q18_set0_is_declared_out_of_range,
+        test_williams_design_is_actually_williams,
+        test_warmup_instance_is_not_a_measured_one,
+    ):
         fn()
     print()
     if failures:

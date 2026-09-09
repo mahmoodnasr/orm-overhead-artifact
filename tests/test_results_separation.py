@@ -9,6 +9,7 @@ all_results.csv looks exactly as complete as before.
 
 Run:  python3 -m pytest tests/test_results_separation.py -q
 """
+
 import csv
 import os
 import subprocess
@@ -18,7 +19,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, ".."))
 sys.path.insert(0, os.path.join(REPO, "scripts", "utils"))
 
-import results_paths                                          # noqa: E402
+import results_paths  # noqa: E402
 
 
 def test_sf10_and_sf1_share_no_path():
@@ -93,15 +94,18 @@ def test_sf10_rebuild_is_byte_identical():
     """
     out = os.path.join(REPO, "results", "all_results.csv")
     if not os.path.exists(out):
-        return                                    # nothing committed to compare
+        return  # nothing committed to compare
     committed = subprocess.run(
         ["git", "-C", REPO, "show", "HEAD:results/all_results.csv"],
-        capture_output=True, text=True)
+        capture_output=True,
+        text=True,
+    )
     if committed.returncode != 0:
-        return                                    # not tracked in this checkout
+        return  # not tracked in this checkout
     with open(out) as fh:
         assert fh.read() == committed.stdout, (
-            "results/all_results.csv differs from the committed SF10 file")
+            "results/all_results.csv differs from the committed SF10 file"
+        )
 
 
 def test_sf1_file_carries_its_own_scale_and_campaign():
@@ -113,4 +117,5 @@ def test_sf1_file_carries_its_own_scale_and_campaign():
     assert rows, "SF1 results file is empty"
     assert {r["scale_factor"] for r in rows} == {"1"}
     assert not any(r["campaign_id"].startswith("sf10") for r in rows), (
-        "an SF1 row is attributed to an SF10 campaign")
+        "an SF1 row is attributed to an SF10 campaign"
+    )

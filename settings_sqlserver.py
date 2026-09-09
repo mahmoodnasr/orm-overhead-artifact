@@ -29,11 +29,13 @@ rejects the self-signed certificate the container presents, which is what
 `TrustServerCertificate=yes` is for; 17 does not encrypt by default and is
 unaffected by it.
 """
+
 import os
 
 # mssql-django 1.8.0 truncates Decimal parameters to integers in any query
 # containing GROUP BY. See mssql_decimal_fix for the measurement.
 import mssql_decimal_fix
+
 mssql_decimal_fix.apply()
 
 

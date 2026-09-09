@@ -2,6 +2,7 @@
 TPC-C Transaction 4: Delivery
 Processes delivery of orders
 """
+
 from django.db import transaction
 from django.db.models import F, Min
 from datetime import datetime
@@ -10,7 +11,7 @@ import random
 from tpcc_config import DISTRICTS_PER_WAREHOUSE, WAREHOUSES
 
 
-def run_transaction_orm(using='default'):
+def run_transaction_orm(using="default"):
     """
     Execute TPC-C T4 (Delivery) via Django ORM
     """
@@ -37,9 +38,12 @@ def run_transaction_orm(using='default'):
             # Was: range(1, 11) with the district count written into this file.
             for d_id in range(1, DISTRICTS_PER_WAREHOUSE + 1):
                 # Get oldest new order
-                new_order = NewOrder.objects.using(using).filter(
-                    no_w_id=w_id, no_d_id=d_id
-                ).order_by('no_o_id').first()
+                new_order = (
+                    NewOrder.objects.using(using)
+                    .filter(no_w_id=w_id, no_d_id=d_id)
+                    .order_by("no_o_id")
+                    .first()
+                )
 
                 if not new_order:
                     continue
@@ -71,8 +75,8 @@ def run_transaction_orm(using='default'):
                 Customer.objects.using(using).filter(
                     c_w_id=w_id, c_d_id=d_id, c_id=order.o_c_id
                 ).update(
-                    c_balance=F('c_balance') + total_amount,
-                    c_delivery_cnt=F('c_delivery_cnt') + 1
+                    c_balance=F("c_balance") + total_amount,
+                    c_delivery_cnt=F("c_delivery_cnt") + 1,
                 )
 
                 # Delete the new_order row through a filter on the whole key.
@@ -87,17 +91,15 @@ def run_transaction_orm(using='default'):
                     no_w_id=w_id, no_d_id=d_id, no_o_id=o_id
                 ).delete()
 
-                results.append({
-                    'd_id': d_id,
-                    'o_id': o_id,
-                    'total_amount': total_amount
-                })
+                results.append(
+                    {"d_id": d_id, "o_id": o_id, "total_amount": total_amount}
+                )
 
             return {
-                'w_id': w_id,
-                'carrier_id': carrier_id,
-                'orders_delivered': len(results),
-                'results': results
+                "w_id": w_id,
+                "carrier_id": carrier_id,
+                "orders_delivered": len(results),
+                "results": results,
             }
     except Exception:
         # Was: `return {'error': str(e)}`, which reported a failed transaction as
@@ -121,22 +123,27 @@ def run_transaction_sql(connection):
     with transaction.atomic(using=connection.alias):
         with connection.cursor() as cursor:
             from .db_utils import get_table_name, get_current_timestamp
-            order_table = get_table_name(connection, 'order')
+
+            order_table = get_table_name(connection, "order")
             now_func = get_current_timestamp(connection)
 
             from .db_utils import get_limit_clause
+
             limit_clause = get_limit_clause(connection, 1)
 
             results = []
             # Was: range(1, 11) with the district count written into this file.
             for d_id in range(1, DISTRICTS_PER_WAREHOUSE + 1):
                 # Get oldest new order
-                cursor.execute(f"""
+                cursor.execute(
+                    f"""
                     SELECT no_o_id FROM new_order
                     WHERE no_w_id = %s AND no_d_id = %s
                     ORDER BY no_o_id
                     {limit_clause}
-                """, [w_id, d_id])
+                """,
+                    [w_id, d_id],
+                )
 
                 row = cursor.fetchone()
                 if not row:
@@ -145,30 +152,42 @@ def run_transaction_sql(connection):
                 o_id = row[0]
 
                 # Update order
-                cursor.execute(f"""
+                cursor.execute(
+                    f"""
                     UPDATE {order_table} SET o_carrier_id = %s
                     WHERE o_w_id = %s AND o_d_id = %s AND o_id = %s
-                """, [carrier_id, w_id, d_id, o_id])
+                """,
+                    [carrier_id, w_id, d_id, o_id],
+                )
 
                 # Update order lines - handle Oracle separately
-                if connection.vendor == 'oracle':
-                    cursor.execute("""
+                if connection.vendor == "oracle":
+                    cursor.execute(
+                        """
                         UPDATE order_line SET ol_delivery_d = SYSDATE
                         WHERE ol_w_id = %s AND ol_d_id = %s AND ol_o_id = %s
-                    """, [w_id, d_id, o_id])
+                    """,
+                        [w_id, d_id, o_id],
+                    )
                 else:
-                    cursor.execute(f"""
+                    cursor.execute(
+                        f"""
                         UPDATE order_line SET ol_delivery_d = {now_func}
                         WHERE ol_w_id = %s AND ol_d_id = %s AND ol_o_id = %s
-                    """, [w_id, d_id, o_id])
+                    """,
+                        [w_id, d_id, o_id],
+                    )
 
                 # Get total amount and customer
-                cursor.execute(f"""
+                cursor.execute(
+                    f"""
                     SELECT SUM(ol_amount), o_c_id FROM order_line, {order_table}
                     WHERE ol_w_id = %s AND ol_d_id = %s AND ol_o_id = %s
                     AND o_w_id = %s AND o_d_id = %s AND o_id = %s
                     GROUP BY o_c_id
-                """, [w_id, d_id, o_id, w_id, d_id, o_id])
+                """,
+                    [w_id, d_id, o_id, w_id, d_id, o_id],
+                )
 
                 total_row = cursor.fetchone()
                 if total_row:
@@ -176,41 +195,49 @@ def run_transaction_sql(connection):
                     c_id = total_row[1]
 
                     # Update customer
-                    cursor.execute("""
+                    cursor.execute(
+                        """
                         UPDATE customer SET
                             c_balance = c_balance + %s,
                             c_delivery_cnt = c_delivery_cnt + 1
                         WHERE c_w_id = %s AND c_d_id = %s AND c_id = %s
-                    """, [total_amount, w_id, d_id, c_id])
+                    """,
+                        [total_amount, w_id, d_id, c_id],
+                    )
 
                 # Delete new_order
-                cursor.execute("""
+                cursor.execute(
+                    """
                     DELETE FROM new_order
                     WHERE no_w_id = %s AND no_d_id = %s AND no_o_id = %s
-                """, [w_id, d_id, o_id])
+                """,
+                    [w_id, d_id, o_id],
+                )
 
-                results.append({
-                    'd_id': d_id,
-                    'o_id': o_id,
-                    'total_amount': total_amount if total_row else 0.0
-                })
+                results.append(
+                    {
+                        "d_id": d_id,
+                        "o_id": o_id,
+                        "total_amount": total_amount if total_row else 0.0,
+                    }
+                )
 
             return {
-                'w_id': w_id,
-                'carrier_id': carrier_id,
-                'orders_delivered': len(results),
-                'results': results
+                "w_id": w_id,
+                "carrier_id": carrier_id,
+                "orders_delivered": len(results),
+                "results": results,
             }
 
 
 def get_transaction_info():
     """Return metadata about this transaction"""
     return {
-        'number': 4,
-        'name': 'Delivery',
-        'complexity': 'Medium',
-        'description': 'Processes delivery of orders',
-        'tables': ['new_order', 'order', 'order_line', 'customer'],
-        'writes': 4,
-        'reads': 2,
+        "number": 4,
+        "name": "Delivery",
+        "complexity": "Medium",
+        "description": "Processes delivery of orders",
+        "tables": ["new_order", "order", "order_line", "customer"],
+        "writes": 4,
+        "reads": 2,
     }

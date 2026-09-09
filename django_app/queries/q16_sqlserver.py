@@ -1,4 +1,4 @@
-"""TPC-H Query 16 — SQL Server version.
+r"""TPC-H Query 16 — SQL Server version.
 
 Identical to `q16.py` except for one predicate in the hand-written baseline.
 The ORM path is unchanged and is not repeated here for a reason: it is imported
@@ -35,9 +35,9 @@ def run_query_sql(connection, params=None):
     SELECT p_brand, p_type, p_size, COUNT(DISTINCT ps_suppkey) as supplier_cnt
     FROM partsupp, part
     WHERE p_partkey = ps_partkey
-      AND p_brand <> '{P['brand']}'
-      AND p_type NOT LIKE '{P['type']}%'
-      AND p_size IN ({P['sizes_sql']})
+      AND p_brand <> '{P["brand"]}'
+      AND p_type NOT LIKE '{P["type"]}%'
+      AND p_size IN ({P["sizes_sql"]})
       AND ps_suppkey NOT IN (
         SELECT s_suppkey FROM supplier
         WHERE s_comment LIKE '%' + 'Customer' + '%' + 'Complaints' + '%'

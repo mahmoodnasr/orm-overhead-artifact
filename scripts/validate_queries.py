@@ -25,20 +25,24 @@ Environment:
 
 Usage:  python3 validate.py [q01 q02 ...]
 """
+
 import os, sys, time, json, decimal, datetime
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_app.settings")
 
 import django
 import tpch_paramsets
+
 django.setup()
 from django.db import connections
 
 from sqlalchemy import create_engine, event
 from sqlalchemy.orm import sessionmaker
 
-PG = os.environ.get("SA_DSN", "postgresql+psycopg2://postgres:bench@127.0.0.1:55432/tpch")
+PG = os.environ.get(
+    "SA_DSN", "postgresql+psycopg2://postgres:bench@127.0.0.1:55432/tpch"
+)
 
 # A validation run had no deadline of its own, which is fine until a query the
 # physical design cannot support meets a 60-million-row table: Q17's correlated
@@ -89,6 +93,7 @@ def _arm_every_connection(dbapi_conn, _record):
                 cur.close()
     except Exception:
         pass
+
 
 # --- capture every statement SQLAlchemy sends, so we can tell ORM-built SQL
 #     from a hand-written text() literal ------------------------------------
@@ -155,19 +160,25 @@ def arm_timeout(dj_conn, sa_session):
         if vendor == "oracle":
             # Django connects lazily; without this the deadline lands on None.
             dj_conn.ensure_connection()
-            for raw in (getattr(dj_conn, "connection", None),
-                        sa_session.connection().connection.dbapi_connection):
+            for raw in (
+                getattr(dj_conn, "connection", None),
+                sa_session.connection().connection.dbapi_connection,
+            ):
                 if raw is not None:
                     raw.call_timeout = ms
         elif vendor in ("mssql", "sqlserver"):
             dj_conn.ensure_connection()
-            for raw in (getattr(dj_conn, "connection", None),
-                        sa_session.connection().connection.dbapi_connection):
+            for raw in (
+                getattr(dj_conn, "connection", None),
+                sa_session.connection().connection.dbapi_connection,
+            ):
                 if raw is not None:
-                    raw.timeout = int(TIMEOUT_S)    # pyodbc, whole seconds
+                    raw.timeout = int(TIMEOUT_S)  # pyodbc, whole seconds
         else:
-            stmt = {"postgresql": f"SET statement_timeout = {ms}",
-                    "mysql": f"SET SESSION max_execution_time = {ms}"}.get(vendor)
+            stmt = {
+                "postgresql": f"SET statement_timeout = {ms}",
+                "mysql": f"SET SESSION max_execution_time = {ms}",
+            }.get(vendor)
             if stmt:
                 with dj_conn.cursor() as c:
                     c.execute(stmt)
@@ -183,8 +194,11 @@ def ceiling_now(sa_session):
     setting to read (Oracle and SQL Server bound the call from the client, so
     there is nothing to ask the server for)."""
     from sqlalchemy import text
-    stmt = {"postgresql": "SHOW statement_timeout",
-            "mysql": "SELECT @@SESSION.max_execution_time"}.get(VENDOR)
+
+    stmt = {
+        "postgresql": "SHOW statement_timeout",
+        "mysql": "SELECT @@SESSION.max_execution_time",
+    }.get(VENDOR)
     if stmt is None:
         return None
     try:
@@ -201,7 +215,8 @@ def assert_ceiling(sa_session, where):
     if c is not None and c in ("0", "0s", "unreadable"):
         raise RuntimeError(
             "statement ceiling is %r before %s - refusing to time an "
-            "unbounded path (C32)" % (c, where))
+            "unbounded path (C32)" % (c, where)
+        )
     return c
 
 
@@ -232,6 +247,7 @@ def check(qnum, set_index=0):
     """
     tag = f"q{qnum:02d}"
     from django_app.queries import get_query_module_for_db
+
     dj = get_query_module_for_db(qnum, os.environ.get("DJ_VENDOR", "postgresql"))
     sa = __import__(f"sqlalchemy_app.queries.{tag}", fromlist=["x"])
 
@@ -254,8 +270,10 @@ def check(qnum, set_index=0):
     sess = Session()
     arm_timeout(conn, sess)
     try:
-        for name, fn in (("sqlalchemy/orm", sa.run_query_orm),
-                         ("sqlalchemy/sql", sa.run_query_sql)):
+        for name, fn in (
+            ("sqlalchemy/orm", sa.run_query_orm),
+            ("sqlalchemy/sql", sa.run_query_sql),
+        ):
             # Order matters. assert_ceiling issues a statement of its own, and
             # _emitted feeds the ORM? check, which compares the FIRST statement
             # each path emitted. Clearing before the assertion left "SHOW
@@ -297,10 +315,16 @@ def check(qnum, set_index=0):
     else:
         is_orm = None
 
-    match_orm = (rowset(res["django/orm"]) == rowset(res["sqlalchemy/orm"])
-                 if ok("django/orm", "sqlalchemy/orm") else None)
-    match_sql = (rowset(res["django/sql"]) == rowset(res["sqlalchemy/sql"])
-                 if ok("django/sql", "sqlalchemy/sql") else None)
+    match_orm = (
+        rowset(res["django/orm"]) == rowset(res["sqlalchemy/orm"])
+        if ok("django/orm", "sqlalchemy/orm")
+        else None
+    )
+    match_sql = (
+        rowset(res["django/sql"]) == rowset(res["sqlalchemy/sql"])
+        if ok("django/sql", "sqlalchemy/sql")
+        else None
+    )
 
     # ORM=SQL: the original three checks compared ORM against ORM and baseline
     # against baseline, so a fault that hit both ORM paths identically was
@@ -310,8 +334,11 @@ def check(qnum, set_index=0):
     # It compared Django's pair only, so the mirror fault - one that hits
     # SQLAlchemy's ORM alone - was equally invisible. Both pairs are checked
     # now, and the verdict is the conjunction over whichever pairs ran.
-    pairs = [(rowset(res[f"{fw}/orm"]) == rowset(res[f"{fw}/sql"]))
-             for fw in ("django", "sqlalchemy") if ok(f"{fw}/orm", f"{fw}/sql")]
+    pairs = [
+        (rowset(res[f"{fw}/orm"]) == rowset(res[f"{fw}/sql"]))
+        for fw in ("django", "sqlalchemy")
+        if ok(f"{fw}/orm", f"{fw}/sql")
+    ]
     match_cross = all(pairs) if pairs else None
 
     # NONEMPTY: every TPC-H query returns at least one row against a valid
@@ -332,17 +359,27 @@ def check(qnum, set_index=0):
         "match_cross": match_cross,
         "nonempty": nonempty,
         "rows": len(any_rows) if any_rows is not None else 0,
-        "paths_ok": sorted(res), "paths_failed": err,
+        "paths_ok": sorted(res),
+        "paths_failed": err,
         "t_django_orm": round(dur.get("django/orm", 0), 3),
         "t_sqla_orm": round(dur.get("sqlalchemy/orm", 0), 3),
         "t_django_sql": round(dur.get("django/sql", 0), 3),
         "t_sqla_sql": round(dur.get("sqlalchemy/sql", 0), 3),
-        "overhead_django_pct": (round((dur["django/orm"] - dur["django/sql"])
-                                      / dur["django/sql"] * 100, 1)
-                                if ok("django/orm", "django/sql") and dur["django/sql"] else None),
-        "overhead_sqla_pct": (round((dur["sqlalchemy/orm"] - dur["sqlalchemy/sql"])
-                                    / dur["sqlalchemy/sql"] * 100, 1)
-                              if ok("sqlalchemy/orm", "sqlalchemy/sql") and dur["sqlalchemy/sql"] else None),
+        "overhead_django_pct": (
+            round((dur["django/orm"] - dur["django/sql"]) / dur["django/sql"] * 100, 1)
+            if ok("django/orm", "django/sql") and dur["django/sql"]
+            else None
+        ),
+        "overhead_sqla_pct": (
+            round(
+                (dur["sqlalchemy/orm"] - dur["sqlalchemy/sql"])
+                / dur["sqlalchemy/sql"]
+                * 100,
+                1,
+            )
+            if ok("sqlalchemy/orm", "sqlalchemy/sql") and dur["sqlalchemy/sql"]
+            else None
+        ),
     }
 
 
@@ -350,18 +387,22 @@ def main():
     want = [a for a in sys.argv[1:] if not a.startswith("--")]
     # --sets=all runs every parameter set; --sets=0,3 runs a chosen few. The
     # default is set 0 alone, so every existing invocation behaves as before.
-    sets_arg = next((a.split("=", 1)[1] for a in sys.argv[1:]
-                     if a.startswith("--sets=")), "0")
+    sets_arg = next(
+        (a.split("=", 1)[1] for a in sys.argv[1:] if a.startswith("--sets=")), "0"
+    )
     if sets_arg == "all":
         sets = list(range(tpch_paramsets.N_SETS))
     else:
         sets = [int(x) for x in sets_arg.split(",") if x != ""]
     nums = [int(w.lstrip("q")) for w in want] if want else list(range(1, 23))
     results = []
-    print(f"{'query':6s} {'ORM?':5s} {'MATCH':6s} {'SQL=':5s} {'ORM=SQL':8s} "
-          f"{'ROWS>0':7s} {'rows':>7s}  "
-          f"{'dj_orm':>7s} {'sa_orm':>7s} {'dj_sql':>7s} {'sa_sql':>7s}")
+    print(
+        f"{'query':6s} {'ORM?':5s} {'MATCH':6s} {'SQL=':5s} {'ORM=SQL':8s} "
+        f"{'ROWS>0':7s} {'rows':>7s}  "
+        f"{'dj_orm':>7s} {'sa_orm':>7s} {'dj_sql':>7s} {'sa_sql':>7s}"
+    )
     print("-" * 96)
+
     def verdict(v, yes, no):
         # None means a path this check needs did not run. It is printed as n/a
         # and is not a pass: the campaign gate keeps only yes/ok.
@@ -374,13 +415,15 @@ def main():
         try:
             r = check(n, si)
             results.append(r)
-            print(f"{r['query']+('' if len(sets)==1 else '.s%d'%si):6s} {verdict(r['is_orm'],'yes','NO'):5s} "
-                  f"{verdict(r['match_orm'],'ok','DIFF'):6s} "
-                  f"{verdict(r['match_sql'],'ok','DIFF'):5s} "
-                  f"{verdict(r['match_cross'],'ok','DIFF'):8s} "
-                  f"{verdict(r['nonempty'],'ok','EMPTY'):7s} {r['rows']:>7d}  "
-                  f"{t(r,'t_django_orm','django/orm')} {t(r,'t_sqla_orm','sqlalchemy/orm')} "
-                  f"{t(r,'t_django_sql','django/sql')} {t(r,'t_sqla_sql','sqlalchemy/sql')}")
+            print(
+                f"{r['query'] + ('' if len(sets) == 1 else '.s%d' % si):6s} {verdict(r['is_orm'], 'yes', 'NO'):5s} "
+                f"{verdict(r['match_orm'], 'ok', 'DIFF'):6s} "
+                f"{verdict(r['match_sql'], 'ok', 'DIFF'):5s} "
+                f"{verdict(r['match_cross'], 'ok', 'DIFF'):8s} "
+                f"{verdict(r['nonempty'], 'ok', 'EMPTY'):7s} {r['rows']:>7d}  "
+                f"{t(r, 't_django_orm', 'django/orm')} {t(r, 't_sqla_orm', 'sqlalchemy/orm')} "
+                f"{t(r, 't_django_sql', 'django/sql')} {t(r, 't_sqla_sql', 'sqlalchemy/sql')}"
+            )
             # Name the paths that failed, on their own lines, so the log says
             # which of the four is missing rather than leaving a reader to infer
             # it from an n/a.
@@ -399,8 +442,11 @@ def main():
         if "error" in r:
             bad = ["error"]
         else:
-            bad = [("%s(n/a)" % c) if r.get(c) is None else c
-                   for c in CHECKS if not r.get(c)]
+            bad = [
+                ("%s(n/a)" % c) if r.get(c) is None else c
+                for c in CHECKS
+                if not r.get(c)
+            ]
         if bad:
             print(f"  {r['query']}: {', '.join(bad)}")
     # Say so in the exit status too. This returned 0 whatever it found, and the

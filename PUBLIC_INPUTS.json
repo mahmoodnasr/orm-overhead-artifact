@@ -1,0 +1,61 @@
+{
+  "previous_public_commit": "e55d4977f45ef5e92644461120da42a6bca53e67",
+  "measurements_unchanged_from_previous_release": {
+    "results/sf1/measurements/mysql_indexed.csv": "4274247ef3ce1f0ee15eb3e23a3f49e038f648a0c86eebb852719652b524443a",
+    "results/sf1/measurements/mysql_non_indexed.csv": "c4448af1606936e26466beb9a1432be8375993cc68cdee146c4fbc07959b072d",
+    "results/sf1/measurements/mysql_tpcc_indexed.csv": "196b091d1be072823365ff63738e8cbdd6ab6fddba6621d7211dee61f42591e8",
+    "results/sf1/measurements/mysql_tpcc_non_indexed.csv": "2822372b47d776ef8d5a2d3dfd2bfcefc47c2048c9fb2a278e4694c006f83080",
+    "results/sf1/measurements/mysql_tpcc_throughput_indexed.csv": "c6b701d8614d80e71497ac3c759cb47bd8b645d2489b3afce8abdab03223ec65",
+    "results/sf1/measurements/mysql_tpcc_throughput_non_indexed.csv": "3532680a1407b14bd6621878146c45d98f6f7b1b1b3dedf9852e7d8b32e832c7",
+    "results/sf1/measurements/oracle_indexed.csv": "5d877e923374313c3090d3d8a3339717cdbbdcac41e220fbd115b76e101918b1",
+    "results/sf1/measurements/oracle_non_indexed.csv": "48a6685d1ea39c96768c3e57cf32bb2f67fd0e7537ae6630d7465fd552ab05a8",
+    "results/sf1/measurements/oracle_tpcc_indexed.csv": "a04865adc797409eb56a928981c34d21ec56ba86959732aa14b999880b266925",
+    "results/sf1/measurements/oracle_tpcc_non_indexed.csv": "aa990fedd6caa3886831649262597415176df5b993e15b442087ee6b060f69da",
+    "results/sf1/measurements/oracle_tpcc_throughput_indexed.csv": "7f113388206d9f9ee0ff10a30df97fda814717ce8d180bb01871fcf7e5cb50b1",
+    "results/sf1/measurements/oracle_tpcc_throughput_non_indexed.csv": "90af47fc4e790f85488b5bd4dc894e5fcb8eca69110bb1e81122fbdd64f68057",
+    "results/sf1/measurements/postgresql_indexed.csv": "0aebf0f23ebb3fce476e0480936448bd9ea3307a8663bce54e2d5126bff669e0",
+    "results/sf1/measurements/postgresql_non_indexed.csv": "bb5201f36f3ca8f473a5edb440c170ac36be30c10bc86a2016a70d98650e55b9",
+    "results/sf1/measurements/postgresql_tpcc_indexed.csv": "d9885d84f74668d8315206915b81d0d08e1f8df112b6a0ead715b9ee07e3a3ed",
+    "results/sf1/measurements/postgresql_tpcc_non_indexed.csv": "90718276762046eb151665e8139b0c09eae0693382708cacb63ea4629bd9bf32",
+    "results/sf1/measurements/postgresql_tpcc_throughput_indexed.csv": "13d813aae457c73d308322967dbde4d05215686db4c2a7dc3a5522e2a882aa00",
+    "results/sf1/measurements/postgresql_tpcc_throughput_non_indexed.csv": "ebd8475d8259a9ada16b2f6c75b761f9feaa66d915a6014f77ca22069dc2419e"
+  },
+  "current_input_sha256": {
+    "results/sf1/all_results.csv": "e64dbee15d7f13acb2998ca9e428817b19b919849dffd2636e9de53941921fcc",
+    "results/sf1/measurements/commercial_a_indexed.csv": "7ce6b61e65bbda740c483ff0bb5ef6f6801382815fac3a5f0b77f0eb63fa01ae",
+    "results/sf1/measurements/commercial_a_non_indexed.csv": "8e8b3ec2095af509ac7d7475a4fb56129e444c3baeef95376381126b196e11e7",
+    "results/sf1/measurements/commercial_a_tpcc_indexed.csv": "3831a1937dd3a8c80424947b5922b465c884579882ba660b77333807a388d2cc",
+    "results/sf1/measurements/commercial_a_tpcc_non_indexed.csv": "ccbf2bafa40278010eb2e91126077cb80766b9e6c41c558646fbe6481689a90b",
+    "results/sf1/measurements/commercial_a_tpcc_throughput_indexed.csv": "8e3df0634e8b6d33c39febdcb966e3ab574772f41fee40b9eb5410c6ce14f15f",
+    "results/sf1/measurements/commercial_a_tpcc_throughput_non_indexed.csv": "c29c15361f280bad8228e1abda1595f3c0fff93c024b384068d720747af0b75c",
+    "results/sf1/measurements/mysql_indexed.csv": "4274247ef3ce1f0ee15eb3e23a3f49e038f648a0c86eebb852719652b524443a",
+    "results/sf1/measurements/mysql_non_indexed.csv": "c4448af1606936e26466beb9a1432be8375993cc68cdee146c4fbc07959b072d",
+    "results/sf1/measurements/mysql_tpcc_indexed.csv": "196b091d1be072823365ff63738e8cbdd6ab6fddba6621d7211dee61f42591e8",
+    "results/sf1/measurements/mysql_tpcc_non_indexed.csv": "2822372b47d776ef8d5a2d3dfd2bfcefc47c2048c9fb2a278e4694c006f83080",
+    "results/sf1/measurements/mysql_tpcc_throughput_indexed.csv": "c6b701d8614d80e71497ac3c759cb47bd8b645d2489b3afce8abdab03223ec65",
+    "results/sf1/measurements/mysql_tpcc_throughput_non_indexed.csv": "3532680a1407b14bd6621878146c45d98f6f7b1b1b3dedf9852e7d8b32e832c7",
+    "results/sf1/measurements/oracle_indexed.csv": "5d877e923374313c3090d3d8a3339717cdbbdcac41e220fbd115b76e101918b1",
+    "results/sf1/measurements/oracle_non_indexed.csv": "48a6685d1ea39c96768c3e57cf32bb2f67fd0e7537ae6630d7465fd552ab05a8",
+    "results/sf1/measurements/oracle_tpcc_indexed.csv": "a04865adc797409eb56a928981c34d21ec56ba86959732aa14b999880b266925",
+    "results/sf1/measurements/oracle_tpcc_non_indexed.csv": "aa990fedd6caa3886831649262597415176df5b993e15b442087ee6b060f69da",
+    "results/sf1/measurements/oracle_tpcc_throughput_indexed.csv": "7f113388206d9f9ee0ff10a30df97fda814717ce8d180bb01871fcf7e5cb50b1",
+    "results/sf1/measurements/oracle_tpcc_throughput_non_indexed.csv": "90af47fc4e790f85488b5bd4dc894e5fcb8eca69110bb1e81122fbdd64f68057",
+    "results/sf1/measurements/postgresql_indexed.csv": "0aebf0f23ebb3fce476e0480936448bd9ea3307a8663bce54e2d5126bff669e0",
+    "results/sf1/measurements/postgresql_non_indexed.csv": "bb5201f36f3ca8f473a5edb440c170ac36be30c10bc86a2016a70d98650e55b9",
+    "results/sf1/measurements/postgresql_tpcc_indexed.csv": "d9885d84f74668d8315206915b81d0d08e1f8df112b6a0ead715b9ee07e3a3ed",
+    "results/sf1/measurements/postgresql_tpcc_non_indexed.csv": "90718276762046eb151665e8139b0c09eae0693382708cacb63ea4629bd9bf32",
+    "results/sf1/measurements/postgresql_tpcc_throughput_indexed.csv": "13d813aae457c73d308322967dbde4d05215686db4c2a7dc3a5522e2a882aa00",
+    "results/sf1/measurements/postgresql_tpcc_throughput_non_indexed.csv": "ebd8475d8259a9ada16b2f6c75b761f9feaa66d915a6014f77ca22069dc2419e"
+  },
+  "naming": "Commercial System A is labeled commercial_a in filenames and raw data. Only database labels and two diagnostic notes were relabeled; all measurements and results were retained.",
+  "preservation_check": {
+    "files": 25,
+    "rows": 13104,
+    "changed_fields": {
+      "dbms": 3348,
+      "note": 2
+    },
+    "measurement_values_changed": 0,
+    "rows_removed": 0
+  }
+}

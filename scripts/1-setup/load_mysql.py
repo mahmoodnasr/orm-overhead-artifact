@@ -12,6 +12,7 @@ the same rate as the Oracle loader.
     python3 load_mysql.py --tables partsupp,supplier,nation
     python3 load_mysql.py                       # all eight
 """
+
 import argparse, os, sys, time
 
 # MySQLdb MUST be imported before duckdb, and the order is load-bearing.
@@ -23,19 +24,38 @@ import argparse, os, sys, time
 # LD_PRELOAD of libmysqlclient also fixes it, but that has to be remembered at
 # every call site and this does not. Only this loader imports both; the timed
 # paths never import duckdb.
-import MySQLdb            # mysqlclient; one MySQL driver everywhere (C31)
+import MySQLdb  # mysqlclient; one MySQL driver everywhere (C31)
 import duckdb
 
 # Derived from this file's own location so the script runs from a clone at any
-# path; the default was /home/claude/bench/tpch10.duckdb, the sandbox path.
+# path; the default was a retired sandbox dataset, the sandbox path.
 DEFAULT_DUCKDB = os.path.join(
-    os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")),
-    "tpch10.duckdb")
+    os.path.abspath(
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
+    ),
+    "tpch10.duckdb",
+)
 
-ORDER = ["region", "nation", "supplier", "customer", "part",
-         "partsupp", "orders", "lineitem"]
-NCOLS = {"region": 3, "nation": 4, "supplier": 7, "customer": 8,
-         "part": 9, "partsupp": 5, "orders": 9, "lineitem": 16}
+ORDER = [
+    "region",
+    "nation",
+    "supplier",
+    "customer",
+    "part",
+    "partsupp",
+    "orders",
+    "lineitem",
+]
+NCOLS = {
+    "region": 3,
+    "nation": 4,
+    "supplier": 7,
+    "customer": 8,
+    "part": 9,
+    "partsupp": 5,
+    "orders": 9,
+    "lineitem": 16,
+}
 
 
 def connect():
@@ -53,14 +73,15 @@ def connect():
         user=os.environ.get("MYSQL_USER", "benchmark"),
         password=os.environ.get("MYSQL_PASSWORD", "benchmark_pass"),
         database=os.environ.get("MYSQL_DB", "tpch"),
-        autocommit=False, local_infile=True)
+        autocommit=False,
+        local_infile=True,
+    )
 
 
 def load(duck, my, table, batch):
     cur = duck.execute("SELECT * FROM %s" % table)
     ins = my.cursor()
-    stmt = "INSERT INTO %s VALUES (%s)" % (
-        table, ",".join(["%s"] * NCOLS[table]))
+    stmt = "INSERT INTO %s VALUES (%s)" % (table, ",".join(["%s"] * NCOLS[table]))
     n, t0, last = 0, time.perf_counter(), time.perf_counter()
     while True:
         rows = cur.fetchmany(batch)
@@ -70,12 +91,13 @@ def load(duck, my, table, batch):
         my.commit()
         n += len(rows)
         if time.perf_counter() - last > 60:
-            print("    %s: %s rows  %.0f/s"
-                  % (table, format(n, ","), n / (time.perf_counter() - t0)))
+            print(
+                "    %s: %s rows  %.0f/s"
+                % (table, format(n, ","), n / (time.perf_counter() - t0))
+            )
             last = time.perf_counter()
     ins.close()
-    print("  %s: %s rows in %.0fs"
-          % (table, format(n, ","), time.perf_counter() - t0))
+    print("  %s: %s rows in %.0fs" % (table, format(n, ","), time.perf_counter() - t0))
 
 
 def main():
@@ -85,7 +107,7 @@ def main():
     ap.add_argument("--batch", type=int, default=20000)
     args = ap.parse_args()
 
-    want = ([t.strip() for t in args.tables.split(",")] if args.tables else ORDER)
+    want = [t.strip() for t in args.tables.split(",")] if args.tables else ORDER
     duck = duckdb.connect(args.duckdb, read_only=True)
     my = connect()
     # The load is the only writer and the database is rebuilt from scratch if it

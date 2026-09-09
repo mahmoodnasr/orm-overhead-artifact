@@ -1,62 +1,13 @@
-# Direct dependencies of the harness, exact-pinned.
-#
-# Pinned from the venv that produced the SF10 campaigns (Python 3.11.16,
-# arm64 Darwin) on 2026-08-31. Every version here is what is actually
-# installed, except the two marked ABSENT below. The full transitive set,
-# including versions this file does not name, is in requirements-lock.txt.
-#
-# This file was previously a mix of `==` and `>=` that named packages the
-# harness never imports and omitted the MySQL driver it actually runs on.
-# See C31 — a published results file whose driver the dependency list does
-# not name cannot be reproduced from that list.
-
-# --- frameworks under measurement -------------------------------------
-# These two are the object of the study. Never relax them to `>=`: the
-# whole result is a comparison at a stated pair of versions.
-Django==4.2
-SQLAlchemy==2.0.23
-
-# --- database drivers -------------------------------------------------
-# One driver per DBMS, shared by both frameworks. A compiled driver under
-# one framework and a pure-Python one under the other would be charged to
-# the framework, not to the driver (C31; the same shape as C20 and C29).
-#
-# MySQL runs on PyMySQL for BOTH frameworks: Django reaches it through
-# `pymysql.install_as_MySQLdb()` in django_app/__init__.py, SQLAlchemy
-# through the `mysql+pymysql://` DSN. mysqlclient is installed but is
-# imported by nothing while the shim is in place; it is listed so the
-# environment is described honestly, not because the harness uses it.
-# The shim expires at Django 6.0, which gates on mysqlclient >= 2.2.1
-# while PyMySQL reports 1.4.6 — see C31 and SF1_RERUN_PLAN.md G2.
-PyMySQL==1.1.2
-mysqlclient==2.2.8          # installed, not imported while the shim is active
-psycopg2-binary==2.9.9      # PostgreSQL, both frameworks
-oracledb==3.4.1             # Oracle, both frameworks
-pyodbc==5.3.0               # commercial system, both frameworks
-mssql-django==1.6           # Django backend for the commercial system
-
-# --- data generation and loading --------------------------------------
-duckdb==1.5.5               # TPC-H generation (scripts/1-setup)
-
-# --- analysis ---------------------------------------------------------
-numpy==1.26.2
-scipy==1.11.4
-matplotlib==3.8.2
+# Benchmark runtime: Python 3.12, matching the recorded SF1 framework/driver stack.
+# Analysis of the supplied measurements needs requirements-analysis.txt only.
+# mysqlclient requires MySQL client development libraries and pkg-config.
+# pyodbc requires an ODBC driver manager and the selected database's ODBC driver.
+Django==6.0.8
+SQLAlchemy==2.0.52
+psycopg2-binary==2.9.12
+mysqlclient==2.2.8
+oracledb==4.0.2
+pyodbc==5.3.0
+mssql-django==1.8.0
+duckdb==1.5.5
 psutil==7.1.3
-
-# ABSENT from the venv as of 2026-08-31, and required: ten modules import
-# pandas — six under scripts/3-moef and four under scripts/4-analysis — and
-# one of those ten also imports seaborn. The versions below are the ones
-# this file has always declared; whether they were installed during the
-# SF10 campaigns and later removed is not recorded anywhere, and is not
-# inferred here (C30). Install both before running anything under
-# scripts/3-moef or scripts/4-analysis. The loaders under scripts/1-setup
-# use duckdb, not pandas, and run as they stand; and
-# scripts/4-analysis/make_all_results.py is stdlib-only, so
-# results/all_results.csv regenerates without either package.
-pandas==2.1.3
-seaborn==0.13.0
-
-# Removed 2026-08-31: mysql-connector-python==8.2.0 (installed, imported by
-# nothing — the MySQL path is PyMySQL) and jupyter==1.0.0 (no notebook in
-# the repository, no import anywhere). Both were dependency-list fiction.

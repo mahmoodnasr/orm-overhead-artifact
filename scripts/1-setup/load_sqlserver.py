@@ -26,6 +26,7 @@ three quarters of one.
     python3 load_sqlserver.py --tables partsupp,supplier,nation
     python3 load_sqlserver.py                       # all eight
 """
+
 import argparse, os, sys, time
 
 import duckdb
@@ -34,13 +35,32 @@ import pyodbc
 # Derived from this file's own location so the script runs from a clone at any
 # path, matching load_pg.py and load_mysql.py.
 DEFAULT_DUCKDB = os.path.join(
-    os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")),
-    "tpch10.duckdb")
+    os.path.abspath(
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
+    ),
+    "tpch10.duckdb",
+)
 
-ORDER = ["region", "nation", "supplier", "customer", "part",
-         "partsupp", "orders", "lineitem"]
-NCOLS = {"region": 3, "nation": 4, "supplier": 7, "customer": 8,
-         "part": 9, "partsupp": 5, "orders": 9, "lineitem": 16}
+ORDER = [
+    "region",
+    "nation",
+    "supplier",
+    "customer",
+    "part",
+    "partsupp",
+    "orders",
+    "lineitem",
+]
+NCOLS = {
+    "region": 3,
+    "nation": 4,
+    "supplier": 7,
+    "customer": 8,
+    "part": 9,
+    "partsupp": 5,
+    "orders": 9,
+    "lineitem": 16,
+}
 
 
 def odbc_driver():
@@ -63,13 +83,16 @@ def odbc_driver():
 def connect():
     conn = pyodbc.connect(
         "DRIVER={%s};SERVER=%s,%s;DATABASE=%s;UID=%s;PWD=%s;TrustServerCertificate=yes"
-        % (odbc_driver(),
-           os.getenv("SQLSERVER_HOST", "127.0.0.1"),
-           os.getenv("SQLSERVER_PORT", "1433"),
-           os.getenv("SQLSERVER_DB", "tpch"),
-           os.getenv("SQLSERVER_USER", "sa"),
-           os.getenv("SQLSERVER_SA_PASSWORD", "YourStrong!Passw0rd")),
-        autocommit=False)
+        % (
+            odbc_driver(),
+            os.getenv("SQLSERVER_HOST", "127.0.0.1"),
+            os.getenv("SQLSERVER_PORT", "1433"),
+            os.getenv("SQLSERVER_DB", "tpch"),
+            os.getenv("SQLSERVER_USER", "sa"),
+            os.getenv("SQLSERVER_SA_PASSWORD", "YourStrong!Passw0rd"),
+        ),
+        autocommit=False,
+    )
     return conn
 
 
@@ -93,13 +116,17 @@ def load(duck, cn, table, batch):
         cn.commit()
         n += len(rows)
         if time.perf_counter() - last > 60:
-            print("    %s: %s rows  %.0f/s"
-                  % (table, format(n, ","), n / (time.perf_counter() - t0)),
-                  flush=True)
+            print(
+                "    %s: %s rows  %.0f/s"
+                % (table, format(n, ","), n / (time.perf_counter() - t0)),
+                flush=True,
+            )
             last = time.perf_counter()
     ins.close()
-    print("  %s: %s rows in %.0fs"
-          % (table, format(n, ","), time.perf_counter() - t0), flush=True)
+    print(
+        "  %s: %s rows in %.0fs" % (table, format(n, ","), time.perf_counter() - t0),
+        flush=True,
+    )
 
 
 def main():
@@ -109,7 +136,7 @@ def main():
     ap.add_argument("--batch", type=int, default=20000)
     args = ap.parse_args()
 
-    want = ([t.strip() for t in args.tables.split(",")] if args.tables else ORDER)
+    want = [t.strip() for t in args.tables.split(",")] if args.tables else ORDER
     duck = duckdb.connect(args.duckdb, read_only=True)
     cn = connect()
     for t in ORDER:

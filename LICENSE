@@ -1,11 +1,3 @@
-# License
-
-This reproducibility package is released under the MIT License for maximum reproducibility and reuse.
-
-For citation information, see [CITATION.cff](CITATION.cff).
-
----
-
 MIT License
 
 Copyright (c) 2024 ORM Benchmark Research Team
@@ -27,60 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-## Third-Party Licenses
-
-This project uses the following open-source software:
-
-### Django Framework
-- License: BSD-3-Clause
-- Copyright: Django Software Foundation
-- URL: https://www.djangoproject.com/
-
-### TPC-H Benchmark
-- License: TPC Fair Use Policy
-- Copyright: Transaction Processing Performance Council (TPC)
-- URL: http://www.tpc.org/tpch/
-- Note: TPC-H is a trademark of the Transaction Processing Performance Council
-
-### Database Systems
-- **PostgreSQL**: PostgreSQL License (similar to BSD/MIT)
-- **MySQL**: GPL v2 with FOSS exception (or commercial license)
-- **Oracle Database**: Commercial license required for production use
-- **Microsoft SQL Server**: Commercial license required for production use
-
-### Python Libraries
-- See `requirements.txt` for complete list
-- All libraries used are permissively licensed (MIT, BSD, Apache 2.0)
-
----
-
-## Citation
-
-If you use this reproducibility package in your research, please cite:
-
-```bibtex
-@inproceedings{orm-benchmark-2024,
-  title={A Mechanistic Analysis of ORM Performance Across Database Systems},
-  author={[Authors]},
-  booktitle={Proceedings of [Conference]},
-  year={2024},
-  publisher={ACM/IEEE}
-}
-```
-
----
-
-## Disclaimer
-
-This reproducibility package is provided for academic and research purposes. 
-
-- Benchmark results depend on hardware, configuration, and data characteristics
-- Oracle and SQL Server require appropriate licenses for production use
-- TPC-H is a trademark of TPC; results are not comparable to official TPC-H results
-- Performance claims should be verified in your own environment
-
-For questions about licensing, please open an issue or contact the maintainers.
-

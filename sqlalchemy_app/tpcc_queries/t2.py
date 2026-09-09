@@ -1,6 +1,7 @@
 """
 TPC-C Transaction 2: Payment (SQLAlchemy)
 """
+
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 from datetime import datetime
@@ -30,7 +31,11 @@ def run_transaction_orm(session: Session):
     try:
         warehouse = session.query(Warehouse).filter_by(w_id=w_id).first()
         district = session.query(District).filter_by(d_w_id=w_id, d_id=d_id).first()
-        customer = session.query(Customer).filter_by(c_w_id=w_id, c_d_id=d_id, c_id=c_id).first()
+        customer = (
+            session.query(Customer)
+            .filter_by(c_w_id=w_id, c_d_id=d_id, c_id=c_id)
+            .first()
+        )
 
         warehouse.w_ytd += payment_decimal
         district.d_ytd += payment_decimal
@@ -42,16 +47,24 @@ def run_transaction_orm(session: Session):
         h_data = f"Customer {c_id} paid {payment}"[:24]
 
         history = History(
-            h_c_id=c_id, h_c_d_id=d_id, h_c_w_id=w_id,
-            h_d_id=d_id, h_w_id=w_id, h_date=datetime.now(),
-            h_amount=payment, h_data=h_data
+            h_c_id=c_id,
+            h_c_d_id=d_id,
+            h_c_w_id=w_id,
+            h_d_id=d_id,
+            h_w_id=w_id,
+            h_date=datetime.now(),
+            h_amount=payment,
+            h_data=h_data,
         )
         session.add(history)
         session.commit()
 
         return {
-            'w_id': w_id, 'd_id': d_id, 'c_id': c_id,
-            'payment': payment, 'c_balance': float(customer.c_balance)
+            "w_id": w_id,
+            "d_id": d_id,
+            "c_id": c_id,
+            "payment": payment,
+            "c_balance": float(customer.c_balance),
         }
     except Exception:
         session.rollback()
@@ -76,47 +89,67 @@ def run_transaction_sql(session: Session):
     # failure. See the ORM path above.
     try:
         # Execute updates separately
-        session.execute(text("""
+        session.execute(
+            text("""
             UPDATE warehouse SET w_ytd = w_ytd + :payment WHERE w_id = :w_id
-        """), {'payment': payment, 'w_id': w_id})
+        """),
+            {"payment": payment, "w_id": w_id},
+        )
 
-        session.execute(text("""
+        session.execute(
+            text("""
             UPDATE district SET d_ytd = d_ytd + :payment WHERE d_w_id = :w_id AND d_id = :d_id
-        """), {'payment': payment, 'w_id': w_id, 'd_id': d_id})
+        """),
+            {"payment": payment, "w_id": w_id, "d_id": d_id},
+        )
 
-        session.execute(text("""
+        session.execute(
+            text("""
             UPDATE customer SET
                 c_balance = c_balance - :payment,
                 c_ytd_payment = c_ytd_payment + :payment,
                 c_payment_cnt = c_payment_cnt + 1
             WHERE c_w_id = :w_id AND c_d_id = :d_id AND c_id = :c_id
-        """), {'payment': payment, 'w_id': w_id, 'd_id': d_id, 'c_id': c_id})
+        """),
+            {"payment": payment, "w_id": w_id, "d_id": d_id, "c_id": c_id},
+        )
 
         # Truncate h_data to max 24 characters (TPC-C spec)
-        h_data = f'Customer {c_id} paid {payment}'[:24]
+        h_data = f"Customer {c_id} paid {payment}"[:24]
 
-        session.execute(text(f"""
+        session.execute(
+            text(f"""
             INSERT INTO history (h_c_id, h_c_d_id, h_c_w_id, h_d_id, h_w_id, h_date, h_amount, h_data)
             VALUES (:c_id, :d_id, :w_id, :d_id, :w_id, {now_func}, :payment, :data)
-        """), {
-            'c_id': c_id, 'd_id': d_id, 'w_id': w_id,
-            'payment': payment,
-            'data': h_data
-        })
+        """),
+            {
+                "c_id": c_id,
+                "d_id": d_id,
+                "w_id": w_id,
+                "payment": payment,
+                "data": h_data,
+            },
+        )
 
         # Get customer balance
-        result = session.execute(text("""
+        result = session.execute(
+            text("""
             SELECT c_balance, c_ytd_payment FROM customer
             WHERE c_w_id = :w_id AND c_d_id = :d_id AND c_id = :c_id
-        """), {'w_id': w_id, 'd_id': d_id, 'c_id': c_id})
+        """),
+            {"w_id": w_id, "d_id": d_id, "c_id": c_id},
+        )
 
         row = result.first()
         if row:
             session.commit()
             return {
-                'w_id': w_id, 'd_id': d_id, 'c_id': c_id,
-                'payment': payment, 'c_balance': float(row[0]),
-                'c_ytd_payment': float(row[1])
+                "w_id": w_id,
+                "d_id": d_id,
+                "c_id": c_id,
+                "payment": payment,
+                "c_balance": float(row[0]),
+                "c_ytd_payment": float(row[1]),
             }
         # Was: an early return that left the four writes above sitting in an open
         # transaction, neither committed nor rolled back. Committing here matches
@@ -125,7 +158,7 @@ def run_transaction_sql(session: Session):
         # no customer; that is a pre-existing problem in both, not one this
         # change introduces.
         session.commit()
-        return {'error': 'Customer not found'}
+        return {"error": "Customer not found"}
     except Exception:
         session.rollback()
         raise

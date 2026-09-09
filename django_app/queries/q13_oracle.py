@@ -1,6 +1,7 @@
 """
 TPC-H Query 13: Customer Distribution Query - Oracle Version
 """
+
 from django.db.models import Count, Q
 from tpch_paramsets import resolve as _paramset
 
@@ -35,7 +36,7 @@ class Q13NotExpressible(NotImplementedError):
     """Raised instead of measuring something that is not Q13."""
 
 
-def run_query_orm(using='default', params=None):
+def run_query_orm(using="default", params=None):
     """Not expressible through the Django ORM on Oracle. Raises.
 
     Q13 groups over a per-customer aggregate, which in SQL is a derived table.
@@ -82,17 +83,16 @@ def run_query_sql(connection, params=None):
             COUNT(o_orderkey) as c_count
         FROM customer
         LEFT OUTER JOIN orders ON c_custkey = o_custkey
-            AND o_comment NOT LIKE '{P['like_pattern']}'
+            AND o_comment NOT LIKE '{P["like_pattern"]}'
         GROUP BY c_custkey
     ) c_orders
     GROUP BY c_count
     ORDER BY custdist DESC, c_count DESC
     """
-    
+
     with connection.cursor() as cursor:
         cursor.execute(sql)
         columns = [col[0] for col in cursor.description]
         results = [dict(zip(columns, row)) for row in cursor.fetchall()]
-    
-    return results
 
+    return results

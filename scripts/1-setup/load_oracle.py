@@ -15,16 +15,20 @@ Usage:
     python3 load_oracle.py --duckdb /path/to/tpch10.duckdb
     python3 load_oracle.py --tables lineitem --skip-constraints
 """
+
 import argparse, os, sys, time
 
 import duckdb
 import oracledb
 
 # Derived from this file's own location so the script runs from a clone at any
-# path; the default was /home/claude/bench/tpch10.duckdb, the sandbox path.
+# path; the default was a retired sandbox dataset, the sandbox path.
 DEFAULT_DUCKDB = os.path.join(
-    os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")),
-    "tpch10.duckdb")
+    os.path.abspath(
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
+    ),
+    "tpch10.duckdb",
+)
 
 DSN = os.environ.get("ORA_DSN", "127.0.0.1:41521/FREEPDB1")
 USER = os.environ.get("ORA_USER", "tpch")
@@ -33,14 +37,24 @@ PASS = os.environ.get("ORA_PASS", "bench")
 # child tables first would break nothing here (no foreign keys are declared),
 # but load small to large so a failure surfaces early and cheaply
 TABLES = [
-    ("region",   3), ("nation", 4), ("supplier", 7), ("customer", 8),
-    ("part",     9), ("partsupp", 5), ("orders", 9), ("lineitem", 16),
+    ("region", 3),
+    ("nation", 4),
+    ("supplier", 7),
+    ("customer", 8),
+    ("part", 9),
+    ("partsupp", 5),
+    ("orders", 9),
+    ("lineitem", 16),
 ]
 
 PK = {
-    "region": "r_regionkey", "nation": "n_nationkey", "supplier": "s_suppkey",
-    "customer": "c_custkey", "part": "p_partkey",
-    "partsupp": "ps_partkey, ps_suppkey", "orders": "o_orderkey",
+    "region": "r_regionkey",
+    "nation": "n_nationkey",
+    "supplier": "s_suppkey",
+    "customer": "c_custkey",
+    "part": "p_partkey",
+    "partsupp": "ps_partkey, ps_suppkey",
+    "orders": "o_orderkey",
     "lineitem": "l_orderkey, l_linenumber",
 }
 
@@ -64,8 +78,7 @@ def generate(path, sf):
     con.execute("INSTALL tpch; LOAD tpch;")
     con.execute(f"CALL dbgen(sf={sf})")
     con.close()
-    print(f"  done in {time.perf_counter()-t0:.0f}s, "
-          f"{human(os.path.getsize(path))}")
+    print(f"  done in {time.perf_counter() - t0:.0f}s, {human(os.path.getsize(path))}")
 
 
 def load_table(duck, ora, table, ncols, batch):
@@ -79,8 +92,11 @@ def load_table(duck, ora, table, ncols, batch):
     # PARTSUPP row against a real row width near 145 - roughly six times the
     # space - and hit Oracle Free's 12 GB ceiling before LINEITEM had started.
     # Conventional inserts refill blocks and land in the expected footprint.
-    ins.prepare(f"INSERT INTO {table} VALUES ("
-                + ",".join(f":{i+1}" for i in range(ncols)) + ")")
+    ins.prepare(
+        f"INSERT INTO {table} VALUES ("
+        + ",".join(f":{i + 1}" for i in range(ncols))
+        + ")"
+    )
     total, t0, last = 0, time.perf_counter(), time.perf_counter()
     while True:
         rows = cur.fetchmany(batch)
@@ -94,7 +110,7 @@ def load_table(duck, ora, table, ncols, batch):
             print(f"    {table}: {total:,} rows  {rate:,.0f}/s")
             last = time.perf_counter()
     ins.close()
-    print(f"  {table}: {total:,} rows in {time.perf_counter()-t0:.0f}s")
+    print(f"  {table}: {total:,} rows in {time.perf_counter() - t0:.0f}s")
     return total
 
 
@@ -108,8 +124,11 @@ def main():
     ap.add_argument("--constraints-only", action="store_true")
     args = ap.parse_args()
 
-    want = ([t.strip() for t in args.tables.split(",")] if args.tables
-            else [t for t, _ in TABLES])
+    want = (
+        [t.strip() for t in args.tables.split(",")]
+        if args.tables
+        else [t for t, _ in TABLES]
+    )
 
     generate(args.duckdb, args.sf)
 
@@ -131,9 +150,11 @@ def main():
             t0 = time.perf_counter()
             try:
                 with ora.cursor() as c:
-                    c.execute(f"ALTER TABLE {table} ADD CONSTRAINT pk_{table} "
-                              f"PRIMARY KEY ({cols})")
-                print(f"  pk_{table} built in {time.perf_counter()-t0:.0f}s")
+                    c.execute(
+                        f"ALTER TABLE {table} ADD CONSTRAINT pk_{table} "
+                        f"PRIMARY KEY ({cols})"
+                    )
+                print(f"  pk_{table} built in {time.perf_counter() - t0:.0f}s")
             except oracledb.DatabaseError as e:
                 print(f"  pk_{table}: {str(e)[:120]}")
 
@@ -146,7 +167,9 @@ def main():
         for stype, gb in c:
             print(f"  {stype:<16s} {gb:>6.2f} GB")
             total += gb
-        print(f"  {'TOTAL':<16s} {total:>6.2f} GB   (Oracle Free caps user data at 12 GB)")
+        print(
+            f"  {'TOTAL':<16s} {total:>6.2f} GB   (Oracle Free caps user data at 12 GB)"
+        )
 
         c.execute("SELECT COUNT(*) FROM lineitem")
         print(f"\nlineitem rows: {c.fetchone()[0]:,}")

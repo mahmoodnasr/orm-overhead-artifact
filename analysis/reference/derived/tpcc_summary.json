@@ -1,0 +1,18 @@
+{
+  "django": {
+    "n": 40,
+    "median_overhead": 90.46046767754402
+  },
+  "sqlalchemy": {
+    "n": 40,
+    "median_overhead": 69.17500692866267
+  },
+  "pooled_median": 86.79670216106157,
+  "median_cv": 12.7,
+  "share_cv_above25": 30.0,
+  "throughput_50clients": {
+    "paths": 160,
+    "paths_with_aborts": 20,
+    "max_abort_pct": 70.5
+  }
+}

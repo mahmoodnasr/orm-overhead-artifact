@@ -45,13 +45,18 @@ Oracle's indexed configuration inherit that. The results file records it per
 cell in `status_note`. It buys 34 cells that
 were otherwise impossible; it does not buy them for free.
 """
+
 import argparse
 import os
 import re
 import sys
 
-sys.path.insert(0, os.path.abspath(
-    os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")))
+sys.path.insert(
+    0,
+    os.path.abspath(
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
+    ),
+)
 
 import oracledb
 
@@ -59,6 +64,7 @@ USER = os.environ.get("ORACLE_USER", "tpch")
 PASS = os.environ.get("ORACLE_PASSWORD", "bench")
 DSN = os.environ.get("ORA_DSN", "127.0.0.1:41521/FREEPDB1")
 CAP_GB = 12.0
+
 
 # Imported rather than restated: one definition of the indexed configuration, so
 # this cannot drift from what oracle_groups.py builds or postgres_indexes.sql
@@ -69,8 +75,7 @@ def _load_groups():
     Python identifier and `import scripts.1-setup.oracle_groups` is a SyntaxError)."""
     here = os.path.dirname(os.path.abspath(__file__))
     src = open(os.path.join(here, "oracle_groups.py")).read()
-    ns = {"os": os, "sys": sys,
-          "__file__": os.path.join(here, "oracle_groups.py")}
+    ns = {"os": os, "sys": sys, "__file__": os.path.join(here, "oracle_groups.py")}
     # Execute only the module-level constant block, which ends where the first
     # function is defined. Running the whole file would try to connect.
     head = src.split("\ndef connect(")[0]
@@ -92,6 +97,7 @@ def query_sql(n):
     """The hand-written Oracle baseline, which is the statement whose access
     paths the indexes exist to serve."""
     from sqlalchemy_app.queries._sql import sql_for
+
     return sql_for(n, "oracle")
 
 
@@ -102,7 +108,7 @@ def indexes_for(n):
     out = []
     for table, idxs in SECONDARY.items():
         if table not in tables:
-            continue                      # table not resident: index irrelevant
+            continue  # table not resident: index irrelevant
         for name, cols in idxs:
             lead = cols.split(",")[0].strip()
             # Word-boundary match: l_shipdate must not be found inside
@@ -152,8 +158,10 @@ def build(ora, wanted, dry=False):
             # query's own indexes do not fit either. Report and leave the rest.
             print("    %-38s FAILED %s" % (name, str(e).split("\n")[0][:60]))
             return built, skipped, False
-        print("    %-38s built (+%.2f GB, resident %.2f GB)"
-              % (name, resident_gb(ora) - before, resident_gb(ora)))
+        print(
+            "    %-38s built (+%.2f GB, resident %.2f GB)"
+            % (name, resident_gb(ora) - before, resident_gb(ora))
+        )
         built.append(name)
     return built, skipped, True
 
@@ -185,15 +193,23 @@ def main():
         for name, _tables, queries in GROUPS:
             for n in sorted(queries):
                 idx = indexes_for(n)
-                print("   Q%02d    %s     %s" % (n, name,
-                      ", ".join(i[0].replace("idx_", "") for i in idx) or "-none-"))
+                print(
+                    "   Q%02d    %s     %s"
+                    % (
+                        n,
+                        name,
+                        ", ".join(i[0].replace("idx_", "") for i in idx) or "-none-",
+                    )
+                )
         return 0
 
     ora = oracledb.connect(user=USER, password=PASS, dsn=DSN)
 
     if args.drop:
-        print("  dropped %d secondary indexes, resident now %.2f GB"
-              % (drop_all_secondary(ora), resident_gb(ora)))
+        print(
+            "  dropped %d secondary indexes, resident now %.2f GB"
+            % (drop_all_secondary(ora), resident_gb(ora))
+        )
         return 0
 
     if not args.query:
@@ -204,8 +220,10 @@ def main():
     full = sum(len(v) for t, v in SECONDARY.items() if t in tables)
     print("Q%02d  group %s  tables: %s" % (args.query, g, ", ".join(tables)))
     print("  resident now: %.2f GB of %.0f GB" % (resident_gb(ora), CAP_GB))
-    print("  indexes on resident tables: %d, of which this query can use %d"
-          % (full, len(wanted)))
+    print(
+        "  indexes on resident tables: %d, of which this query can use %d"
+        % (full, len(wanted))
+    )
     for name, table, cols, lead in wanted:
         print("    %-38s %-9s (%s)  [leading %s]" % (name, table, cols, lead))
     if not args.build:
@@ -213,9 +231,15 @@ def main():
 
     print("  building:")
     built, skipped, ok = build(ora, wanted)
-    print("  built %d, already present %d, resident %.2f GB%s"
-          % (len(built), len(skipped), resident_gb(ora),
-             "" if ok else "  -- HIT THE CAP, subset incomplete"))
+    print(
+        "  built %d, already present %d, resident %.2f GB%s"
+        % (
+            len(built),
+            len(skipped),
+            resident_gb(ora),
+            "" if ok else "  -- HIT THE CAP, subset incomplete",
+        )
+    )
     return 0 if ok else 1
 
 

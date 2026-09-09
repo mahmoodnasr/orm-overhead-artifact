@@ -11,6 +11,7 @@ construct on every vendor - at which point a second copy would have been the
 shape of defect C9: two definitions of one thing, drifting apart the moment
 either is corrected.
 """
+
 from django.db.models import Lookup
 from django.db.models.fields import Field
 
@@ -37,6 +38,7 @@ class Like(Lookup):
     Registering on `Field` makes `__like` available on every field. Nothing uses
     it except the two queries named above.
     """
+
     lookup_name = "like"
 
     def as_sql(self, compiler, connection):

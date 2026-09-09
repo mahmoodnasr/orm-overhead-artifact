@@ -2,6 +2,7 @@
 TPC-C Transaction 5: StockLevel
 Checks stock level for items
 """
+
 from django.db import transaction
 from django.db.models import Count, Q
 import random
@@ -9,7 +10,7 @@ import random
 from tpcc_config import DISTRICTS_PER_WAREHOUSE, WAREHOUSES
 
 
-def run_transaction_orm(using='default'):
+def run_transaction_orm(using="default"):
     """
     Execute TPC-C T5 (StockLevel) via Django ORM
     """
@@ -33,39 +34,46 @@ def run_transaction_orm(using='default'):
             district = District.objects.using(using).get(d_w_id=w_id, d_id=d_id)
 
             # Get last L orders (L = 20 in TPC-C spec)
-            last_orders = Order.objects.using(using).filter(
-                o_w_id=w_id, o_d_id=d_id
-            ).order_by('-o_id')[:20]
+            last_orders = (
+                Order.objects.using(using)
+                .filter(o_w_id=w_id, o_d_id=d_id)
+                .order_by("-o_id")[:20]
+            )
 
             if not last_orders:
                 return {
-                    'w_id': w_id,
-                    'd_id': d_id,
-                    'threshold': threshold,
-                    'low_stock_count': 0
+                    "w_id": w_id,
+                    "d_id": d_id,
+                    "threshold": threshold,
+                    "low_stock_count": 0,
                 }
 
             # Get order IDs
             order_ids = [o.o_id for o in last_orders]
 
             # Get distinct items from these orders
-            order_lines = OrderLine.objects.using(using).filter(
-                ol_w_id=w_id, ol_d_id=d_id, ol_o_id__in=order_ids
-            ).values('ol_i_id').distinct()
+            order_lines = (
+                OrderLine.objects.using(using)
+                .filter(ol_w_id=w_id, ol_d_id=d_id, ol_o_id__in=order_ids)
+                .values("ol_i_id")
+                .distinct()
+            )
 
-            item_ids = [ol['ol_i_id'] for ol in order_lines]
+            item_ids = [ol["ol_i_id"] for ol in order_lines]
 
             # Count items with stock below threshold
-            low_stock_count = Stock.objects.using(using).filter(
-                s_w_id=w_id, s_i_id__in=item_ids, s_quantity__lt=threshold
-            ).count()
+            low_stock_count = (
+                Stock.objects.using(using)
+                .filter(s_w_id=w_id, s_i_id__in=item_ids, s_quantity__lt=threshold)
+                .count()
+            )
 
             return {
-                'w_id': w_id,
-                'd_id': d_id,
-                'threshold': threshold,
-                'items_checked': len(item_ids),
-                'low_stock_count': low_stock_count
+                "w_id": w_id,
+                "d_id": d_id,
+                "threshold": threshold,
+                "items_checked": len(item_ids),
+                "low_stock_count": low_stock_count,
             }
     except Exception:
         # Was: `return {'error': str(e)}`, which reported a failed transaction as
@@ -90,102 +98,124 @@ def run_transaction_sql(connection):
     with transaction.atomic(using=connection.alias):
         with connection.cursor() as cursor:
             from .db_utils import get_table_name, get_any_operator, get_limit_clause
-            order_table = get_table_name(connection, 'order')
+
+            order_table = get_table_name(connection, "order")
             any_op, format_func = get_any_operator(connection)
             limit_clause = get_limit_clause(connection, 20)
 
-            cursor.execute(f"""
+            cursor.execute(
+                f"""
                 SELECT o_id FROM {order_table}
                 WHERE o_w_id = %s AND o_d_id = %s
                 ORDER BY o_id DESC
                 {limit_clause}
-            """, [w_id, d_id])
+            """,
+                [w_id, d_id],
+            )
 
             order_rows = cursor.fetchall()
             if not order_rows:
                 return {
-                    'w_id': w_id,
-                    'd_id': d_id,
-                    'threshold': threshold,
-                    'low_stock_count': 0
+                    "w_id": w_id,
+                    "d_id": d_id,
+                    "threshold": threshold,
+                    "low_stock_count": 0,
                 }
 
             order_ids = [row[0] for row in order_rows]
 
             # Get distinct items (handle vendor differences)
-            if any_op == 'IN':
+            if any_op == "IN":
                 placeholders, params = format_func(order_ids)
-                cursor.execute(f"""
+                cursor.execute(
+                    f"""
                     SELECT DISTINCT ol_i_id FROM order_line
                     WHERE ol_w_id = %s AND ol_d_id = %s AND ol_o_id IN ({placeholders})
-                """, [w_id, d_id] + params)
-            elif connection.vendor == 'oracle':
+                """,
+                    [w_id, d_id] + params,
+                )
+            elif connection.vendor == "oracle":
                 # Oracle: use IN with expanded placeholders (Oracle doesn't handle ANY with lists well)
-                placeholders = ','.join(['%s'] * len(order_ids))
-                cursor.execute(f"""
+                placeholders = ",".join(["%s"] * len(order_ids))
+                cursor.execute(
+                    f"""
                     SELECT DISTINCT ol_i_id FROM order_line
                     WHERE ol_w_id = %s AND ol_d_id = %s AND ol_o_id IN ({placeholders})
-                """, [w_id, d_id] + order_ids)
+                """,
+                    [w_id, d_id] + order_ids,
+                )
             else:
                 # PostgreSQL: use ANY with array parameter
                 placeholders, params = format_func(order_ids)
-                cursor.execute(f"""
+                cursor.execute(
+                    f"""
                     SELECT DISTINCT ol_i_id FROM order_line
                     WHERE ol_w_id = %s AND ol_d_id = %s AND ol_o_id = ANY({placeholders})
-                """, [w_id, d_id] + params)
+                """,
+                    [w_id, d_id] + params,
+                )
 
             item_rows = cursor.fetchall()
             item_ids = [row[0] for row in item_rows]
 
             if not item_ids:
                 return {
-                    'w_id': w_id,
-                    'd_id': d_id,
-                    'threshold': threshold,
-                    'low_stock_count': 0
+                    "w_id": w_id,
+                    "d_id": d_id,
+                    "threshold": threshold,
+                    "low_stock_count": 0,
                 }
 
             # Count low stock items (handle vendor differences)
-            if any_op == 'IN':
+            if any_op == "IN":
                 placeholders, params = format_func(item_ids)
-                cursor.execute(f"""
+                cursor.execute(
+                    f"""
                     SELECT COUNT(*) FROM stock
                     WHERE s_w_id = %s AND s_i_id IN ({placeholders}) AND s_quantity < %s
-                """, [w_id] + params + [threshold])
-            elif connection.vendor == 'oracle':
+                """,
+                    [w_id] + params + [threshold],
+                )
+            elif connection.vendor == "oracle":
                 # Oracle: use IN with expanded placeholders
-                placeholders = ','.join(['%s'] * len(item_ids))
-                cursor.execute(f"""
+                placeholders = ",".join(["%s"] * len(item_ids))
+                cursor.execute(
+                    f"""
                     SELECT COUNT(*) FROM stock
                     WHERE s_w_id = %s AND s_i_id IN ({placeholders}) AND s_quantity < %s
-                """, [w_id] + item_ids + [threshold])
+                """,
+                    [w_id] + item_ids + [threshold],
+                )
             else:
                 placeholders, params = format_func(item_ids)
-                cursor.execute(f"""
+                cursor.execute(
+                    f"""
                     SELECT COUNT(*) FROM stock
                     WHERE s_w_id = %s AND s_i_id = {any_op}({placeholders}) AND s_quantity < %s
-                """, [w_id] + params + [threshold])
+                """,
+                    [w_id] + params + [threshold],
+                )
 
             low_stock_row = cursor.fetchone()
             low_stock_count = low_stock_row[0] if low_stock_row else 0
 
             return {
-                'w_id': w_id,
-                'd_id': d_id,
-                'threshold': threshold,
-                'items_checked': len(item_ids),
-                'low_stock_count': low_stock_count
+                "w_id": w_id,
+                "d_id": d_id,
+                "threshold": threshold,
+                "items_checked": len(item_ids),
+                "low_stock_count": low_stock_count,
             }
 
 
 def get_transaction_info():
     """Return metadata about this transaction"""
     return {
-        'number': 5,
-        'name': 'StockLevel',
-        'complexity': 'Simple',
-        'description': 'Checks stock level for items',
-        'tables': ['district', 'order', 'order_line', 'stock'],
-        'writes': 0,
-        'reads': 3,
+        "number": 5,
+        "name": "StockLevel",
+        "complexity": "Simple",
+        "description": "Checks stock level for items",
+        "tables": ["district", "order", "order_line", "stock"],
+        "writes": 0,
+        "reads": 3,
     }
