@@ -1,54 +1,66 @@
 # Release scope and provenance
 
-This update includes the complete retained measurements for the 9 September 2026
-revision of *How Portable Is ORM Query Performance? Evidence from Four Database
-Systems* in the existing public repository.
+Version 2.0.0 accompanies the October 2026 revision of *How Portable Is ORM
+Query Performance? Evidence from Four Database Systems*.
 
-## Included data and results
+## Included
 
-- All 432 planned coverage rows: 416 measured, 12 timeouts and four inexpressible cells.
-- All 24 raw measurement CSVs across four systems and two index configurations.
-- All 108 Commercial System A coverage rows, including 106 measured cells.
-- Full four-system analytical, transaction and throughput results, including the
-  five paper tables, three figures and seven numerical exports rebuilt offline.
-- Query/model source, baseline SQL, setup and timing tools, tests and instructions.
+- **Revision campaign rc20261008** (`campaign/`): the 728-cell coverage grid of
+  phases A–G and V, about 40,000 per-call records with their acceptance
+  decisions, the frozen protocols, execution plans of the controller, run
+  inventories, dataset fingerprints, execution-plan evidence, the October
+  four-path diagnostics, the September plan diagnostics, the campaign harness,
+  and the 109 measured source files byte for byte. The four analysis runs the
+  manuscript reports are included as reference outputs.
+- **September 2026 SF1 measurements** (`results/sf1/`): all 432 coverage rows
+  and the 24 raw measurement CSVs, unchanged from v1.1.0, with their reference
+  outputs in `analysis/reference/`.
+- Query and model source, handwritten baselines, setup and timing tools, tests,
+  and instructions.
 
-`PUBLIC_INPUTS.json` records the 18 raw inputs unchanged from public commit
-`e55d4977f45ef5e92644461120da42a6bca53e67`, the hashes of all 25 current input CSVs,
-and the preservation check. The complete manuscript inputs were compared row by
-row: all 13,104 rows and every measurement value are retained. Only 3,348 database
-labels and two diagnostic notes were relabeled. No measurements were replaced,
-rounded, inferred or removed.
+## Integrity
 
-Commercial System A is named `commercial_a` in measurement filenames, raw data
-and derived CSVs, and “Commercial System A” in the coverage grid, tables and
-figures. Diagnostic notes retain their explanation with the system name changed.
+`MANIFEST.json` records the SHA-256 of every top-level release file, including
+`campaign/SHA256SUMS`, which records the SHA-256 of every file in the campaign
+tree. `python review.py verify` checks both. `PUBLIC_INPUTS.json` records that
+the September inputs are unchanged from the earlier public releases. A
+SHA-256 file accompanies the ZIP built by `scripts/release.py`.
 
-The reference results come from the retained full manuscript analysis; only
-system identifiers and input paths/checksums were updated. Numeric comparisons
-allow `1e-12` absolute and relative tolerance for platform math libraries, while
-LaTeX tables must match exactly. All scientific estimates remain unchanged.
+## Naming
 
-## Naming scope
+Commercial System A is anonymous under the licence of its software, which
+restricts publishing vendor-attributed benchmark results. In data and
+documentation it is `commercial_a` or “Commercial System A”. The release
+withholds this system's SQL text, execution plans, server version,
+configuration and driver messages from the campaign records; SHA-256
+placeholders keep each record's structure and bindings. Its plan files are
+listed in `campaign/WITHHELD.json` with their original hashes.
 
-The data and analysis use the anonymous label. Existing benchmark adapters,
-driver dependencies and historical technical documentation still identify the
-supported database. Earlier public commits and releases also contain identifying
-references. Relabeling results therefore does not make the repository anonymous.
+The benchmark adapters for this system remain in the source so that its cells
+can be measured again. A reader of the code can therefore infer the product,
+and earlier public releases and commits name it. Relabelling the results does
+not make the repository anonymous.
 
-## Integrity and source
+## Provenance of the campaign copy
 
-`MANIFEST.json` records SHA-256 for every release file except itself. A separate
-SHA-256 file accompanies a ZIP built with `scripts/release.py`.
-`python review.py verify` checks file integrity and dataset completeness;
-`python review.py reproduce` additionally checks the full generated results.
+The campaign tree was copied from the campaign record.
+`campaign/release-provenance.json` lists every file that differs from its
+original, with both hashes; every other file is a byte-identical copy. Besides
+the anonymisation above, the copy replaces private host details: home
+directories, host and user names, network addresses, disk serial numbers, an
+unrelated service on the host, and desktop applications on the client. The
+controller's state and logs, the synchronisation and backup tools, a privileged
+host-administration helper and internal working notes are not released; none
+holds a measurement. The campaign's analysis scripts, rerun on the released
+records, reproduce every reference output (`review.py reproduce`).
 
-The prepared tree excludes local environments, caches, credentials, local database
-files and backup archives. The source formatting preserves executable query
-expressions and SQL constants. Small import-path fixes allow the analytical
-runner, validator and index manager to resolve their checkout. Parameter test
-failures raise assertions under pytest. These source fixes do not alter the
-retained historical measurements.
+## Source fixes in this release
+
+The maintained source includes the two transaction-baseline corrections that
+the campaign applied before measuring transactions (`campaign/rc20261008/patches/`).
+`tests/test_campaign.py` holds the maintained source to the measured source
+statement for statement; the one other difference is v1.1.0's fix of the index
+manager's project root. These changes do not alter any released measurement.
 
 The original public analysis plan and correction register remain as historical
 methodological evidence. Their older commands are superseded by `REPRODUCE.md`.

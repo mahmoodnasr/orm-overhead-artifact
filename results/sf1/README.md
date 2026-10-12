@@ -1,4 +1,8 @@
-# Frozen SF1 data
+# September 2026 SF1 data
+
+These are the measurements of the first submission. The revised manuscript
+reports the revision campaign in [`../../campaign/`](../../campaign/README.md)
+and compares it with these cells; they are unchanged since v1.1.0.
 
 `all_results.csv` includes all 432 planned cells: 336 measured analytical cells,
 12 timeouts, four inexpressible cells and 80 measured transactional cells.

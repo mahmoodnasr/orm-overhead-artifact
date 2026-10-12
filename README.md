@@ -1,26 +1,46 @@
 # How portable is ORM query performance?
 
-Clean source and public measurements for **How Portable Is ORM Query Performance?
+Code, measurements and analysis for **How Portable Is ORM Query Performance?
 Evidence from Four Database Systems**, aligned with the manuscript revision of
-9 September 2026.
+October 2026.
 
-The source supports Django and SQLAlchemy on four database systems. The retained
-measurements cover **PostgreSQL, MySQL, Oracle and Commercial System A** at scale
-factor 1. All **432 planned cells** are included: **336 measured analytical
-comparisons**, 12 timeouts, four inexpressible cells and **80 measured transactional
-comparisons**. All measurement values and full four-system results are retained.
-Commercial System A uses the identifier `commercial_a` in the data and analysis.
+The study measures Django and SQLAlchemy against handwritten SQL on
+PostgreSQL, MySQL, Oracle and Commercial System A, using TPC-H-derived
+analytical queries and TPC-C-derived transactions. The fourth system is
+anonymous because the licence of its software restricts publishing
+vendor-attributed benchmark results; its identifier is `commercial_a`.
+
+## Two datasets
+
+| Dataset | Path | Role |
+|---|---|---|
+| Revision campaign rc20261008, 8–11 October 2026 | [`campaign/`](campaign/README.md) | The manuscript's results: the SF1 grid measured again under a frozen protocol, with transactions, SF2, a separate client, a second server, a four-path decomposition and censored-cell validation |
+| September 2026 SF1 measurements | [`results/sf1/`](results/sf1/README.md) | The data of the first submission, kept unchanged as the comparison the manuscript reports |
+
+From the campaign (`campaign/rc20261008/analysis/`):
+
+| | Cells | Median overhead | 95 % interval |
+|---|---:|---:|---|
+| Analytical, SF1, all systems | 332 | +0.85 % | 0.51–1.60 |
+| Django | 165 | +1.35 % | 0.53–4.41 |
+| SQLAlchemy | 167 | +0.60 % | 0.31–1.39 |
+| Transactions, all systems | 80 | +104.7 % | — |
+
+Each framework is compared with its own handwritten baseline, so these rows
+do not rank the frameworks. The large gaps, the transaction results and every
+sensitivity row are in [`campaign/README.md`](campaign/README.md).
 
 ## Download or clone
 
-Download the ZIP and SHA-256 checksum from the
-[v1.1.0 release](https://github.com/mahmoodnasr/orm-overhead-artifact/releases/tag/v1.1.0),
-or clone the repository and check out `v1.1.0` for the same fixed version.
-See [docs/PACKAGING.md](docs/PACKAGING.md) for archive construction and verification.
+Download the ZIP and its SHA-256 checksum from the
+[v2.0.0 release](https://github.com/mahmoodnasr/orm-overhead-artifact/releases/tag/v2.0.0),
+or clone the repository and check out `v2.0.0`. See
+[docs/PACKAGING.md](docs/PACKAGING.md) for how the archive is built and checked.
 
 ## Verify and reproduce
 
-Python 3.11 or 3.12 can check the files and dataset without installing packages:
+Python 3.11 or 3.12 checks every file and both datasets without installing
+anything:
 
 ```sh
 python3 review.py verify
@@ -35,36 +55,35 @@ python -m pip install -r requirements-analysis.txt
 python review.py reproduce
 ```
 
-The command reads only the supplied public CSV files. It writes five tables,
-three PDF figures and seven numerical exports under `outputs/`, then checks the
-CSV, JSON and LaTeX against the public reference outputs (numeric tolerance
-`1e-12`; LaTeX tables must match exactly). PDF byte identity is
-not required because renderer metadata can differ. No database is contacted.
-
-The analytical medians round to **1.13% for Django (165 cells)** and **0.67% for
-SQLAlchemy (171 cells)**. Transactional median overheads are **90.46%** and
-**69.18%**, respectively (40 cells each). These are the full four-system estimates.
-The fourth system is labeled “Commercial System A” in the tables and figures.
+`reproduce` reads only released files and writes to `outputs/`. For the
+campaign it reruns the campaign's own analysis scripts on its per-call
+records, rebuilds all 23 reference outputs, and re-checks every accepted
+ORM/SQL pair of phases A, D and E against the full results stored in the
+records. For the September data it rebuilds five tables, three figures and
+seven numerical exports. Numeric comparisons allow `1e-12` for platform math
+libraries; a value printed with fixed decimals may also differ by one unit
+in its last place. No database is contacted.
 
 ## What to read
 
 | Path | Purpose |
 |---|---|
-| [REPRODUCE.md](REPRODUCE.md) | Offline analysis, tests and optional new database measurements |
-| [MANIFEST.md](MANIFEST.md) | Included measurements, naming and provenance |
-| [docs/PROTOCOL.md](docs/PROTOCOL.md) | Estimands, execution protocols and scientific limits |
+| [campaign/README.md](campaign/README.md) | The campaign: phases, layout, which run counts, limitations, what was changed for release |
+| [REPRODUCE.md](REPRODUCE.md) | Offline reproduction, tests, and new database measurements |
+| [MANIFEST.md](MANIFEST.md) | Release scope, naming and provenance |
+| [docs/PROTOCOL.md](docs/PROTOCOL.md) | Estimands and execution protocols of both datasets |
 | [docs/DATA_DICTIONARY.md](docs/DATA_DICTIONARY.md) | File layout, columns and units |
-| [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md) | Recorded campaign environment and separate dependency sets |
-| `django_app/`, `sqlalchemy_app/` | Query implementations, SQL baselines and models |
-| `scripts/1-setup/`, `scripts/2-benchmark/` | Dataset preparation and timing harnesses |
-| `results/sf1/` | The public coverage grid and 24 measurement CSVs |
-| `analysis/` | Full four-system analysis and reference outputs |
+| [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md) | Recorded environments and dependency sets |
+| [docs/CORRECTIONS.md](docs/CORRECTIONS.md) | The defect register of the study's earlier versions |
+| `django_app/`, `sqlalchemy_app/` | Query implementations, handwritten baselines and models |
+| `scripts/` | Dataset preparation and the September timing harness |
+| `analysis/` | Offline analysis: the September rebuild and the campaign checks |
 | `tests/` | Source, pairing, integrity and completeness checks |
-| `MANIFEST.json`, `PUBLIC_INPUTS.json` | File checksums and input preservation checks |
+| `MANIFEST.json`, `campaign/SHA256SUMS`, `PUBLIC_INPUTS.json` | Checksums and input preservation records |
 
-Reproducing calculations does not prove whole-result equivalence for every
-historical timing. Source versions were not recorded on individual measurements,
-and the historical validator has known limitations. See `docs/PROTOCOL.md`.
+The maintained source in `django_app/` and `sqlalchemy_app/` executes as the
+campaign's measured source in `campaign/source/`; `tests/test_campaign.py`
+checks it statement for statement.
 
 ## Development
 
@@ -75,16 +94,16 @@ ruff check .
 ruff format --check .
 ```
 
-These checks are also run by GitHub Actions. Installing the database benchmark
-runtime is a separate step (`requirements.txt`, Python 3.12); database services
-and native driver libraries are not bundled.
+GitHub Actions runs these checks and `review.py reproduce`. The database
+benchmark runtime is a separate installation (`requirements.txt`, Python
+3.12); database services and native driver libraries are not bundled.
 
-The original [analysis plan](ANALYSIS_PLAN.md) and
-[correction register](docs/CORRECTIONS.md) remain as historical methodological
-evidence. Their older commands and manuscript descriptions are superseded by
-this README and `REPRODUCE.md`. Earlier release snapshots remain available in Git
-and on the releases page.
+The original [analysis plan](ANALYSIS_PLAN.md) and the
+[correction register](docs/CORRECTIONS.md) are historical methodological
+evidence; their older commands are superseded by this README and
+`REPRODUCE.md`. Earlier release snapshots remain available in Git and on the
+releases page.
 
-Project code retains its [MIT license](LICENSE). See
+Project code is under the [MIT license](LICENSE). See
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [CITATION.cff](CITATION.cff).
-The manuscript is not presented as a published journal article.
+The manuscript is under review and is not presented as a published article.

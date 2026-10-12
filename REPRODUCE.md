@@ -1,11 +1,27 @@
 # Reproduction guide
 
-## Rebuild the four-system results
+## Rebuild the released results
 
 Follow the two commands in `README.md`: `review.py verify` checks the package
-using the standard library, and `review.py reproduce` rebuilds and compares its
-four-system outputs after installing `requirements-analysis.txt`. No database
+using the standard library, and `review.py reproduce` rebuilds and compares both
+datasets' outputs after installing `requirements-analysis.txt`. No database
 server, SQL driver, shell environment file or generated dataset is needed.
+
+For the campaign, `reproduce` runs the campaign's own scripts from
+`campaign/rc20261008/code/` on the released records, writing to
+`outputs/campaign/`:
+
+| Script | Rebuilds | Reference |
+|---|---|---|
+| `rc_collect.py` | the 728-row coverage grid | `results-all-phases.csv` |
+| `rc_analyze.py` | phase A, D and E estimates, intervals, tests, sensitivity, coverage | `analysis/run-*/{A-sf1,D-sf2,E-client}/` |
+| `rc_summary.py` | transactions, four-path decomposition, cross-setting comparisons | `analysis/run-20261011T2251/all-phases/` |
+
+The scripts can also be run directly. `rc_collect.py` writes to `$RC_OUT` when
+it is set, and otherwise beside the released files.
+`rc_analyze.py` takes the run directories and `--out`. Give them in the order
+of the reference `coverage.csv`, because the bootstrap draws queries in
+first-seen order. `analysis/campaign.py` shows the exact invocations.
 
 ## Run the source tests
 
@@ -61,12 +77,11 @@ in the source refer to several different development environments.
 | PostgreSQL | `django_app.settings` | `postgresql+psycopg2://` | `PG_DSN` |
 | MySQL | `settings_mysql` | `mysql+mysqldb://` | `MYSQL_*` |
 | Oracle | `settings_oracle` | `oracle+oracledb://` | `ORA_USER`, `ORA_PASS`, `ORA_DSN` |
-| Commercial System A | `settings_sqlserver` | `mssql+pyodbc://` | `SQLSERVER_*`, `SQLSERVER_SA_PASSWORD` |
 
-For Commercial System A, install the ODBC driver separately and select it in `SA_DSN` and
-`SQLSERVER_ODBC_DRIVER`. For Oracle, use matching `ORACLE_*` settings for Django
-and `ORA_*` variables for the loader. TPC-C's Oracle loader reads
-`ORA_TPCC_USER`, `ORA_TPCC_PASS` and `ORA_DSN`.
+For Oracle, use matching `ORACLE_*` settings for Django and `ORA_*` variables
+for the loader. TPC-C's Oracle loader reads `ORA_TPCC_USER`, `ORA_TPCC_PASS`
+and `ORA_DSN`. The adapters for Commercial System A are part of the source;
+this guide does not document their configuration (see `MANIFEST.md`).
 
 ## Generate and load TPC-H-derived data
 
@@ -79,9 +94,9 @@ python scripts/1-setup/generate_tpch_duckdb.py --sf 1 --out tpch1.duckdb
 ```
 
 Create a dedicated empty database/schema first. SQL definitions are supplied as
-`schema_postgres.sql`, `schema_mysql.sql`, `schema_oracle.sql` and
-`schema_sqlserver.sql` under `scripts/1-setup/`. Apply them with the appropriate
-database client. The PostgreSQL definition comes from the retained setup
+`schema_postgres.sql`, `schema_mysql.sql` and `schema_oracle.sql` under
+`scripts/1-setup/`, with one for each further adapter. Apply them with the
+appropriate database client. The PostgreSQL definition comes from the retained setup
 precheck; it is not evidence of every historical server's DDL.
 
 For example, with an empty PostgreSQL `tpch` database and the configured `PG_DSN`:
@@ -92,9 +107,8 @@ python scripts/1-setup/load_pg.py --duckdb tpch1.duckdb
 psql "$PG_DSN" -v ON_ERROR_STOP=1 -f data/indexes/postgres_indexes.sql
 ```
 
-Other systems use `load_mysql.py --duckdb tpch1.duckdb`,
-`load_oracle.py --duckdb tpch1.duckdb --sf 1`, or
-`load_sqlserver.py --duckdb tpch1.duckdb`. Loaders write to the configured
+Other systems use `load_mysql.py --duckdb tpch1.duckdb` or
+`load_oracle.py --duckdb tpch1.duckdb --sf 1`. Loaders write to the configured
 database. Use an empty database to avoid duplicate records on repeated loads.
 
 Apply the matching file in `data/indexes/` for the indexed configuration. Refresh
@@ -121,8 +135,20 @@ checks and compare the actual results when investigating a failure. The retained
 validator has known canonicalization and tolerance limitations; its success is
 not a complete equivalence proof.
 
-Measure only after validation and host/index checks. On the recorded Linux CPU
-allocation, one analytical query uses:
+Measure only after validation and host/index checks.
+
+The campaign's protocol is implemented by `campaign/rc20261008/code/rc_analytical.py`
+(analytical) and `rc_tpcc.py` (transactions), driven by `rc_controller.py` from
+an execution plan. They check the result of every timed call against its
+baseline, record inventories before and after each run, and refuse to time a
+host or database that is not in the declared state. They expect the campaign
+host's privileged helper and control groups (`campaign/README.md`), so treat
+them as the reference implementation of the protocol rather than a turnkey
+runner. A new run is a new experiment: freeze its own protocol and write to
+its own directory.
+
+The September harness remains in `scripts/2-benchmark/`. On the recorded Linux
+CPU allocation, one analytical query uses:
 
 ```sh
 mkdir -p results/rerun/measurements
@@ -153,9 +179,11 @@ python scripts/2-benchmark/run_tpcc.py \
   --out results/rerun/measurements/postgresql_tpcc_indexed.csv
 ```
 
-Repeat for T1–T5 and each verified configuration. This protocol uses four
-repetitions per path, discards the first and exports the remaining median.
-It does not use the analytical eight-block design. Throughput is a separate run:
+Repeat for T1–T5 and each verified configuration. This September protocol
+uses four repetitions per path, discards the first and exports the remaining
+median. The campaign replaced it with 24 Williams-balanced blocks on matched,
+seeded inputs, with database state restored and verified after every call
+(`rc_tpcc.py`). Throughput is a separate run:
 
 ```sh
 python scripts/2-benchmark/run_tpcc_throughput.py \
@@ -171,7 +199,8 @@ python scripts/4-analysis/make_all_results.py --scale 1 \
   --validation-logs results/rerun --qerror results/rerun
 ```
 
-This builds `results/rerun/all_results.csv` from the new runs. The public
-`results/sf1/` inputs remain frozen. Never append a new run to those public CSVs. Use `pilot_gate.py` to inspect analytical campaign
+This builds `results/rerun/all_results.csv` from the new runs. Runs in the
+campaign's format are analysed with `campaign/rc20261008/code/rc_analyze.py`.
+The public `results/sf1/` inputs and `campaign/` records remain frozen. Never append a new run to those public CSVs. Use `pilot_gate.py` to inspect analytical campaign
 variability and recorded ceilings; preserve failing diagnostics. Regenerating
 all four systems is always the separate `review.py reproduce` workflow.

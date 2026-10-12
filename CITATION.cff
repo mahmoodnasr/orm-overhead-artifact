@@ -6,11 +6,14 @@ abstract: >-
   Public artifact for How Portable Is ORM Query Performance? Evidence from Four
   Database Systems. Includes Django and SQLAlchemy query implementations,
   measurement harnesses, and reproducible analysis of PostgreSQL, MySQL, Oracle
-  and Commercial System A at scale factor 1. All 432 planned cells remain in the
-  coverage grid, including 336 measured analytical comparisons and 80 measured
-  transactional comparisons. All measurements and full four-system results are
-  retained; Commercial System A uses an anonymous label in the data and analysis.
-  The manuscript is not yet published.
+  and Commercial System A. The revision campaign rc20261008 (October 2026)
+  re-measures the scale-factor-1 analytical grid under a frozen protocol, with
+  matched transactions, scale factor 2, a separate client, a second server, a
+  four-path decomposition and censored-cell validation; its per-call records,
+  protocols, environment inventories and measured source are released. The
+  September 2026 measurements are retained as the historical comparison.
+  Commercial System A uses an anonymous label. The manuscript is not yet
+  published.
 authors:
   - family-names: "Nasr"
     given-names: "Mahmoud"
@@ -43,8 +46,8 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.22649753"
     description: "Zenodo archive, v1.0.0"
-version: "1.1.0"
-date-released: "2026-09-09"
+version: "2.0.0"
+date-released: "2026-10-12"
 # No preferred-citation. The manuscript this artifact accompanies is under
 # review and not published, and a citation entry naming a journal and a year
 # would assert a record that does not exist. One goes here when there is one.

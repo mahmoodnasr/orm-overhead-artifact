@@ -263,10 +263,10 @@ SQLAlchemy, which is equivalent under `LOCK_DISTRICT=True` and can lose updates
 without it. Stock-Level reads the district row in Django and not in SQLAlchemy,
 so Django issues four SELECTs against SQLAlchemy's three.
 
-## C11 — the SQL Server dialect branch emitted invalid SQL
+## C11 — the Commercial System A dialect branch emitted invalid SQL
 
 `sql_for()` in `sqlalchemy_app/queries/_sql.py` adapted the ANSI statements to
-each vendor. Its SQL Server branch contained:
+each vendor. Its Commercial System A branch contained:
 
 ```python
 sql = sql.replace("EXTRACT(YEAR FROM ", "YEAR((").replace("))", "))")
@@ -275,7 +275,7 @@ sql = sql.replace("EXTRACT(YEAR FROM ", "YEAR((").replace("))", "))")
 The first replacement opens two parentheses and closes one, so
 `EXTRACT(YEAR FROM o_orderdate)` became `YEAR((o_orderdate)`. The second
 replacement substitutes `))` for `))` and does nothing whatsoever. Q07, Q08 and
-Q09 are the three TPC-H queries that extract a year, and on SQL Server all three
+Q09 are the three TPC-H queries that extract a year, and on Commercial System A all three
 were unbalanced and would have failed on first execution.
 
 **Fixed.** The construct is matched as a whole,
@@ -284,10 +284,10 @@ the Oracle branch already used for its alias problem. All 22 statements now
 balance in all four dialects.
 
 This one is different from C1–C10 in that it had not yet reached a result: it
-was found before the first SQL Server campaign, so no published number depends
+was found before the first Commercial System A campaign, so no published number depends
 on it. It is recorded because of *when* it was found. The defect sat in the
 repository through every earlier audit, and the reason none of them saw it is
-that the SQL Server path had never been executed — the same reason C6 and C7
+that the Commercial System A path had never been executed — the same reason C6 and C7
 survived until the Oracle port. A dialect branch that nothing runs is not code
 that works; it is code whose behaviour is unknown, and it should be read as
 untested until a validation pass says otherwise.
@@ -295,42 +295,42 @@ untested until a validation pass says otherwise.
 C12 through C17 are what that first execution then turned up: six more, in the
 schema, the harness, two hand-written baselines and two ORM implementations.
 
-## C12 — the SQL Server database was never created
+## C12 — the Commercial System A database was never created
 
-`docker-compose.yml` mounted `docker/sqlserver/setup.sql` at
+`docker-compose.yml` mounted the Commercial System A container setup script at
 `/docker-entrypoint-initdb.d/setup.sql`. That path is a convention of the
-PostgreSQL and MySQL images; `mcr.microsoft.com/mssql/server` has no
+PostgreSQL and MySQL images; `<commercial-a-image>` has no
 init-directory mechanism and ignores whatever is placed there. The file was
 present inside the container, readable, and never executed.
 
 The container therefore reported `healthy` — its healthcheck runs `SELECT 1`
 against the server, which was genuinely up — while holding only `master`,
 `tempdb`, `model` and `msdb`. The database `tpch`, the `tpch_user` login, the
-memory ceiling and the MAXDOP setting were all absent. The first symptom a user
+memory ceiling and the parallelism limit setting were all absent. The first symptom a user
 would meet is Django failing to open database "tpch", which reads as the server
 being unreachable rather than as an init script that never ran.
 
-**Fixed.** `scripts/1-setup/init_sqlserver.sh` applies the file explicitly and
+**Fixed.** The Commercial System A initialisation script applies the file explicitly and
 then verifies the database exists, raising rather than exiting 0 if it does not.
 `setup.sql` says in its own header that it is not self-applying. Two settings in
 it were also wrong for this host and are corrected there with the reasoning:
-`max server memory` was 8 GB on a VM with 11.7 GB total, against a 4 GB data
+`memory limit` was 8 GB on a VM with 11.7 GB total, against a 4 GB data
 cache on each of the other two systems.
 
-## C13 — SQL Server bounded one framework and not the other
+## C13 — Commercial System A bounded one framework and not the other
 
 `set_timeouts()` in `scripts/2-benchmark/run_query.py` mapped PostgreSQL to
 `SET statement_timeout` and MySQL to `SET SESSION max_execution_time`, and had:
 
 ```python
-"mssql": None,          # SQL Server uses a client-side query timeout
-"sqlserver": None,
+"commercial_a": None,          # Commercial System A uses a client-side query timeout
+"commercial_a": None,
 ```
 
-The comment is correct and nothing acted on it. SQL Server has no session-level
+The comment is correct and nothing acted on it. Commercial System A has no session-level
 statement timeout to `SET`; the ceiling has to be placed on the client
 connection. Django picked one up anyway, from `OPTIONS["query_timeout"]` in
-`settings_sqlserver.py`. SQLAlchemy is built from `SA_DSN` and picked up
+the Commercial System A settings module. SQLAlchemy is built from `SA_DSN` and picked up
 nothing.
 
 So the two paths under comparison would have run under different rules: an ORM
@@ -338,19 +338,19 @@ query could run unbounded while its own hand-written baseline was cut off at the
 budget, or the reverse, depending on which framework the harness was timing.
 A timeout that applies to one arm of a comparison and not the other does not
 just lose a cell — it biases the cell it keeps. `arm_timeout()` in
-`scripts/validate_queries.py` had the same hole, and there `sqlserver` fell
+`scripts/validate_queries.py` had the same hole, and there `commercial_a` fell
 through the vendor lookup entirely, so validation ran with no ceiling at all.
 
 **Fixed.** Both functions now set `raw.timeout` on both raw pyodbc connections,
 the same way the Oracle branch sets `call_timeout` on both, so the ceiling is a
 property of the campaign rather than of which framework happens to be running.
 
-Like C11 this had not reached a result — no SQL Server campaign had been run.
+Like C11 this had not reached a result — no Commercial System A campaign had been run.
 Both were found the same way: by executing a path that had only ever been read.
 
-## C14 — mssql-django silently rewrote three LIKE patterns
+## C14 — commercial-a-django-backend silently rewrote three LIKE patterns
 
-`CursorWrapper.execute` in `mssql/base.py` reads:
+`CursorWrapper.execute` in the backend's cursor module reads:
 
 ```python
 def execute(self, sql, params=None):
@@ -373,7 +373,7 @@ and a LIKE pattern of that shape:
 | Q13 | `o_comment NOT LIKE '%special%requests%'` | `LIKE '{}{}%'` |
 | Q16 | `s_comment LIKE '%Customer%Complaints%'` | `LIKE '{}{}%'` |
 
-Read directly out of Query Store rather than inferred. `'MEDIUM POLISHED%'` and
+Read directly out of plan store rather than inferred. `'MEDIUM POLISHED%'` and
 `'forest%'` are untouched, because their `%` is followed by a quote.
 
 None of the three raised. Q09 returned zero rows in 0.74 s, which the harness
@@ -388,7 +388,7 @@ so every `%` is followed by a quote and that regex has nothing to match. SQL
 Server folds the constants at compile time, so the plan is the literal's plan.
 Q09 and Q16 get per-vendor modules for this; Q13 needed one anyway (C17).
 
-## C15 — Q15's Django ORM returned nothing on SQL Server
+## C15 — Q15's Django ORM returned nothing on Commercial System A
 
 `q15.py` declares the summed revenue as
 `DecimalField(max_digits=15, decimal_places=2)`. `l_extendedprice` and
@@ -398,21 +398,21 @@ scale was always wrong.
 
 PostgreSQL never charged for it: its backend overrides
 `adapt_decimalfield_value` to pass `Decimal` values through untouched.
-mssql-django uses Django's default, which quantises a bound parameter to the
+commercial-a-django-backend uses Django's default, which quantises a bound parameter to the
 declared `decimal_places`. So Q15 read the maximum back correctly as
 `2194132.8166`, then sent it to the server as `2194132.82`, which equals no
 group's total. Django's Q15 returned zero rows while the other three paths
 returned the one correct row.
 
-**Fixed** in the SQL Server module, as `DecimalField(max_digits=25,
+**Fixed** in the Commercial System A module, as `DecimalField(max_digits=25,
 decimal_places=4)`. Scoped there rather than in the shared module because
 changing the shared declaration would touch three systems whose measurements
 are already collected, and on those three the value passes through unquantised
 regardless.
 
-## C16 — Q09's SQL Server ORM summed the wrong quantity
+## C16 — Q09's Commercial System A ORM summed the wrong quantity
 
-`q09_sqlserver.py` carried its own ORM implementation which computed
+The Commercial System A override of Q09 carried its own ORM implementation which computed
 `l_extendedprice * (1 - l_discount)` and stopped there. TPC-H Q9 sums *profit*:
 that term **minus** `ps_supplycost * l_quantity`. The module never joined
 PARTSUPP at all, and said so in its own comments — "Note: This is simplified.
@@ -422,14 +422,14 @@ It returned the right shape: 175 rows, right nations, right years, correctly
 sorted, in a time indistinguishable from a correct run. Only the values were
 wrong, by about 1.5x — ALGERIA/1998 came out at 414,006,807.63 against the
 271,504,046.55 that the two baselines and the SQLAlchemy ORM agreed on. This is
-the same class as C3, and it survived because the SQL Server path had never run.
+the same class as C3, and it survived because the Commercial System A path had never run.
 
 **Fixed.** The correct query, reaching PARTSUPP by a join rather than by the
-correlated `Subquery` the shared module uses — SQL Server rejects a subquery
+correlated `Subquery` the shared module uses — Commercial System A rejects a subquery
 inside an aggregated expression outright (error 130), so the shared
 implementation cannot simply be imported.
 
-## C17 — Q13 is not expressible through the Django ORM on SQL Server or Oracle
+## C17 — Q13 is not expressible through the Django ORM on Commercial System A or Oracle
 
 Not a defect in this repository, and the only entry here that is not fixed,
 because it cannot be. It is recorded because the alternative to recording it is
@@ -439,14 +439,14 @@ Q13 aggregates twice — orders per customer, then customers per distinct count 
 and the outer grouping is over the result of the inner one, which in SQL is a
 derived table. Django's ORM has no derived-table construct; its only route is
 `Subquery` in an annotation, which is what the shared `q13.py` uses and what
-works on the other three systems. SQL Server does not permit a subquery in a
-GROUP BY expression, and mssql-django states it: `supports_subqueries_in_group_by
+works on the other three systems. Commercial System A does not permit a subquery in a
+GROUP BY expression, and commercial-a-django-backend states it: `supports_subqueries_in_group_by
 = False`, with `collapse_group_by` dropping such expressions from the clause.
 
 What the compiler emitted was:
 
 ```sql
-SELECT COALESCE((correlated subquery), 0) AS c_count, COUNT_BIG(*) AS custdist
+SELECT COALESCE((correlated subquery), 0) AS c_count, COUNT(*) AS custdist
 FROM customer ORDER BY 2 DESC, 1 DESC
 ```
 
@@ -458,14 +458,14 @@ Two ways to produce a number were rejected. Emitting the SQL by hand inside
 the outer grouping in Python moves the work out of the database and would report
 a Django Q13 time that is mostly a loop over 1.5 million rows.
 
-**It is not a SQL Server quirk.** Oracle refuses the same construct, in its own
+**It is not a Commercial System A quirk.** Oracle refuses the same construct, in its own
 words:
 
     ORA-22818: subquery expressions not allowed here
 
 so two of the four systems in this study forbid a subquery in a GROUP BY
 expression and Django's only route to Q13 is closed on both. The two refuse
-differently, and the difference matters: Oracle raises, while mssql-django
+differently, and the difference matters: Oracle raises, while commercial-a-django-backend
 silently drops the clause and emits a statement with no GROUP BY at all.
 
 Oracle also shows what the alternative costs. `q13_oracle.py` carried its own
@@ -480,7 +480,7 @@ where the query defines forty-five:
 and those two numbers are exactly ten times the SF1 figures in C3, which makes
 the provenance unambiguous. That is the third time in this list a per-vendor
 override has shadowed a corrected shared implementation and kept the defect,
-after C9 and C16. Both Oracle and SQL Server now import shared implementations
+after C9 and C16. Both Oracle and Commercial System A now import shared implementations
 rather than copying them wherever the query is the same.
 
 So the cell is not measured on either system and the run records why. The other
@@ -489,21 +489,21 @@ build a real FROM-subquery via `.subquery()` — a genuine difference in
 expressive power between the two ORMs, and a result in its own right rather
 than a footnote.
 
-## C18 — SQLAlchemy's row lock silently did nothing on SQL Server
+## C18 — SQLAlchemy's row lock silently did nothing on Commercial System A
 
 Found by running TPC-C New-Order at concurrency 50, and it is a correctness
 defect rather than a performance one.
 
 `sqlalchemy_app/tpcc_queries/t1.py` locked the district row with
 `.with_for_update()`, which is the framework's portable spelling and is correct
-on PostgreSQL, MySQL and Oracle. Compiled against the mssql dialect it emits
+on PostgreSQL, MySQL and Oracle. Compiled against the commercial_a dialect it emits
 **nothing**: no `FOR UPDATE`, no table hint, no warning, no error.
 
     postgresql  FROM district WHERE ... FOR UPDATE
     mysql       FROM district WHERE ... FOR UPDATE
-    mssql       FROM district WHERE ...
+    commercial_a       FROM district WHERE ...
 
-So on SQL Server the row was read unlocked, two concurrent New-Orders took the
+So on Commercial System A the row was read unlocked, two concurrent New-Orders took the
 same `d_next_o_id`, and both tried to insert an order with it. Measured at
 concurrency 50: **522 of 6,778 transactions aborted with IntegrityError, a 7.7%
 failure rate.** TPC-C forbids duplicate order ids, so those were not slow
@@ -511,22 +511,21 @@ transactions, they were wrong ones.
 
 Django on the same server, through the same intent, emitted the lock:
 
-    FROM [district] WITH (ROWLOCK, UPDLOCK) WHERE ...
+    FROM district <row-lock table hint> WHERE ...
 
 and aborted none. It also refuses to compile `select_for_update()` outside a
 transaction, raising `TransactionManagementError`, where SQLAlchemy returns a
 query that merely does not lock.
 
-**Fixed.** The SQL Server branch uses `.with_hint(District, "WITH (UPDLOCK,
-ROWLOCK)")`; the other three dialects keep `.with_for_update()`. Verified by
+**Fixed.** The Commercial System A branch uses `.with_hint(District, "a row-lock table hint")`; the other three dialects keep `.with_for_update()`. Verified by
 compilation against each dialect and by re-measurement: the abort rate went from
 7.7% to 0.0%, with throughput unchanged at about 6,200-6,600 QPM.
 
 Two things make this worth more than a line in a changelog.
 
 *It is the mirror image of C17.* There, Django's ORM could not express TPC-H
-Q13 on SQL Server and failed loudly. Here, SQLAlchemy's ORM could not express a
-row lock on SQL Server and failed silently. Neither framework is uniformly more
+Q13 on Commercial System A and failed loudly. Here, SQLAlchemy's ORM could not express a
+row lock on Commercial System A and failed silently. Neither framework is uniformly more
 portable, and the failure modes are not equally safe: a query that will not run
 costs a cell, a lock that will not lock costs correctness.
 
@@ -569,7 +568,7 @@ Oracle's own `v$result_cache_statistics` reported **Find Count 4,368**: that man
 results returned without executing the query.
 
 It also gave Oracle a capability no other system in the study has. PostgreSQL,
-MySQL and SQL Server cache *pages*, so a repeated query still executes against
+MySQL and Commercial System A cache *pages*, so a repeated query still executes against
 warm buffers. None of them can return a stored result set. Comparing one cached
 lookup against three real executions is not a comparison of database systems,
 and within Oracle it is not a comparison of ORM against SQL either — both paths
@@ -691,7 +690,7 @@ SQLAlchemy's unclosed sessions accumulate against a 65-connection ceiling, so
 the excess demand *blocks and times out* instead. Both frameworks leak in this
 harness. Only one of them was fixed here.
 
-**Why it stayed hidden for three systems.** PostgreSQL, MySQL and SQL Server
+**Why it stayed hidden for three systems.** PostgreSQL, MySQL and Commercial System A
 have connection limits generous enough to absorb a thousand idle sessions.
 Oracle Database Free does not: `processes` defaults to 200. Measured on the
 first Oracle indexed campaign, abort rate by path:
@@ -750,7 +749,7 @@ its own logs.
 |---|---|---|---|
 | PostgreSQL | 14.9 | **14.23** (Debian 14.23-1.pgdg13+1) | `postgresql_*.campaign.log` |
 | MySQL | 8.0.34 | **8.0.46** on localhost; sandbox build never logged | `docs/ENVIRONMENT.md` |
-| SQL Server | 2019 Developer | 2019 Developer, **15.0.4480.2 CU32-GDR**, amd64 under emulation | `docs/ENVIRONMENT.md` |
+| Commercial System A | version withheld | version withheld, amd64 under emulation | `docs/ENVIRONMENT.md` |
 | Django | 4.2.30 | **4.2.0** | `requirements.txt`, `venv/` |
 | SQLAlchemy | 2.0.36 | **2.0.23** | `requirements.txt`, `venv/` |
 
@@ -787,7 +786,7 @@ per-campaign logs written since say:
 | MySQL non-indexed | no log survives from the sandbox | `pass` |
 
 Eight cells carry an overhead figure with no passing verdict behind it, and
-three more — SQLAlchemy's Q13 on SQL Server (both schemas) and on Oracle — were
+three more — SQLAlchemy's Q13 on Commercial System A (both schemas) and on Oracle — were
 never checked at all, because the validator raises on Django's
 `Q13NotExpressible` (C17) and stops before comparing the other three paths of
 that query. The mechanism is the one this list keeps finding: a column that
@@ -795,7 +794,7 @@ looked like a record was a constant.
 
 **Dataset size.** A single `14` for all four systems. The loaded sizes are
 21 GB (PostgreSQL, with indexes), ~22 GB (MySQL, with indexes, estimated),
-14.4 GB (SQL Server, without) and 10.81 GB (Oracle, without) — not like-for-like
+14.4 GB (Commercial System A, without) and 10.81 GB (Oracle, without) — not like-for-like
 and now stated per system rather than averaged into one wrong number.
 
 **Fixed.** Versions from the campaign logs, `docs/ENVIRONMENT.md` and
@@ -816,9 +815,9 @@ the rest followed from reading the script.
 ## C23 — every campaign chain measured queries that had failed validation
 
 The rule — validate first, five checks, all must pass before any timing is
-kept — is stated in `README.md`, `CLAUDE.md` and the validator's own docstring.
+kept — is stated in `README.md`, the project's working notes and the validator's own docstring.
 No chain script enforces it. `run_postgres_campaign.sh`,
-`run_mysql_campaign.sh`, `run_sqlserver_campaign.sh` and
+`run_mysql_campaign.sh`, the Commercial System A campaign script and
 `run_oracle_campaign.sh` each pipe `validate_queries.py` through `tee` and then
 measure every query in their list, whatever the validator printed.
 `run_mysql_campaign.sh` even states the intended distinction in a comment —
@@ -834,7 +833,7 @@ What the logs show, campaign by campaign:
 | PostgreSQL non-indexed | Q13, Q17, Q18, Q20 | statement timeout | yes; Q17 and Q20 then timed out in measurement too, Q13's Django path did, Q18 completed |
 | Oracle group C (non-indexed) | Q17 | `DPY-4024` after 300 s | yes; Django ORM timed out at 900 s, SQLAlchemy completed |
 | **Oracle group F (non-indexed)** | **Q08** | **`MATCH=DIFF`, `ORM=SQL=DIFF`, `SQL=` ok** | yes — Django −0.6%, SQLAlchemy −5.0% |
-| SQL Server both, Oracle group A | Q13 | `Q13NotExpressible` (Django) | yes — Django's cell is a result, not a defect (C17); but the validator stops at that exception, so SQLAlchemy's Q13 (+22.8%, +25.9%, +13.8%) and both baselines on those systems were never compared — three more unverified cells |
+| Commercial System A both, Oracle group A | Q13 | `Q13NotExpressible` (Django) | yes — Django's cell is a result, not a defect (C17); but the validator stops at that exception, so SQLAlchemy's Q13 (+22.8%, +25.9%, +13.8%) and both baselines on those systems were never compared — three more unverified cells |
 
 Q08 on Oracle is a recorded difference, and C26 diagnoses it: Django's Oracle
 module returns four values per row where every other path returns two, which
@@ -866,13 +865,13 @@ sibling `.gate.log`. `validate_queries.py` exits 1 when any query fails, and
 (C23)` with the verdict. Replayed against the four campaign logs above, the
 gate skips exactly the cells this entry lists: Q18 on PostgreSQL indexed;
 Q13, Q17, Q18, Q20 on PostgreSQL non-indexed; Q08 in Oracle group F; Q13 on
-SQL Server. Nothing in the results file changed — the eleven cells stand by
+Commercial System A. Nothing in the results file changed — the eleven cells stand by
 decision — but the next campaign cannot add to them.
 
 **Also fixed (2026-08-29): the validator no longer abandons a query when one
 path raises.** `check()` ran all four access paths inside a single `try`, so the
 first exception ended the query and the paths after it never ran. Django cannot
-express Q13 on SQL Server or Oracle - a real result, C17 - and that exception
+express Q13 on Commercial System A or Oracle - a real result, C17 - and that exception
 abandoned Q13's whole validation on both systems, leaving SQLAlchemy's ORM and
 both hand-written baselines uncompared. Three cells were measured anyway and
 recorded as passing. **Reloading the databases would have reproduced the
@@ -946,7 +945,7 @@ documents it in the same words, for the same two-word predicate:
 Q13 was fixed to `comment__regex=r'special.*requests'`. `q09.py` carries the
 same warning and uses `contains`, not `icontains`. Q16 was never revisited, and
 `q09_oracle.py` still has `partkey__name__icontains='green'` where `q09.py` and
-`q09_sqlserver.py` have `contains` — the C9 shape again, a per-vendor override
+the Commercial System A override of Q09 have `contains` — the C9 shape again, a per-vendor override
 that missed a fix applied to the default.
 
 **Reach.** Q16's Django ORM path, 8 measured cells (four systems x two schemas;
@@ -964,17 +963,17 @@ bad_suppliers = Supplier.objects.using(using).filter(
 
 `__like` is a registered lookup, not a built-in. `__contains` escapes interior
 wildcards, so it can only match one literal run of characters; `__regex` can
-express the pattern but mssql-django maps it to `dbo.REGEXP_LIKE`, a
+express the pattern but commercial-a-django-backend maps it to `<schema>.REGEXP_LIKE`, a
 user-defined function the database does not have, and supplying it would make
-the ORM path carry a scalar UDF over millions of rows (see `q13_sqlserver.py`).
+the ORM path carry a scalar UDF over millions of rows (see the Commercial System A override of Q13).
 The lookup keeps the statement ORM-built and passes the pattern as a parameter,
 which also sidesteps C14: that rewrite operates on the query text, and Q16 has a
 `GROUP BY`.
 
-The lookup was already written inside `q13_sqlserver.py` for the same reason. It
+The lookup was already written inside the Commercial System A override of Q13 for the same reason. It
 now lives in `django_app/queries/_lookups.py` and both queries import it - two
 copies of one lookup is the C9 shape, drifting the moment either is corrected.
-`q16_sqlserver.py` imports the ORM path from `q16.py`, so one edit reaches all
+The Commercial System A override of Q16 imports the ORM path from `q16.py`, so one edit reaches all
 four systems.
 
 Verified on the reloaded PostgreSQL: the ORM emits
@@ -1119,7 +1118,7 @@ explained by the projection, and does **not** claim the values agree.
 **Third instance of the C9 shape.** A per-vendor override that missed a fix
 applied to the default — after C9 itself (four Django modules carrying Q4's date
 window on Oracle) and C24 (`q09_oracle.py` still using `icontains` where the
-default and the SQL Server override use `contains`). Every one of them is an
+default and the Commercial System A override use `contains`). Every one of them is an
 override drifting from a corrected default, and the repository has now produced
 three.
 
@@ -1137,22 +1136,22 @@ whether the difference could be diagnosed without a database. It could.
 ## Two gaps that were not defects but stopped the same campaign
 
 Neither is a wrong answer, so neither gets a C-number, but both had to be closed
-before SQL Server could be measured and both have the same cause as C11–C13.
+before Commercial System A could be measured and both have the same cause as C11–C13.
 
-*There was no SQL Server schema.* `data/indexes/sqlserver_indexes.sql` builds
+*There was no Commercial System A schema.* The Commercial System A index script builds
 fifteen secondary indexes against tables nothing in the repository creates, and
-`scripts/1-setup/load_sqlserver_data.sql` opens by truncating them.
-`scripts/1-setup/schema_sqlserver.sql` is the missing half. Its primary keys are
-`NONCLUSTERED` on purpose: SQL Server clusters a primary key unless told
+the Commercial System A bulk-load script opens by truncating them.
+The Commercial System A schema is the missing half. Its primary keys are
+`non-clustered` on purpose: Commercial System A clusters a primary key unless told
 otherwise, which would order the table on that key and give the *non-indexed*
 configuration an access path PostgreSQL's heap does not have.
 
 *Both existing loaders read files that are no longer produced.*
-`load_sqlserver_data.sql` uses `BULK INSERT` from `/tpch-data/*.tbl.clean` and
-`setup_sqlserver_data.py` parses the same `.tbl` files, but `data/tpch-raw/` is
+The Commercial System A bulk-load script uses a bulk load from `/tpch-data/*.tbl.clean` and
+the Commercial System A data-setup script parses the same `.tbl` files, but `data/tpch-raw/` is
 empty and gitignored — the pipeline moved to generating the dataset with
 DuckDB's `tpch` extension and streaming it in without an intermediate copy.
-`scripts/1-setup/load_sqlserver.py` is the streaming loader, matching `load_pg.py`
+The Commercial System A loader is the streaming loader, matching `load_pg.py`
 and `load_mysql.py`.
 
 ## How these were found
@@ -1173,7 +1172,7 @@ same mechanism as C6 and C7 and by now the clearest pattern in this list: the
 defects live in the paths nothing has executed, and the only reliable way to
 find them is to execute those paths.
 
-The SQL Server port is the sharpest illustration of it. Seven defects, in code
+The Commercial System A port is the sharpest illustration of it. Seven defects, in code
 that had been read and audited more than once, and every one of them appeared
 within an hour of the first statement actually reaching a server. Four of the
 seven — C14 on three queries, C15, C16 — produced complete, plausible, correctly
@@ -1196,7 +1195,7 @@ wrote and keys it by `(dbms, schema, query)`. It decides which campaign a log
 belongs to from the start of its filename, against a fixed table:
 
     prefixes = (("postgresql_", "postgresql"), ("pg_q11", "postgresql"),
-                ("mysql_", "mysql"), ("sqlserver_", "sqlserver"),
+                ("mysql_", "mysql"), ("commercial_a_", "commercial_a"),
                 ("oracle_group_", "oracle"))
 
 A file matching none of these was skipped by a bare `continue`.
@@ -1205,7 +1204,7 @@ That table encodes July's naming. `run_oracle_campaign.sh` wrote one log per
 query group, `oracle_group_A.validate.log` through `oracle_group_G`, so
 `oracle_group_` was the only Oracle spelling that had ever existed. The other
 three systems were validated per schema and their logs are named for it -
-`sqlserver_non_indexed.b1a.validate.log`, `postgresql_indexed.b1a.validate.log`.
+`commercial_a_non_indexed.b1a.validate.log`, `postgresql_indexed.b1a.validate.log`.
 
 The B1a re-validations of 2026-08-30 ran per schema on Oracle too, and were named
 to match the convention the other three use: `oracle_non_indexed.b1a.validate.log`,
@@ -1463,7 +1462,7 @@ and are not installed, while ten modules under `scripts/3-moef` and
 contains no notebook and no import of it. `duckdb` 1.5.5 generates the TPC-H
 data for six modules under `scripts/1-setup` and was pinned nowhere. Three
 entries were ranges — `oracledb>=2.0.0` against an installed 3.4.1,
-`mssql-django>=1.3` against 1.6, `pyodbc>=5.0.1` against 5.3.0 — so a
+`commercial-a-django-backend>=1.3` against 1.6, `pyodbc>=5.0.1` against 5.3.0 — so a
 reproduction attempt got whatever the index served that day, which is the
 opposite of what a pin is for.
 
@@ -1696,7 +1695,7 @@ excluded.
 ## C36 — Oracle had no branch in the TPC-C campaign script
 
 `run_tpcc_campaign.sh` selects per-vendor settings in a `case` with arms for
-PostgreSQL, MySQL and SQL Server, and a default of
+PostgreSQL, MySQL and Commercial System A, and a default of
 
     *) echo "unknown dbms: $DBMS" >&2; exit 2 ;;
 
@@ -1744,16 +1743,16 @@ statistics` and continued. Every Oracle campaign in this study, SF10 included,
 therefore ran against whatever statistics happened to exist — which for a
 freshly loaded schema with no gather is none, leaving the optimiser on defaults.
 
-This is the same defect as the SQL Server statistics gap that cost a campaign,
+This is the same defect as the Commercial System A statistics gap that cost a campaign,
 with a different cause and a worse reach, and it had been present far longer.
 `cursor.callproc` now issues it, and `run_pilot.sh` gates on the rebuild
 succeeding rather than warning and proceeding.
 
 ## C39 — two schema files chose their own database, and one emptied a loaded one
 
-`schema_sqlserver.sql` began with `USE tpch;` followed by eight
+The Commercial System A schema began with `USE tpch;` followed by eight
 `DROP TABLE IF EXISTS` statements. Applying it to a different database with
-`sqlcmd -d tpch_tiny` silently switched back and dropped all eight tables of the
+`commercial-a-cli -d tpch_tiny` silently switched back and dropped all eight tables of the
 loaded SF1 database. `schema_mysql.sql` opened with
 `DROP DATABASE IF EXISTS tpch;` and was stopped only by the loading role
 lacking the privilege to execute it.
@@ -1821,7 +1820,7 @@ Two defects, one of which hid the other.
 
 `run_tpcc_campaign.sh` selected its database with `${POSTGRES_DB:-tpcc}` and the
 three equivalents. That reads as "tpcc unless told otherwise", but
-`campaign-env.sh` exports `POSTGRES_DB`, `MYSQL_DB`, `SQLSERVER_DB`,
+`campaign-env.sh` exports `POSTGRES_DB`, `MYSQL_DB`, `COMMERCIAL_A_DB`,
 `ORACLE_USER` and `SA_DSN` pointing at the *TPC-H* database, because that is what
 the TPC-H campaign needs. So an inherited `tpch` won, and the TPC-C campaign ran
 all five transactions against the TPC-H schema. Every one of the twenty paths
@@ -1832,7 +1831,7 @@ failed with
 The variables were made overridable deliberately, to stop the container's
 hardcoded credentials overriding a correct environment. That was right; sharing
 one variable name between two benchmarks was not. The TPC-C target now comes
-from `TPCC_POSTGRES_DB`, `TPCC_MYSQL_DB`, `TPCC_SQLSERVER_DB`,
+from `TPCC_POSTGRES_DB`, `TPCC_MYSQL_DB`, `TPCC_COMMERCIAL_A_DB`,
 `TPCC_ORACLE_USER` and `TPCC_SA_DSN`, each defaulting to the TPC-C database, so
 a TPC-H environment cannot reach it.
 
@@ -1874,7 +1873,7 @@ the literal string
     client-side
 
 `pilot_gate.py` could not parse that, returned None, and fell back to its
-`DEFAULT_CEILING_S` of 900 s. SQL Server's indexed campaign was deliberately run
+`DEFAULT_CEILING_S` of 900 s. Commercial System A's indexed campaign was deliberately run
 at 2700 s — the retry ceiling ANALYSIS_PLAN.md section 8.3 declares, needed
 because Q18's Django ORM path takes about 345 s and 900 s would leave less than
 the required 5x margin. The gate scored it against 900 s anyway and failed
@@ -1888,7 +1887,7 @@ the same lesson as C32 one level further out.
 
 ---
 
-## Disclosure — SQL Server indexed fails section 8.1, and why it is kept
+## Disclosure — Commercial System A indexed fails section 8.1, and why it is kept
 
 This is not a correction. It is a result that fails a pre-registered bound, and
 the decision was to report it rather than to change the bound.
@@ -1913,9 +1912,9 @@ the per-block parameter effect and leaves path-specific variation:
     campaign                as 8.1 measures it        block effect removed
     PostgreSQL indexed      median 1.53%  p90  4.07%  median 0.27%  p90  0.60%
     MySQL indexed           median 1.74%  p90  4.53%  median 0.17%  p90  0.66%
-    SQL Server indexed      median 2.76%  p90 23.50%  median 2.30%  p90 14.70%
+    Commercial System A indexed      median 2.76%  p90 23.50%  median 2.30%  p90 14.70%
 
-Almost all of the spread on every engine is parameter effect, and SQL Server's
+Almost all of the spread on every engine is parameter effect, and Commercial System A's
 p90 falls below the 15% bound once it is removed.
 
 And the pattern is reproducible. Re-running Q17 and Q09 on the same host after
@@ -1938,7 +1937,7 @@ before the pilot ran. `run_system.sh` records every advisory gate failure in
 
 ---
 
-## Disclosure — SQL Server non-indexed also fails section 8.1, for a different reason
+## Disclosure — Commercial System A non-indexed also fails section 8.1, for a different reason
 
 The indexed run's disclosure above attributes its section 8.1 failure to
 parameter sensitivity, and shows that removing the per-block effect takes its
@@ -1946,8 +1945,8 @@ p90 from 23.50% to 14.70%. The non-indexed run fails the same bound and that
 explanation does **not** hold for it:
 
     campaign                  as 8.1 measures it        block effect removed
-    SQL Server indexed        median 2.76%  p90 23.50%  median 2.30%  p90 14.70%
-    SQL Server non-indexed    median 3.88%  p90 17.54%  median 4.63%  p90 16.08%
+    Commercial System A indexed        median 2.76%  p90 23.50%  median 2.30%  p90 14.70%
+    Commercial System A non-indexed    median 3.88%  p90 17.54%  median 4.63%  p90 16.08%
     PostgreSQL non-indexed    median 0.89%  p90  2.04%  median 0.27%  p90  1.14%
     MySQL non-indexed         median 0.79%  p90  2.51%  median 0.25%  p90  1.67%
 
@@ -1971,7 +1970,7 @@ depends on what the previous path evicted. PostgreSQL and MySQL do not show it
 at the same magnitude under the same envelope, so it is not a property of the
 envelope alone.
 
-Both SQL Server runs are kept, both are disclosed as failing their
+Both Commercial System A runs are kept, both are disclosed as failing their
 pre-registered noise bound, and the two are given separate explanations because
 they have separate causes. The estimand is unaffected in both: it is formed
 inside a block, where the two arms of each ratio saw the same parameters and ran
@@ -2022,7 +2021,7 @@ across the eight blocks while its three companions hold between 1.07 s and
 
 The bound stays as pre-registered and the run is reported as failing it. This is
 now the third such disclosure, and the three have three different causes:
-parameter sensitivity (SQL Server indexed), within-block variability (SQL Server
+parameter sensitivity (Commercial System A indexed), within-block variability (Commercial System A
 non-indexed), and literal-versus-bind plan selection (Oracle indexed). A single
 bound catching three unrelated phenomena is a sign the statistic is coarse, not
 a sign the runs are bad - but amending it now, after seeing which runs it
@@ -2060,7 +2059,7 @@ within 25% of the ceiling.
 
 This is the fourth disclosure and the second distinct bound. Of the eight TPC-H
 campaigns, four pass every bound (PostgreSQL and MySQL, both configurations) and
-four are disclosed: SQL Server indexed and non-indexed and Oracle indexed on
+four are disclosed: Commercial System A indexed and non-indexed and Oracle indexed on
 section 8.1 for three different reasons, and Oracle non-indexed on section 8.3.
 
 ---
@@ -2167,7 +2166,7 @@ C42 fixed `run_block.py` to write `client-side:2700` where it had written
 followed from it is not.
 
 `path_cvs` resolved a campaign's ceiling as the largest value *any* of its rows
-could be parsed for. SQL Server's indexed campaign records:
+could be parsed for. Commercial System A's indexed campaign records:
 
     client-side          1480 rows
     client-side:2700       52 rows
@@ -2192,7 +2191,7 @@ is not. A bound the analysis can only reach by reading rows written after the
 run is not a bound the run was held to.
 
 `path_cvs` now accepts a campaign's recorded ceiling only when *every* row
-records one, and otherwise scores it against the declared default. SQL Server
+records one, and otherwise scores it against the declared default. Commercial System A
 indexed is reported as missing the margin at 3.87x. It was already missing the
 p90 and the tail, so the count of failing analytical campaigns stays at four and
 what changes is that one of them fails a bound the paper had reported it as
