@@ -1,0 +1,37 @@
+{
+ "taken": "2026-10-11T08:20:16.232772+00:00",
+ "verify": {
+  "cmd": [
+   "sudo",
+   "-n",
+   "/usr/local/sbin/bench-host",
+   "verify",
+   "oracle"
+  ],
+  "returncode": 0,
+  "stdout": "  governor:      performance  want performance\n  no_turbo:      1            want 1\n  SMT:           off          want off\n  online CPUs:   0-3          want 0-3\n  AllowedCPUs:   0-1          want 0-1\n  MemoryMax:     3221225472   want 3221225472\n  AC power:      1            want 1\n  throttles:     core=0 pkg=0\n  ora_* affinity: (db down)    want 0-1\n  freq now:      1800 1800 1799 1801 \n  engines:       measuring oracle\n    postgresql:  inactive     want inactive\n    mysql:       inactive     want inactive\n    commercial_a:       inactive     want inactive\n    oracle:      active       want active\n",
+  "stderr": ""
+ },
+ "oracle_process_affinity": {
+  "cmd": [
+   "bash",
+   "-c",
+   "for p in $(pgrep -u oracle); do awk '/Cpus_allowed_list/{print $2}' /proc/$p/status; done | sort | uniq -c"
+  ],
+  "returncode": 0,
+  "stdout": "     59 0-1\n",
+  "stderr": ""
+ },
+ "active_rc_units": "",
+ "loadavg": [
+  "1.04",
+  "1.13",
+  "1.14"
+ ],
+ "wifi_link": [
+  "freq: 2422.0",
+  "signal: -56 dBm",
+  "rx bitrate: 1.0 MBit/s"
+ ],
+ "wifi_power_save": "Power save: off"
+}

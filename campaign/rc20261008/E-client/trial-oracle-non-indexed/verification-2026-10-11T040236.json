@@ -1,0 +1,105 @@
+{
+ "run_dir": "E-client/trial-oracle-non-indexed",
+ "parameters": {
+  "protocol_id": "rc20261008-E-v1",
+  "protocol_sha256": "acf02bd1497658af153361b92b08ee047a450062913de7c2f86fe8209d61582f",
+  "phase": "E",
+  "dbms": "oracle",
+  "schema": "non-indexed",
+  "scale": 1,
+  "queries": [
+   6,
+   18
+  ],
+  "timeout_s": 900,
+  "mode": "pilot",
+  "blocks": 2,
+  "client_mode": "separate-client",
+  "database_label": "tpch"
+ },
+ "protocol_sha256": "acf02bd1497658af153361b92b08ee047a450062913de7c2f86fe8209d61582f",
+ "environments": {
+  "c4d7c7ef4138db31c7931dd9d8502195ff10e6dcbbbfbf12b3a7b6308f46c327": [
+   "inventory-before-c233bf31606f4da6a59f8c50817f253a.json",
+   "inventory-after-c233bf31606f4da6a59f8c50817f253a.json"
+  ]
+ },
+ "counts": {
+  "accepted_exact": 8,
+  "accepted_pairs": 8,
+  "accepted_timed": 16,
+  "cross_orm_exact": 4,
+  "cross_sql_exact": 4,
+  "incomplete_attempts": 0,
+  "saved_block_warmup": 16,
+  "saved_cell_warmup": 8,
+  "saved_timed": 16,
+  "status_block_warmup_ok": 16,
+  "status_cell_warmup_ok": 8,
+  "status_timed_ok": 16
+ },
+ "cells": {
+  "6": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "18": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  }
+ },
+ "paired_median_ratios": {
+  "Q06:django": {
+   "n": 2,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.86991"
+   }
+  },
+  "Q06:sqlalchemy": {
+   "n": 2,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.99411"
+   }
+  },
+  "Q18:django": {
+   "n": 2,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.0299"
+   }
+  },
+  "Q18:sqlalchemy": {
+   "n": 2,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.03466"
+   }
+  }
+ },
+ "problems": [],
+ "passed": true,
+ "utc": "2026-10-11T04:02:36.222287+00:00",
+ "cairo": "2026-10-11T07:02:36.222287+03:00"
+}

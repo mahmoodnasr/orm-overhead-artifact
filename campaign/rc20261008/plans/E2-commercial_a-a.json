@@ -1,0 +1,38 @@
+{
+ "plan_id": "E2-commercial_a-a",
+ "purpose": "Phase E Commercial System A non-indexed re-measurement: engine restarted fresh into non-indexed (phase A order)",
+ "steps": [
+  {
+   "id": "commercial_a-E2-engine",
+   "kind": "engine",
+   "engine": "commercial_a",
+   "settle": 90
+  },
+  {
+   "id": "commercial_a-E2-fp-before",
+   "kind": "fingerprint",
+   "engine": "commercial_a",
+   "label": "commercial_a-sf1-E2-before",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "commercial_a-E2-listen",
+   "kind": "shell",
+   "command": "ss -ltn | grep \":1433 \"; ss -ltn | grep -E \"(0\\.0\\.0\\.0|\\*|\\[::\\]|192\\.168\\.100\\.79):1433 \""
+  },
+  {
+   "id": "commercial_a-E2-verify-non-indexed",
+   "kind": "index",
+   "engine": "commercial_a",
+   "actions": [
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "commercial_a-E2-preflight-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms commercial_a --schema non-indexed"
+  }
+ ]
+}

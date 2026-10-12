@@ -1,0 +1,37 @@
+{
+  "followup_id": "3b3b8f9c-bb10-4333-bb95-6e54d322bfbb",
+  "environment_sha256": "ff1063e738f014b7e9a705893371a0d8165bad69981602b6f628088df8f3ffd0",
+  "query": 17,
+  "schema": "non-indexed",
+  "dbms": "oracle",
+  "block": 4,
+  "position": 1,
+  "path": "literal",
+  "parameter_set_id": "q17s4",
+  "parameters": {
+    "brand": "Brand#25",
+    "container": "JUMBO PACK"
+  },
+  "utc": "2026-10-07T17:24:15.671429+00:00",
+  "elapsed_s": {
+    "type": "float",
+    "value": "0.6999569370000245"
+  },
+  "status": "ok",
+  "rows": [
+    {
+      "AVG_YEARLY": {
+        "type": "Decimal",
+        "value": "340292.2371428571428571428571428571428571"
+      }
+    }
+  ],
+  "statements": [
+    {
+      "sql": "\n    SELECT SUM(l_extendedprice) / 7.0 as avg_yearly\n    FROM lineitem, part\n    WHERE p_partkey = l_partkey\n      AND p_brand = 'Brand#25'\n      AND p_container = 'JUMBO PACK'\n      AND l_quantity < (\n        SELECT 0.2 * AVG(l_quantity)\n        FROM lineitem\n        WHERE l_partkey = p_partkey\n      )\n    ",
+      "params": null,
+      "many": false
+    }
+  ],
+  "result_sha256": "28ad2e3f065dfbc4995a68c2d4737bbd29aa10229a2a7339e6bb34c56ed189db"
+}

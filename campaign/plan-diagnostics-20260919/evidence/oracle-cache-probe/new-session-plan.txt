@@ -1,0 +1,45 @@
+SQL_ID  29bvcq39x59r5, child number 1
+-------------------------------------
+SELECT /* B8-cache-probe-20260919 */ COUNT(*) AS n FROM part WHERE 
+p_partkey=:arg0
+ 
+Plan hash value: 2399989120
+ 
+----------------------------------------------------------------------------------------
+| Id  | Operation          | Name    | Starts | E-Rows | A-Rows |   A-Time   | Buffers |
+----------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT   |         |      1 |        |      1 |00:00:00.01 |       2 |
+|   1 |  SORT AGGREGATE    |         |      1 |      1 |      1 |00:00:00.01 |       2 |
+|*  2 |   INDEX UNIQUE SCAN| PK_PART |      1 |      1 |      1 |00:00:00.01 |       2 |
+----------------------------------------------------------------------------------------
+ 
+Query Block Name / Object Alias (identified by operation id):
+-------------------------------------------------------------
+ 
+   1 - SEL$1
+   2 - SEL$1 / "PART"@"SEL$1"
+ 
+Outline Data
+-------------
+ 
+  /*+
+      BEGIN_OUTLINE_DATA
+      IGNORE_OPTIM_EMBEDDED_HINTS
+      OPTIMIZER_FEATURES_ENABLE('23.1.0')
+      DB_VERSION('23.1.0')
+      ALL_ROWS
+      OUTLINE_LEAF(@"SEL$1")
+      INDEX(@"SEL$1" "PART"@"SEL$1" ("PART"."P_PARTKEY"))
+      END_OUTLINE_DATA
+  */
+ 
+Peeked Binds (identified by position):
+--------------------------------------
+ 
+   1 - (NUMBER): 1
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   2 - access("P_PARTKEY"=:ARG0)
+ 

@@ -1,0 +1,32 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:479026de9231386a6c8f140712307107dc86f5f8b525491c1e9b32a1567269c7",
+   "params": [
+    "%special%requests%"
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:684b9b0b3813f34c84264785288bd3fc5e230f8723a594c2caf251f97f7147b7",
+    "values": [
+     "%special%requests%"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:5fc0ec038830b6c35cd49c557391870e6f4811c3a8883b699c4481c2c02160fa",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 1
+ }
+}

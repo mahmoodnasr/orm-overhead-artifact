@@ -1,0 +1,19 @@
+{
+ "counts": {
+  "saved_cell_warmup": 20,
+  "status_cell_warmup_ok": 20,
+  "saved_block_warmup": 40,
+  "status_block_warmup_ok": 40,
+  "saved_timed": 40,
+  "status_timed_ok": 40,
+  "accepted_pairs": 18,
+  "rejected_pairs": 2
+ },
+ "state": "complete",
+ "current": {
+  "transaction": "T5",
+  "block": 2
+ },
+ "utc": "2026-10-09T06:01:20.579532+00:00",
+ "cairo": "2026-10-09T09:01:20.579532+03:00"
+}

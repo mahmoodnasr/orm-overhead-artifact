@@ -1,0 +1,758 @@
+{
+ "G": [
+  {
+   "ok": true,
+   "plan": [
+    [
+     "Plan hash value: 2441871142"
+    ],
+    [
+     " "
+    ],
+    [
+     "------------------------------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     "| Id  | Operation                               | Name                               | Rows  | Bytes | Cost (%CPU)| Time     |"
+    ],
+    [
+     "------------------------------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     "|   0 | SELECT STATEMENT                        |                                    |     1 |    13 | 25185   (1)| 00:00:01 |"
+    ],
+    [
+     "|   1 |  SORT AGGREGATE                         |                                    |     1 |    13 |            |          |"
+    ],
+    [
+     "|   2 |   VIEW                                  |                                    |  7774 |    98K| 25185   (1)| 00:00:01 |"
+    ],
+    [
+     "|   3 |    HASH GROUP BY                        |                                    |  7774 |   159K| 25185   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  4 |     FILTER                              |                                    |       |       |            |          |"
+    ],
+    [
+     "|   5 |      TABLE ACCESS BY INDEX ROWID BATCHED| LINEITEM                           | 15003 |   307K| 25184   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  6 |       INDEX RANGE SCAN                  | IDX_LINEITEM_SHIPDATE_DISCOUNT_QTY | 27005 |       |    99   (0)| 00:00:01 |"
+    ],
+    [
+     "------------------------------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "Query Block Name / Object Alias (identified by operation id):"
+    ],
+    [
+     "-------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - SEL$1"
+    ],
+    [
+     "   2 - SEL$2 / \"SUBQUERY\"@\"SEL$1\""
+    ],
+    [
+     "   3 - SEL$2"
+    ],
+    [
+     "   5 - SEL$2 / \"LINEITEM\"@\"SEL$2\""
+    ],
+    [
+     "   6 - SEL$2 / \"LINEITEM\"@\"SEL$2\""
+    ],
+    [
+     " "
+    ],
+    [
+     "Predicate Information (identified by operation id):"
+    ],
+    [
+     "---------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   4 - filter(:P3>:P2)"
+    ],
+    [
+     "   6 - access(\"LINEITEM\".\"L_SHIPDATE\">=:P2 AND \"LINEITEM\".\"L_SHIPDATE\"<:P3)"
+    ],
+    [
+     " "
+    ],
+    [
+     "Column Projection Information (identified by operation id):"
+    ],
+    [
+     "-----------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - (#keys=0) MAX(\"TOTAL_REVENUE\")[22]"
+    ],
+    [
+     "   2 - (rowset=256) \"TOTAL_REVENUE\"[NUMBER,22]"
+    ],
+    [
+     "   3 - (#keys=1; rowset=256) \"LINEITEM\".\"L_SUPPKEY\"[NUMBER,22], "
+    ],
+    [
+     "       SUM(\"LINEITEM\".\"L_EXTENDEDPRICE\"*(:P1-\"LINEITEM\".\"L_DISCOUNT\"))[22]"
+    ],
+    [
+     "   4 - \"LINEITEM\".\"L_SUPPKEY\"[NUMBER,22], \"LINEITEM\".\"L_EXTENDEDPRICE\"[NUMBER,22], \"LINEITEM\".\"L_DISCOUNT\"[NUMBER,22]"
+    ],
+    [
+     "   5 - \"LINEITEM\".\"L_SUPPKEY\"[NUMBER,22], \"LINEITEM\".\"L_EXTENDEDPRICE\"[NUMBER,22], \"LINEITEM\".\"L_DISCOUNT\"[NUMBER,22]"
+    ],
+    [
+     "   6 - \"LINEITEM\".ROWID[ROWID,10], \"LINEITEM\".\"L_DISCOUNT\"[NUMBER,22]"
+    ]
+   ],
+   "note": "EXPLAIN PLAN does not peek bind values"
+  },
+  {
+   "ok": true,
+   "plan": [
+    [
+     "Plan hash value: 2195055420"
+    ],
+    [
+     " "
+    ],
+    [
+     "-----------------------------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     "| Id  | Operation                              | Name                               | Rows  | Bytes | Cost (%CPU)| Time     |"
+    ],
+    [
+     "-----------------------------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     "|   0 | SELECT STATEMENT                       |                                    |    78 |  1638 | 25185   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  1 |  FILTER                                |                                    |       |       |            |          |"
+    ],
+    [
+     "|   2 |   HASH GROUP BY                        |                                    |    78 |  1638 | 25185   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  3 |    FILTER                              |                                    |       |       |            |          |"
+    ],
+    [
+     "|   4 |     TABLE ACCESS BY INDEX ROWID BATCHED| LINEITEM                           | 15003 |   307K| 25184   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  5 |      INDEX RANGE SCAN                  | IDX_LINEITEM_SHIPDATE_DISCOUNT_QTY | 27005 |       |    99   (0)| 00:00:01 |"
+    ],
+    [
+     "-----------------------------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "Query Block Name / Object Alias (identified by operation id):"
+    ],
+    [
+     "-------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - SEL$1"
+    ],
+    [
+     "   4 - SEL$1 / \"LINEITEM\"@\"SEL$1\""
+    ],
+    [
+     "   5 - SEL$1 / \"LINEITEM\"@\"SEL$1\""
+    ],
+    [
+     " "
+    ],
+    [
+     "Predicate Information (identified by operation id):"
+    ],
+    [
+     "---------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - filter(SUM(\"LINEITEM\".\"L_EXTENDEDPRICE\"*(:P4-\"LINEITEM\".\"L_DISCOUNT\"))=:P5)"
+    ],
+    [
+     "   3 - filter(:P3>:P2)"
+    ],
+    [
+     "   5 - access(\"LINEITEM\".\"L_SHIPDATE\">=:P2 AND \"LINEITEM\".\"L_SHIPDATE\"<:P3)"
+    ],
+    [
+     " "
+    ],
+    [
+     "Column Projection Information (identified by operation id):"
+    ],
+    [
+     "-----------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - (rowset=256) \"LINEITEM\".\"L_SUPPKEY\"[NUMBER,22], SUM(\"LINEITEM\".\"L_EXTENDEDPRICE\"*(:P1-\"LINEITEM\".\"L_DISCOUNT\")"
+    ],
+    [
+     "       )[22]"
+    ],
+    [
+     "   2 - (#keys=1; rowset=256) \"LINEITEM\".\"L_SUPPKEY\"[NUMBER,22], "
+    ],
+    [
+     "       SUM(\"LINEITEM\".\"L_EXTENDEDPRICE\"*(:P4-\"LINEITEM\".\"L_DISCOUNT\"))[22], "
+    ],
+    [
+     "       SUM(\"LINEITEM\".\"L_EXTENDEDPRICE\"*(:P1-\"LINEITEM\".\"L_DISCOUNT\"))[22]"
+    ],
+    [
+     "   3 - \"LINEITEM\".\"L_SUPPKEY\"[NUMBER,22], \"LINEITEM\".\"L_EXTENDEDPRICE\"[NUMBER,22], \"LINEITEM\".\"L_DISCOUNT\"[NUMBER,22]"
+    ],
+    [
+     "   4 - \"LINEITEM\".\"L_SUPPKEY\"[NUMBER,22], \"LINEITEM\".\"L_EXTENDEDPRICE\"[NUMBER,22], \"LINEITEM\".\"L_DISCOUNT\"[NUMBER,22]"
+    ],
+    [
+     "   5 - \"LINEITEM\".ROWID[ROWID,10], \"LINEITEM\".\"L_DISCOUNT\"[NUMBER,22]"
+    ]
+   ],
+   "note": "EXPLAIN PLAN does not peek bind values"
+  },
+  {
+   "ok": true,
+   "plan": [
+    [
+     "Plan hash value: 3361637688"
+    ],
+    [
+     " "
+    ],
+    [
+     "-------------------------------------------------------------------------------------------"
+    ],
+    [
+     "| Id  | Operation                   | Name        | Rows  | Bytes | Cost (%CPU)| Time     |"
+    ],
+    [
+     "-------------------------------------------------------------------------------------------"
+    ],
+    [
+     "|   0 | SELECT STATEMENT            |             |     1 |    65 |     2   (0)| 00:00:01 |"
+    ],
+    [
+     "|   1 |  TABLE ACCESS BY INDEX ROWID| SUPPLIER    |     1 |    65 |     2   (0)| 00:00:01 |"
+    ],
+    [
+     "|*  2 |   INDEX UNIQUE SCAN         | PK_SUPPLIER |     1 |       |     1   (0)| 00:00:01 |"
+    ],
+    [
+     "-------------------------------------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "Query Block Name / Object Alias (identified by operation id):"
+    ],
+    [
+     "-------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - SEL$9FB2EC53 / \"SUPPLIER\"@\"SEL$1\""
+    ],
+    [
+     "   2 - SEL$9FB2EC53 / \"SUPPLIER\"@\"SEL$1\""
+    ],
+    [
+     " "
+    ],
+    [
+     "Predicate Information (identified by operation id):"
+    ],
+    [
+     "---------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   2 - access(\"SUPPLIER\".\"S_SUPPKEY\"=:P1)"
+    ],
+    [
+     " "
+    ],
+    [
+     "Column Projection Information (identified by operation id):"
+    ],
+    [
+     "-----------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - \"SUPPLIER\".\"S_SUPPKEY\"[NUMBER,22], \"SUPPLIER\".\"S_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"SUPPLIER\".\"S_ADDRESS\"[VARCHAR2,160], \"SUPPLIER\".\"S_PHONE\"[VARCHAR2,60]"
+    ],
+    [
+     "   2 - \"SUPPLIER\".ROWID[ROWID,10], \"SUPPLIER\".\"S_SUPPKEY\"[NUMBER,22]"
+    ]
+   ],
+   "note": "EXPLAIN PLAN does not peek bind values"
+  }
+ ],
+ "B": [
+  {
+   "ok": true,
+   "plan": [
+    [
+     "Plan hash value: 3067752279"
+    ],
+    [
+     " "
+    ],
+    [
+     "-------------------------------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     "| Id  | Operation                                | Name                               | Rows  | Bytes | Cost (%CPU)| Time     |"
+    ],
+    [
+     "-------------------------------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     "|   0 | SELECT STATEMENT                         |                                    |  7774 |   622K| 25418   (1)| 00:00:01 |"
+    ],
+    [
+     "|   1 |  TEMP TABLE TRANSFORMATION               |                                    |       |       |            |          |"
+    ],
+    [
+     "|   2 |   LOAD AS SELECT (CURSOR DURATION MEMORY)| SYS_TEMP_0FD9D6627_9B536F          |       |       |            |          |"
+    ],
+    [
+     "|   3 |    HASH GROUP BY                         |                                    |  7774 |   159K| 25185   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  4 |     FILTER                               |                                    |       |       |            |          |"
+    ],
+    [
+     "|   5 |      TABLE ACCESS BY INDEX ROWID BATCHED | LINEITEM                           | 15003 |   307K| 25184   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  6 |       INDEX RANGE SCAN                   | IDX_LINEITEM_SHIPDATE_DISCOUNT_QTY | 27005 |       |    99   (0)| 00:00:01 |"
+    ],
+    [
+     "|   7 |   MERGE JOIN                             |                                    |  7774 |   622K|   225   (1)| 00:00:01 |"
+    ],
+    [
+     "|   8 |    TABLE ACCESS BY INDEX ROWID           | SUPPLIER                           | 10000 |   634K|   216   (0)| 00:00:01 |"
+    ],
+    [
+     "|   9 |     INDEX FULL SCAN                      | PK_SUPPLIER                        | 10000 |       |    19   (0)| 00:00:01 |"
+    ],
+    [
+     "|* 10 |    SORT JOIN                             |                                    |  7774 |   129K|     9  (12)| 00:00:01 |"
+    ],
+    [
+     "|* 11 |     VIEW                                 |                                    |  7774 |   129K|     8   (0)| 00:00:01 |"
+    ],
+    [
+     "|  12 |      TABLE ACCESS FULL                   | SYS_TEMP_0FD9D6627_9B536F          |  7774 |   129K|     8   (0)| 00:00:01 |"
+    ],
+    [
+     "|  13 |      SORT AGGREGATE                      |                                    |     1 |    13 |            |          |"
+    ],
+    [
+     "|  14 |       VIEW                               |                                    |  7774 |    98K|     8   (0)| 00:00:01 |"
+    ],
+    [
+     "|  15 |        TABLE ACCESS FULL                 | SYS_TEMP_0FD9D6627_9B536F          |  7774 |   129K|     8   (0)| 00:00:01 |"
+    ],
+    [
+     "-------------------------------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "Query Block Name / Object Alias (identified by operation id):"
+    ],
+    [
+     "-------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - SEL$2       "
+    ],
+    [
+     "   2 - SEL$1       "
+    ],
+    [
+     "   5 - SEL$1        / \"LINEITEM\"@\"SEL$1\""
+    ],
+    [
+     "   6 - SEL$1        / \"LINEITEM\"@\"SEL$1\""
+    ],
+    [
+     "   8 - SEL$2        / \"SUPPLIER\"@\"SEL$2\""
+    ],
+    [
+     "   9 - SEL$2        / \"SUPPLIER\"@\"SEL$2\""
+    ],
+    [
+     "  11 - SEL$D67CB2D3 / \"REVENUE0\"@\"SEL$2\""
+    ],
+    [
+     "  12 - SEL$D67CB2D3 / \"T1\"@\"SEL$D67CB2D3\""
+    ],
+    [
+     "  13 - SEL$3       "
+    ],
+    [
+     "  14 - SEL$D67CB2D2 / \"REVENUE0\"@\"SEL$3\""
+    ],
+    [
+     "  15 - SEL$D67CB2D2 / \"T1\"@\"SEL$D67CB2D2\""
+    ],
+    [
+     " "
+    ],
+    [
+     "Predicate Information (identified by operation id):"
+    ],
+    [
+     "---------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   4 - filter(:P2>:P1)"
+    ],
+    [
+     "   6 - access(\"L_SHIPDATE\">=:P1 AND \"L_SHIPDATE\"<:P2)"
+    ],
+    [
+     "  10 - access(\"S_SUPPKEY\"=\"SUPPLIER_NO\")"
+    ],
+    [
+     "       filter(\"S_SUPPKEY\"=\"SUPPLIER_NO\")"
+    ],
+    [
+     "  11 - filter(\"TOTAL_REVENUE\"= (SELECT MAX(\"TOTAL_REVENUE\") FROM  (SELECT /*+ CACHE (\"T1\") */ \"C0\" \"SUPPLIER_NO\",\"C1\" "
+    ],
+    [
+     "              \"TOTAL_REVENUE\" FROM \"SYS\".\"SYS_TEMP_0FD9D6627_9B536F\" \"T1\") \"REVENUE0\"))"
+    ],
+    [
+     " "
+    ],
+    [
+     "Column Projection Information (identified by operation id):"
+    ],
+    [
+     "-----------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - \"S_SUPPKEY\"[NUMBER,22], \"SUPPLIER_NO\"[NUMBER,22], \"SUPPLIER\".ROWID[ROWID,10], \"S_PHONE\"[VARCHAR2,60], "
+    ],
+    [
+     "       \"S_NAME\"[VARCHAR2,100], \"S_ADDRESS\"[VARCHAR2,160], \"TOTAL_REVENUE\"[NUMBER,22]"
+    ],
+    [
+     "   2 - SYSDEF[4], SYSDEF[0], SYSDEF[1], SYSDEF[120], SYSDEF[0]"
+    ],
+    [
+     "   3 - (#keys=1) \"L_SUPPKEY\"[NUMBER,22], SUM(\"L_EXTENDEDPRICE\"*(1-\"L_DISCOUNT\"))[22]"
+    ],
+    [
+     "   4 - \"LINEITEM\".ROWID[ROWID,10], \"L_SUPPKEY\"[NUMBER,22], \"L_EXTENDEDPRICE\"[NUMBER,22], \"L_DISCOUNT\"[NUMBER,22], "
+    ],
+    [
+     "       \"L_SHIPDATE\"[DATE,7]"
+    ],
+    [
+     "   5 - \"LINEITEM\".ROWID[ROWID,10], \"L_SUPPKEY\"[NUMBER,22], \"L_EXTENDEDPRICE\"[NUMBER,22], \"L_DISCOUNT\"[NUMBER,22], "
+    ],
+    [
+     "       \"L_SHIPDATE\"[DATE,7]"
+    ],
+    [
+     "   6 - \"LINEITEM\".ROWID[ROWID,10], \"L_SHIPDATE\"[DATE,7], \"L_DISCOUNT\"[NUMBER,22]"
+    ],
+    [
+     "   7 - (#keys=0) \"S_SUPPKEY\"[NUMBER,22], \"SUPPLIER_NO\"[NUMBER,22], \"SUPPLIER\".ROWID[ROWID,10], \"S_PHONE\"[VARCHAR2,60], "
+    ],
+    [
+     "       \"S_NAME\"[VARCHAR2,100], \"S_ADDRESS\"[VARCHAR2,160], \"TOTAL_REVENUE\"[NUMBER,22]"
+    ],
+    [
+     "   8 - \"SUPPLIER\".ROWID[ROWID,10], \"S_SUPPKEY\"[NUMBER,22], \"S_NAME\"[VARCHAR2,100], \"S_ADDRESS\"[VARCHAR2,160], "
+    ],
+    [
+     "       \"S_PHONE\"[VARCHAR2,60]"
+    ],
+    [
+     "   9 - \"SUPPLIER\".ROWID[ROWID,10], \"S_SUPPKEY\"[NUMBER,22]"
+    ],
+    [
+     "  10 - (#keys=1) \"SUPPLIER_NO\"[NUMBER,22], \"TOTAL_REVENUE\"[NUMBER,22]"
+    ],
+    [
+     "  11 - \"SUPPLIER_NO\"[NUMBER,22], \"TOTAL_REVENUE\"[NUMBER,22]"
+    ],
+    [
+     "  12 - \"C0\"[NUMBER,22], \"C1\"[NUMBER,22]"
+    ],
+    [
+     "  13 - (#keys=0) MAX(\"TOTAL_REVENUE\")[22]"
+    ],
+    [
+     "  14 - (rowset=256) \"TOTAL_REVENUE\"[NUMBER,22]"
+    ],
+    [
+     "  15 - (rowset=256) \"C0\"[NUMBER,22], \"C1\"[NUMBER,22]"
+    ]
+   ],
+   "note": "EXPLAIN PLAN does not peek bind values"
+  }
+ ],
+ "L": [
+  {
+   "ok": true,
+   "plan": [
+    [
+     "Plan hash value: 3074120763"
+    ],
+    [
+     " "
+    ],
+    [
+     "----------------------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     "| Id  | Operation                                | Name                      | Rows  | Bytes | Cost (%CPU)| Time     |"
+    ],
+    [
+     "----------------------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     "|   0 | SELECT STATEMENT                         |                           | 10000 |   800K| 25494   (1)| 00:00:01 |"
+    ],
+    [
+     "|   1 |  TEMP TABLE TRANSFORMATION               |                           |       |       |            |          |"
+    ],
+    [
+     "|   2 |   LOAD AS SELECT (CURSOR DURATION MEMORY)| SYS_TEMP_0FD9D6628_9B536F |       |       |            |          |"
+    ],
+    [
+     "|   3 |    HASH GROUP BY                         |                           | 10000 |   205K| 25256   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  4 |     TABLE ACCESS FULL                    | LINEITEM                  |   218K|  4484K| 25251   (1)| 00:00:01 |"
+    ],
+    [
+     "|   5 |   MERGE JOIN                             |                           | 10000 |   800K|   227   (1)| 00:00:01 |"
+    ],
+    [
+     "|   6 |    TABLE ACCESS BY INDEX ROWID           | SUPPLIER                  | 10000 |   634K|   216   (0)| 00:00:01 |"
+    ],
+    [
+     "|   7 |     INDEX FULL SCAN                      | PK_SUPPLIER               | 10000 |       |    19   (0)| 00:00:01 |"
+    ],
+    [
+     "|*  8 |    SORT JOIN                             |                           | 10000 |   166K|    11  (10)| 00:00:01 |"
+    ],
+    [
+     "|*  9 |     VIEW                                 |                           | 10000 |   166K|    10   (0)| 00:00:01 |"
+    ],
+    [
+     "|  10 |      TABLE ACCESS FULL                   | SYS_TEMP_0FD9D6628_9B536F | 10000 |   166K|    10   (0)| 00:00:01 |"
+    ],
+    [
+     "|  11 |      SORT AGGREGATE                      |                           |     1 |    13 |            |          |"
+    ],
+    [
+     "|  12 |       VIEW                               |                           | 10000 |   126K|    10   (0)| 00:00:01 |"
+    ],
+    [
+     "|  13 |        TABLE ACCESS FULL                 | SYS_TEMP_0FD9D6628_9B536F | 10000 |   166K|    10   (0)| 00:00:01 |"
+    ],
+    [
+     "----------------------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "Query Block Name / Object Alias (identified by operation id):"
+    ],
+    [
+     "-------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - SEL$2       "
+    ],
+    [
+     "   2 - SEL$1       "
+    ],
+    [
+     "   4 - SEL$1        / \"LINEITEM\"@\"SEL$1\""
+    ],
+    [
+     "   6 - SEL$2        / \"SUPPLIER\"@\"SEL$2\""
+    ],
+    [
+     "   7 - SEL$2        / \"SUPPLIER\"@\"SEL$2\""
+    ],
+    [
+     "   9 - SEL$D67CB2D3 / \"REVENUE0\"@\"SEL$2\""
+    ],
+    [
+     "  10 - SEL$D67CB2D3 / \"T1\"@\"SEL$D67CB2D3\""
+    ],
+    [
+     "  11 - SEL$3       "
+    ],
+    [
+     "  12 - SEL$D67CB2D2 / \"REVENUE0\"@\"SEL$3\""
+    ],
+    [
+     "  13 - SEL$D67CB2D2 / \"T1\"@\"SEL$D67CB2D2\""
+    ],
+    [
+     " "
+    ],
+    [
+     "Predicate Information (identified by operation id):"
+    ],
+    [
+     "---------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   4 - filter(\"L_SHIPDATE\">=TO_DATE(' 1996-01-01 00:00:00', 'syyyy-mm-dd hh24:mi:ss') AND "
+    ],
+    [
+     "              \"L_SHIPDATE\"<TO_DATE(' 1996-04-01 00:00:00', 'syyyy-mm-dd hh24:mi:ss'))"
+    ],
+    [
+     "   8 - access(\"S_SUPPKEY\"=\"SUPPLIER_NO\")"
+    ],
+    [
+     "       filter(\"S_SUPPKEY\"=\"SUPPLIER_NO\")"
+    ],
+    [
+     "   9 - filter(\"TOTAL_REVENUE\"= (SELECT MAX(\"TOTAL_REVENUE\") FROM  (SELECT /*+ CACHE (\"T1\") */ \"C0\" "
+    ],
+    [
+     "              \"SUPPLIER_NO\",\"C1\" \"TOTAL_REVENUE\" FROM \"SYS\".\"SYS_TEMP_0FD9D6628_9B536F\" \"T1\") \"REVENUE0\"))"
+    ],
+    [
+     " "
+    ],
+    [
+     "Column Projection Information (identified by operation id):"
+    ],
+    [
+     "-----------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - \"S_SUPPKEY\"[NUMBER,22], \"SUPPLIER_NO\"[NUMBER,22], \"SUPPLIER\".ROWID[ROWID,10], \"S_PHONE\"[VARCHAR2,60], "
+    ],
+    [
+     "       \"S_NAME\"[VARCHAR2,100], \"S_ADDRESS\"[VARCHAR2,160], \"TOTAL_REVENUE\"[NUMBER,22]"
+    ],
+    [
+     "   2 - SYSDEF[4], SYSDEF[0], SYSDEF[1], SYSDEF[120], SYSDEF[0]"
+    ],
+    [
+     "   3 - (#keys=1) \"L_SUPPKEY\"[NUMBER,22], SUM(\"L_EXTENDEDPRICE\"*(1-\"L_DISCOUNT\"))[22]"
+    ],
+    [
+     "   4 - (rowset=256) \"L_SUPPKEY\"[NUMBER,22], \"L_EXTENDEDPRICE\"[NUMBER,22], \"L_DISCOUNT\"[NUMBER,22], "
+    ],
+    [
+     "       \"L_SHIPDATE\"[DATE,7]"
+    ],
+    [
+     "   5 - (#keys=0) \"S_SUPPKEY\"[NUMBER,22], \"SUPPLIER_NO\"[NUMBER,22], \"SUPPLIER\".ROWID[ROWID,10], "
+    ],
+    [
+     "       \"S_PHONE\"[VARCHAR2,60], \"S_NAME\"[VARCHAR2,100], \"S_ADDRESS\"[VARCHAR2,160], \"TOTAL_REVENUE\"[NUMBER,22]"
+    ],
+    [
+     "   6 - \"SUPPLIER\".ROWID[ROWID,10], \"S_SUPPKEY\"[NUMBER,22], \"S_NAME\"[VARCHAR2,100], \"S_ADDRESS\"[VARCHAR2,160], "
+    ],
+    [
+     "       \"S_PHONE\"[VARCHAR2,60]"
+    ],
+    [
+     "   7 - \"SUPPLIER\".ROWID[ROWID,10], \"S_SUPPKEY\"[NUMBER,22]"
+    ],
+    [
+     "   8 - (#keys=1) \"SUPPLIER_NO\"[NUMBER,22], \"TOTAL_REVENUE\"[NUMBER,22]"
+    ],
+    [
+     "   9 - \"SUPPLIER_NO\"[NUMBER,22], \"TOTAL_REVENUE\"[NUMBER,22]"
+    ],
+    [
+     "  10 - \"C0\"[NUMBER,22], \"C1\"[NUMBER,22]"
+    ],
+    [
+     "  11 - (#keys=0) MAX(\"TOTAL_REVENUE\")[22]"
+    ],
+    [
+     "  12 - (rowset=256) \"TOTAL_REVENUE\"[NUMBER,22]"
+    ],
+    [
+     "  13 - (rowset=256) \"C0\"[NUMBER,22], \"C1\"[NUMBER,22]"
+    ]
+   ]
+  }
+ ],
+ "note": "EXPLAIN without execution, once per cell on input set 0, outside every timer"
+}

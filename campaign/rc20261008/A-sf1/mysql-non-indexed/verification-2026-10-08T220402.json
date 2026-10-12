@@ -1,0 +1,1187 @@
+{
+ "run_dir": "<campaign>/A-sf1/mysql-non-indexed",
+ "parameters": {
+  "protocol_id": "rc20261008-A-v1",
+  "protocol_sha256": "95d87f4bbbbcc810eb85a22234bcb07c9925d66c3c423a0fb4f7612ee64e9674",
+  "phase": "A",
+  "dbms": "mysql",
+  "schema": "non-indexed",
+  "scale": 1,
+  "queries": [
+   2,
+   16,
+   22,
+   11,
+   6,
+   14,
+   12,
+   10,
+   15,
+   19,
+   3,
+   13,
+   4,
+   7,
+   1,
+   21,
+   5,
+   17,
+   20,
+   8,
+   9,
+   18
+  ],
+  "timeout_s": {
+   "type": "float",
+   "value": "900.0"
+  },
+  "mode": "main",
+  "blocks": 8,
+  "client_mode": "same-host",
+  "database_label": "tpch"
+ },
+ "protocol_sha256": "95d87f4bbbbcc810eb85a22234bcb07c9925d66c3c423a0fb4f7612ee64e9674",
+ "environments": {
+  "1a922d558a00f9759ada1414cc34041c098ea4d219d8ac2fcbc2c084e5fb0bdf": [
+   "inventory-before-ad58aa958bb44888a1a418c1501b2469.json",
+   "inventory-after-ad58aa958bb44888a1a418c1501b2469.json"
+  ]
+ },
+ "counts": {
+  "accepted_exact": 296,
+  "accepted_pairs": 312,
+  "accepted_scale_equivalent": 16,
+  "accepted_timed": 624,
+  "cross_orm_exact": 144,
+  "cross_orm_numeric_representation": 8,
+  "cross_orm_unavailable": 24,
+  "cross_sql_exact": 160,
+  "cross_sql_unavailable": 16,
+  "incomplete_attempts": 0,
+  "pairs_not_run": 40,
+  "saved_block_warmup": 632,
+  "saved_cell_warmup": 88,
+  "saved_timed": 632,
+  "status_block_warmup_ok": 632,
+  "status_cell_warmup_ok": 79,
+  "status_cell_warmup_timeout": 9,
+  "status_timed_ok": 632
+ },
+ "cells": {
+  "1": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "2": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "3": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "4": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "5": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "6": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "7": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "8": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "9": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "10": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "11": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "12": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "13": {
+   "blocks": {
+    "1": {
+     "django": "not_run",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "not_run",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "not_run",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "not_run",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "not_run",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "not_run",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "not_run",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "not_run",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "14": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "15": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "16": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "17": {
+   "blocks": {
+    "1": {
+     "django": "not_run",
+     "sqlalchemy": "not_run"
+    },
+    "2": {
+     "django": "not_run",
+     "sqlalchemy": "not_run"
+    },
+    "3": {
+     "django": "not_run",
+     "sqlalchemy": "not_run"
+    },
+    "4": {
+     "django": "not_run",
+     "sqlalchemy": "not_run"
+    },
+    "5": {
+     "django": "not_run",
+     "sqlalchemy": "not_run"
+    },
+    "6": {
+     "django": "not_run",
+     "sqlalchemy": "not_run"
+    },
+    "7": {
+     "django": "not_run",
+     "sqlalchemy": "not_run"
+    },
+    "8": {
+     "django": "not_run",
+     "sqlalchemy": "not_run"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "18": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "19": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "20": {
+   "blocks": {
+    "1": {
+     "django": "not_run",
+     "sqlalchemy": "not_run"
+    },
+    "2": {
+     "django": "not_run",
+     "sqlalchemy": "not_run"
+    },
+    "3": {
+     "django": "not_run",
+     "sqlalchemy": "not_run"
+    },
+    "4": {
+     "django": "not_run",
+     "sqlalchemy": "not_run"
+    },
+    "5": {
+     "django": "not_run",
+     "sqlalchemy": "not_run"
+    },
+    "6": {
+     "django": "not_run",
+     "sqlalchemy": "not_run"
+    },
+    "7": {
+     "django": "not_run",
+     "sqlalchemy": "not_run"
+    },
+    "8": {
+     "django": "not_run",
+     "sqlalchemy": "not_run"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "21": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "22": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  }
+ },
+ "paired_median_ratios": {
+  "Q01:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.00026"
+   }
+  },
+  "Q01:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.99832"
+   }
+  },
+  "Q02:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.02009"
+   }
+  },
+  "Q02:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.02576"
+   }
+  },
+  "Q03:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.00535"
+   }
+  },
+  "Q03:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.99799"
+   }
+  },
+  "Q04:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.99872"
+   }
+  },
+  "Q04:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.00048"
+   }
+  },
+  "Q05:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.04412"
+   }
+  },
+  "Q05:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.9984"
+   }
+  },
+  "Q06:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.16575"
+   }
+  },
+  "Q06:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.01423"
+   }
+  },
+  "Q07:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.86426"
+   }
+  },
+  "Q07:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.00583"
+   }
+  },
+  "Q08:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.9966"
+   }
+  },
+  "Q08:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.0027"
+   }
+  },
+  "Q09:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.97508"
+   }
+  },
+  "Q09:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.99733"
+   }
+  },
+  "Q10:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.93589"
+   }
+  },
+  "Q10:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.0001"
+   }
+  },
+  "Q11:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.9979"
+   }
+  },
+  "Q11:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.00243"
+   }
+  },
+  "Q12:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.87023"
+   }
+  },
+  "Q12:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.00069"
+   }
+  },
+  "Q13:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.00049"
+   }
+  },
+  "Q14:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.01861"
+   }
+  },
+  "Q14:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.00074"
+   }
+  },
+  "Q15:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "2.02638"
+   }
+  },
+  "Q15:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.99925"
+   }
+  },
+  "Q16:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.00385"
+   }
+  },
+  "Q16:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.02681"
+   }
+  },
+  "Q18:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.91129"
+   }
+  },
+  "Q18:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.00137"
+   }
+  },
+  "Q19:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.02289"
+   }
+  },
+  "Q19:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.99741"
+   }
+  },
+  "Q21:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.99655"
+   }
+  },
+  "Q21:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.00127"
+   }
+  },
+  "Q22:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.02708"
+   }
+  },
+  "Q22:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.99929"
+   }
+  }
+ },
+ "problems": [],
+ "passed": true,
+ "utc": "2026-10-08T22:04:02.393243+00:00",
+ "cairo": "2026-10-09T01:04:02.393243+03:00"
+}

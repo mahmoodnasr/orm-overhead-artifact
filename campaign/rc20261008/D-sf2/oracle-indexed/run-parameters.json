@@ -1,0 +1,23 @@
+{
+ "protocol_id": "rc20261008-A-v1",
+ "protocol_sha256": "95d87f4bbbbcc810eb85a22234bcb07c9925d66c3c423a0fb4f7612ee64e9674",
+ "phase": "D",
+ "dbms": "oracle",
+ "schema": "indexed",
+ "scale": 2,
+ "queries": [
+  6,
+  17,
+  18,
+  20,
+  21
+ ],
+ "timeout_s": {
+  "type": "float",
+  "value": "900.0"
+ },
+ "mode": "main",
+ "blocks": 8,
+ "client_mode": "same-host",
+ "database_label": "tpch_sf2"
+}

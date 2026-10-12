@@ -1,0 +1,30 @@
+{
+ "query": 13,
+ "framework": "django",
+ "block": 1,
+ "attempt": 1,
+ "input_id": "q13s0",
+ "order": [
+  "django/sql",
+  "django/orm"
+ ],
+ "status": [
+  "timeout",
+  "ok"
+ ],
+ "limit_s": {
+  "type": "float",
+  "value": "900.0"
+ },
+ "utc": "2026-10-09T22:00:25.179615+00:00",
+ "cairo": "2026-10-10T01:00:25.179615+03:00",
+ "kind": "lower_bound",
+ "bound": {
+  "type": "float",
+  "value": "477.0856261455617"
+ },
+ "sql_elapsed_s": {
+  "type": "float",
+  "value": "1.886453815997811"
+ }
+}

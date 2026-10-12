@@ -1,0 +1,24 @@
+{
+ "plan_id": "E-mysql-b",
+ "purpose": "Phase E host side, mysql: SF1 indexed",
+ "first_state": "non-indexed",
+ "second_state": "indexed",
+ "steps": [
+  {
+   "id": "mysql-E-to-indexed",
+   "kind": "index",
+   "engine": "mysql",
+   "actions": [
+    "create",
+    "analyze",
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "mysql-E-preflight-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh mysql && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms mysql --schema indexed"
+  }
+ ]
+}

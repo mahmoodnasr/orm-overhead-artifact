@@ -1,3 +1,5 @@
 * text=auto eol=lf
 # Preserve measurement and reference bytes across checkouts.
 *.csv -text whitespace=cr-at-eol
+# The campaign tree is checksummed byte for byte in campaign/SHA256SUMS.
+campaign/** -text

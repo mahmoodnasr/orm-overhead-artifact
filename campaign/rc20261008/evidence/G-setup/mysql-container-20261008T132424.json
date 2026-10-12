@@ -1,0 +1,35 @@
+{
+ "name": "/rcg-mysql",
+ "image": "mysql:8.4.11",
+ "image_id": "sha256:6ea90827b1100f8f2ae306a539f86d2c264a26ed435a2a9f75551dd5c3aeb242",
+ "repo_digests": [
+  "mysql@sha256:6ea90827b1100f8f2ae306a539f86d2c264a26ed435a2a9f75551dd5c3aeb242"
+ ],
+ "image_architecture": "arm64",
+ "image_os": "linux",
+ "host_architecture": "arm64",
+ "nano_cpus": 2000000000,
+ "cpuset_cpus": "0,1",
+ "memory": 3221225472,
+ "memory_swap": 3221225472,
+ "cmd": [
+  "--innodb-buffer-pool-size=1536M",
+  "--innodb-parallel-read-threads=1",
+  "--local-infile=1"
+ ],
+ "started": "2026-10-08T10:23:12.997387786Z",
+ "docker_info": {
+  "ServerVersion": "29.4.0",
+  "OperatingSystem": "OrbStack",
+  "Architecture": "aarch64",
+  "NCPU": 10,
+  "MemTotal": 8393289728,
+  "KernelVersion": "7.0.14-orbstack-00380-ga7e0a2dc9535"
+ },
+ "mac": {
+  "model": "Apple M4",
+  "ncpu": "10",
+  "memsize": "17179869184",
+  "macos": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\n"
+ }
+}

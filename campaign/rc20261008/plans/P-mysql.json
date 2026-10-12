@@ -1,0 +1,133 @@
+{
+ "plan_id": "P-mysql",
+ "purpose": "Pilot on mysql: identity, privileges, non-indexed state for phase A, Q6 full protocol, cancellation, one-input smoke (120 s ceiling; slower paths are left to the main run). Pilot evidence only.",
+ "steps": [
+  {
+   "id": "engine",
+   "kind": "engine",
+   "engine": "mysql",
+   "settle": 90
+  },
+  {
+   "id": "probe",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh mysql && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_probe.py > $RC_CAMPAIGN/evidence/probe-mysql-tpch.json && cat $RC_CAMPAIGN/evidence/probe-mysql-tpch.json"
+  },
+  {
+   "id": "index-list",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh mysql && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --action list"
+  },
+  {
+   "id": "fp-before",
+   "kind": "fingerprint",
+   "engine": "mysql",
+   "label": "mysql-sf1-P-before",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "to-non-indexed",
+   "kind": "index",
+   "engine": "mysql",
+   "actions": [
+    "drop",
+    "analyze",
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "run-q6",
+   "kind": "run",
+   "engine": "mysql",
+   "resumable": true,
+   "args": {
+    "run_dir": "pilot/mysql-non-indexed-main",
+    "protocol": "protocols/rc20261008-P-v2.json",
+    "phase": "P",
+    "schema": "non-indexed",
+    "mode": "pilot",
+    "queries": [
+     6
+    ]
+   }
+  },
+  {
+   "id": "verify-q6",
+   "kind": "verify",
+   "run_dir": "pilot/mysql-non-indexed-main"
+  },
+  {
+   "id": "cancel",
+   "kind": "run",
+   "engine": "mysql",
+   "resumable": false,
+   "args": {
+    "run_dir": "pilot/mysql-non-indexed-cancel",
+    "protocol": "protocols/rc20261008-P-v2.json",
+    "phase": "P",
+    "schema": "non-indexed",
+    "mode": "pilot",
+    "queries": [
+     1,
+     6
+    ],
+    "extra": [
+     "--cancel-test-query",
+     "1",
+     "--cancel-check-query",
+     "6",
+     "--cancel-limit",
+     "1"
+    ]
+   }
+  },
+  {
+   "id": "smoke",
+   "kind": "run",
+   "engine": "mysql",
+   "resumable": true,
+   "args": {
+    "run_dir": "pilot/mysql-non-indexed-smoke",
+    "protocol": "protocols/rc20261008-P-v2.json",
+    "phase": "P",
+    "schema": "non-indexed",
+    "mode": "pilot",
+    "queries": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22
+    ],
+    "timeout": 120,
+    "extra": [
+     "--blocks",
+     "0"
+    ]
+   }
+  },
+  {
+   "id": "verify-smoke",
+   "kind": "verify",
+   "run_dir": "pilot/mysql-non-indexed-smoke"
+  }
+ ]
+}

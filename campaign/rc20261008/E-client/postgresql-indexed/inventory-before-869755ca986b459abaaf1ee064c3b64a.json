@@ -1,0 +1,495 @@
+{
+ "label": "before",
+ "run_id": "869755ca986b459abaaf1ee064c3b64a",
+ "utc": "2026-10-11T12:50:01.520938+00:00",
+ "cairo": "2026-10-11T15:50:01.520938+03:00",
+ "host": "2320cff3ae17",
+ "platform": "Linux-7.0.14-orbstack-00380-ga7e0a2dc9535-aarch64-with-glibc2.36",
+ "python": "3.12.3 (main, May 14 2024, 05:51:03) [GCC 12.2.0]",
+ "executable": "/usr/local/bin/python",
+ "client_affinity": [
+  2,
+  3
+ ],
+ "loadavg": [
+  {
+   "type": "float",
+   "value": "0.0"
+  },
+  {
+   "type": "float",
+   "value": "0.0068359375"
+  },
+  {
+   "type": "float",
+   "value": "0.0"
+  }
+ ],
+ "packages": {
+  "Django": "6.0.8",
+  "SQLAlchemy": "2.0.52",
+  "psycopg2-binary": "2.9.12",
+  "mysqlclient": "2.2.8",
+  "oracledb": "4.0.2",
+  "pyodbc": "5.3.0",
+  "commercial-a-django-backend": "1.8.0"
+ },
+ "dbms": "postgresql",
+ "schema": "indexed",
+ "scale": 1,
+ "database_label": "tpch",
+ "sa_url": "postgresql+psycopg2://benchmark:***@<host-ip>:5432/tpch",
+ "django_database": {
+  "ENGINE": "django.db.backends.postgresql",
+  "NAME": "tpch",
+  "USER": "benchmark",
+  "HOST": "<host-ip>",
+  "PORT": "5432"
+ },
+ "os_release": "PRETTY_NAME=\"Debian GNU/Linux 12 (bookworm)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"12\"\nVERSION=\"12 (bookworm)\"\nVERSION_CODENAME=bookworm\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+ "row_counts": {
+  "region": 5,
+  "nation": 25,
+  "supplier": 10000,
+  "customer": 150000,
+  "part": 200000,
+  "partsupp": 800000,
+  "orders": 1500000,
+  "lineitem": 6001215
+ },
+ "server": [
+  {
+   "version": "PostgreSQL 18.6 (Ubuntu 18.6-1.pgdg24.04+2) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit",
+   "database_name": "tpch"
+  }
+ ],
+ "settings": [
+  {
+   "name": "effective_cache_size",
+   "setting": "524288",
+   "unit": "8kB"
+  },
+  {
+   "name": "jit",
+   "setting": "on",
+   "unit": null
+  },
+  {
+   "name": "max_parallel_workers",
+   "setting": "0",
+   "unit": null
+  },
+  {
+   "name": "max_parallel_workers_per_gather",
+   "setting": "0",
+   "unit": null
+  },
+  {
+   "name": "random_page_cost",
+   "setting": "4",
+   "unit": null
+  },
+  {
+   "name": "server_version",
+   "setting": "18.6 (Ubuntu 18.6-1.pgdg24.04+2)",
+   "unit": null
+  },
+  {
+   "name": "shared_buffers",
+   "setting": "196608",
+   "unit": "8kB"
+  },
+  {
+   "name": "work_mem",
+   "setting": "32768",
+   "unit": "kB"
+  }
+ ],
+ "indexes": [
+  {
+   "table_name": "customer",
+   "index_name": "customer_pkey",
+   "is_primary_key": true,
+   "definition": "CREATE UNIQUE INDEX customer_pkey ON public.customer USING btree (c_custkey)"
+  },
+  {
+   "table_name": "customer",
+   "index_name": "idx_customer_mktsegment",
+   "is_primary_key": false,
+   "definition": "CREATE INDEX idx_customer_mktsegment ON public.customer USING btree (c_mktsegment)"
+  },
+  {
+   "table_name": "customer",
+   "index_name": "idx_customer_nationkey",
+   "is_primary_key": false,
+   "definition": "CREATE INDEX idx_customer_nationkey ON public.customer USING btree (c_nationkey)"
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_orderkey",
+   "is_primary_key": false,
+   "definition": "CREATE INDEX idx_lineitem_orderkey ON public.lineitem USING btree (l_orderkey)"
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_partkey",
+   "is_primary_key": false,
+   "definition": "CREATE INDEX idx_lineitem_partkey ON public.lineitem USING btree (l_partkey)"
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_shipdate",
+   "is_primary_key": false,
+   "definition": "CREATE INDEX idx_lineitem_shipdate ON public.lineitem USING btree (l_shipdate)"
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_shipdate_discount_qty",
+   "is_primary_key": false,
+   "definition": "CREATE INDEX idx_lineitem_shipdate_discount_qty ON public.lineitem USING btree (l_shipdate, l_discount, l_quantity)"
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_shipmode_receiptdate",
+   "is_primary_key": false,
+   "definition": "CREATE INDEX idx_lineitem_shipmode_receiptdate ON public.lineitem USING btree (l_shipmode, l_receiptdate, l_commitdate, l_shipdate)"
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_suppkey",
+   "is_primary_key": false,
+   "definition": "CREATE INDEX idx_lineitem_suppkey ON public.lineitem USING btree (l_suppkey)"
+  },
+  {
+   "table_name": "nation",
+   "index_name": "idx_nation_regionkey",
+   "is_primary_key": false,
+   "definition": "CREATE INDEX idx_nation_regionkey ON public.nation USING btree (n_regionkey)"
+  },
+  {
+   "table_name": "nation",
+   "index_name": "nation_pkey",
+   "is_primary_key": true,
+   "definition": "CREATE UNIQUE INDEX nation_pkey ON public.nation USING btree (n_nationkey)"
+  },
+  {
+   "table_name": "orders",
+   "index_name": "idx_orders_custkey",
+   "is_primary_key": false,
+   "definition": "CREATE INDEX idx_orders_custkey ON public.orders USING btree (o_custkey)"
+  },
+  {
+   "table_name": "orders",
+   "index_name": "idx_orders_orderdate",
+   "is_primary_key": false,
+   "definition": "CREATE INDEX idx_orders_orderdate ON public.orders USING btree (o_orderdate)"
+  },
+  {
+   "table_name": "orders",
+   "index_name": "idx_orders_orderdate_custkey",
+   "is_primary_key": false,
+   "definition": "CREATE INDEX idx_orders_orderdate_custkey ON public.orders USING btree (o_orderdate, o_custkey)"
+  },
+  {
+   "table_name": "orders",
+   "index_name": "orders_pkey",
+   "is_primary_key": true,
+   "definition": "CREATE UNIQUE INDEX orders_pkey ON public.orders USING btree (o_orderkey)"
+  },
+  {
+   "table_name": "part",
+   "index_name": "part_pkey",
+   "is_primary_key": true,
+   "definition": "CREATE UNIQUE INDEX part_pkey ON public.part USING btree (p_partkey)"
+  },
+  {
+   "table_name": "partsupp",
+   "index_name": "idx_partsupp_partkey",
+   "is_primary_key": false,
+   "definition": "CREATE INDEX idx_partsupp_partkey ON public.partsupp USING btree (ps_partkey)"
+  },
+  {
+   "table_name": "partsupp",
+   "index_name": "idx_partsupp_suppkey",
+   "is_primary_key": false,
+   "definition": "CREATE INDEX idx_partsupp_suppkey ON public.partsupp USING btree (ps_suppkey)"
+  },
+  {
+   "table_name": "partsupp",
+   "index_name": "partsupp_pkey",
+   "is_primary_key": true,
+   "definition": "CREATE UNIQUE INDEX partsupp_pkey ON public.partsupp USING btree (ps_partkey, ps_suppkey)"
+  },
+  {
+   "table_name": "region",
+   "index_name": "region_pkey",
+   "is_primary_key": true,
+   "definition": "CREATE UNIQUE INDEX region_pkey ON public.region USING btree (r_regionkey)"
+  },
+  {
+   "table_name": "supplier",
+   "index_name": "idx_supplier_nationkey",
+   "is_primary_key": false,
+   "definition": "CREATE INDEX idx_supplier_nationkey ON public.supplier USING btree (s_nationkey)"
+  },
+  {
+   "table_name": "supplier",
+   "index_name": "supplier_pkey",
+   "is_primary_key": true,
+   "definition": "CREATE UNIQUE INDEX supplier_pkey ON public.supplier USING btree (s_suppkey)"
+  }
+ ],
+ "stats_updated": [
+  {
+   "table_name": "customer",
+   "analyzed": "2026-10-11 12:48:46.629431+00",
+   "autoanalyzed": "2026-09-01 19:27:27.313055+00",
+   "n_live_tup": 150000
+  },
+  {
+   "table_name": "lineitem",
+   "analyzed": "2026-10-11 12:48:45.093216+00",
+   "autoanalyzed": null,
+   "n_live_tup": 6001380
+  },
+  {
+   "table_name": "nation",
+   "analyzed": "2026-10-11 12:48:47.334554+00",
+   "autoanalyzed": null,
+   "n_live_tup": 25
+  },
+  {
+   "table_name": "orders",
+   "analyzed": "2026-10-11 12:48:45.662546+00",
+   "autoanalyzed": "2026-09-01 19:27:25.403562+00",
+   "n_live_tup": 1500000
+  },
+  {
+   "table_name": "part",
+   "analyzed": "2026-10-11 12:48:47.331747+00",
+   "autoanalyzed": "2026-09-01 19:27:29.170682+00",
+   "n_live_tup": 200000
+  },
+  {
+   "table_name": "partsupp",
+   "analyzed": "2026-10-11 12:48:45.976302+00",
+   "autoanalyzed": "2026-09-01 19:27:35.71652+00",
+   "n_live_tup": 800000
+  },
+  {
+   "table_name": "region",
+   "analyzed": "2026-09-01 19:29:54.284959+00",
+   "autoanalyzed": null,
+   "n_live_tup": 5
+  },
+  {
+   "table_name": "supplier",
+   "analyzed": "2026-10-11 12:48:46.760712+00",
+   "autoanalyzed": "2026-09-01 19:27:29.429396+00",
+   "n_live_tup": 10000
+  }
+ ],
+ "secondary_indexes": [
+  "idx_customer_mktsegment",
+  "idx_customer_nationkey",
+  "idx_lineitem_orderkey",
+  "idx_lineitem_partkey",
+  "idx_lineitem_shipdate",
+  "idx_lineitem_shipdate_discount_qty",
+  "idx_lineitem_shipmode_receiptdate",
+  "idx_lineitem_suppkey",
+  "idx_nation_regionkey",
+  "idx_orders_custkey",
+  "idx_orders_orderdate",
+  "idx_orders_orderdate_custkey",
+  "idx_partsupp_partkey",
+  "idx_partsupp_suppkey",
+  "idx_supplier_nationkey"
+ ],
+ "index_verification": {
+  "cmd": [
+   "/usr/local/bin/python",
+   "scripts/1-setup/manage_indexes.py",
+   "--database",
+   "default",
+   "--action",
+   "verify",
+   "--expect",
+   "indexed"
+  ],
+  "returncode": 0,
+  "stdout": "index state on default (postgresql): 15/15 present, 0/15 missing\n  configuration claimed: indexed  (requires all present)\n  MATCHES\n",
+  "stderr": "WARNING:  database \"tpch\" has a collation version mismatch\nDETAIL:  The database was created using collation version 2.39, but the operating system provides version 2.43.\nHINT:  Rebuild all objects in this database that use the default collation and run ALTER DATABASE tpch REFRESH COLLATION VERSION, or build PostgreSQL with the right library version.\n"
+ },
+ "source_hashes": {
+  "django_app/__init__.py": "d3d425bef34c7bebe273ce9e38d20e4c5ff40ed7db6226737dcd65fa62d474b4",
+  "django_app/manage.py": "20b48ecc0efca7a4bc47e50197998e444113ecc2a5f672f7fe038ec4c5efe2ae",
+  "django_app/models.py": "ee8b1527ee7a9969b42fe3c3838c97987552fcb5b797392c83aa5d8803269f23",
+  "django_app/queries/__init__.py": "4675b68b3d2785d116822beb457b2f7658de34f02a7c532a4f3e29fe8ab1d3f9",
+  "django_app/queries/_lookups.py": "52452a8b7093b588b25859c3cd858ec01ef4c1df1c9b4ac69a69d6dc17862dcc",
+  "django_app/queries/q01.py": "4f1716577466492d9a57582b07ab910a696e353ae828e9333e8d11ef7bd4a4ac",
+  "django_app/queries/q02.py": "d679175b323effc46f2a4d42d182317a797d83a12cb038353e39d6b24ac48d1f",
+  "django_app/queries/q02_sqlserver.py": "0c3d00cfe527d219cdf7b21ecaeb4c7d8d6d3d86bbe07a3bc91b39e0691605de",
+  "django_app/queries/q03.py": "f1fadf53fe51bf83fcbed841c464650bd9fc432033fddff3984f86e6c0917b6c",
+  "django_app/queries/q03_sqlserver.py": "88b8575435a780d76c8f267556d3c16ceac56e0598b268a17746fcd8bd691440",
+  "django_app/queries/q04.py": "d1982664b247419e169ed9f40f20eace3d82ea7bbe289af05adb8014870fe8fa",
+  "django_app/queries/q04_sqlserver.py": "544033c076dec3bd3693c0e23e057127010ad0e3f06358627e6cab4b6309565f",
+  "django_app/queries/q05.py": "8eb6063f9e02ccf050136459ed6096e9798c8bf1e5eeddf7258999504dc85bc2",
+  "django_app/queries/q05_sqlserver.py": "4c0bf1f9b6557a77bb46f79aa398d631f83150538f218655204487ef3e65ac35",
+  "django_app/queries/q06.py": "b40401096a3e0cece48b922f3c59837455e0d45e982f64908710864ec0f176ac",
+  "django_app/queries/q07.py": "ac4dca2f9b4b1f589c01155d45cd86bb36e141650568dfd498309038ab52c3d3",
+  "django_app/queries/q07_oracle.py": "ac27d88764b4f81b4bea3b1969b7803667ecd9ab3704021809b8a9b37b00f2ea",
+  "django_app/queries/q07_sqlserver.py": "77d56b248f51326524166192b3cdeed822fed98a9c02b60f7bbcffa3ef1510b1",
+  "django_app/queries/q08.py": "de83aa0daec3f3c7a4249101087b0e5eabfc0c35c364800a24f4ed2397e8c8b4",
+  "django_app/queries/q08_oracle.py": "42c0661a23523cacdc070c340460a20b1fd7eb6847e6c5fd20f52ffe08431f27",
+  "django_app/queries/q08_sqlserver.py": "ae4dfa6223133f16b98e15ad2739424edeb9384a273ba891456b82caf6efcc52",
+  "django_app/queries/q09.py": "517c9178799177b76fd346555972056b24ace8801a2b6c4d51d880152c356c0b",
+  "django_app/queries/q09_oracle.py": "c1fafecb28b38d0a7aaa1874b38144ea7d7de5ad26d6159a30d1a36d8ce5c0cd",
+  "django_app/queries/q09_sqlserver.py": "846623ccb7c6c3400a4e4cdcd4ae75d7b5cf4fea19806dcc199e5166ecdbd9f9",
+  "django_app/queries/q10.py": "accc630fa2a585fb56ff10759944c69e55bf3f9f0a67cb963806ee0d4961ff88",
+  "django_app/queries/q10_sqlserver.py": "9ec14ca9586c645cf2bac73683aebf6bdbe200d134b77170a2cab5f703ac4cb6",
+  "django_app/queries/q11.py": "49f420d8a778d6903a132ba7b99b4923efe665f28ad90042f4e3b0f835037651",
+  "django_app/queries/q12.py": "dfe29522d7049d123b3ff79cb1a95079fc620a907d5ff21b31fa1c03a02e9520",
+  "django_app/queries/q12_sqlserver.py": "cf6ec56d28dea5c145d86717c6768d26feb9d774c2a7bbdf888ca7e3dca13716",
+  "django_app/queries/q13.py": "d1e226e112fbe968c13932bda46e918cc144f236de78643745f3ec57f6abf3d7",
+  "django_app/queries/q13_oracle.py": "9721860be4b929e657fa88e43602051ad14d7cffeb512916276bdce9ffcbf884",
+  "django_app/queries/q13_sqlserver.py": "3cdc66d980ee3c356dbaa963b9f848745a48b19d57cfe680042aa955bfa34d02",
+  "django_app/queries/q14.py": "184f6e13da28473756c84775937d7d0c5bae1b846cc04bc39974a88a5515642c",
+  "django_app/queries/q14_sqlserver.py": "3b3de624d222d2f28a7e566e38422486e4776b0b8e9e93924a8a0133f6d0c026",
+  "django_app/queries/q15.py": "b0650160d33e57d64167f58f96d3a0d3105fd2f0d93d550da4600b91f9a81371",
+  "django_app/queries/q15_sqlserver.py": "901c937fe518189ad7eb798eb61fb08bb79ed87197b02f874e50d5948406eb25",
+  "django_app/queries/q16.py": "7b6d39cf63aba72ff2228d08ff90d5fabcc282ec2e4a07ae02f5f5d085cb24a6",
+  "django_app/queries/q16_sqlserver.py": "843b4092ae411ee08d2d8e64638eb1e681620a1f24f2066d496cf56d55aa839d",
+  "django_app/queries/q17.py": "2d00c89a609e2001ff9513925fe6cd113b4198cf297284175dacef74e5344c98",
+  "django_app/queries/q18.py": "9377b26c7f4a52ec41b69f3f0c89b26a81a09df7d7fc57ba2569efa2323f1b97",
+  "django_app/queries/q18_sqlserver.py": "b4b6ce5bf3bc88b673799876665d77856ea2870dc275a8b2aeeecf75d4b065a2",
+  "django_app/queries/q19.py": "0da3b1f42eaf77b88cc15e3ebe90b8e5dffc29829868ab285097e2b4d35174c7",
+  "django_app/queries/q20.py": "5f343bd083da0d19aa5f773d32fba2ba1ae3605882a283665f1493f080438446",
+  "django_app/queries/q20_sqlserver.py": "d5bf495c701d0cbe5e612c9211fca105edb16c5bbecfd56457b52b0b6c07643b",
+  "django_app/queries/q21.py": "814d892fbd1c7b76ce2e013232f7ae710ca796e10609cf9850a101605fd7590f",
+  "django_app/queries/q21_sqlserver.py": "3cecef80fa379d980aee6328a6642ec0030c184acacd57451619191941d91f77",
+  "django_app/queries/q22.py": "51894db2449eb580194289cbecaed8021151706464c08b9645cfd3e005b61a36",
+  "django_app/queries/q22_oracle.py": "4d999a23c7d2529e29a4abb70fa96f8be7b87235470deb1bbe6a737bb8784913",
+  "django_app/queries/q22_sqlserver.py": "c24c745ee755633e9120aac218957b22ca74106ed0e86ecb58a8352155c5d19c",
+  "django_app/queries.py": "c6d569bc4d5634022d235b33b9e403edb5d717ff4b42c1b5dda846ab11039243",
+  "django_app/settings.py": "73b55c553bd82ab00aa0484e2589905c50bb34ac77a1d4b39183c1ed57e04045",
+  "django_app/tpcc_models.py": "4f20d90529b54e1123c054bbca90988b8bf03df6775d5ed4fe3d44430a946824",
+  "django_app/tpcc_queries/__init__.py": "6f347cd23dc5e2d1facdb7230286235735d8dbdd66a9ae1e3c5b7ffdb382de3a",
+  "django_app/tpcc_queries/db_utils.py": "b70c89e51f7c0fd1dcf38359d635ed7add4c84deeda200809a74fed8a2b17bbe",
+  "django_app/tpcc_queries/t1_neworder.py": "6de255f62a074686ad2fca64ad4bb135fcbad3daa85bd9ba3f339c0b1239e6ed",
+  "django_app/tpcc_queries/t2_payment.py": "4bd345e7380e2e53249dc2f96be75f11dea3139fb6442b1f239956e7aac88209",
+  "django_app/tpcc_queries/t3_orderstatus.py": "d78c6886c5fa9fa52f085abadaf94ee64ae7cb86629b325a8b2fc65efb0484fc",
+  "django_app/tpcc_queries/t4_delivery.py": "07a70ed96ff20010dfff084679b0b5386c3e7d83d96001552c66d7b1a6db0d6d",
+  "django_app/tpcc_queries/t5_stocklevel.py": "702300b6fb85e4734d270e824f241c2e9ab41dacb3e8e4fe559de73d3cedd8de",
+  "django_app/utils/__init__.py": "d1403f12ac7665399ff913c791fe4579393398383eae5d304d4e4e0375eec0f9",
+  "django_app/utils/database.py": "46bae759e2eb25f6f33e3125191ac0ab597331b6ce5a786dc9389e8795d0783e",
+  "django_app/utils/plan_collector.py": "858d6153a70ec20dce079ed0a2ddfb95fac8b87ea3dfe33cc400c9ed4cfa55fc",
+  "django_app/utils/resource_monitor.py": "cc4d6847ad92940dbea8baec640377cdcc6072d34ea8f3502c5ecbb58c5b0db3",
+  "django_app/utils/timer.py": "6cbe1eecf1182b3d805c6c5482e219b850bd22ce71fcdc73d78b2ae76436d896",
+  "sqlalchemy_app/__init__.py": "8053063c6028a370ab2d4be7ee04aa86716a9ef21ed3a72891aef378f1a6eed9",
+  "sqlalchemy_app/database.py": "25943d385d8fd57315ecffe85d8b3174a2e5c0c8918e7c88e1fa49aabd9363e9",
+  "sqlalchemy_app/models.py": "ff5f9aece42958211901d843029c33f467d29266eaca93749c7d5839a36a90b1",
+  "sqlalchemy_app/queries/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "sqlalchemy_app/queries/_orm.py": "238f4e5b803694f6dbf16bf663765f531cda9b9b9bc7c772c8dce85d32474100",
+  "sqlalchemy_app/queries/_sql.py": "c9d61431f2ee42dd290e23e5e124cc56aad649c19415f1ed7478e854b037c839",
+  "sqlalchemy_app/queries/q01.py": "b5faeacc56b2402f611153a6fa823844f8bfcf23c223aa7a3bc6c6e91ebe8292",
+  "sqlalchemy_app/queries/q02.py": "cb1832754cc29cddf3093cb0f5df0451b18ae885f22773eedde61f0b305b2fe8",
+  "sqlalchemy_app/queries/q03.py": "ab1966f747417817f3c2aed281e35aa2a45fc0df5ae5de04cd97bb8f1bc81e7d",
+  "sqlalchemy_app/queries/q04.py": "46fc6148b9f0c391beea5ae5354b1c390a2245fe61dbdc69bae49a97bae67413",
+  "sqlalchemy_app/queries/q05.py": "0c78689e17186c6fc1b393133b3edd49ca8d4dfd48d287bf955410dce4a77efd",
+  "sqlalchemy_app/queries/q06.py": "a91be30bc044a8c77ed14eee7bd024ab3d996dc0ec42bd2ede64811dfe1cf232",
+  "sqlalchemy_app/queries/q07.py": "83186dd6d5a287756d557e5267a7fd1e983c66876cb5bd3c488bf2e3331feac5",
+  "sqlalchemy_app/queries/q08.py": "c14c423019bf0b9dd66ba5dfddeec457e0669f2f93c916e946bc505b2edae575",
+  "sqlalchemy_app/queries/q09.py": "93c77a89a228baf3b4795f7e7c8601f4f6fb168e358adc5752a75cac45b66675",
+  "sqlalchemy_app/queries/q10.py": "dec70af4f110bae75124326242644b9d8dfd19424fa1ccb240d8374a1d803dcd",
+  "sqlalchemy_app/queries/q11.py": "4ec7711c0cc67d74751f68c9a3d456623257901310992f497dc66c4bfca54a8e",
+  "sqlalchemy_app/queries/q12.py": "b59605b38a7d555635d2e610f4968154c24b2cc9ba57b2f631d9329425f47b45",
+  "sqlalchemy_app/queries/q13.py": "9b4bf670e2266b7ef62216f5dea268be0bd8bf8cafffee025e0d76afbb4bf73b",
+  "sqlalchemy_app/queries/q14.py": "34f3416daea4e613dfe61e8a9cda53bb0b8b08b5ea6f02d834f03e8e007bd709",
+  "sqlalchemy_app/queries/q15.py": "699f3d7f4bc78b49b64490cd3f5b1dfa8d0359ea7972fb0c3a234931c60ef6a5",
+  "sqlalchemy_app/queries/q16.py": "84e9f0fbd423d74b66c04e92d3556cff8424a64dc5e89a90966678f91bbf778e",
+  "sqlalchemy_app/queries/q17.py": "7c985d14d7ed6df39d1b573d1679ccea177e9d5ba46a5cc49e04001cdabb4467",
+  "sqlalchemy_app/queries/q18.py": "5580125f4812396dcd617759bbc8da90fee7cf4cf2f2c34a3634630465bd47c1",
+  "sqlalchemy_app/queries/q19.py": "b6bf5415e76c7ae942a5b34589f08f4c4ec58f798554b0cc5a74ad34dc9e9080",
+  "sqlalchemy_app/queries/q20.py": "bf9e7294bf1badaf7e64607fba6b85281c28985ada7a07d849258bda91adabdb",
+  "sqlalchemy_app/queries/q21.py": "1a53e5cd6fd0d02e0b0a8f91cbefd27bda338aa573517b5a89c4f2e651d4ec71",
+  "sqlalchemy_app/queries/q22.py": "f1d88677a18df798cf8a002d6ef564810c2ae230cb54ab317a91fb9a68fc0306",
+  "sqlalchemy_app/tpcc_models.py": "571baaa61e3d47370f4d851b5b17212a9875654beff0036bd2167def289f11b1",
+  "sqlalchemy_app/tpcc_queries/__init__.py": "9f4e02c4d9cf869a1443f0a81a14501ad13ae194391902e481af4067874f0dab",
+  "sqlalchemy_app/tpcc_queries/db_utils.py": "c4528e55f9d10eea460895b29c61f3f09d97c82082b3c6cbd5da4321c1a86feb",
+  "sqlalchemy_app/tpcc_queries/t1.py": "513eb42903bad22fe56e0c16817b3022f53a4f4a722ff88569ab5249320ddaa5",
+  "sqlalchemy_app/tpcc_queries/t2.py": "07accc2ccf991b22519850ee5eb3f46cc22b4939c7c40daca808ae092aeeb886",
+  "sqlalchemy_app/tpcc_queries/t3.py": "2297e28ed31a830f10e8ea0ae551b4668d81d47bd67e3008b4143f8a411bf01f",
+  "sqlalchemy_app/tpcc_queries/t4.py": "e20e9e037320bf554e81ce9fe8cbe9027dc1d4c167cda82841499c147f69a273",
+  "sqlalchemy_app/tpcc_queries/t5.py": "9520cdf40cab942ee38e70c47beddaa506cb44d6cf912440c8738f1d849c23f5",
+  "tpch_paramsets.py": "dfe2f97fc803409340b6d3f0549542ff6d2233746fab3f8c0925202dde950970",
+  "tpch_params.py": "933dd6b42f23ab2e11a4033360d01c9368f7f60dfc0beb4d34b4f8c6f90013cb",
+  "tpch_domains.py": "f9850717d7796edd867d60a1a981e0662a01f7a2f39e6b74be92ac404168e042",
+  "settings_mysql.py": "1fbe3c3906d7e192a5dbfda566ce38a3ba3b7efbad3365615a792489e9c6ba5c",
+  "settings_oracle.py": "10f2490aaac3d9e5cb9e742c795f8dd975995aede93f1bd1af68fd0569c857e0",
+  "settings_sqlserver.py": "05c94f78cdc1f6aecb2ebbf97536d555d8459428a7fbfe0414912a7116d7c954",
+  "odbc_driver.py": "791a21b80c6ca367a3d9170929f96ccc2f803a8c30db582e73593d3c15e942be",
+  "mssql_decimal_fix.py": "7221b5a5bae074a963bf4b5820f458ec87288e619bb8b4528df21fb3f68ece2c",
+  "scripts/1-setup/manage_indexes.py": "585a0e1f455662c8aea6721efd4fb40be026a9eee0a1bce56beca412393f7e5c"
+ },
+ "code_hashes": {
+  "rc_analytical.py": "a324aa549af4dd8318aa042c22c6306811260da9c3449a3656a98722fbd527d7",
+  "rc_common.py": "8a44743b3e9ee3e9412d27916d8d7a987f9a5b8605ca7ede2bed6154a59eeb83",
+  "rc_e.py": "d79272ea0d136f119d175fccd4a52632d71600e1448c642378d8d1f4d9b0f32d"
+ },
+ "protocol_sha256": "acf02bd1497658af153361b92b08ee047a450062913de7c2f86fe8209d61582f",
+ "inputs_sha256": "890a5743c459d1e6a708804917b3d96908af6af21f4d70a851e3c8e85ba294f5",
+ "host_verification": {
+  "cmd": [
+   "sudo",
+   "-n",
+   "/usr/local/sbin/bench-host",
+   "verify",
+   "postgresql"
+  ],
+  "returncode": 0,
+  "stdout": "  governor:      performance  want performance\n  no_turbo:      1            want 1\n  SMT:           off          want off\n  online CPUs:   0-3          want 0-3\n  AllowedCPUs:   0-1          want 0-1\n  MemoryMax:     3221225472   want 3221225472\n  AC power:      1            want 1\n  throttles:     core=0 pkg=0\n  freq now:      1800 1800 1800 1800 \n  engines:       measuring postgresql\n    postgresql:  active       want active\n    mysql:       inactive     want inactive\n    commercial_a:       inactive     want inactive\n    oracle:      down         want inactive\n",
+  "stderr": ""
+ },
+ "oracle_process_affinity": null,
+ "host_record": {
+  "file": "<campaign>/E-client/host/postgresql-indexed-before-20261011T124927Z.json",
+  "sha256": "15bc2b52084f524fe9232b5ed62ac1f48f1dff683b640fd99e01ef8004336864",
+  "taken": "2026-10-11T12:49:28.270769+00:00",
+  "note": "read over ssh by the driver immediately before this run"
+ },
+ "client_container": {
+  "cpus_allowed": "2-3",
+  "cpu_max": "200000 100000",
+  "memory_max": "3221225472",
+  "cpuset": "2-3"
+ },
+ "client_machine": {
+  "model": "Mac16,1",
+  "cpu": "Apple M4",
+  "cores": "10",
+  "memory_bytes": "17179869184",
+  "perflevels": [
+   "4",
+   "6"
+  ],
+  "macos": "27.0.1",
+  "docker_server": "29.4.0",
+  "client_image": {
+   "id": "sha256:be2e81a968f7024f343f8e189a4c33ea9c647fa7f39551a6831422d2716d015b",
+   "repo_digests": [
+    "rcg-client@sha256:be2e81a968f7024f343f8e189a4c33ea9c647fa7f39551a6831422d2716d015b"
+   ],
+   "architecture": "arm64"
+  },
+  "power": [
+   "Now drawing from 'AC Power'"
+  ]
+ },
+ "client_platform": {
+  "machine": "aarch64",
+  "platform": "Linux-7.0.14-orbstack-00380-ga7e0a2dc9535-aarch64-with-glibc2.36"
+ },
+ "database_address": "<host-ip>",
+ "environment_id": "9e7dc89e36df697baa2c6dcb9be11a69cf3fde0a4bab31092bd67100e9e4aec8"
+}

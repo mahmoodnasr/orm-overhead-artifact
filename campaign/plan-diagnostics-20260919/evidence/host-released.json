@@ -1,0 +1,9 @@
+{
+  "governor": "powersave",
+  "no_turbo": "0",
+  "smt": "on",
+  "oracle_process_count": 57,
+  "oracle_process_cpu_affinities": [
+    "0-1"
+  ]
+}

@@ -1,0 +1,131 @@
+{
+ "query": 20,
+ "input_id": "q20warm",
+ "parameters": {
+  "color": "frosted",
+  "date": {
+   "type": "date",
+   "value": "1994-01-01"
+  },
+  "nation": "SAUDI ARABIA",
+  "date_end": {
+   "type": "date",
+   "value": "1995-01-01"
+  }
+ },
+ "ceiling_s": {
+  "type": "float",
+  "value": "14340.0"
+ },
+ "statuses": {
+  "django/sql": "ok",
+  "sqlalchemy/sql": "ok",
+  "sqlalchemy/orm": "ok",
+  "django/orm": "ok"
+ },
+ "elapsed_s": {
+  "django/sql": {
+   "type": "float",
+   "value": "2263.628122696995"
+  },
+  "sqlalchemy/sql": {
+   "type": "float",
+   "value": "2259.5346941690004"
+  },
+  "sqlalchemy/orm": {
+   "type": "float",
+   "value": "2261.0362846040007"
+  },
+  "django/orm": {
+   "type": "float",
+   "value": "2256.177466030007"
+  }
+ },
+ "rows": {
+  "django/sql": 165,
+  "sqlalchemy/sql": 165,
+  "sqlalchemy/orm": 165,
+  "django/orm": 165
+ },
+ "comparisons": {
+  "django": {
+   "policy": "rc20261008-results-v3",
+   "query": 20,
+   "rows": [
+    165,
+    165
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "django/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "sqlalchemy": {
+   "policy": "rc20261008-results-v3",
+   "query": 20,
+   "rows": [
+    165,
+    165
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "cross_sql": {
+   "policy": "rc20261008-results-v3",
+   "query": 20,
+   "rows": [
+    165,
+    165
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "sqlalchemy/sql"
+  },
+  "cross_orm": {
+   "policy": "rc20261008-results-v3",
+   "query": 20,
+   "rows": [
+    165,
+    165
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/orm",
+   "right": "sqlalchemy/orm"
+  }
+ },
+ "verdicts": {
+  "django": {
+   "validated": true,
+   "classification": "exact",
+   "orm_path_check": true,
+   "reason": "ORM result accepted against its SQL baseline"
+  },
+  "sqlalchemy": {
+   "validated": true,
+   "classification": "exact",
+   "orm_path_check": true,
+   "reason": "ORM result accepted against its SQL baseline"
+  }
+ },
+ "records": {
+  "django/sql": "validate/a1/django-sql.json.gz",
+  "sqlalchemy/sql": "validate/a1/sqlalchemy-sql.json.gz",
+  "sqlalchemy/orm": "validate/a1/sqlalchemy-orm.json.gz",
+  "django/orm": "validate/a1/django-orm.json.gz"
+ },
+ "note": "validation only: elapsed times are single executions, not measurements",
+ "utc": "2026-10-09T03:11:35.450255+00:00",
+ "cairo": "2026-10-09T06:11:35.450255+03:00"
+}

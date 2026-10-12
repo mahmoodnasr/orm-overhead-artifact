@@ -1,0 +1,48 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:479026de9231386a6c8f140712307107dc86f5f8b525491c1e9b32a1567269c7",
+   "params": [
+    "%unusual%requests%"
+   ],
+   "inputsizes": [
+    [
+     "o_comment_1",
+     "12",
+     "String"
+    ]
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:684b9b0b3813f34c84264785288bd3fc5e230f8723a594c2caf251f97f7147b7",
+    "values": [
+     "%unusual%requests%"
+    ],
+    "binding_types": "orm",
+    "inputsizes": [
+     [
+      "b0",
+      "12",
+      "String"
+     ]
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:3dfdb66cc7f2b1cd8a41b9dd870290b4e30524727c60bd4da88303ef6a5f9365",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 1
+ },
+ "G_output_columns": null
+}

@@ -1,0 +1,32 @@
+{
+  "query": 18,
+  "parameter_set": 7,
+  "parameters": {
+    "quantity": 315
+  },
+  "statements": {
+    "generated": [
+      "withheld-sha256:fb77a165c29f23b86f3bae8a01e9e6367dcf93f67192dc4562a5e1fb6193f9c8",
+      [
+        {
+          "type": "Decimal",
+          "value": "315"
+        }
+      ]
+    ],
+    "bound": [
+      "withheld-sha256:8371be500fdaeabb916f2baba8e030a306502e39dfcd6be5b74d15ff692ec797",
+      [
+        {
+          "type": "Decimal",
+          "value": "315"
+        }
+      ]
+    ],
+    "literal": [
+      "withheld-sha256:303e6faf3be207a313ed259b34a09c02933a7cfb740e899bed811f21f82b761b",
+      null
+    ]
+  },
+  "environment_sha256": "1ab6e4905e5dea46a183aa8178e6340cff27b726fae53bbcfabcce76d7c1e3de"
+}

@@ -1,0 +1,167 @@
+{
+  "checked_at_utc": "2026-10-07T19:46:13.686897+00:00",
+  "memory_limits": {
+    "/sys/fs/cgroup/user.slice/user-1001.slice/session-c7.scope": {
+      "memory.max": "max",
+      "memory.high": "max",
+      "memory.current": "2312441856",
+      "cpuset.cpus.effective": null
+    },
+    "/sys/fs/cgroup/user.slice/user-1001.slice": {
+      "memory.max": "3221225472",
+      "memory.high": "max",
+      "memory.current": "3178840064",
+      "cpuset.cpus.effective": "0-1"
+    },
+    "/sys/fs/cgroup/user.slice": {
+      "memory.max": "max",
+      "memory.high": "max",
+      "memory.current": "6735978496",
+      "cpuset.cpus.effective": "0-3"
+    }
+  },
+  "bench_host_path": "/usr/local/sbin/bench-host",
+  "units": [
+    "dev-disk-by\\x2dloop\\x2dref-\\x5cx2fvar\\x5cx2flib\\x5cx2fsnapd\\x5cx2fsnaps\\x5cx2fmysql\\x2dworkbench\\x2dcommunity_12.snap.device                       loaded    active   plugged   /dev/disk/by-loop-ref/\\x2fvar\\x2flib\\x2fsnapd\\x2fsnaps\\x2fmysql-workbench-community_12.snap",
+    "dev-disk-by\\x2dloop\\x2dref-\\x5cx2fvar\\x5cx2flib\\x5cx2fsnapd\\x5cx2fsnaps\\x5cx2fmysql\\x2dworkbench\\x2dcommunity_13.snap.device                       loaded    active   plugged   /dev/disk/by-loop-ref/\\x2fvar\\x2flib\\x2fsnapd\\x2fsnaps\\x2fmysql-workbench-community_13.snap",
+    "snap-mysql\\x2dworkbench\\x2dcommunity-12.mount                                                                                                      loaded    active   mounted   Mount unit for mysql-workbench-community, revision 12",
+    "snap-mysql\\x2dworkbench\\x2dcommunity-13.mount                                                                                                      loaded    active   mounted   Mount unit for mysql-workbench-community, revision 13",
+    "session-c6.scope                                                                                                                                   loaded    active   abandoned Session c6 of User oracle",
+    "session-c7.scope                                                                                                                                   loaded    active   abandoned Session c7 of User oracle",
+    "oracle-free.service                                                                                                                                loaded    active   exited    Oracle Database 23ai Free (SF1 campaign)"
+  ],
+  "bench_host_relevant_lines": [
+    {
+      "line": 12,
+      "text": "# engine is postgresql (default), mysql, commercial_a or oracle — the one under"
+    },
+    {
+      "line": 33,
+      "text": "  oracle)             UNIT=oracle-free.service ;;"
+    },
+    {
+      "line": 34,
+      "text": "  *) echo \"unknown engine: $ENGINE (want postgresql|mysql|commercial_a/commercial_a|oracle)\" >&2; exit 2 ;;"
+    },
+    {
+      "line": 41,
+      "text": "#    moves every ora_* process into the invoking user's slice — out of the"
+    },
+    {
+      "line": 42,
+      "text": "#    unit's cgroup entirely. The AllowedCPUs and MemoryMax written in"
+    },
+    {
+      "line": 43,
+      "text": "#    oracle-free.service are therefore inert for the database processes, and"
+    },
+    {
+      "line": 45,
+      "text": "#    force. G4 is applied to, and read from, the oracle user's slice."
+    },
+    {
+      "line": 47,
+      "text": "# 2. Its unit is not a reliable liveness signal. oracle-free.service is a"
+    },
+    {
+      "line": 49,
+      "text": "#    through it — but /etc/init.d/oracle-free-23ai and the sysv-generated"
+    },
+    {
+      "line": 50,
+      "text": "#    oracle-free-23ai.service are both still present, and a database started"
+    },
+    {
+      "line": 55,
+      "text": "ORACLE_UID=$(id -u oracle 2>/dev/null)"
+    },
+    {
+      "line": 56,
+      "text": "ORACLE_SLICE=\"user-${ORACLE_UID}.slice\""
+    },
+    {
+      "line": 57,
+      "text": "ORACLE_PMON=\"ora_pmon_${ORACLE_SID:-FREE}\""
+    },
+    {
+      "line": 60,
+      "text": "# Oracle: `pgrep -f ora_pmon` matches the shell that is asking the question, and"
+    },
+    {
+      "line": 64,
+      "text": "    oracle) pgrep -x \"$ORACLE_PMON\" >/dev/null 2>&1 && return 0"
+    },
+    {
+      "line": 65,
+      "text": "            [ \"$(systemctl is-active oracle-free.service 2>/dev/null)\" = active ] ;;"
+    },
+    {
+      "line": 72,
+      "text": "UNITS=\"postgresql:postgresql@18-main.service mysql:mysql.service commercial_a:commercial-a-server.service oracle:oracle-free.service\""
+    },
+    {
+      "line": 79,
+      "text": "    if [ \"$ENGINE\" = oracle ]; then"
+    },
+    {
+      "line": 81,
+      "text": "      # processes, so the envelope goes on the slice they actually land in."
+    },
+    {
+      "line": 83,
+      "text": "          AllowedCPUs=0,1 MemoryMax=3G MemorySwapMax=0 2>/dev/null || true"
+    },
+    {
+      "line": 86,
+      "text": "          AllowedCPUs=0,1 MemoryMax=3G MemorySwapMax=0 2>/dev/null || true"
+    },
+    {
+      "line": 97,
+      "text": "      if [ \"$name\" = oracle ] && pgrep -x \"$ORACLE_PMON\" >/dev/null 2>&1; then"
+    },
+    {
+      "line": 98,
+      "text": "        /etc/init.d/oracle-free-23ai stop >/dev/null 2>&1 || true"
+    },
+    {
+      "line": 114,
+      "text": "if [ \"$ENGINE\" = oracle ]; then"
+    },
+    {
+      "line": 125,
+      "text": "  # slice writes a drop-in under /etc/systemd/system.control/, which persists"
+    },
+    {
+      "line": 129,
+      "text": "  TARGET=$([ \"$ENGINE\" = oracle ] && echo \"$ORACLE_SLICE\" || echo \"$UNIT\")"
+    },
+    {
+      "line": 131,
+      "text": "  CFG_MEM=$(systemctl show \"$TARGET\" -p MemoryMax --value 2>/dev/null)"
+    },
+    {
+      "line": 159,
+      "text": "check \"MemoryMax:\"   \"$MEMMAX\"                                                      3221225472"
+    },
+    {
+      "line": 162,
+      "text": "if [ \"$ENGINE\" = oracle ]; then"
+    },
+    {
+      "line": 166,
+      "text": "    ORA_AFF=$(for pid in $(pgrep -u oracle 2>/dev/null); do"
+    },
+    {
+      "line": 169,
+      "text": "    printf \"  %-14s %-12s %s\\n\" \"ora_* affinity:\" \"${ORA_AFF:-unknown}\" \"want 0-1\""
+    },
+    {
+      "line": 172,
+      "text": "    printf \"  %-14s %-12s %s\\n\" \"ora_* affinity:\" \"(db down)\" \"want 0-1\""
+    },
+    {
+      "line": 190,
+      "text": "    [ \"$name\" = oracle ] && [ \"$state\" != active ] && state=\"down\""
+    }
+  ]
+}

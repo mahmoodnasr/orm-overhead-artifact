@@ -1,0 +1,27 @@
+{
+  "column_case": {
+    "actual": true,
+    "expected": true,
+    "pass": true
+  },
+  "swapped_columns": {
+    "actual": false,
+    "expected": false,
+    "pass": true
+  },
+  "duplicate_missing": {
+    "actual": false,
+    "expected": false,
+    "pass": true
+  },
+  "row_order": {
+    "actual": false,
+    "expected": false,
+    "pass": true
+  },
+  "numeric_difference": {
+    "actual": false,
+    "expected": false,
+    "pass": true
+  }
+}

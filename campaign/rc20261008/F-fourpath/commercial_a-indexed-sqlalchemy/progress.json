@@ -1,0 +1,86 @@
+{
+ "run_id": "d7109bf55692438494e97d9eb93d9cb4",
+ "pid": 2123911,
+ "phase": "F",
+ "dbms": "commercial_a",
+ "schema": "indexed",
+ "scale": 1,
+ "mode": "main",
+ "queries": [
+  4,
+  10,
+  13,
+  15,
+  17,
+  19
+ ],
+ "planned_timed": 192,
+ "counts": {
+  "saved_cell_warmup": 24,
+  "status_cell_warmup_ok": 24,
+  "saved_block_warmup": 192,
+  "status_block_warmup_ok": 192,
+  "saved_timed": 192,
+  "status_timed_ok": 192
+ },
+ "environment_id": "4adda23d57cb18241e12517a7bec73bd231d0c293457d86dbccaf223939c7e98",
+ "started": {
+  "utc": "2026-10-09T17:11:08.865131+00:00",
+  "cairo": "2026-10-09T20:11:08.865131+03:00"
+ },
+ "state": "complete",
+ "utc": "2026-10-09T17:26:41.477208+00:00",
+ "cairo": "2026-10-09T20:26:41.477208+03:00",
+ "current": {
+  "query": 19,
+  "path": "sqlalchemy/L",
+  "kind": "timed",
+  "block": 8,
+  "utc": "2026-10-09T17:26:37.383283+00:00",
+  "cairo": "2026-10-09T20:26:37.383283+03:00"
+ },
+ "cells_done": [
+  {
+   "query": 4,
+   "wall_s": {
+    "type": "float",
+    "value": "259.108337357"
+   }
+  },
+  {
+   "query": 10,
+   "wall_s": {
+    "type": "float",
+    "value": "106.45173672301462"
+   }
+  },
+  {
+   "query": 13,
+   "wall_s": {
+    "type": "float",
+    "value": "113.81694792199414"
+   }
+  },
+  {
+   "query": 15,
+   "wall_s": {
+    "type": "float",
+    "value": "223.7250056900084"
+   }
+  },
+  {
+   "query": 17,
+   "wall_s": {
+    "type": "float",
+    "value": "22.552392382989638"
+   }
+  },
+  {
+   "query": 19,
+   "wall_s": {
+    "type": "float",
+    "value": "204.63139400299406"
+   }
+  }
+ ]
+}

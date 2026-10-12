@@ -1,0 +1,69 @@
+{
+ "query": 2,
+ "framework": "django",
+ "block": 8,
+ "attempt": 1,
+ "input_id": "q02s7",
+ "sequence_id": 0,
+ "comparisons": {
+  "O=L": {
+   "policy": "rc20261008-results-v3",
+   "query": 2,
+   "rows": [
+    100,
+    100
+   ],
+   "classification": "exact",
+   "accepted": true
+  },
+  "G=L": {
+   "policy": "rc20261008-results-v3",
+   "query": 2,
+   "rows": [
+    100,
+    100
+   ],
+   "classification": "exact",
+   "accepted": true
+  },
+  "B=L": {
+   "policy": "rc20261008-results-v3",
+   "query": 2,
+   "rows": [
+    100,
+    100
+   ],
+   "classification": "exact",
+   "accepted": true
+  }
+ },
+ "accepted": true,
+ "bound_literals": 4,
+ "ratios": {
+  "O/G": {
+   "type": "float",
+   "value": "1.0567148333752288"
+  },
+  "G/B": {
+   "type": "float",
+   "value": "1.8094012258231955"
+  },
+  "B/L": {
+   "type": "float",
+   "value": "1.5123675766258287"
+  },
+  "O/L": {
+   "type": "float",
+   "value": "2.8916787399302066"
+  }
+ },
+ "policy": "rc20261008-results-v3",
+ "records": {
+  "O": "a1/timed-django-O.json.gz",
+  "G": "a1/timed-django-G.json.gz",
+  "B": "a1/timed-django-B.json.gz",
+  "L": "a1/timed-django-L.json.gz"
+ },
+ "utc": "2026-10-10T18:28:52.883754+00:00",
+ "cairo": "2026-10-10T21:28:52.883754+03:00"
+}

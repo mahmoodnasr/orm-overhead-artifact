@@ -1,0 +1,33 @@
+{
+ "name": "/rcg-commercial_a",
+ "image": "<commercial-a-image>",
+ "image_id": "sha256:2b5b581621126574f3d1f75e78d3eebe8d05aedb59ad0cfdf9aa42cb0634d726",
+ "repo_digests": [
+  "<commercial-a-image-digest>"
+ ],
+ "image_architecture": "amd64",
+ "image_os": "linux",
+ "host_architecture": "arm64",
+ "nano_cpus": 2000000000,
+ "cpuset_cpus": "0,1",
+ "memory": 3221225472,
+ "memory_swap": 3221225472,
+ "cmd": [
+  "/opt/commercial_a/bin/commercial-a-server"
+ ],
+ "started": "2026-10-08T14:04:29.246721232Z",
+ "docker_info": {
+  "ServerVersion": "29.4.0",
+  "OperatingSystem": "OrbStack",
+  "Architecture": "aarch64",
+  "NCPU": 10,
+  "MemTotal": 8393289728,
+  "KernelVersion": "7.0.14-orbstack-00380-ga7e0a2dc9535"
+ },
+ "mac": {
+  "model": "Apple M4",
+  "ncpu": "10",
+  "memsize": "17179869184",
+  "macos": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\n"
+ }
+}

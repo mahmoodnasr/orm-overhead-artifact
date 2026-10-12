@@ -1,0 +1,943 @@
+{
+ "generated": {
+  "utc": "2026-10-11T19:44:59.679930+00:00",
+  "cairo": "2026-10-11T22:44:59.679930+03:00"
+ },
+ "journal": "evidence/background-jobs/host-journal-jobs-20261007-20261011.txt",
+ "jobs": 219,
+ "jobs_by_unit": {
+  "dpkg-db-backup": 5,
+  "apt-daily": 9,
+  "update-notifier-download": 5,
+  "fwupd-refresh": 102,
+  "ua-timer": 16,
+  "apport-autoreport": 35,
+  "systemd-tmpfiles-clean": 5,
+  "motd-news": 9,
+  "logrotate": 5,
+  "apt-daily-upgrade": 5,
+  "man-db": 5,
+  "certbot": 8,
+  "sysstat-rotate": 4,
+  "sysstat-summary": 4,
+  "update-notifier-motd": 1,
+  "e2scrub_all": 1
+ },
+ "phases": {
+  "A": {
+   "runs": [
+    "A-sf1/mysql-indexed",
+    "A-sf1/mysql-non-indexed",
+    "A-sf1/oracle-indexed",
+    "A-sf1/oracle-non-indexed",
+    "A-sf1/postgresql-indexed",
+    "A-sf1/postgresql-non-indexed",
+    "A-sf1/commercial_a-indexed",
+    "A-sf1/commercial_a-non-indexed"
+   ],
+   "cells": 332,
+   "touched_blocks": 24,
+   "touched_cells": 18,
+   "pooled_median_pct": 0.8531165535717545,
+   "pooled_median_pct_without_touched_blocks": 0.8531165535717545,
+   "max_abs_cell_change_pct_points": 11523.515124632191,
+   "cells_touched": [
+    {
+     "run": "A-sf1/mysql-indexed",
+     "query": "q06",
+     "framework": "django",
+     "theta": 0.15115228333186176,
+     "theta_clean": 0.1542451283725478,
+     "touched_blocks": 1,
+     "overhead_pct": 16.317377657361178,
+     "overhead_pct_without": 16.677686183997608
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q05",
+     "framework": "django",
+     "theta": 0.04317516047680045,
+     "theta_clean": 0.043050709156113365,
+     "touched_blocks": 1,
+     "overhead_pct": 4.412076752558958,
+     "overhead_pct_without": 4.3990833402518525
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q05",
+     "framework": "sqlalchemy",
+     "theta": -0.0016015444077330362,
+     "theta_clean": -0.0016968088109566401,
+     "touched_blocks": 1,
+     "overhead_pct": -0.16002626198594483,
+     "overhead_pct_without": -0.16953700447716047
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q07",
+     "framework": "sqlalchemy",
+     "theta": 0.005810410629274679,
+     "theta_clean": 0.005728680757472104,
+     "touched_blocks": 1,
+     "overhead_pct": 0.5827323806749779,
+     "overhead_pct_without": 0.5745121027776579
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q09",
+     "framework": "django",
+     "theta": -0.02523981202963671,
+     "theta_clean": -0.025262131683465597,
+     "touched_blocks": 1,
+     "overhead_pct": -2.49239509784937,
+     "overhead_pct_without": -2.4945714095491174
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q11",
+     "framework": "sqlalchemy",
+     "theta": 0.0024294388201764666,
+     "theta_clean": 0.002528478451978382,
+     "touched_blocks": 1,
+     "overhead_pct": 0.2432392297947175,
+     "overhead_pct_without": 0.2531677749502803
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q13",
+     "framework": "sqlalchemy",
+     "theta": 0.0004891222975950333,
+     "theta_clean": 8.47906372746718e-06,
+     "touched_blocks": 1,
+     "overhead_pct": 0.04892419374114078,
+     "overhead_pct_without": 0.0008479099674829627
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q18",
+     "framework": "sqlalchemy",
+     "theta": 0.0013650352619794769,
+     "theta_clean": 0.0014462735152259677,
+     "touched_blocks": 3,
+     "overhead_pct": 0.13659673466739441,
+     "overhead_pct_without": 0.14473198731455028
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q19",
+     "framework": "django",
+     "theta": 0.022628416427086448,
+     "theta_clean": 0.022420516109016603,
+     "touched_blocks": 1,
+     "overhead_pct": 2.2886381145092476,
+     "overhead_pct_without": 2.2673744845446153
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q19",
+     "framework": "sqlalchemy",
+     "theta": -0.0025934398972606116,
+     "theta_clean": -0.0022239229597124663,
+     "touched_blocks": 1,
+     "overhead_pct": -0.25900798373423994,
+     "overhead_pct_without": -0.22214518752203816
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q21",
+     "framework": "django",
+     "theta": -0.0034526027797874706,
+     "theta_clean": -0.0032631186210741628,
+     "touched_blocks": 1,
+     "overhead_pct": -0.3446649400332311,
+     "overhead_pct_without": -0.32578004357024515
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q21",
+     "framework": "sqlalchemy",
+     "theta": 0.0012688730671906686,
+     "theta_clean": 0.0013261064604300785,
+     "touched_blocks": 1,
+     "overhead_pct": 0.12696784272181844,
+     "overhead_pct_without": 0.1326986128403762
+    },
+    {
+     "run": "A-sf1/oracle-non-indexed",
+     "query": "q17",
+     "framework": "django",
+     "theta": 6.63511724046665,
+     "theta_clean": 6.471005631950975,
+     "touched_blocks": 3,
+     "overhead_pct": 76036.83237679234,
+     "overhead_pct_without": 64513.31725216015
+    },
+    {
+     "run": "A-sf1/oracle-non-indexed",
+     "query": "q20",
+     "framework": "django",
+     "theta": 5.709596607964133,
+     "theta_clean": 5.713453009486141,
+     "touched_blocks": 2,
+     "overhead_pct": 30074.93204556891,
+     "overhead_pct_without": 30191.523366415673
+    },
+    {
+     "run": "A-sf1/postgresql-indexed",
+     "query": "q17",
+     "framework": "django",
+     "theta": -0.8860893634947294,
+     "theta_clean": -0.888422800069687,
+     "touched_blocks": 1,
+     "overhead_pct": -58.77351776773763,
+     "overhead_pct_without": -58.869604998906446
+    },
+    {
+     "run": "A-sf1/commercial_a-indexed",
+     "query": "q18",
+     "framework": "django",
+     "theta": 4.519915454470043,
+     "theta_clean": 4.522928375924259,
+     "touched_blocks": 1,
+     "overhead_pct": 9082.783401706552,
+     "overhead_pct_without": 9110.492127973948
+    },
+    {
+     "run": "A-sf1/commercial_a-indexed",
+     "query": "q21",
+     "framework": "django",
+     "theta": 0.9165662330145459,
+     "theta_clean": 0.9023854759538552,
+     "touched_blocks": 2,
+     "overhead_pct": 150.06888477357884,
+     "overhead_pct_without": 146.54774389828762
+    },
+    {
+     "run": "A-sf1/commercial_a-non-indexed",
+     "query": "q15",
+     "framework": "sqlalchemy",
+     "theta": 1.2893150364257013,
+     "theta_clean": 1.285271126828402,
+     "touched_blocks": 1,
+     "overhead_pct": 263.0299081300867,
+     "overhead_pct_without": 261.5648123545105
+    }
+   ],
+   "blocks": [
+    {
+     "run": "A-sf1/mysql-indexed",
+     "query": "q06",
+     "framework": "django",
+     "block": 7,
+     "jobs": [
+      "fwupd-refresh@2026-10-09T02:12:17+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q05",
+     "framework": "django",
+     "block": 6,
+     "jobs": [
+      "fwupd-refresh@2026-10-08T18:53:06+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q05",
+     "framework": "sqlalchemy",
+     "block": 7,
+     "jobs": [
+      "ua-timer@2026-10-08T18:57:48+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q07",
+     "framework": "sqlalchemy",
+     "block": 6,
+     "jobs": [
+      "systemd-tmpfiles-clean@2026-10-08T17:09:35+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q09",
+     "framework": "django",
+     "block": 5,
+     "jobs": [
+      "fwupd-refresh@2026-10-08T23:05:06+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q11",
+     "framework": "sqlalchemy",
+     "block": 2,
+     "jobs": [
+      "apport-autoreport@2026-10-08T14:54:44+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q13",
+     "framework": "sqlalchemy",
+     "block": 8,
+     "jobs": [
+      "fwupd-refresh@2026-10-08T16:35:42+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q18",
+     "framework": "sqlalchemy",
+     "block": 2,
+     "jobs": [
+      "dpkg-db-backup@2026-10-09T00:00:08+03:00",
+      "sysstat-rotate@2026-10-09T00:00:08+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q18",
+     "framework": "sqlalchemy",
+     "block": 3,
+     "jobs": [
+      "sysstat-summary@2026-10-09T00:07:00+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q18",
+     "framework": "sqlalchemy",
+     "block": 8,
+     "jobs": [
+      "apt-daily@2026-10-09T01:01:53+03:00",
+      "ua-timer@2026-10-09T01:01:58+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q19",
+     "framework": "django",
+     "block": 5,
+     "jobs": [
+      "apt-daily@2026-10-08T15:59:48+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q19",
+     "framework": "sqlalchemy",
+     "block": 5,
+     "jobs": [
+      "apt-daily@2026-10-08T15:59:48+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q21",
+     "framework": "django",
+     "block": 1,
+     "jobs": [
+      "fwupd-refresh@2026-10-08T17:49:26+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/mysql-non-indexed",
+     "query": "q21",
+     "framework": "sqlalchemy",
+     "block": 2,
+     "jobs": [
+      "apport-autoreport@2026-10-08T17:54:45+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/oracle-non-indexed",
+     "query": "q17",
+     "framework": "django",
+     "block": 2,
+     "jobs": [
+      "apport-autoreport@2026-10-08T11:54:43+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/oracle-non-indexed",
+     "query": "q17",
+     "framework": "django",
+     "block": 4,
+     "jobs": [
+      "ua-timer@2026-10-08T12:23:47+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/oracle-non-indexed",
+     "query": "q17",
+     "framework": "django",
+     "block": 5,
+     "jobs": [
+      "fwupd-refresh@2026-10-08T12:45:09+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/oracle-non-indexed",
+     "query": "q20",
+     "framework": "django",
+     "block": 5,
+     "jobs": [
+      "fwupd-refresh@2026-10-08T10:44:21+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/oracle-non-indexed",
+     "query": "q20",
+     "framework": "django",
+     "block": 8,
+     "jobs": [
+      "fwupd-refresh@2026-10-08T11:09:23+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/postgresql-indexed",
+     "query": "q17",
+     "framework": "django",
+     "block": 5,
+     "jobs": [
+      "apt-daily@2026-10-09T08:17:49+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/commercial_a-indexed",
+     "query": "q18",
+     "framework": "django",
+     "block": 1,
+     "jobs": [
+      "fwupd-refresh@2026-10-09T12:14:00+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/commercial_a-indexed",
+     "query": "q21",
+     "framework": "django",
+     "block": 2,
+     "jobs": [
+      "fwupd-refresh@2026-10-09T11:37:52+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/commercial_a-indexed",
+     "query": "q21",
+     "framework": "django",
+     "block": 8,
+     "jobs": [
+      "apport-autoreport@2026-10-09T11:54:51+03:00"
+     ]
+    },
+    {
+     "run": "A-sf1/commercial_a-non-indexed",
+     "query": "q15",
+     "framework": "sqlalchemy",
+     "block": 6,
+     "jobs": [
+      "fwupd-refresh@2026-10-09T09:59:42+03:00"
+     ]
+    }
+   ]
+  },
+  "D": {
+   "runs": [
+    "D-sf2/mysql-indexed",
+    "D-sf2/mysql-non-indexed",
+    "D-sf2/oracle-indexed",
+    "D-sf2/oracle-non-indexed",
+    "D-sf2/postgresql-indexed",
+    "D-sf2/postgresql-non-indexed",
+    "D-sf2/commercial_a-indexed",
+    "D-sf2/commercial_a-non-indexed"
+   ],
+   "cells": 53,
+   "touched_blocks": 12,
+   "touched_cells": 6,
+   "pooled_median_pct": 0.29336813789074406,
+   "pooled_median_pct_without_touched_blocks": 0.29336813789074406,
+   "max_abs_cell_change_pct_points": 1.5920749880582097,
+   "cells_touched": [
+    {
+     "run": "D-sf2/mysql-indexed",
+     "query": "q18",
+     "framework": "django",
+     "theta": 0.011217701537529517,
+     "theta_clean": 0.012960017317256588,
+     "touched_blocks": 1,
+     "overhead_pct": 1.1280855879355651,
+     "overhead_pct_without": 1.304436231872086
+    },
+    {
+     "run": "D-sf2/mysql-indexed",
+     "query": "q18",
+     "framework": "sqlalchemy",
+     "theta": -0.00046322514275925076,
+     "theta_clean": 0.0006118046800809719,
+     "touched_blocks": 1,
+     "overhead_pct": -0.0463117870557175,
+     "overhead_pct_without": 0.061199187073701644
+    },
+    {
+     "run": "D-sf2/mysql-non-indexed",
+     "query": "q06",
+     "framework": "django",
+     "theta": 0.08872949280767525,
+     "theta_clean": 0.08989372123755693,
+     "touched_blocks": 1,
+     "overhead_pct": 9.27850101360161,
+     "overhead_pct_without": 9.40580023956674
+    },
+    {
+     "run": "D-sf2/mysql-non-indexed",
+     "query": "q18",
+     "framework": "django",
+     "theta": -0.09111791860592164,
+     "theta_clean": -0.09061966430001013,
+     "touched_blocks": 2,
+     "overhead_pct": -8.708994452897144,
+     "overhead_pct_without": -8.66349698257832
+    },
+    {
+     "run": "D-sf2/oracle-indexed",
+     "query": "q18",
+     "framework": "django",
+     "theta": -0.13969534454127147,
+     "theta_clean": -0.15817264640346954,
+     "touched_blocks": 1,
+     "overhead_pct": -13.0376869520372,
+     "overhead_pct_without": -14.62976194009541
+    },
+    {
+     "run": "D-sf2/oracle-indexed",
+     "query": "q20",
+     "framework": "sqlalchemy",
+     "theta": -2.8732809838861932,
+     "theta_clean": -2.9003078580433472,
+     "touched_blocks": 1,
+     "overhead_pct": -94.34867968402446,
+     "overhead_pct_without": -94.49937166772693
+    }
+   ],
+   "blocks": [
+    {
+     "run": "D-sf2/mysql-indexed",
+     "query": "q18",
+     "framework": "django",
+     "block": 8,
+     "jobs": [
+      "fwupd-refresh@2026-10-10T19:14:21+03:00"
+     ]
+    },
+    {
+     "run": "D-sf2/mysql-indexed",
+     "query": "q18",
+     "framework": "sqlalchemy",
+     "block": 7,
+     "jobs": [
+      "certbot@2026-10-10T19:01:34+03:00"
+     ]
+    },
+    {
+     "run": "D-sf2/mysql-indexed",
+     "query": "q21",
+     "framework": "sqlalchemy",
+     "block": 3,
+     "jobs": [
+      "fwupd-refresh@2026-10-10T20:28:42+03:00"
+     ]
+    },
+    {
+     "run": "D-sf2/mysql-non-indexed",
+     "query": "q06",
+     "framework": "django",
+     "block": 4,
+     "jobs": [
+      "fwupd-refresh@2026-10-10T12:00:49+03:00"
+     ]
+    },
+    {
+     "run": "D-sf2/mysql-non-indexed",
+     "query": "q18",
+     "framework": "django",
+     "block": 4,
+     "jobs": [
+      "fwupd-refresh@2026-10-10T13:50:18+03:00"
+     ]
+    },
+    {
+     "run": "D-sf2/mysql-non-indexed",
+     "query": "q18",
+     "framework": "django",
+     "block": 6,
+     "jobs": [
+      "fwupd-refresh@2026-10-10T14:39:59+03:00"
+     ]
+    },
+    {
+     "run": "D-sf2/mysql-non-indexed",
+     "query": "q21",
+     "framework": "django",
+     "block": 4,
+     "jobs": [
+      "ua-timer@2026-10-10T16:33:33+03:00"
+     ]
+    },
+    {
+     "run": "D-sf2/mysql-non-indexed",
+     "query": "q21",
+     "framework": "sqlalchemy",
+     "block": 4,
+     "jobs": [
+      "fwupd-refresh@2026-10-10T16:36:54+03:00"
+     ]
+    },
+    {
+     "run": "D-sf2/oracle-indexed",
+     "query": "q18",
+     "framework": "django",
+     "block": 8,
+     "jobs": [
+      "motd-news@2026-10-11T00:43:07+03:00"
+     ]
+    },
+    {
+     "run": "D-sf2/oracle-indexed",
+     "query": "q20",
+     "framework": "sqlalchemy",
+     "block": 2,
+     "jobs": [
+      "logrotate@2026-10-11T00:56:18+03:00"
+     ]
+    },
+    {
+     "run": "D-sf2/oracle-non-indexed",
+     "query": "q21",
+     "framework": "sqlalchemy",
+     "block": 4,
+     "jobs": [
+      "dpkg-db-backup@2026-10-11T00:00:03+03:00",
+      "sysstat-rotate@2026-10-11T00:00:03+03:00"
+     ]
+    },
+    {
+     "run": "D-sf2/commercial_a-non-indexed",
+     "query": "q21",
+     "framework": "django",
+     "block": 1,
+     "jobs": [
+      "fwupd-refresh@2026-10-09T16:38:41+03:00"
+     ]
+    }
+   ]
+  },
+  "E": {
+   "runs": [
+    "E-client/mysql-indexed",
+    "E-client/mysql-non-indexed",
+    "E-client/oracle-indexed",
+    "E-client/oracle-non-indexed",
+    "E-client/postgresql-indexed",
+    "E-client/postgresql-non-indexed",
+    "E-client/commercial_a-indexed",
+    "E-client/commercial_a-non-indexed-r2"
+   ],
+   "cells": 70,
+   "touched_blocks": 9,
+   "touched_cells": 7,
+   "pooled_median_pct": 0.7757175471765452,
+   "pooled_median_pct_without_touched_blocks": 0.7757175471765452,
+   "max_abs_cell_change_pct_points": 2800.7113297084725,
+   "cells_touched": [
+    {
+     "run": "E-client/mysql-indexed",
+     "query": "q18",
+     "framework": "django",
+     "theta": 0.0017615298538993093,
+     "theta_clean": -0.0001144351311914251,
+     "touched_blocks": 1,
+     "overhead_pct": 0.176308225901456,
+     "overhead_pct_without": -0.011442858374155485
+    },
+    {
+     "run": "E-client/mysql-indexed",
+     "query": "q18",
+     "framework": "sqlalchemy",
+     "theta": -0.0006282221155975734,
+     "theta_clean": -0.0010912306225277066,
+     "touched_blocks": 1,
+     "overhead_pct": -0.0628024825400495,
+     "overhead_pct_without": -0.109063544690291
+    },
+    {
+     "run": "E-client/mysql-non-indexed",
+     "query": "q18",
+     "framework": "django",
+     "theta": -0.09209350712042569,
+     "theta_clean": -0.09212976236985193,
+     "touched_blocks": 1,
+     "overhead_pct": -8.79801347935604,
+     "overhead_pct_without": -8.801319970186327
+    },
+    {
+     "run": "E-client/oracle-non-indexed",
+     "query": "q17",
+     "framework": "django",
+     "theta": 6.575000754293938,
+     "theta_clean": 6.613321502905691,
+     "touched_blocks": 1,
+     "overhead_pct": 71594.61651399812,
+     "overhead_pct_without": 74395.32784370659
+    },
+    {
+     "run": "E-client/oracle-non-indexed",
+     "query": "q20",
+     "framework": "django",
+     "theta": 5.691408787952058,
+     "theta_clean": 5.70726425740499,
+     "touched_blocks": 2,
+     "overhead_pct": 29531.076577386044,
+     "overhead_pct_without": 30004.63553585912
+    },
+    {
+     "run": "E-client/commercial_a-indexed",
+     "query": "q18",
+     "framework": "django",
+     "theta": 4.4011182826227095,
+     "theta_clean": 4.378332969973698,
+     "touched_blocks": 2,
+     "overhead_pct": 8054.200470442781,
+     "overhead_pct_without": 7870.505187905195
+    },
+    {
+     "run": "E-client/commercial_a-indexed",
+     "query": "q21",
+     "framework": "django",
+     "theta": 0.9884176137340103,
+     "theta_clean": 1.0113918757587417,
+     "touched_blocks": 1,
+     "overhead_pct": 168.6979267458448,
+     "overhead_pct_without": 174.94252112985552
+    }
+   ],
+   "blocks": [
+    {
+     "run": "E-client/mysql-indexed",
+     "query": "q18",
+     "framework": "django",
+     "block": 3,
+     "jobs": [
+      "fwupd-refresh@2026-10-11T19:18:11+03:00"
+     ]
+    },
+    {
+     "run": "E-client/mysql-indexed",
+     "query": "q18",
+     "framework": "sqlalchemy",
+     "block": 3,
+     "jobs": [
+      "fwupd-refresh@2026-10-11T19:18:11+03:00"
+     ]
+    },
+    {
+     "run": "E-client/mysql-non-indexed",
+     "query": "q18",
+     "framework": "django",
+     "block": 8,
+     "jobs": [
+      "apport-autoreport@2026-10-11T17:55:12+03:00"
+     ]
+    },
+    {
+     "run": "E-client/oracle-non-indexed",
+     "query": "q17",
+     "framework": "django",
+     "block": 3,
+     "jobs": [
+      "fwupd-refresh@2026-10-11T07:59:28+03:00"
+     ]
+    },
+    {
+     "run": "E-client/oracle-non-indexed",
+     "query": "q20",
+     "framework": "django",
+     "block": 5,
+     "jobs": [
+      "fwupd-refresh@2026-10-11T10:45:01+03:00"
+     ]
+    },
+    {
+     "run": "E-client/oracle-non-indexed",
+     "query": "q20",
+     "framework": "django",
+     "block": 7,
+     "jobs": [
+      "fwupd-refresh@2026-10-11T11:02:40+03:00"
+     ]
+    },
+    {
+     "run": "E-client/commercial_a-indexed",
+     "query": "q18",
+     "framework": "django",
+     "block": 1,
+     "jobs": [
+      "fwupd-refresh@2026-10-11T12:14:40+03:00"
+     ]
+    },
+    {
+     "run": "E-client/commercial_a-indexed",
+     "query": "q18",
+     "framework": "django",
+     "block": 6,
+     "jobs": [
+      "fwupd-refresh@2026-10-11T13:15:37+03:00"
+     ]
+    },
+    {
+     "run": "E-client/commercial_a-indexed",
+     "query": "q21",
+     "framework": "django",
+     "block": 5,
+     "jobs": [
+      "fwupd-refresh@2026-10-11T14:03:51+03:00"
+     ]
+    }
+   ]
+  },
+  "C": {
+   "cells": 80,
+   "touched_blocks": 2,
+   "touched_cells": 2,
+   "pooled_median_pct": 104.69629068304289,
+   "pooled_median_pct_without_touched_blocks": 104.69629068304289,
+   "max_abs_cell_change_pct_points": 1.3626011290003248,
+   "cells_touched": [
+    {
+     "run": "C-tpcc/mysql-non-indexed",
+     "query": "T2",
+     "framework": "django",
+     "theta": 0.6443916455751333,
+     "theta_clean": 0.6458854527673065,
+     "touched_blocks": 1,
+     "blocks": 24,
+     "overhead_pct": 90.48278662556517,
+     "overhead_pct_without": 90.76754381542872
+    },
+    {
+     "run": "C-tpcc/mysql-non-indexed",
+     "query": "T2",
+     "framework": "sqlalchemy",
+     "theta": 0.41867434693551264,
+     "theta_clean": 0.42759920537023954,
+     "touched_blocks": 1,
+     "blocks": 24,
+     "overhead_pct": 51.994529934182545,
+     "overhead_pct_without": 53.35713106318287
+    }
+   ],
+   "blocks": [
+    {
+     "run": "C-tpcc/mysql-non-indexed",
+     "query": "T2",
+     "framework": "django",
+     "block": "b01",
+     "jobs": [
+      "ua-timer@2026-10-10T09:41:20+03:00"
+     ]
+    },
+    {
+     "run": "C-tpcc/mysql-non-indexed",
+     "query": "T2",
+     "framework": "sqlalchemy",
+     "block": "b01",
+     "jobs": [
+      "ua-timer@2026-10-10T09:41:20+03:00"
+     ]
+    }
+   ]
+  },
+  "F": {
+   "timed_records": 1472,
+   "overlapping_records": 7,
+   "records": [
+    {
+     "record": "F-fourpath/commercial_a-indexed-django/q19/b4/a1/timed-django-G.json.gz",
+     "jobs": [
+      "fwupd-refresh@2026-10-09T19:35:55+03:00"
+     ]
+    },
+    {
+     "record": "F-fourpath/commercial_a-indexed-sqlalchemy/q15/b2/a1/timed-sqlalchemy-G.json.gz",
+     "jobs": [
+      "fwupd-refresh@2026-10-09T20:20:01+03:00"
+     ]
+    },
+    {
+     "record": "F-fourpath/commercial_a-non-indexed-django/q21/b5/a1/timed-django-G.json.gz",
+     "jobs": [
+      "fwupd-refresh@2026-10-09T21:15:07+03:00"
+     ]
+    },
+    {
+     "record": "F-fourpath/commercial_a-non-indexed-django/q21/b8/a1/timed-django-O.json.gz",
+     "jobs": [
+      "ua-timer@2026-10-09T21:29:16+03:00"
+     ]
+    },
+    {
+     "record": "F-fourpath/v3/mysql-non-indexed-sqlalchemy/q18/b2/a1/timed-sqlalchemy-G.json.gz",
+     "jobs": [
+      "apt-daily-upgrade@2026-10-10T06:10:29+03:00"
+     ]
+    },
+    {
+     "record": "F-fourpath/v3/mysql-non-indexed-sqlalchemy/q18/b3/a1/timed-sqlalchemy-O.json.gz",
+     "jobs": [
+      "fwupd-refresh@2026-10-10T06:20:07+03:00"
+     ]
+    },
+    {
+     "record": "F-fourpath/v3/mysql-non-indexed-sqlalchemy/q18/b8/a1/timed-sqlalchemy-O.json.gz",
+     "jobs": [
+      "fwupd-refresh@2026-10-10T07:16:44+03:00"
+     ]
+    }
+   ]
+  },
+  "B": {
+   "timed_records": 32,
+   "overlapping_records": 4,
+   "records": [
+    {
+     "record": "B-censored/mysql-non-indexed-django/q13/b7/a1/probe-django-orm.json.gz",
+     "jobs": [
+      "apport-autoreport@2026-10-10T08:54:59+03:00",
+      "fwupd-refresh@2026-10-10T08:59:20+03:00"
+     ]
+    },
+    {
+     "record": "B-censored/mysql-non-indexed-django/q13/b8/a1/probe-django-orm.json.gz",
+     "jobs": [
+      "fwupd-refresh@2026-10-10T09:15:28+03:00"
+     ]
+    },
+    {
+     "record": "B-censored/postgresql-non-indexed-django/q13/b3/a1/probe-django-orm.json.gz",
+     "jobs": [
+      "fwupd-refresh@2026-10-10T01:22:23+03:00"
+     ]
+    },
+    {
+     "record": "B-censored/postgresql-non-indexed-django/q13/b7/a1/probe-django-orm.json.gz",
+     "jobs": [
+      "fwupd-refresh@2026-10-10T02:22:58+03:00"
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "G": [
+  {
+   "sql": "SELECT `lineitem`.`l_shipmode` AS `shipmode`, SUM(CASE WHEN (`orders`.`o_orderpriority` = %s OR `orders`.`o_orderpriority` = %s) THEN %s ELSE %s END) AS `high_line_count`, SUM(CASE WHEN (NOT (`orders`.`o_orderpriority` = %s) AND NOT (`orders`.`o_orderpriority` = %s)) THEN %s ELSE %s END) AS `low_line_count` FROM `lineitem` INNER JOIN `orders` ON (`lineitem`.`l_orderkey` = `orders`.`o_orderkey`) WHERE (`lineitem`.`l_commitdate` < (`lineitem`.`l_receiptdate`) AND `lineitem`.`l_receiptdate` >= %s AND `lineitem`.`l_receiptdate` < %s AND `lineitem`.`l_shipdate` < (`lineitem`.`l_commitdate`) AND `lineitem`.`l_shipmode` IN (%s, %s)) GROUP BY 1 ORDER BY 1 ASC",
+   "params": [
+    "1-URGENT",
+    "2-HIGH",
+    1,
+    0,
+    "1-URGENT",
+    "2-HIGH",
+    1,
+    0,
+    "1995-01-01",
+    "1996-01-01",
+    "TRUCK",
+    "REG AIR"
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "\n    SELECT l_shipmode,\n      SUM(CASE WHEN o_orderpriority = '1-URGENT' OR o_orderpriority = '2-HIGH'\n               THEN 1 ELSE 0 END) as high_line_count,\n      SUM(CASE WHEN o_orderpriority <> '1-URGENT' AND o_orderpriority <> '2-HIGH'\n               THEN 1 ELSE 0 END) as low_line_count\n    FROM orders, lineitem\n    WHERE o_orderkey = l_orderkey\n      AND l_shipmode IN (%s, %s)\n      AND l_commitdate < l_receiptdate\n      AND l_shipdate < l_commitdate\n      AND l_receiptdate >= %s\n      AND l_receiptdate < %s\n    GROUP BY l_shipmode\n    ORDER BY l_shipmode\n    ",
+    "values": [
+     "TRUCK",
+     "REG AIR",
+     "1995-01-01",
+     "1996-01-01"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "'TRUCK'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'REG AIR'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'1995-01-01'",
+     "bound": true,
+     "kind": "date",
+     "value_type": "str",
+     "type_source": "orm: bound as a string, as the ORM binds it (F-v2 correction 4)"
+    },
+    {
+     "literal": "'1996-01-01'",
+     "bound": true,
+     "kind": "date",
+     "value_type": "str",
+     "type_source": "orm: bound as a string, as the ORM binds it (F-v2 correction 4)"
+    }
+   ]
+  ],
+  "bound_literals": 4
+ },
+ "G_output_columns": [
+  "shipmode",
+  "high_line_count",
+  "low_line_count"
+ ]
+}

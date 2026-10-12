@@ -1,0 +1,110 @@
+{
+ "query": 13,
+ "input_id": "q13warm",
+ "parameters": {
+  "word1": "unusual",
+  "word2": "requests",
+  "like_pattern": "%unusual%requests%"
+ },
+ "ceiling_s": {
+  "type": "float",
+  "value": "14340.0"
+ },
+ "statuses": {
+  "django/sql": "ok",
+  "sqlalchemy/sql": "ok",
+  "sqlalchemy/orm": "ok",
+  "django/orm": "timeout"
+ },
+ "elapsed_s": {
+  "django/sql": {
+   "type": "float",
+   "value": "0.43932076600322034"
+  },
+  "sqlalchemy/sql": {
+   "type": "float",
+   "value": "0.39779503400131944"
+  },
+  "sqlalchemy/orm": {
+   "type": "float",
+   "value": "0.5674886269989656"
+  },
+  "django/orm": {
+   "type": "float",
+   "value": "14340.118555222001"
+  }
+ },
+ "rows": {
+  "django/sql": 42,
+  "sqlalchemy/sql": 42,
+  "sqlalchemy/orm": 42,
+  "django/orm": null
+ },
+ "comparisons": {
+  "django": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "ok",
+    "timeout"
+   ]
+  },
+  "sqlalchemy": {
+   "policy": "rc20261008-results-v3",
+   "query": 13,
+   "rows": [
+    42,
+    42
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "cross_sql": {
+   "policy": "rc20261008-results-v3",
+   "query": 13,
+   "rows": [
+    42,
+    42
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "sqlalchemy/sql"
+  },
+  "cross_orm": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "timeout",
+    "ok"
+   ]
+  }
+ },
+ "verdicts": {
+  "django": {
+   "validated": false,
+   "reason": "no result to compare: {'django/sql': 'ok', 'django/orm': 'timeout'}"
+  },
+  "sqlalchemy": {
+   "validated": true,
+   "classification": "exact",
+   "orm_path_check": true,
+   "reason": "ORM result accepted against its SQL baseline"
+  }
+ },
+ "records": {
+  "django/sql": "validate/a1/django-sql.json.gz",
+  "sqlalchemy/sql": "validate/a1/sqlalchemy-sql.json.gz",
+  "sqlalchemy/orm": "validate/a1/sqlalchemy-orm.json.gz",
+  "django/orm": "validate/a1/django-orm.json.gz"
+ },
+ "note": "validation only: elapsed times are single executions, not measurements",
+ "utc": "2026-10-08T19:59:25.371938+00:00",
+ "cairo": "2026-10-08T22:59:25.371938+03:00"
+}

@@ -1,0 +1,57 @@
+{
+ "container": {
+  "name": "rcg-oracle",
+  "image": "gvenzl/oracle-free:23.7-slim",
+  "repo_digests": [
+   "gvenzl/oracle-free@sha256:495c24f50020dc629574f7327b37b66f2019d7180a185de51955b368aae3d083"
+  ],
+  "image_architecture": "arm64",
+  "nano_cpus": 2000000000,
+  "cpuset_cpus": "0,1",
+  "memory": 3221225472,
+  "memory_swap": 3221225472,
+  "cmd": null,
+  "running": true
+ },
+ "containers_running": [
+  {
+   "BlockIO": "134MB / 180kB",
+   "CPUPerc": "0.00%",
+   "Container": "443340d55d226859af1799d82f4916db5cf096262a507ee0ba067f895d6e264f",
+   "ID": "443340d55d22",
+   "MemPerc": "1.65%",
+   "MemUsage": "50.7MiB / 3GiB",
+   "Name": "rcg-client",
+   "NetIO": "36.7kB / 25.2kB",
+   "PIDs": "1"
+  },
+  {
+   "BlockIO": "842MB / 6.86MB",
+   "CPUPerc": "0.48%",
+   "Container": "e23dcfa527dd7c2c441e79b634fee9d57501eadd2b19bd6b63be089e79cfec42",
+   "ID": "e23dcfa527dd",
+   "MemPerc": "37.85%",
+   "MemUsage": "1.136GiB / 3GiB",
+   "Name": "rcg-oracle",
+   "NetIO": "26.7kB / 29.4kB",
+   "PIDs": "66"
+  },
+  {
+   "BlockIO": "8.13GB / 640MB",
+   "CPUPerc": "99.96%",
+   "Container": "45bd032ef7a151dac127a8f04e2aa3cefaab33fffef96068d8e913c3fcc9bffd",
+   "ID": "45bd032ef7a1",
+   "MemPerc": "69.65%",
+   "MemUsage": "2.09GiB / 3GiB",
+   "Name": "rcg-mysql",
+   "NetIO": "686kB / 1.15GB",
+   "PIDs": "42"
+  }
+ ],
+ "client_image": {
+  "id": "sha256:be2e81a968f7024f343f8e189a4c33ea9c647fa7f39551a6831422d2716d015b",
+  "architecture": "arm64",
+  "created": "2026-10-08T14:01:24.595741295+03:00"
+ },
+ "recorded": "2026-10-09T21:57:56+0300"
+}

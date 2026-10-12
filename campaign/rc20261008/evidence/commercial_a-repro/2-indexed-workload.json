@@ -1,0 +1,614 @@
+{
+ "label": "indexed-workload",
+ "mode": "workload",
+ "started": {
+  "utc": "2026-10-11T17:38:52.784375+00:00",
+  "cairo": "2026-10-11T20:38:52.784375+03:00"
+ },
+ "calls": [
+  {
+   "query": 6,
+   "path": "django/sql",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.6341730509884655"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "django/sql",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.118803658988327"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "django/sql",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.371586153982207"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "django/orm",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.6472435970208608"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "django/orm",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.6172851329902187"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "django/orm",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.6153656999813393"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "sqlalchemy/sql",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.4488438210100867"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "sqlalchemy/sql",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.2057690169895068"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "sqlalchemy/sql",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.2059320929693058"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "sqlalchemy/orm",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.197735462046694"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "sqlalchemy/orm",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.1473425900330767"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "sqlalchemy/orm",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.1571348310098983"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "django/sql",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.20397983299335465"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "django/sql",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.0987342789885588"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "django/sql",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.09883231000276282"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "django/orm",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.9993260880000889"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "django/orm",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.9018432169687003"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "django/orm",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.9040536090033129"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "sqlalchemy/sql",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.17323827801737934"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "sqlalchemy/sql",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.09880041098222136"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "sqlalchemy/sql",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.09837137995054945"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "sqlalchemy/orm",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.17364077601814643"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "sqlalchemy/orm",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.09977353899739683"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "sqlalchemy/orm",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.09847282897680998"
+   },
+   "rows": 1
+  },
+  {
+   "query": 18,
+   "path": "django/sql",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.584968413983006"
+   },
+   "rows": 57
+  },
+  {
+   "query": 18,
+   "path": "django/sql",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.236933220992796"
+   },
+   "rows": 57
+  },
+  {
+   "query": 18,
+   "path": "django/sql",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.6009758539730683"
+   },
+   "rows": 57
+  },
+  {
+   "query": 18,
+   "path": "django/orm",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "338.81634020095225"
+   },
+   "rows": 57
+  },
+  {
+   "query": 18,
+   "path": "django/orm",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "362.4834871540079"
+   },
+   "rows": 57
+  },
+  {
+   "query": 18,
+   "path": "django/orm",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "361.61036278901156"
+   },
+   "rows": 57
+  },
+  {
+   "query": 18,
+   "path": "sqlalchemy/sql",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "4.796105394023471"
+   },
+   "rows": 57
+  },
+  {
+   "query": 18,
+   "path": "sqlalchemy/sql",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "4.3352858570287935"
+   },
+   "rows": 57
+  },
+  {
+   "query": 18,
+   "path": "sqlalchemy/sql",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "4.081282881030347"
+   },
+   "rows": 57
+  },
+  {
+   "query": 18,
+   "path": "sqlalchemy/orm",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "4.760212916997261"
+   },
+   "rows": 57
+  },
+  {
+   "query": 18,
+   "path": "sqlalchemy/orm",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "4.092229379049968"
+   },
+   "rows": 57
+  },
+  {
+   "query": 18,
+   "path": "sqlalchemy/orm",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "3.7144524810137227"
+   },
+   "rows": 57
+  },
+  {
+   "query": 20,
+   "path": "django/sql",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "3.265207765973173"
+   },
+   "rows": 186
+  },
+  {
+   "query": 20,
+   "path": "django/sql",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.8273221359704621"
+   },
+   "rows": 186
+  },
+  {
+   "query": 20,
+   "path": "django/sql",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.7751082140021026"
+   },
+   "rows": 186
+  },
+  {
+   "query": 20,
+   "path": "django/orm",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "4.862539534980897"
+   },
+   "rows": 186
+  },
+  {
+   "query": 20,
+   "path": "django/orm",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "3.686926476948429"
+   },
+   "rows": 186
+  },
+  {
+   "query": 20,
+   "path": "django/orm",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "3.682336502999533"
+   },
+   "rows": 186
+  },
+  {
+   "query": 20,
+   "path": "sqlalchemy/sql",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.5342396839987487"
+   },
+   "rows": 186
+  },
+  {
+   "query": 20,
+   "path": "sqlalchemy/sql",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.754311188007705"
+   },
+   "rows": 186
+  },
+  {
+   "query": 20,
+   "path": "sqlalchemy/sql",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.7504544300027192"
+   },
+   "rows": 186
+  },
+  {
+   "query": 20,
+   "path": "sqlalchemy/orm",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.946055208973121"
+   },
+   "rows": 186
+  },
+  {
+   "query": 20,
+   "path": "sqlalchemy/orm",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.9792807989870198"
+   },
+   "rows": 186
+  },
+  {
+   "query": 20,
+   "path": "sqlalchemy/orm",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.0019546909607016"
+   },
+   "rows": 186
+  },
+  {
+   "query": 21,
+   "path": "django/sql",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "15.530265622015577"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "django/sql",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "14.818560737010557"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "django/sql",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "14.697072865033988"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "django/orm",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "43.70427863497753"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "django/orm",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "44.69962399202632"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "django/orm",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "38.6188772690366"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "sqlalchemy/sql",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "18.862707699998282"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "sqlalchemy/sql",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "14.873105873994064"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "sqlalchemy/sql",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "16.131260321009904"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "sqlalchemy/orm",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "15.016344339004718"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "sqlalchemy/orm",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "14.61638911103364"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "sqlalchemy/orm",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "16.487002750043757"
+   },
+   "rows": 100
+  }
+ ],
+ "finished": {
+  "utc": "2026-10-11T18:02:35.366117+00:00",
+  "cairo": "2026-10-11T21:02:35.366117+03:00"
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "exclude_commercial_a": {
+  "n": 38,
+  "median_pct": 0.10458803999234591,
+  "ci_pct": [
+   -0.16488589514209753,
+   0.29446148678813355
+  ],
+  "above100": 0
+ },
+ "exclude_oracle": {
+  "n": 39,
+  "median_pct": 0.5406930183471528,
+  "ci_pct": [
+   -0.0463117870557175,
+   6.398362081657942
+  ],
+  "above100": 2
+ },
+ "include_numeric_mismatch_cells": {
+  "n": 53,
+  "median_pct": 0.29336813789074406,
+  "ci_pct": [
+   -0.10561643445271848,
+   0.8331395475948504
+  ],
+  "above100": 2,
+  "added": 0
+ },
+ "exclude_scale_equivalent_cells": {
+  "n": 52,
+  "median_pct": 0.293914810849553,
+  "ci_pct": [
+   -0.16488589514209753,
+   1.8546994450126408
+  ],
+  "above100": 2
+ },
+ "above100_by_schema": {
+  "indexed": [
+   2,
+   31
+  ],
+  "non-indexed": [
+   0,
+   22
+  ]
+ },
+ "censored_worst_case": {
+  "n_measured": 53,
+  "n_censored": 3,
+  "median_pct": 0.31438512983491895,
+  "measured_only_median_pct": 0.29336813789074406,
+  "above100_including_censored": 5
+ }
+}

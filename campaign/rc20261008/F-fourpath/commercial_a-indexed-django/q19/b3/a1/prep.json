@@ -1,0 +1,135 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:b7a1ea853202f9a32eefa3970547e4cd1c6c9bb1aadc692131e55daeaee28586",
+   "params": [
+    1,
+    "Brand#31",
+    "SM CASE",
+    "SM BOX",
+    "SM PACK",
+    "SM PKG",
+    1,
+    5,
+    {
+     "type": "Decimal",
+     "value": "9"
+    },
+    {
+     "type": "Decimal",
+     "value": "19"
+    },
+    "DELIVER IN PERSON",
+    "AIR",
+    "AIR REG",
+    "Brand#44",
+    "MED BAG",
+    "MED BOX",
+    "MED PKG",
+    "MED PACK",
+    1,
+    10,
+    {
+     "type": "Decimal",
+     "value": "18"
+    },
+    {
+     "type": "Decimal",
+     "value": "28"
+    },
+    "DELIVER IN PERSON",
+    "AIR",
+    "AIR REG",
+    "Brand#44",
+    "LG CASE",
+    "LG BOX",
+    "LG PACK",
+    "LG PKG",
+    1,
+    15,
+    {
+     "type": "Decimal",
+     "value": "29"
+    },
+    {
+     "type": "Decimal",
+     "value": "39"
+    },
+    "DELIVER IN PERSON",
+    "AIR",
+    "AIR REG"
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:4ac5907147edaf83b948d4d5e3ddd93e27294edb96e997788c1a64d59acd4186",
+    "values": [
+     "Brand#31",
+     {
+      "type": "Decimal",
+      "value": "9"
+     },
+     "Brand#44",
+     {
+      "type": "Decimal",
+      "value": "18"
+     },
+     "Brand#44",
+     {
+      "type": "Decimal",
+      "value": "29"
+     }
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:ff5134f3d8e044d395715c0691e303015f3b8ac7b302b5cce29413d3e1e4695e",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7",
+     "bound": true,
+     "kind": "num",
+     "value_type": "Decimal",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:c1ab0d5eab1422bf0139dc01d03be4dc237f1cf42c4ccefa7308cac2bbc3a93e",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:4ec9599fc203d176a301536c2e091a19bc852759b255bd6818810a42c5fed14a",
+     "bound": true,
+     "kind": "num",
+     "value_type": "Decimal",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:c1ab0d5eab1422bf0139dc01d03be4dc237f1cf42c4ccefa7308cac2bbc3a93e",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:35135aaa6cc23891b40cb3f378c53a17a1127210ce60e125ccf03efcfdaec458",
+     "bound": true,
+     "kind": "num",
+     "value_type": "Decimal",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 6
+ }
+}

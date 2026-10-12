@@ -1,0 +1,22 @@
+{
+ "model": "Mac16,1",
+ "cpu": "Apple M4",
+ "cores": "10",
+ "memory_bytes": "17179869184",
+ "perflevels": [
+  "4",
+  "6"
+ ],
+ "macos": "27.0.1",
+ "docker_server": "29.4.0",
+ "client_image": {
+  "id": "sha256:be2e81a968f7024f343f8e189a4c33ea9c647fa7f39551a6831422d2716d015b",
+  "repo_digests": [
+   "rcg-client@sha256:be2e81a968f7024f343f8e189a4c33ea9c647fa7f39551a6831422d2716d015b"
+  ],
+  "architecture": "arm64"
+ },
+ "power": [
+  "Now drawing from 'AC Power'"
+ ]
+}

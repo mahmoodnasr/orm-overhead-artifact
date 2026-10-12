@@ -1,0 +1,18 @@
+{
+ "query": 13,
+ "status": "complete",
+ "verdicts": {
+  "django": {
+   "validated": false,
+   "reason": "no result to compare: {'django/sql': 'ok', 'django/orm': 'timeout'}"
+  },
+  "sqlalchemy": {
+   "validated": true,
+   "classification": "exact",
+   "orm_path_check": true,
+   "reason": "ORM result accepted against its SQL baseline"
+  }
+ },
+ "utc": "2026-10-08T19:59:25.376541+00:00",
+ "cairo": "2026-10-08T22:59:25.376541+03:00"
+}

@@ -1,0 +1,19 @@
+{
+ "checks": {
+  "source_unchanged": true,
+  "indexes_unchanged": true,
+  "row_counts_unchanged": true,
+  "settings_unchanged": true,
+  "server_unchanged": true,
+  "gate_after": []
+ },
+ "cells": {
+  "6": "complete",
+  "17": "complete",
+  "18": "complete",
+  "20": "complete",
+  "21": "django result check failed in block 5: mismatch"
+ },
+ "utc": "2026-10-09T14:02:32.191636+00:00",
+ "cairo": "2026-10-09T17:02:32.191636+03:00"
+}

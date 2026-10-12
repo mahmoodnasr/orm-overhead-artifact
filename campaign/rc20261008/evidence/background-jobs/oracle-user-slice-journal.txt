@@ -1,0 +1,28 @@
+2026-10-07T17:00:21+03:00 bench-host systemd[1]: Created slice user-1001.slice - User Slice of UID 1001.
+2026-10-07T22:51:12+03:00 bench-host systemd[1]: Removed slice user-1001.slice - User Slice of UID 1001.
+2026-10-07T22:51:12+03:00 bench-host systemd[1]: user-1001.slice: Consumed 4h 3min 9.443s CPU time over 5h 50min 51.219s wall clock time, 3G memory peak.
+2026-10-08T04:47:37+03:00 bench-host systemd[1]: Created slice user-1001.slice - User Slice of UID 1001.
+2026-10-08T14:35:05+03:00 bench-host systemd[1]: Removed slice user-1001.slice - User Slice of UID 1001.
+2026-10-08T14:35:05+03:00 bench-host systemd[1]: user-1001.slice: Consumed 5h 12min 46.323s CPU time over 9h 47min 27.906s wall clock time, 3G memory peak.
+2026-10-10T21:20:48+03:00 bench-host systemd[1]: Created slice user-1001.slice - User Slice of UID 1001.
+2026-10-11T11:42:31+03:00 bench-host systemd[1]: Removed slice user-1001.slice - User Slice of UID 1001.
+2026-10-11T11:42:31+03:00 bench-host systemd[1]: user-1001.slice: Consumed 6h 56min 36.156s CPU time over 14h 21min 42.857s wall clock time, 3G memory peak.
+# drop-ins:
+==> /etc/systemd/system.control/user-1001.slice.d/50-AllowedCPUs.conf <==
+# This is a drop-in unit file extension, created via "systemctl set-property"
+# or an equivalent operation. Do not edit.
+[Slice]
+AllowedCPUs=
+AllowedCPUs=0-1
+
+==> /etc/systemd/system.control/user-1001.slice.d/50-MemoryMax.conf <==
+# This is a drop-in unit file extension, created via "systemctl set-property"
+# or an equivalent operation. Do not edit.
+[Slice]
+MemoryMax=3221225472
+
+==> /etc/systemd/system.control/user-1001.slice.d/50-MemorySwapMax.conf <==
+# This is a drop-in unit file extension, created via "systemctl set-property"
+# or an equivalent operation. Do not edit.
+[Slice]
+MemorySwapMax=0

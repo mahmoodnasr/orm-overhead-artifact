@@ -1,0 +1,54 @@
+{
+  "label": "warmup-orm",
+  "elapsed_s": {
+    "type": "float",
+    "value": "3.1161487829999714"
+  },
+  "api_statements": [
+    {
+      "sql": "withheld-sha256:4a4d1aa52e884284eedf9e96b153747751ecc1d4f56f049200dd76cfd55523a6",
+      "params": [
+        {
+          "type": "Decimal",
+          "value": "7.0"
+        },
+        "Brand#23",
+        "MED BOX",
+        {
+          "type": "Decimal",
+          "value": "0.2"
+        }
+      ],
+      "many": false
+    }
+  ],
+  "driver_statements": [
+    {
+      "sql": "withheld-sha256:9aa7faeaa0d1b26cc3ca65cafc8919f9ac6c32424214684a5144a5677f024462",
+      "args": [
+        [
+          "MED BOX",
+          {
+            "type": "Decimal",
+            "value": "7.0"
+          },
+          {
+            "type": "Decimal",
+            "value": "0.2"
+          },
+          "Brand#23"
+        ]
+      ],
+      "kwargs": {}
+    }
+  ],
+  "rows": [
+    {
+      "avg_yearly": {
+        "type": "Decimal",
+        "value": "348406.054285"
+      }
+    }
+  ],
+  "utc": "2026-09-19T12:50:34.531134+00:00"
+}

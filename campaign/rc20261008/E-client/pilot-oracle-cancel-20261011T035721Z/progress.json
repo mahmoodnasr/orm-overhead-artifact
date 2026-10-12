@@ -1,0 +1,42 @@
+{
+ "run_id": "5c2e44d7c3134748a6ffe023f19613e9",
+ "pid": 1,
+ "phase": "E",
+ "dbms": "oracle",
+ "schema": "non-indexed",
+ "scale": 1,
+ "mode": "pilot",
+ "queries": [
+  1
+ ],
+ "planned_timed": 32,
+ "counts": {
+  "saved_cancel_probe": 4,
+  "status_cancel_probe_timeout": 4,
+  "saved_cancel_followup": 4,
+  "status_cancel_followup_ok": 4
+ },
+ "environment_id": "03039a2d5bd86bdcee1f8d4ed86b081e9673ad6deecb91170cb330651e32734d",
+ "started": {
+  "utc": "2026-10-11T03:57:58.778978+00:00",
+  "cairo": "2026-10-11T06:57:58.778978+03:00"
+ },
+ "state": "complete",
+ "utc": "2026-10-11T03:58:09.909970+00:00",
+ "cairo": "2026-10-11T06:58:09.909970+03:00",
+ "current": {
+  "query": 6,
+  "path": "sqlalchemy/orm",
+  "kind": "cancel_followup",
+  "block": -1,
+  "attempt": 1,
+  "input_id": "q06s0",
+  "limit_s": 900,
+  "server_session": {
+   "sid": "179",
+   "tag": "270264"
+  },
+  "utc": "2026-10-11T03:58:07.325781+00:00",
+  "cairo": "2026-10-11T06:58:07.325781+03:00"
+ }
+}

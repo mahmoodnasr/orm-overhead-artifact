@@ -1,0 +1,16 @@
+{
+ "query": 13,
+ "status": "complete",
+ "censored": {},
+ "inexpressible": {
+  "django/orm": {
+   "error": "withheld-sha256:1921eadd4c1c1f0abbfda76ddfbba3d0d0d1a6f1cc69a066c825a99c0c78c1fb"
+  }
+ },
+ "wall_s_this_run": {
+  "type": "float",
+  "value": "3.9712203410017537"
+ },
+ "utc": "2026-10-07T23:52:10.833516+00:00",
+ "cairo": "2026-10-08T02:52:10.833516+03:00"
+}

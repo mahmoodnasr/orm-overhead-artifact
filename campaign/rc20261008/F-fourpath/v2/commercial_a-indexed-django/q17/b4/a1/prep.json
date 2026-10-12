@@ -1,0 +1,52 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:4a4d1aa52e884284eedf9e96b153747751ecc1d4f56f049200dd76cfd55523a6",
+   "params": [
+    {
+     "type": "Decimal",
+     "value": "7.0"
+    },
+    "Brand#51",
+    "MED DRUM",
+    {
+     "type": "Decimal",
+     "value": "0.2"
+    }
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:508b116472560fedcbc3915d127fc166e3a4fd946823f6c41ac993fa5b9ef6d2",
+    "values": [
+     "Brand#51",
+     "MED DRUM"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:6c4ea265fadc884c0d50c51bac6f24f9ca336d5eb4de86687ae2490d6ab9af3b",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:17f7543e8c64ec97e289c701d2e9a88248be9a31159367d127f5230545426f1c",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 2
+ },
+ "G_output_columns": [
+  "avg_yearly"
+ ]
+}

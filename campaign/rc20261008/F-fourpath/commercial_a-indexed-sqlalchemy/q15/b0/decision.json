@@ -1,0 +1,53 @@
+{
+ "query": 15,
+ "framework": "sqlalchemy",
+ "block": 0,
+ "attempt": 1,
+ "input_id": "q15warm",
+ "sequence_id": null,
+ "comparisons": {
+  "O=L": {
+   "policy": "rc20261008-results-v3",
+   "query": 15,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "exact",
+   "accepted": true
+  },
+  "G=L": {
+   "policy": "rc20261008-results-v3",
+   "query": 15,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "renamed_positionally_to_orm_columns": true
+  },
+  "B=L": {
+   "policy": "rc20261008-results-v3",
+   "query": 15,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "exact",
+   "accepted": true
+  }
+ },
+ "accepted": true,
+ "bound_literals": 4,
+ "ratios": {},
+ "policy": "rc20261008-results-v3",
+ "records": {
+  "O": "a1/warm-sqlalchemy-O.json.gz",
+  "G": "a1/warm-sqlalchemy-G.json.gz",
+  "B": "a1/warm-sqlalchemy-B.json.gz",
+  "L": "a1/warm-sqlalchemy-L.json.gz"
+ },
+ "utc": "2026-10-09T17:19:23.571453+00:00",
+ "cairo": "2026-10-09T20:19:23.571453+03:00"
+}

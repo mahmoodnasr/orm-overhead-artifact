@@ -1,0 +1,24 @@
+{
+ "plan_id": "E-commercial_a-b",
+ "purpose": "Phase E host side, commercial_a: SF1 non-indexed",
+ "first_state": "indexed",
+ "second_state": "non-indexed",
+ "steps": [
+  {
+   "id": "commercial_a-E-to-non-indexed",
+   "kind": "index",
+   "engine": "commercial_a",
+   "actions": [
+    "drop",
+    "analyze",
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "commercial_a-E-preflight-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms commercial_a --schema non-indexed"
+  }
+ ]
+}

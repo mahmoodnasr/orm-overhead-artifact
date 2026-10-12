@@ -1,0 +1,78 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:f3b067fbd524dfca056f4c322a27c81016b94850eed6a9f69556ad2a2b94d9f4",
+   "params": [
+    {
+     "type": "datetime",
+     "value": "1993-02-01T00:00:00"
+    },
+    {
+     "type": "datetime",
+     "value": "1993-05-01T00:00:00"
+    }
+   ],
+   "inputsizes": [
+    [
+     "o_orderdate_1",
+     "<class 'datetime.datetime'>",
+     "Date"
+    ],
+    [
+     "o_orderdate_2",
+     "<class 'datetime.datetime'>",
+     "Date"
+    ]
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:a7aa2b96c73ce3459d996bd79a7803150108565c27b891107d0013d796cf4389",
+    "values": [
+     {
+      "type": "datetime",
+      "value": "1993-02-01T00:00:00"
+     },
+     {
+      "type": "datetime",
+      "value": "1993-05-01T00:00:00"
+     }
+    ],
+    "binding_types": "orm",
+    "inputsizes": [
+     [
+      "b0",
+      "<class 'datetime.datetime'>",
+      "Date"
+     ],
+     [
+      "b1",
+      "<class 'datetime.datetime'>",
+      "Date"
+     ]
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:2e012711e3b2e7d4085ec4e723220925b979e6c5214d35dabc57f1cfd2473977",
+     "bound": true,
+     "kind": "date",
+     "value_type": "datetime",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:6e65489c2bfec0e72a7e845f14618225ed3d7a5d14d5c5211ef7f917ee9925d5",
+     "bound": true,
+     "kind": "date",
+     "value_type": "datetime",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 2
+ }
+}

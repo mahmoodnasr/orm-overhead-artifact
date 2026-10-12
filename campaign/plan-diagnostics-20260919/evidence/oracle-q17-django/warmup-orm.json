@@ -1,0 +1,54 @@
+{
+  "label": "warmup-orm",
+  "elapsed_s": {
+    "type": "float",
+    "value": "1406.6612343899997"
+  },
+  "api_statements": [
+    {
+      "sql": "SELECT (SUM(\"LINEITEM\".\"L_EXTENDEDPRICE\") / %s) AS \"AVG_YEARLY\" FROM \"LINEITEM\" INNER JOIN \"PART\" ON (\"LINEITEM\".\"L_PARTKEY\" = \"PART\".\"P_PARTKEY\") WHERE (\"PART\".\"P_BRAND\" = %s AND \"PART\".\"P_CONTAINER\" = %s AND \"LINEITEM\".\"L_QUANTITY\" < ((SELECT AVG(U0.\"L_QUANTITY\") AS \"AVG_Q\" FROM \"LINEITEM\" U0 WHERE U0.\"L_PARTKEY\" = (\"LINEITEM\".\"L_PARTKEY\") GROUP BY U0.\"L_PARTKEY\") * %s))",
+      "params": [
+        {
+          "type": "Decimal",
+          "value": "7.0"
+        },
+        "Brand#23",
+        "MED BOX",
+        {
+          "type": "Decimal",
+          "value": "0.2"
+        }
+      ],
+      "many": false
+    }
+  ],
+  "driver_statements": [
+    {
+      "sql": "SELECT (SUM(\"LINEITEM\".\"L_EXTENDEDPRICE\") / :arg0) AS \"AVG_YEARLY\" FROM \"LINEITEM\" INNER JOIN \"PART\" ON (\"LINEITEM\".\"L_PARTKEY\" = \"PART\".\"P_PARTKEY\") WHERE (\"PART\".\"P_BRAND\" = :arg1 AND \"PART\".\"P_CONTAINER\" = :arg2 AND \"LINEITEM\".\"L_QUANTITY\" < ((SELECT AVG(U0.\"L_QUANTITY\") AS \"AVG_Q\" FROM \"LINEITEM\" U0 WHERE U0.\"L_PARTKEY\" = (\"LINEITEM\".\"L_PARTKEY\") GROUP BY U0.\"L_PARTKEY\") * :arg3))",
+      "args": [
+        {
+          ":arg0": {
+            "type": "Decimal",
+            "value": "7.0"
+          },
+          ":arg1": "Brand#23",
+          ":arg2": "MED BOX",
+          ":arg3": {
+            "type": "Decimal",
+            "value": "0.2"
+          }
+        }
+      ],
+      "kwargs": {}
+    }
+  ],
+  "rows": [
+    {
+      "avg_yearly": {
+        "type": "Decimal",
+        "value": "348406.0542857142857142857142857142857143"
+      }
+    }
+  ],
+  "utc": "2026-09-19T14:15:27.176300+00:00"
+}

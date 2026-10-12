@@ -1,0 +1,46 @@
+{
+ "run_id": "5f99ce8318f440f097e8243065e2ed52",
+ "environment_checks_pass": true,
+ "checks": {
+  "source_unchanged": true,
+  "indexes_unchanged": true,
+  "row_counts_unchanged": true,
+  "settings_unchanged": true,
+  "server_unchanged": true,
+  "gate_after": []
+ },
+ "cells": {
+  "1": "complete",
+  "2": "complete",
+  "3": "complete",
+  "4": "complete",
+  "5": "complete",
+  "6": "complete",
+  "7": "complete",
+  "8": "complete",
+  "9": "complete",
+  "10": "complete",
+  "11": "complete",
+  "12": "complete",
+  "13": "complete",
+  "14": "complete",
+  "15": "complete",
+  "16": "complete",
+  "17": "complete",
+  "18": "complete",
+  "19": "complete",
+  "20": "complete",
+  "21": "complete",
+  "22": "complete"
+ },
+ "cells_with_unresolved_items": {},
+ "all_cells_complete_without_review": true,
+ "note": "completion means the run finished and its end checks passed; it does not mean every comparison was accepted - see decisions and cells_with_unresolved_items",
+ "counts": {
+  "saved_cell_warmup": 85,
+  "status_cell_warmup_ok": 84,
+  "status_cell_warmup_not_expressible": 1
+ },
+ "utc": "2026-10-07T23:59:40.094401+00:00",
+ "cairo": "2026-10-08T02:59:40.094401+03:00"
+}

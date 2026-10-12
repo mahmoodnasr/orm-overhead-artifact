@@ -1,0 +1,61 @@
+{
+ "container": {
+  "name": "rcg-mysql",
+  "image": "mysql:8.4.11",
+  "repo_digests": [
+   "mysql@sha256:6ea90827b1100f8f2ae306a539f86d2c264a26ed435a2a9f75551dd5c3aeb242"
+  ],
+  "image_architecture": "arm64",
+  "nano_cpus": 2000000000,
+  "cpuset_cpus": "0,1",
+  "memory": 3221225472,
+  "memory_swap": 3221225472,
+  "cmd": [
+   "--innodb-buffer-pool-size=1536M",
+   "--innodb-parallel-read-threads=1",
+   "--local-infile=1"
+  ],
+  "running": true
+ },
+ "containers_running": [
+  {
+   "BlockIO": "103MB / 180kB",
+   "CPUPerc": "0.00%",
+   "Container": "443340d55d226859af1799d82f4916db5cf096262a507ee0ba067f895d6e264f",
+   "ID": "443340d55d22",
+   "MemPerc": "1.63%",
+   "MemUsage": "50.22MiB / 3GiB",
+   "Name": "rcg-client",
+   "NetIO": "19.6kB / 18.5kB",
+   "PIDs": "1"
+  },
+  {
+   "BlockIO": "16.4GB / 274MB",
+   "CPUPerc": "4.16%",
+   "Container": "8501d34ce0a74e75d70675b068f1b78ec20928eedc2f687ab1243fc91b2cbeba",
+   "ID": "8501d34ce0a7",
+   "MemPerc": "68.14%",
+   "MemUsage": "2.044GiB / 3GiB",
+   "Name": "rcg-commercial_a",
+   "NetIO": "816kB / 312kB",
+   "PIDs": "81"
+  },
+  {
+   "BlockIO": "4.26GB / 28.5MB",
+   "CPUPerc": "99.97%",
+   "Container": "45bd032ef7a151dac127a8f04e2aa3cefaab33fffef96068d8e913c3fcc9bffd",
+   "ID": "45bd032ef7a1",
+   "MemPerc": "67.86%",
+   "MemUsage": "2.036GiB / 3GiB",
+   "Name": "rcg-mysql",
+   "NetIO": "438kB / 1.15GB",
+   "PIDs": "41"
+  }
+ ],
+ "client_image": {
+  "id": "sha256:be2e81a968f7024f343f8e189a4c33ea9c647fa7f39551a6831422d2716d015b",
+  "architecture": "arm64",
+  "created": "2026-10-08T14:01:24.595741295+03:00"
+ },
+ "recorded": "2026-10-09T14:31:32+0300"
+}

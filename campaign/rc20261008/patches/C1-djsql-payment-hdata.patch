@@ -1,0 +1,12 @@
+--- a/django_app/tpcc_queries/t2_payment.py
++++ b/django_app/tpcc_queries/t2_payment.py
+@@
+-            # Prepare h_data (truncate to 24 chars max)
+-            h_data = f"C{c_id}P{payment:.2f}"[:24]
++            # Prepare h_data (truncate to 24 chars max). The same text the
++            # other three Payment paths write: this baseline wrote
++            # "C<c_id>P<payment:.2f>", so for identical inputs its committed
++            # HISTORY row differed from the ORM path's in h_data (campaign
++            # rc20261008, transaction-state check). TPC-C 2.5.2.2 only fixes the
++            # content loosely; what matters here is that the paths agree.
++            h_data = f"Customer {c_id} paid {payment}"[:24]

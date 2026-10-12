@@ -1,0 +1,49 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:4a4d1aa52e884284eedf9e96b153747751ecc1d4f56f049200dd76cfd55523a6",
+   "params": [
+    {
+     "type": "Decimal",
+     "value": "7.0"
+    },
+    "Brand#21",
+    "SM BAG",
+    {
+     "type": "Decimal",
+     "value": "0.2"
+    }
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:508b116472560fedcbc3915d127fc166e3a4fd946823f6c41ac993fa5b9ef6d2",
+    "values": [
+     "Brand#21",
+     "SM BAG"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:8ae2d4c53e6fc8afce37e8e28fb16b6a4d4b9d1efac6aa89138d4c2cc661f420",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:ae9b9ce6b65959fd3b632eff3a1a691b46cbc946c421fa522cb991588261496f",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 2
+ }
+}

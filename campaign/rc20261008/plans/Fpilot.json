@@ -1,0 +1,67 @@
+{
+ "plan_id": "Fpilot",
+ "purpose": "Phase F pilot on Commercial System A indexed (up when phase A ends): two blocks each on Django Q4 (date literals: exercises the bound path B) and SQLAlchemy Q13; reviewed before F-v1 is frozen.",
+ "steps": [
+  {
+   "id": "commercial_a-engine",
+   "kind": "engine",
+   "engine": "commercial_a",
+   "settle": 90
+  },
+  {
+   "id": "commercial_a-sf1-verify-indexed",
+   "kind": "index",
+   "engine": "commercial_a",
+   "actions": [
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "commercial_a-Fpilot-indexed-django",
+   "kind": "run",
+   "engine": "commercial_a",
+   "resumable": false,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "pilot-F/commercial_a-indexed-django",
+    "protocol": "protocols/rc20261008-Fpilot-v1.json",
+    "phase": "Fpilot",
+    "schema": "indexed",
+    "mode": "pilot",
+    "queries": [
+     4
+    ],
+    "extra": [
+     "--framework",
+     "django",
+     "--blocks",
+     "2"
+    ]
+   }
+  },
+  {
+   "id": "commercial_a-Fpilot-indexed-sqlalchemy",
+   "kind": "run",
+   "engine": "commercial_a",
+   "resumable": false,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "pilot-F/commercial_a-indexed-sqlalchemy",
+    "protocol": "protocols/rc20261008-Fpilot-v1.json",
+    "phase": "Fpilot",
+    "schema": "indexed",
+    "mode": "pilot",
+    "queries": [
+     13
+    ],
+    "extra": [
+     "--framework",
+     "sqlalchemy",
+     "--blocks",
+     "2"
+    ]
+   }
+  }
+ ]
+}

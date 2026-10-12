@@ -1,0 +1,70 @@
+{
+ "query": 4,
+ "framework": "sqlalchemy",
+ "block": 6,
+ "attempt": 1,
+ "input_id": "q04s5",
+ "sequence_id": 0,
+ "comparisons": {
+  "O=L": {
+   "policy": "rc20261008-results-v3",
+   "query": 4,
+   "rows": [
+    5,
+    5
+   ],
+   "classification": "exact",
+   "accepted": true
+  },
+  "G=L": {
+   "policy": "rc20261008-results-v3",
+   "query": 4,
+   "rows": [
+    5,
+    5
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "renamed_positionally_to_orm_columns": true
+  },
+  "B=L": {
+   "policy": "rc20261008-results-v3",
+   "query": 4,
+   "rows": [
+    5,
+    5
+   ],
+   "classification": "exact",
+   "accepted": true
+  }
+ },
+ "accepted": true,
+ "bound_literals": 2,
+ "ratios": {
+  "O/G": {
+   "type": "float",
+   "value": "1.0070083856379413"
+  },
+  "G/B": {
+   "type": "float",
+   "value": "0.9909503649419693"
+  },
+  "B/L": {
+   "type": "float",
+   "value": "1.0060037005998288"
+  },
+  "O/L": {
+   "type": "float",
+   "value": "1.0038863920223038"
+  }
+ },
+ "policy": "rc20261008-results-v3",
+ "records": {
+  "O": "a1/timed-sqlalchemy-O.json.gz",
+  "G": "a1/timed-sqlalchemy-G.json.gz",
+  "B": "a1/timed-sqlalchemy-B.json.gz",
+  "L": "a1/timed-sqlalchemy-L.json.gz"
+ },
+ "utc": "2026-10-10T02:23:35.570108+00:00",
+ "cairo": "2026-10-10T05:23:35.570108+03:00"
+}

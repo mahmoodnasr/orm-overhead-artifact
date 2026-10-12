@@ -1,0 +1,15 @@
+{
+  "args": [
+    "/usr/bin/python3.12",
+    "scripts/1-setup/manage_indexes.py",
+    "--database",
+    "commercial_a",
+    "--action",
+    "verify",
+    "--expect",
+    "indexed"
+  ],
+  "returncode": 0,
+  "stdout": "index state on commercial_a (commercial_a): 15/15 present, 0/15 missing\n  configuration claimed: indexed  (requires all present)\n  MATCHES\n",
+  "stderr": ""
+}

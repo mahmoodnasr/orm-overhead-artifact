@@ -1,0 +1,53 @@
+{
+ "run_id": "5ac11348a42b43dba76e7e83ef198f36",
+ "environment_checks_pass": true,
+ "checks": {
+  "source_unchanged": true,
+  "indexes_unchanged": true,
+  "row_counts_unchanged": true,
+  "settings_unchanged": true,
+  "server_unchanged": true,
+  "gate_after": []
+ },
+ "cells": {
+  "2": "complete",
+  "22": "complete",
+  "16": "complete",
+  "11": "complete",
+  "6": "complete",
+  "14": "complete",
+  "13": "complete",
+  "10": "complete",
+  "4": "complete",
+  "8": "complete",
+  "3": "complete",
+  "12": "complete",
+  "7": "complete",
+  "15": "complete",
+  "19": "complete",
+  "5": "complete",
+  "18": "complete",
+  "9": "complete",
+  "21": "complete",
+  "1": "complete",
+  "20": "complete",
+  "17": "complete"
+ },
+ "cells_with_unresolved_items": {},
+ "all_cells_complete_without_review": true,
+ "note": "completion means the run finished and its end checks passed; it does not mean every comparison was accepted - see decisions and cells_with_unresolved_items",
+ "counts": {
+  "saved_cell_warmup": 88,
+  "status_cell_warmup_ok": 87,
+  "saved_block_warmup": 696,
+  "status_block_warmup_ok": 696,
+  "saved_timed": 696,
+  "status_timed_ok": 696,
+  "accepted_pairs": 344,
+  "accepted_timed": 688,
+  "status_cell_warmup_not_expressible": 1,
+  "pairs_not_run": 8
+ },
+ "utc": "2026-10-08T10:43:58.580614+00:00",
+ "cairo": "2026-10-08T13:43:58.580614+03:00"
+}

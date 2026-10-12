@@ -1,0 +1,49 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:4a4d1aa52e884284eedf9e96b153747751ecc1d4f56f049200dd76cfd55523a6",
+   "params": [
+    {
+     "type": "Decimal",
+     "value": "7.0"
+    },
+    "Brand#32",
+    "JUMBO PACK",
+    {
+     "type": "Decimal",
+     "value": "0.2"
+    }
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:508b116472560fedcbc3915d127fc166e3a4fd946823f6c41ac993fa5b9ef6d2",
+    "values": [
+     "Brand#32",
+     "JUMBO PACK"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:fd6b92c4b272cf0e8502d164a86e9d010106f2da1fe81ede78ed6e6935e25a15",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:fdcd542dac603173781eec8005b89453e958c69203baf7f5b1472a2a0d79a846",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 2
+ }
+}

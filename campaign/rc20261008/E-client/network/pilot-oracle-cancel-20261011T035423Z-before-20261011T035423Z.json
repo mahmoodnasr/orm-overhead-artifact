@@ -1,0 +1,4 @@
+{"taken": "2026-10-11T03:54:24Z",
+"ping": "60 packets transmitted, 60 packets received, +1 duplicates, 0.0% packet loss\nround-trip min/avg/max/stddev = 4.000/17.706/77.341/15.423 ms\n",
+"mac_wifi": [{"spairport_network_phymode": "802.11n", "spairport_network_channel": "3 (2GHz, 20MHz)", "spairport_network_rate": 115, "spairport_signal_noise": "-59 dBm / -97 dBm", "spairport_network_mcs": 15}, {"spairport_network_phymode": null, "spairport_network_channel": null, "spairport_network_rate": null, "spairport_signal_noise": null, "spairport_network_mcs": null}],
+"mac_power": "Now drawing from 'AC Power'"}

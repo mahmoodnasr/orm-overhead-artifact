@@ -1,0 +1,64 @@
+{
+ "attempt": 1,
+ "censored": {},
+ "inexpressible": {},
+ "errors": {},
+ "comparisons": {
+  "django": {
+   "policy": "rc20261008-results-v2",
+   "query": 16,
+   "rows": [
+    18259,
+    18259
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "django/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "sqlalchemy": {
+   "policy": "rc20261008-results-v2",
+   "query": 16,
+   "rows": [
+    18259,
+    18259
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "cross_sql": {
+   "policy": "rc20261008-results-v2",
+   "query": 16,
+   "rows": [
+    18259,
+    18259
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "sqlalchemy/sql"
+  },
+  "cross_orm": {
+   "policy": "rc20261008-results-v2",
+   "query": 16,
+   "rows": [
+    18259,
+    18259
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/orm",
+   "right": "sqlalchemy/orm"
+  }
+ }
+}

@@ -1,0 +1,172 @@
+{
+ "label": "oracle-tpcc-C-after",
+ "benchmark": "tpcc",
+ "source": {
+  "dbms": "oracle",
+  "database": "127.0.0.1:1521/FREEPDB1",
+  "user": "tpcc"
+ },
+ "started_utc": "2026-10-10T19:02:53.513210+00:00",
+ "finished_utc": "2026-10-10T19:07:05.654495+00:00",
+ "algorithm": "rc20261008-canonical-multiset-v2",
+ "tables": {
+  "warehouse": {
+   "rows": 10,
+   "multiset_sha256_sum": "f51ca66a0e7112fa54e2326748220649c094666bd4603afaf4c692bb01db78ae",
+   "columns": [
+    "w_city",
+    "w_id",
+    "w_name",
+    "w_state",
+    "w_street_1",
+    "w_street_2",
+    "w_tax",
+    "w_ytd",
+    "w_zip"
+   ],
+   "seconds": 0.0
+  },
+  "district": {
+   "rows": 100,
+   "multiset_sha256_sum": "5bd8390c33a590b1466efdcc0f4073526758a9a000e53c339d2b30d97263298f",
+   "columns": [
+    "d_city",
+    "d_id",
+    "d_name",
+    "d_next_o_id",
+    "d_state",
+    "d_street_1",
+    "d_street_2",
+    "d_tax",
+    "d_w_id",
+    "d_ytd",
+    "d_zip"
+   ],
+   "seconds": 0.01
+  },
+  "customer": {
+   "rows": 300000,
+   "multiset_sha256_sum": "2cb14ee40ba422b983b681ffccdeee4dc45fdc50a0b50db3618a2e7818787c02",
+   "columns": [
+    "c_balance",
+    "c_city",
+    "c_credit",
+    "c_credit_lim",
+    "c_d_id",
+    "c_data",
+    "c_delivery_cnt",
+    "c_discount",
+    "c_first",
+    "c_id",
+    "c_last",
+    "c_middle",
+    "c_payment_cnt",
+    "c_phone",
+    "c_since",
+    "c_state",
+    "c_street_1",
+    "c_street_2",
+    "c_w_id",
+    "c_ytd_payment",
+    "c_zip"
+   ],
+   "seconds": 14.83
+  },
+  "history": {
+   "rows": 1151447,
+   "multiset_sha256_sum": "f38d27afa2e5416da9c0bcabea3e9dc1b418ac32d13eba1bbaa42835a2a3cda9",
+   "columns": [
+    "h_amount",
+    "h_c_d_id",
+    "h_c_id",
+    "h_c_w_id",
+    "h_d_id",
+    "h_data",
+    "h_date",
+    "h_w_id"
+   ],
+   "seconds": 31.28
+  },
+  "item": {
+   "rows": 100000,
+   "multiset_sha256_sum": "6d8a8cba2cf191d932b1b112cfdd060f70ef13ea7050cca5b0249317ef2bd780",
+   "columns": [
+    "i_data",
+    "i_id",
+    "i_im_id",
+    "i_name",
+    "i_price"
+   ],
+   "seconds": 1.97
+  },
+  "stock": {
+   "rows": 1000000,
+   "multiset_sha256_sum": "a53df92e6e7e1eaec0259bc8f7fa6706be44ea52d20697fa7358780ac0d86183",
+   "columns": [
+    "s_data",
+    "s_dist_01",
+    "s_dist_02",
+    "s_dist_03",
+    "s_dist_04",
+    "s_dist_05",
+    "s_dist_06",
+    "s_dist_07",
+    "s_dist_08",
+    "s_dist_09",
+    "s_dist_10",
+    "s_i_id",
+    "s_order_cnt",
+    "s_quantity",
+    "s_remote_cnt",
+    "s_w_id",
+    "s_ytd"
+   ],
+   "seconds": 38.53
+  },
+  "order": {
+   "rows": 487249,
+   "multiset_sha256_sum": "292ae613b458434d93302917c50ce2fd284297ec6e103e10efdb09ab4eba1ae5",
+   "columns": [
+    "o_all_local",
+    "o_c_id",
+    "o_carrier_id",
+    "o_d_id",
+    "o_entry_d",
+    "o_id",
+    "o_ol_cnt",
+    "o_w_id"
+   ],
+   "seconds": 13.12
+  },
+  "new_order": {
+   "rows": 461368,
+   "multiset_sha256_sum": "de4a2f1080f099fedc173580f45e3fc84ab7e8e412ed4fa27c058ba61b2ca28f",
+   "columns": [
+    "no_d_id",
+    "no_o_id",
+    "no_w_id"
+   ],
+   "seconds": 6.93
+  },
+  "order_line": {
+   "rows": 4872798,
+   "multiset_sha256_sum": "a6bdb2900ef32f5138beadfc7f05b154a0e478d9842f13d22df51f23a3ead806",
+   "columns": [
+    "ol_amount",
+    "ol_d_id",
+    "ol_delivery_d",
+    "ol_dist_info",
+    "ol_i_id",
+    "ol_number",
+    "ol_o_id",
+    "ol_quantity",
+    "ol_supply_w_id",
+    "ol_w_id"
+   ],
+   "seconds": 145.46
+  }
+ },
+ "content_sha256": "bd8823c3693e3e76761c785917d0e6e3776301c6c68796703f7b31eaa5cfe75b",
+ "pid": 3213011,
+ "script_sha256": "68d0dd7ac99ff79bdd987c6f749d425485e95b01a2c2b4b8df2fc59dd91c6739"
+}

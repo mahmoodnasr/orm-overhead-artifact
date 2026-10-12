@@ -1,0 +1,100 @@
+{
+ "run_dir": "G-mac-server/postgresql-non-indexed-b",
+ "parameters": {
+  "protocol_id": "rc20261008-G-v1",
+  "protocol_sha256": "a61624b7bbe41953e577e1d971f5f3d0f74a21282dbeaf692e741e07ea782b6a",
+  "phase": "G",
+  "dbms": "postgresql",
+  "schema": "non-indexed",
+  "scale": 1,
+  "queries": [
+   18
+  ],
+  "timeout_s": 900,
+  "mode": "main",
+  "blocks": 8,
+  "client_mode": "second-server-mac",
+  "database_label": "mac-tpch"
+ },
+ "protocol_sha256": "a61624b7bbe41953e577e1d971f5f3d0f74a21282dbeaf692e741e07ea782b6a",
+ "environments": {
+  "c6db438af12922d60cc1d6ca8c7b8bd7fb77cb8dbb7add5fc639b73e8b8c9837": [
+   "inventory-after-cf4809fb671742d099591628833a6a20.json",
+   "inventory-before-cf4809fb671742d099591628833a6a20.json"
+  ]
+ },
+ "counts": {
+  "accepted_exact": 16,
+  "accepted_pairs": 16,
+  "accepted_timed": 32,
+  "cross_orm_exact": 8,
+  "cross_sql_exact": 8,
+  "incomplete_attempts": 0,
+  "saved_block_warmup": 32,
+  "saved_cell_warmup": 4,
+  "saved_timed": 32,
+  "status_block_warmup_ok": 32,
+  "status_cell_warmup_ok": 4,
+  "status_timed_ok": 32
+ },
+ "cells": {
+  "18": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  }
+ },
+ "paired_median_ratios": {
+  "Q18:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.99927"
+   }
+  },
+  "Q18:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.99497"
+   }
+  }
+ },
+ "problems": [],
+ "passed": true,
+ "utc": "2026-10-08T10:19:46.551086+00:00",
+ "cairo": "2026-10-08T13:19:46.551086+03:00"
+}

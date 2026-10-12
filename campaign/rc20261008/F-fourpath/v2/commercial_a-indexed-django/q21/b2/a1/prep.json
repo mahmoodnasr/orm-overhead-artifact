@@ -1,0 +1,45 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:db6fff74f581eea4197d9fc602de0b2de8cd2905b426545fdeed404379d1ddcc",
+   "params": [
+    "F",
+    "ROMANIA",
+    1,
+    true,
+    false,
+    false,
+    1,
+    true,
+    false,
+    true
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:e4e0dd4fb4983f6c4901e1ac669e8a40ec4a3179f69ffa631711f7f7c23ea2a4",
+    "values": [
+     "ROMANIA"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:3284ea3d237ccdaa2b6c73bf8df2b2ceecede1e8c38e252854b903ed5ddb3da1",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 1
+ },
+ "G_output_columns": [
+  "s_name",
+  "numwait"
+ ]
+}

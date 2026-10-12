@@ -1,0 +1,197 @@
+{
+ "plan_id": "visit-commercial_a-CD2",
+ "purpose": "Commercial System A visit part 1, resumed after the TPC-C statistics fix: C (from the drop step on; the C-v1 pilot and the TPC-C opening fingerprint were done by visit-commercial_a-CD) and D.",
+ "steps": [
+  {
+   "id": "commercial_a-engine",
+   "kind": "engine",
+   "engine": "commercial_a",
+   "settle": 90
+  },
+  {
+   "id": "commercial_a-tpcc-to-non-indexed",
+   "kind": "index",
+   "engine": "commercial_a",
+   "benchmark": "tpcc",
+   "actions": [
+    "drop"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "commercial_a-tpcc-stats-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_tpcc_stats.py"
+  },
+  {
+   "id": "commercial_a-tpcc-verify-non-indexed",
+   "kind": "index",
+   "engine": "commercial_a",
+   "benchmark": "tpcc",
+   "actions": [
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "commercial_a-tpcc-run-non-indexed",
+   "kind": "tpcc",
+   "engine": "commercial_a",
+   "args": {
+    "run_dir": "C-tpcc/commercial_a-non-indexed",
+    "protocol": "protocols/rc20261008-C-v1.json",
+    "phase": "C",
+    "src": "src-c",
+    "schema": "non-indexed",
+    "mode": "main",
+    "blocks": 24
+   }
+  },
+  {
+   "id": "commercial_a-tpcc-to-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a tpcc && cd $RC_CAMPAIGN/src && out=$(taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action create 2>&1); echo \"$out\"; echo \"$out\" | grep -q 'Summary: .* 0 failed'"
+  },
+  {
+   "id": "commercial_a-tpcc-stats-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_tpcc_stats.py"
+  },
+  {
+   "id": "commercial_a-tpcc-verify-indexed",
+   "kind": "index",
+   "engine": "commercial_a",
+   "benchmark": "tpcc",
+   "actions": [
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "commercial_a-tpcc-run-indexed",
+   "kind": "tpcc",
+   "engine": "commercial_a",
+   "args": {
+    "run_dir": "C-tpcc/commercial_a-indexed",
+    "protocol": "protocols/rc20261008-C-v1.json",
+    "phase": "C",
+    "src": "src-c",
+    "schema": "indexed",
+    "mode": "main",
+    "blocks": 24
+   }
+  },
+  {
+   "id": "commercial_a-tpcc-fp-after",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_fingerprint.py --dbms commercial_a --benchmark tpcc --label commercial_a-tpcc-C-after --out $RC_CAMPAIGN/evidence/fingerprints/commercial_a-tpcc-C-after.json && python3 -c \"import json;a=json.load(open('$RC_CAMPAIGN/evidence/fingerprints/commercial_a-tpcc-C-before.json'))['content_sha256'];b=json.load(open('$RC_CAMPAIGN/evidence/fingerprints/commercial_a-tpcc-C-after.json'))['content_sha256'];print('before',a,'after',b);assert a==b\""
+  },
+  {
+   "id": "commercial_a-sf2-load",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a tpch 1 && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_sf2_setup.py --engine commercial_a --duckdb $RC_CAMPAIGN/datasets/tpch2.duckdb --out $RC_CAMPAIGN/evidence/sf2-setup --create --load --check"
+  },
+  {
+   "id": "commercial_a-sf2-fp-before",
+   "kind": "fingerprint",
+   "engine": "commercial_a",
+   "scale": 2,
+   "label": "commercial_a-sf2-D-before",
+   "expect_source": "sf2-duckdb-source-v2.json"
+  },
+  {
+   "id": "commercial_a-sf2-to-non-indexed",
+   "kind": "index",
+   "engine": "commercial_a",
+   "scale": 2,
+   "actions": [
+    "analyze",
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "commercial_a-sf2-preflight-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a tpch 2 && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms commercial_a --schema non-indexed"
+  },
+  {
+   "id": "commercial_a-sf2-run-non-indexed",
+   "kind": "run",
+   "engine": "commercial_a",
+   "resumable": true,
+   "args": {
+    "run_dir": "D-sf2/commercial_a-non-indexed",
+    "protocol": "protocols/rc20261008-A-v1.json",
+    "phase": "D",
+    "schema": "non-indexed",
+    "scale": 2,
+    "database_label": "tpch_sf2",
+    "mode": "main",
+    "queries": [
+     6,
+     17,
+     18,
+     20,
+     21
+    ]
+   }
+  },
+  {
+   "id": "commercial_a-sf2-verify-non-indexed",
+   "kind": "verify",
+   "run_dir": "D-sf2/commercial_a-non-indexed"
+  },
+  {
+   "id": "commercial_a-sf2-to-indexed",
+   "kind": "index",
+   "engine": "commercial_a",
+   "scale": 2,
+   "actions": [
+    "create",
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "commercial_a-sf2-preflight-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a tpch 2 && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms commercial_a --schema indexed"
+  },
+  {
+   "id": "commercial_a-sf2-run-indexed",
+   "kind": "run",
+   "engine": "commercial_a",
+   "resumable": true,
+   "args": {
+    "run_dir": "D-sf2/commercial_a-indexed",
+    "protocol": "protocols/rc20261008-A-v1.json",
+    "phase": "D",
+    "schema": "indexed",
+    "scale": 2,
+    "database_label": "tpch_sf2",
+    "mode": "main",
+    "queries": [
+     6,
+     17,
+     18,
+     20,
+     21
+    ]
+   }
+  },
+  {
+   "id": "commercial_a-sf2-verify-indexed",
+   "kind": "verify",
+   "run_dir": "D-sf2/commercial_a-indexed"
+  },
+  {
+   "id": "commercial_a-sf2-fp-after",
+   "kind": "fingerprint",
+   "engine": "commercial_a",
+   "scale": 2,
+   "label": "commercial_a-sf2-D-after",
+   "expect_source": "sf2-duckdb-source-v2.json"
+  }
+ ]
+}

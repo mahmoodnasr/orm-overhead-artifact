@@ -1,0 +1,41 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:db6fff74f581eea4197d9fc602de0b2de8cd2905b426545fdeed404379d1ddcc",
+   "params": [
+    "F",
+    "JORDAN",
+    1,
+    true,
+    false,
+    false,
+    1,
+    true,
+    false,
+    true
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:e4e0dd4fb4983f6c4901e1ac669e8a40ec4a3179f69ffa631711f7f7c23ea2a4",
+    "values": [
+     "JORDAN"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:556ee4f7896ca165f262d896ba18d4b309768dddec344ff05d3fda55f47b6cda",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 1
+ }
+}

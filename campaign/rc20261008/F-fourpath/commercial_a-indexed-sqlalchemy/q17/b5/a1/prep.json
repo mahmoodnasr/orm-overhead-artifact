@@ -1,0 +1,84 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:ae7048bfbfbf32fd51d889897c496f5b9d15e8f1501712d609ed5f9e51f7fbd2",
+   "params": [
+    {
+     "type": "float",
+     "value": "7.0"
+    },
+    "Brand#25",
+    "JUMBO PACK",
+    {
+     "type": "Decimal",
+     "value": "0.2"
+    }
+   ],
+   "inputsizes": [
+    [
+     "sum_1",
+     "<class 'float'>",
+     "Numeric"
+    ],
+    [
+     "p_brand_1",
+     "12",
+     "String"
+    ],
+    [
+     "p_container_1",
+     "12",
+     "String"
+    ],
+    [
+     "avg_1",
+     "<class 'float'>",
+     "Numeric"
+    ]
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:1f342a18119a90b63ad613f19dacafebf23c34fdf2553564cb87a6d5d134140b",
+    "values": [
+     "Brand#25",
+     "JUMBO PACK"
+    ],
+    "binding_types": "orm",
+    "inputsizes": [
+     [
+      "b0",
+      "12",
+      "String"
+     ],
+     [
+      "b1",
+      "12",
+      "String"
+     ]
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:e97763347ddcd615bae92959d1440079de38c4b4f07c10ea3f3d669a10d2d426",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:fdcd542dac603173781eec8005b89453e958c69203baf7f5b1472a2a0d79a846",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 2
+ }
+}

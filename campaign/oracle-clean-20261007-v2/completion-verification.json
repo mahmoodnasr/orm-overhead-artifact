@@ -1,0 +1,36 @@
+{
+  "verified_at_utc": "2026-10-07T19:47:35.449619+00:00",
+  "completed_utc": "2026-10-07T19:43:16.276859+00:00",
+  "followup_id": "3b3b8f9c-bb10-4333-bb95-6e54d322bfbb",
+  "oracle_phase_complete": true,
+  "timed_executions_completed": 64,
+  "timed_executions_accepted": 64,
+  "timed_query_input_checks": 16,
+  "validated_inputs_by_query": {
+    "17": 8,
+    "20": 8
+  },
+  "warmup_executions": 8,
+  "warmup_input_checks": 2,
+  "all_record_hashes_and_environment_links_verified": true,
+  "source_files_unchanged": 102,
+  "indexes_unchanged": true,
+  "settings_unchanged": true,
+  "sf1_row_counts_unchanged": true,
+  "host_checks_returncode": 0,
+  "client_cpus": [
+    2,
+    3
+  ],
+  "post_run_oracle_process_affinity": [
+    0,
+    1
+  ],
+  "post_run_oracle_process_count": 47,
+  "effective_oracle_memory_max_bytes": 3221225472,
+  "effective_oracle_swap_max_bytes": 0,
+  "host_verifier_note": "The saved verifier printed ora_* affinity: (db down); its PMON default is uppercase FREE while the actual SID is lowercase free. Direct post-run process-affinity and ancestor-cgroup reads confirmed CPUs 0-1, a 3 GiB inherited memory limit and swap limit 0. No remote settings were changed.",
+  "final_gates_passed": true,
+  "system_a_q18_started": false,
+  "broader_reviewer_experiments_complete": false
+}

@@ -1,0 +1,148 @@
+{
+ "query": 6,
+ "block": 3,
+ "attempt": 1,
+ "sequence_id": 2,
+ "input_id": "q06s2",
+ "frameworks": {
+  "django": {
+   "accepted": true,
+   "classification": "exact",
+   "orm_path_check": true,
+   "status": "accepted"
+  },
+  "sqlalchemy": {
+   "accepted": true,
+   "classification": "exact",
+   "orm_path_check": true,
+   "status": "accepted"
+  }
+ },
+ "comparisons_timed": {
+  "django": {
+   "policy": "rc20261008-results-v2",
+   "query": 6,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "django/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "sqlalchemy": {
+   "policy": "rc20261008-results-v2",
+   "query": 6,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "cross_sql": {
+   "policy": "rc20261008-results-v2",
+   "query": 6,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "sqlalchemy/sql"
+  },
+  "cross_orm": {
+   "policy": "rc20261008-results-v2",
+   "query": 6,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/orm",
+   "right": "sqlalchemy/orm"
+  }
+ },
+ "comparisons_block_warmup": {
+  "django": {
+   "policy": "rc20261008-results-v2",
+   "query": 6,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "django/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "sqlalchemy": {
+   "policy": "rc20261008-results-v2",
+   "query": 6,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "cross_sql": {
+   "policy": "rc20261008-results-v2",
+   "query": 6,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "sqlalchemy/sql"
+  },
+  "cross_orm": {
+   "policy": "rc20261008-results-v2",
+   "query": 6,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/orm",
+   "right": "sqlalchemy/orm"
+  }
+ },
+ "timed_records": {
+  "sqlalchemy/orm": "a1/timed-sqlalchemy-orm.json.gz",
+  "sqlalchemy/sql": "a1/timed-sqlalchemy-sql.json.gz",
+  "django/orm": "a1/timed-django-orm.json.gz",
+  "django/sql": "a1/timed-django-sql.json.gz"
+ },
+ "skipped": {},
+ "stop_cell": null,
+ "policy": "rc20261008-results-v2",
+ "utc": "2026-10-08T00:14:51.490831+00:00",
+ "cairo": "2026-10-08T03:14:51.490831+03:00"
+}

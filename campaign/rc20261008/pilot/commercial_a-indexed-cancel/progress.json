@@ -1,0 +1,44 @@
+{
+ "run_id": "c4e8671ca4914038866095c595ef3bf4",
+ "pid": 335993,
+ "phase": "P",
+ "dbms": "commercial_a",
+ "schema": "indexed",
+ "scale": 1,
+ "mode": "pilot",
+ "queries": [
+  1,
+  6
+ ],
+ "planned_timed": 64,
+ "counts": {
+  "saved_cancel_probe": 1,
+  "status_cancel_probe_timeout": 1
+ },
+ "environment_id": "08c0c42513f0959a691ea14fb71b5be2c538d034847f0af648239a5796b7c679",
+ "started": {
+  "utc": "2026-10-07T23:45:25.797946+00:00",
+  "cairo": "2026-10-08T02:45:25.797946+03:00"
+ },
+ "state": "failed_fatal",
+ "utc": "2026-10-07T23:46:32.137087+00:00",
+ "cairo": "2026-10-08T02:46:32.137087+03:00",
+ "current": {
+  "query": 1,
+  "path": "django/sql",
+  "kind": "cancel_probe",
+  "block": -1,
+  "attempt": 1,
+  "input_id": "q01s0",
+  "limit_s": {
+   "type": "float",
+   "value": "1.0"
+  },
+  "server_session": {
+   "sid": "65",
+   "tag": "2026-10-08T02:45:23.587"
+  },
+  "utc": "2026-10-07T23:45:25.838971+00:00",
+  "cairo": "2026-10-08T02:45:25.838971+03:00"
+ }
+}

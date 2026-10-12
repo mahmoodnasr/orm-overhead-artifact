@@ -1,0 +1,19 @@
+{
+ "protocol_id": "rc20261008-Fpilot-v1",
+ "protocol_sha256": "604b8c751e46f1cf322072bb4ba09ed6a337f2ba64a05ea5395ce8dcf2958039",
+ "phase": "Fpilot",
+ "dbms": "commercial_a",
+ "schema": "indexed",
+ "scale": 1,
+ "queries": [
+  13
+ ],
+ "timeout_s": {
+  "type": "float",
+  "value": "900.0"
+ },
+ "mode": "pilot",
+ "blocks": 2,
+ "client_mode": "same-host",
+ "database_label": "tpch"
+}

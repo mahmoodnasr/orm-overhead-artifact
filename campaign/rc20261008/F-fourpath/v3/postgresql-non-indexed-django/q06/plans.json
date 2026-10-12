@@ -1,0 +1,189 @@
+{
+ "G": [
+  {
+   "ok": true,
+   "plan": [
+    [
+     [
+      {
+       "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": {
+         "type": "float",
+         "value": "257099.27"
+        },
+        "Total Cost": {
+         "type": "float",
+         "value": "257099.29"
+        },
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+         {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "lineitem",
+          "Alias": "lineitem",
+          "Startup Cost": {
+           "type": "float",
+           "value": "0.0"
+          },
+          "Total Cost": {
+           "type": "float",
+           "value": "256524.78"
+          },
+          "Plan Rows": 114899,
+          "Plan Width": 12,
+          "Disabled": false,
+          "Filter": "((l_discount >= 0.05) AND (l_discount <= 0.07) AND (l_quantity < '24'::numeric) AND (l_shipdate >= '1994-01-01'::date) AND (l_shipdate < '1995-01-01'::date))"
+         }
+        ]
+       },
+       "JIT": {
+        "Functions": 5,
+        "Options": {
+         "Inlining": false,
+         "Optimization": false,
+         "Expressions": true,
+         "Deforming": true
+        }
+       }
+      }
+     ]
+    ]
+   ]
+  }
+ ],
+ "B": [
+  {
+   "ok": true,
+   "plan": [
+    [
+     [
+      {
+       "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": {
+         "type": "float",
+         "value": "257099.27"
+        },
+        "Total Cost": {
+         "type": "float",
+         "value": "257099.29"
+        },
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+         {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "lineitem",
+          "Alias": "lineitem",
+          "Startup Cost": {
+           "type": "float",
+           "value": "0.0"
+          },
+          "Total Cost": {
+           "type": "float",
+           "value": "256524.78"
+          },
+          "Plan Rows": 114899,
+          "Plan Width": 12,
+          "Disabled": false,
+          "Filter": "((l_shipdate >= '1994-01-01'::date) AND (l_shipdate < '1995-01-01'::date) AND (l_discount >= 0.05) AND (l_discount <= 0.07) AND (l_quantity < '24'::numeric))"
+         }
+        ]
+       },
+       "JIT": {
+        "Functions": 5,
+        "Options": {
+         "Inlining": false,
+         "Optimization": false,
+         "Expressions": true,
+         "Deforming": true
+        }
+       }
+      }
+     ]
+    ]
+   ]
+  }
+ ],
+ "L": [
+  {
+   "ok": true,
+   "plan": [
+    [
+     [
+      {
+       "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": {
+         "type": "float",
+         "value": "257099.27"
+        },
+        "Total Cost": {
+         "type": "float",
+         "value": "257099.29"
+        },
+        "Plan Rows": 1,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Plans": [
+         {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "lineitem",
+          "Alias": "lineitem",
+          "Startup Cost": {
+           "type": "float",
+           "value": "0.0"
+          },
+          "Total Cost": {
+           "type": "float",
+           "value": "256524.78"
+          },
+          "Plan Rows": 114899,
+          "Plan Width": 12,
+          "Disabled": false,
+          "Filter": "((l_shipdate >= '1994-01-01'::date) AND (l_shipdate < '1995-01-01'::date) AND (l_discount >= 0.05) AND (l_discount <= 0.07) AND (l_quantity < '24'::numeric))"
+         }
+        ]
+       },
+       "JIT": {
+        "Functions": 5,
+        "Options": {
+         "Inlining": false,
+         "Optimization": false,
+         "Expressions": true,
+         "Deforming": true
+        }
+       }
+      }
+     ]
+    ]
+   ]
+  }
+ ],
+ "note": "EXPLAIN without execution, once per cell on input set 0, outside every timer"
+}

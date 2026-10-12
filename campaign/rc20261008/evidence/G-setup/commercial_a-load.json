@@ -1,0 +1,8 @@
+{
+ "engine": "commercial_a",
+ "ddl": "withheld-sha256:94c0eafc545dc707a5ccf5af323b496625fe59ed045eeaa33f462e697c8c1218",
+ "ddl_statements": 10,
+ "loader": "load_commercial_a.py",
+ "seconds": 387.8,
+ "duckdb_sha256": "1cf7eb225fef71fd88c9683110f53a6e02a24792bd62b89afad9111757b1d8db"
+}

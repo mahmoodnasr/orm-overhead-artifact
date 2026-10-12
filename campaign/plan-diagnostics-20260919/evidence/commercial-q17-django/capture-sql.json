@@ -1,0 +1,36 @@
+{
+  "elapsed_s": {
+    "type": "float",
+    "value": "0.7616136960000404"
+  },
+  "driver_statements": [
+    {
+      "sql": "withheld-sha256:16e9775e3ee0744745a511fe4f7b95cd54f838218b058c5e32f45095ae96cb55",
+      "args": [
+        []
+      ],
+      "kwargs": {}
+    }
+  ],
+  "rows": [
+    {
+      "avg_yearly": {
+        "type": "Decimal",
+        "value": "348406.054285"
+      }
+    }
+  ],
+  "same_driver_sql_and_bindings": true,
+  "matches_function_results": {
+    "exact_named_ordered_equal": true,
+    "rows": [
+      1,
+      1
+    ],
+    "differences": [],
+    "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+  },
+  "actual_plan_count": 1,
+  "runtime_counter_count": 36,
+  "capture": "same-backend statement replay with original bindings; STATISTICS XML ON"
+}

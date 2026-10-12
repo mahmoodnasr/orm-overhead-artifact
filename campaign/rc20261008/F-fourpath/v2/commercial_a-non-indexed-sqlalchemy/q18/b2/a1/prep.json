@@ -1,0 +1,48 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:9fdfa48c4893f53f203e27e924c72883b611402fc35eb5db01859262d9cb2dee",
+   "params": [
+    314
+   ],
+   "inputsizes": [
+    [
+     "sum_1",
+     "<class 'float'>",
+     "Integer"
+    ]
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:20820a20880230056d97570e72325c56af8869b09ee054764894691d7ef39e48",
+    "values": [
+     314
+    ],
+    "binding_types": "orm",
+    "inputsizes": [
+     [
+      "b0",
+      "<class 'float'>",
+      "Integer"
+     ]
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:748064be03a08df81e31bd6f9e7e7c4cc9f84b4401b9a3c6e85b7ff816d3ba68",
+     "bound": true,
+     "kind": "num",
+     "value_type": "int",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 1
+ },
+ "G_output_columns": null
+}

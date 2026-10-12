@@ -1,0 +1,8 @@
+{
+ "engine": "mysql",
+ "ddl": "scripts/1-setup/schema_mysql.sql",
+ "ddl_statements": 8,
+ "loader": "load_mysql.py",
+ "seconds": 140.0,
+ "duckdb_sha256": "1cf7eb225fef71fd88c9683110f53a6e02a24792bd62b89afad9111757b1d8db"
+}

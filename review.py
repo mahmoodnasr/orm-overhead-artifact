@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Verify the public release and reproduce all four systems without a database."""
+"""Verify the public release and reproduce its results without a database.
+
+Two datasets: the revision campaign rc20261008 under campaign/, whose records
+the manuscript's results come from, and the September 2026 SF1 measurements
+under results/sf1/, which the manuscript compares them with.
+"""
 
 from __future__ import annotations
 
@@ -289,6 +294,9 @@ def verify() -> dict:
         "Expected 80 transaction cells on both paths",
     )
     require(throughput_rows == 960, "Expected 960 public throughput records")
+    campaign = None
+    if "campaign/SHA256SUMS" in manifest["files"]:
+        campaign = campaign_module().verify()
     report = {
         "files_verified": len(manifest["files"]),
         "coverage_cells": 432,
@@ -300,8 +308,17 @@ def verify() -> dict:
         "transactional_cells": len(transaction_paths) // 2,
         "throughput_rows": throughput_rows,
     }
+    if campaign is not None:
+        report["campaign"] = campaign
     print(json.dumps(report, indent=2))
     return report
+
+
+def campaign_module():
+    sys.path.insert(0, str(ROOT / "analysis"))
+    import campaign  # noqa: PLC0415
+
+    return campaign
 
 
 def reproduce() -> None:
@@ -380,6 +397,8 @@ def reproduce() -> None:
             figure.read_bytes().startswith(b"%PDF-") and figure.stat().st_size > 1000,
             f"Invalid figure: {figure.name}",
         )
+    if "campaign" in report:
+        report["campaign"].update(campaign_module().reproduce(output / "campaign"))
     report.update(
         {
             "reference_outputs_matched": checked,
@@ -396,6 +415,11 @@ def reproduce() -> None:
     print(
         f"PASS: {len(checked)} retained outputs match the reference; {len(figures)} figures rebuilt."
     )
+    if "campaign" in report:
+        print(
+            f"PASS: {len(report['campaign']['campaign_outputs_matched'])} campaign outputs "
+            "rebuilt from the released records match the reference."
+        )
 
 
 def main() -> int:

@@ -1,0 +1,42 @@
+cell,selection,overhead_pct,paper_overhead_pct,orm_vs_generated_pct,generated_vs_bound_pct,bound_vs_literal_pct,dominant,dominant_share_of_log_gap
+mysql indexed Q12 django,seeded random sample,-7.7613,-7.5393,0.6557,-8.3657,0.0855,G/B formulation,1.0813726153833298
+mysql indexed Q15 django,paper > +100 %,108.3024,109.4975,0.1906,107.7595,0.1414,G/B formulation,0.9964436689068907
+mysql indexed Q04 sqlalchemy,seeded random sample,0.1249,0.0477,0.3886,-0.2791,0.1105,O/G client,
+mysql non-indexed Q15 django,paper > +100 %,101.3764,101.3666,0.0284,101.4117,-0.0249,G/B formulation,1.0002503955185291
+mysql non-indexed Q22 django,seeded random sample,3.2313,1.9011,1.6033,0.5113,1.1786,O/G client,0.5001531706320516
+mysql non-indexed Q18 sqlalchemy,seeded random sample,-0.0887,-0.3606,-0.0817,-0.0903,0.093,B/L binding,
+oracle indexed Q02 django,paper > +100 %,192.7321,197.8445,4.7821,87.6697,49.8026,G/B formulation,0.5860911861950485
+oracle indexed Q07 django,seeded random sample,0.0956,0.5231,-0.162,0.4365,-0.1823,G/B formulation,
+oracle indexed Q08 django,seeded random sample,-0.2379,0.5024,0.3794,-0.6955,-0.0617,G/B formulation,
+oracle indexed Q15 django,paper > +100 %,108.9948,106.7737,0.1954,105.8074,1.0205,G/B formulation,0.9791510320089115
+oracle indexed Q15 sqlalchemy,paper > +100 %,147.3031,146.0715,0.2415,0.1596,146.6181,B/L binding,0.9969366167606851
+oracle non-indexed Q02 django,paper > +100 %,219.7597,224.6047,3.3258,133.1073,33.8735,G/B formulation,0.7280875558817319
+oracle non-indexed Q07 django,seeded random sample,0.7049,-0.5618,0.6438,0.239,-0.0731,O/G client,
+oracle non-indexed Q15 django,paper > +100 %,107.883,106.7337,-0.0391,105.7158,0.6851,G/B formulation,0.9856795000467091
+oracle non-indexed Q12 sqlalchemy,seeded random sample,-2.6436,-2.6331,0.1775,-0.0781,-3.0874,B/L binding,1.1705352032977034
+oracle non-indexed Q15 sqlalchemy,paper > +100 %,148.3727,145.7328,0.2337,0.1693,147.9474,B/L binding,0.9981161918933963
+postgresql indexed Q07 django,seeded random sample,1.2448,0.2927,0.643,0.1001,-0.03,O/G client,0.5180933236162977
+postgresql indexed Q22 sqlalchemy,seeded random sample,1.238,1.0204,1.5074,-0.3105,0.1222,O/G client,1.2159885387995635
+postgresql non-indexed Q06 django,seeded random sample,45.7147,45.3012,0.0633,45.9458,0.0136,G/B formulation,1.0042093014429034
+postgresql non-indexed Q10 sqlalchemy,seeded random sample,0.2938,0.2268,0.3378,-0.2784,0.1914,O/G client,
+commercial_a indexed Q04 django,paper > +100 %,767.2562,689.8257,-1.8284,766.7527,9.6244,G/B formulation,0.999731161547765
+commercial_a indexed Q17 django,paper > +100 %,795.7752,803.0258,0.4712,654.4183,20.5362,G/B formulation,0.9216688766580053
+commercial_a indexed Q19 django,paper > +100 %,204.0926,100.8958,-0.1317,189.6453,4.5317,G/B formulation,0.9562337266476483
+commercial_a indexed Q20 django,paper > +100 %,107.7303,102.1798,-0.2452,2015.4617,-90.3163,G/B formulation,4.17450645722513
+commercial_a indexed Q21 django,paper > +100 %,141.1142,175.3603,3.0779,132.3711,0.5905,G/B formulation,0.9580331817377026
+commercial_a indexed Q04 sqlalchemy,seeded random sample,4.3418,11.6006,0.4772,-0.185,3.5643,B/L binding,0.8240224684116225
+commercial_a indexed Q10 sqlalchemy,seeded random sample,3.3888,4.126,0.308,0.9966,2.1575,B/L binding,0.6404988258516736
+commercial_a indexed Q13 sqlalchemy,paper > +100 %,117.0672,137.8214,0.0653,0.151,117.4142,B/L binding,1.0020609433355736
+commercial_a indexed Q15 sqlalchemy,paper > +100 %,256.9524,251.6108,0.0657,2.2722,248.7044,B/L binding,0.9816274166325648
+commercial_a indexed Q17 sqlalchemy,paper > +100 %,190.5125,198.1495,1.9272,184.6238,0.6089,G/B formulation,0.9807981724049294
+commercial_a indexed Q19 sqlalchemy,phase A > +100 % (127 %),128.1728,69.1269,-0.1158,129.1153,-0.2945,G/B formulation,1.0049969311526545
+commercial_a non-indexed Q04 django,paper > +100 %,1215.2899,630.5128,0.7989,911.249,5.9821,G/B formulation,0.897979277817235
+commercial_a non-indexed Q15 django,paper > +100 %,98.6073,111.7413,0.1569,-7.0292,112.595,B/L binding,1.0991889738192282
+commercial_a non-indexed Q21 django,paper > +100 %,1473.7609,1620.1069,-1.7879,1516.4525,-3.0335,G/B formulation,1.0097116048326322
+commercial_a non-indexed Q03 sqlalchemy,seeded random sample,7.0174,3.6625,-0.0595,-0.0448,6.9704,B/L binding,0.9935230127285329
+commercial_a non-indexed Q13 sqlalchemy,paper > +100 %,116.8099,137.9295,0.0693,-0.0076,117.2084,B/L binding,1.0023729751806607
+commercial_a non-indexed Q15 sqlalchemy,paper > +100 %,259.3005,118.1556,-0.0353,2.6362,250.0623,B/L binding,0.9796339537618112
+commercial_a non-indexed Q18 sqlalchemy,seeded random sample,0.1863,-0.1453,0.1131,-0.0544,0.1967,B/L binding,
+oracle non-indexed Q17 django,"October four-path diagnostic, reused (R1-4)",76397.0247,75799.6953,0.06,76206.1973,-0.6195,G/B formulation,0.9996238327098356
+oracle non-indexed Q20 django,"October four-path diagnostic, reused (R1-4)",17324.2117,31103.3468,-0.199,18912.7215,-1.6738,G/B formulation,1.0169069872936574
+commercial_a indexed Q18 django,"October four-path diagnostic, reused (R1-4)",6330.7859,6309.0665,-0.1148,-0.1633,6330.6244,B/L binding,0.9999939683463973

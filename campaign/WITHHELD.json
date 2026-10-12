@@ -1,0 +1,269 @@
+{
+ "note": "Files of the campaign record that are not released, with the SHA-256 of each original. Commercial System A plans and DDL are withheld under its licence; the other entries are host-administration, synchronisation, backup or progress-tracking tools.",
+ "files": [
+  {
+   "path": "campaign/rc20261008/F-fourpath/commercial_a-indexed-django/q04/plans.json",
+   "original_sha256": "9ce2a859097ce9810d8339446807e0494f65794185f3efd0983a682bd501e594",
+   "bytes": 14136,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/commercial_a-indexed-django/q17/plans.json",
+   "original_sha256": "e64fa61f46a0b7d982dfdd41f7a2799f3149e4465e890432784534e7aa495c19",
+   "bytes": 25607,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/commercial_a-indexed-django/q19/plans.json",
+   "original_sha256": "23cebf7d37b2739f19ab51f7ade4155e6feae879ff27f77505607787458f7da0",
+   "bytes": 39987,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/commercial_a-indexed-django/q20/plans.json",
+   "original_sha256": "6f9a3fb1aeb6b425b3941c866c3cd18f2d34b0292e562fc356bc80c02b6a9f34",
+   "bytes": 51926,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/commercial_a-indexed-django/q21/plans.json",
+   "original_sha256": "0b243fc248dab74e4b702001c63c80e8de18a414a0383aff910c44d75a64fd00",
+   "bytes": 52369,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/commercial_a-indexed-sqlalchemy/q04/plans.json",
+   "original_sha256": "cdb6084c3b53c2fbff757c4a6e2344769836b2670c6f986d106aa7f9adf562db",
+   "bytes": 13858,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/commercial_a-indexed-sqlalchemy/q10/plans.json",
+   "original_sha256": "225cd7fd17c15cdca84e9d39a46d3d38efc83fae02ceb737b7269573a516a483",
+   "bytes": 39332,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/commercial_a-indexed-sqlalchemy/q13/plans.json",
+   "original_sha256": "0ce414b585a0952d65ac8b197c6ed73ae244a715097533225f742a50629b8c5c",
+   "bytes": 14445,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/commercial_a-indexed-sqlalchemy/q15/plans.json",
+   "original_sha256": "9a50977458ec970fb215d8386082379e7b191a87bb8108c4cc6b7c569a06dd04",
+   "bytes": 22477,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/commercial_a-indexed-sqlalchemy/q17/plans.json",
+   "original_sha256": "fb80c865b53b21d93128da650e9257b2b49e7cd9c90227b5124fae1a05c814de",
+   "bytes": 25433,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/commercial_a-indexed-sqlalchemy/q19/plans.json",
+   "original_sha256": "83dc517006d9b0b2d30926fca0ded42c64c8d79801f102034cd47b084fd84247",
+   "bytes": 39564,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/commercial_a-non-indexed-django/q04/plans.json",
+   "original_sha256": "043a78285bc5de128cb8018bdbd13ac959da869fe07b941cab65b8b0116c11fb",
+   "bytes": 14524,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/commercial_a-non-indexed-django/q15/plans.json",
+   "original_sha256": "8a3c16e0b9f15b9080c74b467072587a0c635c4e05e19e3cc967118a4bc4c64e",
+   "bytes": 22305,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/commercial_a-non-indexed-django/q21/plans.json",
+   "original_sha256": "65242aca44e9cb19aecbb4f71a62246272db3e29b488d1ba2cc7153f8824d43d",
+   "bytes": 33572,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/v2/commercial_a-indexed-django/q04/plans.json",
+   "original_sha256": "a3f74ddd3d6e06fd493250373e764ab2d1cfd4ed022f9f95b7b9df68cc123574",
+   "bytes": 42453,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/v2/commercial_a-indexed-django/q17/plans.json",
+   "original_sha256": "031e2ed4647606cb899b8e77c9cb28c222bab1dc8964d1ab0240d2d1346cae46",
+   "bytes": 50131,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/v2/commercial_a-indexed-django/q19/plans.json",
+   "original_sha256": "edcb7f226ce165a0fe13966deb0552b44c5debaf88784867799a97303ef83974",
+   "bytes": 39990,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/v2/commercial_a-indexed-django/q20/plans.json",
+   "original_sha256": "7a522f346f85c5598d1d743d3224628bf058226d79c8332ad76c73166dd07ed9",
+   "bytes": 92624,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/v2/commercial_a-indexed-django/q21/plans.json",
+   "original_sha256": "f122aca5bee6364a478322849885953bd7077bdc078268864f5a304edd33931f",
+   "bytes": 143345,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/v2/commercial_a-non-indexed-django/q04/plans.json",
+   "original_sha256": "04d1cd668805b13336d18ae8e34cc24d855172a1046e5e21b240ba34772cc9a5",
+   "bytes": 38784,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/v2/commercial_a-non-indexed-django/q15/plans.json",
+   "original_sha256": "b1f5b12626b0b03865ba500b7b57a289927f374b029e073d04816267d7110eb9",
+   "bytes": 68984,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/v2/commercial_a-non-indexed-django/q21/plans.json",
+   "original_sha256": "62a2f86b35bb87cd1b84f8b34c793f44f8c29d1cf056094e982970fe447bb896",
+   "bytes": 95699,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/v2/commercial_a-non-indexed-sqlalchemy/q03/plans.json",
+   "original_sha256": "d4b5b1d4804b125fbc8010292f5b2773f8767c3a495bb303bb2327394be57db6",
+   "bytes": 26639,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/v2/commercial_a-non-indexed-sqlalchemy/q13/plans.json",
+   "original_sha256": "dd87779750f2936ce6d58206199e8314f82f8a69825259f216f638d57b35bb95",
+   "bytes": 14224,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/v2/commercial_a-non-indexed-sqlalchemy/q15/plans.json",
+   "original_sha256": "1010309a3f1b144516b268dc42b83d1ee85f3199e6fd2139ef2da717e2de3c29",
+   "bytes": 22023,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/F-fourpath/v2/commercial_a-non-indexed-sqlalchemy/q18/plans.json",
+   "original_sha256": "9bbb1acd72402b135c71ceb6fe70685437e972a2df8d61c20a9b80e385aec106",
+   "bytes": 31813,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/pilot-F/commercial_a-indexed-django/q04/plans.json",
+   "original_sha256": "21ed60fdeeef74a137b827d420db47725f2148c9471a7100f4de722f6bed377c",
+   "bytes": 12116,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/pilot-F/commercial_a-indexed-sqlalchemy/q13/plans.json",
+   "original_sha256": "22df3663522d97d2ca7881c859aaa74d92f1b8cff108af75e79267f69a7087cd",
+   "bytes": 12817,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/pilot-F2/commercial_a-indexed-django/q04/plans.json",
+   "original_sha256": "5ebbb7e444eef6a3ad4371618efd011f4510731abb5b1f9b04ee5185d35dd647",
+   "bytes": 14136,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/pilot-F2/commercial_a-indexed-sqlalchemy/q13/plans.json",
+   "original_sha256": "ee546631059aedc94180aeb8d211bae26b15e1d3507186dcaeb2bf09a313de11",
+   "bytes": 14445,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/plans/client-plans-commercial_a.json",
+   "original_sha256": "9bbc0bdc49556a83bf550be35466b0f65488a44c85515986e8676061025f3ecd",
+   "bytes": 866,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/evidence/root-helper/rc-campaign-root.after-2026-10-10",
+   "original_sha256": "4ced8945d7b7d2216ac3879dcf131c0448d2d842fc610a9e2c57ca634a1b8a2f",
+   "bytes": 5997,
+   "reason": "privileged host-administration helper; not needed to verify measurements"
+  },
+  {
+   "path": "campaign/rc20261008/evidence/root-helper/rc-campaign-root.after-2026-10-11",
+   "original_sha256": "41e13226bb69a963aca1f7e3cf1b1cfbb465e0680ca7b5396f1c41d136a76a0f",
+   "bytes": 5997,
+   "reason": "privileged host-administration helper; not needed to verify measurements"
+  },
+  {
+   "path": "campaign/rc20261008/evidence/root-helper/rc-campaign-root.before-2026-10-10",
+   "original_sha256": "aa979a43b6f15ba78b4ee012940bbef049c163a79dc082128e91ead0f16cf51a",
+   "bytes": 5997,
+   "reason": "privileged host-administration helper; not needed to verify measurements"
+  },
+  {
+   "path": "campaign/rc20261008/evidence/sf2-setup/commercial_a-sf2-ddl.sql",
+   "original_sha256": "146a886006609be774a554ddec79c59f29529947bf3349cbd7c45bbacc8c6d09",
+   "bytes": 5947,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/rc20261008/code/rc_progress_report.py",
+   "original_sha256": "2d21f40e6d82b776be00ec72561871cf2810a0f56c218665906179208bd01e7f",
+   "bytes": 15646,
+   "reason": "internal reviewer-progress tracker; not part of measurement"
+  },
+  {
+   "path": "campaign/rc20261008/code/rc_sync.sh",
+   "original_sha256": "8dd655e4efc72ae719cea65bb7a9acc1c6b923d63538599fca2ee1efc1871319",
+   "bytes": 2293,
+   "reason": "host and client synchronisation (private addresses); not part of measurement"
+  },
+  {
+   "path": "campaign/rc20261008/code/rc_vault.sh",
+   "original_sha256": "ed23224169ce9899c4960dfa8d9782bb287dda4422ab3c191293c11c667432a5",
+   "bytes": 4106,
+   "reason": "private backup snapshots; not part of measurement"
+  },
+  {
+   "path": "campaign/plan-diagnostics-20260919/evidence/collector-probe-v2/capture-sql-plan-0.sqlplan",
+   "original_sha256": "c46e3fcf00aaf84b07f668570cc865c73d046a1e699b18e4d9fc0d2d14b36da4",
+   "bytes": 4340,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/plan-diagnostics-20260919/evidence/commercial-plan-claim-checks.json",
+   "original_sha256": "4551b66d3061477986ea758f363a0b3e4fe715190c4cbd6f70eb6d8b774296ff",
+   "bytes": 426,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/plan-diagnostics-20260919/evidence/commercial-q17-django/capture-orm-plan-0.sqlplan",
+   "original_sha256": "8d15d14d7a8f239afe8c67c978c898018f69fc2ed306a1226ddd73fecc02662b",
+   "bytes": 30986,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/plan-diagnostics-20260919/evidence/commercial-q17-django/capture-sql-plan-0.sqlplan",
+   "original_sha256": "abf6396a8da06e4ab7ba752cf7bc38d0c39a3e576ed4815f2a6a6cef4ba16d06",
+   "bytes": 29110,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/plan-diagnostics-20260919/evidence/commercial-q18-django/capture-orm-plan-0.sqlplan",
+   "original_sha256": "828fe394979cf5f6646ded1719dd1be0c62edf49f04e746d587c89a39fe8a2a6",
+   "bytes": 34170,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  },
+  {
+   "path": "campaign/plan-diagnostics-20260919/evidence/commercial-q18-django/capture-sql-plan-0.sqlplan",
+   "original_sha256": "b4af18bcd30fdfffd6153481c0f26817535d874401ac26b4764f5d90e678a3b8",
+   "bytes": 38780,
+   "reason": "Commercial System A execution plan, DDL or plan-derived capture"
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+  "elapsed_s": {
+    "type": "float",
+    "value": "3.439179935000084"
+  },
+  "driver_statements": [
+    {
+      "sql": "withheld-sha256:9aa7faeaa0d1b26cc3ca65cafc8919f9ac6c32424214684a5144a5677f024462",
+      "args": [
+        [
+          "MED BOX",
+          {
+            "type": "Decimal",
+            "value": "7.0"
+          },
+          {
+            "type": "Decimal",
+            "value": "0.2"
+          },
+          "Brand#23"
+        ]
+      ],
+      "kwargs": {}
+    }
+  ],
+  "rows": [
+    {
+      "avg_yearly": {
+        "type": "Decimal",
+        "value": "348406.054285"
+      }
+    }
+  ],
+  "same_driver_sql_and_bindings": true,
+  "matches_function_results": {
+    "exact_named_ordered_equal": true,
+    "rows": [
+      1,
+      1
+    ],
+    "differences": [],
+    "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+  },
+  "actual_plan_count": 1,
+  "runtime_counter_count": 32,
+  "capture": "same-backend statement replay with original bindings; STATISTICS XML ON"
+}

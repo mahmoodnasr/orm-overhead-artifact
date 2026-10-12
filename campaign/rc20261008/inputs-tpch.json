@@ -1,0 +1,2000 @@
+{
+ "generator": "tpch_paramsets",
+ "seed": 20260902,
+ "n_sets": 8,
+ "generator_sha256": "dfe2f97fc803409340b6d3f0549542ff6d2233746fab3f8c0925202dde950970",
+ "note": "Set 0 is the TPC-H qualification instance; sets 1-7 seeded substitutions. Q18 set 0 = 300 (qualification), sets 1-7 drawn from 312-315.",
+ "queries": {
+  "1": {
+   "warmup": {
+    "date": {
+     "type": "date",
+     "value": "1998-09-26"
+    },
+    "delta": 66
+   },
+   "sets": [
+    {
+     "date": {
+      "type": "date",
+      "value": "1998-09-02"
+     },
+     "delta": 90
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1998-09-25"
+     },
+     "delta": 67
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1998-09-04"
+     },
+     "delta": 88
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1998-08-05"
+     },
+     "delta": 118
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1998-08-27"
+     },
+     "delta": 96
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1998-09-27"
+     },
+     "delta": 65
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1998-08-19"
+     },
+     "delta": 104
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1998-08-06"
+     },
+     "delta": 117
+    }
+   ],
+   "set_ids": [
+    "q01s0",
+    "q01s1",
+    "q01s2",
+    "q01s3",
+    "q01s4",
+    "q01s5",
+    "q01s6",
+    "q01s7"
+   ]
+  },
+  "2": {
+   "warmup": {
+    "size": 28,
+    "type_suffix": "BRASS",
+    "region": "EUROPE"
+   },
+   "sets": [
+    {
+     "size": 15,
+     "type_suffix": "BRASS",
+     "region": "EUROPE"
+    },
+    {
+     "size": 7,
+     "type_suffix": "STEEL",
+     "region": "ASIA"
+    },
+    {
+     "size": 13,
+     "type_suffix": "TIN",
+     "region": "MIDDLE EAST"
+    },
+    {
+     "size": 21,
+     "type_suffix": "NICKEL",
+     "region": "AMERICA"
+    },
+    {
+     "size": 23,
+     "type_suffix": "STEEL",
+     "region": "AFRICA"
+    },
+    {
+     "size": 17,
+     "type_suffix": "NICKEL",
+     "region": "EUROPE"
+    },
+    {
+     "size": 21,
+     "type_suffix": "BRASS",
+     "region": "AFRICA"
+    },
+    {
+     "size": 33,
+     "type_suffix": "BRASS",
+     "region": "MIDDLE EAST"
+    }
+   ],
+   "set_ids": [
+    "q02s0",
+    "q02s1",
+    "q02s2",
+    "q02s3",
+    "q02s4",
+    "q02s5",
+    "q02s6",
+    "q02s7"
+   ]
+  },
+  "3": {
+   "warmup": {
+    "segment": "HOUSEHOLD",
+    "date": {
+     "type": "date",
+     "value": "1995-03-24"
+    }
+   },
+   "sets": [
+    {
+     "segment": "BUILDING",
+     "date": {
+      "type": "date",
+      "value": "1995-03-15"
+     }
+    },
+    {
+     "segment": "FURNITURE",
+     "date": {
+      "type": "date",
+      "value": "1995-03-27"
+     }
+    },
+    {
+     "segment": "MACHINERY",
+     "date": {
+      "type": "date",
+      "value": "1995-03-17"
+     }
+    },
+    {
+     "segment": "HOUSEHOLD",
+     "date": {
+      "type": "date",
+      "value": "1995-03-19"
+     }
+    },
+    {
+     "segment": "AUTOMOBILE",
+     "date": {
+      "type": "date",
+      "value": "1995-03-02"
+     }
+    },
+    {
+     "segment": "MACHINERY",
+     "date": {
+      "type": "date",
+      "value": "1995-03-06"
+     }
+    },
+    {
+     "segment": "BUILDING",
+     "date": {
+      "type": "date",
+      "value": "1995-03-12"
+     }
+    },
+    {
+     "segment": "AUTOMOBILE",
+     "date": {
+      "type": "date",
+      "value": "1995-03-21"
+     }
+    }
+   ],
+   "set_ids": [
+    "q03s0",
+    "q03s1",
+    "q03s2",
+    "q03s3",
+    "q03s4",
+    "q03s5",
+    "q03s6",
+    "q03s7"
+   ]
+  },
+  "4": {
+   "warmup": {
+    "date": {
+     "type": "date",
+     "value": "1993-11-01"
+    },
+    "date_end": {
+     "type": "date",
+     "value": "1994-02-01"
+    }
+   },
+   "sets": [
+    {
+     "date": {
+      "type": "date",
+      "value": "1993-07-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1993-10-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1996-07-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1996-10-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1993-02-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1993-05-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1995-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1995-04-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1994-08-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1994-11-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1996-11-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1997-02-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1994-02-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1994-05-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1995-04-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1995-07-01"
+     }
+    }
+   ],
+   "set_ids": [
+    "q04s0",
+    "q04s1",
+    "q04s2",
+    "q04s3",
+    "q04s4",
+    "q04s5",
+    "q04s6",
+    "q04s7"
+   ]
+  },
+  "5": {
+   "warmup": {
+    "region": "AMERICA",
+    "date": {
+     "type": "date",
+     "value": "1996-01-01"
+    },
+    "date_end": {
+     "type": "date",
+     "value": "1997-01-01"
+    }
+   },
+   "sets": [
+    {
+     "region": "ASIA",
+     "date": {
+      "type": "date",
+      "value": "1994-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1995-01-01"
+     }
+    },
+    {
+     "region": "AFRICA",
+     "date": {
+      "type": "date",
+      "value": "1997-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1998-01-01"
+     }
+    },
+    {
+     "region": "AMERICA",
+     "date": {
+      "type": "date",
+      "value": "1993-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1994-01-01"
+     }
+    },
+    {
+     "region": "AFRICA",
+     "date": {
+      "type": "date",
+      "value": "1996-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1997-01-01"
+     }
+    },
+    {
+     "region": "EUROPE",
+     "date": {
+      "type": "date",
+      "value": "1995-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1996-01-01"
+     }
+    },
+    {
+     "region": "AMERICA",
+     "date": {
+      "type": "date",
+      "value": "1995-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1996-01-01"
+     }
+    },
+    {
+     "region": "AFRICA",
+     "date": {
+      "type": "date",
+      "value": "1993-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1994-01-01"
+     }
+    },
+    {
+     "region": "EUROPE",
+     "date": {
+      "type": "date",
+      "value": "1997-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1998-01-01"
+     }
+    }
+   ],
+   "set_ids": [
+    "q05s0",
+    "q05s1",
+    "q05s2",
+    "q05s3",
+    "q05s4",
+    "q05s5",
+    "q05s6",
+    "q05s7"
+   ]
+  },
+  "6": {
+   "warmup": {
+    "date": {
+     "type": "date",
+     "value": "1995-01-01"
+    },
+    "discount": {
+     "type": "float",
+     "value": "0.09"
+    },
+    "quantity": 25,
+    "date_end": {
+     "type": "date",
+     "value": "1996-01-01"
+    },
+    "disc_lo": {
+     "type": "Decimal",
+     "value": "0.08"
+    },
+    "disc_hi": {
+     "type": "Decimal",
+     "value": "0.10"
+    }
+   },
+   "sets": [
+    {
+     "date": {
+      "type": "date",
+      "value": "1994-01-01"
+     },
+     "discount": {
+      "type": "float",
+      "value": "0.06"
+     },
+     "quantity": 24,
+     "date_end": {
+      "type": "date",
+      "value": "1995-01-01"
+     },
+     "disc_lo": {
+      "type": "Decimal",
+      "value": "0.05"
+     },
+     "disc_hi": {
+      "type": "Decimal",
+      "value": "0.07"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1994-01-01"
+     },
+     "discount": {
+      "type": "float",
+      "value": "0.08"
+     },
+     "quantity": 25,
+     "date_end": {
+      "type": "date",
+      "value": "1995-01-01"
+     },
+     "disc_lo": {
+      "type": "Decimal",
+      "value": "0.07"
+     },
+     "disc_hi": {
+      "type": "Decimal",
+      "value": "0.09"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1996-01-01"
+     },
+     "discount": {
+      "type": "float",
+      "value": "0.03"
+     },
+     "quantity": 25,
+     "date_end": {
+      "type": "date",
+      "value": "1997-01-01"
+     },
+     "disc_lo": {
+      "type": "Decimal",
+      "value": "0.02"
+     },
+     "disc_hi": {
+      "type": "Decimal",
+      "value": "0.04"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1995-01-01"
+     },
+     "discount": {
+      "type": "float",
+      "value": "0.05"
+     },
+     "quantity": 25,
+     "date_end": {
+      "type": "date",
+      "value": "1996-01-01"
+     },
+     "disc_lo": {
+      "type": "Decimal",
+      "value": "0.04"
+     },
+     "disc_hi": {
+      "type": "Decimal",
+      "value": "0.06"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1993-01-01"
+     },
+     "discount": {
+      "type": "float",
+      "value": "0.03"
+     },
+     "quantity": 24,
+     "date_end": {
+      "type": "date",
+      "value": "1994-01-01"
+     },
+     "disc_lo": {
+      "type": "Decimal",
+      "value": "0.02"
+     },
+     "disc_hi": {
+      "type": "Decimal",
+      "value": "0.04"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1994-01-01"
+     },
+     "discount": {
+      "type": "float",
+      "value": "0.09"
+     },
+     "quantity": 24,
+     "date_end": {
+      "type": "date",
+      "value": "1995-01-01"
+     },
+     "disc_lo": {
+      "type": "Decimal",
+      "value": "0.08"
+     },
+     "disc_hi": {
+      "type": "Decimal",
+      "value": "0.10"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1995-01-01"
+     },
+     "discount": {
+      "type": "float",
+      "value": "0.07"
+     },
+     "quantity": 25,
+     "date_end": {
+      "type": "date",
+      "value": "1996-01-01"
+     },
+     "disc_lo": {
+      "type": "Decimal",
+      "value": "0.06"
+     },
+     "disc_hi": {
+      "type": "Decimal",
+      "value": "0.08"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1996-01-01"
+     },
+     "discount": {
+      "type": "float",
+      "value": "0.08"
+     },
+     "quantity": 24,
+     "date_end": {
+      "type": "date",
+      "value": "1997-01-01"
+     },
+     "disc_lo": {
+      "type": "Decimal",
+      "value": "0.07"
+     },
+     "disc_hi": {
+      "type": "Decimal",
+      "value": "0.09"
+     }
+    }
+   ],
+   "set_ids": [
+    "q06s0",
+    "q06s1",
+    "q06s2",
+    "q06s3",
+    "q06s4",
+    "q06s5",
+    "q06s6",
+    "q06s7"
+   ]
+  },
+  "7": {
+   "warmup": {
+    "nation1": "IRAN",
+    "nation2": "UNITED STATES"
+   },
+   "sets": [
+    {
+     "nation1": "FRANCE",
+     "nation2": "GERMANY"
+    },
+    {
+     "nation1": "SAUDI ARABIA",
+     "nation2": "UNITED STATES"
+    },
+    {
+     "nation1": "JORDAN",
+     "nation2": "ETHIOPIA"
+    },
+    {
+     "nation1": "ROMANIA",
+     "nation2": "UNITED KINGDOM"
+    },
+    {
+     "nation1": "MOROCCO",
+     "nation2": "KENYA"
+    },
+    {
+     "nation1": "CHINA",
+     "nation2": "BRAZIL"
+    },
+    {
+     "nation1": "INDONESIA",
+     "nation2": "IRAN"
+    },
+    {
+     "nation1": "MOZAMBIQUE",
+     "nation2": "UNITED KINGDOM"
+    }
+   ],
+   "set_ids": [
+    "q07s0",
+    "q07s1",
+    "q07s2",
+    "q07s3",
+    "q07s4",
+    "q07s5",
+    "q07s6",
+    "q07s7"
+   ]
+  },
+  "8": {
+   "warmup": {
+    "nation": "PERU",
+    "region": "AMERICA",
+    "type": "PROMO BURNISHED BRASS"
+   },
+   "sets": [
+    {
+     "nation": "BRAZIL",
+     "region": "AMERICA",
+     "type": "ECONOMY ANODIZED STEEL"
+    },
+    {
+     "nation": "INDIA",
+     "region": "ASIA",
+     "type": "STANDARD BURNISHED TIN"
+    },
+    {
+     "nation": "FRANCE",
+     "region": "EUROPE",
+     "type": "LARGE PLATED NICKEL"
+    },
+    {
+     "nation": "ARGENTINA",
+     "region": "AMERICA",
+     "type": "SMALL BURNISHED COPPER"
+    },
+    {
+     "nation": "CANADA",
+     "region": "AMERICA",
+     "type": "SMALL BRUSHED TIN"
+    },
+    {
+     "nation": "ETHIOPIA",
+     "region": "AFRICA",
+     "type": "LARGE BRUSHED NICKEL"
+    },
+    {
+     "nation": "IRAQ",
+     "region": "MIDDLE EAST",
+     "type": "SMALL ANODIZED STEEL"
+    },
+    {
+     "nation": "UNITED STATES",
+     "region": "AMERICA",
+     "type": "STANDARD BRUSHED COPPER"
+    }
+   ],
+   "set_ids": [
+    "q08s0",
+    "q08s1",
+    "q08s2",
+    "q08s3",
+    "q08s4",
+    "q08s5",
+    "q08s6",
+    "q08s7"
+   ]
+  },
+  "9": {
+   "warmup": {
+    "color": "deep"
+   },
+   "sets": [
+    {
+     "color": "green"
+    },
+    {
+     "color": "cornsilk"
+    },
+    {
+     "color": "olive"
+    },
+    {
+     "color": "antique"
+    },
+    {
+     "color": "papaya"
+    },
+    {
+     "color": "lace"
+    },
+    {
+     "color": "snow"
+    },
+    {
+     "color": "sky"
+    }
+   ],
+   "set_ids": [
+    "q09s0",
+    "q09s1",
+    "q09s2",
+    "q09s3",
+    "q09s4",
+    "q09s5",
+    "q09s6",
+    "q09s7"
+   ]
+  },
+  "10": {
+   "warmup": {
+    "date": {
+     "type": "date",
+     "value": "1994-04-01"
+    },
+    "date_end": {
+     "type": "date",
+     "value": "1994-07-01"
+    }
+   },
+   "sets": [
+    {
+     "date": {
+      "type": "date",
+      "value": "1993-10-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1994-01-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1995-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1995-04-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1994-07-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1994-10-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1994-02-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1994-05-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1994-06-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1994-09-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1994-05-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1994-08-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1993-05-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1993-08-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1994-12-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1995-03-01"
+     }
+    }
+   ],
+   "set_ids": [
+    "q10s0",
+    "q10s1",
+    "q10s2",
+    "q10s3",
+    "q10s4",
+    "q10s5",
+    "q10s6",
+    "q10s7"
+   ]
+  },
+  "11": {
+   "warmup": {
+    "nation": "INDIA",
+    "fraction": {
+     "type": "float",
+     "value": "0.0001"
+    }
+   },
+   "sets": [
+    {
+     "nation": "GERMANY",
+     "fraction": {
+      "type": "float",
+      "value": "0.0001"
+     }
+    },
+    {
+     "nation": "CANADA",
+     "fraction": {
+      "type": "float",
+      "value": "0.0001"
+     }
+    },
+    {
+     "nation": "FRANCE",
+     "fraction": {
+      "type": "float",
+      "value": "0.0001"
+     }
+    },
+    {
+     "nation": "KENYA",
+     "fraction": {
+      "type": "float",
+      "value": "0.0001"
+     }
+    },
+    {
+     "nation": "EGYPT",
+     "fraction": {
+      "type": "float",
+      "value": "0.0001"
+     }
+    },
+    {
+     "nation": "ROMANIA",
+     "fraction": {
+      "type": "float",
+      "value": "0.0001"
+     }
+    },
+    {
+     "nation": "JORDAN",
+     "fraction": {
+      "type": "float",
+      "value": "0.0001"
+     }
+    },
+    {
+     "nation": "ARGENTINA",
+     "fraction": {
+      "type": "float",
+      "value": "0.0001"
+     }
+    }
+   ],
+   "set_ids": [
+    "q11s0",
+    "q11s1",
+    "q11s2",
+    "q11s3",
+    "q11s4",
+    "q11s5",
+    "q11s6",
+    "q11s7"
+   ]
+  },
+  "12": {
+   "warmup": {
+    "shipmode1": "AIR",
+    "shipmode2": "FOB",
+    "date": {
+     "type": "date",
+     "value": "1994-01-01"
+    },
+    "date_end": {
+     "type": "date",
+     "value": "1995-01-01"
+    }
+   },
+   "sets": [
+    {
+     "shipmode1": "MAIL",
+     "shipmode2": "SHIP",
+     "date": {
+      "type": "date",
+      "value": "1994-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1995-01-01"
+     }
+    },
+    {
+     "shipmode1": "REG AIR",
+     "shipmode2": "AIR",
+     "date": {
+      "type": "date",
+      "value": "1997-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1998-01-01"
+     }
+    },
+    {
+     "shipmode1": "TRUCK",
+     "shipmode2": "RAIL",
+     "date": {
+      "type": "date",
+      "value": "1993-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1994-01-01"
+     }
+    },
+    {
+     "shipmode1": "TRUCK",
+     "shipmode2": "MAIL",
+     "date": {
+      "type": "date",
+      "value": "1993-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1994-01-01"
+     }
+    },
+    {
+     "shipmode1": "RAIL",
+     "shipmode2": "SHIP",
+     "date": {
+      "type": "date",
+      "value": "1995-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1996-01-01"
+     }
+    },
+    {
+     "shipmode1": "TRUCK",
+     "shipmode2": "REG AIR",
+     "date": {
+      "type": "date",
+      "value": "1995-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1996-01-01"
+     }
+    },
+    {
+     "shipmode1": "TRUCK",
+     "shipmode2": "FOB",
+     "date": {
+      "type": "date",
+      "value": "1995-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1996-01-01"
+     }
+    },
+    {
+     "shipmode1": "AIR",
+     "shipmode2": "SHIP",
+     "date": {
+      "type": "date",
+      "value": "1997-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1998-01-01"
+     }
+    }
+   ],
+   "set_ids": [
+    "q12s0",
+    "q12s1",
+    "q12s2",
+    "q12s3",
+    "q12s4",
+    "q12s5",
+    "q12s6",
+    "q12s7"
+   ]
+  },
+  "13": {
+   "warmup": {
+    "word1": "unusual",
+    "word2": "requests",
+    "like_pattern": "%unusual%requests%"
+   },
+   "sets": [
+    {
+     "word1": "special",
+     "word2": "requests",
+     "like_pattern": "%special%requests%"
+    },
+    {
+     "word1": "pending",
+     "word2": "accounts",
+     "like_pattern": "%pending%accounts%"
+    },
+    {
+     "word1": "unusual",
+     "word2": "packages",
+     "like_pattern": "%unusual%packages%"
+    },
+    {
+     "word1": "express",
+     "word2": "requests",
+     "like_pattern": "%express%requests%"
+    },
+    {
+     "word1": "special",
+     "word2": "deposits",
+     "like_pattern": "%special%deposits%"
+    },
+    {
+     "word1": "express",
+     "word2": "deposits",
+     "like_pattern": "%express%deposits%"
+    },
+    {
+     "word1": "pending",
+     "word2": "packages",
+     "like_pattern": "%pending%packages%"
+    },
+    {
+     "word1": "express",
+     "word2": "accounts",
+     "like_pattern": "%express%accounts%"
+    }
+   ],
+   "set_ids": [
+    "q13s0",
+    "q13s1",
+    "q13s2",
+    "q13s3",
+    "q13s4",
+    "q13s5",
+    "q13s6",
+    "q13s7"
+   ]
+  },
+  "14": {
+   "warmup": {
+    "date": {
+     "type": "date",
+     "value": "1993-09-01"
+    },
+    "date_end": {
+     "type": "date",
+     "value": "1993-10-01"
+    }
+   },
+   "sets": [
+    {
+     "date": {
+      "type": "date",
+      "value": "1995-09-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1995-10-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1995-03-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1995-04-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1997-11-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1997-12-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1995-10-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1995-11-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1994-07-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1994-08-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1995-05-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1995-06-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1996-03-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1996-04-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1995-02-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1995-03-01"
+     }
+    }
+   ],
+   "set_ids": [
+    "q14s0",
+    "q14s1",
+    "q14s2",
+    "q14s3",
+    "q14s4",
+    "q14s5",
+    "q14s6",
+    "q14s7"
+   ]
+  },
+  "15": {
+   "warmup": {
+    "date": {
+     "type": "date",
+     "value": "1996-10-01"
+    },
+    "date_end": {
+     "type": "date",
+     "value": "1997-01-01"
+    }
+   },
+   "sets": [
+    {
+     "date": {
+      "type": "date",
+      "value": "1996-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1996-04-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1997-04-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1997-07-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1993-11-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1994-02-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1993-01-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1993-04-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1995-10-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1996-01-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1995-11-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1996-02-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1993-06-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1993-09-01"
+     }
+    },
+    {
+     "date": {
+      "type": "date",
+      "value": "1997-05-01"
+     },
+     "date_end": {
+      "type": "date",
+      "value": "1997-08-01"
+     }
+    }
+   ],
+   "set_ids": [
+    "q15s0",
+    "q15s1",
+    "q15s2",
+    "q15s3",
+    "q15s4",
+    "q15s5",
+    "q15s6",
+    "q15s7"
+   ]
+  },
+  "16": {
+   "warmup": {
+    "brand": "Brand#14",
+    "type": "STANDARD POLISHED",
+    "sizes": [
+     11,
+     20,
+     22,
+     28,
+     29,
+     34,
+     45,
+     46
+    ],
+    "sizes_sql": "11, 20, 22, 28, 29, 34, 45, 46"
+   },
+   "sets": [
+    {
+     "brand": "Brand#45",
+     "type": "MEDIUM POLISHED",
+     "sizes": [
+      49,
+      14,
+      23,
+      45,
+      19,
+      3,
+      36,
+      9
+     ],
+     "sizes_sql": "49, 14, 23, 45, 19, 3, 36, 9"
+    },
+    {
+     "brand": "Brand#43",
+     "type": "PROMO BRUSHED",
+     "sizes": [
+      2,
+      4,
+      22,
+      23,
+      25,
+      29,
+      38,
+      45
+     ],
+     "sizes_sql": "2, 4, 22, 23, 25, 29, 38, 45"
+    },
+    {
+     "brand": "Brand#11",
+     "type": "STANDARD POLISHED",
+     "sizes": [
+      2,
+      11,
+      12,
+      17,
+      34,
+      41,
+      49,
+      50
+     ],
+     "sizes_sql": "2, 11, 12, 17, 34, 41, 49, 50"
+    },
+    {
+     "brand": "Brand#15",
+     "type": "PROMO ANODIZED",
+     "sizes": [
+      3,
+      7,
+      8,
+      23,
+      25,
+      26,
+      35,
+      43
+     ],
+     "sizes_sql": "3, 7, 8, 23, 25, 26, 35, 43"
+    },
+    {
+     "brand": "Brand#43",
+     "type": "SMALL PLATED",
+     "sizes": [
+      1,
+      4,
+      6,
+      7,
+      17,
+      27,
+      35,
+      47
+     ],
+     "sizes_sql": "1, 4, 6, 7, 17, 27, 35, 47"
+    },
+    {
+     "brand": "Brand#25",
+     "type": "SMALL POLISHED",
+     "sizes": [
+      1,
+      6,
+      11,
+      14,
+      26,
+      38,
+      40,
+      47
+     ],
+     "sizes_sql": "1, 6, 11, 14, 26, 38, 40, 47"
+    },
+    {
+     "brand": "Brand#55",
+     "type": "PROMO POLISHED",
+     "sizes": [
+      5,
+      6,
+      12,
+      13,
+      22,
+      24,
+      29,
+      50
+     ],
+     "sizes_sql": "5, 6, 12, 13, 22, 24, 29, 50"
+    },
+    {
+     "brand": "Brand#14",
+     "type": "SMALL POLISHED",
+     "sizes": [
+      8,
+      11,
+      14,
+      19,
+      27,
+      32,
+      41,
+      49
+     ],
+     "sizes_sql": "8, 11, 14, 19, 27, 32, 41, 49"
+    }
+   ],
+   "set_ids": [
+    "q16s0",
+    "q16s1",
+    "q16s2",
+    "q16s3",
+    "q16s4",
+    "q16s5",
+    "q16s6",
+    "q16s7"
+   ]
+  },
+  "17": {
+   "warmup": {
+    "brand": "Brand#13",
+    "container": "LG CAN"
+   },
+   "sets": [
+    {
+     "brand": "Brand#23",
+     "container": "MED BOX"
+    },
+    {
+     "brand": "Brand#54",
+     "container": "MED CAN"
+    },
+    {
+     "brand": "Brand#12",
+     "container": "SM PACK"
+    },
+    {
+     "brand": "Brand#51",
+     "container": "MED DRUM"
+    },
+    {
+     "brand": "Brand#25",
+     "container": "JUMBO PACK"
+    },
+    {
+     "brand": "Brand#21",
+     "container": "SM BAG"
+    },
+    {
+     "brand": "Brand#32",
+     "container": "JUMBO PACK"
+    },
+    {
+     "brand": "Brand#33",
+     "container": "WRAP BOX"
+    }
+   ],
+   "set_ids": [
+    "q17s0",
+    "q17s1",
+    "q17s2",
+    "q17s3",
+    "q17s4",
+    "q17s5",
+    "q17s6",
+    "q17s7"
+   ]
+  },
+  "18": {
+   "warmup": {
+    "quantity": 315
+   },
+   "sets": [
+    {
+     "quantity": 300
+    },
+    {
+     "quantity": 314
+    },
+    {
+     "quantity": 315
+    },
+    {
+     "quantity": 313
+    },
+    {
+     "quantity": 312
+    },
+    {
+     "quantity": 312
+    },
+    {
+     "quantity": 313
+    },
+    {
+     "quantity": 315
+    }
+   ],
+   "set_ids": [
+    "q18s0",
+    "q18s1",
+    "q18s2",
+    "q18s3",
+    "q18s4",
+    "q18s5",
+    "q18s6",
+    "q18s7"
+   ]
+  },
+  "19": {
+   "warmup": {
+    "brand1": "Brand#44",
+    "brand2": "Brand#44",
+    "brand3": "Brand#22",
+    "quantity1": 1,
+    "quantity2": 10,
+    "quantity3": 27
+   },
+   "sets": [
+    {
+     "brand1": "Brand#12",
+     "brand2": "Brand#23",
+     "brand3": "Brand#34",
+     "quantity1": 1,
+     "quantity2": 10,
+     "quantity3": 20
+    },
+    {
+     "brand1": "Brand#11",
+     "brand2": "Brand#24",
+     "brand3": "Brand#23",
+     "quantity1": 1,
+     "quantity2": 18,
+     "quantity3": 28
+    },
+    {
+     "brand1": "Brand#31",
+     "brand2": "Brand#44",
+     "brand3": "Brand#44",
+     "quantity1": 9,
+     "quantity2": 18,
+     "quantity3": 29
+    },
+    {
+     "brand1": "Brand#43",
+     "brand2": "Brand#32",
+     "brand3": "Brand#45",
+     "quantity1": 1,
+     "quantity2": 17,
+     "quantity3": 22
+    },
+    {
+     "brand1": "Brand#42",
+     "brand2": "Brand#31",
+     "brand3": "Brand#22",
+     "quantity1": 1,
+     "quantity2": 15,
+     "quantity3": 25
+    },
+    {
+     "brand1": "Brand#54",
+     "brand2": "Brand#22",
+     "brand3": "Brand#41",
+     "quantity1": 10,
+     "quantity2": 15,
+     "quantity3": 26
+    },
+    {
+     "brand1": "Brand#15",
+     "brand2": "Brand#23",
+     "brand3": "Brand#31",
+     "quantity1": 1,
+     "quantity2": 10,
+     "quantity3": 22
+    },
+    {
+     "brand1": "Brand#41",
+     "brand2": "Brand#12",
+     "brand3": "Brand#24",
+     "quantity1": 4,
+     "quantity2": 17,
+     "quantity3": 20
+    }
+   ],
+   "set_ids": [
+    "q19s0",
+    "q19s1",
+    "q19s2",
+    "q19s3",
+    "q19s4",
+    "q19s5",
+    "q19s6",
+    "q19s7"
+   ]
+  },
+  "20": {
+   "warmup": {
+    "color": "frosted",
+    "date": {
+     "type": "date",
+     "value": "1994-01-01"
+    },
+    "nation": "SAUDI ARABIA",
+    "date_end": {
+     "type": "date",
+     "value": "1995-01-01"
+    }
+   },
+   "sets": [
+    {
+     "color": "forest",
+     "date": {
+      "type": "date",
+      "value": "1994-01-01"
+     },
+     "nation": "CANADA",
+     "date_end": {
+      "type": "date",
+      "value": "1995-01-01"
+     }
+    },
+    {
+     "color": "olive",
+     "date": {
+      "type": "date",
+      "value": "1993-01-01"
+     },
+     "nation": "EGYPT",
+     "date_end": {
+      "type": "date",
+      "value": "1994-01-01"
+     }
+    },
+    {
+     "color": "violet",
+     "date": {
+      "type": "date",
+      "value": "1993-01-01"
+     },
+     "nation": "EGYPT",
+     "date_end": {
+      "type": "date",
+      "value": "1994-01-01"
+     }
+    },
+    {
+     "color": "chartreuse",
+     "date": {
+      "type": "date",
+      "value": "1994-01-01"
+     },
+     "nation": "KENYA",
+     "date_end": {
+      "type": "date",
+      "value": "1995-01-01"
+     }
+    },
+    {
+     "color": "olive",
+     "date": {
+      "type": "date",
+      "value": "1994-01-01"
+     },
+     "nation": "UNITED KINGDOM",
+     "date_end": {
+      "type": "date",
+      "value": "1995-01-01"
+     }
+    },
+    {
+     "color": "blush",
+     "date": {
+      "type": "date",
+      "value": "1996-01-01"
+     },
+     "nation": "INDONESIA",
+     "date_end": {
+      "type": "date",
+      "value": "1997-01-01"
+     }
+    },
+    {
+     "color": "thistle",
+     "date": {
+      "type": "date",
+      "value": "1997-01-01"
+     },
+     "nation": "UNITED KINGDOM",
+     "date_end": {
+      "type": "date",
+      "value": "1998-01-01"
+     }
+    },
+    {
+     "color": "chiffon",
+     "date": {
+      "type": "date",
+      "value": "1993-01-01"
+     },
+     "nation": "ALGERIA",
+     "date_end": {
+      "type": "date",
+      "value": "1994-01-01"
+     }
+    }
+   ],
+   "set_ids": [
+    "q20s0",
+    "q20s1",
+    "q20s2",
+    "q20s3",
+    "q20s4",
+    "q20s5",
+    "q20s6",
+    "q20s7"
+   ]
+  },
+  "21": {
+   "warmup": {
+    "nation": "ALGERIA"
+   },
+   "sets": [
+    {
+     "nation": "SAUDI ARABIA"
+    },
+    {
+     "nation": "ROMANIA"
+    },
+    {
+     "nation": "BRAZIL"
+    },
+    {
+     "nation": "ETHIOPIA"
+    },
+    {
+     "nation": "UNITED STATES"
+    },
+    {
+     "nation": "FRANCE"
+    },
+    {
+     "nation": "JORDAN"
+    },
+    {
+     "nation": "INDONESIA"
+    }
+   ],
+   "set_ids": [
+    "q21s0",
+    "q21s1",
+    "q21s2",
+    "q21s3",
+    "q21s4",
+    "q21s5",
+    "q21s6",
+    "q21s7"
+   ]
+  },
+  "22": {
+   "warmup": {
+    "country_codes": [
+     "19",
+     "20",
+     "21",
+     "25",
+     "27",
+     "30",
+     "31"
+    ],
+    "codes_sql": "'19','20','21','25','27','30','31'",
+    "codes_sql_spaced": "'19', '20', '21', '25', '27', '30', '31'"
+   },
+   "sets": [
+    {
+     "country_codes": [
+      "13",
+      "31",
+      "23",
+      "29",
+      "30",
+      "18",
+      "17"
+     ],
+     "codes_sql": "'13','31','23','29','30','18','17'",
+     "codes_sql_spaced": "'13', '31', '23', '29', '30', '18', '17'"
+    },
+    {
+     "country_codes": [
+      "10",
+      "11",
+      "19",
+      "24",
+      "26",
+      "29",
+      "30"
+     ],
+     "codes_sql": "'10','11','19','24','26','29','30'",
+     "codes_sql_spaced": "'10', '11', '19', '24', '26', '29', '30'"
+    },
+    {
+     "country_codes": [
+      "11",
+      "13",
+      "18",
+      "23",
+      "25",
+      "26",
+      "27"
+     ],
+     "codes_sql": "'11','13','18','23','25','26','27'",
+     "codes_sql_spaced": "'11', '13', '18', '23', '25', '26', '27'"
+    },
+    {
+     "country_codes": [
+      "15",
+      "22",
+      "24",
+      "25",
+      "26",
+      "28",
+      "32"
+     ],
+     "codes_sql": "'15','22','24','25','26','28','32'",
+     "codes_sql_spaced": "'15', '22', '24', '25', '26', '28', '32'"
+    },
+    {
+     "country_codes": [
+      "17",
+      "21",
+      "27",
+      "30",
+      "31",
+      "32",
+      "33"
+     ],
+     "codes_sql": "'17','21','27','30','31','32','33'",
+     "codes_sql_spaced": "'17', '21', '27', '30', '31', '32', '33'"
+    },
+    {
+     "country_codes": [
+      "16",
+      "23",
+      "26",
+      "28",
+      "29",
+      "33",
+      "34"
+     ],
+     "codes_sql": "'16','23','26','28','29','33','34'",
+     "codes_sql_spaced": "'16', '23', '26', '28', '29', '33', '34'"
+    },
+    {
+     "country_codes": [
+      "13",
+      "16",
+      "26",
+      "29",
+      "30",
+      "31",
+      "32"
+     ],
+     "codes_sql": "'13','16','26','29','30','31','32'",
+     "codes_sql_spaced": "'13', '16', '26', '29', '30', '31', '32'"
+    },
+    {
+     "country_codes": [
+      "13",
+      "15",
+      "18",
+      "21",
+      "22",
+      "26",
+      "28"
+     ],
+     "codes_sql": "'13','15','18','21','22','26','28'",
+     "codes_sql_spaced": "'13', '15', '18', '21', '22', '26', '28'"
+    }
+   ],
+   "set_ids": [
+    "q22s0",
+    "q22s1",
+    "q22s2",
+    "q22s3",
+    "q22s4",
+    "q22s5",
+    "q22s6",
+    "q22s7"
+   ]
+  }
+ }
+}

@@ -1,0 +1,35 @@
+{
+  "elapsed_s": {
+    "type": "float",
+    "value": "0.0032104230000413736"
+  },
+  "driver_statements": [
+    {
+      "sql": "withheld-sha256:eb20768ccac9d7f5642f6f185f3d5b4069fcfcc006ae93b9a1f6844c18570829",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "kwargs": {}
+    }
+  ],
+  "rows": [
+    {
+      "p_partkey": 1
+    }
+  ],
+  "same_driver_sql_and_bindings": true,
+  "matches_function_results": {
+    "exact_named_ordered_equal": true,
+    "rows": [
+      1,
+      1
+    ],
+    "differences": [],
+    "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+  },
+  "actual_plan_count": 1,
+  "runtime_counter_count": 4,
+  "capture": "same-backend statement replay with original bindings; STATISTICS XML ON"
+}

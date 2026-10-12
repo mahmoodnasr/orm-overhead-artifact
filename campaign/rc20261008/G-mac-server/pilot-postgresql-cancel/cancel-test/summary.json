@@ -1,0 +1,87 @@
+{
+ "passed": true,
+ "paths": [
+  {
+   "path": "django/sql",
+   "probe_status": "timeout",
+   "probe_elapsed_s": {
+    "type": "float",
+    "value": "1.0005615420086542"
+   },
+   "probe_limit_s": {
+    "type": "float",
+    "value": "1.0"
+   },
+   "probe_error": "OperationalError: canceling statement due to statement timeout\n",
+   "recovery_verified": true,
+   "recovery_polls": 1,
+   "followup_status": "ok",
+   "followup_elapsed_s": {
+    "type": "float",
+    "value": "0.5196169170085341"
+   }
+  },
+  {
+   "path": "django/orm",
+   "probe_status": "timeout",
+   "probe_elapsed_s": {
+    "type": "float",
+    "value": "1.0043270829919493"
+   },
+   "probe_limit_s": {
+    "type": "float",
+    "value": "1.0"
+   },
+   "probe_error": "OperationalError: canceling statement due to statement timeout\n",
+   "recovery_verified": true,
+   "recovery_polls": 1,
+   "followup_status": "ok",
+   "followup_elapsed_s": {
+    "type": "float",
+    "value": "0.6808487500093179"
+   }
+  },
+  {
+   "path": "sqlalchemy/sql",
+   "probe_status": "timeout",
+   "probe_elapsed_s": {
+    "type": "float",
+    "value": "1.0014499999961117"
+   },
+   "probe_limit_s": {
+    "type": "float",
+    "value": "1.0"
+   },
+   "probe_error": "OperationalError: (psycopg2.errors.QueryCanceled) canceling statement due to statement timeout\n\n[SQL: SELECT l_returnflag, l_linestatus,\n       SUM(l_quantity) AS sum_qty,\n       SUM(l_extendedprice) AS sum_base_price,\n       SUM(l_extendedprice * (1 - l_discount)) AS sum_disc_price,\n       SUM(l_ex",
+   "recovery_verified": true,
+   "recovery_polls": 1,
+   "followup_status": "ok",
+   "followup_elapsed_s": {
+    "type": "float",
+    "value": "0.5274683330062544"
+   }
+  },
+  {
+   "path": "sqlalchemy/orm",
+   "probe_status": "timeout",
+   "probe_elapsed_s": {
+    "type": "float",
+    "value": "1.0255344579927623"
+   },
+   "probe_limit_s": {
+    "type": "float",
+    "value": "1.0"
+   },
+   "probe_error": "OperationalError: (psycopg2.errors.QueryCanceled) canceling statement due to statement timeout\n\n[SQL: SELECT lineitem.l_returnflag AS lineitem_l_returnflag, lineitem.l_linestatus AS lineitem_l_linestatus, sum(lineitem.l_quantity) AS sum_qty, sum(lineitem.l_extendedprice) AS sum_base_price, sum(linei",
+   "recovery_verified": true,
+   "recovery_polls": 1,
+   "followup_status": "ok",
+   "followup_elapsed_s": {
+    "type": "float",
+    "value": "0.5193731249892153"
+   }
+  }
+ ],
+ "utc": "2026-10-08T08:45:22.376152+00:00",
+ "cairo": "2026-10-08T11:45:22.376152+03:00"
+}

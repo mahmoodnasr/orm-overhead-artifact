@@ -1,0 +1,25 @@
+{
+ "query": 20,
+ "status": "complete",
+ "censored": {
+  "django/orm": {
+   "input_id": "q20warm",
+   "limit_s": {
+    "type": "float",
+    "value": "900.0"
+   },
+   "elapsed_s": {
+    "type": "float",
+    "value": "900.0416646659723"
+   },
+   "stage": "cell_warmup"
+  }
+ },
+ "inexpressible": {},
+ "wall_s_this_run": {
+  "type": "float",
+  "value": "1159.138099511969"
+ },
+ "utc": "2026-10-10T20:25:39.719862+00:00",
+ "cairo": "2026-10-10T23:25:39.719862+03:00"
+}

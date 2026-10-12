@@ -1,0 +1,257 @@
+{
+ "pooled": {
+  "n": 332,
+  "median_pct": 0.8531165535717545,
+  "ci_pct": [
+   0.5069724537228797,
+   1.596216026837055
+  ],
+  "above100": 25
+ },
+ "django": {
+  "n": 165,
+  "median_pct": 1.3458246657068096,
+  "ci_pct": [
+   0.5336527618433166,
+   4.412076752558958
+  ],
+  "above100": 17,
+  "wilcoxon": {
+   "p": 0.004684925079345703,
+   "queries": 22
+  }
+ },
+ "sqlalchemy": {
+  "n": 167,
+  "median_pct": 0.6009322375181828,
+  "ci_pct": [
+   0.3067169287528947,
+   1.3901809330229404
+  ],
+  "above100": 8,
+  "wilcoxon": {
+   "p": 9.059906005859375e-06,
+   "queries": 22
+  }
+ },
+ "postgresql": {
+  "n": 77,
+  "median_pct": 0.37648078067786056,
+  "ci_pct": [
+   0.20066023254679005,
+   0.6936541013684828
+  ],
+  "above100": 0
+ },
+ "mysql": {
+  "n": 83,
+  "median_pct": 0.16914606743906804,
+  "ci_pct": [
+   0.04892419374114078,
+   0.5338832046696894
+  ],
+  "above100": 2
+ },
+ "oracle": {
+  "n": 86,
+  "median_pct": 1.4778332026895589,
+  "ci_pct": [
+   0.5748711069124404,
+   6.90706238609033
+  ],
+  "above100": 8
+ },
+ "commercial_a": {
+  "n": 86,
+  "median_pct": 15.27165592764606,
+  "ci_pct": [
+   3.843539007692916,
+   36.930117493104454
+  ],
+  "above100": 15
+ },
+ "indexed": {
+  "n": 172,
+  "median_pct": 0.8955065628019284,
+  "ci_pct": [
+   0.5304903042138959,
+   1.6744563125617882
+  ],
+  "above100": 14
+ },
+ "non-indexed": {
+  "n": 160,
+  "median_pct": 0.7762534072945533,
+  "ci_pct": [
+   0.2631002223538347,
+   1.8613983407906556
+  ],
+  "above100": 11
+ },
+ "coverage": {
+  "measured": 332,
+  "not_expressible": 4,
+  "unresolved": 4,
+  "censored": 12
+ },
+ "acceptance_classes": {
+  "exact": 2568,
+  "scale_equivalent": 88
+ },
+ "wilcoxon_inclusion": "a query enters with the median of its measured cells (at least one); counts of valid cells per query are reported beside it",
+ "valid_cells_per_query": {
+  "Q01:django": {
+   "measured": 8
+  },
+  "Q01:sqlalchemy": {
+   "measured": 8
+  },
+  "Q02:django": {
+   "measured": 8
+  },
+  "Q02:sqlalchemy": {
+   "measured": 8
+  },
+  "Q03:django": {
+   "measured": 8
+  },
+  "Q03:sqlalchemy": {
+   "measured": 8
+  },
+  "Q04:django": {
+   "measured": 8
+  },
+  "Q04:sqlalchemy": {
+   "measured": 8
+  },
+  "Q05:django": {
+   "measured": 8
+  },
+  "Q05:sqlalchemy": {
+   "measured": 8
+  },
+  "Q06:django": {
+   "measured": 8
+  },
+  "Q06:sqlalchemy": {
+   "measured": 8
+  },
+  "Q07:django": {
+   "measured": 8
+  },
+  "Q07:sqlalchemy": {
+   "measured": 8
+  },
+  "Q08:django": {
+   "measured": 8
+  },
+  "Q08:sqlalchemy": {
+   "measured": 6,
+   "unresolved": 2
+  },
+  "Q09:django": {
+   "measured": 8
+  },
+  "Q09:sqlalchemy": {
+   "measured": 8
+  },
+  "Q10:django": {
+   "measured": 8
+  },
+  "Q10:sqlalchemy": {
+   "measured": 8
+  },
+  "Q11:django": {
+   "measured": 8
+  },
+  "Q11:sqlalchemy": {
+   "measured": 8
+  },
+  "Q12:django": {
+   "measured": 8
+  },
+  "Q12:sqlalchemy": {
+   "measured": 8
+  },
+  "Q13:django": {
+   "not_expressible": 4,
+   "measured": 2,
+   "censored": 2
+  },
+  "Q13:sqlalchemy": {
+   "measured": 8
+  },
+  "Q14:django": {
+   "measured": 8
+  },
+  "Q14:sqlalchemy": {
+   "measured": 6,
+   "unresolved": 2
+  },
+  "Q15:django": {
+   "measured": 8
+  },
+  "Q15:sqlalchemy": {
+   "measured": 8
+  },
+  "Q16:django": {
+   "measured": 8
+  },
+  "Q16:sqlalchemy": {
+   "measured": 8
+  },
+  "Q17:django": {
+   "measured": 6,
+   "censored": 2
+  },
+  "Q17:sqlalchemy": {
+   "measured": 6,
+   "censored": 2
+  },
+  "Q18:django": {
+   "measured": 8
+  },
+  "Q18:sqlalchemy": {
+   "measured": 8
+  },
+  "Q19:django": {
+   "measured": 8
+  },
+  "Q19:sqlalchemy": {
+   "measured": 8
+  },
+  "Q20:django": {
+   "measured": 6,
+   "censored": 2
+  },
+  "Q20:sqlalchemy": {
+   "measured": 6,
+   "censored": 2
+  },
+  "Q21:django": {
+   "measured": 7,
+   "censored": 1
+  },
+  "Q21:sqlalchemy": {
+   "measured": 7,
+   "censored": 1
+  },
+  "Q22:django": {
+   "measured": 8
+  },
+  "Q22:sqlalchemy": {
+   "measured": 8
+  }
+ },
+ "variability": {
+  "paths": 664,
+  "median_cv_pct": 1.1941030093091076,
+  "p90_cv_pct": 8.37366922708347,
+  "share_above_25_pct": 0.018072289156626505,
+  "criteria": {
+   "median_le_5": true,
+   "p90_le_15": true,
+   "share_above_25_le_5pct": true
+  }
+ }
+}

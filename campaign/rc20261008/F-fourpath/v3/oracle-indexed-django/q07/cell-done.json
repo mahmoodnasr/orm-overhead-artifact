@@ -1,0 +1,26 @@
+{
+ "query": 7,
+ "framework": "django",
+ "accepted_blocks": 8,
+ "status": "complete",
+ "utc": "2026-10-10T18:30:20.257404+00:00",
+ "cairo": "2026-10-10T21:30:20.257404+03:00",
+ "paired_median": {
+  "O/G": {
+   "type": "float",
+   "value": "0.998379654788042"
+  },
+  "G/B": {
+   "type": "float",
+   "value": "1.0043652723243384"
+  },
+  "B/L": {
+   "type": "float",
+   "value": "0.9981773106580706"
+  },
+  "O/L": {
+   "type": "float",
+   "value": "1.0009558798616636"
+  }
+ }
+}

@@ -1,0 +1,67 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:633e02abbf9bb19afc329641c575f8b0b06e5397775eaebc7b580c489bebac13",
+   "params": [
+    "SAUDI ARABIA",
+    {
+     "type": "Decimal",
+     "value": "0.5"
+    },
+    "1994-01-01",
+    "1995-01-01",
+    "frosted%"
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:9c45a02155e677757beb42b1f7f9525ec58dc0b7195e380670a9c66b3071b94b",
+    "values": [
+     "frosted%",
+     "1994-01-01",
+     "1995-01-01",
+     "SAUDI ARABIA"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:d4837de989fc75400813ca7cbbeb786461c8176f2c1495b92679e162b41d9183",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:eba01f8a16f8ce09202eb2c0e1a7fe1c48e0fe52214bb57c2c8fedeaeb7e9663",
+     "bound": true,
+     "kind": "date",
+     "value_type": "str",
+     "type_source": "orm: bound as a string, as the ORM binds it (F-v2 correction 4)"
+    },
+    {
+     "literal": "withheld-sha256:f8898ccf2741563ced7bee8c7a4a8a101b5c63e870f727499a9e8fa58a22ff52",
+     "bound": true,
+     "kind": "date",
+     "value_type": "str",
+     "type_source": "orm: bound as a string, as the ORM binds it (F-v2 correction 4)"
+    },
+    {
+     "literal": "withheld-sha256:a1f35028c54ef6ce49aea5dd6e8b1564462611a45306a940103f122f11a8b47f",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 4
+ },
+ "G_output_columns": [
+  "s_name",
+  "s_address"
+ ]
+}

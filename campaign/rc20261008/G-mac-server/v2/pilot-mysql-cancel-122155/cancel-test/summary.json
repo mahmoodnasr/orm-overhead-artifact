@@ -1,0 +1,87 @@
+{
+ "passed": true,
+ "paths": [
+  {
+   "path": "django/sql",
+   "probe_status": "timeout",
+   "probe_elapsed_s": {
+    "type": "float",
+    "value": "1.000644411000394"
+   },
+   "probe_limit_s": {
+    "type": "float",
+    "value": "1.0"
+   },
+   "probe_error": "OperationalError: (3024, 'Query execution was interrupted, maximum statement execution time exceeded')",
+   "recovery_verified": true,
+   "recovery_polls": 1,
+   "followup_status": "ok",
+   "followup_elapsed_s": {
+    "type": "float",
+    "value": "0.9975175770014175"
+   }
+  },
+  {
+   "path": "django/orm",
+   "probe_status": "timeout",
+   "probe_elapsed_s": {
+    "type": "float",
+    "value": "1.0034701599997788"
+   },
+   "probe_limit_s": {
+    "type": "float",
+    "value": "1.0"
+   },
+   "probe_error": "OperationalError: (3024, 'Query execution was interrupted, maximum statement execution time exceeded')",
+   "recovery_verified": true,
+   "recovery_polls": 1,
+   "followup_status": "ok",
+   "followup_elapsed_s": {
+    "type": "float",
+    "value": "1.0198671220005053"
+   }
+  },
+  {
+   "path": "sqlalchemy/sql",
+   "probe_status": "timeout",
+   "probe_elapsed_s": {
+    "type": "float",
+    "value": "1.0017395770009898"
+   },
+   "probe_limit_s": {
+    "type": "float",
+    "value": "1.0"
+   },
+   "probe_error": "OperationalError: (MySQLdb.OperationalError) (3024, 'Query execution was interrupted, maximum statement execution time exceeded')\n[SQL: SELECT l_returnflag, l_linestatus,\n       SUM(l_quantity) AS sum_qty,\n       SUM(l_extendedprice) AS sum_base_price,\n       SUM(l_extendedprice * (1 - l_discount)) ",
+   "recovery_verified": true,
+   "recovery_polls": 1,
+   "followup_status": "ok",
+   "followup_elapsed_s": {
+    "type": "float",
+    "value": "0.8955680189992563"
+   }
+  },
+  {
+   "path": "sqlalchemy/orm",
+   "probe_status": "timeout",
+   "probe_elapsed_s": {
+    "type": "float",
+    "value": "1.009459662000154"
+   },
+   "probe_limit_s": {
+    "type": "float",
+    "value": "1.0"
+   },
+   "probe_error": "OperationalError: (MySQLdb.OperationalError) (3024, 'Query execution was interrupted, maximum statement execution time exceeded')\n[SQL: SELECT lineitem.l_returnflag AS lineitem_l_returnflag, lineitem.l_linestatus AS lineitem_l_linestatus, sum(lineitem.l_quantity) AS sum_qty, sum(lineitem.l_extendedp",
+   "recovery_verified": true,
+   "recovery_polls": 1,
+   "followup_status": "ok",
+   "followup_elapsed_s": {
+    "type": "float",
+    "value": "0.8998008110011142"
+   }
+  }
+ ],
+ "utc": "2026-10-08T12:22:07.436902+00:00",
+ "cairo": "2026-10-08T15:22:07.436902+03:00"
+}

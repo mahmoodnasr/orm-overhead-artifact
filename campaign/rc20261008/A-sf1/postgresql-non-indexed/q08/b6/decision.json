@@ -1,0 +1,344 @@
+{
+ "query": 8,
+ "block": 6,
+ "attempt": 1,
+ "sequence_id": 2,
+ "input_id": "q08s5",
+ "frameworks": {
+  "django": {
+   "accepted": true,
+   "classification": "exact",
+   "orm_path_check": true,
+   "status": "accepted"
+  },
+  "sqlalchemy": {
+   "accepted": false,
+   "classification": "numeric_mismatch",
+   "orm_path_check": true,
+   "status": "numeric_mismatch"
+  }
+ },
+ "comparisons_timed": {
+  "django": {
+   "policy": "rc20261008-results-v3",
+   "query": 8,
+   "rows": [
+    2,
+    2
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "django/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "sqlalchemy": {
+   "policy": "rc20261008-results-v3",
+   "query": 8,
+   "rows": [
+    2,
+    2
+   ],
+   "classification": "numeric_mismatch",
+   "accepted": false,
+   "differences": [
+    {
+     "row": 0,
+     "left": {
+      "o_year": {
+       "type": "Decimal",
+       "value": "1995"
+      },
+      "mkt_share": {
+       "type": "Decimal",
+       "value": "0.02866330121410021450"
+      }
+     },
+     "right": {
+      "o_year": {
+       "type": "Decimal",
+       "value": "1995"
+      },
+      "mkt_share": {
+       "type": "Decimal",
+       "value": "0.02866330121713154517"
+      }
+     }
+    },
+    {
+     "row": 1,
+     "left": {
+      "o_year": {
+       "type": "Decimal",
+       "value": "1996"
+      },
+      "mkt_share": {
+       "type": "Decimal",
+       "value": "0.03203367484657047848"
+      }
+     },
+     "right": {
+      "o_year": {
+       "type": "Decimal",
+       "value": "1996"
+      },
+      "mkt_share": {
+       "type": "Decimal",
+       "value": "0.03203367484751614718"
+      }
+     }
+    }
+   ],
+   "max_relative_difference": {
+    "type": "float",
+    "value": "1.0575650889047727e-10"
+   },
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "cross_sql": {
+   "policy": "rc20261008-results-v3",
+   "query": 8,
+   "rows": [
+    2,
+    2
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "sqlalchemy/sql"
+  },
+  "cross_orm": {
+   "policy": "rc20261008-results-v3",
+   "query": 8,
+   "rows": [
+    2,
+    2
+   ],
+   "classification": "numeric_mismatch",
+   "accepted": false,
+   "differences": [
+    {
+     "row": 0,
+     "left": {
+      "o_year": 1995,
+      "mkt_share": {
+       "type": "Decimal",
+       "value": "0.02866330121410021450"
+      }
+     },
+     "right": {
+      "o_year": {
+       "type": "Decimal",
+       "value": "1995"
+      },
+      "mkt_share": {
+       "type": "Decimal",
+       "value": "0.02866330121713154517"
+      }
+     }
+    },
+    {
+     "row": 1,
+     "left": {
+      "o_year": 1996,
+      "mkt_share": {
+       "type": "Decimal",
+       "value": "0.03203367484657047848"
+      }
+     },
+     "right": {
+      "o_year": {
+       "type": "Decimal",
+       "value": "1996"
+      },
+      "mkt_share": {
+       "type": "Decimal",
+       "value": "0.03203367484751614718"
+      }
+     }
+    }
+   ],
+   "max_relative_difference": {
+    "type": "float",
+    "value": "1.0575650889047727e-10"
+   },
+   "left": "django/orm",
+   "right": "sqlalchemy/orm"
+  }
+ },
+ "comparisons_block_warmup": {
+  "django": {
+   "policy": "rc20261008-results-v3",
+   "query": 8,
+   "rows": [
+    2,
+    2
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "django/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "sqlalchemy": {
+   "policy": "rc20261008-results-v3",
+   "query": 8,
+   "rows": [
+    2,
+    2
+   ],
+   "classification": "numeric_mismatch",
+   "accepted": false,
+   "differences": [
+    {
+     "row": 0,
+     "left": {
+      "o_year": {
+       "type": "Decimal",
+       "value": "1995"
+      },
+      "mkt_share": {
+       "type": "Decimal",
+       "value": "0.02866330121410021450"
+      }
+     },
+     "right": {
+      "o_year": {
+       "type": "Decimal",
+       "value": "1995"
+      },
+      "mkt_share": {
+       "type": "Decimal",
+       "value": "0.02866330121713154517"
+      }
+     }
+    },
+    {
+     "row": 1,
+     "left": {
+      "o_year": {
+       "type": "Decimal",
+       "value": "1996"
+      },
+      "mkt_share": {
+       "type": "Decimal",
+       "value": "0.03203367484657047848"
+      }
+     },
+     "right": {
+      "o_year": {
+       "type": "Decimal",
+       "value": "1996"
+      },
+      "mkt_share": {
+       "type": "Decimal",
+       "value": "0.03203367484751614718"
+      }
+     }
+    }
+   ],
+   "max_relative_difference": {
+    "type": "float",
+    "value": "1.0575650889047727e-10"
+   },
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "cross_sql": {
+   "policy": "rc20261008-results-v3",
+   "query": 8,
+   "rows": [
+    2,
+    2
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "sqlalchemy/sql"
+  },
+  "cross_orm": {
+   "policy": "rc20261008-results-v3",
+   "query": 8,
+   "rows": [
+    2,
+    2
+   ],
+   "classification": "numeric_mismatch",
+   "accepted": false,
+   "differences": [
+    {
+     "row": 0,
+     "left": {
+      "o_year": 1995,
+      "mkt_share": {
+       "type": "Decimal",
+       "value": "0.02866330121410021450"
+      }
+     },
+     "right": {
+      "o_year": {
+       "type": "Decimal",
+       "value": "1995"
+      },
+      "mkt_share": {
+       "type": "Decimal",
+       "value": "0.02866330121713154517"
+      }
+     }
+    },
+    {
+     "row": 1,
+     "left": {
+      "o_year": 1996,
+      "mkt_share": {
+       "type": "Decimal",
+       "value": "0.03203367484657047848"
+      }
+     },
+     "right": {
+      "o_year": {
+       "type": "Decimal",
+       "value": "1996"
+      },
+      "mkt_share": {
+       "type": "Decimal",
+       "value": "0.03203367484751614718"
+      }
+     }
+    }
+   ],
+   "max_relative_difference": {
+    "type": "float",
+    "value": "1.0575650889047727e-10"
+   },
+   "left": "django/orm",
+   "right": "sqlalchemy/orm"
+  }
+ },
+ "timed_records": {
+  "sqlalchemy/orm": "a1/timed-sqlalchemy-orm.json.gz",
+  "sqlalchemy/sql": "a1/timed-sqlalchemy-sql.json.gz",
+  "django/orm": "a1/timed-django-orm.json.gz",
+  "django/sql": "a1/timed-django-sql.json.gz"
+ },
+ "skipped": {},
+ "stop_cell": null,
+ "policy": "rc20261008-results-v3",
+ "utc": "2026-10-09T00:59:08.369454+00:00",
+ "cairo": "2026-10-09T03:59:08.369454+03:00"
+}

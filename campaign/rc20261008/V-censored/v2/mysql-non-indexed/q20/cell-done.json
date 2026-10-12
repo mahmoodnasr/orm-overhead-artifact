@@ -1,0 +1,20 @@
+{
+ "query": 20,
+ "status": "complete",
+ "verdicts": {
+  "django": {
+   "validated": true,
+   "classification": "exact",
+   "orm_path_check": true,
+   "reason": "ORM result accepted against its SQL baseline"
+  },
+  "sqlalchemy": {
+   "validated": true,
+   "classification": "exact",
+   "orm_path_check": true,
+   "reason": "ORM result accepted against its SQL baseline"
+  }
+ },
+ "utc": "2026-10-09T23:59:53.718097+00:00",
+ "cairo": "2026-10-10T02:59:53.718097+03:00"
+}

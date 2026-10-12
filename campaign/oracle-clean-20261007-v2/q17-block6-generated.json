@@ -1,0 +1,48 @@
+{
+  "followup_id": "3b3b8f9c-bb10-4333-bb95-6e54d322bfbb",
+  "environment_sha256": "ff1063e738f014b7e9a705893371a0d8165bad69981602b6f628088df8f3ffd0",
+  "query": 17,
+  "schema": "non-indexed",
+  "dbms": "oracle",
+  "block": 6,
+  "position": 3,
+  "path": "generated",
+  "parameter_set_id": "q17s6",
+  "parameters": {
+    "brand": "Brand#32",
+    "container": "JUMBO PACK"
+  },
+  "utc": "2026-10-07T17:56:20.629834+00:00",
+  "elapsed_s": {
+    "type": "float",
+    "value": "573.2497791869991"
+  },
+  "status": "ok",
+  "rows": [
+    {
+      "AVG_YEARLY": {
+        "type": "Decimal",
+        "value": "338752.9142857142857142857142857142857143"
+      }
+    }
+  ],
+  "statements": [
+    {
+      "sql": "SELECT (SUM(\"LINEITEM\".\"L_EXTENDEDPRICE\") / %s) AS \"AVG_YEARLY\" FROM \"LINEITEM\" INNER JOIN \"PART\" ON (\"LINEITEM\".\"L_PARTKEY\" = \"PART\".\"P_PARTKEY\") WHERE (\"PART\".\"P_BRAND\" = %s AND \"PART\".\"P_CONTAINER\" = %s AND \"LINEITEM\".\"L_QUANTITY\" < ((SELECT AVG(U0.\"L_QUANTITY\") AS \"AVG_Q\" FROM \"LINEITEM\" U0 WHERE U0.\"L_PARTKEY\" = (\"LINEITEM\".\"L_PARTKEY\") GROUP BY U0.\"L_PARTKEY\") * %s))",
+      "params": [
+        {
+          "type": "Decimal",
+          "value": "7.0"
+        },
+        "Brand#32",
+        "JUMBO PACK",
+        {
+          "type": "Decimal",
+          "value": "0.2"
+        }
+      ],
+      "many": false
+    }
+  ],
+  "result_sha256": "9857f658378100f54b738c8d513a7e5139851e198989631ae1f2cee26db5be8d"
+}

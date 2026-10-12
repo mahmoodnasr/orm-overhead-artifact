@@ -1,0 +1,216 @@
+{
+ "rule": "1. the paper's cells above +100 % (F-cells-from-paper.json), less the three\n     October four-path diagnostics, which are reused (R1-4);\n  2. every phase A cell above +100 % not already in 1;\n  3. a seeded random sample of two further cells per engine x index state\n     (16 cells), so RQ2 is not answered only from cells selected by outcome.\n     Eligible: phase A cells measured with all 8 blocks accepted, not in 1-2,\n     not an October cell. Order: sha256(\"rc20261008-F-random-sample-v1:\" +\n     \"<dbms>/<schema>/Q<nn>/<framework>\"), the two smallest per configuration.\n     Anyone can redraw it from the phase A records.",
+ "seed_text": "rc20261008-F-random-sample-v1",
+ "phase_a_complete": true,
+ "phase_a_missing": [],
+ "reused_october": [
+  "oracle/non-indexed/Q17/django",
+  "oracle/non-indexed/Q20/django",
+  "commercial_a/indexed/Q18/django"
+ ],
+ "cells": {
+  "mysql/indexed/Q04/sqlalchemy": "seeded random sample",
+  "mysql/indexed/Q12/django": "seeded random sample",
+  "mysql/indexed/Q15/django": "paper > +100 %",
+  "mysql/non-indexed/Q15/django": "paper > +100 %",
+  "mysql/non-indexed/Q18/sqlalchemy": "seeded random sample",
+  "mysql/non-indexed/Q22/django": "seeded random sample",
+  "oracle/indexed/Q02/django": "paper > +100 %",
+  "oracle/indexed/Q07/django": "seeded random sample",
+  "oracle/indexed/Q08/django": "seeded random sample",
+  "oracle/indexed/Q15/django": "paper > +100 %",
+  "oracle/indexed/Q15/sqlalchemy": "paper > +100 %",
+  "oracle/non-indexed/Q02/django": "paper > +100 %",
+  "oracle/non-indexed/Q07/django": "seeded random sample",
+  "oracle/non-indexed/Q12/sqlalchemy": "seeded random sample",
+  "oracle/non-indexed/Q15/django": "paper > +100 %",
+  "oracle/non-indexed/Q15/sqlalchemy": "paper > +100 %",
+  "postgresql/indexed/Q07/django": "seeded random sample",
+  "postgresql/indexed/Q22/sqlalchemy": "seeded random sample",
+  "postgresql/non-indexed/Q06/django": "seeded random sample",
+  "postgresql/non-indexed/Q10/sqlalchemy": "seeded random sample",
+  "commercial_a/indexed/Q04/django": "paper > +100 %",
+  "commercial_a/indexed/Q04/sqlalchemy": "seeded random sample",
+  "commercial_a/indexed/Q10/sqlalchemy": "seeded random sample",
+  "commercial_a/indexed/Q13/sqlalchemy": "paper > +100 %",
+  "commercial_a/indexed/Q15/sqlalchemy": "paper > +100 %",
+  "commercial_a/indexed/Q17/django": "paper > +100 %",
+  "commercial_a/indexed/Q17/sqlalchemy": "paper > +100 %",
+  "commercial_a/indexed/Q19/django": "paper > +100 %",
+  "commercial_a/indexed/Q19/sqlalchemy": "phase A > +100 % (127 %)",
+  "commercial_a/indexed/Q20/django": "paper > +100 %",
+  "commercial_a/indexed/Q21/django": "paper > +100 %",
+  "commercial_a/non-indexed/Q03/sqlalchemy": "seeded random sample",
+  "commercial_a/non-indexed/Q04/django": "paper > +100 %",
+  "commercial_a/non-indexed/Q13/sqlalchemy": "paper > +100 %",
+  "commercial_a/non-indexed/Q15/django": "paper > +100 %",
+  "commercial_a/non-indexed/Q15/sqlalchemy": "paper > +100 %",
+  "commercial_a/non-indexed/Q18/sqlalchemy": "seeded random sample",
+  "commercial_a/non-indexed/Q21/django": "paper > +100 %",
+  "commercial_a/non-indexed/Q22/django": "paper > +100 %"
+ },
+ "counts": {
+  "paper": 22,
+  "phase_a_added": 1,
+  "random": 16,
+  "total": 39
+ },
+ "groups": [
+  {
+   "dbms": "mysql",
+   "schema": "indexed",
+   "framework": "django",
+   "queries": [
+    12,
+    15
+   ]
+  },
+  {
+   "dbms": "mysql",
+   "schema": "indexed",
+   "framework": "sqlalchemy",
+   "queries": [
+    4
+   ]
+  },
+  {
+   "dbms": "mysql",
+   "schema": "non-indexed",
+   "framework": "django",
+   "queries": [
+    15,
+    22
+   ]
+  },
+  {
+   "dbms": "mysql",
+   "schema": "non-indexed",
+   "framework": "sqlalchemy",
+   "queries": [
+    18
+   ]
+  },
+  {
+   "dbms": "oracle",
+   "schema": "indexed",
+   "framework": "django",
+   "queries": [
+    2,
+    7,
+    8,
+    15
+   ]
+  },
+  {
+   "dbms": "oracle",
+   "schema": "indexed",
+   "framework": "sqlalchemy",
+   "queries": [
+    15
+   ]
+  },
+  {
+   "dbms": "oracle",
+   "schema": "non-indexed",
+   "framework": "django",
+   "queries": [
+    2,
+    7,
+    15
+   ]
+  },
+  {
+   "dbms": "oracle",
+   "schema": "non-indexed",
+   "framework": "sqlalchemy",
+   "queries": [
+    12,
+    15
+   ]
+  },
+  {
+   "dbms": "postgresql",
+   "schema": "indexed",
+   "framework": "django",
+   "queries": [
+    7
+   ]
+  },
+  {
+   "dbms": "postgresql",
+   "schema": "indexed",
+   "framework": "sqlalchemy",
+   "queries": [
+    22
+   ]
+  },
+  {
+   "dbms": "postgresql",
+   "schema": "non-indexed",
+   "framework": "django",
+   "queries": [
+    6
+   ]
+  },
+  {
+   "dbms": "postgresql",
+   "schema": "non-indexed",
+   "framework": "sqlalchemy",
+   "queries": [
+    10
+   ]
+  },
+  {
+   "dbms": "commercial_a",
+   "schema": "indexed",
+   "framework": "django",
+   "queries": [
+    4,
+    17,
+    19,
+    20,
+    21
+   ]
+  },
+  {
+   "dbms": "commercial_a",
+   "schema": "indexed",
+   "framework": "sqlalchemy",
+   "queries": [
+    4,
+    10,
+    13,
+    15,
+    17,
+    19
+   ]
+  },
+  {
+   "dbms": "commercial_a",
+   "schema": "non-indexed",
+   "framework": "django",
+   "queries": [
+    4,
+    15,
+    21,
+    22
+   ]
+  },
+  {
+   "dbms": "commercial_a",
+   "schema": "non-indexed",
+   "framework": "sqlalchemy",
+   "queries": [
+    3,
+    13,
+    15,
+    18
+   ]
+  }
+ ],
+ "source_hashes": {
+  "F-cells-from-paper.json": "d7d8f9cacf5e9981457ecb79268ac73b7e3e739d1e251959f7683908f65541ec"
+ },
+ "utc": "2026-10-09T10:48:56.999078+00:00",
+ "cairo": "2026-10-09T13:48:56.999078+03:00"
+}

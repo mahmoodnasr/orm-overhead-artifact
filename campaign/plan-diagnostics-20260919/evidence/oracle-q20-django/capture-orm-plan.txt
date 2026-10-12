@@ -1,0 +1,111 @@
+SQL_ID  0g5bd0cqmvf92, child number 1
+-------------------------------------
+SELECT "SUPPLIER"."S_NAME" AS "S_NAME", "SUPPLIER"."S_ADDRESS" AS 
+"S_ADDRESS" FROM "SUPPLIER" INNER JOIN "NATION" ON 
+("SUPPLIER"."S_NATIONKEY" = "NATION"."N_NATIONKEY") WHERE 
+("NATION"."N_NAME" = :arg0 AND "SUPPLIER"."S_SUPPKEY" IN (SELECT 
+DISTINCT V0."PS_SUPPKEY" AS "SUPPKEY" FROM "PARTSUPP" V0 WHERE 
+(V0."PS_AVAILQTY" > (SELECT (SUM(U0."L_QUANTITY") * :arg1) AS 
+"HALF_QTY" FROM "LINEITEM" U0 WHERE (U0."L_PARTKEY" = (V0."PS_PARTKEY") 
+AND U0."L_SHIPDATE" >= :arg2 AND U0."L_SHIPDATE" < :arg3 AND 
+U0."L_SUPPKEY" = (V0."PS_SUPPKEY")) GROUP BY U0."L_PARTKEY", 
+U0."L_SUPPKEY") AND V0."PS_PARTKEY" IN (SELECT U0."P_PARTKEY" AS 
+"PARTKEY" FROM "PART" U0 WHERE U0."P_NAME" LIKE TRANSLATE(:arg4 USING 
+NCHAR_CS) ESCAPE TRANSLATE('\' USING NCHAR_CS))))) ORDER BY 1 ASC
+ 
+Plan hash value: 3126194028
+ 
+--------------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                  | Name      | Starts | E-Rows | A-Rows |   A-Time   | Buffers | Reads  |  OMem |  1Mem | Used-Mem |
+--------------------------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT           |           |      1 |        |    186 |00:04:27.73 |      33M|     33M|       |       |          |
+|   1 |  SORT ORDER BY             |           |      1 |      1 |    186 |00:04:27.73 |      33M|     33M| 27648 | 27648 |24576  (0)|
+|   2 |   VIEW                     | VM_NWVW_2 |      1 |      1 |    186 |00:04:27.73 |      33M|     33M|       |       |          |
+|   3 |    HASH UNIQUE             |           |      1 |      1 |    186 |00:04:27.73 |      33M|     33M|   867K|   867K| 1495K (0)|
+|*  4 |     FILTER                 |           |      1 |        |    263 |00:04:27.73 |      33M|     33M|       |       |          |
+|*  5 |      HASH JOIN             |           |      1 |    256 |    366 |00:00:00.56 |   20087 |  16471 |  1647K|  1647K| 2035K (0)|
+|*  6 |       HASH JOIN            |           |      1 |   6403 |   8508 |00:00:00.55 |   19852 |  16471 |  1449K|  1449K| 1402K (0)|
+|   7 |        MERGE JOIN CARTESIAN|           |      1 |   1616 |   2127 |00:00:00.03 |    3378 |      0 |       |       |          |
+|*  8 |         TABLE ACCESS FULL  | NATION    |      1 |      1 |      1 |00:00:00.01 |       6 |      0 |       |       |          |
+|   9 |         BUFFER SORT        |           |      1 |   1616 |   2127 |00:00:00.03 |    3372 |      0 | 73728 | 73728 |          |
+|* 10 |          TABLE ACCESS FULL | PART      |      1 |   1616 |   2127 |00:00:00.03 |    3372 |      0 |       |       |          |
+|  11 |        TABLE ACCESS FULL   | PARTSUPP  |      1 |    800K|    800K|00:00:00.49 |   16474 |  16471 |       |       |          |
+|  12 |       TABLE ACCESS FULL    | SUPPLIER  |      1 |  10000 |  10000 |00:00:00.01 |     235 |      0 |       |       |          |
+|  13 |      SORT GROUP BY NOSORT  |           |    366 |      1 |    263 |00:04:27.17 |      33M|     33M|       |       |          |
+|* 14 |       FILTER               |           |    366 |        |    433 |00:04:27.16 |      33M|     33M|       |       |          |
+|* 15 |        TABLE ACCESS FULL   | LINEITEM  |    366 |      1 |    433 |00:04:27.16 |      33M|     33M|       |       |          |
+--------------------------------------------------------------------------------------------------------------------------------------
+ 
+Query Block Name / Object Alias (identified by operation id):
+-------------------------------------------------------------
+ 
+   1 - SEL$26F72ECF
+   2 - SEL$BA5F759F / "VM_NWVW_2"@"SEL$26F72ECF"
+   3 - SEL$BA5F759F
+   8 - SEL$BA5F759F / "NATION"@"SEL$1"
+  10 - SEL$BA5F759F / "U0"@"SEL$5"
+  11 - SEL$BA5F759F / "V0"@"SEL$3"
+  12 - SEL$BA5F759F / "SUPPLIER"@"SEL$1"
+  13 - SEL$4       
+  15 - SEL$4        / "U0"@"SEL$4"
+ 
+Outline Data
+-------------
+ 
+  /*+
+      BEGIN_OUTLINE_DATA
+      IGNORE_OPTIM_EMBEDDED_HINTS
+      OPTIMIZER_FEATURES_ENABLE('23.1.0')
+      DB_VERSION('23.1.0')
+      ALL_ROWS
+      OUTLINE_LEAF(@"SEL$4")
+      OUTLINE_LEAF(@"SEL$BA5F759F")
+      MERGE(@"SEL$8258FF5B" >"SEL$9DFF21EA")
+      OUTLINE_LEAF(@"SEL$26F72ECF")
+      OUTLINE(@"SEL$2769B24D")
+      OUTLINE(@"SEL$8258FF5B")
+      OUTLINE(@"SEL$9DFF21EA")
+      UNNEST(@"SEL$26A4F268" UNNEST_INNERJ_DISTINCT_VIEW)
+      OUTLINE(@"SEL$26A4F268")
+      UNNEST(@"SEL$5")
+      OUTLINE(@"SEL$58A6D7F6")
+      MERGE(@"SEL$1" >"SEL$2")
+      OUTLINE(@"SEL$3")
+      OUTLINE(@"SEL$5")
+      OUTLINE(@"SEL$2")
+      OUTLINE(@"SEL$1")
+      NO_ACCESS(@"SEL$26F72ECF" "VM_NWVW_2"@"SEL$26F72ECF")
+      OBY_GBYVW_SEPARATE(@"SEL$26F72ECF")
+      FULL(@"SEL$BA5F759F" "NATION"@"SEL$1")
+      FULL(@"SEL$BA5F759F" "U0"@"SEL$5")
+      FULL(@"SEL$BA5F759F" "V0"@"SEL$3")
+      FULL(@"SEL$BA5F759F" "SUPPLIER"@"SEL$1")
+      LEADING(@"SEL$BA5F759F" "NATION"@"SEL$1" "U0"@"SEL$5" "V0"@"SEL$3" "SUPPLIER"@"SEL$1")
+      USE_MERGE_CARTESIAN(@"SEL$BA5F759F" "U0"@"SEL$5")
+      USE_HASH(@"SEL$BA5F759F" "V0"@"SEL$3")
+      USE_HASH(@"SEL$BA5F759F" "SUPPLIER"@"SEL$1")
+      USE_HASH_AGGREGATION(@"SEL$BA5F759F" UNIQUE)
+      PQ_FILTER(@"SEL$BA5F759F" SERIAL)
+      FULL(@"SEL$4" "U0"@"SEL$4")
+      END_OUTLINE_DATA
+  */
+ 
+Peeked Binds (identified by position):
+--------------------------------------
+ 
+   1 - (VARCHAR2(30), CSID=873): 'CANADA'
+   3 - (DATE): 01/01/1994 00:00:00
+   4 - (DATE): 01/01/1995 00:00:00
+   5 - (VARCHAR2(30), CSID=873): 'forest%'
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   4 - filter("V0"."PS_AVAILQTY">)
+   5 - access("SUPPLIER"."S_SUPPKEY"="V0"."PS_SUPPKEY" AND "SUPPLIER"."S_NATIONKEY"="NATION"."N_NATIONKEY")
+   6 - access("V0"."PS_PARTKEY"="U0"."P_PARTKEY")
+   8 - filter("NATION"."N_NAME"=:ARG0)
+  10 - filter("U0"."P_NAME" LIKE SYS_OP_C2C(CSCONVERT(:ARG4,'NCHAR_CS')) ESCAPE '\')
+  14 - filter(:ARG3>:ARG2)
+  15 - filter(("U0"."L_PARTKEY"=:B1 AND "U0"."L_SUPPKEY"=:B2 AND "U0"."L_SHIPDATE"<:ARG3 AND "U0"."L_SHIPDATE">=:ARG2))
+ 

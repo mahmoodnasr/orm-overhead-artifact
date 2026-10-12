@@ -1,0 +1,87 @@
+{
+ "passed": true,
+ "paths": [
+  {
+   "path": "django/sql",
+   "probe_status": "timeout",
+   "probe_elapsed_s": {
+    "type": "float",
+    "value": "1.0018256149996887"
+   },
+   "probe_limit_s": {
+    "type": "float",
+    "value": "1.0"
+   },
+   "probe_error": "withheld-sha256:dff5fdefbe94f2cf708ce0a7036b0217d0ca30374c45c753bff1a6e7cb648162",
+   "recovery_verified": true,
+   "recovery_polls": 1,
+   "followup_status": "ok",
+   "followup_elapsed_s": {
+    "type": "float",
+    "value": "1.2146308579976903"
+   }
+  },
+  {
+   "path": "django/orm",
+   "probe_status": "timeout",
+   "probe_elapsed_s": {
+    "type": "float",
+    "value": "1.0119313609975507"
+   },
+   "probe_limit_s": {
+    "type": "float",
+    "value": "1.0"
+   },
+   "probe_error": "withheld-sha256:dff5fdefbe94f2cf708ce0a7036b0217d0ca30374c45c753bff1a6e7cb648162",
+   "recovery_verified": true,
+   "recovery_polls": 1,
+   "followup_status": "ok",
+   "followup_elapsed_s": {
+    "type": "float",
+    "value": "1.6149219700018875"
+   }
+  },
+  {
+   "path": "sqlalchemy/sql",
+   "probe_status": "timeout",
+   "probe_elapsed_s": {
+    "type": "float",
+    "value": "1.0036186139986967"
+   },
+   "probe_limit_s": {
+    "type": "float",
+    "value": "1.0"
+   },
+   "probe_error": "withheld-sha256:bffca8543b6f67fb325cbc235da86cb3f6f6261e4878f39a5619211b1707c605",
+   "recovery_verified": true,
+   "recovery_polls": 1,
+   "followup_status": "ok",
+   "followup_elapsed_s": {
+    "type": "float",
+    "value": "1.2066779300002963"
+   }
+  },
+  {
+   "path": "sqlalchemy/orm",
+   "probe_status": "timeout",
+   "probe_elapsed_s": {
+    "type": "float",
+    "value": "1.0481454460023087"
+   },
+   "probe_limit_s": {
+    "type": "float",
+    "value": "1.0"
+   },
+   "probe_error": "withheld-sha256:d42620c1c907db3aa3b74a5ad75cf3f352d0ce12811726d94bdbf63471045d2b",
+   "recovery_verified": true,
+   "recovery_polls": 1,
+   "followup_status": "ok",
+   "followup_elapsed_s": {
+    "type": "float",
+    "value": "2.1604608289999305"
+   }
+  }
+ ],
+ "utc": "2026-10-07T23:47:56.139620+00:00",
+ "cairo": "2026-10-08T02:47:56.139620+03:00"
+}

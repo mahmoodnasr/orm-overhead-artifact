@@ -1,0 +1,87 @@
+{
+ "run_id": "11473285a4a44343b4a7f3e69500ffe0",
+ "pid": 2487510,
+ "phase": "D",
+ "dbms": "postgresql",
+ "schema": "non-indexed",
+ "scale": 2,
+ "mode": "main",
+ "queries": [
+  6,
+  18
+ ],
+ "planned_timed": 64,
+ "counts": {
+  "saved_cell_warmup": 8,
+  "status_cell_warmup_ok": 8,
+  "saved_block_warmup": 64,
+  "status_block_warmup_ok": 64,
+  "saved_timed": 64,
+  "status_timed_ok": 64,
+  "accepted_pairs": 32,
+  "accepted_timed": 64
+ },
+ "environment_id": "14ea9a5762ed1b26478b49583dd8b6710a6afc13605f2da767ce93e7e6460bd1",
+ "started": {
+  "utc": "2026-10-10T00:46:06.070966+00:00",
+  "cairo": "2026-10-10T03:46:06.070966+03:00"
+ },
+ "state": "complete",
+ "utc": "2026-10-10T01:19:30.234054+00:00",
+ "cairo": "2026-10-10T04:19:30.234054+03:00",
+ "current": {
+  "query": 18,
+  "path": "django/orm",
+  "kind": "timed",
+  "block": 8,
+  "attempt": 1,
+  "input_id": "q18s7",
+  "limit_s": {
+   "type": "float",
+   "value": "900.0"
+  },
+  "server_session": {
+   "sid": "2487549",
+   "tag": "2026-10-10 00:46:00.905777+00"
+  },
+  "utc": "2026-10-10T01:19:01.884358+00:00",
+  "cairo": "2026-10-10T04:19:01.884358+03:00"
+ },
+ "cells_done": [
+  {
+   "query": 6,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "251.645626447018"
+   }
+  },
+  {
+   "query": 18,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "1749.0948897749768"
+   }
+  }
+ ],
+ "_obs": [
+  {
+   "type": "float",
+   "value": "2000.7405162219948"
+  },
+  {
+   "type": "float",
+   "value": "801.9"
+  }
+ ],
+ "observed_over_predicted": {
+  "type": "float",
+  "value": "2.4950000202294484"
+ },
+ "remaining_predicted_s": 0,
+ "eta_s": {
+  "type": "float",
+  "value": "0.0"
+ }
+}

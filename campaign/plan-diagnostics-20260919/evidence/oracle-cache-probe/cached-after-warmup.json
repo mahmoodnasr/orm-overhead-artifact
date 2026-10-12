@@ -1,0 +1,33 @@
+{
+  "label": "cached-after-warmup",
+  "elapsed_s": {
+    "type": "float",
+    "value": "0.0005642070000249078"
+  },
+  "api_statements": [
+    {
+      "sql": "SELECT /* B8-cache-probe-20260919 */ COUNT(*) AS n FROM part WHERE p_partkey=%s",
+      "params": [
+        1
+      ],
+      "many": false
+    }
+  ],
+  "driver_statements": [
+    {
+      "sql": "SELECT /* B8-cache-probe-20260919 */ COUNT(*) AS n FROM part WHERE p_partkey=:arg0",
+      "args": [
+        {
+          ":arg0": 1
+        }
+      ],
+      "kwargs": {}
+    }
+  ],
+  "rows": [
+    {
+      "N": 1
+    }
+  ],
+  "utc": "2026-09-19T14:26:21.587428+00:00"
+}

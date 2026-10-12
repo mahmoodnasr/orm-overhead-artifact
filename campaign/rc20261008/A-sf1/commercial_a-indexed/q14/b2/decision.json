@@ -1,0 +1,190 @@
+{
+ "query": 14,
+ "block": 2,
+ "attempt": 1,
+ "sequence_id": 3,
+ "input_id": "q14s1",
+ "frameworks": {
+  "django": {
+   "accepted": true,
+   "classification": "scale_equivalent",
+   "orm_path_check": true,
+   "status": "accepted"
+  },
+  "sqlalchemy": {
+   "accepted": true,
+   "classification": "scale_equivalent",
+   "orm_path_check": true,
+   "status": "accepted"
+  }
+ },
+ "comparisons_timed": {
+  "django": {
+   "policy": "rc20261008-results-v3",
+   "query": 14,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "scale_equivalent",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "django/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "sqlalchemy": {
+   "policy": "rc20261008-results-v3",
+   "query": 14,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "scale_equivalent",
+   "accepted": true,
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "cross_sql": {
+   "policy": "rc20261008-results-v3",
+   "query": 14,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "sqlalchemy/sql"
+  },
+  "cross_orm": {
+   "policy": "rc20261008-results-v3",
+   "query": 14,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "numeric_mismatch",
+   "accepted": false,
+   "differences": [
+    {
+     "row": 0,
+     "left": {
+      "promo_revenue": {
+       "type": "Decimal",
+       "value": "16.37333385684593878295345348306000232696533203125"
+      }
+     },
+     "right": {
+      "promo_revenue": {
+       "type": "float",
+       "value": "16.373333856862093"
+      }
+     }
+    }
+   ],
+   "max_relative_difference": {
+    "type": "float",
+    "value": "9.86615752095938e-13"
+   },
+   "left": "django/orm",
+   "right": "sqlalchemy/orm"
+  }
+ },
+ "comparisons_block_warmup": {
+  "django": {
+   "policy": "rc20261008-results-v3",
+   "query": 14,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "scale_equivalent",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "django/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "sqlalchemy": {
+   "policy": "rc20261008-results-v3",
+   "query": 14,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "scale_equivalent",
+   "accepted": true,
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "cross_sql": {
+   "policy": "rc20261008-results-v3",
+   "query": 14,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "sqlalchemy/sql"
+  },
+  "cross_orm": {
+   "policy": "rc20261008-results-v3",
+   "query": 14,
+   "rows": [
+    1,
+    1
+   ],
+   "classification": "numeric_mismatch",
+   "accepted": false,
+   "differences": [
+    {
+     "row": 0,
+     "left": {
+      "promo_revenue": {
+       "type": "Decimal",
+       "value": "16.37333385684593878295345348306000232696533203125"
+      }
+     },
+     "right": {
+      "promo_revenue": {
+       "type": "float",
+       "value": "16.373333856862093"
+      }
+     }
+    }
+   ],
+   "max_relative_difference": {
+    "type": "float",
+    "value": "9.86615752095938e-13"
+   },
+   "left": "django/orm",
+   "right": "sqlalchemy/orm"
+  }
+ },
+ "timed_records": {
+  "sqlalchemy/sql": "a1/timed-sqlalchemy-sql.json.gz",
+  "django/sql": "a1/timed-django-sql.json.gz",
+  "sqlalchemy/orm": "a1/timed-sqlalchemy-orm.json.gz",
+  "django/orm": "a1/timed-django-orm.json.gz"
+ },
+ "skipped": {},
+ "stop_cell": null,
+ "policy": "rc20261008-results-v3",
+ "utc": "2026-10-09T07:50:14.273303+00:00",
+ "cairo": "2026-10-09T10:50:14.273303+03:00"
+}

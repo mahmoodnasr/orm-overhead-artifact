@@ -1,6 +1,10 @@
 [tool.ruff]
 target-version = "py312"
 line-length = 88
+# The campaign tree holds the measured source and harness as run, byte for
+# byte or with documented substitutions only; formatting it would break the
+# hashes its records carry.
+extend-exclude = ["campaign"]
 
 [tool.ruff.lint]
 select = ["E9", "F63", "F7", "F82"]

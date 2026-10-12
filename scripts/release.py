@@ -22,13 +22,20 @@ def main():
         parser.error("Output exists; choose a new filename. Nothing was overwritten.")
     subprocess.run([sys.executable, str(ROOT / "review.py"), "verify"], check=True)
     manifest = json.loads((ROOT / "MANIFEST.json").read_text(encoding="utf-8"))
+    files = [*manifest["files"], "MANIFEST.json"]
+    sums = ROOT / "campaign/SHA256SUMS"
+    if "campaign/SHA256SUMS" in manifest["files"]:
+        files += [
+            "campaign/" + line.split("  ", 1)[1]
+            for line in sums.read_text(encoding="utf-8").splitlines()
+        ]
     archive.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(
         archive, "x", compression=zipfile.ZIP_DEFLATED, compresslevel=9
     ) as zf:
-        for rel in sorted([*manifest["files"], "MANIFEST.json"]):
+        for rel in sorted(files):
             info = zipfile.ZipInfo(
-                "orm-overhead-artifact/" + rel, (2026, 9, 9, 0, 0, 0)
+                "orm-overhead-artifact/" + rel, (2026, 10, 12, 0, 0, 0)
             )
             info.compress_type = zipfile.ZIP_DEFLATED
             info.create_system = 3

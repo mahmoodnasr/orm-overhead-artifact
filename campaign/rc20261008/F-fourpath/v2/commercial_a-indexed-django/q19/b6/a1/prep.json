@@ -1,0 +1,136 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:b7a1ea853202f9a32eefa3970547e4cd1c6c9bb1aadc692131e55daeaee28586",
+   "params": [
+    1,
+    "Brand#54",
+    "SM CASE",
+    "SM BOX",
+    "SM PACK",
+    "SM PKG",
+    1,
+    5,
+    {
+     "type": "Decimal",
+     "value": "10"
+    },
+    {
+     "type": "Decimal",
+     "value": "20"
+    },
+    "DELIVER IN PERSON",
+    "AIR",
+    "AIR REG",
+    "Brand#22",
+    "MED BAG",
+    "MED BOX",
+    "MED PKG",
+    "MED PACK",
+    1,
+    10,
+    {
+     "type": "Decimal",
+     "value": "15"
+    },
+    {
+     "type": "Decimal",
+     "value": "25"
+    },
+    "DELIVER IN PERSON",
+    "AIR",
+    "AIR REG",
+    "Brand#41",
+    "LG CASE",
+    "LG BOX",
+    "LG PACK",
+    "LG PKG",
+    1,
+    15,
+    {
+     "type": "Decimal",
+     "value": "26"
+    },
+    {
+     "type": "Decimal",
+     "value": "36"
+    },
+    "DELIVER IN PERSON",
+    "AIR",
+    "AIR REG"
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:8e78d14f78e59b30ad165d32bbe024497d0241159da68fa8f963eaea2331b651",
+    "values": [
+     "Brand#54",
+     "Brand#22",
+     "Brand#41",
+     {
+      "type": "Decimal",
+      "value": "26"
+     }
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:25a785d66b21957d218751b0b2175c730e4733059818418e1c93525be40a6296",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5",
+     "bound": false,
+     "reason": "value occurs more than once"
+    },
+    {
+     "literal": "withheld-sha256:41b7fc10dbd89ce5c88e1cd8b10381ea95392dc0033febf123854a8493a7625c",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb",
+     "bound": false,
+     "reason": "value occurs more than once"
+    },
+    {
+     "literal": "withheld-sha256:4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5",
+     "bound": false,
+     "reason": "value occurs more than once"
+    },
+    {
+     "literal": "withheld-sha256:e94c166d96f03a0217c22f49dfd4f9940a31498dd8d9ad41de9cdbb3fb3befb3",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:5f9c4ab08cac7457e9111a30e4664920607ea2c115a1433d7be98e97e64244ca",
+     "bound": true,
+     "kind": "num",
+     "value_type": "Decimal",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb",
+     "bound": false,
+     "reason": "value occurs more than once"
+    }
+   ]
+  ],
+  "bound_literals": 4
+ },
+ "G_output_columns": [
+  "revenue"
+ ]
+}

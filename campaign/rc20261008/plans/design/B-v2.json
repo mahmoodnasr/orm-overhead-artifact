@@ -1,0 +1,3 @@
+{
+  "phase_B_v2": "Runner rc_censored.py with one change from B-v1: the cell summary (cell-done.json) carries 'status': 'complete'. The phase A runner's end checks read that key, so under B-v1 a finished probe exited 1 with KeyError: 'status', the controller would have resumed it twice and halted the plan. Found by a Mac dry run (2026-10-09 22:25, MySQL and PostgreSQL, Q13 Django, 30 s ceiling, not evidence) before any phase B run; B-v1 was never used. B-v1's runner file is kept in vault snapshot before-visits2."
+}

@@ -1,0 +1,12 @@
+{
+ "query": 21,
+ "status": "django result check failed in block 5: mismatch",
+ "censored": {},
+ "inexpressible": {},
+ "wall_s_this_run": {
+  "type": "float",
+  "value": "1875.2134293169947"
+ },
+ "utc": "2026-10-09T14:02:25.918189+00:00",
+ "cairo": "2026-10-09T17:02:25.918189+03:00"
+}

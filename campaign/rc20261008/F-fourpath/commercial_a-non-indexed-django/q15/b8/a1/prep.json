@@ -1,0 +1,67 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:7dc8a5325e1f97caf329e2d28c07289f229858f5655cd670ea715ff14e1e4939",
+   "params": [
+    1,
+    "1997-05-01",
+    "1997-08-01"
+   ]
+  },
+  {
+   "sql": "withheld-sha256:aa714af92f1a57b91d839c79716991c300677828e3600ca3155f49ae46e6efd1",
+   "params": [
+    1,
+    "1997-05-01",
+    "1997-08-01",
+    1,
+    {
+     "type": "Decimal",
+     "value": "1866696.8184"
+    }
+   ]
+  },
+  {
+   "sql": "withheld-sha256:665b6496eccd2ed0b3e1fb07dce32766e01370cf220f0ece34514d7d4df1e509",
+   "params": [
+    976
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:dcfc7367071683e9c2f7841620a43b7566cccb0839511e493ba79caa99ed4313",
+    "values": [
+     {
+      "type": "date",
+      "value": "1997-05-01"
+     },
+     {
+      "type": "date",
+      "value": "1997-08-01"
+     }
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:8d439a3511b8468b23cc11fdbad4a72134960ebd576a491f99e8d2b35984bd36",
+     "bound": true,
+     "kind": "date",
+     "value_type": "date",
+     "type_source": "param"
+    },
+    {
+     "literal": "withheld-sha256:09a5704d705348846cbfc42456e934e7dbf2a29ef11fd8118d784eb2a393fa29",
+     "bound": true,
+     "kind": "date",
+     "value_type": "date",
+     "type_source": "param"
+    }
+   ]
+  ],
+  "bound_literals": 2
+ }
+}

@@ -1,0 +1,188 @@
+{
+  "followup_id": "ec4e175a-ef90-4155-ab5f-8adad8d1727e",
+  "environment_sha256": "1ab6e4905e5dea46a183aa8178e6340cff27b726fae53bbcfabcce76d7c1e3de",
+  "query": 18,
+  "schema": "indexed",
+  "dbms": "commercial_a",
+  "block": 3,
+  "position": 0,
+  "path": "bound",
+  "parameter_set_id": "q18s3",
+  "parameters": {
+    "quantity": 313
+  },
+  "utc": "2026-10-07T21:08:59.823652+00:00",
+  "elapsed_s": {
+    "type": "float",
+    "value": "249.81597917899853"
+  },
+  "status": "ok",
+  "rows": [
+    {
+      "c_name": "Customer#000128120",
+      "c_custkey": 128120,
+      "o_orderkey": 4722021,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1994-04-07"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "544089.09"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "323.00"
+      }
+    },
+    {
+      "c_name": "Customer#000144617",
+      "c_custkey": 144617,
+      "o_orderkey": 3043270,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1997-02-12"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "530604.44"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "317.00"
+      }
+    },
+    {
+      "c_name": "Customer#000066790",
+      "c_custkey": 66790,
+      "o_orderkey": 2199712,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1996-09-30"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "515531.82"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "327.00"
+      }
+    },
+    {
+      "c_name": "Customer#000015619",
+      "c_custkey": 15619,
+      "o_orderkey": 3767271,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1996-08-07"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "480083.96"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "318.00"
+      }
+    },
+    {
+      "c_name": "Customer#000147197",
+      "c_custkey": 147197,
+      "o_orderkey": 1263015,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1997-02-02"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "467149.67"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "320.00"
+      }
+    },
+    {
+      "c_name": "Customer#000117919",
+      "c_custkey": 117919,
+      "o_orderkey": 2869152,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1996-06-20"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "456815.92"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "317.00"
+      }
+    },
+    {
+      "c_name": "Customer#000126865",
+      "c_custkey": 126865,
+      "o_orderkey": 4702759,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1994-11-07"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "447606.65"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "320.00"
+      }
+    },
+    {
+      "c_name": "Customer#000036619",
+      "c_custkey": 36619,
+      "o_orderkey": 4806726,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1995-01-17"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "446704.09"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "328.00"
+      }
+    },
+    {
+      "c_name": "Customer#000119989",
+      "c_custkey": 119989,
+      "o_orderkey": 1544643,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1997-09-20"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "434568.25"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "320.00"
+      }
+    }
+  ],
+  "statements": [
+    {
+      "sql": "withheld-sha256:8371be500fdaeabb916f2baba8e030a306502e39dfcd6be5b74d15ff692ec797",
+      "params": [
+        {
+          "type": "Decimal",
+          "value": "313"
+        }
+      ],
+      "many": false
+    }
+  ],
+  "result_sha256": "73c3af2d418768f6f147b9413ef7f67063e6ee8f6f5f1d6b550d60976247d502"
+}

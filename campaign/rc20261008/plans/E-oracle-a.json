@@ -1,0 +1,40 @@
+{
+ "plan_id": "E-oracle-a",
+ "purpose": "Phase E host side, oracle: engine on, SF1 non-indexed, LAN listener checked",
+ "first_state": "non-indexed",
+ "second_state": "indexed",
+ "steps": [
+  {
+   "id": "oracle-E-engine",
+   "kind": "engine",
+   "engine": "oracle",
+   "settle": 90
+  },
+  {
+   "id": "oracle-E-fp-before",
+   "kind": "fingerprint",
+   "engine": "oracle",
+   "label": "oracle-sf1-E-before",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "oracle-E-listen",
+   "kind": "shell",
+   "command": "ss -ltn | grep \":1521 \"; ss -ltn | grep -E \"(0\\.0\\.0\\.0|\\*|\\[::\\]|192\\.168\\.100\\.79):1521 \""
+  },
+  {
+   "id": "oracle-E-verify-non-indexed",
+   "kind": "index",
+   "engine": "oracle",
+   "actions": [
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "oracle-E-preflight-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh oracle && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms oracle --schema non-indexed"
+  }
+ ]
+}

@@ -1,0 +1,82 @@
+{
+ "plan_id": "P2-commercial_a",
+ "purpose": "Commercial System A pilot part 2: cancellation retest after the self-session fix; one-input smoke of all 22 queries under result policy v2 (warmup instance only); historical preflight.",
+ "steps": [
+  {
+   "id": "cancel-2",
+   "kind": "run",
+   "engine": "commercial_a",
+   "resumable": false,
+   "args": {
+    "run_dir": "pilot/commercial_a-indexed-cancel-2",
+    "protocol": "protocols/rc20261008-P-v2.json",
+    "phase": "P",
+    "schema": "indexed",
+    "mode": "pilot",
+    "queries": [
+     1,
+     6
+    ],
+    "extra": [
+     "--cancel-test-query",
+     "1",
+     "--cancel-check-query",
+     "6",
+     "--cancel-limit",
+     "1"
+    ]
+   }
+  },
+  {
+   "id": "smoke",
+   "kind": "run",
+   "engine": "commercial_a",
+   "resumable": true,
+   "args": {
+    "run_dir": "pilot/commercial_a-indexed-smoke",
+    "protocol": "protocols/rc20261008-P-v2.json",
+    "phase": "P",
+    "schema": "indexed",
+    "mode": "pilot",
+    "queries": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22
+    ],
+    "extra": [
+     "--blocks",
+     "0"
+    ]
+   }
+  },
+  {
+   "id": "verify-smoke",
+   "kind": "verify",
+   "run_dir": "pilot/commercial_a-indexed-smoke"
+  },
+  {
+   "id": "historical-preflight",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms commercial_a --schema indexed"
+  }
+ ]
+}

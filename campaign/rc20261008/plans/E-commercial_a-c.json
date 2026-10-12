@@ -1,0 +1,15 @@
+{
+ "plan_id": "E-commercial_a-c",
+ "purpose": "Phase E host side, commercial_a: closing SF1 fingerprint",
+ "first_state": "indexed",
+ "second_state": "non-indexed",
+ "steps": [
+  {
+   "id": "commercial_a-E-fp-after",
+   "kind": "fingerprint",
+   "engine": "commercial_a",
+   "label": "commercial_a-sf1-E-after",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  }
+ ]
+}

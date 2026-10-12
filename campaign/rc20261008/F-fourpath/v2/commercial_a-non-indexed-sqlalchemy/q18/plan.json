@@ -1,0 +1,40 @@
+{
+ "seed": 5980169687607552820,
+ "block_sequences": [
+  3,
+  0,
+  1,
+  2,
+  3,
+  2,
+  0,
+  1
+ ],
+ "williams4": [
+  [
+   "L",
+   "O",
+   "B",
+   "G"
+  ],
+  [
+   "O",
+   "G",
+   "L",
+   "B"
+  ],
+  [
+   "G",
+   "B",
+   "O",
+   "L"
+  ],
+  [
+   "B",
+   "L",
+   "G",
+   "O"
+  ]
+ ],
+ "warmup_order": "O, L, G, B (G and B are built from the O and L warmups)"
+}

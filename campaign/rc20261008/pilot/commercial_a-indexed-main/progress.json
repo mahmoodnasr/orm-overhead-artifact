@@ -1,0 +1,46 @@
+{
+ "run_id": "5832905f612e4a9dbd49c52032bce84b",
+ "pid": 335748,
+ "phase": "P",
+ "dbms": "commercial_a",
+ "schema": "indexed",
+ "scale": 1,
+ "mode": "pilot",
+ "queries": [
+  6,
+  14
+ ],
+ "planned_timed": 64,
+ "counts": {
+  "saved_cell_warmup": 8,
+  "status_cell_warmup_ok": 8,
+  "saved_block_warmup": 40,
+  "status_block_warmup_ok": 40,
+  "saved_timed": 37,
+  "status_timed_ok": 37,
+  "accepted_pairs": 16,
+  "accepted_timed": 32,
+  "pairs_mismatch": 2
+ },
+ "environment_id": "08c0c42513f0959a691ea14fb71b5be2c538d034847f0af648239a5796b7c679",
+ "started": {
+  "utc": "2026-10-07T23:45:20.103523+00:00",
+  "cairo": "2026-10-08T02:45:20.103523+03:00"
+ },
+ "cells_done": [],
+ "_obs": [
+  {
+   "type": "float",
+   "value": "0.0"
+  },
+  {
+   "type": "float",
+   "value": "0.0"
+  }
+ ],
+ "observed_over_predicted": null,
+ "resumed_from_run": "53dab1ed182f47f09cf623b665d07f97",
+ "state": "complete",
+ "utc": "2026-10-07T23:45:22.162402+00:00",
+ "cairo": "2026-10-08T02:45:22.162402+03:00"
+}

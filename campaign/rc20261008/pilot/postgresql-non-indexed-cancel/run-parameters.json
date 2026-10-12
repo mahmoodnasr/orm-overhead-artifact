@@ -1,0 +1,20 @@
+{
+ "protocol_id": "rc20261008-P-v2",
+ "protocol_sha256": "ca9501a0cd8ce4550f2bd7825125f61d4da4e7e2dd381db63b1631c91c59edd2",
+ "phase": "P",
+ "dbms": "postgresql",
+ "schema": "non-indexed",
+ "scale": 1,
+ "queries": [
+  1,
+  6
+ ],
+ "timeout_s": {
+  "type": "float",
+  "value": "900.0"
+ },
+ "mode": "pilot",
+ "blocks": 8,
+ "client_mode": "same-host",
+ "database_label": "tpch"
+}

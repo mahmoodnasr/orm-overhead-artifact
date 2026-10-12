@@ -1,0 +1,26 @@
+{
+ "query": 13,
+ "framework": "sqlalchemy",
+ "accepted_blocks": 2,
+ "status": "complete",
+ "utc": "2026-10-09T11:09:52.580126+00:00",
+ "cairo": "2026-10-09T14:09:52.580126+03:00",
+ "paired_median": {
+  "O/G": {
+   "type": "float",
+   "value": "0.19339753153747236"
+  },
+  "G/B": {
+   "type": "float",
+   "value": "0.9977590757488003"
+  },
+  "B/L": {
+   "type": "float",
+   "value": "11.048242873060293"
+  },
+  "O/L": {
+   "type": "float",
+   "value": "2.1319147101312867"
+  }
+ }
+}

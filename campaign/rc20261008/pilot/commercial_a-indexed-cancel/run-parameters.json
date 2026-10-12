@@ -1,0 +1,20 @@
+{
+ "protocol_id": "rc20261008-P-v1",
+ "protocol_sha256": "d4253f502c26142da638df8bfc699646dd4627743c4c5dc5e953e1caed972354",
+ "phase": "P",
+ "dbms": "commercial_a",
+ "schema": "indexed",
+ "scale": 1,
+ "queries": [
+  1,
+  6
+ ],
+ "timeout_s": {
+  "type": "float",
+  "value": "900.0"
+ },
+ "mode": "pilot",
+ "blocks": 8,
+ "client_mode": "same-host",
+ "database_label": "tpch"
+}

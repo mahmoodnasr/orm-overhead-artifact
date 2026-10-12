@@ -1,0 +1,278 @@
+{
+ "transaction": "T1",
+ "block": 23,
+ "attempt": 1,
+ "seed": 255969927336112,
+ "input": {
+  "w_id": 10,
+  "d_id": 2,
+  "c_id": 2334,
+  "ol_cnt": 9,
+  "items": [
+   [
+    10309,
+    6
+   ],
+   [
+    70452,
+    1
+   ],
+   [
+    83880,
+    1
+   ],
+   [
+    97002,
+    3
+   ],
+   [
+    13080,
+    3
+   ],
+   [
+    34365,
+    7
+   ],
+   [
+    3020,
+    8
+   ],
+   [
+    95569,
+    6
+   ],
+   [
+    95169,
+    2
+   ]
+  ]
+ },
+ "sequence_id": 3,
+ "counts_before_block": {
+  "warehouse": 10,
+  "district": 100,
+  "customer": 300000,
+  "history": 1458095,
+  "item": 100000,
+  "stock": 1000000,
+  "order": 866923,
+  "new_order": 856033,
+  "order_line": 8669552
+ },
+ "counts_after_block": {
+  "warehouse": 10,
+  "district": 100,
+  "customer": 300000,
+  "history": 1458095,
+  "item": 100000,
+  "stock": 1000000,
+  "order": 866923,
+  "new_order": 856033,
+  "order_line": 8669552
+ },
+ "counts_unchanged": true,
+ "frameworks": {
+  "django": {
+   "left": "django/sql",
+   "right": "django/orm",
+   "tables_touched": {
+    "django/sql": [
+     "customer",
+     "district",
+     "item",
+     "new_order",
+     "order",
+     "order_line",
+     "stock",
+     "warehouse"
+    ],
+    "django/orm": [
+     "customer",
+     "district",
+     "item",
+     "new_order",
+     "order",
+     "order_line",
+     "stock",
+     "warehouse"
+    ]
+   },
+   "tables_touched_equal": true,
+   "output_keys": {
+    "django/sql": [
+     "c_id",
+     "d_id",
+     "o_id",
+     "ol_cnt",
+     "total_amount",
+     "w_id"
+    ],
+    "django/orm": [
+     "c_id",
+     "d_id",
+     "o_id",
+     "ol_cnt",
+     "total_amount",
+     "w_id"
+    ]
+   },
+   "accepted": true,
+   "classification": "equivalent",
+   "problems": []
+  },
+  "sqlalchemy": {
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "tables_touched": {
+    "sqlalchemy/sql": [
+     "customer",
+     "district",
+     "item",
+     "new_order",
+     "order",
+     "order_line",
+     "stock",
+     "warehouse"
+    ],
+    "sqlalchemy/orm": [
+     "customer",
+     "district",
+     "item",
+     "new_order",
+     "order",
+     "order_line",
+     "stock",
+     "warehouse"
+    ]
+   },
+   "tables_touched_equal": true,
+   "output_keys": {
+    "sqlalchemy/sql": [
+     "c_id",
+     "d_id",
+     "o_id",
+     "ol_cnt",
+     "total_amount",
+     "w_id"
+    ],
+    "sqlalchemy/orm": [
+     "c_id",
+     "d_id",
+     "o_id",
+     "total_amount",
+     "w_id"
+    ]
+   },
+   "accepted": true,
+   "classification": "equivalent",
+   "problems": []
+  }
+ },
+ "cross": {
+  "sql": {
+   "left": "django/sql",
+   "right": "sqlalchemy/sql",
+   "tables_touched": {
+    "django/sql": [
+     "customer",
+     "district",
+     "item",
+     "new_order",
+     "order",
+     "order_line",
+     "stock",
+     "warehouse"
+    ],
+    "sqlalchemy/sql": [
+     "customer",
+     "district",
+     "item",
+     "new_order",
+     "order",
+     "order_line",
+     "stock",
+     "warehouse"
+    ]
+   },
+   "tables_touched_equal": true,
+   "output_keys": {
+    "django/sql": [
+     "c_id",
+     "d_id",
+     "o_id",
+     "ol_cnt",
+     "total_amount",
+     "w_id"
+    ],
+    "sqlalchemy/sql": [
+     "c_id",
+     "d_id",
+     "o_id",
+     "ol_cnt",
+     "total_amount",
+     "w_id"
+    ]
+   },
+   "accepted": false,
+   "classification": "mismatch",
+   "problems": [
+    "output total_amount: 2448.74 vs 2448.7400000000002"
+   ]
+  },
+  "orm": {
+   "left": "django/orm",
+   "right": "sqlalchemy/orm",
+   "tables_touched": {
+    "django/orm": [
+     "customer",
+     "district",
+     "item",
+     "new_order",
+     "order",
+     "order_line",
+     "stock",
+     "warehouse"
+    ],
+    "sqlalchemy/orm": [
+     "customer",
+     "district",
+     "item",
+     "new_order",
+     "order",
+     "order_line",
+     "stock",
+     "warehouse"
+    ]
+   },
+   "tables_touched_equal": true,
+   "output_keys": {
+    "django/orm": [
+     "c_id",
+     "d_id",
+     "o_id",
+     "ol_cnt",
+     "total_amount",
+     "w_id"
+    ],
+    "sqlalchemy/orm": [
+     "c_id",
+     "d_id",
+     "o_id",
+     "total_amount",
+     "w_id"
+    ]
+   },
+   "accepted": false,
+   "classification": "mismatch",
+   "problems": [
+    "output total_amount: 2448.74 vs 2448.7400000000002"
+   ]
+  }
+ },
+ "warmup_pairs": {
+  "django": "equivalent",
+  "sqlalchemy": "equivalent"
+ },
+ "utc": "2026-10-10T07:45:10.120330+00:00",
+ "cairo": "2026-10-10T10:45:10.120330+03:00"
+}

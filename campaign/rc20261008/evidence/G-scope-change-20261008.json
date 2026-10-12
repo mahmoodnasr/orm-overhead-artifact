@@ -1,0 +1,9 @@
+{
+ "utc": "2026-10-08T10:16:38.234275+00:00",
+ "decision": "Phase G measures only (engine, index configuration, query) cells that the benchmark host measured; cells censored on the host (all four paths > 900 s on the cell-warmup input in the historical SF1 campaign: PostgreSQL non-indexed Q17, Q20, Q21; MySQL non-indexed Q17, Q20) are not run on the second server, because a second-server ratio has no host ratio to be compared with.",
+ "trigger": "On the M4 container PostgreSQL non-indexed Q17 completes in 689-726 s on three paths (Django ORM > 900 s), so the eight-block design costs about 9.5 h for that one cell; Q20 and Q21 are expected to behave alike.",
+ "evidence": "G-mac-server/postgresql-non-indexed/q17 (cell warmup and block-1 warmups kept; the interrupted block-1 attempt has no decision and is never accepted)",
+ "kept": "G-mac-server/postgresql-non-indexed q06 (complete, 16 pairs accepted) remains valid under protocol G-v1",
+ "protocol": "rc20261008-G-v1 unchanged (design identical); only the cell list changes",
+ "reversible": "the skipped cells can be run later with the same driver if time allows"
+}

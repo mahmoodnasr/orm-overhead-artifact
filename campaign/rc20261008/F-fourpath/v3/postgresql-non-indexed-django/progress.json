@@ -1,0 +1,46 @@
+{
+ "run_id": "6f641c5bc357430087b213fc8deefdf3",
+ "pid": 2363631,
+ "phase": "F",
+ "dbms": "postgresql",
+ "schema": "non-indexed",
+ "scale": 1,
+ "mode": "main",
+ "queries": [
+  6
+ ],
+ "planned_timed": 32,
+ "counts": {
+  "saved_cell_warmup": 4,
+  "status_cell_warmup_ok": 4,
+  "saved_block_warmup": 32,
+  "status_block_warmup_ok": 32,
+  "saved_timed": 32,
+  "status_timed_ok": 32
+ },
+ "environment_id": "44db7dfeaf64e910d8667b78aa3d8dfe21a7667d977bf56a8fb796ef2cff13e9",
+ "started": {
+  "utc": "2026-10-09T21:40:52.260396+00:00",
+  "cairo": "2026-10-10T00:40:52.260396+03:00"
+ },
+ "state": "complete",
+ "utc": "2026-10-09T21:42:49.674047+00:00",
+ "cairo": "2026-10-10T00:42:49.674047+03:00",
+ "current": {
+  "query": 6,
+  "path": "django/B",
+  "kind": "timed",
+  "block": 8,
+  "utc": "2026-10-09T21:42:46.287496+00:00",
+  "cairo": "2026-10-10T00:42:46.287496+03:00"
+ },
+ "cells_done": [
+  {
+   "query": 6,
+   "wall_s": {
+    "type": "float",
+    "value": "115.41275769899949"
+   }
+  }
+ ]
+}

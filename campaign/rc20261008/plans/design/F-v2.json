@@ -1,0 +1,12 @@
+{
+  "phase_F_v2_runner": "rc_controlled2.py, a subclass of rc_controlled.py (F-v1), which is unchanged. Five corrections; the docstring of rc_controlled2.py gives the evidence for each.",
+  "phase_F_v2_corrections": [
+    "1 G (Django): after replaying the ORM's statements, a column of the ORM's output that the last statement does not return is added as the query module adds it, from the nearest earlier replayed statement, joined on a unique column (Q15: total_revenue on suppkey = s_suppkey). Inside G's timer, as the module's own step is inside O's. Recorded per G record (g_assembly).",
+    "2 B (Django, Commercial System A): ';' before a leading WITH when commercial-a-django-backend prepends its DECLARE (statements containing GROUP BY with parameters), which otherwise fails with Msg 319. Recorded in prep.json.",
+    "3 Plans (Django, Commercial System A): statements that commercial-a-django-backend rewrites into DECLAREd local variables are captured in that form, with each DECLARE taking its value as a literal; all other plans as in F-v1.",
+    "4 B (Django): a date the ORM binds as a string is bound in B as that string (Commercial System A: national-character(10), as G binds it; MySQL: the same literal on the wire either way). F-v1 bound a datetime.date.",
+    "5 A G or B path over the limit in the cell warm-up censors the F cell (Phase A's warm-up censoring rule); cell-done.json status 'censored' names the path."
+  ],
+  "phase_F_v2_scope": "Every F step from 2026-10-09 ~21:50 Cairo on: all Django cells (the nine Commercial System A Django cells measured under F-v1 are measured again; their F-v1 records are kept and superseded) and every SQLAlchemy cell not yet measured. The six Commercial System A indexed SQLAlchemy cells measured under F-v1 stay: corrections 1-4 apply only to Django and no path of theirs timed out, so F-v2 would have run them identically.",
+  "phase_F_v2_run_dirs": "F-fourpath/v2/<dbms>-<schema>-<framework>"
+}

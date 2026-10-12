@@ -1,0 +1,140 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:2a22a92362c06e317684d4faa5c9d26d8e27b4ffd0003508addda558c82234e2",
+   "params": [
+    1,
+    {
+     "type": "datetime",
+     "value": "1997-05-01T00:00:00"
+    },
+    {
+     "type": "datetime",
+     "value": "1997-08-01T00:00:00"
+    },
+    1,
+    {
+     "type": "datetime",
+     "value": "1997-05-01T00:00:00"
+    },
+    {
+     "type": "datetime",
+     "value": "1997-08-01T00:00:00"
+    }
+   ],
+   "inputsizes": [
+    [
+     "l_discount_1",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "l_shipdate_1",
+     "<class 'datetime.datetime'>",
+     "Date"
+    ],
+    [
+     "l_shipdate_2",
+     "<class 'datetime.datetime'>",
+     "Date"
+    ],
+    [
+     "l_discount_1",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "l_shipdate_1",
+     "<class 'datetime.datetime'>",
+     "Date"
+    ],
+    [
+     "l_shipdate_2",
+     "<class 'datetime.datetime'>",
+     "Date"
+    ]
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:ba698713b5756a0691e8fd7617ad5ec69e6e764e19f2b29492bf6886902ef92a",
+    "values": [
+     {
+      "type": "datetime",
+      "value": "1997-05-01T00:00:00"
+     },
+     {
+      "type": "datetime",
+      "value": "1997-08-01T00:00:00"
+     },
+     {
+      "type": "datetime",
+      "value": "1997-05-01T00:00:00"
+     },
+     {
+      "type": "datetime",
+      "value": "1997-08-01T00:00:00"
+     }
+    ],
+    "binding_types": "orm",
+    "inputsizes": [
+     [
+      "b0",
+      "<class 'datetime.datetime'>",
+      "Date"
+     ],
+     [
+      "b1",
+      "<class 'datetime.datetime'>",
+      "Date"
+     ],
+     [
+      "b2",
+      "<class 'datetime.datetime'>",
+      "Date"
+     ],
+     [
+      "b3",
+      "<class 'datetime.datetime'>",
+      "Date"
+     ]
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:0d7f5101a3ce81a7db18e5fea9cf61fb378016801bf0f93efca1da9af8bc5e5e",
+     "bound": true,
+     "kind": "date",
+     "value_type": "datetime",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:129a4eff4556053a2f1fd9df11dcfbae14411c236ed4d9ffbfa800cb2bd47329",
+     "bound": true,
+     "kind": "date",
+     "value_type": "datetime",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:0d7f5101a3ce81a7db18e5fea9cf61fb378016801bf0f93efca1da9af8bc5e5e",
+     "bound": true,
+     "kind": "date",
+     "value_type": "datetime",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:129a4eff4556053a2f1fd9df11dcfbae14411c236ed4d9ffbfa800cb2bd47329",
+     "bound": true,
+     "kind": "date",
+     "value_type": "datetime",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 4
+ }
+}

@@ -1,0 +1,43 @@
+{
+  "label": "probe",
+  "elapsed_s": {
+    "type": "float",
+    "value": "0.0008973949998107855"
+  },
+  "api_statements": [
+    {
+      "sql": "SELECT COUNT(*) AS n FROM part WHERE p_partkey=%s",
+      "params": [
+        1
+      ],
+      "many": false
+    }
+  ],
+  "driver_statements": [
+    {
+      "sql": "SELECT COUNT(*) AS n FROM part WHERE p_partkey=:arg0",
+      "args": [
+        {
+          ":arg0": 1
+        }
+      ],
+      "kwargs": {}
+    }
+  ],
+  "rows": [
+    {
+      "N": 1
+    }
+  ],
+  "utc": "2026-09-19T14:28:22.101287+00:00",
+  "plan_identity": {
+    "sql_id": "4kx7h0dn8b82h",
+    "child_number": 0
+  },
+  "actual_plan_operators": 3,
+  "instrumentation": {
+    "statistics_level": "ALL",
+    "client_statement_cache_before": 20,
+    "client_statement_cache_during_capture": 0
+  }
+}

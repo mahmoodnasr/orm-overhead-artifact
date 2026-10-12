@@ -1,0 +1,84 @@
+collector-probe-v2/capture-sql-plan-0.sqlplan
+  [withheld: Commercial System A plan summary]
+commercial-q17-django/capture-orm-plan-0.sqlplan
+  [withheld: Commercial System A plan summary]
+commercial-q17-django/capture-sql-plan-0.sqlplan
+  [withheld: Commercial System A plan summary]
+commercial-q18-django/capture-orm-plan-0.sqlplan
+  [withheld: Commercial System A plan summary]
+commercial-q18-django/capture-sql-plan-0.sqlplan
+  [withheld: Commercial System A plan summary]
+oracle-cache-probe/cache-disabled-plan.json
+  0 SELECT STATEMENT None None starts 1 rows 1 reads 2
+  1 SORT AGGREGATE None starts 1 rows 1 reads 2
+  2 INDEX UNIQUE SCAN PK_PART starts 1 rows 1 reads 2
+oracle-cache-probe/cached-after-warmup-plan.json
+  0 SELECT STATEMENT None None starts None rows None reads None
+  1 SORT AGGREGATE None starts None rows None reads None
+  2 INDEX UNIQUE SCAN PK_PART starts None rows None reads None
+oracle-cache-probe/new-session-plan.json
+  0 SELECT STATEMENT None None starts 1 rows 1 reads 2
+  1 SORT AGGREGATE None starts 1 rows 1 reads 2
+  2 INDEX UNIQUE SCAN PK_PART starts 1 rows 1 reads 2
+oracle-collector-probe/probe-plan.json
+  0 SELECT STATEMENT None None starts 1 rows 1 reads 2
+  1 SORT AGGREGATE None starts 1 rows 1 reads 2
+  2 INDEX UNIQUE SCAN PK_PART starts 1 rows 1 reads 2
+oracle-q17-django/capture-orm-plan.json
+  0 SELECT STATEMENT None None starts 1 rows 1 reads 71589388
+  1 SORT AGGREGATE None starts 1 rows 1 reads 71589388
+  2 FILTER None None starts 1 rows 587 reads 71589388
+  3 HASH JOIN None None starts 1 rows 6088 reads 96100
+  4 TABLE ACCESS FULL PART starts 1 rows 204 reads 3372
+  5 TABLE ACCESS FULL LINEITEM starts 1 rows 6001215 reads 92728
+  6 SORT GROUP BY NOSORT None starts 771 rows 771 reads 71493288
+  7 TABLE ACCESS FULL LINEITEM starts 771 rows 23970 reads 71493288
+oracle-q17-django/capture-sql-plan.json
+  0 SELECT STATEMENT None None starts 1 rows 1 reads 96100
+  1 SORT AGGREGATE None starts 1 rows 1 reads 96100
+  2 VIEW None VW_WIF_1 starts 1 rows 6088 reads 96100
+  3 WINDOW SORT None starts 1 rows 6088 reads 96100
+  4 HASH JOIN None None starts 1 rows 6088 reads 96100
+  5 TABLE ACCESS FULL PART starts 1 rows 204 reads 3372
+  6 TABLE ACCESS FULL LINEITEM starts 1 rows 6001215 reads 92728
+oracle-q17-django-attempt1/capture-orm-plan.json
+  0 SELECT STATEMENT None None starts None rows None reads None
+  1 SORT AGGREGATE None starts None rows None reads None
+  2 FILTER None None starts None rows None reads None
+  3 HASH JOIN None None starts None rows None reads None
+  4 TABLE ACCESS FULL PART starts None rows None reads None
+  5 TABLE ACCESS FULL LINEITEM starts None rows None reads None
+  6 SORT GROUP BY NOSORT None starts None rows None reads None
+  7 TABLE ACCESS FULL LINEITEM starts None rows None reads None
+oracle-q20-django/capture-orm-plan.json
+  0 SELECT STATEMENT None None starts 1 rows 186 reads 33958535
+  1 SORT ORDER BY None starts 1 rows 186 reads 33958535
+  2 VIEW None VM_NWVW_2 starts 1 rows 186 reads 33958535
+  3 HASH UNIQUE None starts 1 rows 186 reads 33958535
+  4 FILTER None None starts 1 rows 263 reads 33958535
+  5 HASH JOIN None None starts 1 rows 366 reads 20087
+  6 HASH JOIN None None starts 1 rows 8508 reads 19852
+  7 MERGE JOIN CARTESIAN None starts 1 rows 2127 reads 3378
+  8 TABLE ACCESS FULL NATION starts 1 rows 1 reads 6
+  9 BUFFER SORT None starts 1 rows 2127 reads 3372
+  10 TABLE ACCESS FULL PART starts 1 rows 2127 reads 3372
+  11 TABLE ACCESS FULL PARTSUPP starts 1 rows 800000 reads 16474
+  12 TABLE ACCESS FULL SUPPLIER starts 1 rows 10000 reads 235
+  13 SORT GROUP BY NOSORT None starts 366 rows 263 reads 33938448
+  14 FILTER None None starts 366 rows 433 reads 33938448
+  15 TABLE ACCESS FULL LINEITEM starts 366 rows 433 reads 33938448
+oracle-q20-django/capture-sql-plan.json
+  0 SELECT STATEMENT None None starts 1 rows 186 reads 112815
+  1 SORT ORDER BY None starts 1 rows 186 reads 112815
+  2 HASH JOIN None None starts 1 rows 186 reads 112815
+  3 TABLE ACCESS FULL NATION starts 1 rows 1 reads 6
+  4 HASH JOIN RIGHT SEMI None starts 1 rows 4397 reads 112809
+  5 VIEW None VW_NSO_2 starts 1 rows 5833 reads 112574
+  6 FILTER None None starts 1 rows 5833 reads 112574
+  7 HASH GROUP BY None starts 1 rows 5843 reads 112574
+  8 HASH JOIN None None starts 1 rows 9741 reads 112574
+  9 HASH JOIN None None starts 1 rows 8508 reads 19846
+  10 TABLE ACCESS FULL PART starts 1 rows 2127 reads 3372
+  11 TABLE ACCESS FULL PARTSUPP starts 1 rows 800000 reads 16474
+  12 TABLE ACCESS FULL LINEITEM starts 1 rows 909455 reads 92728
+  13 TABLE ACCESS FULL SUPPLIER starts 1 rows 10000 reads 235

@@ -1,0 +1,21 @@
+{
+ "protocol_id": "rc20261008-V-v2",
+ "protocol_sha256": "04942e1ef22911fdb37aa6ac1a4e0ac857efba7ef7ae4dd25e730b69828c67d9",
+ "phase": "V",
+ "dbms": "mysql",
+ "schema": "non-indexed",
+ "scale": 1,
+ "queries": [
+  13,
+  17,
+  20
+ ],
+ "timeout_s": {
+  "type": "float",
+  "value": "14340.0"
+ },
+ "mode": "main",
+ "blocks": 0,
+ "client_mode": "second-server-mac",
+ "database_label": "mac-tpch"
+}

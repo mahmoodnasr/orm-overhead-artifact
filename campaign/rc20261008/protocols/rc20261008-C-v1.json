@@ -1,0 +1,88 @@
+{
+ "campaign_id": "rc20261008",
+ "protocol_id": "rc20261008-C-v1",
+ "phase": "C",
+ "frozen": {
+  "utc": "2026-10-08T17:04:05.968053+00:00",
+  "cairo": "2026-10-08T20:04:05.968053+03:00"
+ },
+ "purpose": "Phase C: transaction state verification and timing (R1-3, R2-4, R2-2). 5 transaction types x 4 DBMS x 2 index configurations x 2 frameworks = 80 cells, 24 blocks each, from src-c.",
+ "design": {
+  "blocks": 24,
+  "paths": [
+   "django/sql",
+   "django/orm",
+   "sqlalchemy/sql",
+   "sqlalchemy/orm"
+  ],
+  "williams": [
+   [
+    "django/sql",
+    "django/orm",
+    "sqlalchemy/sql",
+    "sqlalchemy/orm"
+   ],
+   [
+    "django/orm",
+    "sqlalchemy/orm",
+    "django/sql",
+    "sqlalchemy/sql"
+   ],
+   [
+    "sqlalchemy/orm",
+    "sqlalchemy/sql",
+    "django/orm",
+    "django/sql"
+   ],
+   [
+    "sqlalchemy/sql",
+    "django/sql",
+    "sqlalchemy/orm",
+    "django/orm"
+   ]
+  ],
+  "inputs": "global random.seed(S) immediately before each call; S = first 48 bits of sha256(\"<protocol_id>:T<t>:<block>\"); block 0 = cell warmup",
+  "state": "before-image of every row the input can touch, read on a separate autocommit connection; after-image; committed difference; before-image written back; scope re-read and required equal; table row counts per block",
+  "clock_columns": {
+   "order": "o_entry_d",
+   "history": "h_date",
+   "order_line": "ol_delivery_d"
+  },
+  "clock_rule": "present and within [min(client,db) start - 2 s, max(client,db) end + 2 s]; excluded from equality only",
+  "timer": "perf_counter around the transaction function (commit inside); seeding, capture, revert, checks and the SQLAlchemy post-call rollback outside"
+ },
+ "acceptance": "per block and framework: both calls ok; committed differences equal after clock-column handling; declared common outputs equal; keys equal to the replayed draws; both reverts verified; table counts unchanged",
+ "source": {
+  "worktree": "src-c",
+  "commit": "b8306e0dd9a82eeb871c4c6c5e831982a9732b05",
+  "corrections": "patches/C1-C2-applied.diff (C1 Django SQL Payment h_data; C2 SQLAlchemy SQL Order-Status order lines), confirmed by the Oracle transaction pilot 2026-10-08",
+  "patch_sha256": "1a05d7ec4779f5992f110de62318047c48a0093e455272e545f5a49e68704035"
+ },
+ "tpcc_source_hashes": {
+  "django_app/tpcc_queries/__init__.py": "6f347cd23dc5e2d1facdb7230286235735d8dbdd66a9ae1e3c5b7ffdb382de3a",
+  "django_app/tpcc_queries/db_utils.py": "b70c89e51f7c0fd1dcf38359d635ed7add4c84deeda200809a74fed8a2b17bbe",
+  "django_app/tpcc_queries/t1_neworder.py": "6de255f62a074686ad2fca64ad4bb135fcbad3daa85bd9ba3f339c0b1239e6ed",
+  "django_app/tpcc_queries/t2_payment.py": "53f7c8d38253f1b8bb8b96b6363b99cb5bfb2303965648e1b4cc7191ed779399",
+  "django_app/tpcc_queries/t3_orderstatus.py": "d78c6886c5fa9fa52f085abadaf94ee64ae7cb86629b325a8b2fc65efb0484fc",
+  "django_app/tpcc_queries/t4_delivery.py": "07a70ed96ff20010dfff084679b0b5386c3e7d83d96001552c66d7b1a6db0d6d",
+  "django_app/tpcc_queries/t5_stocklevel.py": "702300b6fb85e4734d270e824f241c2e9ab41dacb3e8e4fe559de73d3cedd8de",
+  "sqlalchemy_app/tpcc_queries/__init__.py": "9f4e02c4d9cf869a1443f0a81a14501ad13ae194391902e481af4067874f0dab",
+  "sqlalchemy_app/tpcc_queries/db_utils.py": "c4528e55f9d10eea460895b29c61f3f09d97c82082b3c6cbd5da4321c1a86feb",
+  "sqlalchemy_app/tpcc_queries/t1.py": "513eb42903bad22fe56e0c16817b3022f53a4f4a722ff88569ab5249320ddaa5",
+  "sqlalchemy_app/tpcc_queries/t2.py": "07accc2ccf991b22519850ee5eb3f46cc22b4939c7c40daca808ae092aeeb886",
+  "sqlalchemy_app/tpcc_queries/t3.py": "6cf376454fd378bf0a91e088b90c742be89c270951bd0943c10a97f9ab177138",
+  "sqlalchemy_app/tpcc_queries/t4.py": "e20e9e037320bf554e81ce9fe8cbe9027dc1d4c167cda82841499c147f69a273",
+  "sqlalchemy_app/tpcc_queries/t5.py": "9520cdf40cab942ee38e70c47beddaa506cb44d6cf912440c8738f1d849c23f5",
+  "django_app/tpcc_models.py": "4f20d90529b54e1123c054bbca90988b8bf03df6775d5ed4fe3d44430a946824",
+  "sqlalchemy_app/tpcc_models.py": "571baaa61e3d47370f4d851b5b17212a9875654beff0036bd2167def289f11b1",
+  "tpcc_config.py": "cca2d597dcbe81f59b68d1c8e8e4150115e44b5a67e0334ef774784eb4777d05"
+ },
+ "runner_code_sha256": {
+  "rc_tpcc.py": "d5d6e0331ac86e78876c2d71362170e33a95f00e94de3f7b1718816c883b27b0",
+  "rc_common.py": "8a44743b3e9ee3e9412d27916d8d7a987f9a5b8605ca7ede2bed6154a59eeb83"
+ },
+ "pilot_protocol": {
+  "protocol_id": "rc20261008-Cpilot-v1",
+  "sha256": "81d25b2f4023de4886e59d78c22fd6c3ce72d0399de42551e0a9947f6a6d0bdb"
+ }
+}

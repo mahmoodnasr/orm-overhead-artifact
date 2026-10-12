@@ -1,0 +1,110 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:f438e5630de4ef5ec17718c7ab26cfc73c952d0ab66e2218740070ee8ea78b93",
+   "params": [
+    1,
+    "HOUSEHOLD",
+    {
+     "type": "datetime",
+     "value": "1995-03-19T00:00:00"
+    },
+    {
+     "type": "datetime",
+     "value": "1995-03-19T00:00:00"
+    },
+    1
+   ],
+   "inputsizes": [
+    [
+     "l_discount_1",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "c_mktsegment_1",
+     "12",
+     "String"
+    ],
+    [
+     "o_orderdate_1",
+     "<class 'datetime.datetime'>",
+     "Date"
+    ],
+    [
+     "l_shipdate_1",
+     "<class 'datetime.datetime'>",
+     "Date"
+    ],
+    [
+     "l_discount_2",
+     "<class 'float'>",
+     "Integer"
+    ]
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:67ebdee091713df79e944beeb5502703b2b5d29862eaa6daa36fc83b8e0b7ff7",
+    "values": [
+     "HOUSEHOLD",
+     {
+      "type": "datetime",
+      "value": "1995-03-19T00:00:00"
+     },
+     {
+      "type": "datetime",
+      "value": "1995-03-19T00:00:00"
+     }
+    ],
+    "binding_types": "orm",
+    "inputsizes": [
+     [
+      "b0",
+      "12",
+      "String"
+     ],
+     [
+      "b1",
+      "<class 'datetime.datetime'>",
+      "Date"
+     ],
+     [
+      "b2",
+      "<class 'datetime.datetime'>",
+      "Date"
+     ]
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:8de5259835758e72a9ce40411aa69739894d05e087be1f286e59a907c62fc70d",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:af049f64f77b0b3276c35afc0af219df78dd9b4c65ec539d21055cb3e2152b42",
+     "bound": true,
+     "kind": "date",
+     "value_type": "datetime",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:af049f64f77b0b3276c35afc0af219df78dd9b4c65ec539d21055cb3e2152b42",
+     "bound": true,
+     "kind": "date",
+     "value_type": "datetime",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 3
+ },
+ "G_output_columns": null
+}

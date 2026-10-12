@@ -1,0 +1,34 @@
+{
+ "G": [
+  {
+   "sql": "SELECT customer.c_name AS customer_c_name, customer.c_custkey AS customer_c_custkey, orders.o_orderkey AS orders_o_orderkey, orders.o_orderdate AS orders_o_orderdate, orders.o_totalprice AS orders_o_totalprice, sum(lineitem.l_quantity) AS total_qty \nFROM customer, orders, lineitem \nWHERE orders.o_orderkey IN (SELECT lineitem_1.l_orderkey \nFROM lineitem AS lineitem_1 GROUP BY lineitem_1.l_orderkey \nHAVING sum(lineitem_1.l_quantity) > %s) AND customer.c_custkey = orders.o_custkey AND orders.o_orderkey = lineitem.l_orderkey GROUP BY customer.c_name, customer.c_custkey, orders.o_orderkey, orders.o_orderdate, orders.o_totalprice ORDER BY orders.o_totalprice DESC, orders.o_orderdate \n LIMIT %s",
+   "params": [
+    313,
+    100
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "SELECT c_name, c_custkey, o_orderkey, o_orderdate, o_totalprice, SUM(l_quantity) AS total_qty\nFROM customer, orders, lineitem\nWHERE o_orderkey IN (SELECT l_orderkey FROM lineitem\n                     GROUP BY l_orderkey HAVING SUM(l_quantity) > :b0)\n  AND c_custkey = o_custkey\n  AND o_orderkey = l_orderkey\nGROUP BY c_name, c_custkey, o_orderkey, o_orderdate, o_totalprice\nORDER BY o_totalprice DESC, o_orderdate\nLIMIT 100",
+    "values": [
+     313
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "313",
+     "bound": true,
+     "kind": "num",
+     "value_type": "int",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 1
+ },
+ "G_output_columns": null
+}

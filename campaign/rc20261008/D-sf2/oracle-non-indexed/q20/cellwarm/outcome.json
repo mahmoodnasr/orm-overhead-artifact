@@ -1,0 +1,65 @@
+{
+ "attempt": 1,
+ "censored": {
+  "django/orm": {
+   "input_id": "q20warm",
+   "limit_s": {
+    "type": "float",
+    "value": "900.0"
+   },
+   "elapsed_s": {
+    "type": "float",
+    "value": "900.0416646659723"
+   },
+   "stage": "cell_warmup"
+  }
+ },
+ "inexpressible": {},
+ "errors": {},
+ "comparisons": {
+  "django": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "ok",
+    "timeout"
+   ]
+  },
+  "sqlalchemy": {
+   "policy": "rc20261008-results-v3",
+   "query": 20,
+   "rows": [
+    337,
+    337
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "cross_sql": {
+   "policy": "rc20261008-results-v3",
+   "query": 20,
+   "rows": [
+    337,
+    337
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "sqlalchemy/sql"
+  },
+  "cross_orm": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "timeout",
+    "ok"
+   ]
+  }
+ }
+}

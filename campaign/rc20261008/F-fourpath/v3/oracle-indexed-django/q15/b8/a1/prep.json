@@ -1,0 +1,86 @@
+{
+ "G": [
+  {
+   "sql": "SELECT MAX(\"TOTAL_REVENUE\") FROM (SELECT \"LINEITEM\".\"L_SUPPKEY\" AS \"SUPPKEY\", SUM((\"LINEITEM\".\"L_EXTENDEDPRICE\" * (%s - \"LINEITEM\".\"L_DISCOUNT\"))) AS \"TOTAL_REVENUE\" FROM \"LINEITEM\" WHERE (\"LINEITEM\".\"L_SHIPDATE\" >= %s AND \"LINEITEM\".\"L_SHIPDATE\" < %s) GROUP BY \"LINEITEM\".\"L_SUPPKEY\") subquery",
+   "params": [
+    1,
+    {
+     "type": "date",
+     "value": "1997-05-01"
+    },
+    {
+     "type": "date",
+     "value": "1997-08-01"
+    }
+   ]
+  },
+  {
+   "sql": "SELECT \"LINEITEM\".\"L_SUPPKEY\" AS \"SUPPKEY\", SUM((\"LINEITEM\".\"L_EXTENDEDPRICE\" * (%s - \"LINEITEM\".\"L_DISCOUNT\"))) AS \"TOTAL_REVENUE\" FROM \"LINEITEM\" WHERE (\"LINEITEM\".\"L_SHIPDATE\" >= %s AND \"LINEITEM\".\"L_SHIPDATE\" < %s) GROUP BY \"LINEITEM\".\"L_SUPPKEY\" HAVING SUM((\"LINEITEM\".\"L_EXTENDEDPRICE\" * (%s - \"LINEITEM\".\"L_DISCOUNT\"))) = %s",
+   "params": [
+    1,
+    {
+     "type": "date",
+     "value": "1997-05-01"
+    },
+    {
+     "type": "date",
+     "value": "1997-08-01"
+    },
+    1,
+    {
+     "type": "Decimal",
+     "value": "1866696.8184"
+    }
+   ]
+  },
+  {
+   "sql": "SELECT \"SUPPLIER\".\"S_SUPPKEY\" AS \"S_SUPPKEY\", \"SUPPLIER\".\"S_NAME\" AS \"S_NAME\", \"SUPPLIER\".\"S_ADDRESS\" AS \"S_ADDRESS\", \"SUPPLIER\".\"S_PHONE\" AS \"S_PHONE\" FROM \"SUPPLIER\" WHERE \"SUPPLIER\".\"S_SUPPKEY\" IN (%s) ORDER BY 1 ASC",
+   "params": [
+    976
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "\n    WITH revenue0 (supplier_no, total_revenue) AS (\n      SELECT l_suppkey, SUM(l_extendedprice * (1 - l_discount))\n      FROM lineitem\n      WHERE l_shipdate >= %s\n        AND l_shipdate < %s\n      GROUP BY l_suppkey\n    )\n    SELECT s_suppkey, s_name, s_address, s_phone, total_revenue\n    FROM supplier, revenue0\n    WHERE s_suppkey = supplier_no\n      AND total_revenue = (SELECT MAX(total_revenue) FROM revenue0)\n    ORDER BY s_suppkey\n    ",
+    "values": [
+     {
+      "type": "date",
+      "value": "1997-05-01"
+     },
+     {
+      "type": "date",
+      "value": "1997-08-01"
+     }
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "TO_DATE('1997-05-01', 'YYYY-MM-DD')",
+     "bound": true,
+     "kind": "date",
+     "value_type": "date",
+     "type_source": "orm"
+    },
+    {
+     "literal": "TO_DATE('1997-08-01', 'YYYY-MM-DD')",
+     "bound": true,
+     "kind": "date",
+     "value_type": "date",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 2
+ },
+ "G_output_columns": [
+  "s_suppkey",
+  "s_name",
+  "s_address",
+  "s_phone",
+  "total_revenue"
+ ]
+}

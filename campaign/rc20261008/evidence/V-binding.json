@@ -1,0 +1,350 @@
+{
+ "generated": {
+  "utc": "2026-10-09T14:46:01.994165+00:00",
+  "cairo": "2026-10-09T17:46:01.994165+03:00"
+ },
+ "rows": [
+  {
+   "run": "mysql-non-indexed",
+   "query": "q13",
+   "path": "django/sql",
+   "mac_status": "ok",
+   "host_status": "ok",
+   "host_record": "A-sf1/mysql-non-indexed/q13/cellwarm/a1/django-sql.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "mysql-non-indexed",
+   "query": "q13",
+   "path": "django/orm",
+   "mac_status": "timeout",
+   "host_status": "timeout",
+   "host_record": "A-sf1/mysql-non-indexed/q13/cellwarm/a1/django-orm.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "mysql-non-indexed",
+   "query": "q13",
+   "path": "sqlalchemy/sql",
+   "mac_status": "ok",
+   "host_status": "ok",
+   "host_record": "A-sf1/mysql-non-indexed/q13/cellwarm/a1/sqlalchemy-sql.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "mysql-non-indexed",
+   "query": "q13",
+   "path": "sqlalchemy/orm",
+   "mac_status": "ok",
+   "host_status": "ok",
+   "host_record": "A-sf1/mysql-non-indexed/q13/cellwarm/a1/sqlalchemy-orm.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "postgresql-non-indexed",
+   "query": "q13",
+   "path": "django/sql",
+   "mac_status": "ok",
+   "host_status": "ok",
+   "host_record": "A-sf1/postgresql-non-indexed/q13/cellwarm/a1/django-sql.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "postgresql-non-indexed",
+   "query": "q13",
+   "path": "django/orm",
+   "mac_status": "timeout",
+   "host_status": "timeout",
+   "host_record": "A-sf1/postgresql-non-indexed/q13/cellwarm/a1/django-orm.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "postgresql-non-indexed",
+   "query": "q13",
+   "path": "sqlalchemy/sql",
+   "mac_status": "ok",
+   "host_status": "ok",
+   "host_record": "A-sf1/postgresql-non-indexed/q13/cellwarm/a1/sqlalchemy-sql.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "postgresql-non-indexed",
+   "query": "q13",
+   "path": "sqlalchemy/orm",
+   "mac_status": "ok",
+   "host_status": "ok",
+   "host_record": "A-sf1/postgresql-non-indexed/q13/cellwarm/a1/sqlalchemy-orm.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "postgresql-non-indexed",
+   "query": "q17",
+   "path": "django/sql",
+   "mac_status": "ok",
+   "host_status": "timeout",
+   "host_record": "A-sf1/postgresql-non-indexed/q17/cellwarm/a1/django-sql.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "postgresql-non-indexed",
+   "query": "q17",
+   "path": "django/orm",
+   "mac_status": "timeout",
+   "host_status": "timeout",
+   "host_record": "A-sf1/postgresql-non-indexed/q17/cellwarm/a1/django-orm.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "postgresql-non-indexed",
+   "query": "q17",
+   "path": "sqlalchemy/sql",
+   "mac_status": "ok",
+   "host_status": "timeout",
+   "host_record": "A-sf1/postgresql-non-indexed/q17/cellwarm/a1/sqlalchemy-sql.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "postgresql-non-indexed",
+   "query": "q17",
+   "path": "sqlalchemy/orm",
+   "mac_status": "ok",
+   "host_status": "timeout",
+   "host_record": "A-sf1/postgresql-non-indexed/q17/cellwarm/a1/sqlalchemy-orm.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "postgresql-non-indexed",
+   "query": "q20",
+   "path": "django/sql",
+   "mac_status": "ok",
+   "host_status": "timeout",
+   "host_record": "A-sf1/postgresql-non-indexed/q20/cellwarm/a1/django-sql.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "postgresql-non-indexed",
+   "query": "q20",
+   "path": "django/orm",
+   "mac_status": "ok",
+   "host_status": "timeout",
+   "host_record": "A-sf1/postgresql-non-indexed/q20/cellwarm/a1/django-orm.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "postgresql-non-indexed",
+   "query": "q20",
+   "path": "sqlalchemy/sql",
+   "mac_status": "ok",
+   "host_status": "timeout",
+   "host_record": "A-sf1/postgresql-non-indexed/q20/cellwarm/a1/sqlalchemy-sql.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "postgresql-non-indexed",
+   "query": "q20",
+   "path": "sqlalchemy/orm",
+   "mac_status": "ok",
+   "host_status": "timeout",
+   "host_record": "A-sf1/postgresql-non-indexed/q20/cellwarm/a1/sqlalchemy-orm.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "postgresql-non-indexed",
+   "query": "q21",
+   "path": "django/sql",
+   "mac_status": "ok",
+   "host_status": "timeout",
+   "host_record": "A-sf1/postgresql-non-indexed/q21/cellwarm/a1/django-sql.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "postgresql-non-indexed",
+   "query": "q21",
+   "path": "django/orm",
+   "mac_status": "ok",
+   "host_status": "timeout",
+   "host_record": "A-sf1/postgresql-non-indexed/q21/cellwarm/a1/django-orm.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "postgresql-non-indexed",
+   "query": "q21",
+   "path": "sqlalchemy/sql",
+   "mac_status": "ok",
+   "host_status": "timeout",
+   "host_record": "A-sf1/postgresql-non-indexed/q21/cellwarm/a1/sqlalchemy-sql.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  },
+  {
+   "run": "postgresql-non-indexed",
+   "query": "q21",
+   "path": "sqlalchemy/orm",
+   "mac_status": "ok",
+   "host_status": "timeout",
+   "host_record": "A-sf1/postgresql-non-indexed/q21/cellwarm/a1/sqlalchemy-orm.json.gz",
+   "host_parameters_equal": true,
+   "statements_identical": true,
+   "binding": "bound"
+  }
+ ],
+ "indexed_twin": [
+  {
+   "cell": "postgresql/non-indexed/q13/django",
+   "statements_identical": {
+    "django/sql": true,
+    "django/orm": true
+   },
+   "twin_classification": "exact",
+   "twin_accepted": true,
+   "binding": "validated_by_twin"
+  },
+  {
+   "cell": "postgresql/non-indexed/q17/django",
+   "statements_identical": {
+    "django/sql": true,
+    "django/orm": true
+   },
+   "twin_classification": "exact",
+   "twin_accepted": true,
+   "binding": "validated_by_twin"
+  },
+  {
+   "cell": "postgresql/non-indexed/q17/sqlalchemy",
+   "statements_identical": {
+    "sqlalchemy/sql": true,
+    "sqlalchemy/orm": true
+   },
+   "twin_classification": "exact",
+   "twin_accepted": true,
+   "binding": "validated_by_twin"
+  },
+  {
+   "cell": "postgresql/non-indexed/q20/django",
+   "statements_identical": {
+    "django/sql": true,
+    "django/orm": true
+   },
+   "twin_classification": "exact",
+   "twin_accepted": true,
+   "binding": "validated_by_twin"
+  },
+  {
+   "cell": "postgresql/non-indexed/q20/sqlalchemy",
+   "statements_identical": {
+    "sqlalchemy/sql": true,
+    "sqlalchemy/orm": true
+   },
+   "twin_classification": "exact",
+   "twin_accepted": true,
+   "binding": "validated_by_twin"
+  },
+  {
+   "cell": "postgresql/non-indexed/q21/django",
+   "statements_identical": {
+    "django/sql": true,
+    "django/orm": true
+   },
+   "twin_classification": "exact",
+   "twin_accepted": true,
+   "binding": "validated_by_twin"
+  },
+  {
+   "cell": "postgresql/non-indexed/q21/sqlalchemy",
+   "statements_identical": {
+    "sqlalchemy/sql": true,
+    "sqlalchemy/orm": true
+   },
+   "twin_classification": "exact",
+   "twin_accepted": true,
+   "binding": "validated_by_twin"
+  },
+  {
+   "cell": "mysql/non-indexed/q13/django",
+   "statements_identical": {
+    "django/sql": true,
+    "django/orm": true
+   },
+   "twin_classification": "exact",
+   "twin_accepted": true,
+   "binding": "validated_by_twin"
+  },
+  {
+   "cell": "mysql/non-indexed/q17/django",
+   "statements_identical": {
+    "django/sql": true,
+    "django/orm": true
+   },
+   "twin_classification": "exact",
+   "twin_accepted": true,
+   "binding": "validated_by_twin"
+  },
+  {
+   "cell": "mysql/non-indexed/q17/sqlalchemy",
+   "statements_identical": {
+    "sqlalchemy/sql": true,
+    "sqlalchemy/orm": true
+   },
+   "twin_classification": "scale_equivalent",
+   "twin_accepted": true,
+   "binding": "validated_by_twin"
+  },
+  {
+   "cell": "mysql/non-indexed/q20/django",
+   "statements_identical": {
+    "django/sql": true,
+    "django/orm": true
+   },
+   "twin_classification": "exact",
+   "twin_accepted": true,
+   "binding": "validated_by_twin"
+  },
+  {
+   "cell": "mysql/non-indexed/q20/sqlalchemy",
+   "statements_identical": {
+    "sqlalchemy/sql": true,
+    "sqlalchemy/orm": true
+   },
+   "twin_classification": "exact",
+   "twin_accepted": true,
+   "binding": "validated_by_twin"
+  }
+ ]
+}

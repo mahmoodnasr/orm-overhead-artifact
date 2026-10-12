@@ -1,0 +1,142 @@
+{
+ "pooled": {
+  "n": 70,
+  "median_pct": 0.7757175471765452,
+  "ci_pct": [
+   0.34352324156291625,
+   3.8101454814694353
+  ],
+  "above100": 8
+ },
+ "django": {
+  "n": 35,
+  "median_pct": 2.0485660293080543,
+  "ci_pct": [
+   0.7593558992844885,
+   13.843954704619179
+  ],
+  "above100": 7,
+  "wilcoxon": {
+   "p": 0.0625,
+   "queries": 5
+  }
+ },
+ "sqlalchemy": {
+  "n": 35,
+  "median_pct": 0.6467276405459055,
+  "ci_pct": [
+   -0.010247998236354916,
+   2.0397644300160738
+  ],
+  "above100": 1,
+  "wilcoxon": {
+   "p": 0.125,
+   "queries": 5
+  }
+ },
+ "postgresql": {
+  "n": 14,
+  "median_pct": 0.9092789265249759,
+  "ci_pct": [
+   -0.25495519060624516,
+   3.8101454814694353
+  ],
+  "above100": 0
+ },
+ "mysql": {
+  "n": 16,
+  "median_pct": 0.3525805262405932,
+  "ci_pct": [
+   -0.06034415636613943,
+   0.7103618200034219
+  ],
+  "above100": 0
+ },
+ "oracle": {
+  "n": 20,
+  "median_pct": 0.22278795952859054,
+  "ci_pct": [
+   -4.1424864180276115,
+   2.8503291854414976
+  ],
+  "above100": 2
+ },
+ "commercial_a": {
+  "n": 20,
+  "median_pct": 49.85071761944988,
+  "ci_pct": [
+   9.808888283683011,
+   93.34262998336001
+  ],
+  "above100": 6
+ },
+ "indexed": {
+  "n": 40,
+  "median_pct": 0.7348558810079259,
+  "ci_pct": [
+   0.2110165423453807,
+   1.7291388018367746
+  ],
+  "above100": 5
+ },
+ "non-indexed": {
+  "n": 30,
+  "median_pct": 1.9563032871248518,
+  "ci_pct": [
+   0.00725433894806027,
+   37.62155721036127
+  ],
+  "above100": 3
+ },
+ "coverage": {
+  "measured": 70
+ },
+ "acceptance_classes": {
+  "exact": 552,
+  "scale_equivalent": 8
+ },
+ "wilcoxon_inclusion": "a query enters with the median of its measured cells (at least one); counts of valid cells per query are reported beside it",
+ "valid_cells_per_query": {
+  "Q06:django": {
+   "measured": 8
+  },
+  "Q06:sqlalchemy": {
+   "measured": 8
+  },
+  "Q17:django": {
+   "measured": 6
+  },
+  "Q17:sqlalchemy": {
+   "measured": 6
+  },
+  "Q18:django": {
+   "measured": 8
+  },
+  "Q18:sqlalchemy": {
+   "measured": 8
+  },
+  "Q20:django": {
+   "measured": 6
+  },
+  "Q20:sqlalchemy": {
+   "measured": 6
+  },
+  "Q21:django": {
+   "measured": 7
+  },
+  "Q21:sqlalchemy": {
+   "measured": 7
+  }
+ },
+ "variability": {
+  "paths": 140,
+  "median_cv_pct": 4.140796343830878,
+  "p90_cv_pct": 14.556031791267015,
+  "share_above_25_pct": 0.03571428571428571,
+  "criteria": {
+   "median_le_5": true,
+   "p90_le_15": true,
+   "share_above_25_le_5pct": true
+  }
+ }
+}

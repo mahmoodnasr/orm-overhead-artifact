@@ -1,0 +1,19 @@
+{
+ "checks": {
+  "source_unchanged": true,
+  "indexes_unchanged": true,
+  "row_counts_unchanged": true,
+  "settings_unchanged": true,
+  "server_unchanged": true,
+  "gate_after": []
+ },
+ "cells": {
+  "4": "complete",
+  "17": "complete",
+  "19": "complete",
+  "20": "complete",
+  "21": "complete"
+ },
+ "utc": "2026-10-09T21:24:48.823418+00:00",
+ "cairo": "2026-10-10T00:24:48.823418+03:00"
+}

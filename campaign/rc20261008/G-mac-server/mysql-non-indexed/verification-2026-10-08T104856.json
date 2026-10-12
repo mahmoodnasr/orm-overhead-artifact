@@ -1,0 +1,206 @@
+{
+ "run_dir": "G-mac-server/mysql-non-indexed",
+ "parameters": {
+  "protocol_id": "rc20261008-G-v1",
+  "protocol_sha256": "a61624b7bbe41953e577e1d971f5f3d0f74a21282dbeaf692e741e07ea782b6a",
+  "phase": "G",
+  "dbms": "mysql",
+  "schema": "non-indexed",
+  "scale": 1,
+  "queries": [
+   6,
+   18,
+   21
+  ],
+  "timeout_s": 900,
+  "mode": "main",
+  "blocks": 8,
+  "client_mode": "second-server-mac",
+  "database_label": "mac-tpch"
+ },
+ "protocol_sha256": "a61624b7bbe41953e577e1d971f5f3d0f74a21282dbeaf692e741e07ea782b6a",
+ "environments": {
+  "ea3f4ff300b4d2b4f824d9e4dfcf37a6b2ceb9aefa32c1d255639a50268f912c": [
+   "inventory-after-e27162bf728747ce98d774edee10adda.json",
+   "inventory-before-e27162bf728747ce98d774edee10adda.json"
+  ]
+ },
+ "counts": {
+  "accepted_exact": 48,
+  "accepted_pairs": 48,
+  "accepted_timed": 96,
+  "cross_orm_exact": 24,
+  "cross_sql_exact": 24,
+  "incomplete_attempts": 0,
+  "saved_block_warmup": 96,
+  "saved_cell_warmup": 12,
+  "saved_timed": 96,
+  "status_block_warmup_ok": 96,
+  "status_cell_warmup_ok": 12,
+  "status_timed_ok": 96
+ },
+ "cells": {
+  "6": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "18": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "21": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  }
+ },
+ "paired_median_ratios": {
+  "Q06:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.09405"
+   }
+  },
+  "Q06:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.01034"
+   }
+  },
+  "Q18:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.91152"
+   }
+  },
+  "Q18:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.0019"
+   }
+  },
+  "Q21:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.00274"
+   }
+  },
+  "Q21:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.05472"
+   }
+  }
+ },
+ "problems": [],
+ "passed": true,
+ "utc": "2026-10-08T10:48:56.799836+00:00",
+ "cairo": "2026-10-08T13:48:56.799836+03:00"
+}

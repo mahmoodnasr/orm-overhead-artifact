@@ -1,0 +1,148 @@
+{
+ "query": 16,
+ "block": 6,
+ "attempt": 1,
+ "sequence_id": 0,
+ "input_id": "q16s5",
+ "frameworks": {
+  "django": {
+   "accepted": true,
+   "classification": "exact",
+   "orm_path_check": true,
+   "status": "accepted"
+  },
+  "sqlalchemy": {
+   "accepted": true,
+   "classification": "exact",
+   "orm_path_check": true,
+   "status": "accepted"
+  }
+ },
+ "comparisons_timed": {
+  "django": {
+   "policy": "rc20261008-results-v3",
+   "query": 16,
+   "rows": [
+    18374,
+    18374
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "django/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "sqlalchemy": {
+   "policy": "rc20261008-results-v3",
+   "query": 16,
+   "rows": [
+    18374,
+    18374
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "cross_sql": {
+   "policy": "rc20261008-results-v3",
+   "query": 16,
+   "rows": [
+    18374,
+    18374
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "sqlalchemy/sql"
+  },
+  "cross_orm": {
+   "policy": "rc20261008-results-v3",
+   "query": 16,
+   "rows": [
+    18374,
+    18374
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/orm",
+   "right": "sqlalchemy/orm"
+  }
+ },
+ "comparisons_block_warmup": {
+  "django": {
+   "policy": "rc20261008-results-v3",
+   "query": 16,
+   "rows": [
+    18374,
+    18374
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "django/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "sqlalchemy": {
+   "policy": "rc20261008-results-v3",
+   "query": 16,
+   "rows": [
+    18374,
+    18374
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "cross_sql": {
+   "policy": "rc20261008-results-v3",
+   "query": 16,
+   "rows": [
+    18374,
+    18374
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "sqlalchemy/sql"
+  },
+  "cross_orm": {
+   "policy": "rc20261008-results-v3",
+   "query": 16,
+   "rows": [
+    18374,
+    18374
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/orm",
+   "right": "sqlalchemy/orm"
+  }
+ },
+ "timed_records": {
+  "django/sql": "a1/timed-django-sql.json.gz",
+  "django/orm": "a1/timed-django-orm.json.gz",
+  "sqlalchemy/sql": "a1/timed-sqlalchemy-sql.json.gz",
+  "sqlalchemy/orm": "a1/timed-sqlalchemy-orm.json.gz"
+ },
+ "skipped": {},
+ "stop_cell": null,
+ "policy": "rc20261008-results-v3",
+ "utc": "2026-10-09T07:45:59.545086+00:00",
+ "cairo": "2026-10-09T10:45:59.545086+03:00"
+}

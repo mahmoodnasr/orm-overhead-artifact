@@ -1,0 +1,115 @@
+{
+ "run_id": "1a415c1d0f1948b993466e96ce3d39e3",
+ "pid": 3318273,
+ "phase": "D",
+ "dbms": "oracle",
+ "schema": "indexed",
+ "scale": 2,
+ "mode": "main",
+ "queries": [
+  6,
+  17,
+  18,
+  20,
+  21
+ ],
+ "planned_timed": 160,
+ "counts": {
+  "saved_cell_warmup": 20,
+  "status_cell_warmup_ok": 20,
+  "saved_block_warmup": 148,
+  "status_block_warmup_ok": 148,
+  "saved_timed": 148,
+  "status_timed_ok": 148,
+  "accepted_pairs": 73,
+  "accepted_timed": 146,
+  "pairs_mismatch": 1
+ },
+ "environment_id": "30fc7ed65bb279bfa2ab74c883545ca25326d160b8558d12d78533fc1720b1cb",
+ "started": {
+  "utc": "2026-10-10T21:20:32.594135+00:00",
+  "cairo": "2026-10-11T00:20:32.594135+03:00"
+ },
+ "state": "complete",
+ "utc": "2026-10-10T23:02:08.316901+00:00",
+ "cairo": "2026-10-11T02:02:08.316901+03:00",
+ "current": {
+  "query": 21,
+  "path": "sqlalchemy/orm",
+  "kind": "timed",
+  "block": 5,
+  "attempt": 1,
+  "input_id": "q21s4",
+  "limit_s": {
+   "type": "float",
+   "value": "900.0"
+  },
+  "server_session": {
+   "sid": "162",
+   "tag": "240344"
+  },
+  "utc": "2026-10-10T23:01:01.070312+00:00",
+  "cairo": "2026-10-11T02:01:01.070312+03:00"
+ },
+ "cells_done": [
+  {
+   "query": 6,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "317.3219952919753"
+   }
+  },
+  {
+   "query": 17,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "27.69859168503899"
+   }
+  },
+  {
+   "query": 18,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "1065.7461761729792"
+   }
+  },
+  {
+   "query": 20,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "2109.799492903985"
+   }
+  },
+  {
+   "query": 21,
+   "status": "django result check failed in block 5: mismatch",
+   "wall_s": {
+    "type": "float",
+    "value": "2568.7635426080087"
+   }
+  }
+ ],
+ "_obs": [
+  {
+   "type": "float",
+   "value": "6089.329798661987"
+  },
+  {
+   "type": "float",
+   "value": "549.8"
+  }
+ ],
+ "observed_over_predicted": {
+  "type": "float",
+  "value": "11.075536192546359"
+ },
+ "remaining_predicted_s": 0,
+ "eta_s": {
+  "type": "float",
+  "value": "0.0"
+ }
+}

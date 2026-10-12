@@ -1,0 +1,25 @@
+{
+ "generated_on": "Mac (Apple M4), Python 3.11 venv of the benchmark repo",
+ "duckdb": "1.5.5",
+ "tpch_extension": "v1.5.5",
+ "call": "INSTALL tpch; LOAD tpch; CALL dbgen(sf=<sf>)",
+ "script": "code/rc_generate_duckdb.py",
+ "script_sha256": "b1c207a65584671fc97d572721f2678da43209d480fbd8e485dd51fdaa9184f5",
+ "files": {
+  "tpch1-mac.duckdb": {
+   "sha256": "1cf7eb225fef71fd88c9683110f53a6e02a24792bd62b89afad9111757b1d8db",
+   "lineitem": 6001215
+  },
+  "tpch2.duckdb": {
+   "sha256": "434ca5d1630cb342c1a1894c3c0cba6b9097baec85a7411843fdf0a15cdfcb99",
+   "lineitem": 11997996
+  }
+ },
+ "determinism_check": "Content fingerprint (v1, key-ordered) of the Mac-generated SF1 equals that of the host file tpch1.duckdb used for the historical loads (f6e8d08b...); the .duckdb file bytes differ, the data do not.",
+ "host_sf1_file_sha256": "95d4a2d3afd4b78afec1d8861990258d949cc2e3cffa183d4bd8fabc2f0b1c64",
+ "v2_content": {
+  "sf1": "3ca615ff91671018a2006b749aea02663c74be26306f2863d91eeab72bc45d50",
+  "sf2": "cfc657d9e8a6c29c789fc510541936b3fe383d8ceb5d870a3acf252185cd44f1"
+ },
+ "utc": "2026-10-07T23:54:51.461715+00:00"
+}

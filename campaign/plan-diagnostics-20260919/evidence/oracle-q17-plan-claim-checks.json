@@ -1,0 +1,8 @@
+{
+  "inner_full_scan_starts": true,
+  "inner_full_scan_identity": true,
+  "baseline_single_full_scan": true,
+  "baseline_window_rows": true,
+  "orm_selected_rows": true,
+  "inner_buffer_gets": true
+}

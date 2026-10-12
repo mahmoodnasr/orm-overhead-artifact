@@ -1,0 +1,40 @@
+{
+ "plan_id": "E-commercial_a-a",
+ "purpose": "Phase E host side, commercial_a: engine on, SF1 indexed, LAN listener checked",
+ "first_state": "indexed",
+ "second_state": "non-indexed",
+ "steps": [
+  {
+   "id": "commercial_a-E-engine",
+   "kind": "engine",
+   "engine": "commercial_a",
+   "settle": 90
+  },
+  {
+   "id": "commercial_a-E-fp-before",
+   "kind": "fingerprint",
+   "engine": "commercial_a",
+   "label": "commercial_a-sf1-E-before",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "commercial_a-E-listen",
+   "kind": "shell",
+   "command": "ss -ltn | grep \":1433 \"; ss -ltn | grep -E \"(0\\.0\\.0\\.0|\\*|\\[::\\]|192\\.168\\.100\\.79):1433 \""
+  },
+  {
+   "id": "commercial_a-E-verify-indexed",
+   "kind": "index",
+   "engine": "commercial_a",
+   "actions": [
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "commercial_a-E-preflight-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms commercial_a --schema indexed"
+  }
+ ]
+}

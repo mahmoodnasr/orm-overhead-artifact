@@ -1,0 +1,16 @@
+{
+ "query": 13,
+ "status": "complete",
+ "censored": {},
+ "inexpressible": {
+  "django/orm": {
+   "error": "Q13NotExpressible: Django ORM cannot express Q13 on Oracle: no derived-table construct, and Oracle raises ORA-22818 for a subquery in a GROUP BY expression. See django_app/queries/q13_oracle.py and defect C17."
+  }
+ },
+ "wall_s_this_run": {
+  "type": "float",
+  "value": "3.9646181620046264"
+ },
+ "utc": "2026-10-08T01:57:37.900420+00:00",
+ "cairo": "2026-10-08T04:57:37.900420+03:00"
+}

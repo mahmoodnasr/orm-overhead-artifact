@@ -1,0 +1,75 @@
+{
+ "plan_id": "P-commercial_a",
+ "purpose": "Pilot on Commercial System A (current state: indexed). Pilot evidence only.",
+ "steps": [
+  {
+   "id": "engine",
+   "kind": "engine",
+   "engine": "commercial_a",
+   "settle": 90
+  },
+  {
+   "id": "fp-before",
+   "kind": "fingerprint",
+   "engine": "commercial_a",
+   "label": "commercial_a-sf1-P-before",
+   "expect_source": "sf1-duckdb-source.json"
+  },
+  {
+   "id": "run-q6-q14",
+   "kind": "run",
+   "engine": "commercial_a",
+   "resumable": true,
+   "args": {
+    "run_dir": "pilot/commercial_a-indexed-main",
+    "protocol": "protocols/rc20261008-P-v1.json",
+    "phase": "P",
+    "schema": "indexed",
+    "mode": "pilot",
+    "queries": [
+     6,
+     14
+    ],
+    "extra": [
+     "--crash-at",
+     "26"
+    ]
+   }
+  },
+  {
+   "id": "verify-q6-q14",
+   "kind": "verify",
+   "run_dir": "pilot/commercial_a-indexed-main"
+  },
+  {
+   "id": "cancel",
+   "kind": "run",
+   "engine": "commercial_a",
+   "resumable": false,
+   "args": {
+    "run_dir": "pilot/commercial_a-indexed-cancel",
+    "protocol": "protocols/rc20261008-P-v1.json",
+    "phase": "P",
+    "schema": "indexed",
+    "mode": "pilot",
+    "queries": [
+     1,
+     6
+    ],
+    "extra": [
+     "--cancel-test-query",
+     "1",
+     "--cancel-check-query",
+     "6",
+     "--cancel-limit",
+     "1"
+    ]
+   }
+  },
+  {
+   "id": "historical-preflight",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms commercial_a --schema indexed"
+  }
+ ]
+}

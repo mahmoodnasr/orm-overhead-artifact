@@ -1,0 +1,126 @@
+{
+ "query": 13,
+ "block": 7,
+ "attempt": 1,
+ "sequence_id": 0,
+ "input_id": "q13s6",
+ "frameworks": {
+  "django": {
+   "accepted": false,
+   "status": "not_run",
+   "reason": {
+    "django/orm": "censored_in_cell_warmup"
+   }
+  },
+  "sqlalchemy": {
+   "accepted": true,
+   "classification": "exact",
+   "orm_path_check": true,
+   "status": "accepted"
+  }
+ },
+ "comparisons_timed": {
+  "django": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "ok",
+    "not_run"
+   ]
+  },
+  "sqlalchemy": {
+   "policy": "rc20261008-results-v3",
+   "query": 13,
+   "rows": [
+    42,
+    42
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "cross_sql": {
+   "policy": "rc20261008-results-v3",
+   "query": 13,
+   "rows": [
+    42,
+    42
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "sqlalchemy/sql"
+  },
+  "cross_orm": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "not_run",
+    "ok"
+   ]
+  }
+ },
+ "comparisons_block_warmup": {
+  "django": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "ok",
+    "not_run"
+   ]
+  },
+  "sqlalchemy": {
+   "policy": "rc20261008-results-v3",
+   "query": 13,
+   "rows": [
+    42,
+    42
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "cross_sql": {
+   "policy": "rc20261008-results-v3",
+   "query": 13,
+   "rows": [
+    42,
+    42
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "sqlalchemy/sql"
+  },
+  "cross_orm": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "not_run",
+    "ok"
+   ]
+  }
+ },
+ "timed_records": {
+  "django/sql": "a1/timed-django-sql.json.gz",
+  "sqlalchemy/sql": "a1/timed-sqlalchemy-sql.json.gz",
+  "sqlalchemy/orm": "a1/timed-sqlalchemy-orm.json.gz"
+ },
+ "skipped": {
+  "django/orm": "censored_in_cell_warmup"
+ },
+ "stop_cell": null,
+ "policy": "rc20261008-results-v3",
+ "utc": "2026-10-09T02:06:40.875127+00:00",
+ "cairo": "2026-10-09T05:06:40.875127+03:00"
+}

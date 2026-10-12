@@ -1,0 +1,158 @@
+{
+ "G": [
+  {
+   "sql": "SELECT anon_1.cntrycode AS anon_1_cntrycode, count(*) AS numcust, sum(anon_1.c_acctbal) AS totacctbal \nFROM (SELECT substr(customer.c_phone, %(substr_1)s, %(substr_2)s) AS cntrycode, customer.c_acctbal AS c_acctbal \nFROM customer \nWHERE substr(customer.c_phone, %(substr_1)s, %(substr_2)s) IN (%(param_1_1)s, %(param_1_2)s, %(param_1_3)s, %(param_1_4)s, %(param_1_5)s, %(param_1_6)s, %(param_1_7)s) AND customer.c_acctbal > (SELECT avg(customer_1.c_acctbal) AS avg_1 \nFROM customer AS customer_1 \nWHERE customer_1.c_acctbal > %(c_acctbal_1)s AND substr(customer_1.c_phone, %(substr_3)s, %(substr_4)s) IN (%(param_2_1)s, %(param_2_2)s, %(param_2_3)s, %(param_2_4)s, %(param_2_5)s, %(param_2_6)s, %(param_2_7)s)) AND NOT (EXISTS (SELECT 1 \nFROM orders \nWHERE orders.o_custkey = customer.c_custkey))) AS anon_1 GROUP BY anon_1.cntrycode ORDER BY anon_1.cntrycode",
+   "params": {
+    "substr_1": 1,
+    "substr_2": 2,
+    "c_acctbal_1": {
+     "type": "Decimal",
+     "value": "0.00"
+    },
+    "substr_3": 1,
+    "substr_4": 2,
+    "param_1_1": "17",
+    "param_1_2": "21",
+    "param_1_3": "27",
+    "param_1_4": "30",
+    "param_1_5": "31",
+    "param_1_6": "32",
+    "param_1_7": "33",
+    "param_2_1": "17",
+    "param_2_2": "21",
+    "param_2_3": "27",
+    "param_2_4": "30",
+    "param_2_5": "31",
+    "param_2_6": "32",
+    "param_2_7": "33"
+   }
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "SELECT cntrycode, COUNT(*) AS numcust, SUM(c_acctbal) AS totacctbal\nFROM (SELECT SUBSTRING(c_phone FROM 1 FOR 2) AS cntrycode, c_acctbal\n      FROM customer\n      WHERE SUBSTRING(c_phone FROM 1 FOR 2) IN (:b0,:b1,:b2,:b3,:b4,:b5,:b6)\n        AND c_acctbal > (SELECT AVG(c_acctbal) FROM customer\n                         WHERE c_acctbal > 0.00\n                           AND SUBSTRING(c_phone FROM 1 FOR 2) IN (:b7,:b8,:b9,:b10,:b11,:b12,:b13))\n        AND NOT EXISTS (SELECT 1 FROM orders WHERE o_custkey = c_custkey)\n     ) AS custsale\nGROUP BY cntrycode\nORDER BY cntrycode",
+    "values": [
+     "17",
+     "21",
+     "27",
+     "30",
+     "31",
+     "32",
+     "33",
+     "17",
+     "21",
+     "27",
+     "30",
+     "31",
+     "32",
+     "33"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "'17'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'21'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'27'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'30'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'31'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'32'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'33'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'17'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'21'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'27'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'30'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'31'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'32'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'33'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 14
+ },
+ "G_output_columns": null
+}

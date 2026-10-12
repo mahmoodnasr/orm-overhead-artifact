@@ -1,0 +1,64 @@
+{
+  "label": "capture-orm",
+  "elapsed_s": {
+    "type": "float",
+    "value": "462.9193672170004"
+  },
+  "api_statements": [
+    {
+      "sql": "SELECT (SUM(\"LINEITEM\".\"L_EXTENDEDPRICE\") / %s) AS \"AVG_YEARLY\" FROM \"LINEITEM\" INNER JOIN \"PART\" ON (\"LINEITEM\".\"L_PARTKEY\" = \"PART\".\"P_PARTKEY\") WHERE (\"PART\".\"P_BRAND\" = %s AND \"PART\".\"P_CONTAINER\" = %s AND \"LINEITEM\".\"L_QUANTITY\" < ((SELECT AVG(U0.\"L_QUANTITY\") AS \"AVG_Q\" FROM \"LINEITEM\" U0 WHERE U0.\"L_PARTKEY\" = (\"LINEITEM\".\"L_PARTKEY\") GROUP BY U0.\"L_PARTKEY\") * %s))",
+      "params": [
+        {
+          "type": "Decimal",
+          "value": "7.0"
+        },
+        "Brand#23",
+        "MED BOX",
+        {
+          "type": "Decimal",
+          "value": "0.2"
+        }
+      ],
+      "many": false
+    }
+  ],
+  "driver_statements": [
+    {
+      "sql": "SELECT (SUM(\"LINEITEM\".\"L_EXTENDEDPRICE\") / :arg0) AS \"AVG_YEARLY\" FROM \"LINEITEM\" INNER JOIN \"PART\" ON (\"LINEITEM\".\"L_PARTKEY\" = \"PART\".\"P_PARTKEY\") WHERE (\"PART\".\"P_BRAND\" = :arg1 AND \"PART\".\"P_CONTAINER\" = :arg2 AND \"LINEITEM\".\"L_QUANTITY\" < ((SELECT AVG(U0.\"L_QUANTITY\") AS \"AVG_Q\" FROM \"LINEITEM\" U0 WHERE U0.\"L_PARTKEY\" = (\"LINEITEM\".\"L_PARTKEY\") GROUP BY U0.\"L_PARTKEY\") * :arg3))",
+      "args": [
+        {
+          ":arg0": {
+            "type": "Decimal",
+            "value": "7.0"
+          },
+          ":arg1": "Brand#23",
+          ":arg2": "MED BOX",
+          ":arg3": {
+            "type": "Decimal",
+            "value": "0.2"
+          }
+        }
+      ],
+      "kwargs": {}
+    }
+  ],
+  "rows": [
+    {
+      "avg_yearly": {
+        "type": "Decimal",
+        "value": "348406.0542857142857142857142857142857143"
+      }
+    }
+  ],
+  "utc": "2026-09-19T14:36:07.692737+00:00",
+  "plan_identity": {
+    "sql_id": "8jvw7fu8a54t8",
+    "child_number": 1
+  },
+  "actual_plan_operators": 8,
+  "instrumentation": {
+    "statistics_level": "ALL",
+    "client_statement_cache_before": 20,
+    "client_statement_cache_during_capture": 0
+  }
+}

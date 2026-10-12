@@ -1,0 +1,17 @@
+{
+  "pid": 106949,
+  "followup_id": "3b3b8f9c-bb10-4333-bb95-6e54d322bfbb",
+  "started_utc": "2026-10-07T15:54:00.563010+00:00",
+  "planned_timed_executions": 64,
+  "planned_query_input_checks": 16,
+  "completed_timed_executions": 64,
+  "accepted_timed_executions": 64,
+  "passed_query_input_checks": 16,
+  "state": "complete",
+  "query": 20,
+  "block": 7,
+  "path": "bound",
+  "parameter_set": 7,
+  "warmup": false,
+  "updated_utc": "2026-10-07T19:43:16.277137+00:00"
+}

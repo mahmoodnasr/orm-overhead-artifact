@@ -1,0 +1,13 @@
+{
+ "plan_id": "E2-commercial_a-c",
+ "purpose": "closing SF1 fingerprint after the re-measurement",
+ "steps": [
+  {
+   "id": "commercial_a-E2-fp-after",
+   "kind": "fingerprint",
+   "engine": "commercial_a",
+   "label": "commercial_a-sf1-E2-after",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  }
+ ]
+}

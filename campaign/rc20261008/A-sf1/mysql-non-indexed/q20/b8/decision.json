@@ -1,0 +1,104 @@
+{
+ "query": 20,
+ "block": 8,
+ "attempt": 1,
+ "sequence_id": 3,
+ "input_id": "q20s7",
+ "frameworks": {
+  "django": {
+   "accepted": false,
+   "status": "not_run",
+   "reason": {
+    "django/sql": "censored_in_cell_warmup",
+    "django/orm": "censored_in_cell_warmup"
+   }
+  },
+  "sqlalchemy": {
+   "accepted": false,
+   "status": "not_run",
+   "reason": {
+    "sqlalchemy/sql": "censored_in_cell_warmup",
+    "sqlalchemy/orm": "censored_in_cell_warmup"
+   }
+  }
+ },
+ "comparisons_timed": {
+  "django": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "not_run",
+    "not_run"
+   ]
+  },
+  "sqlalchemy": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "not_run",
+    "not_run"
+   ]
+  },
+  "cross_sql": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "not_run",
+    "not_run"
+   ]
+  },
+  "cross_orm": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "not_run",
+    "not_run"
+   ]
+  }
+ },
+ "comparisons_block_warmup": {
+  "django": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "not_run",
+    "not_run"
+   ]
+  },
+  "sqlalchemy": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "not_run",
+    "not_run"
+   ]
+  },
+  "cross_sql": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "not_run",
+    "not_run"
+   ]
+  },
+  "cross_orm": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "not_run",
+    "not_run"
+   ]
+  }
+ },
+ "timed_records": {},
+ "skipped": {
+  "sqlalchemy/sql": "censored_in_cell_warmup",
+  "django/sql": "censored_in_cell_warmup",
+  "sqlalchemy/orm": "censored_in_cell_warmup",
+  "django/orm": "censored_in_cell_warmup"
+ },
+ "stop_cell": null,
+ "policy": "rc20261008-results-v3",
+ "utc": "2026-10-08T18:03:41.047554+00:00",
+ "cairo": "2026-10-08T21:03:41.047554+03:00"
+}

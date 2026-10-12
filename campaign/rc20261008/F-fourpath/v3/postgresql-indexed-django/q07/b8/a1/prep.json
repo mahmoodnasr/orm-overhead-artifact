@@ -1,0 +1,74 @@
+{
+ "G": [
+  {
+   "sql": "SELECT \"nation\".\"n_name\" AS \"supp_nation\", T6.\"n_name\" AS \"cust_nation\", EXTRACT(YEAR FROM \"lineitem\".\"l_shipdate\") AS \"l_year\", SUM((\"lineitem\".\"l_extendedprice\" * (%s - \"lineitem\".\"l_discount\"))) AS \"revenue\" FROM \"lineitem\" INNER JOIN \"supplier\" ON (\"lineitem\".\"l_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" ON (\"supplier\".\"s_nationkey\" = \"nation\".\"n_nationkey\") INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"customer\" ON (\"orders\".\"o_custkey\" = \"customer\".\"c_custkey\") INNER JOIN \"nation\" T6 ON (\"customer\".\"c_nationkey\" = T6.\"n_nationkey\") WHERE (((\"nation\".\"n_name\" = %s AND T6.\"n_name\" = %s) OR (\"nation\".\"n_name\" = %s AND T6.\"n_name\" = %s)) AND \"lineitem\".\"l_shipdate\" >= %s AND \"lineitem\".\"l_shipdate\" <= %s) GROUP BY 1, 2, 3 ORDER BY 1 ASC, 2 ASC, 3 ASC",
+   "params": [
+    1,
+    "MOZAMBIQUE",
+    "UNITED KINGDOM",
+    "UNITED KINGDOM",
+    "MOZAMBIQUE",
+    {
+     "type": "date",
+     "value": "1995-01-01"
+    },
+    {
+     "type": "date",
+     "value": "1996-12-31"
+    }
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "\n    SELECT supp_nation, cust_nation, l_year, SUM(volume) as revenue\n    FROM (\n      SELECT n1.n_name as supp_nation, n2.n_name as cust_nation,\n             EXTRACT(year FROM l_shipdate) as l_year,\n             l_extendedprice * (1 - l_discount) as volume\n      FROM supplier, lineitem, orders, customer, nation n1, nation n2\n      WHERE s_suppkey = l_suppkey\n        AND o_orderkey = l_orderkey\n        AND c_custkey = o_custkey\n        AND s_nationkey = n1.n_nationkey\n        AND c_nationkey = n2.n_nationkey\n        AND ((n1.n_name = %s AND n2.n_name = %s)\n          OR (n1.n_name = %s AND n2.n_name = %s))\n        AND l_shipdate BETWEEN DATE '1995-01-01' AND DATE '1996-12-31'\n    ) as shipping\n    GROUP BY supp_nation, cust_nation, l_year\n    ORDER BY supp_nation, cust_nation, l_year\n    ",
+    "values": [
+     "MOZAMBIQUE",
+     "UNITED KINGDOM",
+     "UNITED KINGDOM",
+     "MOZAMBIQUE"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "'MOZAMBIQUE'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'UNITED KINGDOM'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'UNITED KINGDOM'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'MOZAMBIQUE'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 4
+ },
+ "G_output_columns": [
+  "supp_nation",
+  "cust_nation",
+  "l_year",
+  "revenue"
+ ]
+}

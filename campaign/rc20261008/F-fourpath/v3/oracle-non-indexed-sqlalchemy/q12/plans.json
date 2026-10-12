@@ -1,0 +1,509 @@
+{
+ "G": [
+  {
+   "ok": true,
+   "plan": [
+    [
+     "Plan hash value: 2264284248"
+    ],
+    [
+     " "
+    ],
+    [
+     "-------------------------------------------------------------------------------------------"
+    ],
+    [
+     "| Id  | Operation                     | Name      | Rows  | Bytes | Cost (%CPU)| Time     |"
+    ],
+    [
+     "-------------------------------------------------------------------------------------------"
+    ],
+    [
+     "|   0 | SELECT STATEMENT              |           |     2 |   108 | 25267   (1)| 00:00:01 |"
+    ],
+    [
+     "|   1 |  SORT GROUP BY                |           |     2 |   108 | 25267   (1)| 00:00:01 |"
+    ],
+    [
+     "|   2 |   NESTED LOOPS                |           |     3 |   162 | 25267   (1)| 00:00:01 |"
+    ],
+    [
+     "|   3 |    NESTED LOOPS               |           |     3 |   162 | 25267   (1)| 00:00:01 |"
+    ],
+    [
+     "|   4 |     VIEW                      | VW_GBF_5  |     3 |   114 | 25261   (1)| 00:00:01 |"
+    ],
+    [
+     "|   5 |      HASH GROUP BY            |           |     3 |   108 | 25261   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  6 |       FILTER                  |           |       |       |            |          |"
+    ],
+    [
+     "|*  7 |        TABLE ACCESS FULL      | LINEITEM  |     3 |   108 | 25260   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  8 |     INDEX UNIQUE SCAN         | PK_ORDERS |     1 |       |     1   (0)| 00:00:01 |"
+    ],
+    [
+     "|   9 |    TABLE ACCESS BY INDEX ROWID| ORDERS    |     1 |    16 |     2   (0)| 00:00:01 |"
+    ],
+    [
+     "-------------------------------------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "Query Block Name / Object Alias (identified by operation id):"
+    ],
+    [
+     "-------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - SEL$7C2AEEB1"
+    ],
+    [
+     "   4 - SEL$4AC824BE / \"VW_GBF_5\"@\"SEL$3B519226\""
+    ],
+    [
+     "   5 - SEL$4AC824BE"
+    ],
+    [
+     "   7 - SEL$4AC824BE / \"LINEITEM\"@\"SEL$1\""
+    ],
+    [
+     "   8 - SEL$7C2AEEB1 / \"ORDERS\"@\"SEL$1\""
+    ],
+    [
+     "   9 - SEL$7C2AEEB1 / \"ORDERS\"@\"SEL$1\""
+    ],
+    [
+     " "
+    ],
+    [
+     "Predicate Information (identified by operation id):"
+    ],
+    [
+     "---------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   6 - filter(:L_RECEIPTDATE_2>:L_RECEIPTDATE_1)"
+    ],
+    [
+     "   7 - filter(\"LINEITEM\".\"L_RECEIPTDATE\">=:L_RECEIPTDATE_1 AND "
+    ],
+    [
+     "              \"LINEITEM\".\"L_RECEIPTDATE\"<:L_RECEIPTDATE_2 AND "
+    ],
+    [
+     "              \"LINEITEM\".\"L_COMMITDATE\"<:L_RECEIPTDATE_2 AND "
+    ],
+    [
+     "              \"LINEITEM\".\"L_SHIPDATE\"<:L_RECEIPTDATE_2 AND "
+    ],
+    [
+     "              \"LINEITEM\".\"L_SHIPDATE\"<\"LINEITEM\".\"L_COMMITDATE\" AND "
+    ],
+    [
+     "              \"LINEITEM\".\"L_COMMITDATE\"<\"LINEITEM\".\"L_RECEIPTDATE\" AND "
+    ],
+    [
+     "              (\"LINEITEM\".\"L_SHIPMODE\"=:L_SHIPMODE_1_1 OR "
+    ],
+    [
+     "              \"LINEITEM\".\"L_SHIPMODE\"=:L_SHIPMODE_1_2))"
+    ],
+    [
+     "   8 - access(\"ORDERS\".\"O_ORDERKEY\"=\"ITEM_1\")"
+    ],
+    [
+     " "
+    ],
+    [
+     "Column Projection Information (identified by operation id):"
+    ],
+    [
+     "-----------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - (#keys=1) \"ITEM_4\"[VARCHAR2,40], SUM(CASE  WHEN "
+    ],
+    [
+     "       ((\"ORDERS\".\"O_ORDERPRIORITY\"<>:O_ORDERPRIORITY_3) AND "
+    ],
+    [
+     "       (\"ORDERS\".\"O_ORDERPRIORITY\"<>:O_ORDERPRIORITY_4)) THEN :PARAM_3 ELSE :PARAM_4 END "
+    ],
+    [
+     "       *\"ITEM_2\")[22], SUM(CASE \"ORDERS\".\"O_ORDERPRIORITY\" WHEN :O_ORDERPRIORITY_1 THEN "
+    ],
+    [
+     "       :PARAM_1 WHEN :O_ORDERPRIORITY_2 THEN :PARAM_1 ELSE :PARAM_2 END *\"ITEM_3\")[22]"
+    ],
+    [
+     "   2 - (#keys=0) \"ITEM_2\"[NUMBER,22], \"ITEM_3\"[NUMBER,22], \"ITEM_4\"[VARCHAR2,40], "
+    ],
+    [
+     "       \"ORDERS\".\"O_ORDERPRIORITY\"[VARCHAR2,60]"
+    ],
+    [
+     "   3 - (#keys=0) \"ITEM_2\"[NUMBER,22], \"ITEM_3\"[NUMBER,22], \"ITEM_4\"[VARCHAR2,40], "
+    ],
+    [
+     "       \"ORDERS\".ROWID[ROWID,10]"
+    ],
+    [
+     "   4 - \"ITEM_1\"[NUMBER,22], \"ITEM_2\"[NUMBER,22], \"ITEM_3\"[NUMBER,22], "
+    ],
+    [
+     "       \"ITEM_4\"[VARCHAR2,40]"
+    ],
+    [
+     "   5 - (#keys=2) \"LINEITEM\".\"L_SHIPMODE\"[VARCHAR2,40], "
+    ],
+    [
+     "       \"LINEITEM\".\"L_ORDERKEY\"[NUMBER,22], COUNT(*)[22]"
+    ],
+    [
+     "   6 - (rowset=256) \"LINEITEM\".\"L_ORDERKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"LINEITEM\".\"L_SHIPMODE\"[VARCHAR2,40]"
+    ],
+    [
+     "   7 - (rowset=256) \"LINEITEM\".\"L_ORDERKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"LINEITEM\".\"L_SHIPMODE\"[VARCHAR2,40]"
+    ],
+    [
+     "   8 - \"ORDERS\".ROWID[ROWID,10]"
+    ],
+    [
+     "   9 - \"ORDERS\".\"O_ORDERPRIORITY\"[VARCHAR2,60]"
+    ]
+   ],
+   "note": "EXPLAIN PLAN does not peek bind values"
+  }
+ ],
+ "B": [
+  {
+   "ok": true,
+   "plan": [
+    [
+     "Plan hash value: 2264284248"
+    ],
+    [
+     " "
+    ],
+    [
+     "-------------------------------------------------------------------------------------------"
+    ],
+    [
+     "| Id  | Operation                     | Name      | Rows  | Bytes | Cost (%CPU)| Time     |"
+    ],
+    [
+     "-------------------------------------------------------------------------------------------"
+    ],
+    [
+     "|   0 | SELECT STATEMENT              |           |     2 |   108 | 25267   (1)| 00:00:01 |"
+    ],
+    [
+     "|   1 |  SORT GROUP BY                |           |     2 |   108 | 25267   (1)| 00:00:01 |"
+    ],
+    [
+     "|   2 |   NESTED LOOPS                |           |     3 |   162 | 25267   (1)| 00:00:01 |"
+    ],
+    [
+     "|   3 |    NESTED LOOPS               |           |     3 |   162 | 25267   (1)| 00:00:01 |"
+    ],
+    [
+     "|   4 |     VIEW                      | VW_GBF_5  |     3 |   114 | 25261   (1)| 00:00:01 |"
+    ],
+    [
+     "|   5 |      HASH GROUP BY            |           |     3 |   108 | 25261   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  6 |       FILTER                  |           |       |       |            |          |"
+    ],
+    [
+     "|*  7 |        TABLE ACCESS FULL      | LINEITEM  |     3 |   108 | 25260   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  8 |     INDEX UNIQUE SCAN         | PK_ORDERS |     1 |       |     1   (0)| 00:00:01 |"
+    ],
+    [
+     "|   9 |    TABLE ACCESS BY INDEX ROWID| ORDERS    |     1 |    16 |     2   (0)| 00:00:01 |"
+    ],
+    [
+     "-------------------------------------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "Query Block Name / Object Alias (identified by operation id):"
+    ],
+    [
+     "-------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - SEL$7C2AEEB1"
+    ],
+    [
+     "   4 - SEL$4AC824BE / \"VW_GBF_5\"@\"SEL$3B519226\""
+    ],
+    [
+     "   5 - SEL$4AC824BE"
+    ],
+    [
+     "   7 - SEL$4AC824BE / \"LINEITEM\"@\"SEL$1\""
+    ],
+    [
+     "   8 - SEL$7C2AEEB1 / \"ORDERS\"@\"SEL$1\""
+    ],
+    [
+     "   9 - SEL$7C2AEEB1 / \"ORDERS\"@\"SEL$1\""
+    ],
+    [
+     " "
+    ],
+    [
+     "Predicate Information (identified by operation id):"
+    ],
+    [
+     "---------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   6 - filter(:B3>:B2)"
+    ],
+    [
+     "   7 - filter(\"L_RECEIPTDATE\">=:B2 AND \"L_RECEIPTDATE\"<:B3 AND \"L_COMMITDATE\"<:B3 "
+    ],
+    [
+     "              AND \"L_SHIPDATE\"<:B3 AND \"L_SHIPDATE\"<\"L_COMMITDATE\" AND "
+    ],
+    [
+     "              \"L_COMMITDATE\"<\"L_RECEIPTDATE\" AND (\"L_SHIPMODE\"=:B0 OR \"L_SHIPMODE\"=:B1))"
+    ],
+    [
+     "   8 - access(\"O_ORDERKEY\"=\"ITEM_1\")"
+    ],
+    [
+     " "
+    ],
+    [
+     "Column Projection Information (identified by operation id):"
+    ],
+    [
+     "-----------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - (#keys=1) \"ITEM_4\"[VARCHAR2,40], SUM(CASE  WHEN "
+    ],
+    [
+     "       ((\"O_ORDERPRIORITY\"<>'1-URGENT') AND (\"O_ORDERPRIORITY\"<>'2-HIGH')) THEN 1 ELSE 0 "
+    ],
+    [
+     "       END *\"ITEM_2\")[22], SUM(CASE \"O_ORDERPRIORITY\" WHEN '1-URGENT' THEN 1 WHEN "
+    ],
+    [
+     "       '2-HIGH' THEN 1 ELSE 0 END *\"ITEM_3\")[22]"
+    ],
+    [
+     "   2 - (#keys=0) \"ITEM_2\"[NUMBER,22], \"ITEM_3\"[NUMBER,22], \"ITEM_4\"[VARCHAR2,40], "
+    ],
+    [
+     "       \"O_ORDERPRIORITY\"[VARCHAR2,60]"
+    ],
+    [
+     "   3 - (#keys=0) \"ITEM_2\"[NUMBER,22], \"ITEM_3\"[NUMBER,22], \"ITEM_4\"[VARCHAR2,40], "
+    ],
+    [
+     "       \"ORDERS\".ROWID[ROWID,10]"
+    ],
+    [
+     "   4 - \"ITEM_1\"[NUMBER,22], \"ITEM_2\"[NUMBER,22], \"ITEM_3\"[NUMBER,22], "
+    ],
+    [
+     "       \"ITEM_4\"[VARCHAR2,40]"
+    ],
+    [
+     "   5 - (#keys=2) \"L_SHIPMODE\"[VARCHAR2,40], \"L_ORDERKEY\"[NUMBER,22], COUNT(*)[22]"
+    ],
+    [
+     "   6 - (rowset=256) \"L_ORDERKEY\"[NUMBER,22], \"L_SHIPMODE\"[VARCHAR2,40]"
+    ],
+    [
+     "   7 - (rowset=256) \"L_ORDERKEY\"[NUMBER,22], \"L_SHIPMODE\"[VARCHAR2,40]"
+    ],
+    [
+     "   8 - \"ORDERS\".ROWID[ROWID,10]"
+    ],
+    [
+     "   9 - \"O_ORDERPRIORITY\"[VARCHAR2,60]"
+    ]
+   ],
+   "note": "EXPLAIN PLAN does not peek bind values"
+  }
+ ],
+ "L": [
+  {
+   "ok": true,
+   "plan": [
+    [
+     "Plan hash value: 3782958474"
+    ],
+    [
+     " "
+    ],
+    [
+     "--------------------------------------------------------------------------------"
+    ],
+    [
+     "| Id  | Operation           | Name     | Rows  | Bytes | Cost (%CPU)| Time     |"
+    ],
+    [
+     "--------------------------------------------------------------------------------"
+    ],
+    [
+     "|   0 | SELECT STATEMENT    |          |     2 |   104 | 31436   (1)| 00:00:02 |"
+    ],
+    [
+     "|   1 |  SORT GROUP BY      |          |     2 |   104 | 31436   (1)| 00:00:02 |"
+    ],
+    [
+     "|*  2 |   HASH JOIN         |          | 11693 |   593K| 31435   (1)| 00:00:02 |"
+    ],
+    [
+     "|*  3 |    TABLE ACCESS FULL| LINEITEM | 11693 |   411K| 25264   (1)| 00:00:01 |"
+    ],
+    [
+     "|   4 |    TABLE ACCESS FULL| ORDERS   |  1500K|    22M|  6167   (1)| 00:00:01 |"
+    ],
+    [
+     "--------------------------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "Query Block Name / Object Alias (identified by operation id):"
+    ],
+    [
+     "-------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - SEL$1"
+    ],
+    [
+     "   3 - SEL$1 / \"LINEITEM\"@\"SEL$1\""
+    ],
+    [
+     "   4 - SEL$1 / \"ORDERS\"@\"SEL$1\""
+    ],
+    [
+     " "
+    ],
+    [
+     "Predicate Information (identified by operation id):"
+    ],
+    [
+     "---------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   2 - access(\"O_ORDERKEY\"=\"L_ORDERKEY\")"
+    ],
+    [
+     "   3 - filter(\"L_RECEIPTDATE\"<TO_DATE(' 1995-01-01 00:00:00', "
+    ],
+    [
+     "              'syyyy-mm-dd hh24:mi:ss') AND \"L_COMMITDATE\"<TO_DATE(' 1995-01-01 "
+    ],
+    [
+     "              00:00:00', 'syyyy-mm-dd hh24:mi:ss') AND \"L_SHIPDATE\"<TO_DATE(' "
+    ],
+    [
+     "              1995-01-01 00:00:00', 'syyyy-mm-dd hh24:mi:ss') AND "
+    ],
+    [
+     "              \"L_SHIPDATE\"<\"L_COMMITDATE\" AND \"L_COMMITDATE\"<\"L_RECEIPTDATE\" AND "
+    ],
+    [
+     "              (\"L_SHIPMODE\"='MAIL' OR \"L_SHIPMODE\"='SHIP') AND "
+    ],
+    [
+     "              \"L_RECEIPTDATE\">=TO_DATE(' 1994-01-01 00:00:00', 'syyyy-mm-dd "
+    ],
+    [
+     "              hh24:mi:ss'))"
+    ],
+    [
+     " "
+    ],
+    [
+     "Column Projection Information (identified by operation id):"
+    ],
+    [
+     "-----------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - (#keys=1; rowset=256) \"L_SHIPMODE\"[VARCHAR2,40], SUM(CASE  WHEN "
+    ],
+    [
+     "       (\"O_ORDERPRIORITY\"<>'1-URGENT' AND \"O_ORDERPRIORITY\"<>'2-HIGH') THEN 1 "
+    ],
+    [
+     "       ELSE 0 END )[22], SUM(CASE \"O_ORDERPRIORITY\" WHEN '1-URGENT' THEN 1 "
+    ],
+    [
+     "       WHEN '2-HIGH' THEN 1 ELSE 0 END )[22]"
+    ],
+    [
+     "   2 - (#keys=1; rowset=256) \"L_SHIPMODE\"[VARCHAR2,40], "
+    ],
+    [
+     "       \"O_ORDERPRIORITY\"[VARCHAR2,60]"
+    ],
+    [
+     "   3 - (rowset=256) \"L_ORDERKEY\"[NUMBER,22], \"L_SHIPMODE\"[VARCHAR2,40]"
+    ],
+    [
+     "   4 - (rowset=256) \"O_ORDERKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"O_ORDERPRIORITY\"[VARCHAR2,60]"
+    ]
+   ]
+  }
+ ],
+ "note": "EXPLAIN without execution, once per cell on input set 0, outside every timer"
+}

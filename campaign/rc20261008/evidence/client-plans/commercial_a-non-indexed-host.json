@@ -1,0 +1,339 @@
+{
+ "label": "host",
+ "started": {
+  "utc": "2026-10-11T17:15:04.638462+00:00",
+  "cairo": "2026-10-11T20:15:04.638462+03:00"
+ },
+ "client": {
+  "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+  "machine": "x86_64",
+  "python": "3.12.3",
+  "pyodbc": "5.3.0",
+  "odbc_drivers": [
+   "Commercial System A ODBC driver"
+  ],
+  "driver_name": "libcommercial-a-odbc-driver-18.7.so.1.1",
+  "driver_version": "18.07.0001",
+  "odbc_version": "03.52"
+ },
+ "free_proccache": true,
+ "session_django": [
+  {
+   "session_id": 71,
+   "ansi_nulls": true,
+   "ansi_padding": true,
+   "ansi_warnings": true,
+   "arithabort": false,
+   "concat_null_yields_null": true,
+   "quoted_identifier": true,
+   "ansi_null_dflt_on": true,
+   "date_format": "ymd",
+   "date_first": 7,
+   "language": "us_english",
+   "transaction_isolation_level": 2,
+   "text_size": -1,
+   "lock_timeout": -1,
+   "client_interface_name": "ODBC",
+   "client_version": 7,
+   "program_name": "python3.12",
+   "host_name": "bench-host"
+  }
+ ],
+ "session_sqlalchemy": [
+  {
+   "session_id": 69,
+   "ansi_nulls": true,
+   "ansi_padding": true,
+   "ansi_warnings": true,
+   "arithabort": false,
+   "concat_null_yields_null": true,
+   "quoted_identifier": true,
+   "ansi_null_dflt_on": true,
+   "date_format": "mdy",
+   "date_first": 7,
+   "language": "us_english",
+   "transaction_isolation_level": 2,
+   "text_size": -1,
+   "lock_timeout": -1,
+   "client_interface_name": "ODBC",
+   "client_version": 7,
+   "program_name": "python3.12",
+   "host_name": "bench-host"
+  }
+ ],
+ "server_start_time": "2026-10-11 20:15:04.795702",
+ "calls": [
+  {
+   "query": 6,
+   "path": "django/sql",
+   "call": 1,
+   "input_id": "q06s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "3.87432942900341"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "django/sql",
+   "call": 2,
+   "input_id": "q06s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.20943172799889"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "django/orm",
+   "call": 1,
+   "input_id": "q06s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.6243136880220845"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "django/orm",
+   "call": 2,
+   "input_id": "q06s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.6147182689746842"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "sqlalchemy/sql",
+   "call": 1,
+   "input_id": "q06s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.2120871429797262"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "sqlalchemy/sql",
+   "call": 2,
+   "input_id": "q06s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.2037444789893925"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "sqlalchemy/orm",
+   "call": 1,
+   "input_id": "q06s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.1988241520011798"
+   },
+   "rows": 1
+  },
+  {
+   "query": 6,
+   "path": "sqlalchemy/orm",
+   "call": 2,
+   "input_id": "q06s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.151049020991195"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "django/sql",
+   "call": 1,
+   "input_id": "q17s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.0799628380336799"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "django/sql",
+   "call": 2,
+   "input_id": "q17s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.9236467200098559"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "django/orm",
+   "call": 1,
+   "input_id": "q17s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.879153375979513"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "django/orm",
+   "call": 2,
+   "input_id": "q17s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.7989010470337234"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "sqlalchemy/sql",
+   "call": 1,
+   "input_id": "q17s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.9736103779869154"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "sqlalchemy/sql",
+   "call": 2,
+   "input_id": "q17s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.915648448979482"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "sqlalchemy/orm",
+   "call": 1,
+   "input_id": "q17s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.8207054790109396"
+   },
+   "rows": 1
+  },
+  {
+   "query": 17,
+   "path": "sqlalchemy/orm",
+   "call": 2,
+   "input_id": "q17s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.7566316060256213"
+   },
+   "rows": 1
+  },
+  {
+   "query": 21,
+   "path": "django/sql",
+   "call": 1,
+   "input_id": "q21s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "3.733940411999356"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "django/sql",
+   "call": 2,
+   "input_id": "q21s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "3.005993545986712"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "django/orm",
+   "call": 1,
+   "input_id": "q21s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "55.38131722097751"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "django/orm",
+   "call": 2,
+   "input_id": "q21s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "52.118798748007976"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "sqlalchemy/sql",
+   "call": 1,
+   "input_id": "q21s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "3.5194664709852077"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "sqlalchemy/sql",
+   "call": 2,
+   "input_id": "q21s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.990091861982364"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "sqlalchemy/orm",
+   "call": 1,
+   "input_id": "q21s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "3.1203293459839188"
+   },
+   "rows": 100
+  },
+  {
+   "query": 21,
+   "path": "sqlalchemy/orm",
+   "call": 2,
+   "input_id": "q21s0",
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.996450657956302"
+   },
+   "rows": 100
+  }
+ ],
+ "plans": {
+  "withheld": "Commercial System A execution plan",
+  "sha256": "3118bcb6aa5b5a6f98e3666fd0bdeee0cc6000280c5c81c379b392c258b373ab"
+ },
+ "finished": {
+  "utc": "2026-10-11T17:17:38.003230+00:00",
+  "cairo": "2026-10-11T20:17:38.003230+03:00"
+ }
+}

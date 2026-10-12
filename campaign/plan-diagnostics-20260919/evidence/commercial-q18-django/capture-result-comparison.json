@@ -1,0 +1,9 @@
+{
+  "exact_named_ordered_equal": true,
+  "rows": [
+    57,
+    57
+  ],
+  "differences": [],
+  "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+}

@@ -1,0 +1,506 @@
+{
+ "plan_id": "A-sf1-cont",
+ "purpose": "Phase A: SF1 analytical grid, 352 comparison cells. Continuation after stopping before Oracle non-indexed Q20/Q17; Commercial System A indexed Q18 excluded (the author, 2026-10-08: do not re-measure cells the October diagnostics measured).",
+ "protocol": "protocols/rc20261008-A-v1.json",
+ "continues": "A-sf1",
+ "steps": [
+  {
+   "id": "oracle-quiesce",
+   "kind": "shell",
+   "command": "pgrep -f rc_analytical.py && exit 1; python3 - <<'PY'\nimport glob,os,time\ndef s():\n    o={}\n    for d in glob.glob('/proc/[0-9]*'):\n        try:\n            c=open(d+'/cmdline','rb').read().replace(b'\\0',b' ').decode()\n            if c.lower().startswith('oracle') and 'LOCAL=NO' in c:\n                f=open(d+'/stat').read().rsplit(')',1)[1].split(); o[d]=(int(f[11])+int(f[12]))/os.sysconf('SC_CLK_TCK')\n        except Exception: pass\n    return o\nquiet=0; t0=time.time()\nwhile time.time()-t0<900:\n    a=s(); time.sleep(5); b=s()\n    busy={k:round(b[k]-a[k],2) for k in b if k in a and b[k]-a[k]>0.5}\n    print(round(time.time()-t0),'busy foregrounds:',busy,flush=True)\n    quiet=quiet+1 if not busy else 0\n    if quiet>=2: print('oracle idle'); raise SystemExit(0)\nraise SystemExit('oracle still busy after 15 min')\nPY"
+  },
+  {
+   "id": "oracle-verify-non-indexed",
+   "kind": "verify",
+   "run_dir": "A-sf1/oracle-non-indexed"
+  },
+  {
+   "id": "oracle-to-indexed",
+   "kind": "index",
+   "engine": "oracle",
+   "actions": [
+    "create",
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "oracle-preflight-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh oracle && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms oracle --schema indexed"
+  },
+  {
+   "id": "oracle-run-indexed",
+   "kind": "run",
+   "engine": "oracle",
+   "resumable": true,
+   "args": {
+    "run_dir": "A-sf1/oracle-indexed",
+    "protocol": "protocols/rc20261008-A-v1.json",
+    "phase": "A",
+    "schema": "indexed",
+    "mode": "main",
+    "queries": [
+     2,
+     17,
+     19,
+     22,
+     16,
+     11,
+     12,
+     6,
+     14,
+     13,
+     10,
+     4,
+     8,
+     3,
+     15,
+     7,
+     5,
+     20,
+     18,
+     9,
+     21,
+     1
+    ]
+   }
+  },
+  {
+   "id": "oracle-verify-indexed",
+   "kind": "verify",
+   "run_dir": "A-sf1/oracle-indexed"
+  },
+  {
+   "id": "oracle-fp-after",
+   "kind": "fingerprint",
+   "engine": "oracle",
+   "label": "oracle-sf1-A-after",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "oracle-tpcc-pilot",
+   "kind": "shell",
+   "command": "( set -x; source <campaign>/code/rc_env.sh oracle tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action list ; taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action create && taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action verify --expect indexed && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_fingerprint.py --dbms oracle --benchmark tpcc --label oracle-tpcc-Cpilot-before --out $RC_CAMPAIGN/evidence/fingerprints/oracle-tpcc-Cpilot-before.json && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_tpcc.py --campaign-dir $RC_CAMPAIGN --run-dir $RC_CAMPAIGN/pilot-tpcc/oracle-indexed --protocol $RC_CAMPAIGN/protocols/rc20261008-Cpilot-v1.json --phase Cpilot --dbms oracle --schema indexed --blocks 2 --mode pilot ; taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_fingerprint.py --dbms oracle --benchmark tpcc --label oracle-tpcc-Cpilot-after --out $RC_CAMPAIGN/evidence/fingerprints/oracle-tpcc-Cpilot-after.json ; echo TPCC_PILOT_DONE ) ; true"
+  },
+  {
+   "id": "mysql-engine",
+   "kind": "engine",
+   "engine": "mysql",
+   "settle": 90
+  },
+  {
+   "id": "mysql-fp-before",
+   "kind": "fingerprint",
+   "engine": "mysql",
+   "label": "mysql-sf1-A-before",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "mysql-to-non-indexed",
+   "kind": "index",
+   "engine": "mysql",
+   "actions": [
+    "drop",
+    "analyze",
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "mysql-preflight-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh mysql && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms mysql --schema non-indexed"
+  },
+  {
+   "id": "mysql-run-non-indexed",
+   "kind": "run",
+   "engine": "mysql",
+   "resumable": true,
+   "args": {
+    "run_dir": "A-sf1/mysql-non-indexed",
+    "protocol": "protocols/rc20261008-A-v1.json",
+    "phase": "A",
+    "schema": "non-indexed",
+    "mode": "main",
+    "queries": [
+     2,
+     16,
+     22,
+     11,
+     6,
+     14,
+     12,
+     10,
+     15,
+     19,
+     3,
+     13,
+     4,
+     7,
+     1,
+     21,
+     5,
+     17,
+     20,
+     8,
+     9,
+     18
+    ]
+   }
+  },
+  {
+   "id": "mysql-verify-non-indexed",
+   "kind": "verify",
+   "run_dir": "A-sf1/mysql-non-indexed"
+  },
+  {
+   "id": "mysql-to-indexed",
+   "kind": "index",
+   "engine": "mysql",
+   "actions": [
+    "create",
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "mysql-preflight-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh mysql && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms mysql --schema indexed"
+  },
+  {
+   "id": "mysql-run-indexed",
+   "kind": "run",
+   "engine": "mysql",
+   "resumable": true,
+   "args": {
+    "run_dir": "A-sf1/mysql-indexed",
+    "protocol": "protocols/rc20261008-A-v1.json",
+    "phase": "A",
+    "schema": "indexed",
+    "mode": "main",
+    "queries": [
+     2,
+     19,
+     22,
+     11,
+     12,
+     8,
+     14,
+     4,
+     17,
+     16,
+     20,
+     15,
+     5,
+     10,
+     21,
+     7,
+     3,
+     9,
+     6,
+     13,
+     18,
+     1
+    ]
+   }
+  },
+  {
+   "id": "mysql-verify-indexed",
+   "kind": "verify",
+   "run_dir": "A-sf1/mysql-indexed"
+  },
+  {
+   "id": "mysql-fp-after",
+   "kind": "fingerprint",
+   "engine": "mysql",
+   "label": "mysql-sf1-A-after",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "mysql-tpcc-pilot",
+   "kind": "shell",
+   "command": "( set -x; source <campaign>/code/rc_env.sh mysql tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action list ; taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action create && taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action verify --expect indexed && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_fingerprint.py --dbms mysql --benchmark tpcc --label mysql-tpcc-Cpilot-before --out $RC_CAMPAIGN/evidence/fingerprints/mysql-tpcc-Cpilot-before.json && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_tpcc.py --campaign-dir $RC_CAMPAIGN --run-dir $RC_CAMPAIGN/pilot-tpcc/mysql-indexed --protocol $RC_CAMPAIGN/protocols/rc20261008-Cpilot-v1.json --phase Cpilot --dbms mysql --schema indexed --blocks 2 --mode pilot ; taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_fingerprint.py --dbms mysql --benchmark tpcc --label mysql-tpcc-Cpilot-after --out $RC_CAMPAIGN/evidence/fingerprints/mysql-tpcc-Cpilot-after.json ; echo TPCC_PILOT_DONE ) ; true"
+  },
+  {
+   "id": "postgresql-engine",
+   "kind": "engine",
+   "engine": "postgresql",
+   "settle": 90
+  },
+  {
+   "id": "postgresql-fp-before",
+   "kind": "fingerprint",
+   "engine": "postgresql",
+   "label": "postgresql-sf1-A-before",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "postgresql-to-non-indexed",
+   "kind": "index",
+   "engine": "postgresql",
+   "actions": [
+    "drop",
+    "analyze",
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "postgresql-preflight-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh postgresql && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms postgresql --schema non-indexed"
+  },
+  {
+   "id": "postgresql-run-non-indexed",
+   "kind": "run",
+   "engine": "postgresql",
+   "resumable": true,
+   "args": {
+    "run_dir": "A-sf1/postgresql-non-indexed",
+    "protocol": "protocols/rc20261008-A-v1.json",
+    "phase": "A",
+    "schema": "non-indexed",
+    "mode": "main",
+    "queries": [
+     11,
+     2,
+     22,
+     16,
+     8,
+     14,
+     5,
+     6,
+     7,
+     3,
+     4,
+     10,
+     19,
+     12,
+     15,
+     9,
+     1,
+     18,
+     13,
+     17,
+     20,
+     21
+    ]
+   }
+  },
+  {
+   "id": "postgresql-verify-non-indexed",
+   "kind": "verify",
+   "run_dir": "A-sf1/postgresql-non-indexed"
+  },
+  {
+   "id": "postgresql-to-indexed",
+   "kind": "index",
+   "engine": "postgresql",
+   "actions": [
+    "create",
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "postgresql-preflight-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh postgresql && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms postgresql --schema indexed"
+  },
+  {
+   "id": "postgresql-run-indexed",
+   "kind": "run",
+   "engine": "postgresql",
+   "resumable": true,
+   "args": {
+    "run_dir": "A-sf1/postgresql-indexed",
+    "protocol": "protocols/rc20261008-A-v1.json",
+    "phase": "A",
+    "schema": "indexed",
+    "mode": "main",
+    "queries": [
+     19,
+     11,
+     6,
+     14,
+     22,
+     4,
+     2,
+     8,
+     5,
+     15,
+     12,
+     7,
+     20,
+     21,
+     17,
+     16,
+     10,
+     3,
+     13,
+     18,
+     9,
+     1
+    ]
+   }
+  },
+  {
+   "id": "postgresql-verify-indexed",
+   "kind": "verify",
+   "run_dir": "A-sf1/postgresql-indexed"
+  },
+  {
+   "id": "postgresql-fp-after",
+   "kind": "fingerprint",
+   "engine": "postgresql",
+   "label": "postgresql-sf1-A-after",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "postgresql-tpcc-pilot",
+   "kind": "shell",
+   "command": "( set -x; source <campaign>/code/rc_env.sh postgresql tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action list ; taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action create && taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action verify --expect indexed && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_fingerprint.py --dbms postgresql --benchmark tpcc --label postgresql-tpcc-Cpilot-before --out $RC_CAMPAIGN/evidence/fingerprints/postgresql-tpcc-Cpilot-before.json && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_tpcc.py --campaign-dir $RC_CAMPAIGN --run-dir $RC_CAMPAIGN/pilot-tpcc/postgresql-indexed --protocol $RC_CAMPAIGN/protocols/rc20261008-Cpilot-v1.json --phase Cpilot --dbms postgresql --schema indexed --blocks 2 --mode pilot ; taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_fingerprint.py --dbms postgresql --benchmark tpcc --label postgresql-tpcc-Cpilot-after --out $RC_CAMPAIGN/evidence/fingerprints/postgresql-tpcc-Cpilot-after.json ; echo TPCC_PILOT_DONE ) ; true"
+  },
+  {
+   "id": "commercial_a-engine",
+   "kind": "engine",
+   "engine": "commercial_a",
+   "settle": 90
+  },
+  {
+   "id": "commercial_a-fp-before",
+   "kind": "fingerprint",
+   "engine": "commercial_a",
+   "label": "commercial_a-sf1-A-before",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "commercial_a-to-non-indexed",
+   "kind": "index",
+   "engine": "commercial_a",
+   "actions": [
+    "drop",
+    "analyze",
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "commercial_a-preflight-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms commercial_a --schema non-indexed"
+  },
+  {
+   "id": "commercial_a-run-non-indexed",
+   "kind": "run",
+   "engine": "commercial_a",
+   "resumable": true,
+   "args": {
+    "run_dir": "A-sf1/commercial_a-non-indexed",
+    "protocol": "protocols/rc20261008-A-v1.json",
+    "phase": "A",
+    "schema": "non-indexed",
+    "mode": "main",
+    "queries": [
+     2,
+     11,
+     16,
+     13,
+     19,
+     20,
+     22,
+     6,
+     14,
+     12,
+     18,
+     3,
+     7,
+     10,
+     5,
+     8,
+     17,
+     1,
+     15,
+     9,
+     4,
+     21
+    ]
+   }
+  },
+  {
+   "id": "commercial_a-verify-non-indexed",
+   "kind": "verify",
+   "run_dir": "A-sf1/commercial_a-non-indexed"
+  },
+  {
+   "id": "commercial_a-to-indexed",
+   "kind": "index",
+   "engine": "commercial_a",
+   "actions": [
+    "create",
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "commercial_a-preflight-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms commercial_a --schema indexed"
+  },
+  {
+   "id": "commercial_a-run-indexed",
+   "kind": "run",
+   "engine": "commercial_a",
+   "resumable": true,
+   "args": {
+    "run_dir": "A-sf1/commercial_a-indexed",
+    "protocol": "protocols/rc20261008-A-v1.json",
+    "phase": "A",
+    "schema": "indexed",
+    "mode": "main",
+    "queries": [
+     11,
+     2,
+     17,
+     22,
+     16,
+     10,
+     6,
+     14,
+     3,
+     5,
+     12,
+     7,
+     13,
+     8,
+     15,
+     20,
+     9,
+     1,
+     19,
+     4,
+     21
+    ]
+   }
+  },
+  {
+   "id": "commercial_a-verify-indexed",
+   "kind": "verify",
+   "run_dir": "A-sf1/commercial_a-indexed"
+  },
+  {
+   "id": "commercial_a-fp-after",
+   "kind": "fingerprint",
+   "engine": "commercial_a",
+   "label": "commercial_a-sf1-A-after",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "commercial_a-tpcc-pilot",
+   "kind": "shell",
+   "command": "( set -x; source <campaign>/code/rc_env.sh commercial_a tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action list ; taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action create && taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action verify --expect indexed && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_fingerprint.py --dbms commercial_a --benchmark tpcc --label commercial_a-tpcc-Cpilot-before --out $RC_CAMPAIGN/evidence/fingerprints/commercial_a-tpcc-Cpilot-before.json && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_tpcc.py --campaign-dir $RC_CAMPAIGN --run-dir $RC_CAMPAIGN/pilot-tpcc/commercial_a-indexed --protocol $RC_CAMPAIGN/protocols/rc20261008-Cpilot-v1.json --phase Cpilot --dbms commercial_a --schema indexed --blocks 2 --mode pilot ; taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_fingerprint.py --dbms commercial_a --benchmark tpcc --label commercial_a-tpcc-Cpilot-after --out $RC_CAMPAIGN/evidence/fingerprints/commercial_a-tpcc-Cpilot-after.json ; echo TPCC_PILOT_DONE ) ; true"
+  }
+ ]
+}

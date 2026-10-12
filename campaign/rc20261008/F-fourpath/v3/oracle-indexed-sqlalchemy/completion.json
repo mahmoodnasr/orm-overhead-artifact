@@ -1,0 +1,28 @@
+{
+ "run_id": "095eeea1c41841f1864318db3486244f",
+ "environment_checks_pass": true,
+ "checks": {
+  "source_unchanged": true,
+  "indexes_unchanged": true,
+  "row_counts_unchanged": true,
+  "settings_unchanged": true,
+  "server_unchanged": true,
+  "gate_after": []
+ },
+ "cells": {
+  "15": "complete"
+ },
+ "cells_with_unresolved_items": {},
+ "all_cells_complete_without_review": true,
+ "note": "completion means the run finished and its end checks passed; it does not mean every comparison was accepted - see decisions and cells_with_unresolved_items",
+ "counts": {
+  "saved_cell_warmup": 4,
+  "status_cell_warmup_ok": 4,
+  "saved_block_warmup": 32,
+  "status_block_warmup_ok": 32,
+  "saved_timed": 32,
+  "status_timed_ok": 32
+ },
+ "utc": "2026-10-10T18:34:51.860159+00:00",
+ "cairo": "2026-10-10T21:34:51.860159+03:00"
+}

@@ -1,0 +1,23 @@
+{
+ "protocol_id": "rc20261008-F-v1",
+ "protocol_sha256": "7e062041bf1ce8ac9eefdb53a5f09beaf5e0956b6b90f3dc0dfb9c89a64a7b36",
+ "phase": "F",
+ "dbms": "commercial_a",
+ "schema": "indexed",
+ "scale": 1,
+ "queries": [
+  4,
+  17,
+  19,
+  20,
+  21
+ ],
+ "timeout_s": {
+  "type": "float",
+  "value": "900.0"
+ },
+ "mode": "main",
+ "blocks": 8,
+ "client_mode": "same-host",
+ "database_label": "tpch"
+}

@@ -1,0 +1,737 @@
+{
+ "G": [
+  {
+   "ok": true,
+   "plan": [
+    [
+     "Plan hash value: 2932271437"
+    ],
+    [
+     " "
+    ],
+    [
+     "---------------------------------------------------------------------------------------------"
+    ],
+    [
+     "| Id  | Operation                       | Name      | Rows  | Bytes | Cost (%CPU)| Time     |"
+    ],
+    [
+     "---------------------------------------------------------------------------------------------"
+    ],
+    [
+     "|   0 | SELECT STATEMENT                |           |     4 |   308 | 28680   (1)| 00:00:02 |"
+    ],
+    [
+     "|   1 |  SORT GROUP BY                  |           |     4 |   308 | 28680   (1)| 00:00:02 |"
+    ],
+    [
+     "|*  2 |   FILTER                        |           |       |       |            |          |"
+    ],
+    [
+     "|*  3 |    HASH JOIN                    |           |    48 |  3696 | 28679   (1)| 00:00:02 |"
+    ],
+    [
+     "|   4 |     NESTED LOOPS                |           |  1199 | 82731 | 27722   (1)| 00:00:02 |"
+    ],
+    [
+     "|   5 |      NESTED LOOPS               |           |  1199 | 82731 | 27722   (1)| 00:00:02 |"
+    ],
+    [
+     "|*  6 |       HASH JOIN                 |           |  1199 | 69542 | 25324   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  7 |        HASH JOIN                |           |   799 | 24769 |    75   (0)| 00:00:01 |"
+    ],
+    [
+     "|   8 |         NESTED LOOPS            |           |     2 |    48 |     7   (0)| 00:00:01 |"
+    ],
+    [
+     "|*  9 |          TABLE ACCESS FULL      | NATION    |     2 |    24 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|* 10 |          TABLE ACCESS FULL      | NATION    |     1 |    12 |     2   (0)| 00:00:01 |"
+    ],
+    [
+     "|  11 |         TABLE ACCESS FULL       | SUPPLIER  | 10000 | 70000 |    68   (0)| 00:00:01 |"
+    ],
+    [
+     "|* 12 |        TABLE ACCESS FULL        | LINEITEM  | 15003 |   395K| 25249   (1)| 00:00:01 |"
+    ],
+    [
+     "|* 13 |       INDEX UNIQUE SCAN         | PK_ORDERS |     1 |       |     1   (0)| 00:00:01 |"
+    ],
+    [
+     "|  14 |      TABLE ACCESS BY INDEX ROWID| ORDERS    |     1 |    11 |     2   (0)| 00:00:01 |"
+    ],
+    [
+     "|  15 |     TABLE ACCESS FULL           | CUSTOMER  |   150K|  1171K|   956   (1)| 00:00:01 |"
+    ],
+    [
+     "---------------------------------------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "Query Block Name / Object Alias (identified by operation id):"
+    ],
+    [
+     "-------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - SEL$CCD74004"
+    ],
+    [
+     "   9 - SEL$CCD74004 / \"NATION\"@\"SEL$3\""
+    ],
+    [
+     "  10 - SEL$CCD74004 / \"T6\"@\"SEL$5\""
+    ],
+    [
+     "  11 - SEL$CCD74004 / \"SUPPLIER\"@\"SEL$4\""
+    ],
+    [
+     "  12 - SEL$CCD74004 / \"LINEITEM\"@\"SEL$1\""
+    ],
+    [
+     "  13 - SEL$CCD74004 / \"ORDERS\"@\"SEL$1\""
+    ],
+    [
+     "  14 - SEL$CCD74004 / \"ORDERS\"@\"SEL$1\""
+    ],
+    [
+     "  15 - SEL$CCD74004 / \"CUSTOMER\"@\"SEL$2\""
+    ],
+    [
+     " "
+    ],
+    [
+     "Predicate Information (identified by operation id):"
+    ],
+    [
+     "---------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   2 - filter(:P7>=:P6)"
+    ],
+    [
+     "   3 - access(\"CUSTOMER\".\"C_NATIONKEY\"=\"NATION\".\"N_NATIONKEY\" AND "
+    ],
+    [
+     "              \"ORDERS\".\"O_CUSTKEY\"=\"CUSTOMER\".\"C_CUSTKEY\")"
+    ],
+    [
+     "   6 - access(\"LINEITEM\".\"L_SUPPKEY\"=\"SUPPLIER\".\"S_SUPPKEY\")"
+    ],
+    [
+     "   7 - access(\"SUPPLIER\".\"S_NATIONKEY\"=\"T6\".\"N_NATIONKEY\")"
+    ],
+    [
+     "   9 - filter(\"NATION\".\"N_NAME\"=:P2 OR \"NATION\".\"N_NAME\"=:P4)"
+    ],
+    [
+     "  10 - filter((\"NATION\".\"N_NAME\"=:P2 AND \"T6\".\"N_NAME\"=:P3 OR \"NATION\".\"N_NAME\"=:P4 "
+    ],
+    [
+     "              AND \"T6\".\"N_NAME\"=:P5) AND (\"T6\".\"N_NAME\"=:P3 OR \"T6\".\"N_NAME\"=:P5))"
+    ],
+    [
+     "  12 - filter(\"LINEITEM\".\"L_SHIPDATE\">=:P6 AND \"LINEITEM\".\"L_SHIPDATE\"<=:P7)"
+    ],
+    [
+     "  13 - access(\"LINEITEM\".\"L_ORDERKEY\"=\"ORDERS\".\"O_ORDERKEY\")"
+    ],
+    [
+     " "
+    ],
+    [
+     "Column Projection Information (identified by operation id):"
+    ],
+    [
+     "-----------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - (#keys=3; rowset=256) \"T6\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"NATION\".\"N_NAME\"[VARCHAR2,100], EXTRACT(YEAR FROM "
+    ],
+    [
+     "       INTERNAL_FUNCTION(\"LINEITEM\".\"L_SHIPDATE\"))[22], "
+    ],
+    [
+     "       SUM(\"LINEITEM\".\"L_EXTENDEDPRICE\"*(:P1-\"LINEITEM\".\"L_DISCOUNT\"))[22]"
+    ],
+    [
+     "   2 - (rowset=256) \"NATION\".\"N_NAME\"[VARCHAR2,100], \"T6\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"LINEITEM\".\"L_SHIPDATE\"[DATE,7], \"LINEITEM\".\"L_EXTENDEDPRICE\"[NUMBER,22], "
+    ],
+    [
+     "       \"LINEITEM\".\"L_DISCOUNT\"[NUMBER,22]"
+    ],
+    [
+     "   3 - (#keys=2; rowset=256) \"NATION\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"T6\".\"N_NAME\"[VARCHAR2,100], \"LINEITEM\".\"L_SHIPDATE\"[DATE,7], "
+    ],
+    [
+     "       \"LINEITEM\".\"L_EXTENDEDPRICE\"[NUMBER,22], \"LINEITEM\".\"L_DISCOUNT\"[NUMBER,22]"
+    ],
+    [
+     "   4 - (#keys=0) \"NATION\".\"N_NATIONKEY\"[NUMBER,22], \"NATION\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"T6\".\"N_NAME\"[VARCHAR2,100], \"LINEITEM\".\"L_SHIPDATE\"[DATE,7], "
+    ],
+    [
+     "       \"LINEITEM\".\"L_EXTENDEDPRICE\"[NUMBER,22], \"LINEITEM\".\"L_DISCOUNT\"[NUMBER,22], "
+    ],
+    [
+     "       \"ORDERS\".\"O_CUSTKEY\"[NUMBER,22]"
+    ],
+    [
+     "   5 - (#keys=0) \"NATION\".\"N_NATIONKEY\"[NUMBER,22], \"NATION\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"T6\".\"N_NAME\"[VARCHAR2,100], \"LINEITEM\".\"L_SHIPDATE\"[DATE,7], "
+    ],
+    [
+     "       \"LINEITEM\".\"L_EXTENDEDPRICE\"[NUMBER,22], \"LINEITEM\".\"L_DISCOUNT\"[NUMBER,22], "
+    ],
+    [
+     "       \"ORDERS\".ROWID[ROWID,10]"
+    ],
+    [
+     "   6 - (#keys=1) \"NATION\".\"N_NATIONKEY\"[NUMBER,22], \"NATION\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"T6\".\"N_NAME\"[VARCHAR2,100], \"LINEITEM\".\"L_ORDERKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"LINEITEM\".\"L_SHIPDATE\"[DATE,7], \"LINEITEM\".\"L_EXTENDEDPRICE\"[NUMBER,22], "
+    ],
+    [
+     "       \"LINEITEM\".\"L_DISCOUNT\"[NUMBER,22]"
+    ],
+    [
+     "   7 - (#keys=1; rowset=256) \"NATION\".\"N_NATIONKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"NATION\".\"N_NAME\"[VARCHAR2,100], \"T6\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"SUPPLIER\".\"S_SUPPKEY\"[NUMBER,22]"
+    ],
+    [
+     "   8 - (#keys=0) \"NATION\".\"N_NATIONKEY\"[NUMBER,22], \"NATION\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"T6\".\"N_NATIONKEY\"[NUMBER,22], \"T6\".\"N_NAME\"[VARCHAR2,100]"
+    ],
+    [
+     "   9 - \"NATION\".\"N_NATIONKEY\"[NUMBER,22], \"NATION\".\"N_NAME\"[VARCHAR2,100]"
+    ],
+    [
+     "  10 - \"T6\".\"N_NATIONKEY\"[NUMBER,22], \"T6\".\"N_NAME\"[VARCHAR2,100]"
+    ],
+    [
+     "  11 - (rowset=256) \"SUPPLIER\".\"S_SUPPKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"SUPPLIER\".\"S_NATIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "  12 - \"LINEITEM\".\"L_ORDERKEY\"[NUMBER,22], \"LINEITEM\".\"L_SUPPKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"LINEITEM\".\"L_EXTENDEDPRICE\"[NUMBER,22], \"LINEITEM\".\"L_DISCOUNT\"[NUMBER,22], "
+    ],
+    [
+     "       \"LINEITEM\".\"L_SHIPDATE\"[DATE,7]"
+    ],
+    [
+     "  13 - \"ORDERS\".ROWID[ROWID,10]"
+    ],
+    [
+     "  14 - \"ORDERS\".\"O_CUSTKEY\"[NUMBER,22]"
+    ],
+    [
+     "  15 - (rowset=256) \"CUSTOMER\".\"C_CUSTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"CUSTOMER\".\"C_NATIONKEY\"[NUMBER,22]"
+    ]
+   ],
+   "note": "EXPLAIN PLAN does not peek bind values"
+  }
+ ],
+ "B": [
+  {
+   "ok": true,
+   "plan": [
+    [
+     "Plan hash value: 381073592"
+    ],
+    [
+     " "
+    ],
+    [
+     "--------------------------------------------------------------------------------------------"
+    ],
+    [
+     "| Id  | Operation               | Name     | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |"
+    ],
+    [
+     "--------------------------------------------------------------------------------------------"
+    ],
+    [
+     "|   0 | SELECT STATEMENT        |          |  1464 |   110K|       | 35228   (1)| 00:00:02 |"
+    ],
+    [
+     "|   1 |  SORT GROUP BY          |          |  1464 |   110K|       | 35228   (1)| 00:00:02 |"
+    ],
+    [
+     "|*  2 |   HASH JOIN             |          |  5563 |   418K|  2936K| 35227   (1)| 00:00:02 |"
+    ],
+    [
+     "|   3 |    TABLE ACCESS FULL    | CUSTOMER |   150K|  1171K|       |   956   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  4 |    HASH JOIN            |          |   139K|  9370K|  9512K| 33594   (1)| 00:00:02 |"
+    ],
+    [
+     "|*  5 |     HASH JOIN           |          |   139K|  7876K|       | 25331   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  6 |      HASH JOIN          |          |   799 | 24769 |       |    75   (0)| 00:00:01 |"
+    ],
+    [
+     "|   7 |       NESTED LOOPS      |          |     2 |    48 |       |     7   (0)| 00:00:01 |"
+    ],
+    [
+     "|*  8 |        TABLE ACCESS FULL| NATION   |     2 |    24 |       |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|*  9 |        TABLE ACCESS FULL| NATION   |     1 |    12 |       |     2   (0)| 00:00:01 |"
+    ],
+    [
+     "|  10 |       TABLE ACCESS FULL | SUPPLIER | 10000 | 70000 |       |    68   (0)| 00:00:01 |"
+    ],
+    [
+     "|* 11 |      TABLE ACCESS FULL  | LINEITEM |  1739K|    44M|       | 25252   (1)| 00:00:01 |"
+    ],
+    [
+     "|  12 |     TABLE ACCESS FULL   | ORDERS   |  1500K|    15M|       |  6164   (1)| 00:00:01 |"
+    ],
+    [
+     "--------------------------------------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "Query Block Name / Object Alias (identified by operation id):"
+    ],
+    [
+     "-------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - SEL$F5BB74E1"
+    ],
+    [
+     "   3 - SEL$F5BB74E1 / \"CUSTOMER\"@\"SEL$2\""
+    ],
+    [
+     "   8 - SEL$F5BB74E1 / \"N1\"@\"SEL$2\""
+    ],
+    [
+     "   9 - SEL$F5BB74E1 / \"N2\"@\"SEL$2\""
+    ],
+    [
+     "  10 - SEL$F5BB74E1 / \"SUPPLIER\"@\"SEL$2\""
+    ],
+    [
+     "  11 - SEL$F5BB74E1 / \"LINEITEM\"@\"SEL$2\""
+    ],
+    [
+     "  12 - SEL$F5BB74E1 / \"ORDERS\"@\"SEL$2\""
+    ],
+    [
+     " "
+    ],
+    [
+     "Predicate Information (identified by operation id):"
+    ],
+    [
+     "---------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   2 - access(\"C_CUSTKEY\"=\"O_CUSTKEY\" AND \"C_NATIONKEY\"=\"N2\".\"N_NATIONKEY\")"
+    ],
+    [
+     "   4 - access(\"O_ORDERKEY\"=\"L_ORDERKEY\")"
+    ],
+    [
+     "   5 - access(\"S_SUPPKEY\"=\"L_SUPPKEY\")"
+    ],
+    [
+     "   6 - access(\"S_NATIONKEY\"=\"N1\".\"N_NATIONKEY\")"
+    ],
+    [
+     "   8 - filter(\"N1\".\"N_NAME\"=:P1 OR \"N1\".\"N_NAME\"=:P3)"
+    ],
+    [
+     "   9 - filter((\"N1\".\"N_NAME\"=:P1 AND \"N2\".\"N_NAME\"=:P2 OR \"N1\".\"N_NAME\"=:P3 AND "
+    ],
+    [
+     "              \"N2\".\"N_NAME\"=:P4) AND (\"N2\".\"N_NAME\"=:P2 OR \"N2\".\"N_NAME\"=:P4))"
+    ],
+    [
+     "  11 - filter(\"L_SHIPDATE\">=TO_DATE(' 1995-01-01 00:00:00', 'syyyy-mm-dd "
+    ],
+    [
+     "              hh24:mi:ss') AND \"L_SHIPDATE\"<=TO_DATE(' 1996-12-31 00:00:00', 'syyyy-mm-dd "
+    ],
+    [
+     "              hh24:mi:ss'))"
+    ],
+    [
+     " "
+    ],
+    [
+     "Column Projection Information (identified by operation id):"
+    ],
+    [
+     "-----------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - (#keys=3; rowset=256) \"N1\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"N2\".\"N_NAME\"[VARCHAR2,100], EXTRACT(YEAR FROM "
+    ],
+    [
+     "       INTERNAL_FUNCTION(\"L_SHIPDATE\"))[22], SUM(\"L_EXTENDEDPRICE\"*(1-\"L_DISCOUNT\"))[22]"
+    ],
+    [
+     "   2 - (#keys=2; rowset=256) \"N2\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"N1\".\"N_NAME\"[VARCHAR2,100], \"L_EXTENDEDPRICE\"[NUMBER,22], \"L_DISCOUNT\"[NUMBER,22], "
+    ],
+    [
+     "       \"L_SHIPDATE\"[DATE,7]"
+    ],
+    [
+     "   3 - (rowset=256) \"C_CUSTKEY\"[NUMBER,22], \"C_NATIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "   4 - (#keys=1; rowset=256) \"N2\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"N1\".\"N_NAME\"[VARCHAR2,100], \"N2\".\"N_NATIONKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"L_DISCOUNT\"[NUMBER,22], \"L_SHIPDATE\"[DATE,7], \"L_EXTENDEDPRICE\"[NUMBER,22], "
+    ],
+    [
+     "       \"O_CUSTKEY\"[NUMBER,22]"
+    ],
+    [
+     "   5 - (#keys=1; rowset=256) \"N2\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"N1\".\"N_NAME\"[VARCHAR2,100], \"N2\".\"N_NATIONKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"L_ORDERKEY\"[NUMBER,22], \"L_SHIPDATE\"[DATE,7], \"L_EXTENDEDPRICE\"[NUMBER,22], "
+    ],
+    [
+     "       \"L_DISCOUNT\"[NUMBER,22]"
+    ],
+    [
+     "   6 - (#keys=1; rowset=256) \"N2\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"N1\".\"N_NAME\"[VARCHAR2,100], \"N2\".\"N_NATIONKEY\"[NUMBER,22], \"S_SUPPKEY\"[NUMBER,22]"
+    ],
+    [
+     "   7 - (#keys=0) \"N1\".\"N_NATIONKEY\"[NUMBER,22], \"N1\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"N2\".\"N_NATIONKEY\"[NUMBER,22], \"N2\".\"N_NAME\"[VARCHAR2,100]"
+    ],
+    [
+     "   8 - \"N1\".\"N_NATIONKEY\"[NUMBER,22], \"N1\".\"N_NAME\"[VARCHAR2,100]"
+    ],
+    [
+     "   9 - \"N2\".\"N_NATIONKEY\"[NUMBER,22], \"N2\".\"N_NAME\"[VARCHAR2,100]"
+    ],
+    [
+     "  10 - (rowset=256) \"S_SUPPKEY\"[NUMBER,22], \"S_NATIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "  11 - (rowset=256) \"L_ORDERKEY\"[NUMBER,22], \"L_SUPPKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"L_EXTENDEDPRICE\"[NUMBER,22], \"L_DISCOUNT\"[NUMBER,22], \"L_SHIPDATE\"[DATE,7]"
+    ],
+    [
+     "  12 - (rowset=256) \"O_ORDERKEY\"[NUMBER,22], \"O_CUSTKEY\"[NUMBER,22]"
+    ]
+   ],
+   "note": "EXPLAIN PLAN does not peek bind values"
+  }
+ ],
+ "L": [
+  {
+   "ok": true,
+   "plan": [
+    [
+     "Plan hash value: 381073592"
+    ],
+    [
+     " "
+    ],
+    [
+     "--------------------------------------------------------------------------------------------"
+    ],
+    [
+     "| Id  | Operation               | Name     | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |"
+    ],
+    [
+     "--------------------------------------------------------------------------------------------"
+    ],
+    [
+     "|   0 | SELECT STATEMENT        |          |  1464 |   110K|       | 35228   (1)| 00:00:02 |"
+    ],
+    [
+     "|   1 |  SORT GROUP BY          |          |  1464 |   110K|       | 35228   (1)| 00:00:02 |"
+    ],
+    [
+     "|*  2 |   HASH JOIN             |          |  5563 |   418K|  2936K| 35227   (1)| 00:00:02 |"
+    ],
+    [
+     "|   3 |    TABLE ACCESS FULL    | CUSTOMER |   150K|  1171K|       |   956   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  4 |    HASH JOIN            |          |   139K|  9370K|  9512K| 33594   (1)| 00:00:02 |"
+    ],
+    [
+     "|*  5 |     HASH JOIN           |          |   139K|  7876K|       | 25331   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  6 |      HASH JOIN          |          |   799 | 24769 |       |    75   (0)| 00:00:01 |"
+    ],
+    [
+     "|   7 |       NESTED LOOPS      |          |     2 |    48 |       |     7   (0)| 00:00:01 |"
+    ],
+    [
+     "|*  8 |        TABLE ACCESS FULL| NATION   |     2 |    24 |       |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|*  9 |        TABLE ACCESS FULL| NATION   |     1 |    12 |       |     2   (0)| 00:00:01 |"
+    ],
+    [
+     "|  10 |       TABLE ACCESS FULL | SUPPLIER | 10000 | 70000 |       |    68   (0)| 00:00:01 |"
+    ],
+    [
+     "|* 11 |      TABLE ACCESS FULL  | LINEITEM |  1739K|    44M|       | 25252   (1)| 00:00:01 |"
+    ],
+    [
+     "|  12 |     TABLE ACCESS FULL   | ORDERS   |  1500K|    15M|       |  6164   (1)| 00:00:01 |"
+    ],
+    [
+     "--------------------------------------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "Query Block Name / Object Alias (identified by operation id):"
+    ],
+    [
+     "-------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - SEL$F5BB74E1"
+    ],
+    [
+     "   3 - SEL$F5BB74E1 / \"CUSTOMER\"@\"SEL$2\""
+    ],
+    [
+     "   8 - SEL$F5BB74E1 / \"N1\"@\"SEL$2\""
+    ],
+    [
+     "   9 - SEL$F5BB74E1 / \"N2\"@\"SEL$2\""
+    ],
+    [
+     "  10 - SEL$F5BB74E1 / \"SUPPLIER\"@\"SEL$2\""
+    ],
+    [
+     "  11 - SEL$F5BB74E1 / \"LINEITEM\"@\"SEL$2\""
+    ],
+    [
+     "  12 - SEL$F5BB74E1 / \"ORDERS\"@\"SEL$2\""
+    ],
+    [
+     " "
+    ],
+    [
+     "Predicate Information (identified by operation id):"
+    ],
+    [
+     "---------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   2 - access(\"C_CUSTKEY\"=\"O_CUSTKEY\" AND \"C_NATIONKEY\"=\"N2\".\"N_NATIONKEY\")"
+    ],
+    [
+     "   4 - access(\"O_ORDERKEY\"=\"L_ORDERKEY\")"
+    ],
+    [
+     "   5 - access(\"S_SUPPKEY\"=\"L_SUPPKEY\")"
+    ],
+    [
+     "   6 - access(\"S_NATIONKEY\"=\"N1\".\"N_NATIONKEY\")"
+    ],
+    [
+     "   8 - filter(\"N1\".\"N_NAME\"='FRANCE' OR \"N1\".\"N_NAME\"='GERMANY')"
+    ],
+    [
+     "   9 - filter((\"N1\".\"N_NAME\"='FRANCE' AND \"N2\".\"N_NAME\"='GERMANY' OR "
+    ],
+    [
+     "              \"N1\".\"N_NAME\"='GERMANY' AND \"N2\".\"N_NAME\"='FRANCE') AND (\"N2\".\"N_NAME\"='FRANCE' OR "
+    ],
+    [
+     "              \"N2\".\"N_NAME\"='GERMANY'))"
+    ],
+    [
+     "  11 - filter(\"L_SHIPDATE\">=TO_DATE(' 1995-01-01 00:00:00', 'syyyy-mm-dd "
+    ],
+    [
+     "              hh24:mi:ss') AND \"L_SHIPDATE\"<=TO_DATE(' 1996-12-31 00:00:00', 'syyyy-mm-dd "
+    ],
+    [
+     "              hh24:mi:ss'))"
+    ],
+    [
+     " "
+    ],
+    [
+     "Column Projection Information (identified by operation id):"
+    ],
+    [
+     "-----------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - (#keys=3; rowset=256) \"N1\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"N2\".\"N_NAME\"[VARCHAR2,100], EXTRACT(YEAR FROM "
+    ],
+    [
+     "       INTERNAL_FUNCTION(\"L_SHIPDATE\"))[22], SUM(\"L_EXTENDEDPRICE\"*(1-\"L_DISCOUNT\"))[22]"
+    ],
+    [
+     "   2 - (#keys=2; rowset=256) \"N2\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"N1\".\"N_NAME\"[VARCHAR2,100], \"L_EXTENDEDPRICE\"[NUMBER,22], \"L_DISCOUNT\"[NUMBER,22], "
+    ],
+    [
+     "       \"L_SHIPDATE\"[DATE,7]"
+    ],
+    [
+     "   3 - (rowset=256) \"C_CUSTKEY\"[NUMBER,22], \"C_NATIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "   4 - (#keys=1; rowset=256) \"N2\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"N1\".\"N_NAME\"[VARCHAR2,100], \"N2\".\"N_NATIONKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"L_DISCOUNT\"[NUMBER,22], \"L_SHIPDATE\"[DATE,7], \"L_EXTENDEDPRICE\"[NUMBER,22], "
+    ],
+    [
+     "       \"O_CUSTKEY\"[NUMBER,22]"
+    ],
+    [
+     "   5 - (#keys=1; rowset=256) \"N2\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"N1\".\"N_NAME\"[VARCHAR2,100], \"N2\".\"N_NATIONKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"L_ORDERKEY\"[NUMBER,22], \"L_SHIPDATE\"[DATE,7], \"L_EXTENDEDPRICE\"[NUMBER,22], "
+    ],
+    [
+     "       \"L_DISCOUNT\"[NUMBER,22]"
+    ],
+    [
+     "   6 - (#keys=1; rowset=256) \"N2\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"N1\".\"N_NAME\"[VARCHAR2,100], \"N2\".\"N_NATIONKEY\"[NUMBER,22], \"S_SUPPKEY\"[NUMBER,22]"
+    ],
+    [
+     "   7 - (#keys=0) \"N1\".\"N_NATIONKEY\"[NUMBER,22], \"N1\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"N2\".\"N_NATIONKEY\"[NUMBER,22], \"N2\".\"N_NAME\"[VARCHAR2,100]"
+    ],
+    [
+     "   8 - \"N1\".\"N_NATIONKEY\"[NUMBER,22], \"N1\".\"N_NAME\"[VARCHAR2,100]"
+    ],
+    [
+     "   9 - \"N2\".\"N_NATIONKEY\"[NUMBER,22], \"N2\".\"N_NAME\"[VARCHAR2,100]"
+    ],
+    [
+     "  10 - (rowset=256) \"S_SUPPKEY\"[NUMBER,22], \"S_NATIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "  11 - (rowset=256) \"L_ORDERKEY\"[NUMBER,22], \"L_SUPPKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"L_EXTENDEDPRICE\"[NUMBER,22], \"L_DISCOUNT\"[NUMBER,22], \"L_SHIPDATE\"[DATE,7]"
+    ],
+    [
+     "  12 - (rowset=256) \"O_ORDERKEY\"[NUMBER,22], \"O_CUSTKEY\"[NUMBER,22]"
+    ]
+   ]
+  }
+ ],
+ "note": "EXPLAIN without execution, once per cell on input set 0, outside every timer"
+}

@@ -1,0 +1,6 @@
+{
+  "reused_from": "<host-workspace>/b8-plan-followup-2026-09-19/oracle-q17-django-attempt1",
+  "reason": "Earlier instrumented run completed but omitted runtime counters; preserve completed warmup and retry collection",
+  "source_indexes_counts_parameters_rechecked": true,
+  "prior_inventory_sha256": "f05a8d3bd808627d970c38cb761eb319c4978913a8baff782212e62d5c2746b3"
+}

@@ -1,0 +1,27 @@
+{
+ "utc": "20261008T143152Z",
+ "purpose": "phase G second server: the Mac hardware behind the OrbStack VM (complements *-container-*.json, which records chip, cores, memory, macOS)",
+ "hardware": {
+  "_name": "hardware_overview",
+  "activation_lock_status": "activation_lock_disabled",
+  "boot_rom_version": "20457.1.29",
+  "chip_type": "Apple M4",
+  "machine_model": "Mac16,1",
+  "machine_name": "MacBook Pro",
+  "model_number": "MW2U3AB/A",
+  "number_processors": "proc 10:0:4:6",
+  "os_loader_version": "20457.1.29",
+  "physical_memory": "16 GB"
+ },
+ "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=<redacted>)\t100%; charged; 0:00 remaining present: true\n",
+ "power_settings": "System-wide power settings:\n SleepDisabled\t\t1\nCurrently in use:\n standby              1\n Sleep On Power Button 1\n hibernatefile        /var/vm/sleepimage\n powernap             1\n networkoversleep     0\n disksleep            10\n sleep                0 (sleep prevented by caffeinate, caffeinate, caffeinate)\n hibernatemode        3\n ttyskeepawake        1\n displaysleep         20\n tcpkeepalive         1\n lowpowermode         0\n womp                 1\n",
+ "perflevels": {
+  "hw.perflevel0.name": "Performance",
+  "hw.perflevel0.physicalcpu": "4",
+  "hw.perflevel0.l2cachesize": "16777216",
+  "hw.perflevel1.name": "Efficiency",
+  "hw.perflevel1.physicalcpu": "6",
+  "hw.perflevel1.l2cachesize": "4194304",
+  "hw.model": "Mac16,1"
+ }
+}

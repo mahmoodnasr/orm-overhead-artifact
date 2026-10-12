@@ -1,0 +1,51 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:f03fb78252e28f900f05e5123932bb3b0b8056ef624ed44ed092704ea0983b0b",
+   "params": [
+    "1995-01-01",
+    "1995-04-01",
+    1,
+    true,
+    false,
+    true
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:b51e8fa3cc46fb02576673e845aeffa833142298a9c83607fe064e18159d39f8",
+    "values": [
+     {
+      "type": "date",
+      "value": "1995-01-01"
+     },
+     {
+      "type": "date",
+      "value": "1995-04-01"
+     }
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:f8898ccf2741563ced7bee8c7a4a8a101b5c63e870f727499a9e8fa58a22ff52",
+     "bound": true,
+     "kind": "date",
+     "value_type": "date",
+     "type_source": "param"
+    },
+    {
+     "literal": "withheld-sha256:3eda06a7870c50d63cf64725246204217190ad295a95fca6216b9dd922f6dbfb",
+     "bound": true,
+     "kind": "date",
+     "value_type": "date",
+     "type_source": "param"
+    }
+   ]
+  ],
+  "bound_literals": 2
+ }
+}

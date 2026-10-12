@@ -1,0 +1,49 @@
+{
+  "started_cairo": "2026-10-07T23:21:21.340733+03:00",
+  "authorization": "User: close an unrelated service !!",
+  "progress_before": {
+    "pid": 260286,
+    "followup_id": "ec4e175a-ef90-4155-ab5f-8adad8d1727e",
+    "started_utc": "2026-10-07T20:08:11.554966+00:00",
+    "planned_timed_executions": 32,
+    "planned_query_input_checks": 8,
+    "completed_timed_executions": 0,
+    "accepted_timed_executions": 0,
+    "passed_query_input_checks": 0,
+    "state": "running",
+    "query": 18,
+    "block": -1,
+    "path": "bound",
+    "parameter_set": 0,
+    "warmup": true,
+    "updated_utc": "2026-10-07T20:18:44.467256+00:00"
+  },
+  "stop": {
+    "returncode": 0,
+    "stdout": "Flag --time has been deprecated, use --timeout instead\nother-service-1\nother-service-1\n",
+    "stderr": ""
+  },
+  "verification": {
+    "returncode": 0,
+    "stdout": "/other-service-1 exited false 2026-10-07T20:21:21.508122377Z\n/other-service-1 exited false 2026-10-07T20:21:21.477905472Z\n",
+    "stderr": ""
+  },
+  "progress_after": {
+    "pid": 260286,
+    "followup_id": "ec4e175a-ef90-4155-ab5f-8adad8d1727e",
+    "started_utc": "2026-10-07T20:08:11.554966+00:00",
+    "planned_timed_executions": 32,
+    "planned_query_input_checks": 8,
+    "completed_timed_executions": 0,
+    "accepted_timed_executions": 0,
+    "passed_query_input_checks": 0,
+    "state": "running",
+    "query": 18,
+    "block": -1,
+    "path": "bound",
+    "parameter_set": 0,
+    "warmup": true,
+    "updated_utc": "2026-10-07T20:18:44.467256+00:00"
+  },
+  "finished_cairo": "2026-10-07T23:21:21.844614+03:00"
+}

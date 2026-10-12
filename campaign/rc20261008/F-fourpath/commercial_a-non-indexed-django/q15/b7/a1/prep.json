@@ -1,0 +1,67 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:7dc8a5325e1f97caf329e2d28c07289f229858f5655cd670ea715ff14e1e4939",
+   "params": [
+    1,
+    "1993-06-01",
+    "1993-09-01"
+   ]
+  },
+  {
+   "sql": "withheld-sha256:aa714af92f1a57b91d839c79716991c300677828e3600ca3155f49ae46e6efd1",
+   "params": [
+    1,
+    "1993-06-01",
+    "1993-09-01",
+    1,
+    {
+     "type": "Decimal",
+     "value": "1793806.3866"
+    }
+   ]
+  },
+  {
+   "sql": "withheld-sha256:665b6496eccd2ed0b3e1fb07dce32766e01370cf220f0ece34514d7d4df1e509",
+   "params": [
+    7979
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:dcfc7367071683e9c2f7841620a43b7566cccb0839511e493ba79caa99ed4313",
+    "values": [
+     {
+      "type": "date",
+      "value": "1993-06-01"
+     },
+     {
+      "type": "date",
+      "value": "1993-09-01"
+     }
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:82542ff8bb5ca910f323d8c467bfc881f0b33050705beb77cedbe21bff2a46b1",
+     "bound": true,
+     "kind": "date",
+     "value_type": "date",
+     "type_source": "param"
+    },
+    {
+     "literal": "withheld-sha256:250d805d034e4c0adee5da9e447c8922f3ae0a1f68433bcf89aef8f9c632aec1",
+     "bound": true,
+     "kind": "date",
+     "value_type": "date",
+     "type_source": "param"
+    }
+   ]
+  ],
+  "bound_literals": 2
+ }
+}

@@ -1,0 +1,596 @@
+{
+ "query": 21,
+ "block": 5,
+ "attempt": 1,
+ "sequence_id": 3,
+ "input_id": "q21s4",
+ "frameworks": {
+  "django": {
+   "accepted": false,
+   "classification": "mismatch",
+   "orm_path_check": true,
+   "status": "mismatch"
+  },
+  "sqlalchemy": {
+   "accepted": true,
+   "classification": "exact",
+   "orm_path_check": true,
+   "status": "accepted"
+  }
+ },
+ "comparisons_timed": {
+  "django": {
+   "policy": "rc20261008-results-v3",
+   "query": 21,
+   "rows": [
+    100,
+    100
+   ],
+   "classification": "mismatch",
+   "accepted": false,
+   "differences": [
+    {
+     "row": 85,
+     "left": {
+      "s_name": "Supplier#000011355       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000011419       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 86,
+     "left": {
+      "s_name": "Supplier#000011419       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000011649       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 87,
+     "left": {
+      "s_name": "Supplier#000011649       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000012596       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 88,
+     "left": {
+      "s_name": "Supplier#000012596       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000012824       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 89,
+     "left": {
+      "s_name": "Supplier#000012824       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000013389       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 90,
+     "left": {
+      "s_name": "Supplier#000013389       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000013496       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 91,
+     "left": {
+      "s_name": "Supplier#000013496       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000014209       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 92,
+     "left": {
+      "s_name": "Supplier#000014209       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000014304       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 93,
+     "left": {
+      "s_name": "Supplier#000014304       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000014582       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 94,
+     "left": {
+      "s_name": "Supplier#000014582       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000015022       ",
+      "numwait": 14
+     }
+    }
+   ],
+   "left": "django/sql",
+   "right": "django/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "sqlalchemy": {
+   "policy": "rc20261008-results-v3",
+   "query": 21,
+   "rows": [
+    100,
+    100
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "cross_sql": {
+   "policy": "rc20261008-results-v3",
+   "query": 21,
+   "rows": [
+    100,
+    100
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "sqlalchemy/sql"
+  },
+  "cross_orm": {
+   "policy": "rc20261008-results-v3",
+   "query": 21,
+   "rows": [
+    100,
+    100
+   ],
+   "classification": "mismatch",
+   "accepted": false,
+   "differences": [
+    {
+     "row": 85,
+     "left": {
+      "s_name": "Supplier#000011419       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000011355       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 86,
+     "left": {
+      "s_name": "Supplier#000011649       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000011419       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 87,
+     "left": {
+      "s_name": "Supplier#000012596       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000011649       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 88,
+     "left": {
+      "s_name": "Supplier#000012824       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000012596       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 89,
+     "left": {
+      "s_name": "Supplier#000013389       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000012824       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 90,
+     "left": {
+      "s_name": "Supplier#000013496       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000013389       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 91,
+     "left": {
+      "s_name": "Supplier#000014209       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000013496       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 92,
+     "left": {
+      "s_name": "Supplier#000014304       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000014209       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 93,
+     "left": {
+      "s_name": "Supplier#000014582       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000014304       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 94,
+     "left": {
+      "s_name": "Supplier#000015022       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000014582       ",
+      "numwait": 14
+     }
+    }
+   ],
+   "left": "django/orm",
+   "right": "sqlalchemy/orm"
+  }
+ },
+ "comparisons_block_warmup": {
+  "django": {
+   "policy": "rc20261008-results-v3",
+   "query": 21,
+   "rows": [
+    100,
+    100
+   ],
+   "classification": "mismatch",
+   "accepted": false,
+   "differences": [
+    {
+     "row": 85,
+     "left": {
+      "s_name": "Supplier#000011355       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000011419       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 86,
+     "left": {
+      "s_name": "Supplier#000011419       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000011649       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 87,
+     "left": {
+      "s_name": "Supplier#000011649       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000012596       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 88,
+     "left": {
+      "s_name": "Supplier#000012596       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000012824       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 89,
+     "left": {
+      "s_name": "Supplier#000012824       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000013389       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 90,
+     "left": {
+      "s_name": "Supplier#000013389       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000013496       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 91,
+     "left": {
+      "s_name": "Supplier#000013496       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000014209       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 92,
+     "left": {
+      "s_name": "Supplier#000014209       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000014304       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 93,
+     "left": {
+      "s_name": "Supplier#000014304       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000014582       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 94,
+     "left": {
+      "s_name": "Supplier#000014582       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000015022       ",
+      "numwait": 14
+     }
+    }
+   ],
+   "left": "django/sql",
+   "right": "django/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "sqlalchemy": {
+   "policy": "rc20261008-results-v3",
+   "query": 21,
+   "rows": [
+    100,
+    100
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "orm_path_check": {
+    "statements": 1,
+    "passed": true
+   }
+  },
+  "cross_sql": {
+   "policy": "rc20261008-results-v3",
+   "query": 21,
+   "rows": [
+    100,
+    100
+   ],
+   "classification": "exact",
+   "accepted": true,
+   "left": "django/sql",
+   "right": "sqlalchemy/sql"
+  },
+  "cross_orm": {
+   "policy": "rc20261008-results-v3",
+   "query": 21,
+   "rows": [
+    100,
+    100
+   ],
+   "classification": "mismatch",
+   "accepted": false,
+   "differences": [
+    {
+     "row": 85,
+     "left": {
+      "s_name": "Supplier#000011419       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000011355       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 86,
+     "left": {
+      "s_name": "Supplier#000011649       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000011419       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 87,
+     "left": {
+      "s_name": "Supplier#000012596       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000011649       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 88,
+     "left": {
+      "s_name": "Supplier#000012824       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000012596       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 89,
+     "left": {
+      "s_name": "Supplier#000013389       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000012824       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 90,
+     "left": {
+      "s_name": "Supplier#000013496       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000013389       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 91,
+     "left": {
+      "s_name": "Supplier#000014209       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000013496       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 92,
+     "left": {
+      "s_name": "Supplier#000014304       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000014209       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 93,
+     "left": {
+      "s_name": "Supplier#000014582       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000014304       ",
+      "numwait": 14
+     }
+    },
+    {
+     "row": 94,
+     "left": {
+      "s_name": "Supplier#000015022       ",
+      "numwait": 14
+     },
+     "right": {
+      "s_name": "Supplier#000014582       ",
+      "numwait": 14
+     }
+    }
+   ],
+   "left": "django/orm",
+   "right": "sqlalchemy/orm"
+  }
+ },
+ "timed_records": {
+  "sqlalchemy/sql": "a1/timed-sqlalchemy-sql.json.gz",
+  "django/sql": "a1/timed-django-sql.json.gz",
+  "sqlalchemy/orm": "a1/timed-sqlalchemy-orm.json.gz",
+  "django/orm": "a1/timed-django-orm.json.gz"
+ },
+ "skipped": {},
+ "stop_cell": "django result check failed in block 5: mismatch",
+ "policy": "rc20261008-results-v3",
+ "utc": "2026-10-10T01:55:18.483407+00:00",
+ "cairo": "2026-10-10T04:55:18.483407+03:00"
+}

@@ -1,0 +1,568 @@
+{
+ "run_dir": "A-sf1/postgresql-non-indexed",
+ "stage": "cellwarm",
+ "dialect": "postgresql",
+ "method": "EXPLAIN (FORMAT TEXT) on the statements recorded by the timed-out (or completed) cell-warmup calls; nothing executed",
+ "cells": {
+  "q13": {
+   "django/sql": {
+    "status": "ok",
+    "elapsed_s": 1.8188178510026773,
+    "input_id": "q13warm",
+    "record": "A-sf1/postgresql-non-indexed/q13/cellwarm/a1/django-sql.json.gz",
+    "statements": [
+     {
+      "sql": "\n    SELECT c_count, COUNT(*) as custdist\n    FROM (\n        SELECT c_custkey, COUNT(o_orderkey) as c_count\n        FROM customer LEFT OUTER JOIN orders\n          ON c_custkey = o_custkey\n         AND o_comment NOT LIKE '%unusual%requests%'\n        GROUP BY c_custkey\n    ) AS c_orders\n    GROUP BY c_count\n    ORDER BY custdist DESC, c_count DESC\n    ",
+      "plan": [
+       "Sort  (cost=67408.58..67409.08 rows=200 width=16)",
+       "  Sort Key: (count(*)) DESC, (count(orders.o_orderkey)) DESC",
+       "  ->  HashAggregate  (cost=67398.94..67400.94 rows=200 width=16)",
+       "        Group Key: count(orders.o_orderkey)",
+       "        ->  HashAggregate  (cost=63648.94..65148.94 rows=150000 width=16)",
+       "              Group Key: customer.c_custkey",
+       "              ->  Hash Right Join  (cost=5802.47..56149.69 rows=1499850 width=16)",
+       "                    Hash Cond: (orders.o_custkey = customer.c_custkey)",
+       "                    ->  Seq Scan on orders  (cost=0.00..46410.00 rows=1499850 width=16)",
+       "                          Filter: ((o_comment)::text !~~ '%unusual%requests%'::text)",
+       "                    ->  Hash  (cost=3927.47..3927.47 rows=150000 width=8)",
+       "                          ->  Index Only Scan using customer_pkey on customer  (cost=0.42..3927.47 rows=150000 width=8)"
+      ]
+     }
+    ]
+   },
+   "django/orm": {
+    "status": "timeout",
+    "elapsed_s": 900.0034298250102,
+    "input_id": "q13warm",
+    "record": "A-sf1/postgresql-non-indexed/q13/cellwarm/a1/django-orm.json.gz",
+    "statements": [
+     {
+      "sql": "SELECT COALESCE((SELECT COUNT(U0.\"o_orderkey\") AS \"n\" FROM \"orders\" U0 WHERE (U0.\"o_custkey\" = (\"customer\".\"c_custkey\") AND NOT (U0.\"o_comment\" LIKE %s)) GROUP BY U0.\"o_custkey\" LIMIT 1), %s) AS \"c_count\", COUNT(*) AS \"custdist\" FROM \"customer\" GROUP BY 1 ORDER BY 2 DESC, 1 DESC",
+      "plan": [
+       "Sort  (cost=15048048094.37..15048048469.37 rows=150000 width=16)",
+       "  Sort Key: (count(*)) DESC, (COALESCE((SubPlan 1), '0'::bigint)) DESC",
+       "  ->  GroupAggregate  (cost=7524024698.42..15048035198.42 rows=150000 width=16)",
+       "        Group Key: (COALESCE((SubPlan 1), '0'::bigint))",
+       "        ->  Sort  (cost=7524024698.42..7524025073.42 rows=150000 width=8)",
+       "              Sort Key: (COALESCE((SubPlan 1), '0'::bigint)) DESC",
+       "              ->  Index Only Scan using customer_pkey on customer  (cost=0.42..7524011802.47 rows=150000 width=8)",
+       "                    SubPlan 1",
+       "                      ->  Limit  (cost=0.00..50160.05 rows=1 width=16)",
+       "                            ->  GroupAggregate  (cost=0.00..50160.05 rows=1 width=16)",
+       "                                  ->  Seq Scan on orders u0  (cost=0.00..50160.00 rows=17 width=16)",
+       "                                        Filter: (((o_comment)::text !~~ '%unusual%requests%'::text) AND (o_custkey = customer.c_custkey))",
+       "JIT:",
+       "  Functions: 12",
+       "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+      ]
+     }
+    ]
+   },
+   "sqlalchemy/sql": {
+    "status": "ok",
+    "elapsed_s": 1.8816820059873862,
+    "input_id": "q13warm",
+    "record": "A-sf1/postgresql-non-indexed/q13/cellwarm/a1/sqlalchemy-sql.json.gz",
+    "statements": [
+     {
+      "sql": "SELECT c_count, COUNT(*) AS custdist\nFROM (SELECT c_custkey, COUNT(o_orderkey) AS c_count\n      FROM customer LEFT OUTER JOIN orders\n        ON c_custkey = o_custkey\n       AND o_comment NOT LIKE '%%unusual%%requests%%'\n      GROUP BY c_custkey) AS c_orders\nGROUP BY c_count\nORDER BY custdist DESC, c_count DESC",
+      "plan": [
+       "Sort  (cost=67408.58..67409.08 rows=200 width=16)",
+       "  Sort Key: (count(*)) DESC, (count(orders.o_orderkey)) DESC",
+       "  ->  HashAggregate  (cost=67398.94..67400.94 rows=200 width=16)",
+       "        Group Key: count(orders.o_orderkey)",
+       "        ->  HashAggregate  (cost=63648.94..65148.94 rows=150000 width=16)",
+       "              Group Key: customer.c_custkey",
+       "              ->  Hash Right Join  (cost=5802.47..56149.69 rows=1499850 width=16)",
+       "                    Hash Cond: (orders.o_custkey = customer.c_custkey)",
+       "                    ->  Seq Scan on orders  (cost=0.00..46410.00 rows=1499850 width=16)",
+       "                          Filter: ((o_comment)::text !~~ '%%unusual%%requests%%'::text)",
+       "                    ->  Hash  (cost=3927.47..3927.47 rows=150000 width=8)",
+       "                          ->  Index Only Scan using customer_pkey on customer  (cost=0.42..3927.47 rows=150000 width=8)"
+      ]
+     }
+    ]
+   },
+   "sqlalchemy/orm": {
+    "status": "ok",
+    "elapsed_s": 1.8043688420002582,
+    "input_id": "q13warm",
+    "record": "A-sf1/postgresql-non-indexed/q13/cellwarm/a1/sqlalchemy-orm.json.gz",
+    "statements": [
+     {
+      "sql": "SELECT anon_1.c_count AS anon_1_c_count, count(*) AS custdist \nFROM (SELECT customer.c_custkey AS c_custkey, count(orders.o_orderkey) AS c_count \nFROM customer LEFT OUTER JOIN orders ON customer.c_custkey = orders.o_custkey AND orders.o_comment NOT LIKE %(o_comment_1)s GROUP BY customer.c_custkey) AS anon_1 GROUP BY anon_1.c_count ORDER BY count(*) DESC, anon_1.c_count DESC",
+      "plan": [
+       "Sort  (cost=67408.58..67409.08 rows=200 width=16)",
+       "  Sort Key: (count(*)) DESC, (count(orders.o_orderkey)) DESC",
+       "  ->  HashAggregate  (cost=67398.94..67400.94 rows=200 width=16)",
+       "        Group Key: count(orders.o_orderkey)",
+       "        ->  HashAggregate  (cost=63648.94..65148.94 rows=150000 width=16)",
+       "              Group Key: customer.c_custkey",
+       "              ->  Hash Right Join  (cost=5802.47..56149.69 rows=1499850 width=16)",
+       "                    Hash Cond: (orders.o_custkey = customer.c_custkey)",
+       "                    ->  Seq Scan on orders  (cost=0.00..46410.00 rows=1499850 width=16)",
+       "                          Filter: ((o_comment)::text !~~ '%unusual%requests%'::text)",
+       "                    ->  Hash  (cost=3927.47..3927.47 rows=150000 width=8)",
+       "                          ->  Index Only Scan using customer_pkey on customer  (cost=0.42..3927.47 rows=150000 width=8)"
+      ]
+     }
+    ]
+   }
+  },
+  "q17": {
+   "django/sql": {
+    "status": "timeout",
+    "elapsed_s": 900.000764884986,
+    "input_id": "q17warm",
+    "record": "A-sf1/postgresql-non-indexed/q17/cellwarm/a1/django-sql.json.gz",
+    "statements": [
+     {
+      "sql": "\n    SELECT SUM(l_extendedprice) / 7.0 as avg_yearly\n    FROM lineitem, part\n    WHERE p_partkey = l_partkey\n      AND p_brand = 'Brand#13'\n      AND p_container = 'LG CAN'\n      AND l_quantity < (\n        SELECT 0.2 * AVG(l_quantity)\n        FROM lineitem\n        WHERE l_partkey = p_partkey\n      )\n    ",
+      "plan": [
+       "Aggregate  (cost=2169646.92..2169646.94 rows=1 width=32)",
+       "  ->  Hash Join  (cost=7258.61..2169641.70 rows=2090 width=8)",
+       "        Hash Cond: (lineitem.l_partkey = part.p_partkey)",
+       "        Join Filter: (lineitem.l_quantity < (SubPlan 1))",
+       "        ->  Seq Scan on lineitem  (cost=0.00..181508.79 rows=6001279 width=21)",
+       "        ->  Hash  (cost=7256.00..7256.00 rows=209 width=8)",
+       "              ->  Seq Scan on part  (cost=0.00..7256.00 rows=209 width=8)",
+       "                    Filter: ((p_brand = 'Brand#13'::bpchar) AND (p_container = 'LG CAN'::bpchar))",
+       "        SubPlan 1",
+       "          ->  Aggregate  (cost=196512.07..196512.08 rows=1 width=32)",
+       "                ->  Seq Scan on lineitem lineitem_1  (cost=0.00..196511.99 rows=31 width=5)",
+       "                      Filter: (l_partkey = part.p_partkey)",
+       "JIT:",
+       "  Functions: 22",
+       "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+      ]
+     }
+    ]
+   },
+   "django/orm": {
+    "status": "timeout",
+    "elapsed_s": 900.0039633949928,
+    "input_id": "q17warm",
+    "record": "A-sf1/postgresql-non-indexed/q17/cellwarm/a1/django-orm.json.gz",
+    "statements": [
+     {
+      "sql": "SELECT (SUM(\"lineitem\".\"l_extendedprice\") / %s) AS \"avg_yearly\" FROM \"lineitem\" INNER JOIN \"part\" ON (\"lineitem\".\"l_partkey\" = \"part\".\"p_partkey\") WHERE (\"part\".\"p_brand\" = %s AND \"part\".\"p_container\" = %s AND \"lineitem\".\"l_quantity\" < ((SELECT AVG(U0.\"l_quantity\") AS \"avg_q\" FROM \"lineitem\" U0 WHERE U0.\"l_partkey\" = (\"lineitem\".\"l_partkey\") GROUP BY U0.\"l_partkey\") * %s))",
+      "plan": [
+       "Aggregate  (cost=1179330294028.52..1179330294028.53 rows=1 width=32)",
+       "  ->  Nested Loop  (cost=0.00..1179330294023.29 rows=2090 width=8)",
+       "        Join Filter: (part.p_partkey = lineitem.l_partkey)",
+       "        ->  Seq Scan on lineitem  (cost=0.00..1179324015462.31 rows=2000426 width=16)",
+       "              Filter: (l_quantity < ((SubPlan 1) * 0.2))",
+       "              SubPlan 1",
+       "                ->  GroupAggregate  (cost=0.00..196512.08 rows=1 width=40)",
+       "                      ->  Seq Scan on lineitem u0  (cost=0.00..196511.99 rows=31 width=13)",
+       "                            Filter: (l_partkey = lineitem.l_partkey)",
+       "        ->  Materialize  (cost=0.00..7257.05 rows=209 width=8)",
+       "              ->  Seq Scan on part  (cost=0.00..7256.00 rows=209 width=8)",
+       "                    Filter: ((p_brand = 'Brand#13'::bpchar) AND (p_container = 'LG CAN'::bpchar))",
+       "JIT:",
+       "  Functions: 19",
+       "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+      ]
+     }
+    ]
+   },
+   "sqlalchemy/sql": {
+    "status": "timeout",
+    "elapsed_s": 900.0011608280183,
+    "input_id": "q17warm",
+    "record": "A-sf1/postgresql-non-indexed/q17/cellwarm/a1/sqlalchemy-sql.json.gz",
+    "statements": [
+     {
+      "sql": "SELECT SUM(l_extendedprice) / 7.0 AS avg_yearly\nFROM lineitem, part\nWHERE p_partkey = l_partkey\n  AND p_brand = 'Brand#13'\n  AND p_container = 'LG CAN'\n  AND l_quantity < (SELECT 0.2 * AVG(l_quantity) FROM lineitem\n                    WHERE l_partkey = p_partkey)",
+      "plan": [
+       "Aggregate  (cost=2169646.92..2169646.94 rows=1 width=32)",
+       "  ->  Hash Join  (cost=7258.61..2169641.70 rows=2090 width=8)",
+       "        Hash Cond: (lineitem.l_partkey = part.p_partkey)",
+       "        Join Filter: (lineitem.l_quantity < (SubPlan 1))",
+       "        ->  Seq Scan on lineitem  (cost=0.00..181508.79 rows=6001279 width=21)",
+       "        ->  Hash  (cost=7256.00..7256.00 rows=209 width=8)",
+       "              ->  Seq Scan on part  (cost=0.00..7256.00 rows=209 width=8)",
+       "                    Filter: ((p_brand = 'Brand#13'::bpchar) AND (p_container = 'LG CAN'::bpchar))",
+       "        SubPlan 1",
+       "          ->  Aggregate  (cost=196512.07..196512.08 rows=1 width=32)",
+       "                ->  Seq Scan on lineitem lineitem_1  (cost=0.00..196511.99 rows=31 width=5)",
+       "                      Filter: (l_partkey = part.p_partkey)",
+       "JIT:",
+       "  Functions: 22",
+       "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+      ]
+     }
+    ]
+   },
+   "sqlalchemy/orm": {
+    "status": "timeout",
+    "elapsed_s": 900.006085911009,
+    "input_id": "q17warm",
+    "record": "A-sf1/postgresql-non-indexed/q17/cellwarm/a1/sqlalchemy-orm.json.gz",
+    "statements": [
+     {
+      "sql": "SELECT sum(lineitem.l_extendedprice) / CAST(%(sum_1)s AS NUMERIC(15, 2)) AS avg_yearly \nFROM lineitem, part \nWHERE part.p_partkey = lineitem.l_partkey AND part.p_brand = %(p_brand_1)s AND part.p_container = %(p_container_1)s AND lineitem.l_quantity < (SELECT %(avg_1)s * avg(lineitem_1.l_quantity) AS anon_1 \nFROM lineitem AS lineitem_1 \nWHERE lineitem_1.l_partkey = part.p_partkey)",
+      "plan": [
+       "Aggregate  (cost=2169646.92..2169646.94 rows=1 width=32)",
+       "  ->  Hash Join  (cost=7258.61..2169641.70 rows=2090 width=8)",
+       "        Hash Cond: (lineitem.l_partkey = part.p_partkey)",
+       "        Join Filter: (lineitem.l_quantity < (SubPlan 1))",
+       "        ->  Seq Scan on lineitem  (cost=0.00..181508.79 rows=6001279 width=21)",
+       "        ->  Hash  (cost=7256.00..7256.00 rows=209 width=8)",
+       "              ->  Seq Scan on part  (cost=0.00..7256.00 rows=209 width=8)",
+       "                    Filter: ((p_brand = 'Brand#13'::bpchar) AND (p_container = 'LG CAN'::bpchar))",
+       "        SubPlan 1",
+       "          ->  Aggregate  (cost=196512.07..196512.08 rows=1 width=32)",
+       "                ->  Seq Scan on lineitem lineitem_1  (cost=0.00..196511.99 rows=31 width=5)",
+       "                      Filter: (l_partkey = part.p_partkey)",
+       "JIT:",
+       "  Functions: 22",
+       "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+      ]
+     }
+    ]
+   }
+  },
+  "q20": {
+   "django/sql": {
+    "status": "timeout",
+    "elapsed_s": 900.0009134889988,
+    "input_id": "q20warm",
+    "record": "A-sf1/postgresql-non-indexed/q20/cellwarm/a1/django-sql.json.gz",
+    "statements": [
+     {
+      "sql": "\n    SELECT s_name, s_address\n    FROM supplier, nation\n    WHERE s_suppkey IN (\n        SELECT ps_suppkey\n        FROM partsupp\n        WHERE ps_partkey IN (\n            SELECT p_partkey\n            FROM part\n            WHERE p_name LIKE 'frosted%'\n          )\n          AND ps_availqty > (\n            SELECT 0.5 * SUM(l_quantity)\n            FROM lineitem\n            WHERE l_partkey = ps_partkey\n              AND l_suppkey = ps_suppkey\n              AND l_shipdate >= DATE '1994-01-01'\n              AND l_shipdate < DATE '1995-01-01'\n          )\n      )\n      AND s_nationkey = n_nationkey\n      AND n_name = 'SAUDI ARABIA'\n    ORDER BY s_name\n    ",
+      "plan": [
+       "Sort  (cost=1951928646.75..1951928647.02 rows=108 width=51)",
+       "  Sort Key: supplier.s_name",
+       "  ->  Nested Loop  (cost=0.42..1951928643.10 rows=108 width=51)",
+       "        Join Filter: (nation.n_nationkey = supplier.s_nationkey)",
+       "        ->  Seq Scan on nation  (cost=0.00..1.31 rows=1 width=8)",
+       "              Filter: (n_name = 'SAUDI ARABIA'::bpchar)",
+       "        ->  Nested Loop Semi Join  (cost=0.42..1951928608.13 rows=2693 width=59)",
+       "              Join Filter: (supplier.s_suppkey = partsupp.ps_suppkey)",
+       "              ->  Seq Scan on supplier  (cost=0.00..335.00 rows=10000 width=67)",
+       "              ->  Materialize  (cost=0.42..1951524329.86 rows=2693 width=8)",
+       "                    ->  Nested Loop  (cost=0.42..1951524316.40 rows=2693 width=8)",
+       "                          ->  Seq Scan on part  (cost=0.00..6756.00 rows=2020 width=8)",
+       "                                Filter: ((p_name)::text ~~ 'frosted%'::text)",
+       "                          ->  Index Scan using partsupp_pkey on partsupp  (cost=0.42..966097.79 rows=1 width=16)",
+       "                                Index Cond: (ps_partkey = part.p_partkey)",
+       "                                Filter: ((ps_availqty)::numeric > (SubPlan 1))",
+       "                                SubPlan 1",
+       "                                  ->  Aggregate  (cost=241521.59..241521.60 rows=1 width=32)",
+       "                                        ->  Seq Scan on lineitem  (cost=0.00..241521.58 rows=1 width=5)",
+       "                                              Filter: ((l_shipdate >= '1994-01-01'::date) AND (l_shipdate < '1995-01-01'::date) AND (l_partkey = partsupp.ps_partkey) AND (l_suppkey = partsupp.ps_suppkey))",
+       "JIT:",
+       "  Functions: 23",
+       "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+      ]
+     }
+    ]
+   },
+   "django/orm": {
+    "status": "timeout",
+    "elapsed_s": 900.0061868070043,
+    "input_id": "q20warm",
+    "record": "A-sf1/postgresql-non-indexed/q20/cellwarm/a1/django-orm.json.gz",
+    "statements": [
+     {
+      "sql": "SELECT \"supplier\".\"s_name\" AS \"s_name\", \"supplier\".\"s_address\" AS \"s_address\" FROM \"supplier\" INNER JOIN \"nation\" ON (\"supplier\".\"s_nationkey\" = \"nation\".\"n_nationkey\") WHERE (\"nation\".\"n_name\" = %s AND \"supplier\".\"s_suppkey\" IN (SELECT DISTINCT V0.\"ps_suppkey\" AS \"suppkey\" FROM \"partsupp\" V0 WHERE (V0.\"ps_availqty\" > (SELECT (SUM(U0.\"l_quantity\") * %s) AS \"half_qty\" FROM \"lineitem\" U0 WHERE (U0.\"l_partkey\" = (V0.\"ps_partkey\") AND U0.\"l_shipdate\" >= %s AND U0.\"l_shipdate\" < %s AND U0.\"l_suppkey\" = (V0.\"ps_suppkey\")) GROUP BY U0.\"l_partkey\", U0.\"l_suppkey\") AND V0.\"ps_partkey\" IN (SELECT U0.\"p_partkey\" AS \"partkey\" FROM \"part\" U0 WHERE U0.\"p_name\"::text LIKE %s)))) ORDER BY 1 ASC",
+      "plan": [
+       "Sort  (cost=1951524870.15..1951524870.42 rows=108 width=51)",
+       "  Sort Key: supplier.s_name",
+       "  ->  Hash Join  (cost=1951524841.86..1951524866.50 rows=108 width=51)",
+       "        Hash Cond: (v0.ps_suppkey = supplier.s_suppkey)",
+       "        ->  Unique  (cost=1951524469.83..1951524483.30 rows=2693 width=8)",
+       "              ->  Sort  (cost=1951524469.83..1951524476.56 rows=2693 width=8)",
+       "                    Sort Key: v0.ps_suppkey",
+       "                    ->  Nested Loop  (cost=0.42..1951524316.40 rows=2693 width=8)",
+       "                          ->  Seq Scan on part u0  (cost=0.00..6756.00 rows=2020 width=8)",
+       "                                Filter: ((p_name)::text ~~ 'frosted%'::text)",
+       "                          ->  Index Scan using partsupp_pkey on partsupp v0  (cost=0.42..966097.79 rows=1 width=16)",
+       "                                Index Cond: (ps_partkey = u0.p_partkey)",
+       "                                Filter: ((ps_availqty)::numeric > (SubPlan 1))",
+       "                                SubPlan 1",
+       "                                  ->  GroupAggregate  (cost=0.00..241521.60 rows=1 width=48)",
+       "                                        ->  Seq Scan on lineitem u0_1  (cost=0.00..241521.58 rows=1 width=21)",
+       "                                              Filter: ((l_shipdate >= '1994-01-01'::date) AND (l_shipdate < '1995-01-01'::date) AND (l_partkey = v0.ps_partkey) AND (l_suppkey = v0.ps_suppkey))",
+       "        ->  Hash  (cost=367.02..367.02 rows=400 width=59)",
+       "              ->  Hash Join  (cost=1.32..367.02 rows=400 width=59)",
+       "                    Hash Cond: (supplier.s_nationkey = nation.n_nationkey)",
+       "                    ->  Seq Scan on supplier  (cost=0.00..335.00 rows=10000 width=67)",
+       "                    ->  Hash  (cost=1.31..1.31 rows=1 width=8)",
+       "                          ->  Seq Scan on nation  (cost=0.00..1.31 rows=1 width=8)",
+       "                                Filter: (n_name = 'SAUDI ARABIA'::bpchar)",
+       "JIT:",
+       "  Functions: 35",
+       "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+      ]
+     }
+    ]
+   },
+   "sqlalchemy/sql": {
+    "status": "timeout",
+    "elapsed_s": 900.0013280679996,
+    "input_id": "q20warm",
+    "record": "A-sf1/postgresql-non-indexed/q20/cellwarm/a1/sqlalchemy-sql.json.gz",
+    "statements": [
+     {
+      "sql": "SELECT s_name, s_address\nFROM supplier, nation\nWHERE s_suppkey IN (\n        SELECT ps_suppkey FROM partsupp\n        WHERE ps_partkey IN (SELECT p_partkey FROM part WHERE p_name LIKE 'frosted%%')\n          AND ps_availqty > (SELECT 0.5 * SUM(l_quantity) FROM lineitem\n                             WHERE l_partkey = ps_partkey\n                               AND l_suppkey = ps_suppkey\n                               AND l_shipdate >= DATE '1994-01-01'\n                               AND l_shipdate < DATE '1995-01-01'))\n  AND s_nationkey = n_nationkey\n  AND n_name = 'SAUDI ARABIA'\nORDER BY s_name",
+      "plan": [
+       "Sort  (cost=1951928646.75..1951928647.02 rows=108 width=51)",
+       "  Sort Key: supplier.s_name",
+       "  ->  Nested Loop  (cost=0.42..1951928643.10 rows=108 width=51)",
+       "        Join Filter: (nation.n_nationkey = supplier.s_nationkey)",
+       "        ->  Seq Scan on nation  (cost=0.00..1.31 rows=1 width=8)",
+       "              Filter: (n_name = 'SAUDI ARABIA'::bpchar)",
+       "        ->  Nested Loop Semi Join  (cost=0.42..1951928608.13 rows=2693 width=59)",
+       "              Join Filter: (supplier.s_suppkey = partsupp.ps_suppkey)",
+       "              ->  Seq Scan on supplier  (cost=0.00..335.00 rows=10000 width=67)",
+       "              ->  Materialize  (cost=0.42..1951524329.86 rows=2693 width=8)",
+       "                    ->  Nested Loop  (cost=0.42..1951524316.40 rows=2693 width=8)",
+       "                          ->  Seq Scan on part  (cost=0.00..6756.00 rows=2020 width=8)",
+       "                                Filter: ((p_name)::text ~~ 'frosted%%'::text)",
+       "                          ->  Index Scan using partsupp_pkey on partsupp  (cost=0.42..966097.79 rows=1 width=16)",
+       "                                Index Cond: (ps_partkey = part.p_partkey)",
+       "                                Filter: ((ps_availqty)::numeric > (SubPlan 1))",
+       "                                SubPlan 1",
+       "                                  ->  Aggregate  (cost=241521.59..241521.60 rows=1 width=32)",
+       "                                        ->  Seq Scan on lineitem  (cost=0.00..241521.58 rows=1 width=5)",
+       "                                              Filter: ((l_shipdate >= '1994-01-01'::date) AND (l_shipdate < '1995-01-01'::date) AND (l_partkey = partsupp.ps_partkey) AND (l_suppkey = partsupp.ps_suppkey))",
+       "JIT:",
+       "  Functions: 23",
+       "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+      ]
+     }
+    ]
+   },
+   "sqlalchemy/orm": {
+    "status": "timeout",
+    "elapsed_s": 900.0045517059916,
+    "input_id": "q20warm",
+    "record": "A-sf1/postgresql-non-indexed/q20/cellwarm/a1/sqlalchemy-orm.json.gz",
+    "statements": [
+     {
+      "sql": "SELECT supplier.s_name AS supplier_s_name, supplier.s_address AS supplier_s_address \nFROM supplier, nation \nWHERE supplier.s_suppkey IN (SELECT partsupp.ps_suppkey \nFROM partsupp \nWHERE partsupp.ps_partkey IN (SELECT part.p_partkey \nFROM part \nWHERE part.p_name LIKE %(p_name_1)s) AND partsupp.ps_availqty > (SELECT %(sum_1)s * sum(lineitem.l_quantity) AS anon_1 \nFROM lineitem \nWHERE lineitem.l_partkey = partsupp.ps_partkey AND lineitem.l_suppkey = partsupp.ps_suppkey AND lineitem.l_shipdate >= %(l_shipdate_1)s AND lineitem.l_shipdate < %(l_shipdate_2)s)) AND supplier.s_nationkey = nation.n_nationkey AND nation.n_name = %(n_name_1)s ORDER BY supplier.s_name",
+      "plan": [
+       "Sort  (cost=1951928646.75..1951928647.02 rows=108 width=51)",
+       "  Sort Key: supplier.s_name",
+       "  ->  Nested Loop  (cost=0.42..1951928643.10 rows=108 width=51)",
+       "        Join Filter: (nation.n_nationkey = supplier.s_nationkey)",
+       "        ->  Seq Scan on nation  (cost=0.00..1.31 rows=1 width=8)",
+       "              Filter: (n_name = 'SAUDI ARABIA'::bpchar)",
+       "        ->  Nested Loop Semi Join  (cost=0.42..1951928608.13 rows=2693 width=59)",
+       "              Join Filter: (supplier.s_suppkey = partsupp.ps_suppkey)",
+       "              ->  Seq Scan on supplier  (cost=0.00..335.00 rows=10000 width=67)",
+       "              ->  Materialize  (cost=0.42..1951524329.86 rows=2693 width=8)",
+       "                    ->  Nested Loop  (cost=0.42..1951524316.40 rows=2693 width=8)",
+       "                          ->  Seq Scan on part  (cost=0.00..6756.00 rows=2020 width=8)",
+       "                                Filter: ((p_name)::text ~~ 'frosted%'::text)",
+       "                          ->  Index Scan using partsupp_pkey on partsupp  (cost=0.42..966097.79 rows=1 width=16)",
+       "                                Index Cond: (ps_partkey = part.p_partkey)",
+       "                                Filter: ((ps_availqty)::numeric > (SubPlan 1))",
+       "                                SubPlan 1",
+       "                                  ->  Aggregate  (cost=241521.59..241521.60 rows=1 width=32)",
+       "                                        ->  Seq Scan on lineitem  (cost=0.00..241521.58 rows=1 width=5)",
+       "                                              Filter: ((l_shipdate >= '1994-01-01'::date) AND (l_shipdate < '1995-01-01'::date) AND (l_partkey = partsupp.ps_partkey) AND (l_suppkey = partsupp.ps_suppkey))",
+       "JIT:",
+       "  Functions: 23",
+       "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+      ]
+     }
+    ]
+   }
+  },
+  "q21": {
+   "django/sql": {
+    "status": "timeout",
+    "elapsed_s": 900.0031881300092,
+    "input_id": "q21warm",
+    "record": "A-sf1/postgresql-non-indexed/q21/cellwarm/a1/django-sql.json.gz",
+    "statements": [
+     {
+      "sql": "\n    SELECT s_name, COUNT(*) as numwait\n    FROM supplier, lineitem l1, orders, nation\n    WHERE s_suppkey = l1.l_suppkey\n      AND o_orderkey = l1.l_orderkey\n      AND o_orderstatus = 'F'\n      AND l1.l_receiptdate > l1.l_commitdate\n      AND EXISTS (\n        SELECT * FROM lineitem l2\n        WHERE l2.l_orderkey = l1.l_orderkey\n          AND l2.l_suppkey <> l1.l_suppkey\n      )\n      AND NOT EXISTS (\n        SELECT * FROM lineitem l3\n        WHERE l3.l_orderkey = l1.l_orderkey\n          AND l3.l_suppkey <> l1.l_suppkey\n          AND l3.l_receiptdate > l3.l_commitdate\n      )\n      AND s_nationkey = n_nationkey\n      AND n_name = 'ALGERIA'\n    GROUP BY s_name\n    ORDER BY numwait DESC, s_name\n    FETCH FIRST 100 ROWS ONLY\n    ",
+      "plan": [
+       "Limit  (cost=607557.07..607557.08 rows=1 width=34)",
+       "  ->  Sort  (cost=607557.07..607557.08 rows=1 width=34)",
+       "        Sort Key: (count(*)) DESC, supplier.s_name",
+       "        ->  GroupAggregate  (cost=607557.04..607557.06 rows=1 width=34)",
+       "              Group Key: supplier.s_name",
+       "              ->  Sort  (cost=607557.04..607557.05 rows=1 width=26)",
+       "                    Sort Key: supplier.s_name",
+       "                    ->  Nested Loop  (cost=206177.46..607557.03 rows=1 width=26)",
+       "                          ->  Nested Loop Semi Join  (cost=206177.04..607556.52 rows=1 width=42)",
+       "                                Join Filter: ((l2.l_suppkey <> l1.l_suppkey) AND (l1.l_orderkey = l2.l_orderkey))",
+       "                                ->  Hash Right Anti Join  (cost=206177.04..415547.66 rows=1 width=42)",
+       "                                      Hash Cond: (l3.l_orderkey = l1.l_orderkey)",
+       "                                      Join Filter: (l3.l_suppkey <> l1.l_suppkey)",
+       "                                      ->  Seq Scan on lineitem l3  (cost=0.00..196511.99 rows=2000426 width=16)",
+       "                                            Filter: (l_receiptdate > l_commitdate)",
+       "                                      ->  Hash  (cost=205181.80..205181.80 rows=79619 width=42)",
+       "                                            ->  Hash Join  (cost=372.02..205181.80 rows=79619 width=42)",
+       "                                                  Hash Cond: (l1.l_suppkey = supplier.s_suppkey)",
+       "                                                  ->  Seq Scan on lineitem l1  (cost=0.00..196511.99 rows=2000426 width=16)",
+       "                                                        Filter: (l_receiptdate > l_commitdate)",
+       "                                                  ->  Hash  (cost=367.02..367.02 rows=400 width=34)",
+       "                                                        ->  Hash Join  (cost=1.32..367.02 rows=400 width=34)",
+       "                                                              Hash Cond: (supplier.s_nationkey = nation.n_nationkey)",
+       "                                                              ->  Seq Scan on supplier  (cost=0.00..335.00 rows=10000 width=42)",
+       "                                                              ->  Hash  (cost=1.31..1.31 rows=1 width=8)",
+       "                                                                    ->  Seq Scan on nation  (cost=0.00..1.31 rows=1 width=8)",
+       "                                                                          Filter: (n_name = 'ALGERIA'::bpchar)",
+       "                                ->  Seq Scan on lineitem l2  (cost=0.00..181508.79 rows=6001279 width=16)",
+       "                          ->  Index Scan using orders_pkey on orders  (cost=0.43..0.51 rows=1 width=8)",
+       "                                Index Cond: (o_orderkey = l1.l_orderkey)",
+       "                                Filter: (o_orderstatus = 'F'::bpchar)",
+       "JIT:",
+       "  Functions: 50",
+       "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+      ]
+     }
+    ]
+   },
+   "django/orm": {
+    "status": "timeout",
+    "elapsed_s": 900.0076674190059,
+    "input_id": "q21warm",
+    "record": "A-sf1/postgresql-non-indexed/q21/cellwarm/a1/django-orm.json.gz",
+    "statements": [
+     {
+      "sql": "SELECT \"supplier\".\"s_name\" AS \"s_name\", COUNT(DISTINCT \"lineitem\".\"l_orderkey\") AS \"numwait\" FROM \"lineitem\" INNER JOIN \"orders\" ON (\"lineitem\".\"l_orderkey\" = \"orders\".\"o_orderkey\") INNER JOIN \"supplier\" ON (\"lineitem\".\"l_suppkey\" = \"supplier\".\"s_suppkey\") INNER JOIN \"nation\" ON (\"supplier\".\"s_nationkey\" = \"nation\".\"n_nationkey\") WHERE (\"orders\".\"o_orderstatus\" = %s AND \"lineitem\".\"l_receiptdate\" > (\"lineitem\".\"l_commitdate\") AND \"nation\".\"n_name\" = %s AND NOT EXISTS(SELECT %s AS \"a\" FROM \"lineitem\" U0 WHERE (U0.\"l_orderkey\" = (\"lineitem\".\"l_orderkey\") AND NOT (U0.\"l_suppkey\" = (\"lineitem\".\"l_suppkey\")) AND U0.\"l_receiptdate\" > (U0.\"l_commitdate\")) LIMIT 1) AND EXISTS(SELECT %s AS \"a\" FROM \"lineitem\" U0 WHERE (U0.\"l_orderkey\" = (\"lineitem\".\"l_orderkey\") AND NOT (U0.\"l_suppkey\" = (\"lineitem\".\"l_suppkey\"))) LIMIT 1)) GROUP BY 1 ORDER BY 2 DESC, 1 ASC LIMIT 100",
+      "plan": [
+       "Limit  (cost=607557.07..607557.08 rows=1 width=34)",
+       "  ->  Sort  (cost=607557.07..607557.08 rows=1 width=34)",
+       "        Sort Key: (count(DISTINCT lineitem.l_orderkey)) DESC, supplier.s_name",
+       "        ->  GroupAggregate  (cost=607557.04..607557.06 rows=1 width=34)",
+       "              Group Key: supplier.s_name",
+       "              ->  Sort  (cost=607557.04..607557.05 rows=1 width=34)",
+       "                    Sort Key: supplier.s_name, lineitem.l_orderkey",
+       "                    ->  Nested Loop Semi Join  (cost=206177.46..607557.03 rows=1 width=34)",
+       "                          Join Filter: ((u0_1.l_suppkey <> lineitem.l_suppkey) AND (lineitem.l_orderkey = u0_1.l_orderkey))",
+       "                          ->  Nested Loop  (cost=206177.46..415548.17 rows=1 width=50)",
+       "                                ->  Hash Right Anti Join  (cost=206177.04..415547.66 rows=1 width=42)",
+       "                                      Hash Cond: (u0.l_orderkey = lineitem.l_orderkey)",
+       "                                      Join Filter: (u0.l_suppkey <> lineitem.l_suppkey)",
+       "                                      ->  Seq Scan on lineitem u0  (cost=0.00..196511.99 rows=2000426 width=16)",
+       "                                            Filter: (l_receiptdate > l_commitdate)",
+       "                                      ->  Hash  (cost=205181.80..205181.80 rows=79619 width=42)",
+       "                                            ->  Hash Join  (cost=372.02..205181.80 rows=79619 width=42)",
+       "                                                  Hash Cond: (lineitem.l_suppkey = supplier.s_suppkey)",
+       "                                                  ->  Seq Scan on lineitem  (cost=0.00..196511.99 rows=2000426 width=16)",
+       "                                                        Filter: (l_receiptdate > l_commitdate)",
+       "                                                  ->  Hash  (cost=367.02..367.02 rows=400 width=34)",
+       "                                                        ->  Hash Join  (cost=1.32..367.02 rows=400 width=34)",
+       "                                                              Hash Cond: (supplier.s_nationkey = nation.n_nationkey)",
+       "                                                              ->  Seq Scan on supplier  (cost=0.00..335.00 rows=10000 width=42)",
+       "                                                              ->  Hash  (cost=1.31..1.31 rows=1 width=8)",
+       "                                                                    ->  Seq Scan on nation  (cost=0.00..1.31 rows=1 width=8)",
+       "                                                                          Filter: (n_name = 'ALGERIA'::bpchar)",
+       "                                ->  Index Scan using orders_pkey on orders  (cost=0.43..0.51 rows=1 width=8)",
+       "                                      Index Cond: (o_orderkey = lineitem.l_orderkey)",
+       "                                      Filter: (o_orderstatus = 'F'::bpchar)",
+       "                          ->  Seq Scan on lineitem u0_1  (cost=0.00..181508.79 rows=6001279 width=16)",
+       "JIT:",
+       "  Functions: 51",
+       "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+      ]
+     }
+    ]
+   },
+   "sqlalchemy/sql": {
+    "status": "timeout",
+    "elapsed_s": 900.003291016008,
+    "input_id": "q21warm",
+    "record": "A-sf1/postgresql-non-indexed/q21/cellwarm/a1/sqlalchemy-sql.json.gz",
+    "statements": [
+     {
+      "sql": "SELECT s_name, COUNT(*) AS numwait\nFROM supplier, lineitem l1, orders, nation\nWHERE s_suppkey = l1.l_suppkey\n  AND o_orderkey = l1.l_orderkey\n  AND o_orderstatus = 'F'\n  AND l1.l_receiptdate > l1.l_commitdate\n  AND EXISTS (SELECT 1 FROM lineitem l2\n              WHERE l2.l_orderkey = l1.l_orderkey\n                AND l2.l_suppkey <> l1.l_suppkey)\n  AND NOT EXISTS (SELECT 1 FROM lineitem l3\n                  WHERE l3.l_orderkey = l1.l_orderkey\n                    AND l3.l_suppkey <> l1.l_suppkey\n                    AND l3.l_receiptdate > l3.l_commitdate)\n  AND s_nationkey = n_nationkey\n  AND n_name = 'ALGERIA'\nGROUP BY s_name\nORDER BY numwait DESC, s_name\nLIMIT 100",
+      "plan": [
+       "Limit  (cost=607557.07..607557.08 rows=1 width=34)",
+       "  ->  Sort  (cost=607557.07..607557.08 rows=1 width=34)",
+       "        Sort Key: (count(*)) DESC, supplier.s_name",
+       "        ->  GroupAggregate  (cost=607557.04..607557.06 rows=1 width=34)",
+       "              Group Key: supplier.s_name",
+       "              ->  Sort  (cost=607557.04..607557.05 rows=1 width=26)",
+       "                    Sort Key: supplier.s_name",
+       "                    ->  Nested Loop  (cost=206177.46..607557.03 rows=1 width=26)",
+       "                          ->  Nested Loop Semi Join  (cost=206177.04..607556.52 rows=1 width=42)",
+       "                                Join Filter: ((l2.l_suppkey <> l1.l_suppkey) AND (l1.l_orderkey = l2.l_orderkey))",
+       "                                ->  Hash Right Anti Join  (cost=206177.04..415547.66 rows=1 width=42)",
+       "                                      Hash Cond: (l3.l_orderkey = l1.l_orderkey)",
+       "                                      Join Filter: (l3.l_suppkey <> l1.l_suppkey)",
+       "                                      ->  Seq Scan on lineitem l3  (cost=0.00..196511.99 rows=2000426 width=16)",
+       "                                            Filter: (l_receiptdate > l_commitdate)",
+       "                                      ->  Hash  (cost=205181.80..205181.80 rows=79619 width=42)",
+       "                                            ->  Hash Join  (cost=372.02..205181.80 rows=79619 width=42)",
+       "                                                  Hash Cond: (l1.l_suppkey = supplier.s_suppkey)",
+       "                                                  ->  Seq Scan on lineitem l1  (cost=0.00..196511.99 rows=2000426 width=16)",
+       "                                                        Filter: (l_receiptdate > l_commitdate)",
+       "                                                  ->  Hash  (cost=367.02..367.02 rows=400 width=34)",
+       "                                                        ->  Hash Join  (cost=1.32..367.02 rows=400 width=34)",
+       "                                                              Hash Cond: (supplier.s_nationkey = nation.n_nationkey)",
+       "                                                              ->  Seq Scan on supplier  (cost=0.00..335.00 rows=10000 width=42)",
+       "                                                              ->  Hash  (cost=1.31..1.31 rows=1 width=8)",
+       "                                                                    ->  Seq Scan on nation  (cost=0.00..1.31 rows=1 width=8)",
+       "                                                                          Filter: (n_name = 'ALGERIA'::bpchar)",
+       "                                ->  Seq Scan on lineitem l2  (cost=0.00..181508.79 rows=6001279 width=16)",
+       "                          ->  Index Scan using orders_pkey on orders  (cost=0.43..0.51 rows=1 width=8)",
+       "                                Index Cond: (o_orderkey = l1.l_orderkey)",
+       "                                Filter: (o_orderstatus = 'F'::bpchar)",
+       "JIT:",
+       "  Functions: 50",
+       "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+      ]
+     }
+    ]
+   },
+   "sqlalchemy/orm": {
+    "status": "timeout",
+    "elapsed_s": 900.0131092509837,
+    "input_id": "q21warm",
+    "record": "A-sf1/postgresql-non-indexed/q21/cellwarm/a1/sqlalchemy-orm.json.gz",
+    "statements": [
+     {
+      "sql": "SELECT supplier.s_name AS supplier_s_name, count(*) AS numwait \nFROM supplier, lineitem AS lineitem_1, orders, nation \nWHERE supplier.s_suppkey = lineitem_1.l_suppkey AND orders.o_orderkey = lineitem_1.l_orderkey AND orders.o_orderstatus = %(o_orderstatus_1)s AND lineitem_1.l_receiptdate > lineitem_1.l_commitdate AND (EXISTS (SELECT 1 \nFROM lineitem AS lineitem_2 \nWHERE lineitem_2.l_orderkey = lineitem_1.l_orderkey AND lineitem_2.l_suppkey != lineitem_1.l_suppkey)) AND NOT (EXISTS (SELECT 1 \nFROM lineitem AS lineitem_3 \nWHERE lineitem_3.l_orderkey = lineitem_1.l_orderkey AND lineitem_3.l_suppkey != lineitem_1.l_suppkey AND lineitem_3.l_receiptdate > lineitem_3.l_commitdate)) AND supplier.s_nationkey = nation.n_nationkey AND nation.n_name = %(n_name_1)s GROUP BY supplier.s_name ORDER BY count(*) DESC, supplier.s_name \n LIMIT %(param_1)s",
+      "plan": [
+       "Limit  (cost=607557.07..607557.08 rows=1 width=34)",
+       "  ->  Sort  (cost=607557.07..607557.08 rows=1 width=34)",
+       "        Sort Key: (count(*)) DESC, supplier.s_name",
+       "        ->  GroupAggregate  (cost=607557.04..607557.06 rows=1 width=34)",
+       "              Group Key: supplier.s_name",
+       "              ->  Sort  (cost=607557.04..607557.05 rows=1 width=26)",
+       "                    Sort Key: supplier.s_name",
+       "                    ->  Nested Loop  (cost=206177.46..607557.03 rows=1 width=26)",
+       "                          ->  Nested Loop Semi Join  (cost=206177.04..607556.52 rows=1 width=42)",
+       "                                Join Filter: ((lineitem_2.l_suppkey <> lineitem_1.l_suppkey) AND (lineitem_1.l_orderkey = lineitem_2.l_orderkey))",
+       "                                ->  Hash Right Anti Join  (cost=206177.04..415547.66 rows=1 width=42)",
+       "                                      Hash Cond: (lineitem_3.l_orderkey = lineitem_1.l_orderkey)",
+       "                                      Join Filter: (lineitem_3.l_suppkey <> lineitem_1.l_suppkey)",
+       "                                      ->  Seq Scan on lineitem lineitem_3  (cost=0.00..196511.99 rows=2000426 width=16)",
+       "                                            Filter: (l_receiptdate > l_commitdate)",
+       "                                      ->  Hash  (cost=205181.80..205181.80 rows=79619 width=42)",
+       "                                            ->  Hash Join  (cost=372.02..205181.80 rows=79619 width=42)",
+       "                                                  Hash Cond: (lineitem_1.l_suppkey = supplier.s_suppkey)",
+       "                                                  ->  Seq Scan on lineitem lineitem_1  (cost=0.00..196511.99 rows=2000426 width=16)",
+       "                                                        Filter: (l_receiptdate > l_commitdate)",
+       "                                                  ->  Hash  (cost=367.02..367.02 rows=400 width=34)",
+       "                                                        ->  Hash Join  (cost=1.32..367.02 rows=400 width=34)",
+       "                                                              Hash Cond: (supplier.s_nationkey = nation.n_nationkey)",
+       "                                                              ->  Seq Scan on supplier  (cost=0.00..335.00 rows=10000 width=42)",
+       "                                                              ->  Hash  (cost=1.31..1.31 rows=1 width=8)",
+       "                                                                    ->  Seq Scan on nation  (cost=0.00..1.31 rows=1 width=8)",
+       "                                                                          Filter: (n_name = 'ALGERIA'::bpchar)",
+       "                                ->  Seq Scan on lineitem lineitem_2  (cost=0.00..181508.79 rows=6001279 width=16)",
+       "                          ->  Index Scan using orders_pkey on orders  (cost=0.43..0.51 rows=1 width=8)",
+       "                                Index Cond: (o_orderkey = lineitem_1.l_orderkey)",
+       "                                Filter: (o_orderstatus = 'F'::bpchar)",
+       "JIT:",
+       "  Functions: 50",
+       "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "utc": "2026-10-09T21:38:59.623767+00:00"
+}

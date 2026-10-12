@@ -1,0 +1,28 @@
+{
+ "taken": "2026-10-11T08:54:09.929103+00:00",
+ "verify": {
+  "cmd": [
+   "sudo",
+   "-n",
+   "/usr/local/sbin/bench-host",
+   "verify",
+   "commercial_a"
+  ],
+  "returncode": 0,
+  "stdout": "  governor:      performance  want performance\n  no_turbo:      1            want 1\n  SMT:           off          want off\n  online CPUs:   0-3          want 0-3\n  AllowedCPUs:   0-1          want 0-1\n  MemoryMax:     3221225472   want 3221225472\n  AC power:      1            want 1\n  throttles:     core=0 pkg=0\n  freq now:      1800 1800 1800 1800 \n  engines:       measuring commercial_a\n    postgresql:  inactive     want inactive\n    mysql:       inactive     want inactive\n    commercial_a:       active       want active\n    oracle:      down         want inactive\n",
+  "stderr": ""
+ },
+ "oracle_process_affinity": null,
+ "active_rc_units": "",
+ "loadavg": [
+  "0.40",
+  "0.87",
+  "0.98"
+ ],
+ "wifi_link": [
+  "freq: 2422.0",
+  "signal: -54 dBm",
+  "rx bitrate: 150.0 MBit/s MCS 7 40MHz short GI"
+ ],
+ "wifi_power_save": "Power save: off"
+}

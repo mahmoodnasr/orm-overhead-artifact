@@ -1,0 +1,339 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:030ed6bc08a6c02fb775c2bad636f996b22de5b03ea60522ea8e218cb2da9ec1",
+   "params": [
+    1,
+    "Brand#11",
+    "SM CASE",
+    "SM BOX",
+    "SM PACK",
+    "SM PKG",
+    1,
+    11,
+    1,
+    5,
+    "AIR",
+    "AIR REG",
+    "DELIVER IN PERSON",
+    "Brand#24",
+    "MED BAG",
+    "MED BOX",
+    "MED PKG",
+    "MED PACK",
+    18,
+    28,
+    1,
+    10,
+    "AIR",
+    "AIR REG",
+    "DELIVER IN PERSON",
+    "Brand#23",
+    "LG CASE",
+    "LG BOX",
+    "LG PACK",
+    "LG PKG",
+    28,
+    38,
+    1,
+    15,
+    "AIR",
+    "AIR REG",
+    "DELIVER IN PERSON"
+   ],
+   "inputsizes": [
+    [
+     "l_discount_1",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "p_brand_1",
+     "12",
+     "String"
+    ],
+    [
+     "p_container_1_1",
+     "12",
+     "String"
+    ],
+    [
+     "p_container_1_2",
+     "12",
+     "String"
+    ],
+    [
+     "p_container_1_3",
+     "12",
+     "String"
+    ],
+    [
+     "p_container_1_4",
+     "12",
+     "String"
+    ],
+    [
+     "l_quantity_1",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "l_quantity_2",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "p_size_1",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "p_size_2",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "l_shipmode_1_1",
+     "12",
+     "String"
+    ],
+    [
+     "l_shipmode_1_2",
+     "12",
+     "String"
+    ],
+    [
+     "l_shipinstruct_1",
+     "12",
+     "String"
+    ],
+    [
+     "p_brand_2",
+     "12",
+     "String"
+    ],
+    [
+     "p_container_2_1",
+     "12",
+     "String"
+    ],
+    [
+     "p_container_2_2",
+     "12",
+     "String"
+    ],
+    [
+     "p_container_2_3",
+     "12",
+     "String"
+    ],
+    [
+     "p_container_2_4",
+     "12",
+     "String"
+    ],
+    [
+     "l_quantity_3",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "l_quantity_4",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "p_size_3",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "p_size_4",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "l_shipmode_2_1",
+     "12",
+     "String"
+    ],
+    [
+     "l_shipmode_2_2",
+     "12",
+     "String"
+    ],
+    [
+     "l_shipinstruct_2",
+     "12",
+     "String"
+    ],
+    [
+     "p_brand_3",
+     "12",
+     "String"
+    ],
+    [
+     "p_container_3_1",
+     "12",
+     "String"
+    ],
+    [
+     "p_container_3_2",
+     "12",
+     "String"
+    ],
+    [
+     "p_container_3_3",
+     "12",
+     "String"
+    ],
+    [
+     "p_container_3_4",
+     "12",
+     "String"
+    ],
+    [
+     "l_quantity_5",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "l_quantity_6",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "p_size_5",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "p_size_6",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "l_shipmode_3_1",
+     "12",
+     "String"
+    ],
+    [
+     "l_shipmode_3_2",
+     "12",
+     "String"
+    ],
+    [
+     "l_shipinstruct_3",
+     "12",
+     "String"
+    ]
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:5b46bd36ff3270f72bad46d7efb067c2db884156da184c60bf2d91c1e4f25ec3",
+    "values": [
+     "Brand#11",
+     "Brand#24",
+     "Brand#23"
+    ],
+    "binding_types": "orm",
+    "inputsizes": [
+     [
+      "b0",
+      "12",
+      "String"
+     ],
+     [
+      "b1",
+      "12",
+      "String"
+     ],
+     [
+      "b2",
+      "12",
+      "String"
+     ]
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+     "bound": false,
+     "reason": "value occurs more than once"
+    },
+    {
+     "literal": "withheld-sha256:1ee82eab89559f9c7a1acb8c34f2dbea831b2701de561f2c07a3a87a4bf803a6",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+     "bound": false,
+     "reason": "value occurs more than once"
+    },
+    {
+     "literal": "withheld-sha256:6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+     "bound": false,
+     "reason": "value occurs more than once"
+    },
+    {
+     "literal": "withheld-sha256:6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+     "bound": false,
+     "reason": "value occurs more than once"
+    },
+    {
+     "literal": "withheld-sha256:78afc15927bb900cce00ea4dbb81431de94b3ca8ff4f31f593da659db8a335f2",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:4ec9599fc203d176a301536c2e091a19bc852759b255bd6818810a42c5fed14a",
+     "bound": false,
+     "reason": "value occurs more than once"
+    },
+    {
+     "literal": "withheld-sha256:4ec9599fc203d176a301536c2e091a19bc852759b255bd6818810a42c5fed14a",
+     "bound": false,
+     "reason": "value occurs more than once"
+    },
+    {
+     "literal": "withheld-sha256:6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+     "bound": false,
+     "reason": "value occurs more than once"
+    },
+    {
+     "literal": "withheld-sha256:85a7814c9de2fd5a7d3eac922a29f98ba3bf08de43af65222515cf6ea3b48746",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:59e19706d51d39f66711c2653cd7eb1291c94d9b55eb14bda74ce4dc636d015a",
+     "bound": false,
+     "reason": "value occurs more than once"
+    },
+    {
+     "literal": "withheld-sha256:59e19706d51d39f66711c2653cd7eb1291c94d9b55eb14bda74ce4dc636d015a",
+     "bound": false,
+     "reason": "value occurs more than once"
+    },
+    {
+     "literal": "withheld-sha256:6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+     "bound": false,
+     "reason": "value occurs more than once"
+    }
+   ]
+  ],
+  "bound_literals": 3
+ }
+}

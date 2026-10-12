@@ -1,0 +1,54 @@
+{
+ "G": [
+  {
+   "sql": "SELECT orders.o_orderpriority AS orders_o_orderpriority, count(*) AS order_count \nFROM orders \nWHERE orders.o_orderdate >= %s AND orders.o_orderdate < %s AND (EXISTS (SELECT 1 \nFROM lineitem \nWHERE lineitem.l_orderkey = orders.o_orderkey AND lineitem.l_commitdate < lineitem.l_receiptdate)) GROUP BY orders.o_orderpriority ORDER BY orders.o_orderpriority",
+   "params": [
+    {
+     "type": "date",
+     "value": "1996-07-01"
+    },
+    {
+     "type": "date",
+     "value": "1996-10-01"
+    }
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "SELECT o_orderpriority, COUNT(*) AS order_count\nFROM orders\nWHERE o_orderdate >= :b0\n  AND o_orderdate < :b1\n  AND EXISTS (SELECT 1 FROM lineitem\n              WHERE l_orderkey = o_orderkey\n                AND l_commitdate < l_receiptdate)\nGROUP BY o_orderpriority\nORDER BY o_orderpriority",
+    "values": [
+     {
+      "type": "date",
+      "value": "1996-07-01"
+     },
+     {
+      "type": "date",
+      "value": "1996-10-01"
+     }
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "'1996-07-01'",
+     "bound": true,
+     "kind": "date",
+     "value_type": "date",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'1996-10-01'",
+     "bound": true,
+     "kind": "date",
+     "value_type": "date",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 2
+ },
+ "G_output_columns": null
+}

@@ -21,9 +21,10 @@ FORBIDDEN = {
     "venv",
     "PROVENANCE.json",
 }
+CAMPAIGN_ANCHORS = {"campaign/README.md", "campaign/SHA256SUMS"}
 PRIVATE_PATTERNS = (
     r"/(?:Users|home)/[A-Za-z0-9_.-]+/",
-    r"192\.168\.100\.79",
+    r"\b(?:192\.168|10\.\d{1,3}|172\.(?:1[6-9]|2\d|3[01]))\.\d{1,3}\.\d{1,3}\b",
     r"-----BEGIN (?:RSA |OPENSSH |EC )?PRIVATE KEY-----",
     r"gh[pousr]_[A-Za-z0-9]{30,}",
     r"AKIA[A-Z0-9]{16}",
@@ -43,6 +44,10 @@ def main():
     for name in sorted(set(filter(None, names))):
         path = ROOT / name
         if name == "MANIFEST.json" or not path.exists():
+            continue
+        # campaign/SHA256SUMS covers the campaign tree; it is checked by
+        # review.py verify and recorded here in its place.
+        if name.startswith("campaign/") and name not in CAMPAIGN_ANCHORS:
             continue
         if path.is_symlink() or FORBIDDEN.intersection(path.relative_to(ROOT).parts):
             raise ValueError(f"Local/private artifact in release selection: {name}")

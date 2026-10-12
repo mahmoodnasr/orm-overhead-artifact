@@ -1,0 +1,134 @@
+{
+ "label": "mysql-sf2-D-before",
+ "benchmark": "tpch",
+ "source": {
+  "dbms": "mysql",
+  "database": "tpch_sf2",
+  "user": "benchmark"
+ },
+ "started_utc": "2026-10-10T08:23:41.165605+00:00",
+ "finished_utc": "2026-10-10T08:32:55.614940+00:00",
+ "algorithm": "rc20261008-canonical-multiset-v2",
+ "tables": {
+  "region": {
+   "rows": 5,
+   "multiset_sha256_sum": "b2e9bf2ab357e231940b36399930fcc4cb2b5a75d6158a48b36ab08fc88db56e",
+   "columns": [
+    "r_comment",
+    "r_name",
+    "r_regionkey"
+   ],
+   "seconds": 0.0
+  },
+  "nation": {
+   "rows": 25,
+   "multiset_sha256_sum": "8bfc9b9023c3611a45e57629349cbafa0d3771d46935cae433a3772c52d3e944",
+   "columns": [
+    "n_comment",
+    "n_name",
+    "n_nationkey",
+    "n_regionkey"
+   ],
+   "seconds": 0.0
+  },
+  "supplier": {
+   "rows": 20000,
+   "multiset_sha256_sum": "38a9be45c18f1b7195fc3667309978046f308c9bf5a6567553e6739f86004190",
+   "columns": [
+    "s_acctbal",
+    "s_address",
+    "s_comment",
+    "s_name",
+    "s_nationkey",
+    "s_phone",
+    "s_suppkey"
+   ],
+   "seconds": 0.43
+  },
+  "customer": {
+   "rows": 300000,
+   "multiset_sha256_sum": "f04d722b7734ed3a145b7c996c3e2f1ebbb2e6b2b01b5f0c79aab08c323dbb88",
+   "columns": [
+    "c_acctbal",
+    "c_address",
+    "c_comment",
+    "c_custkey",
+    "c_mktsegment",
+    "c_name",
+    "c_nationkey",
+    "c_phone"
+   ],
+   "seconds": 6.02
+  },
+  "part": {
+   "rows": 400000,
+   "multiset_sha256_sum": "e5e57e6982593b1e5750406fa7e4a789adcb924ccf392a6832d74c7a22c25519",
+   "columns": [
+    "p_brand",
+    "p_comment",
+    "p_container",
+    "p_mfgr",
+    "p_name",
+    "p_partkey",
+    "p_retailprice",
+    "p_size",
+    "p_type"
+   ],
+   "seconds": 7.85
+  },
+  "partsupp": {
+   "rows": 1600000,
+   "multiset_sha256_sum": "36bfc0d6410b398c770a2333f0f02cab5e10cc9e2fceb5d3e0577b6926d3f25b",
+   "columns": [
+    "ps_availqty",
+    "ps_comment",
+    "ps_partkey",
+    "ps_suppkey",
+    "ps_supplycost"
+   ],
+   "seconds": 28.53
+  },
+  "orders": {
+   "rows": 3000000,
+   "multiset_sha256_sum": "920604ac9f84d41a32e327305349d7c43370dcca3a23ff8d3ddc72ebb75a2223",
+   "columns": [
+    "o_clerk",
+    "o_comment",
+    "o_custkey",
+    "o_orderdate",
+    "o_orderkey",
+    "o_orderpriority",
+    "o_orderstatus",
+    "o_shippriority",
+    "o_totalprice"
+   ],
+   "seconds": 67.93
+  },
+  "lineitem": {
+   "rows": 11997996,
+   "multiset_sha256_sum": "8080df6bc6c56f9bce689a8e59f5e305e73cb1be5bdbe8edb4e067fafb1930ed",
+   "columns": [
+    "l_comment",
+    "l_commitdate",
+    "l_discount",
+    "l_extendedprice",
+    "l_linenumber",
+    "l_linestatus",
+    "l_orderkey",
+    "l_partkey",
+    "l_quantity",
+    "l_receiptdate",
+    "l_returnflag",
+    "l_shipdate",
+    "l_shipinstruct",
+    "l_shipmode",
+    "l_suppkey",
+    "l_tax"
+   ],
+   "seconds": 443.69
+  }
+ },
+ "content_sha256": "cfc657d9e8a6c29c789fc510541936b3fe383d8ceb5d870a3acf252185cd44f1",
+ "pid": 2788927,
+ "script_sha256": "68d0dd7ac99ff79bdd987c6f749d425485e95b01a2c2b4b8df2fc59dd91c6739"
+}

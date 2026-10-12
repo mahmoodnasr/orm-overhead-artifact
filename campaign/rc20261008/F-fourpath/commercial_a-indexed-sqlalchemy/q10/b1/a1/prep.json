@@ -1,0 +1,96 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:0b01e0ab92288c1159b9b64dbdce9e526836b74fa9e863dc1adff3b24c48ceec",
+   "params": [
+    1,
+    {
+     "type": "datetime",
+     "value": "1993-10-01T00:00:00"
+    },
+    {
+     "type": "datetime",
+     "value": "1994-01-01T00:00:00"
+    },
+    "R",
+    1
+   ],
+   "inputsizes": [
+    [
+     "l_discount_1",
+     "<class 'float'>",
+     "Integer"
+    ],
+    [
+     "o_orderdate_1",
+     "<class 'datetime.datetime'>",
+     "Date"
+    ],
+    [
+     "o_orderdate_2",
+     "<class 'datetime.datetime'>",
+     "Date"
+    ],
+    [
+     "l_returnflag_1",
+     "12",
+     "String"
+    ],
+    [
+     "l_discount_1",
+     "<class 'float'>",
+     "Integer"
+    ]
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:16201c1a1916c1ca2e0d26b4e82612b061efa3436b64176ca9ed02d7fcb2e6ca",
+    "values": [
+     {
+      "type": "datetime",
+      "value": "1993-10-01T00:00:00"
+     },
+     {
+      "type": "datetime",
+      "value": "1994-01-01T00:00:00"
+     }
+    ],
+    "binding_types": "orm",
+    "inputsizes": [
+     [
+      "b0",
+      "<class 'datetime.datetime'>",
+      "Date"
+     ],
+     [
+      "b1",
+      "<class 'datetime.datetime'>",
+      "Date"
+     ]
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:7275f9eb1e779f509e21091346ae6d1a36ca56e4d29d54ca58c4c628fb27e005",
+     "bound": true,
+     "kind": "date",
+     "value_type": "datetime",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:a06e60c6f09c538dee9d2628f2d0e105245178f23a9df9671fecf83a26f3229f",
+     "bound": true,
+     "kind": "date",
+     "value_type": "datetime",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 2
+ }
+}

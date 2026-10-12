@@ -1,0 +1,46 @@
+{
+ "run_id": "26435efc05da413aa808db512d39499b",
+ "pid": 2366754,
+ "phase": "B",
+ "dbms": "postgresql",
+ "schema": "non-indexed",
+ "scale": 1,
+ "mode": "main",
+ "queries": [
+  13
+ ],
+ "planned_timed": 32,
+ "counts": {
+  "saved_block_warmup": 8,
+  "status_block_warmup_ok": 8,
+  "saved_probe": 16,
+  "status_probe_ok": 8,
+  "status_probe_timeout": 8
+ },
+ "environment_id": "afd4e61f242eb5345993cc3b77cc4a53cd3a7926fbeedf4c6e5b98d8072fda31",
+ "started": {
+  "utc": "2026-10-09T21:45:21.201262+00:00",
+  "cairo": "2026-10-10T00:45:21.201262+03:00"
+ },
+ "state": "complete",
+ "utc": "2026-10-09T23:45:54.833066+00:00",
+ "cairo": "2026-10-10T02:45:54.833066+03:00",
+ "current": {
+  "query": 13,
+  "path": "django/sql",
+  "kind": "probe",
+  "block": 8,
+  "attempt": 1,
+  "input_id": "q13s7",
+  "limit_s": {
+   "type": "float",
+   "value": "900.0"
+  },
+  "server_session": {
+   "sid": "2446212",
+   "tag": "2026-10-09 23:45:50.491461+00"
+  },
+  "utc": "2026-10-09T23:45:50.728254+00:00",
+  "cairo": "2026-10-10T02:45:50.728254+03:00"
+ }
+}

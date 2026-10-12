@@ -1,0 +1,128 @@
+{
+  "status": "active; incomplete; counters may describe an earlier execution",
+  "utc": "2026-09-19T14:18:03.216275+00:00",
+  "session": {
+    "sid": 45,
+    "status": "ACTIVE",
+    "sql_id": "8jvw7fu8a54t8",
+    "sql_child_number": 0,
+    "event": "direct path read",
+    "state": "WAITED SHORT TIME",
+    "last_call_et": 155
+  },
+  "statement": {
+    "sql_fulltext": "SELECT (SUM(\"LINEITEM\".\"L_EXTENDEDPRICE\") / :arg0) AS \"AVG_YEARLY\" FROM \"LINEITEM\" INNER JOIN \"PART\" ON (\"LINEITEM\".\"L_PARTKEY\" = \"PART\".\"P_PARTKEY\") WHERE (\"PART\".\"P_BRAND\" = :arg1 AND \"PART\".\"P_CONTAINER\" = :arg2 AND \"LINEITEM\".\"L_QUANTITY\" < ((SELECT AVG(U0.\"L_QUANTITY\") AS \"AVG_Q\" FROM \"LINEITEM\" U0 WHERE U0.\"L_PARTKEY\" = (\"LINEITEM\".\"L_PARTKEY\") GROUP BY U0.\"L_PARTKEY\") * :arg3))",
+    "plan_hash_value": 2515364962,
+    "executions": 2,
+    "elapsed_time": 1559760196,
+    "cpu_time": 965939198,
+    "buffer_gets": 95593184,
+    "disk_reads": 95577894
+  },
+  "operators": [
+    {
+      "id": 0,
+      "parent_id": null,
+      "operation": "SELECT STATEMENT",
+      "options": null,
+      "object_name": null,
+      "cardinality": null,
+      "last_starts": null,
+      "last_output_rows": null,
+      "last_cr_buffer_gets": null,
+      "last_disk_reads": null,
+      "last_elapsed_time": null
+    },
+    {
+      "id": 1,
+      "parent_id": 0,
+      "operation": "SORT",
+      "options": "AGGREGATE",
+      "object_name": null,
+      "cardinality": 1,
+      "last_starts": null,
+      "last_output_rows": null,
+      "last_cr_buffer_gets": null,
+      "last_disk_reads": null,
+      "last_elapsed_time": null
+    },
+    {
+      "id": 2,
+      "parent_id": 1,
+      "operation": "FILTER",
+      "options": null,
+      "object_name": null,
+      "cardinality": null,
+      "last_starts": null,
+      "last_output_rows": null,
+      "last_cr_buffer_gets": null,
+      "last_disk_reads": null,
+      "last_elapsed_time": null
+    },
+    {
+      "id": 3,
+      "parent_id": 2,
+      "operation": "HASH JOIN",
+      "options": null,
+      "object_name": null,
+      "cardinality": 5896,
+      "last_starts": null,
+      "last_output_rows": null,
+      "last_cr_buffer_gets": null,
+      "last_disk_reads": null,
+      "last_elapsed_time": null
+    },
+    {
+      "id": 4,
+      "parent_id": 3,
+      "operation": "TABLE ACCESS",
+      "options": "FULL",
+      "object_name": "PART",
+      "cardinality": 198,
+      "last_starts": null,
+      "last_output_rows": null,
+      "last_cr_buffer_gets": null,
+      "last_disk_reads": null,
+      "last_elapsed_time": null
+    },
+    {
+      "id": 5,
+      "parent_id": 3,
+      "operation": "TABLE ACCESS",
+      "options": "FULL",
+      "object_name": "LINEITEM",
+      "cardinality": 6001215,
+      "last_starts": null,
+      "last_output_rows": null,
+      "last_cr_buffer_gets": null,
+      "last_disk_reads": null,
+      "last_elapsed_time": null
+    },
+    {
+      "id": 6,
+      "parent_id": 2,
+      "operation": "SORT",
+      "options": "GROUP BY NOSORT",
+      "object_name": null,
+      "cardinality": 1,
+      "last_starts": null,
+      "last_output_rows": null,
+      "last_cr_buffer_gets": null,
+      "last_disk_reads": null,
+      "last_elapsed_time": null
+    },
+    {
+      "id": 7,
+      "parent_id": 6,
+      "operation": "TABLE ACCESS",
+      "options": "FULL",
+      "object_name": "LINEITEM",
+      "cardinality": 30,
+      "last_starts": null,
+      "last_output_rows": null,
+      "last_cr_buffer_gets": null,
+      "last_disk_reads": null,
+      "last_elapsed_time": null
+    }
+  ]
+}

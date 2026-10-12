@@ -1,0 +1,5 @@
+{
+  "collector_sha256": "76eb653938cc37577078d2fc2abef4b41a96f192e5896a3d83b6914b9b71647d",
+  "probe_sha256": "a24a4bf97b7e68868fa9883b4afab0eec2537841ba25d818b34d2239571c89f1",
+  "observation": "Statement cached before statistics_level=ALL had no counters. The same SQL and bindings collected counters after client stmtcachesize=0 and in a new session."
+}

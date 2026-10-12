@@ -1,0 +1,61 @@
+{
+ "dbms": "mysql",
+ "database": "tpch",
+ "user": "benchmark",
+ "grants": [
+  {
+   "grants for benchmark@localhost": "GRANT USAGE ON *.* TO `benchmark`@`localhost`"
+  },
+  {
+   "grants for benchmark@localhost": "GRANT SESSION_VARIABLES_ADMIN,SYSTEM_VARIABLES_ADMIN ON *.* TO `benchmark`@`localhost`"
+  },
+  {
+   "grants for benchmark@localhost": "GRANT ALL PRIVILEGES ON `tpcc`.* TO `benchmark`@`localhost`"
+  },
+  {
+   "grants for benchmark@localhost": "GRANT ALL PRIVILEGES ON `tpch`.* TO `benchmark`@`localhost`"
+  },
+  {
+   "grants for benchmark@localhost": "GRANT ALL PRIVILEGES ON `tpcc_tiny`.* TO `benchmark`@`localhost`"
+  },
+  {
+   "grants for benchmark@localhost": "GRANT ALL PRIVILEGES ON `tpch_tiny`.* TO `benchmark`@`localhost`"
+  }
+ ],
+ "databases": [
+  {
+   "table_schema": "information_schema",
+   "mb": "0"
+  },
+  {
+   "table_schema": "performance_schema",
+   "mb": "0"
+  },
+  {
+   "table_schema": "tpcc",
+   "mb": "1430"
+  },
+  {
+   "table_schema": "tpcc_tiny",
+   "mb": "11"
+  },
+  {
+   "table_schema": "tpch",
+   "mb": "1473"
+  },
+  {
+   "table_schema": "tpch_tiny",
+   "mb": "16"
+  }
+ ],
+ "version": [
+  {
+   "v": "8.4.11"
+  }
+ ],
+ "local_infile": [
+  {
+   "v": 1
+  }
+ ]
+}

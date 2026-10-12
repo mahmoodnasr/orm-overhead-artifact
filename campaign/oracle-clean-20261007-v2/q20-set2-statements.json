@@ -1,0 +1,61 @@
+{
+  "query": 20,
+  "parameter_set": 2,
+  "parameters": {
+    "color": "violet",
+    "date": {
+      "type": "date",
+      "value": "1993-01-01"
+    },
+    "nation": "EGYPT",
+    "date_end": {
+      "type": "date",
+      "value": "1994-01-01"
+    }
+  },
+  "statements": {
+    "generated": [
+      "SELECT \"SUPPLIER\".\"S_NAME\" AS \"S_NAME\", \"SUPPLIER\".\"S_ADDRESS\" AS \"S_ADDRESS\" FROM \"SUPPLIER\" INNER JOIN \"NATION\" ON (\"SUPPLIER\".\"S_NATIONKEY\" = \"NATION\".\"N_NATIONKEY\") WHERE (\"NATION\".\"N_NAME\" = %s AND \"SUPPLIER\".\"S_SUPPKEY\" IN (SELECT DISTINCT V0.\"PS_SUPPKEY\" AS \"SUPPKEY\" FROM \"PARTSUPP\" V0 WHERE (V0.\"PS_AVAILQTY\" > (SELECT (SUM(U0.\"L_QUANTITY\") * %s) AS \"HALF_QTY\" FROM \"LINEITEM\" U0 WHERE (U0.\"L_PARTKEY\" = (V0.\"PS_PARTKEY\") AND U0.\"L_SHIPDATE\" >= %s AND U0.\"L_SHIPDATE\" < %s AND U0.\"L_SUPPKEY\" = (V0.\"PS_SUPPKEY\")) GROUP BY U0.\"L_PARTKEY\", U0.\"L_SUPPKEY\") AND V0.\"PS_PARTKEY\" IN (SELECT U0.\"P_PARTKEY\" AS \"PARTKEY\" FROM \"PART\" U0 WHERE U0.\"P_NAME\" LIKE TRANSLATE(%s USING NCHAR_CS) ESCAPE TRANSLATE('\\' USING NCHAR_CS))))) ORDER BY 1 ASC",
+      [
+        "EGYPT",
+        {
+          "type": "Decimal",
+          "value": "0.5"
+        },
+        {
+          "type": "date",
+          "value": "1993-01-01"
+        },
+        {
+          "type": "date",
+          "value": "1994-01-01"
+        },
+        "violet%"
+      ]
+    ],
+    "bound": [
+      "\n    SELECT s_name, s_address\n    FROM supplier, nation\n    WHERE s_suppkey IN (\n        SELECT ps_suppkey\n        FROM partsupp\n        WHERE ps_partkey IN (\n            SELECT p_partkey\n            FROM part\n            WHERE p_name LIKE %s\n          )\n          AND ps_availqty > (\n            SELECT %s * SUM(l_quantity)\n            FROM lineitem\n            WHERE l_partkey = ps_partkey\n              AND l_suppkey = ps_suppkey\n              AND l_shipdate >= %s\n              AND l_shipdate < %s\n          )\n      )\n      AND s_nationkey = n_nationkey\n      AND n_name = %s\n    ORDER BY s_name\n    ",
+      [
+        "violet%",
+        {
+          "type": "Decimal",
+          "value": "0.5"
+        },
+        {
+          "type": "date",
+          "value": "1993-01-01"
+        },
+        {
+          "type": "date",
+          "value": "1994-01-01"
+        },
+        "EGYPT"
+      ]
+    ],
+    "literal": [
+      "\n    SELECT s_name, s_address\n    FROM supplier, nation\n    WHERE s_suppkey IN (\n        SELECT ps_suppkey\n        FROM partsupp\n        WHERE ps_partkey IN (\n            SELECT p_partkey\n            FROM part\n            WHERE p_name LIKE 'violet%'\n          )\n          AND ps_availqty > (\n            SELECT 0.5 * SUM(l_quantity)\n            FROM lineitem\n            WHERE l_partkey = ps_partkey\n              AND l_suppkey = ps_suppkey\n              AND l_shipdate >= TO_DATE('1993-01-01', 'YYYY-MM-DD')\n              AND l_shipdate < TO_DATE('1994-01-01', 'YYYY-MM-DD')\n          )\n      )\n      AND s_nationkey = n_nationkey\n      AND n_name = 'EGYPT'\n    ORDER BY s_name\n    ",
+      null
+    ]
+  },
+  "environment_sha256": "ff1063e738f014b7e9a705893371a0d8165bad69981602b6f628088df8f3ffd0"
+}

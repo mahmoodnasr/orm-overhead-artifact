@@ -1,0 +1,20 @@
+{
+ "protocol_id": "rc20261008-G-v2",
+ "protocol_sha256": "39c07b2e174c69186ea1f2e2620ba1dcac6921811b2a82ff4a7461077f56bec3",
+ "phase": "G",
+ "dbms": "commercial_a",
+ "schema": "non-indexed",
+ "scale": 1,
+ "queries": [
+  6,
+  17,
+  18,
+  20,
+  21
+ ],
+ "timeout_s": 900,
+ "mode": "main",
+ "blocks": 8,
+ "client_mode": "second-server-mac",
+ "database_label": "mac-tpch"
+}

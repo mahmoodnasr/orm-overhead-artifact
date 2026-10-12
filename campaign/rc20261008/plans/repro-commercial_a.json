@@ -1,0 +1,58 @@
+{
+ "plan_id": "repro-commercial_a",
+ "purpose": "E open item: reproduce the slower Commercial System A non-indexed scans after an indexed workload on the same instance (E order) versus a fresh restart (A order)",
+ "steps": [
+  {
+   "id": "repro-engine",
+   "kind": "engine",
+   "engine": "commercial_a",
+   "settle": 90
+  },
+  {
+   "id": "repro-verify-ni",
+   "kind": "index",
+   "engine": "commercial_a",
+   "actions": [
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "repro-probe-fresh",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a && cd $RC_CAMPAIGN && taskset -c 2,3 $RC_PY code/rc_commercial_a_probe.py --campaign-dir $RC_CAMPAIGN --label fresh-restart-non-indexed --queries 6 17 20 21 --repeat 3 --out evidence/commercial_a-repro/1-fresh-restart-non-indexed.json"
+  },
+  {
+   "id": "repro-to-indexed",
+   "kind": "index",
+   "engine": "commercial_a",
+   "actions": [
+    "create",
+    "analyze",
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "repro-indexed-workload",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a && cd $RC_CAMPAIGN && taskset -c 2,3 $RC_PY code/rc_commercial_a_probe.py --campaign-dir $RC_CAMPAIGN --label indexed-workload --queries 6 17 18 20 21 --repeat 3 --workload --out evidence/commercial_a-repro/2-indexed-workload.json"
+  },
+  {
+   "id": "repro-to-non-indexed",
+   "kind": "index",
+   "engine": "commercial_a",
+   "actions": [
+    "drop",
+    "analyze",
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "repro-probe-after",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a && cd $RC_CAMPAIGN && taskset -c 2,3 $RC_PY code/rc_commercial_a_probe.py --campaign-dir $RC_CAMPAIGN --label after-indexed-workload-non-indexed --queries 6 17 20 21 --repeat 3 --out evidence/commercial_a-repro/3-after-indexed-workload-non-indexed.json"
+  }
+ ]
+}

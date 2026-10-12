@@ -1,0 +1,48 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:479026de9231386a6c8f140712307107dc86f5f8b525491c1e9b32a1567269c7",
+   "params": [
+    "%express%accounts%"
+   ],
+   "inputsizes": [
+    [
+     "o_comment_1",
+     "12",
+     "String"
+    ]
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:684b9b0b3813f34c84264785288bd3fc5e230f8723a594c2caf251f97f7147b7",
+    "values": [
+     "%express%accounts%"
+    ],
+    "binding_types": "orm",
+    "inputsizes": [
+     [
+      "b0",
+      "12",
+      "String"
+     ]
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:761ad9d48c24271c02cc08b55df0b199e346e5a953aaf2e03329abc3962273a8",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 1
+ },
+ "G_output_columns": null
+}

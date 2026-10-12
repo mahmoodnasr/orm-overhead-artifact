@@ -1,0 +1,40 @@
+{
+ "protocol_id": "rc20261008-A-v1",
+ "protocol_sha256": "95d87f4bbbbcc810eb85a22234bcb07c9925d66c3c423a0fb4f7612ee64e9674",
+ "phase": "A",
+ "dbms": "mysql",
+ "schema": "non-indexed",
+ "scale": 1,
+ "queries": [
+  2,
+  16,
+  22,
+  11,
+  6,
+  14,
+  12,
+  10,
+  15,
+  19,
+  3,
+  13,
+  4,
+  7,
+  1,
+  21,
+  5,
+  17,
+  20,
+  8,
+  9,
+  18
+ ],
+ "timeout_s": {
+  "type": "float",
+  "value": "900.0"
+ },
+ "mode": "main",
+ "blocks": 8,
+ "client_mode": "same-host",
+ "database_label": "tpch"
+}

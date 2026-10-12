@@ -1,0 +1,5 @@
+{
+  "returncode": 0,
+  "stdout": "index state on oracle (oracle): 0/15 present, 15/15 missing\n  configuration claimed: non-indexed  (requires all absent)\n  MATCHES\n",
+  "stderr": ""
+}

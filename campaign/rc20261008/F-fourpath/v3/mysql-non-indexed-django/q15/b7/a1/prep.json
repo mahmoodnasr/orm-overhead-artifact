@@ -1,0 +1,68 @@
+{
+ "G": [
+  {
+   "sql": "SELECT MAX(`total_revenue`) FROM (SELECT `lineitem`.`l_suppkey` AS `suppkey`, SUM((`lineitem`.`l_extendedprice` * (%s - `lineitem`.`l_discount`))) AS `total_revenue` FROM `lineitem` WHERE (`lineitem`.`l_shipdate` >= %s AND `lineitem`.`l_shipdate` < %s) GROUP BY 1 ORDER BY NULL) subquery",
+   "params": [
+    1,
+    "1993-06-01",
+    "1993-09-01"
+   ]
+  },
+  {
+   "sql": "SELECT `lineitem`.`l_suppkey` AS `suppkey`, SUM((`lineitem`.`l_extendedprice` * (%s - `lineitem`.`l_discount`))) AS `total_revenue` FROM `lineitem` WHERE (`lineitem`.`l_shipdate` >= %s AND `lineitem`.`l_shipdate` < %s) GROUP BY 1 HAVING SUM((`lineitem`.`l_extendedprice` * (%s - `lineitem`.`l_discount`))) = %s ORDER BY NULL",
+   "params": [
+    1,
+    "1993-06-01",
+    "1993-09-01",
+    1,
+    {
+     "type": "Decimal",
+     "value": "1793806.3866"
+    }
+   ]
+  },
+  {
+   "sql": "SELECT `supplier`.`s_suppkey` AS `s_suppkey`, `supplier`.`s_name` AS `s_name`, `supplier`.`s_address` AS `s_address`, `supplier`.`s_phone` AS `s_phone` FROM `supplier` WHERE `supplier`.`s_suppkey` IN (%s) ORDER BY 1 ASC",
+   "params": [
+    7979
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "\n    WITH revenue0 (supplier_no, total_revenue) AS (\n      SELECT l_suppkey, SUM(l_extendedprice * (1 - l_discount))\n      FROM lineitem\n      WHERE l_shipdate >= %s\n        AND l_shipdate < %s\n      GROUP BY l_suppkey\n    )\n    SELECT s_suppkey, s_name, s_address, s_phone, total_revenue\n    FROM supplier, revenue0\n    WHERE s_suppkey = supplier_no\n      AND total_revenue = (SELECT MAX(total_revenue) FROM revenue0)\n    ORDER BY s_suppkey\n    ",
+    "values": [
+     "1993-06-01",
+     "1993-09-01"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "'1993-06-01'",
+     "bound": true,
+     "kind": "date",
+     "value_type": "str",
+     "type_source": "orm: bound as a string, as the ORM binds it (F-v2 correction 4)"
+    },
+    {
+     "literal": "'1993-09-01'",
+     "bound": true,
+     "kind": "date",
+     "value_type": "str",
+     "type_source": "orm: bound as a string, as the ORM binds it (F-v2 correction 4)"
+    }
+   ]
+  ],
+  "bound_literals": 2
+ },
+ "G_output_columns": [
+  "s_suppkey",
+  "s_name",
+  "s_address",
+  "s_phone",
+  "total_revenue"
+ ]
+}

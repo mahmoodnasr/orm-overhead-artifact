@@ -1,0 +1,14 @@
+{
+  "cached-after-warmup": {
+    "passed": false,
+    "error": "Runtime operator counters missing"
+  },
+  "cache-disabled": {
+    "passed": true,
+    "operators": 3
+  },
+  "new-session": {
+    "passed": true,
+    "operators": 3
+  }
+}

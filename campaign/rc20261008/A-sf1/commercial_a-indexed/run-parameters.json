@@ -1,0 +1,40 @@
+{
+ "protocol_id": "rc20261008-A-v1",
+ "protocol_sha256": "95d87f4bbbbcc810eb85a22234bcb07c9925d66c3c423a0fb4f7612ee64e9674",
+ "phase": "A",
+ "dbms": "commercial_a",
+ "schema": "indexed",
+ "scale": 1,
+ "queries": [
+  11,
+  2,
+  17,
+  22,
+  16,
+  10,
+  6,
+  14,
+  3,
+  5,
+  12,
+  7,
+  13,
+  8,
+  15,
+  20,
+  9,
+  1,
+  19,
+  4,
+  21,
+  18
+ ],
+ "timeout_s": {
+  "type": "float",
+  "value": "900.0"
+ },
+ "mode": "main",
+ "blocks": 8,
+ "client_mode": "same-host",
+ "database_label": "tpch"
+}

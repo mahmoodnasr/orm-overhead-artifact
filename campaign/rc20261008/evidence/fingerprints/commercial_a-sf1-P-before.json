@@ -1,0 +1,132 @@
+{
+ "label": "commercial_a-sf1-P-before",
+ "source": {
+  "dbms": "commercial_a",
+  "database": "tpch"
+ },
+ "started_utc": "2026-10-07T23:32:49.656810+00:00",
+ "finished_utc": "2026-10-07T23:39:57.280911+00:00",
+ "algorithm": "rc20261008-canonical-v1: sha256 over canonical rows in primary-key order",
+ "tables": {
+  "region": {
+   "rows": 5,
+   "sha256": "0ddf56aaa8fef400210a45c6339daf232f10342b7c36959ce26e52d0a658a440",
+   "columns": [
+    "r_comment",
+    "r_name",
+    "r_regionkey"
+   ],
+   "seconds": 0.22
+  },
+  "nation": {
+   "rows": 25,
+   "sha256": "9871d4f56b10d4cea4a5e42073b620523dc2ba2dab4f16ca5380487d5589a471",
+   "columns": [
+    "n_comment",
+    "n_name",
+    "n_nationkey",
+    "n_regionkey"
+   ],
+   "seconds": 0.01
+  },
+  "supplier": {
+   "rows": 10000,
+   "sha256": "8493d70f56e53c7cc4b91b1e5ad3936b7f5f5683a7ee117cb84ecc8c985e4dd5",
+   "columns": [
+    "s_acctbal",
+    "s_address",
+    "s_comment",
+    "s_name",
+    "s_nationkey",
+    "s_phone",
+    "s_suppkey"
+   ],
+   "seconds": 0.26
+  },
+  "customer": {
+   "rows": 150000,
+   "sha256": "cba22fe0a33f174c75a9e3933098a341ec0b16a3238cb1acd3058e320b41aa07",
+   "columns": [
+    "c_acctbal",
+    "c_address",
+    "c_comment",
+    "c_custkey",
+    "c_mktsegment",
+    "c_name",
+    "c_nationkey",
+    "c_phone"
+   ],
+   "seconds": 4.1
+  },
+  "part": {
+   "rows": 200000,
+   "sha256": "aa8a198b942e487c890008ae74eb576dc6adce7518d4ee0b8a5c8755282a587b",
+   "columns": [
+    "p_brand",
+    "p_comment",
+    "p_container",
+    "p_mfgr",
+    "p_name",
+    "p_partkey",
+    "p_retailprice",
+    "p_size",
+    "p_type"
+   ],
+   "seconds": 5.46
+  },
+  "partsupp": {
+   "rows": 800000,
+   "sha256": "a71780d744917c47dd0a998fa81c1e1807a67aad9df18f2c75f4b0e3e62ceaf4",
+   "columns": [
+    "ps_availqty",
+    "ps_comment",
+    "ps_partkey",
+    "ps_suppkey",
+    "ps_supplycost"
+   ],
+   "seconds": 19.26
+  },
+  "orders": {
+   "rows": 1500000,
+   "sha256": "f09b0d9feabca4bc21d50df0c9b341e0f40935fdf3e8af81e91c8f4bf01b8543",
+   "columns": [
+    "o_clerk",
+    "o_comment",
+    "o_custkey",
+    "o_orderdate",
+    "o_orderkey",
+    "o_orderpriority",
+    "o_orderstatus",
+    "o_shippriority",
+    "o_totalprice"
+   ],
+   "seconds": 68.86
+  },
+  "lineitem": {
+   "rows": 6001215,
+   "sha256": "8dc10926cddbec38964ab5fe72d4a01b008e1b462d23147505239affdc290bb1",
+   "columns": [
+    "l_comment",
+    "l_commitdate",
+    "l_discount",
+    "l_extendedprice",
+    "l_linenumber",
+    "l_linestatus",
+    "l_orderkey",
+    "l_partkey",
+    "l_quantity",
+    "l_receiptdate",
+    "l_returnflag",
+    "l_shipdate",
+    "l_shipinstruct",
+    "l_shipmode",
+    "l_suppkey",
+    "l_tax"
+   ],
+   "seconds": 329.4
+  }
+ },
+ "content_sha256": "f6e8d08b82cc37f321cdbcf85111c34ff9d52630eca9d5130cc9acc8c3e46a45",
+ "pid": 318483,
+ "script_sha256": "172a91487293010c6a741e1e6e654833aa8b4ce15fd536eb5663801032998d07"
+}

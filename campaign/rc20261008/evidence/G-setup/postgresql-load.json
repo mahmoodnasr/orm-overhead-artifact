@@ -1,0 +1,8 @@
+{
+ "engine": "postgresql",
+ "ddl": "docker/postgresql/init-db.sh",
+ "ddl_statements": 8,
+ "loader": "load_pg.py",
+ "seconds": 40.5,
+ "duckdb_sha256": "1cf7eb225fef71fd88c9683110f53a6e02a24792bd62b89afad9111757b1d8db"
+}

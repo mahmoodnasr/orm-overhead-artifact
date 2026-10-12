@@ -1,0 +1,58 @@
+{
+ "dbms": "postgresql",
+ "database": "tpch",
+ "user": "benchmark",
+ "role": [
+  {
+   "rolname": "benchmark",
+   "rolsuper": true,
+   "rolcreatedb": false,
+   "rolcreaterole": false
+  }
+ ],
+ "databases": [
+  {
+   "datname": "postgres",
+   "mb": 7
+  },
+  {
+   "datname": "template0",
+   "mb": 7
+  },
+  {
+   "datname": "template1",
+   "mb": 7
+  },
+  {
+   "datname": "tpcc",
+   "mb": 2208
+  },
+  {
+   "datname": "tpcc_tiny",
+   "mb": 25
+  },
+  {
+   "datname": "tpch",
+   "mb": 1446
+  },
+  {
+   "datname": "tpch_tiny",
+   "mb": 23
+  }
+ ],
+ "schema_create": [
+  {
+   "can_create_schema": true
+  }
+ ],
+ "version": [
+  {
+   "version": "PostgreSQL 18.6 (Ubuntu 18.6-1.pgdg24.04+2) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit"
+  }
+ ],
+ "data_directory_free": [
+  {
+   "setting": "/var/lib/postgresql/18/main"
+  }
+ ]
+}

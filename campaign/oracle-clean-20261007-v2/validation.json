@@ -1,0 +1,776 @@
+[
+  {
+    "query": 17,
+    "block": -1,
+    "parameter_set": 0,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 17,
+    "block": 0,
+    "parameter_set": 0,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 17,
+    "block": 1,
+    "parameter_set": 1,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 17,
+    "block": 2,
+    "parameter_set": 2,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 17,
+    "block": 3,
+    "parameter_set": 3,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 17,
+    "block": 4,
+    "parameter_set": 4,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 17,
+    "block": 5,
+    "parameter_set": 5,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 17,
+    "block": 6,
+    "parameter_set": 6,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 17,
+    "block": 7,
+    "parameter_set": 7,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          1,
+          1
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 20,
+    "block": -1,
+    "parameter_set": 0,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          186,
+          186
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          186,
+          186
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          186,
+          186
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          186,
+          186
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 20,
+    "block": 0,
+    "parameter_set": 0,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          186,
+          186
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          186,
+          186
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          186,
+          186
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          186,
+          186
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 20,
+    "block": 1,
+    "parameter_set": 1,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          192,
+          192
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          192,
+          192
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          192,
+          192
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          192,
+          192
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 20,
+    "block": 2,
+    "parameter_set": 2,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          195,
+          195
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          195,
+          195
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          195,
+          195
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          195,
+          195
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 20,
+    "block": 3,
+    "parameter_set": 3,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          154,
+          154
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          154,
+          154
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          154,
+          154
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          154,
+          154
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 20,
+    "block": 4,
+    "parameter_set": 4,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          177,
+          177
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          177,
+          177
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          177,
+          177
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          177,
+          177
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 20,
+    "block": 5,
+    "parameter_set": 5,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          177,
+          177
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          177,
+          177
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          177,
+          177
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          177,
+          177
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 20,
+    "block": 6,
+    "parameter_set": 6,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          180,
+          180
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          180,
+          180
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          180,
+          180
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          180,
+          180
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  },
+  {
+    "query": 20,
+    "block": 7,
+    "parameter_set": 7,
+    "comparisons": {
+      "orm": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          201,
+          201
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "generated": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          201,
+          201
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "bound": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          201,
+          201
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      },
+      "literal": {
+        "exact_named_ordered_equal": true,
+        "rows": [
+          201,
+          201
+        ],
+        "differences": [],
+        "normalization": "column-name case; midnight datetime to date only; no value sorting or rounding"
+      }
+    }
+  }
+]

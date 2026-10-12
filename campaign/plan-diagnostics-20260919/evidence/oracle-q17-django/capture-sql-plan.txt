@@ -1,0 +1,60 @@
+SQL_ID  arpakbk36szp2, child number 1
+-------------------------------------
+SELECT SUM(l_extendedprice) / 7.0 as avg_yearly     FROM lineitem, part 
+    WHERE p_partkey = l_partkey       AND p_brand = 'Brand#23'       
+AND p_container = 'MED BOX'       AND l_quantity < (         SELECT 0.2 
+* AVG(l_quantity)         FROM lineitem         WHERE l_partkey = 
+p_partkey       )
+ 
+Plan hash value: 3341365018
+ 
+--------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation             | Name     | Starts | E-Rows | A-Rows |   A-Time   | Buffers | Reads  |  OMem |  1Mem | Used-Mem |
+--------------------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT      |          |      1 |        |      1 |00:00:00.74 |   96100 |  92716 |       |       |          |
+|   1 |  SORT AGGREGATE       |          |      1 |      1 |      1 |00:00:00.74 |   96100 |  92716 |       |       |          |
+|   2 |   VIEW                | VW_WIF_1 |      1 |   5896 |   6088 |00:00:00.74 |   96100 |  92716 |       |       |          |
+|   3 |    WINDOW SORT        |          |      1 |   5896 |   6088 |00:00:00.74 |   96100 |  92716 |   478K|   448K|  424K (0)|
+|*  4 |     HASH JOIN         |          |      1 |   5896 |   6088 |00:00:00.73 |   96100 |  92716 |  1376K|  1376K| 1656K (0)|
+|*  5 |      TABLE ACCESS FULL| PART     |      1 |    198 |    204 |00:00:00.01 |    3372 |      0 |       |       |          |
+|   6 |      TABLE ACCESS FULL| LINEITEM |      1 |   6001K|   6001K|00:00:00.53 |   92728 |  92716 |       |       |          |
+--------------------------------------------------------------------------------------------------------------------------------
+ 
+Query Block Name / Object Alias (identified by operation id):
+-------------------------------------------------------------
+ 
+   1 - SEL$C15DFC48
+   2 - SEL$C73EDB9E / "VW_WIF_1"@"SEL$D99A5D2D"
+   3 - SEL$C73EDB9E
+   5 - SEL$C73EDB9E / "PART"@"SEL$1"
+   6 - SEL$C73EDB9E / "LINEITEM"@"SEL$1"
+ 
+Outline Data
+-------------
+ 
+  /*+
+      BEGIN_OUTLINE_DATA
+      IGNORE_OPTIM_EMBEDDED_HINTS
+      OPTIMIZER_FEATURES_ENABLE('23.1.0')
+      DB_VERSION('23.1.0')
+      ALL_ROWS
+      OUTLINE_LEAF(@"SEL$C73EDB9E")
+      OUTLINE_LEAF(@"SEL$C15DFC48")
+      UNNEST(@"SEL$2")
+      OUTLINE(@"SEL$D99A5D2D")
+      OUTLINE(@"SEL$2")
+      OUTLINE(@"SEL$1")
+      NO_ACCESS(@"SEL$C15DFC48" "VW_WIF_1"@"SEL$D99A5D2D")
+      FULL(@"SEL$C73EDB9E" "PART"@"SEL$1")
+      FULL(@"SEL$C73EDB9E" "LINEITEM"@"SEL$1")
+      LEADING(@"SEL$C73EDB9E" "PART"@"SEL$1" "LINEITEM"@"SEL$1")
+      USE_HASH(@"SEL$C73EDB9E" "LINEITEM"@"SEL$1")
+      END_OUTLINE_DATA
+  */
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   4 - access("P_PARTKEY"="L_PARTKEY")
+   5 - filter(("P_CONTAINER"='MED BOX' AND "P_BRAND"='Brand#23'))
+ 

@@ -1,0 +1,28 @@
+{
+ "taken": "2026-10-11T15:53:18.422135+00:00",
+ "verify": {
+  "cmd": [
+   "sudo",
+   "-n",
+   "/usr/local/sbin/bench-host",
+   "verify",
+   "mysql"
+  ],
+  "returncode": 0,
+  "stdout": "  governor:      performance  want performance\n  no_turbo:      1            want 1\n  SMT:           off          want off\n  online CPUs:   0-3          want 0-3\n  AllowedCPUs:   0-1          want 0-1\n  MemoryMax:     3221225472   want 3221225472\n  AC power:      1            want 1\n  throttles:     core=0 pkg=0\n  freq now:      1800 1800 1800 1800 \n  engines:       measuring mysql\n    postgresql:  inactive     want inactive\n    mysql:       active       want active\n    commercial_a:       inactive     want inactive\n    oracle:      down         want inactive\n",
+  "stderr": ""
+ },
+ "oracle_process_affinity": null,
+ "active_rc_units": "",
+ "loadavg": [
+  "1.22",
+  "1.22",
+  "1.15"
+ ],
+ "wifi_link": [
+  "freq: 2422.0",
+  "signal: -62 dBm",
+  "rx bitrate: 120.0 MBit/s MCS 5 40MHz short GI"
+ ],
+ "wifi_power_save": "Power save: off"
+}

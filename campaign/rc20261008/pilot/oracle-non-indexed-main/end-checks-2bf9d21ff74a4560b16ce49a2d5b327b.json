@@ -1,0 +1,15 @@
+{
+ "checks": {
+  "source_unchanged": true,
+  "indexes_unchanged": true,
+  "row_counts_unchanged": true,
+  "settings_unchanged": true,
+  "server_unchanged": true,
+  "gate_after": []
+ },
+ "cells": {
+  "6": "complete"
+ },
+ "utc": "2026-10-08T01:55:52.482513+00:00",
+ "cairo": "2026-10-08T04:55:52.482513+03:00"
+}

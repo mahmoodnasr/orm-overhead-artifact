@@ -1,0 +1,229 @@
+{
+ "transaction": "T3",
+ "block": 22,
+ "attempt": 1,
+ "seed": 251315107068037,
+ "input": {
+  "w_id": 5,
+  "d_id": 10,
+  "c_id": 2624
+ },
+ "sequence_id": 1,
+ "counts_before_block": {
+  "warehouse": 10,
+  "district": 100,
+  "customer": 300000,
+  "history": 1458095,
+  "item": 100000,
+  "stock": 1000000,
+  "order": 866923,
+  "new_order": 856033,
+  "order_line": 8669552
+ },
+ "counts_after_block": {
+  "warehouse": 10,
+  "district": 100,
+  "customer": 300000,
+  "history": 1458095,
+  "item": 100000,
+  "stock": 1000000,
+  "order": 866923,
+  "new_order": 856033,
+  "order_line": 8669552
+ },
+ "counts_unchanged": true,
+ "frameworks": {
+  "django": {
+   "left": "django/sql",
+   "right": "django/orm",
+   "tables_touched": {
+    "django/sql": [
+     "customer",
+     "order",
+     "order_line"
+    ],
+    "django/orm": [
+     "customer",
+     "order",
+     "order_line"
+    ]
+   },
+   "tables_touched_equal": true,
+   "output_keys": {
+    "django/sql": [
+     "c_balance",
+     "c_first",
+     "c_id",
+     "c_last",
+     "c_middle",
+     "d_id",
+     "o_carrier_id",
+     "o_entry_d",
+     "o_id",
+     "order_lines",
+     "w_id"
+    ],
+    "django/orm": [
+     "c_balance",
+     "c_first",
+     "c_id",
+     "c_last",
+     "c_middle",
+     "d_id",
+     "o_carrier_id",
+     "o_entry_d",
+     "o_id",
+     "order_lines",
+     "w_id"
+    ]
+   },
+   "accepted": true,
+   "classification": "equivalent",
+   "problems": []
+  },
+  "sqlalchemy": {
+   "left": "sqlalchemy/sql",
+   "right": "sqlalchemy/orm",
+   "tables_touched": {
+    "sqlalchemy/sql": [
+     "customer",
+     "order",
+     "order_line"
+    ],
+    "sqlalchemy/orm": [
+     "customer",
+     "order",
+     "order_line"
+    ]
+   },
+   "tables_touched_equal": true,
+   "output_keys": {
+    "sqlalchemy/sql": [
+     "c_balance",
+     "c_first",
+     "c_id",
+     "c_last",
+     "d_id",
+     "o_carrier_id",
+     "o_entry_d",
+     "o_id",
+     "order_lines",
+     "w_id"
+    ],
+    "sqlalchemy/orm": [
+     "c_balance",
+     "c_first",
+     "c_id",
+     "c_last",
+     "d_id",
+     "o_id",
+     "order_lines",
+     "w_id"
+    ]
+   },
+   "accepted": true,
+   "classification": "equivalent",
+   "problems": []
+  }
+ },
+ "cross": {
+  "sql": {
+   "left": "django/sql",
+   "right": "sqlalchemy/sql",
+   "tables_touched": {
+    "django/sql": [
+     "customer",
+     "order",
+     "order_line"
+    ],
+    "sqlalchemy/sql": [
+     "customer",
+     "order",
+     "order_line"
+    ]
+   },
+   "tables_touched_equal": true,
+   "output_keys": {
+    "django/sql": [
+     "c_balance",
+     "c_first",
+     "c_id",
+     "c_last",
+     "c_middle",
+     "d_id",
+     "o_carrier_id",
+     "o_entry_d",
+     "o_id",
+     "order_lines",
+     "w_id"
+    ],
+    "sqlalchemy/sql": [
+     "c_balance",
+     "c_first",
+     "c_id",
+     "c_last",
+     "d_id",
+     "o_carrier_id",
+     "o_entry_d",
+     "o_id",
+     "order_lines",
+     "w_id"
+    ]
+   },
+   "accepted": true,
+   "classification": "equivalent",
+   "problems": []
+  },
+  "orm": {
+   "left": "django/orm",
+   "right": "sqlalchemy/orm",
+   "tables_touched": {
+    "django/orm": [
+     "customer",
+     "order",
+     "order_line"
+    ],
+    "sqlalchemy/orm": [
+     "customer",
+     "order",
+     "order_line"
+    ]
+   },
+   "tables_touched_equal": true,
+   "output_keys": {
+    "django/orm": [
+     "c_balance",
+     "c_first",
+     "c_id",
+     "c_last",
+     "c_middle",
+     "d_id",
+     "o_carrier_id",
+     "o_entry_d",
+     "o_id",
+     "order_lines",
+     "w_id"
+    ],
+    "sqlalchemy/orm": [
+     "c_balance",
+     "c_first",
+     "c_id",
+     "c_last",
+     "d_id",
+     "o_id",
+     "order_lines",
+     "w_id"
+    ]
+   },
+   "accepted": true,
+   "classification": "equivalent",
+   "problems": []
+  }
+ },
+ "warmup_pairs": {
+  "django": "equivalent",
+  "sqlalchemy": "equivalent"
+ },
+ "utc": "2026-10-10T07:26:46.759653+00:00",
+ "cairo": "2026-10-10T10:26:46.759653+03:00"
+}

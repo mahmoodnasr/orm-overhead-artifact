@@ -1,0 +1,296 @@
+{
+ "label": "fresh-restart-non-indexed",
+ "mode": "probe",
+ "started": {
+  "utc": "2026-10-11T17:27:51.889836+00:00",
+  "cairo": "2026-10-11T20:27:51.889836+03:00"
+ },
+ "calls": [
+  {
+   "query": 6,
+   "path": "django/sql",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "3.8340558049967512"
+   },
+   "rows": 1,
+   "server": {
+    "withheld": "Commercial System A server",
+    "sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   }
+  },
+  {
+   "query": 6,
+   "path": "django/sql",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.2067310370039195"
+   },
+   "rows": 1,
+   "server": {
+    "withheld": "Commercial System A server",
+    "sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   }
+  },
+  {
+   "query": 6,
+   "path": "django/sql",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.2116915279766545"
+   },
+   "rows": 1,
+   "server": {
+    "withheld": "Commercial System A server",
+    "sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+   }
+  },
+  {
+   "query": 17,
+   "path": "django/sql",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "1.0881604150054045"
+   },
+   "rows": 1,
+   "server": {
+    "withheld": "Commercial System A server",
+    "sha256": "8acda55b0dc149dbdbef40d712d5adac8b84af9328acdda25448d49afc4217ff"
+   }
+  },
+  {
+   "query": 17,
+   "path": "django/sql",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.9224993269890547"
+   },
+   "rows": 1,
+   "server": {
+    "withheld": "Commercial System A server",
+    "sha256": "ef89975fb9cbcc97e2b0345e93bd9314446494fc710077a0252cea0e1f648b40"
+   }
+  },
+  {
+   "query": 17,
+   "path": "django/sql",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.9205378799815662"
+   },
+   "rows": 1,
+   "server": {
+    "withheld": "Commercial System A server",
+    "sha256": "bc79f822411f53fead87134bbe17bed3db173b1488e709172ada5d7539e2c1ef"
+   }
+  },
+  {
+   "query": 20,
+   "path": "django/sql",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.1802065840456635"
+   },
+   "rows": 186,
+   "server": {
+    "withheld": "Commercial System A server",
+    "sha256": "828c57204f9b8320c08ac27eed1f566e48b6d81fae093aa3d0c42cf1331f1f21"
+   }
+  },
+  {
+   "query": 20,
+   "path": "django/sql",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.9169038030086085"
+   },
+   "rows": 186,
+   "server": {
+    "withheld": "Commercial System A server",
+    "sha256": "89bd61b4399fa14a0c59ed79db9053ee3545a0c4aa321c155041b522f42076cb"
+   }
+  },
+  {
+   "query": 20,
+   "path": "django/sql",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "0.9244116059853695"
+   },
+   "rows": 186,
+   "server": {
+    "withheld": "Commercial System A server",
+    "sha256": "4861b824e61d7e96654eae19611196e30ca5b087bda930287d4142c0e50f21eb"
+   }
+  },
+  {
+   "query": 21,
+   "path": "django/sql",
+   "call": 1,
+   "elapsed_s": {
+    "type": "float",
+    "value": "3.6903286349843256"
+   },
+   "rows": 100,
+   "server": {
+    "withheld": "Commercial System A server",
+    "sha256": "6f05cfc404c66e96fdd89fa397f8ae57b240fa3dfc8530e06ef23db747fb9d3a"
+   }
+  },
+  {
+   "query": 21,
+   "path": "django/sql",
+   "call": 2,
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.9979914579889737"
+   },
+   "rows": 100,
+   "server": {
+    "withheld": "Commercial System A server",
+    "sha256": "732b8e029788490cd62ab47bcac8e0f33ca2d6e5d6167f649ef0dd7565aa318c"
+   }
+  },
+  {
+   "query": 21,
+   "path": "django/sql",
+   "call": 3,
+   "elapsed_s": {
+    "type": "float",
+    "value": "2.9974722620099783"
+   },
+   "rows": 100,
+   "server": {
+    "withheld": "Commercial System A server",
+    "sha256": "77f3069587c3e87e2db4de6c65c928e88b817edbef19d84334fd4894d3b1e639"
+   }
+  }
+ ],
+ "memory_before": {
+  "process": [
+   {
+    "physical_memory_in_use_kb": 4194304,
+    "locked_page_allocations_kb": 0,
+    "memory_utilization_percentage": 100,
+    "process_physical_memory_low": false,
+    "process_virtual_memory_low": false
+   }
+  ],
+  "system": [
+   {
+    "total_physical_memory_kb": 2516992,
+    "available_physical_memory_kb": 1879148,
+    "system_memory_state_desc": "Available physical memory is high"
+   }
+  ],
+  "config": {
+   "withheld": "Commercial System A config",
+   "sha256": "f950ba29940fd72759f25ee082dc7d6e1af6f323e9658fa077399b860da132ca"
+  },
+  "clerks": {
+   "withheld": "Commercial System A clerks",
+   "sha256": "8441d2208f8703989e456d84bb33d70a628c13150241768e1726cabb32cda1b0"
+  },
+  "buffer_pool_by_table": [
+   {
+    "table_name": "lineitem",
+    "mb": 0
+   },
+   {
+    "table_name": "orders",
+    "mb": 0
+   },
+   {
+    "table_name": "part",
+    "mb": 0
+   },
+   {
+    "table_name": "partsupp",
+    "mb": 0
+   }
+  ],
+  "buffer_pool_total_mb": [
+   {
+    "mb": 37
+   }
+  ]
+ },
+ "memory_after": {
+  "process": [
+   {
+    "physical_memory_in_use_kb": 4194304,
+    "locked_page_allocations_kb": 0,
+    "memory_utilization_percentage": 100,
+    "process_physical_memory_low": false,
+    "process_virtual_memory_low": false
+   }
+  ],
+  "system": [
+   {
+    "total_physical_memory_kb": 2516992,
+    "available_physical_memory_kb": 639776,
+    "system_memory_state_desc": "Available physical memory is high"
+   }
+  ],
+  "config": {
+   "withheld": "Commercial System A config",
+   "sha256": "f950ba29940fd72759f25ee082dc7d6e1af6f323e9658fa077399b860da132ca"
+  },
+  "clerks": {
+   "withheld": "Commercial System A clerks",
+   "sha256": "92249fec3606f052fb1d81d9be313a7968159c4a316bb74646cc62e2dfebcc0b"
+  },
+  "buffer_pool_by_table": [
+   {
+    "table_name": "lineitem",
+    "mb": 908
+   },
+   {
+    "table_name": "orders",
+    "mb": 189
+   },
+   {
+    "table_name": "part",
+    "mb": 30
+   },
+   {
+    "table_name": "partsupp",
+    "mb": 28
+   },
+   {
+    "table_name": "supplier",
+    "mb": 1
+   },
+   {
+    "table_name": "customer",
+    "mb": 0
+   },
+   {
+    "table_name": "nation",
+    "mb": 0
+   },
+   {
+    "table_name": "region",
+    "mb": 0
+   }
+  ],
+  "buffer_pool_total_mb": [
+   {
+    "mb": 1197
+   }
+  ]
+ },
+ "finished": {
+  "utc": "2026-10-11T17:28:21.319396+00:00",
+  "cairo": "2026-10-11T20:28:21.319396+03:00"
+ }
+}

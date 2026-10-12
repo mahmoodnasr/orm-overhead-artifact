@@ -1,0 +1,17 @@
+{
+ "protocol_id": "rc20261008-E-v1",
+ "protocol_sha256": "acf02bd1497658af153361b92b08ee047a450062913de7c2f86fe8209d61582f",
+ "phase": "E",
+ "dbms": "oracle",
+ "schema": "non-indexed",
+ "scale": 1,
+ "queries": [
+  6,
+  18
+ ],
+ "timeout_s": 900,
+ "mode": "pilot",
+ "blocks": 2,
+ "client_mode": "separate-client",
+ "database_label": "tpch"
+}

@@ -1,0 +1,263 @@
+{
+ "run_id": "b77ea1d98999491e8fe2b3ef3dbf05f9",
+ "pid": 485373,
+ "phase": "P",
+ "dbms": "oracle",
+ "schema": "non-indexed",
+ "scale": 1,
+ "mode": "pilot",
+ "queries": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22
+ ],
+ "planned_timed": 0,
+ "counts": {
+  "saved_cell_warmup": 88,
+  "status_cell_warmup_ok": 85,
+  "status_cell_warmup_not_expressible": 1,
+  "status_cell_warmup_timeout": 2
+ },
+ "environment_id": "8903e5f18711dbf1ae02f0af097fde70d6c8c42ef8fe0df244bd6f65faa56476",
+ "started": {
+  "utc": "2026-10-08T01:56:25.438984+00:00",
+  "cairo": "2026-10-08T04:56:25.438984+03:00"
+ },
+ "state": "complete",
+ "utc": "2026-10-08T02:02:34.453147+00:00",
+ "cairo": "2026-10-08T05:02:34.453147+03:00",
+ "current": {
+  "query": 22,
+  "path": "sqlalchemy/orm",
+  "kind": "cell_warmup",
+  "block": 0,
+  "attempt": 1,
+  "input_id": "q22warm",
+  "limit_s": {
+   "type": "float",
+   "value": "120.0"
+  },
+  "server_session": {
+   "sid": "178",
+   "tag": "220118"
+  },
+  "utc": "2026-10-08T02:02:32.288121+00:00",
+  "cairo": "2026-10-08T05:02:32.288121+03:00"
+ },
+ "cells_done": [
+  {
+   "query": 1,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "17.912822790000064"
+   }
+  },
+  {
+   "query": 2,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "0.7814422040028148"
+   }
+  },
+  {
+   "query": 3,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "5.030951155000366"
+   }
+  },
+  {
+   "query": 4,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "5.023514941996837"
+   }
+  },
+  {
+   "query": 5,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "6.117967865997343"
+   }
+  },
+  {
+   "query": 6,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "2.6920599149962072"
+   }
+  },
+  {
+   "query": 7,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "4.89747301999887"
+   }
+  },
+  {
+   "query": 8,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "4.300259014002222"
+   }
+  },
+  {
+   "query": 9,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "11.009595479001291"
+   }
+  },
+  {
+   "query": 10,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "3.9430614869997953"
+   }
+  },
+  {
+   "query": 11,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "1.9997464640036924"
+   }
+  },
+  {
+   "query": 12,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "4.573477837999235"
+   }
+  },
+  {
+   "query": 13,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "3.9646181620046264"
+   }
+  },
+  {
+   "query": 14,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "2.828010335993895"
+   }
+  },
+  {
+   "query": 15,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "4.958974246997968"
+   }
+  },
+  {
+   "query": 16,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "4.6047903380022035"
+   }
+  },
+  {
+   "query": 17,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "126.50272931200016"
+   }
+  },
+  {
+   "query": 18,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "9.340250878994993"
+   }
+  },
+  {
+   "query": 19,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "5.403078776005714"
+   }
+  },
+  {
+   "query": 20,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "127.36742647500068"
+   }
+  },
+  {
+   "query": 21,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "12.32164108800498"
+   }
+  },
+  {
+   "query": 22,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "1.1725912420006352"
+   }
+  }
+ ],
+ "_obs": [
+  {
+   "type": "float",
+   "value": "366.7464830290046"
+  },
+  {
+   "type": "float",
+   "value": "15475.600000000002"
+  }
+ ],
+ "observed_over_predicted": {
+  "type": "float",
+  "value": "0.023698369241192882"
+ },
+ "remaining_predicted_s": 0,
+ "eta_s": {
+  "type": "float",
+  "value": "0.0"
+ }
+}

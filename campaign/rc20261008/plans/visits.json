@@ -1,0 +1,1212 @@
+{
+ "plan_id": "visits",
+ "purpose": "Per-engine visits after phase A: F (four paths), B (censored bounds), C (transactions), D (SF2 subset).",
+ "f_cells": {
+  "file": "F-cells-final.json",
+  "sha256": "2283a2478da12e2d24463915502aa227ebe8237f1ee3e2668d6ed580d58489a0",
+  "final": true
+ },
+ "steps": [
+  {
+   "id": "commercial_a-engine",
+   "kind": "engine",
+   "engine": "commercial_a",
+   "settle": 90
+  },
+  {
+   "id": "commercial_a-sf1-fp-before",
+   "kind": "fingerprint",
+   "engine": "commercial_a",
+   "label": "commercial_a-sf1-visit-before",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "commercial_a-sf1-verify-indexed",
+   "kind": "index",
+   "engine": "commercial_a",
+   "actions": [
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "commercial_a-sf1-preflight-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms commercial_a --schema indexed"
+  },
+  {
+   "id": "commercial_a-F-indexed-django",
+   "kind": "run",
+   "engine": "commercial_a",
+   "resumable": true,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "F-fourpath/commercial_a-indexed-django",
+    "protocol": "protocols/rc20261008-F-v1.json",
+    "phase": "F",
+    "schema": "indexed",
+    "mode": "main",
+    "queries": [
+     4,
+     17,
+     19,
+     20,
+     21
+    ],
+    "extra": [
+     "--framework",
+     "django"
+    ]
+   }
+  },
+  {
+   "id": "commercial_a-F-indexed-sqlalchemy",
+   "kind": "run",
+   "engine": "commercial_a",
+   "resumable": true,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "F-fourpath/commercial_a-indexed-sqlalchemy",
+    "protocol": "protocols/rc20261008-F-v1.json",
+    "phase": "F",
+    "schema": "indexed",
+    "mode": "main",
+    "queries": [
+     4,
+     10,
+     13,
+     15,
+     17,
+     19
+    ],
+    "extra": [
+     "--framework",
+     "sqlalchemy"
+    ]
+   }
+  },
+  {
+   "id": "commercial_a-sf1-to-non-indexed",
+   "kind": "index",
+   "engine": "commercial_a",
+   "actions": [
+    "drop",
+    "analyze",
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "commercial_a-sf1-preflight-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh commercial_a && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms commercial_a --schema non-indexed"
+  },
+  {
+   "id": "commercial_a-F-non-indexed-django",
+   "kind": "run",
+   "engine": "commercial_a",
+   "resumable": true,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "F-fourpath/commercial_a-non-indexed-django",
+    "protocol": "protocols/rc20261008-F-v1.json",
+    "phase": "F",
+    "schema": "non-indexed",
+    "mode": "main",
+    "queries": [
+     4,
+     15,
+     21,
+     22
+    ],
+    "extra": [
+     "--framework",
+     "django"
+    ]
+   }
+  },
+  {
+   "id": "commercial_a-F-non-indexed-sqlalchemy",
+   "kind": "run",
+   "engine": "commercial_a",
+   "resumable": true,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "F-fourpath/commercial_a-non-indexed-sqlalchemy",
+    "protocol": "protocols/rc20261008-F-v1.json",
+    "phase": "F",
+    "schema": "non-indexed",
+    "mode": "main",
+    "queries": [
+     3,
+     13,
+     15,
+     18
+    ],
+    "extra": [
+     "--framework",
+     "sqlalchemy"
+    ]
+   }
+  },
+  {
+   "id": "commercial_a-sf1-fp-after",
+   "kind": "fingerprint",
+   "engine": "commercial_a",
+   "label": "commercial_a-sf1-visit-after",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "postgresql-engine",
+   "kind": "engine",
+   "engine": "postgresql",
+   "settle": 90
+  },
+  {
+   "id": "postgresql-sf1-fp-before",
+   "kind": "fingerprint",
+   "engine": "postgresql",
+   "label": "postgresql-sf1-visit-before",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "postgresql-sf1-verify-indexed",
+   "kind": "index",
+   "engine": "postgresql",
+   "actions": [
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "postgresql-sf1-preflight-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh postgresql && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms postgresql --schema indexed"
+  },
+  {
+   "id": "postgresql-F-indexed-django",
+   "kind": "run",
+   "engine": "postgresql",
+   "resumable": true,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "F-fourpath/postgresql-indexed-django",
+    "protocol": "protocols/rc20261008-F-v1.json",
+    "phase": "F",
+    "schema": "indexed",
+    "mode": "main",
+    "queries": [
+     7
+    ],
+    "extra": [
+     "--framework",
+     "django"
+    ]
+   }
+  },
+  {
+   "id": "postgresql-F-indexed-sqlalchemy",
+   "kind": "run",
+   "engine": "postgresql",
+   "resumable": true,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "F-fourpath/postgresql-indexed-sqlalchemy",
+    "protocol": "protocols/rc20261008-F-v1.json",
+    "phase": "F",
+    "schema": "indexed",
+    "mode": "main",
+    "queries": [
+     22
+    ],
+    "extra": [
+     "--framework",
+     "sqlalchemy"
+    ]
+   }
+  },
+  {
+   "id": "postgresql-sf1-to-non-indexed",
+   "kind": "index",
+   "engine": "postgresql",
+   "actions": [
+    "drop",
+    "analyze",
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "postgresql-censored-plans",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh postgresql && cd $RC_CAMPAIGN/src && cd $RC_CAMPAIGN && taskset -c 2,3 $RC_PY code/rc_explain_censored.py --run-dir A-sf1/postgresql-non-indexed --queries 13 17 20 21 --out evidence/censored-plans/postgresql-non-indexed.json"
+  },
+  {
+   "id": "postgresql-sf1-preflight-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh postgresql && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms postgresql --schema non-indexed"
+  },
+  {
+   "id": "postgresql-F-non-indexed-django",
+   "kind": "run",
+   "engine": "postgresql",
+   "resumable": true,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "F-fourpath/postgresql-non-indexed-django",
+    "protocol": "protocols/rc20261008-F-v1.json",
+    "phase": "F",
+    "schema": "non-indexed",
+    "mode": "main",
+    "queries": [
+     6
+    ],
+    "extra": [
+     "--framework",
+     "django"
+    ]
+   }
+  },
+  {
+   "id": "postgresql-F-non-indexed-sqlalchemy",
+   "kind": "run",
+   "engine": "postgresql",
+   "resumable": true,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "F-fourpath/postgresql-non-indexed-sqlalchemy",
+    "protocol": "protocols/rc20261008-F-v1.json",
+    "phase": "F",
+    "schema": "non-indexed",
+    "mode": "main",
+    "queries": [
+     10
+    ],
+    "extra": [
+     "--framework",
+     "sqlalchemy"
+    ]
+   }
+  },
+  {
+   "id": "postgresql-B-non-indexed-q13-django",
+   "kind": "run",
+   "engine": "postgresql",
+   "resumable": true,
+   "args": {
+    "runner": "rc_censored.py",
+    "run_dir": "B-censored/postgresql-non-indexed-django",
+    "protocol": "protocols/rc20261008-B-v1.json",
+    "phase": "B",
+    "schema": "non-indexed",
+    "mode": "main",
+    "queries": [
+     13
+    ],
+    "extra": [
+     "--framework",
+     "django",
+     "--censored-path",
+     "django/orm"
+    ]
+   }
+  },
+  {
+   "id": "postgresql-sf1-fp-after",
+   "kind": "fingerprint",
+   "engine": "postgresql",
+   "label": "postgresql-sf1-visit-after",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "postgresql-tpcc-fp-before",
+   "kind": "fingerprint",
+   "engine": "postgresql",
+   "benchmark": "tpcc",
+   "label": "postgresql-tpcc-C-before"
+  },
+  {
+   "id": "postgresql-tpcc-to-non-indexed",
+   "kind": "index",
+   "engine": "postgresql",
+   "benchmark": "tpcc",
+   "actions": [
+    "drop"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "postgresql-tpcc-stats-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh postgresql tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_tpcc_stats.py"
+  },
+  {
+   "id": "postgresql-tpcc-verify-non-indexed",
+   "kind": "index",
+   "engine": "postgresql",
+   "benchmark": "tpcc",
+   "actions": [
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "postgresql-tpcc-run-non-indexed",
+   "kind": "tpcc",
+   "engine": "postgresql",
+   "args": {
+    "run_dir": "C-tpcc/postgresql-non-indexed",
+    "protocol": "protocols/rc20261008-C-v1.json",
+    "phase": "C",
+    "src": "src-c",
+    "schema": "non-indexed",
+    "mode": "main",
+    "blocks": 24
+   }
+  },
+  {
+   "id": "postgresql-tpcc-to-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh postgresql tpcc && cd $RC_CAMPAIGN/src && out=$(taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action create 2>&1); echo \"$out\"; echo \"$out\" | grep -q 'Summary: .* 0 failed'"
+  },
+  {
+   "id": "postgresql-tpcc-stats-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh postgresql tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_tpcc_stats.py"
+  },
+  {
+   "id": "postgresql-tpcc-verify-indexed",
+   "kind": "index",
+   "engine": "postgresql",
+   "benchmark": "tpcc",
+   "actions": [
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "postgresql-tpcc-run-indexed",
+   "kind": "tpcc",
+   "engine": "postgresql",
+   "args": {
+    "run_dir": "C-tpcc/postgresql-indexed",
+    "protocol": "protocols/rc20261008-C-v1.json",
+    "phase": "C",
+    "src": "src-c",
+    "schema": "indexed",
+    "mode": "main",
+    "blocks": 24
+   }
+  },
+  {
+   "id": "postgresql-tpcc-fp-after",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh postgresql tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_fingerprint.py --dbms postgresql --benchmark tpcc --label postgresql-tpcc-C-after --out $RC_CAMPAIGN/evidence/fingerprints/postgresql-tpcc-C-after.json && python3 -c \"import json;a=json.load(open('$RC_CAMPAIGN/evidence/fingerprints/postgresql-tpcc-C-before.json'))['content_sha256'];b=json.load(open('$RC_CAMPAIGN/evidence/fingerprints/postgresql-tpcc-C-after.json'))['content_sha256'];print('before',a,'after',b);assert a==b\""
+  },
+  {
+   "id": "postgresql-sf2-load",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh postgresql tpch 1 && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_sf2_setup.py --engine postgresql --duckdb $RC_CAMPAIGN/datasets/tpch2.duckdb --out $RC_CAMPAIGN/evidence/sf2-setup --create --load --check"
+  },
+  {
+   "id": "postgresql-sf2-fp-before",
+   "kind": "fingerprint",
+   "engine": "postgresql",
+   "scale": 2,
+   "label": "postgresql-sf2-D-before",
+   "expect_source": "sf2-duckdb-source-v2.json"
+  },
+  {
+   "id": "postgresql-sf2-to-non-indexed",
+   "kind": "index",
+   "engine": "postgresql",
+   "scale": 2,
+   "actions": [
+    "analyze",
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "postgresql-sf2-preflight-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh postgresql tpch 2 && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms postgresql --schema non-indexed"
+  },
+  {
+   "id": "postgresql-sf2-run-non-indexed",
+   "kind": "run",
+   "engine": "postgresql",
+   "resumable": true,
+   "args": {
+    "run_dir": "D-sf2/postgresql-non-indexed",
+    "protocol": "protocols/rc20261008-A-v1.json",
+    "phase": "D",
+    "schema": "non-indexed",
+    "scale": 2,
+    "database_label": "tpch_sf2",
+    "mode": "main",
+    "queries": [
+     6,
+     18
+    ]
+   }
+  },
+  {
+   "id": "postgresql-sf2-verify-non-indexed",
+   "kind": "verify",
+   "run_dir": "D-sf2/postgresql-non-indexed"
+  },
+  {
+   "id": "postgresql-sf2-to-indexed",
+   "kind": "index",
+   "engine": "postgresql",
+   "scale": 2,
+   "actions": [
+    "create",
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "postgresql-sf2-preflight-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh postgresql tpch 2 && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms postgresql --schema indexed"
+  },
+  {
+   "id": "postgresql-sf2-run-indexed",
+   "kind": "run",
+   "engine": "postgresql",
+   "resumable": true,
+   "args": {
+    "run_dir": "D-sf2/postgresql-indexed",
+    "protocol": "protocols/rc20261008-A-v1.json",
+    "phase": "D",
+    "schema": "indexed",
+    "scale": 2,
+    "database_label": "tpch_sf2",
+    "mode": "main",
+    "queries": [
+     6,
+     17,
+     18,
+     20,
+     21
+    ]
+   }
+  },
+  {
+   "id": "postgresql-sf2-verify-indexed",
+   "kind": "verify",
+   "run_dir": "D-sf2/postgresql-indexed"
+  },
+  {
+   "id": "postgresql-sf2-fp-after",
+   "kind": "fingerprint",
+   "engine": "postgresql",
+   "scale": 2,
+   "label": "postgresql-sf2-D-after",
+   "expect_source": "sf2-duckdb-source-v2.json"
+  },
+  {
+   "id": "mysql-engine",
+   "kind": "engine",
+   "engine": "mysql",
+   "settle": 90
+  },
+  {
+   "id": "mysql-sf1-fp-before",
+   "kind": "fingerprint",
+   "engine": "mysql",
+   "label": "mysql-sf1-visit-before",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "mysql-sf1-verify-indexed",
+   "kind": "index",
+   "engine": "mysql",
+   "actions": [
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "mysql-sf1-preflight-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh mysql && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms mysql --schema indexed"
+  },
+  {
+   "id": "mysql-F-indexed-django",
+   "kind": "run",
+   "engine": "mysql",
+   "resumable": true,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "F-fourpath/mysql-indexed-django",
+    "protocol": "protocols/rc20261008-F-v1.json",
+    "phase": "F",
+    "schema": "indexed",
+    "mode": "main",
+    "queries": [
+     12,
+     15
+    ],
+    "extra": [
+     "--framework",
+     "django"
+    ]
+   }
+  },
+  {
+   "id": "mysql-F-indexed-sqlalchemy",
+   "kind": "run",
+   "engine": "mysql",
+   "resumable": true,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "F-fourpath/mysql-indexed-sqlalchemy",
+    "protocol": "protocols/rc20261008-F-v1.json",
+    "phase": "F",
+    "schema": "indexed",
+    "mode": "main",
+    "queries": [
+     4
+    ],
+    "extra": [
+     "--framework",
+     "sqlalchemy"
+    ]
+   }
+  },
+  {
+   "id": "mysql-sf1-to-non-indexed",
+   "kind": "index",
+   "engine": "mysql",
+   "actions": [
+    "drop",
+    "analyze",
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "mysql-censored-plans",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh mysql && cd $RC_CAMPAIGN/src && cd $RC_CAMPAIGN && taskset -c 2,3 $RC_PY code/rc_explain_censored.py --run-dir A-sf1/mysql-non-indexed --queries 13 17 20 --out evidence/censored-plans/mysql-non-indexed.json"
+  },
+  {
+   "id": "mysql-sf1-preflight-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh mysql && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms mysql --schema non-indexed"
+  },
+  {
+   "id": "mysql-F-non-indexed-django",
+   "kind": "run",
+   "engine": "mysql",
+   "resumable": true,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "F-fourpath/mysql-non-indexed-django",
+    "protocol": "protocols/rc20261008-F-v1.json",
+    "phase": "F",
+    "schema": "non-indexed",
+    "mode": "main",
+    "queries": [
+     15,
+     22
+    ],
+    "extra": [
+     "--framework",
+     "django"
+    ]
+   }
+  },
+  {
+   "id": "mysql-F-non-indexed-sqlalchemy",
+   "kind": "run",
+   "engine": "mysql",
+   "resumable": true,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "F-fourpath/mysql-non-indexed-sqlalchemy",
+    "protocol": "protocols/rc20261008-F-v1.json",
+    "phase": "F",
+    "schema": "non-indexed",
+    "mode": "main",
+    "queries": [
+     18
+    ],
+    "extra": [
+     "--framework",
+     "sqlalchemy"
+    ]
+   }
+  },
+  {
+   "id": "mysql-B-non-indexed-q13-django",
+   "kind": "run",
+   "engine": "mysql",
+   "resumable": true,
+   "args": {
+    "runner": "rc_censored.py",
+    "run_dir": "B-censored/mysql-non-indexed-django",
+    "protocol": "protocols/rc20261008-B-v1.json",
+    "phase": "B",
+    "schema": "non-indexed",
+    "mode": "main",
+    "queries": [
+     13
+    ],
+    "extra": [
+     "--framework",
+     "django",
+     "--censored-path",
+     "django/orm"
+    ]
+   }
+  },
+  {
+   "id": "mysql-sf1-fp-after",
+   "kind": "fingerprint",
+   "engine": "mysql",
+   "label": "mysql-sf1-visit-after",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "mysql-tpcc-fp-before",
+   "kind": "fingerprint",
+   "engine": "mysql",
+   "benchmark": "tpcc",
+   "label": "mysql-tpcc-C-before"
+  },
+  {
+   "id": "mysql-tpcc-to-non-indexed",
+   "kind": "index",
+   "engine": "mysql",
+   "benchmark": "tpcc",
+   "actions": [
+    "drop"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "mysql-tpcc-stats-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh mysql tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_tpcc_stats.py"
+  },
+  {
+   "id": "mysql-tpcc-verify-non-indexed",
+   "kind": "index",
+   "engine": "mysql",
+   "benchmark": "tpcc",
+   "actions": [
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "mysql-tpcc-run-non-indexed",
+   "kind": "tpcc",
+   "engine": "mysql",
+   "args": {
+    "run_dir": "C-tpcc/mysql-non-indexed",
+    "protocol": "protocols/rc20261008-C-v1.json",
+    "phase": "C",
+    "src": "src-c",
+    "schema": "non-indexed",
+    "mode": "main",
+    "blocks": 24
+   }
+  },
+  {
+   "id": "mysql-tpcc-to-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh mysql tpcc && cd $RC_CAMPAIGN/src && out=$(taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action create 2>&1); echo \"$out\"; echo \"$out\" | grep -q 'Summary: .* 0 failed'"
+  },
+  {
+   "id": "mysql-tpcc-stats-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh mysql tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_tpcc_stats.py"
+  },
+  {
+   "id": "mysql-tpcc-verify-indexed",
+   "kind": "index",
+   "engine": "mysql",
+   "benchmark": "tpcc",
+   "actions": [
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "mysql-tpcc-run-indexed",
+   "kind": "tpcc",
+   "engine": "mysql",
+   "args": {
+    "run_dir": "C-tpcc/mysql-indexed",
+    "protocol": "protocols/rc20261008-C-v1.json",
+    "phase": "C",
+    "src": "src-c",
+    "schema": "indexed",
+    "mode": "main",
+    "blocks": 24
+   }
+  },
+  {
+   "id": "mysql-tpcc-fp-after",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh mysql tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_fingerprint.py --dbms mysql --benchmark tpcc --label mysql-tpcc-C-after --out $RC_CAMPAIGN/evidence/fingerprints/mysql-tpcc-C-after.json && python3 -c \"import json;a=json.load(open('$RC_CAMPAIGN/evidence/fingerprints/mysql-tpcc-C-before.json'))['content_sha256'];b=json.load(open('$RC_CAMPAIGN/evidence/fingerprints/mysql-tpcc-C-after.json'))['content_sha256'];print('before',a,'after',b);assert a==b\""
+  },
+  {
+   "id": "mysql-root-mysql-sf2-grant",
+   "kind": "shell",
+   "command": "sudo -n /usr/local/sbin/rc-campaign-root mysql-sf2-grant"
+  },
+  {
+   "id": "mysql-sf2-load",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh mysql tpch 1 && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_sf2_setup.py --engine mysql --duckdb $RC_CAMPAIGN/datasets/tpch2.duckdb --out $RC_CAMPAIGN/evidence/sf2-setup --create --load --check"
+  },
+  {
+   "id": "mysql-sf2-fp-before",
+   "kind": "fingerprint",
+   "engine": "mysql",
+   "scale": 2,
+   "label": "mysql-sf2-D-before",
+   "expect_source": "sf2-duckdb-source-v2.json"
+  },
+  {
+   "id": "mysql-sf2-to-non-indexed",
+   "kind": "index",
+   "engine": "mysql",
+   "scale": 2,
+   "actions": [
+    "analyze",
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "mysql-sf2-preflight-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh mysql tpch 2 && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms mysql --schema non-indexed"
+  },
+  {
+   "id": "mysql-sf2-run-non-indexed",
+   "kind": "run",
+   "engine": "mysql",
+   "resumable": true,
+   "args": {
+    "run_dir": "D-sf2/mysql-non-indexed",
+    "protocol": "protocols/rc20261008-A-v1.json",
+    "phase": "D",
+    "schema": "non-indexed",
+    "scale": 2,
+    "database_label": "tpch_sf2",
+    "mode": "main",
+    "queries": [
+     6,
+     18,
+     21
+    ]
+   }
+  },
+  {
+   "id": "mysql-sf2-verify-non-indexed",
+   "kind": "verify",
+   "run_dir": "D-sf2/mysql-non-indexed"
+  },
+  {
+   "id": "mysql-sf2-to-indexed",
+   "kind": "index",
+   "engine": "mysql",
+   "scale": 2,
+   "actions": [
+    "create",
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "mysql-sf2-preflight-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh mysql tpch 2 && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms mysql --schema indexed"
+  },
+  {
+   "id": "mysql-sf2-run-indexed",
+   "kind": "run",
+   "engine": "mysql",
+   "resumable": true,
+   "args": {
+    "run_dir": "D-sf2/mysql-indexed",
+    "protocol": "protocols/rc20261008-A-v1.json",
+    "phase": "D",
+    "schema": "indexed",
+    "scale": 2,
+    "database_label": "tpch_sf2",
+    "mode": "main",
+    "queries": [
+     6,
+     17,
+     18,
+     20,
+     21
+    ]
+   }
+  },
+  {
+   "id": "mysql-sf2-verify-indexed",
+   "kind": "verify",
+   "run_dir": "D-sf2/mysql-indexed"
+  },
+  {
+   "id": "mysql-sf2-fp-after",
+   "kind": "fingerprint",
+   "engine": "mysql",
+   "scale": 2,
+   "label": "mysql-sf2-D-after",
+   "expect_source": "sf2-duckdb-source-v2.json"
+  },
+  {
+   "id": "oracle-engine",
+   "kind": "engine",
+   "engine": "oracle",
+   "settle": 90
+  },
+  {
+   "id": "oracle-sf1-fp-before",
+   "kind": "fingerprint",
+   "engine": "oracle",
+   "label": "oracle-sf1-visit-before",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "oracle-q20-plans",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh oracle && cd $RC_CAMPAIGN/src && cd $RC_CAMPAIGN && taskset -c 2,3 $RC_PY code/rc_explain_g.py --run-dir A-sf1/oracle-indexed --query 20 --out evidence/G-plans/oracle-indexed-q20-host.json"
+  },
+  {
+   "id": "oracle-sf1-verify-indexed",
+   "kind": "index",
+   "engine": "oracle",
+   "actions": [
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "oracle-sf1-preflight-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh oracle && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms oracle --schema indexed"
+  },
+  {
+   "id": "oracle-F-indexed-django",
+   "kind": "run",
+   "engine": "oracle",
+   "resumable": true,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "F-fourpath/oracle-indexed-django",
+    "protocol": "protocols/rc20261008-F-v1.json",
+    "phase": "F",
+    "schema": "indexed",
+    "mode": "main",
+    "queries": [
+     2,
+     7,
+     8,
+     15
+    ],
+    "extra": [
+     "--framework",
+     "django"
+    ]
+   }
+  },
+  {
+   "id": "oracle-F-indexed-sqlalchemy",
+   "kind": "run",
+   "engine": "oracle",
+   "resumable": true,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "F-fourpath/oracle-indexed-sqlalchemy",
+    "protocol": "protocols/rc20261008-F-v1.json",
+    "phase": "F",
+    "schema": "indexed",
+    "mode": "main",
+    "queries": [
+     15
+    ],
+    "extra": [
+     "--framework",
+     "sqlalchemy"
+    ]
+   }
+  },
+  {
+   "id": "oracle-sf1-to-non-indexed",
+   "kind": "index",
+   "engine": "oracle",
+   "actions": [
+    "drop",
+    "analyze",
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "oracle-sf1-preflight-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh oracle && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms oracle --schema non-indexed"
+  },
+  {
+   "id": "oracle-F-non-indexed-django",
+   "kind": "run",
+   "engine": "oracle",
+   "resumable": true,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "F-fourpath/oracle-non-indexed-django",
+    "protocol": "protocols/rc20261008-F-v1.json",
+    "phase": "F",
+    "schema": "non-indexed",
+    "mode": "main",
+    "queries": [
+     2,
+     7,
+     15
+    ],
+    "extra": [
+     "--framework",
+     "django"
+    ]
+   }
+  },
+  {
+   "id": "oracle-F-non-indexed-sqlalchemy",
+   "kind": "run",
+   "engine": "oracle",
+   "resumable": true,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "F-fourpath/oracle-non-indexed-sqlalchemy",
+    "protocol": "protocols/rc20261008-F-v1.json",
+    "phase": "F",
+    "schema": "non-indexed",
+    "mode": "main",
+    "queries": [
+     12,
+     15
+    ],
+    "extra": [
+     "--framework",
+     "sqlalchemy"
+    ]
+   }
+  },
+  {
+   "id": "oracle-sf1-fp-after",
+   "kind": "fingerprint",
+   "engine": "oracle",
+   "label": "oracle-sf1-visit-after",
+   "expect_source": "sf1-duckdb-mac-generated-v2.json"
+  },
+  {
+   "id": "oracle-tpcc-fp-before",
+   "kind": "fingerprint",
+   "engine": "oracle",
+   "benchmark": "tpcc",
+   "label": "oracle-tpcc-C-before"
+  },
+  {
+   "id": "oracle-tpcc-to-non-indexed",
+   "kind": "index",
+   "engine": "oracle",
+   "benchmark": "tpcc",
+   "actions": [
+    "drop"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "oracle-tpcc-stats-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh oracle tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_tpcc_stats.py"
+  },
+  {
+   "id": "oracle-tpcc-verify-non-indexed",
+   "kind": "index",
+   "engine": "oracle",
+   "benchmark": "tpcc",
+   "actions": [
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "oracle-tpcc-run-non-indexed",
+   "kind": "tpcc",
+   "engine": "oracle",
+   "args": {
+    "run_dir": "C-tpcc/oracle-non-indexed",
+    "protocol": "protocols/rc20261008-C-v1.json",
+    "phase": "C",
+    "src": "src-c",
+    "schema": "non-indexed",
+    "mode": "main",
+    "blocks": 24
+   }
+  },
+  {
+   "id": "oracle-tpcc-to-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh oracle tpcc && cd $RC_CAMPAIGN/src && out=$(taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action create 2>&1); echo \"$out\"; echo \"$out\" | grep -q 'Summary: .* 0 failed'"
+  },
+  {
+   "id": "oracle-tpcc-stats-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh oracle tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_tpcc_stats.py"
+  },
+  {
+   "id": "oracle-tpcc-verify-indexed",
+   "kind": "index",
+   "engine": "oracle",
+   "benchmark": "tpcc",
+   "actions": [
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "oracle-tpcc-run-indexed",
+   "kind": "tpcc",
+   "engine": "oracle",
+   "args": {
+    "run_dir": "C-tpcc/oracle-indexed",
+    "protocol": "protocols/rc20261008-C-v1.json",
+    "phase": "C",
+    "src": "src-c",
+    "schema": "indexed",
+    "mode": "main",
+    "blocks": 24
+   }
+  },
+  {
+   "id": "oracle-tpcc-fp-after",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh oracle tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_fingerprint.py --dbms oracle --benchmark tpcc --label oracle-tpcc-C-after --out $RC_CAMPAIGN/evidence/fingerprints/oracle-tpcc-C-after.json && python3 -c \"import json;a=json.load(open('$RC_CAMPAIGN/evidence/fingerprints/oracle-tpcc-C-before.json'))['content_sha256'];b=json.load(open('$RC_CAMPAIGN/evidence/fingerprints/oracle-tpcc-C-after.json'))['content_sha256'];print('before',a,'after',b);assert a==b\""
+  },
+  {
+   "id": "oracle-root-oracle-sf2-user",
+   "kind": "shell",
+   "command": "sudo -n /usr/local/sbin/rc-campaign-root oracle-sf2-user"
+  },
+  {
+   "id": "oracle-sf2-load",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh oracle tpch 1 && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_sf2_setup.py --engine oracle --duckdb $RC_CAMPAIGN/datasets/tpch2.duckdb --out $RC_CAMPAIGN/evidence/sf2-setup --create --load --check"
+  },
+  {
+   "id": "oracle-sf2-fp-before",
+   "kind": "fingerprint",
+   "engine": "oracle",
+   "scale": 2,
+   "label": "oracle-sf2-D-before",
+   "expect_source": "sf2-duckdb-source-v2.json"
+  },
+  {
+   "id": "oracle-sf2-to-non-indexed",
+   "kind": "index",
+   "engine": "oracle",
+   "scale": 2,
+   "actions": [
+    "analyze",
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "oracle-sf2-preflight-non-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh oracle tpch 2 && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms oracle --schema non-indexed"
+  },
+  {
+   "id": "oracle-sf2-run-non-indexed",
+   "kind": "run",
+   "engine": "oracle",
+   "resumable": true,
+   "args": {
+    "run_dir": "D-sf2/oracle-non-indexed",
+    "protocol": "protocols/rc20261008-A-v1.json",
+    "phase": "D",
+    "schema": "non-indexed",
+    "scale": 2,
+    "database_label": "tpch_sf2",
+    "mode": "main",
+    "queries": [
+     6,
+     17,
+     18,
+     20,
+     21
+    ]
+   }
+  },
+  {
+   "id": "oracle-sf2-verify-non-indexed",
+   "kind": "verify",
+   "run_dir": "D-sf2/oracle-non-indexed"
+  },
+  {
+   "id": "oracle-sf2-to-indexed",
+   "kind": "index",
+   "engine": "oracle",
+   "scale": 2,
+   "actions": [
+    "create",
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "oracle-sf2-preflight-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh oracle tpch 2 && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms oracle --schema indexed"
+  },
+  {
+   "id": "oracle-sf2-run-indexed",
+   "kind": "run",
+   "engine": "oracle",
+   "resumable": true,
+   "args": {
+    "run_dir": "D-sf2/oracle-indexed",
+    "protocol": "protocols/rc20261008-A-v1.json",
+    "phase": "D",
+    "schema": "indexed",
+    "scale": 2,
+    "database_label": "tpch_sf2",
+    "mode": "main",
+    "queries": [
+     6,
+     17,
+     18,
+     20,
+     21
+    ]
+   }
+  },
+  {
+   "id": "oracle-sf2-verify-indexed",
+   "kind": "verify",
+   "run_dir": "D-sf2/oracle-indexed"
+  },
+  {
+   "id": "oracle-sf2-fp-after",
+   "kind": "fingerprint",
+   "engine": "oracle",
+   "scale": 2,
+   "label": "oracle-sf2-D-after",
+   "expect_source": "sf2-duckdb-source-v2.json"
+  }
+ ]
+}

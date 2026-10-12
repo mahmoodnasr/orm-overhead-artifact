@@ -1,0 +1,16 @@
+{
+ "query": 13,
+ "framework": "django",
+ "status": "complete",
+ "censored_arm": "django/orm",
+ "inputs": 8,
+ "kinds": [
+  "lower_bound"
+ ],
+ "utc": "2026-10-09T23:45:52.722437+00:00",
+ "cairo": "2026-10-10T02:45:52.722437+03:00",
+ "median_ratio_at_least": {
+  "type": "float",
+  "value": "475.06872592004976"
+ }
+}

@@ -1,0 +1,101 @@
+SQL_ID  2g162gmj3q1fy, child number 1
+-------------------------------------
+SELECT s_name, s_address     FROM supplier, nation     WHERE s_suppkey 
+IN (         SELECT ps_suppkey         FROM partsupp         WHERE 
+ps_partkey IN (             SELECT p_partkey             FROM part      
+       WHERE p_name LIKE 'forest%'           )           AND 
+ps_availqty > (             SELECT 0.5 * SUM(l_quantity)             
+FROM lineitem             WHERE l_partkey = ps_partkey               
+AND l_suppkey = ps_suppkey               AND l_shipdate >= 
+TO_DATE('1994-01-01', 'YYYY-MM-DD')               AND l_shipdate < 
+TO_DATE('1995-01-01', 'YYYY-MM-DD')           )       )       AND 
+s_nationkey = n_nationkey       AND n_name = 'CANADA'     ORDER BY 
+s_name
+ 
+Plan hash value: 1111411882
+ 
+------------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                 | Name     | Starts | E-Rows | A-Rows |   A-Time   | Buffers | Reads  |  OMem |  1Mem | Used-Mem |
+------------------------------------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT          |          |      1 |        |    186 |00:00:01.34 |     112K|    109K|       |       |          |
+|   1 |  SORT ORDER BY            |          |      1 |     14 |    186 |00:00:01.34 |     112K|    109K| 22528 | 22528 |20480  (0)|
+|*  2 |   HASH JOIN               |          |      1 |     14 |    186 |00:00:01.34 |     112K|    109K|  2402K|  2402K|  746K (0)|
+|*  3 |    TABLE ACCESS FULL      | NATION   |      1 |      1 |      1 |00:00:00.01 |       6 |      0 |       |       |          |
+|*  4 |    HASH JOIN RIGHT SEMI   |          |      1 |    349 |   4397 |00:00:01.34 |     112K|    109K|  2402K|  2402K| 1707K (0)|
+|   5 |     VIEW                  | VW_NSO_2 |      1 |    349 |   5833 |00:00:01.34 |     112K|    109K|       |       |          |
+|*  6 |      FILTER               |          |      1 |        |   5833 |00:00:01.34 |     112K|    109K|       |       |          |
+|   7 |       HASH GROUP BY       |          |      1 |    349 |   5843 |00:00:01.33 |     112K|    109K|  1385K|  1231K| 1718K (0)|
+|*  8 |        HASH JOIN          |          |      1 |   6962 |   9741 |00:00:01.32 |     112K|    109K|  1631K|  1535K| 1912K (0)|
+|*  9 |         HASH JOIN         |          |      1 |   6403 |   8508 |00:00:00.55 |   19846 |  16471 |  1573K|  1573K| 1419K (0)|
+|* 10 |          TABLE ACCESS FULL| PART     |      1 |   1616 |   2127 |00:00:00.02 |    3372 |      0 |       |       |          |
+|  11 |          TABLE ACCESS FULL| PARTSUPP |      1 |    800K|    800K|00:00:00.50 |   16474 |  16471 |       |       |          |
+|* 12 |         TABLE ACCESS FULL | LINEITEM |      1 |    869K|    909K|00:00:00.66 |   92728 |  92716 |       |       |          |
+|  13 |     TABLE ACCESS FULL     | SUPPLIER |      1 |  10000 |  10000 |00:00:00.01 |     235 |      0 |       |       |          |
+------------------------------------------------------------------------------------------------------------------------------------
+ 
+Query Block Name / Object Alias (identified by operation id):
+-------------------------------------------------------------
+ 
+   1 - SEL$C6D4C92A
+   3 - SEL$C6D4C92A / "NATION"@"SEL$1"
+   5 - SEL$3479EF6D / "VW_NSO_2"@"SEL$C6D4C92A"
+   6 - SEL$3479EF6D
+  10 - SEL$3479EF6D / "PART"@"SEL$3"
+  11 - SEL$3479EF6D / "PARTSUPP"@"SEL$2"
+  12 - SEL$3479EF6D / "LINEITEM"@"SEL$4"
+  13 - SEL$C6D4C92A / "SUPPLIER"@"SEL$1"
+ 
+Outline Data
+-------------
+ 
+  /*+
+      BEGIN_OUTLINE_DATA
+      IGNORE_OPTIM_EMBEDDED_HINTS
+      OPTIMIZER_FEATURES_ENABLE('23.1.0')
+      DB_VERSION('23.1.0')
+      ALL_ROWS
+      OUTLINE_LEAF(@"SEL$3479EF6D")
+      MERGE(@"SEL$8F9407EC" >"SEL$EB86E681")
+      OUTLINE_LEAF(@"SEL$C6D4C92A")
+      UNNEST(@"SEL$AF66041B" UNNEST_SEMIJ_VIEW)
+      OUTLINE(@"SEL$EB86E681")
+      OUTLINE(@"SEL$8F9407EC")
+      OUTLINE(@"SEL$1")
+      OUTLINE(@"SEL$AF66041B")
+      UNNEST(@"SEL$4")
+      UNNEST(@"SEL$3")
+      OUTLINE(@"SEL$4")
+      OUTLINE(@"SEL$93120962")
+      OUTLINE(@"SEL$3")
+      OUTLINE(@"SEL$2")
+      FULL(@"SEL$C6D4C92A" "SUPPLIER"@"SEL$1")
+      NO_ACCESS(@"SEL$C6D4C92A" "VW_NSO_2"@"SEL$C6D4C92A")
+      FULL(@"SEL$C6D4C92A" "NATION"@"SEL$1")
+      LEADING(@"SEL$C6D4C92A" "SUPPLIER"@"SEL$1" "VW_NSO_2"@"SEL$C6D4C92A" "NATION"@"SEL$1")
+      USE_HASH(@"SEL$C6D4C92A" "VW_NSO_2"@"SEL$C6D4C92A")
+      USE_HASH(@"SEL$C6D4C92A" "NATION"@"SEL$1")
+      SWAP_JOIN_INPUTS(@"SEL$C6D4C92A" "VW_NSO_2"@"SEL$C6D4C92A")
+      SWAP_JOIN_INPUTS(@"SEL$C6D4C92A" "NATION"@"SEL$1")
+      FULL(@"SEL$3479EF6D" "PART"@"SEL$3")
+      FULL(@"SEL$3479EF6D" "PARTSUPP"@"SEL$2")
+      FULL(@"SEL$3479EF6D" "LINEITEM"@"SEL$4")
+      LEADING(@"SEL$3479EF6D" "PART"@"SEL$3" "PARTSUPP"@"SEL$2" "LINEITEM"@"SEL$4")
+      USE_HASH(@"SEL$3479EF6D" "PARTSUPP"@"SEL$2")
+      USE_HASH(@"SEL$3479EF6D" "LINEITEM"@"SEL$4")
+      USE_HASH_AGGREGATION(@"SEL$3479EF6D" GROUP_BY)
+      END_OUTLINE_DATA
+  */
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   2 - access("S_NATIONKEY"="N_NATIONKEY")
+   3 - filter("N_NAME"='CANADA')
+   4 - access("S_SUPPKEY"="PS_SUPPKEY")
+   6 - filter("PS_AVAILQTY">.5*SUM("L_QUANTITY"))
+   8 - access("L_PARTKEY"="PS_PARTKEY" AND "L_SUPPKEY"="PS_SUPPKEY")
+   9 - access("PS_PARTKEY"="P_PARTKEY")
+  10 - filter("P_NAME" LIKE 'forest%')
+  12 - filter(("L_SHIPDATE"<TO_DATE(' 1995-01-01 00:00:00', 'syyyy-mm-dd hh24:mi:ss') AND "L_SHIPDATE">=TO_DATE(' 
+              1994-01-01 00:00:00', 'syyyy-mm-dd hh24:mi:ss')))
+ 

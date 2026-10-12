@@ -1,0 +1,103 @@
+{
+ "rule": "paper cells with overhead > +100% (cells.csv) minus the three October cells (reused); Phase A cells > +100% are added when phase A finishes",
+ "source": "IJACSA_Paper/reproducibility/derived/cells.csv sha256 5aae223e...",
+ "reused_october": [
+  "oracle/non-indexed/Q17/django",
+  "oracle/non-indexed/Q20/django",
+  "commercial_a/indexed/Q18/django"
+ ],
+ "groups": [
+  {
+   "dbms": "mysql",
+   "schema": "indexed",
+   "framework": "django",
+   "queries": [
+    15
+   ]
+  },
+  {
+   "dbms": "mysql",
+   "schema": "non-indexed",
+   "framework": "django",
+   "queries": [
+    15
+   ]
+  },
+  {
+   "dbms": "oracle",
+   "schema": "indexed",
+   "framework": "django",
+   "queries": [
+    2,
+    15
+   ]
+  },
+  {
+   "dbms": "oracle",
+   "schema": "indexed",
+   "framework": "sqlalchemy",
+   "queries": [
+    15
+   ]
+  },
+  {
+   "dbms": "oracle",
+   "schema": "non-indexed",
+   "framework": "django",
+   "queries": [
+    2,
+    15
+   ]
+  },
+  {
+   "dbms": "oracle",
+   "schema": "non-indexed",
+   "framework": "sqlalchemy",
+   "queries": [
+    15
+   ]
+  },
+  {
+   "dbms": "commercial_a",
+   "schema": "indexed",
+   "framework": "django",
+   "queries": [
+    4,
+    17,
+    19,
+    20,
+    21
+   ]
+  },
+  {
+   "dbms": "commercial_a",
+   "schema": "indexed",
+   "framework": "sqlalchemy",
+   "queries": [
+    13,
+    15,
+    17
+   ]
+  },
+  {
+   "dbms": "commercial_a",
+   "schema": "non-indexed",
+   "framework": "django",
+   "queries": [
+    4,
+    15,
+    21,
+    22
+   ]
+  },
+  {
+   "dbms": "commercial_a",
+   "schema": "non-indexed",
+   "framework": "sqlalchemy",
+   "queries": [
+    13,
+    15
+   ]
+  }
+ ]
+}

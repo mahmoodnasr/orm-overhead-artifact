@@ -1,0 +1,57 @@
+{
+ "G": [
+  {
+   "sql": "SELECT customer.c_custkey AS customer_c_custkey, customer.c_name AS customer_c_name, sum(lineitem.l_extendedprice * (%(l_discount_1)s - lineitem.l_discount)) AS revenue, customer.c_acctbal AS customer_c_acctbal, nation.n_name AS nation_n_name, customer.c_address AS customer_c_address, customer.c_phone AS customer_c_phone, customer.c_comment AS customer_c_comment \nFROM customer, lineitem, nation, orders \nWHERE customer.c_custkey = orders.o_custkey AND lineitem.l_orderkey = orders.o_orderkey AND orders.o_orderdate >= %(o_orderdate_1)s AND orders.o_orderdate < %(o_orderdate_2)s AND lineitem.l_returnflag = %(l_returnflag_1)s AND customer.c_nationkey = nation.n_nationkey GROUP BY customer.c_custkey, customer.c_name, customer.c_acctbal, customer.c_phone, nation.n_name, customer.c_address, customer.c_comment ORDER BY sum(lineitem.l_extendedprice * (%(l_discount_1)s - lineitem.l_discount)) DESC \n LIMIT %(param_1)s",
+   "params": {
+    "l_discount_1": 1,
+    "o_orderdate_1": {
+     "type": "date",
+     "value": "1994-12-01"
+    },
+    "o_orderdate_2": {
+     "type": "date",
+     "value": "1995-03-01"
+    },
+    "l_returnflag_1": "R",
+    "param_1": 20
+   }
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "SELECT c_custkey, c_name,\n       SUM(l_extendedprice * (1 - l_discount)) AS revenue,\n       c_acctbal, n_name, c_address, c_phone, c_comment\nFROM customer, orders, lineitem, nation\nWHERE c_custkey = o_custkey\n  AND l_orderkey = o_orderkey\n  AND o_orderdate >= :b0\n  AND o_orderdate < :b1\n  AND l_returnflag = 'R'\n  AND c_nationkey = n_nationkey\nGROUP BY c_custkey, c_name, c_acctbal, c_phone, n_name, c_address, c_comment\nORDER BY revenue DESC\nLIMIT 20",
+    "values": [
+     {
+      "type": "date",
+      "value": "1994-12-01"
+     },
+     {
+      "type": "date",
+      "value": "1995-03-01"
+     }
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "DATE '1994-12-01'",
+     "bound": true,
+     "kind": "date",
+     "value_type": "date",
+     "type_source": "orm"
+    },
+    {
+     "literal": "DATE '1995-03-01'",
+     "bound": true,
+     "kind": "date",
+     "value_type": "date",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 2
+ },
+ "G_output_columns": null
+}

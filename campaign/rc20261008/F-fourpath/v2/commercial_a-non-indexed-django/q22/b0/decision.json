@@ -1,0 +1,50 @@
+{
+ "query": 22,
+ "framework": "django",
+ "block": 0,
+ "attempt": 1,
+ "input_id": "q22warm",
+ "sequence_id": null,
+ "comparisons": {
+  "O=L": {
+   "policy": "rc20261008-results-v3",
+   "query": 22,
+   "rows": [
+    7,
+    7
+   ],
+   "classification": "exact",
+   "accepted": true
+  },
+  "G=L": {
+   "policy": "rc20261008-results-v3",
+   "query": 22,
+   "rows": [
+    7,
+    7
+   ],
+   "classification": "exact",
+   "accepted": true
+  },
+  "B=L": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "timeout",
+    "ok"
+   ]
+  }
+ },
+ "accepted": false,
+ "bound_literals": 14,
+ "ratios": {},
+ "policy": "rc20261008-results-v3",
+ "records": {
+  "O": "a1/warm-django-O.json.gz",
+  "G": "a1/warm-django-G.json.gz",
+  "B": "a1/warm-django-B.json.gz",
+  "L": "a1/warm-django-L.json.gz"
+ },
+ "utc": "2026-10-09T20:05:19.022007+00:00",
+ "cairo": "2026-10-09T23:05:19.022007+03:00"
+}

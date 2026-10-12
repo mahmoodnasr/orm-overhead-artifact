@@ -1,0 +1,107 @@
+{
+ "source_db": "tpch",
+ "target_db": "tpch_sf2",
+ "applied": [],
+ "utc": "2026-10-10T00:32:09.616418+00:00",
+ "databases": {
+  "tpch": {
+   "encoding": "UTF8",
+   "collate": "en_US.UTF-8",
+   "ctype": "en_US.UTF-8"
+  },
+  "tpch_sf2": {
+   "encoding": "UTF8",
+   "collate": "en_US.UTF-8",
+   "ctype": "en_US.UTF-8"
+  }
+ },
+ "tpch_db_role_settings": [],
+ "settings": {
+  "tpch": {
+   "effective_cache_size": {
+    "setting": "524288",
+    "unit": "8kB",
+    "source": "default"
+   },
+   "jit": {
+    "setting": "on",
+    "unit": null,
+    "source": "default"
+   },
+   "max_parallel_workers": {
+    "setting": "0",
+    "unit": null,
+    "source": "configuration file"
+   },
+   "max_parallel_workers_per_gather": {
+    "setting": "0",
+    "unit": null,
+    "source": "configuration file"
+   },
+   "random_page_cost": {
+    "setting": "4",
+    "unit": null,
+    "source": "default"
+   },
+   "server_version": {
+    "setting": "18.6 (Ubuntu 18.6-1.pgdg24.04+2)",
+    "unit": null,
+    "source": "default"
+   },
+   "shared_buffers": {
+    "setting": "196608",
+    "unit": "8kB",
+    "source": "configuration file"
+   },
+   "work_mem": {
+    "setting": "32768",
+    "unit": "kB",
+    "source": "configuration file"
+   }
+  },
+  "tpch_sf2": {
+   "effective_cache_size": {
+    "setting": "524288",
+    "unit": "8kB",
+    "source": "default"
+   },
+   "jit": {
+    "setting": "on",
+    "unit": null,
+    "source": "default"
+   },
+   "max_parallel_workers": {
+    "setting": "0",
+    "unit": null,
+    "source": "configuration file"
+   },
+   "max_parallel_workers_per_gather": {
+    "setting": "0",
+    "unit": null,
+    "source": "configuration file"
+   },
+   "random_page_cost": {
+    "setting": "4",
+    "unit": null,
+    "source": "default"
+   },
+   "server_version": {
+    "setting": "18.6 (Ubuntu 18.6-1.pgdg24.04+2)",
+    "unit": null,
+    "source": "default"
+   },
+   "shared_buffers": {
+    "setting": "196608",
+    "unit": "8kB",
+    "source": "configuration file"
+   },
+   "work_mem": {
+    "setting": "32768",
+    "unit": "kB",
+    "source": "configuration file"
+   }
+  }
+ },
+ "problems": [],
+ "equal": true
+}

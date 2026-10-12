@@ -1,0 +1,4 @@
+system,schema,query,framework,arms
+oracle,non-indexed,17,django,"{""django/orm"": ""censored""}"
+oracle,non-indexed,20,django,"{""django/orm"": ""censored""}"
+commercial_a,indexed,18,django,"{""django/orm"": ""censored""}"

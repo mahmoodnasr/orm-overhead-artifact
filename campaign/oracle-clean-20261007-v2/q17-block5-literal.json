@@ -1,0 +1,37 @@
+{
+  "followup_id": "3b3b8f9c-bb10-4333-bb95-6e54d322bfbb",
+  "environment_sha256": "ff1063e738f014b7e9a705893371a0d8165bad69981602b6f628088df8f3ffd0",
+  "query": 17,
+  "schema": "non-indexed",
+  "dbms": "oracle",
+  "block": 5,
+  "position": 3,
+  "path": "literal",
+  "parameter_set_id": "q17s5",
+  "parameters": {
+    "brand": "Brand#21",
+    "container": "SM BAG"
+  },
+  "utc": "2026-10-07T17:46:41.729920+00:00",
+  "elapsed_s": {
+    "type": "float",
+    "value": "0.6992861130001984"
+  },
+  "status": "ok",
+  "rows": [
+    {
+      "AVG_YEARLY": {
+        "type": "Decimal",
+        "value": "308693.8828571428571428571428571428571429"
+      }
+    }
+  ],
+  "statements": [
+    {
+      "sql": "\n    SELECT SUM(l_extendedprice) / 7.0 as avg_yearly\n    FROM lineitem, part\n    WHERE p_partkey = l_partkey\n      AND p_brand = 'Brand#21'\n      AND p_container = 'SM BAG'\n      AND l_quantity < (\n        SELECT 0.2 * AVG(l_quantity)\n        FROM lineitem\n        WHERE l_partkey = p_partkey\n      )\n    ",
+      "params": null,
+      "many": false
+    }
+  ],
+  "result_sha256": "8b51e525ca0dfbe5944546cbaf2319e1d600d1a26d9afa12a5f967283836cc4e"
+}

@@ -1,0 +1,54 @@
+{
+  "identity": {
+    "sql_id": "29bvcq39x59r5",
+    "child_number": 1
+  },
+  "sql": "SELECT /* B8-cache-probe-20260919 */ COUNT(*) AS n FROM part WHERE p_partkey=:arg0",
+  "operators": [
+    {
+      "id": 0,
+      "parent_id": null,
+      "operation": "SELECT STATEMENT",
+      "options": null,
+      "object_owner": null,
+      "object_name": null,
+      "cardinality": null,
+      "cost": 1,
+      "last_starts": 1,
+      "last_output_rows": 1,
+      "last_cr_buffer_gets": 2,
+      "last_disk_reads": 0,
+      "last_elapsed_time": 74
+    },
+    {
+      "id": 1,
+      "parent_id": 0,
+      "operation": "SORT",
+      "options": "AGGREGATE",
+      "object_owner": null,
+      "object_name": null,
+      "cardinality": 1,
+      "cost": null,
+      "last_starts": 1,
+      "last_output_rows": 1,
+      "last_cr_buffer_gets": 2,
+      "last_disk_reads": 0,
+      "last_elapsed_time": 74
+    },
+    {
+      "id": 2,
+      "parent_id": 1,
+      "operation": "INDEX",
+      "options": "UNIQUE SCAN",
+      "object_owner": "TPCH",
+      "object_name": "PK_PART",
+      "cardinality": 1,
+      "cost": 1,
+      "last_starts": 1,
+      "last_output_rows": 1,
+      "last_cr_buffer_gets": 2,
+      "last_disk_reads": 0,
+      "last_elapsed_time": 65
+    }
+  ]
+}

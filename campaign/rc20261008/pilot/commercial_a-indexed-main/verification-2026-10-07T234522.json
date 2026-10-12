@@ -1,0 +1,121 @@
+{
+ "run_dir": "<campaign>/pilot/commercial_a-indexed-main",
+ "parameters": {
+  "protocol_id": "rc20261008-P-v1",
+  "protocol_sha256": "d4253f502c26142da638df8bfc699646dd4627743c4c5dc5e953e1caed972354",
+  "phase": "P",
+  "dbms": "commercial_a",
+  "schema": "indexed",
+  "scale": 1,
+  "queries": [
+   6,
+   14
+  ],
+  "timeout_s": {
+   "type": "float",
+   "value": "900.0"
+  },
+  "mode": "pilot",
+  "blocks": 8,
+  "client_mode": "same-host",
+  "database_label": "tpch"
+ },
+ "protocol_sha256": "d4253f502c26142da638df8bfc699646dd4627743c4c5dc5e953e1caed972354",
+ "environments": {
+  "7ac8b927152d9a2f371132b167f5d255f1d4724ecf157192b20f1f0b11a746d2": [
+   "inventory-before-c417f41bd6594eaf8d6ab632014c0503.json",
+   "inventory-before-c0d8ee7d087447d2ba27452aa7207693.json",
+   "inventory-before-53dab1ed182f47f09cf623b665d07f97.json"
+  ],
+  "08c0c42513f0959a691ea14fb71b5be2c538d034847f0af648239a5796b7c679": [
+   "inventory-before-5832905f612e4a9dbd49c52032bce84b.json",
+   "inventory-after-5832905f612e4a9dbd49c52032bce84b.json"
+  ]
+ },
+ "counts": {
+  "accepted_exact": 16,
+  "accepted_pairs": 16,
+  "accepted_timed": 32,
+  "cross_orm_exact": 8,
+  "cross_orm_mismatch": 1,
+  "cross_sql_exact": 9,
+  "incomplete_attempts": 1,
+  "rejected_pairs": 2,
+  "saved_block_warmup": 40,
+  "saved_cell_warmup": 8,
+  "saved_timed": 37,
+  "status_block_warmup_ok": 40,
+  "status_cell_warmup_ok": 8,
+  "status_timed_ok": 37
+ },
+ "cells": {
+  "6": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 1,
+   "status": "complete"
+  },
+  "14": {
+   "blocks": {
+    "1": {
+     "django": "mismatch",
+     "sqlalchemy": "mismatch"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "sqlalchemy result check failed in block 1: mismatch"
+  }
+ },
+ "paired_median_ratios": {
+  "Q06:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.32282"
+   }
+  },
+  "Q06:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.7654"
+   }
+  }
+ },
+ "problems": [],
+ "passed": true,
+ "utc": "2026-10-07T23:45:22.484764+00:00",
+ "cairo": "2026-10-08T02:45:22.484764+03:00"
+}

@@ -1,0 +1,94 @@
+{
+ "dbms": "oracle",
+ "database": "127.0.0.1:1521/FREEPDB1",
+ "user": "tpch",
+ "session_privs": [
+  {
+   "privilege": "CREATE ANALYTIC VIEW"
+  },
+  {
+   "privilege": "CREATE ATTRIBUTE DIMENSION"
+  },
+  {
+   "privilege": "CREATE CLUSTER"
+  },
+  {
+   "privilege": "CREATE HIERARCHY"
+  },
+  {
+   "privilege": "CREATE INDEXTYPE"
+  },
+  {
+   "privilege": "CREATE MATERIALIZED VIEW"
+  },
+  {
+   "privilege": "CREATE OPERATOR"
+  },
+  {
+   "privilege": "CREATE PROCEDURE"
+  },
+  {
+   "privilege": "CREATE PROPERTY GRAPH"
+  },
+  {
+   "privilege": "CREATE SEQUENCE"
+  },
+  {
+   "privilege": "CREATE SESSION"
+  },
+  {
+   "privilege": "CREATE SYNONYM"
+  },
+  {
+   "privilege": "CREATE TABLE"
+  },
+  {
+   "privilege": "CREATE TRIGGER"
+  },
+  {
+   "privilege": "CREATE TYPE"
+  },
+  {
+   "privilege": "CREATE VIEW"
+  },
+  {
+   "privilege": "SET CONTAINER"
+  }
+ ],
+ "roles": [
+  {
+   "granted_role": "CONNECT"
+  },
+  {
+   "granted_role": "RESOURCE"
+  }
+ ],
+ "v_session": {
+  "error": "DatabaseError: ORA-00942: table or view \"SYS\".\"V_$SESSION\" does not exist\nHelp: https://docs.oracle.com/error-help/db/ora-00942/"
+ },
+ "segments_mb": [
+  {
+   "mb": 1272
+  }
+ ],
+ "tablespace_quota": [
+  {
+   "tablespace_name": "USERS",
+   "max_bytes": -1
+  }
+ ],
+ "users": [
+  {
+   "username": "TPCC"
+  },
+  {
+   "username": "TPCC_TINY"
+  },
+  {
+   "username": "TPCH"
+  },
+  {
+   "username": "TPCH_TINY"
+  }
+ ]
+}

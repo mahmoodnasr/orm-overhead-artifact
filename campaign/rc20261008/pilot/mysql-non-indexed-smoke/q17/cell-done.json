@@ -1,0 +1,61 @@
+{
+ "query": 17,
+ "status": "complete",
+ "censored": {
+  "django/orm": {
+   "input_id": "q17warm",
+   "limit_s": {
+    "type": "float",
+    "value": "120.0"
+   },
+   "elapsed_s": {
+    "type": "float",
+    "value": "120.00395266099804"
+   },
+   "stage": "cell_warmup"
+  },
+  "sqlalchemy/orm": {
+   "input_id": "q17warm",
+   "limit_s": {
+    "type": "float",
+    "value": "120.0"
+   },
+   "elapsed_s": {
+    "type": "float",
+    "value": "120.0058784569992"
+   },
+   "stage": "cell_warmup"
+  },
+  "django/sql": {
+   "input_id": "q17warm",
+   "limit_s": {
+    "type": "float",
+    "value": "120.0"
+   },
+   "elapsed_s": {
+    "type": "float",
+    "value": "120.00076386699948"
+   },
+   "stage": "cell_warmup"
+  },
+  "sqlalchemy/sql": {
+   "input_id": "q17warm",
+   "limit_s": {
+    "type": "float",
+    "value": "120.0"
+   },
+   "elapsed_s": {
+    "type": "float",
+    "value": "120.00126481800544"
+   },
+   "stage": "cell_warmup"
+  }
+ },
+ "inexpressible": {},
+ "wall_s_this_run": {
+  "type": "float",
+  "value": "480.2839974009985"
+ },
+ "utc": "2026-10-08T01:30:51.647883+00:00",
+ "cairo": "2026-10-08T04:30:51.647883+03:00"
+}

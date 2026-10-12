@@ -1,0 +1,111 @@
+{
+ "run_id": "0d3fc76ed7c74b7cb6e71acf28e6c560",
+ "pid": 1,
+ "phase": "E",
+ "dbms": "commercial_a",
+ "schema": "non-indexed",
+ "scale": 1,
+ "mode": "main",
+ "queries": [
+  6,
+  17,
+  18,
+  20,
+  21
+ ],
+ "planned_timed": 160,
+ "counts": {
+  "saved_cell_warmup": 20,
+  "status_cell_warmup_ok": 20,
+  "saved_block_warmup": 160,
+  "status_block_warmup_ok": 160,
+  "saved_timed": 160,
+  "status_timed_ok": 160,
+  "accepted_pairs": 80,
+  "accepted_timed": 160
+ },
+ "environment_id": "dca11a79001d19947393392b1e9ef36e5b809b00b4a72841607a9226eb756fe6",
+ "started": {
+  "utc": "2026-10-11T11:24:13.544973+00:00",
+  "cairo": "2026-10-11T14:24:13.544973+03:00"
+ },
+ "state": "complete",
+ "utc": "2026-10-11T12:14:16.210468+00:00",
+ "cairo": "2026-10-11T15:14:16.210468+03:00",
+ "current": {
+  "query": 21,
+  "path": "sqlalchemy/sql",
+  "kind": "timed",
+  "block": 8,
+  "attempt": 1,
+  "input_id": "q21s7",
+  "limit_s": 900,
+  "server_session": {
+   "sid": "62",
+   "tag": "2026-10-11T14:24:13.343"
+  },
+  "utc": "2026-10-11T12:13:59.248965+00:00",
+  "cairo": "2026-10-11T15:13:59.248965+03:00"
+ },
+ "cells_done": [
+  {
+   "query": 6,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "232.48519938800018"
+   }
+  },
+  {
+   "query": 17,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "360.44002270296915"
+   }
+  },
+  {
+   "query": 18,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "531.5922876239638"
+   }
+  },
+  {
+   "query": 20,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "286.4460216999869"
+   }
+  },
+  {
+   "query": 21,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "1586.7462695729919"
+   }
+  }
+ ],
+ "_obs": [
+  {
+   "type": "float",
+   "value": "2997.709800987912"
+  },
+  {
+   "type": "float",
+   "value": "1919.4"
+  }
+ ],
+ "observed_over_predicted": {
+  "type": "float",
+  "value": "1.5617952490298592"
+ },
+ "remaining_predicted_s": 0,
+ "eta_s": {
+  "type": "float",
+  "value": "0.0"
+ }
+}

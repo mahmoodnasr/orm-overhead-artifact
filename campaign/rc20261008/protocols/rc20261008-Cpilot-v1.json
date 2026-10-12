@@ -1,0 +1,55 @@
+{
+ "campaign_id": "rc20261008",
+ "protocol_id": "rc20261008-Cpilot-v1",
+ "phase": "Cpilot",
+ "frozen": {
+  "utc": "2026-10-07T23:56:36.020810+00:00",
+  "cairo": "2026-10-08T02:56:36.020810+03:00"
+ },
+ "purpose": "Pilot of the transaction runner (rc_tpcc.py): matched seeded inputs, scoped before/after capture, revert and exact re-verification, balanced order. Two blocks per transaction. Pilot records are never campaign data.",
+ "design": {
+  "blocks": 2,
+  "paths": [
+   "django/sql",
+   "django/orm",
+   "sqlalchemy/sql",
+   "sqlalchemy/orm"
+  ],
+  "williams": [
+   [
+    "django/sql",
+    "django/orm",
+    "sqlalchemy/sql",
+    "sqlalchemy/orm"
+   ],
+   [
+    "django/orm",
+    "sqlalchemy/orm",
+    "django/sql",
+    "sqlalchemy/sql"
+   ],
+   [
+    "sqlalchemy/orm",
+    "sqlalchemy/sql",
+    "django/orm",
+    "django/sql"
+   ],
+   [
+    "sqlalchemy/sql",
+    "django/sql",
+    "sqlalchemy/orm",
+    "django/orm"
+   ]
+  ],
+  "inputs": "global random.seed(S) immediately before each call; S = first 48 bits of sha256(\"<protocol_id>:T<t>:<block>\"); block 0 = cell warmup",
+  "state": "before-image of every row the input can touch, read on a separate autocommit connection; after-image; committed difference; before-image written back; scope re-read and required equal; table row counts per block",
+  "clock_columns": {
+   "order": "o_entry_d",
+   "history": "h_date",
+   "order_line": "ol_delivery_d"
+  },
+  "clock_rule": "present and within [min(client,db) start - 2 s, max(client,db) end + 2 s]; excluded from equality only",
+  "timer": "perf_counter around the transaction function (commit inside); seeding, capture, revert, checks and the SQLAlchemy post-call rollback outside"
+ },
+ "acceptance": "per block and framework: both calls ok; committed differences equal after clock-column handling; declared common outputs equal; keys equal to the replayed draws; both reverts verified; table counts unchanged"
+}

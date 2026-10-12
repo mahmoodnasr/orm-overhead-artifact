@@ -1,0 +1,999 @@
+{
+  "followup_id": "ec4e175a-ef90-4155-ab5f-8adad8d1727e",
+  "environment_sha256": "1ab6e4905e5dea46a183aa8178e6340cff27b726fae53bbcfabcce76d7c1e3de",
+  "query": 18,
+  "schema": "indexed",
+  "dbms": "commercial_a",
+  "block": -1,
+  "position": 3,
+  "path": "literal",
+  "parameter_set_id": "q18s0",
+  "parameters": {
+    "quantity": 300
+  },
+  "utc": "2026-10-07T20:23:53.884391+00:00",
+  "elapsed_s": {
+    "type": "float",
+    "value": "4.189107377002074"
+  },
+  "status": "ok",
+  "rows": [
+    {
+      "c_name": "Customer#000128120",
+      "c_custkey": 128120,
+      "o_orderkey": 4722021,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1994-04-07"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "544089.09"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "323.00"
+      }
+    },
+    {
+      "c_name": "Customer#000144617",
+      "c_custkey": 144617,
+      "o_orderkey": 3043270,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1997-02-12"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "530604.44"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "317.00"
+      }
+    },
+    {
+      "c_name": "Customer#000013940",
+      "c_custkey": 13940,
+      "o_orderkey": 2232932,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1997-04-13"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "522720.61"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "304.00"
+      }
+    },
+    {
+      "c_name": "Customer#000066790",
+      "c_custkey": 66790,
+      "o_orderkey": 2199712,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1996-09-30"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "515531.82"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "327.00"
+      }
+    },
+    {
+      "c_name": "Customer#000046435",
+      "c_custkey": 46435,
+      "o_orderkey": 4745607,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1997-07-03"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "508047.99"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "309.00"
+      }
+    },
+    {
+      "c_name": "Customer#000015272",
+      "c_custkey": 15272,
+      "o_orderkey": 3883783,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1993-07-28"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "500241.33"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "302.00"
+      }
+    },
+    {
+      "c_name": "Customer#000146608",
+      "c_custkey": 146608,
+      "o_orderkey": 3342468,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1994-06-12"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "499794.58"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "303.00"
+      }
+    },
+    {
+      "c_name": "Customer#000096103",
+      "c_custkey": 96103,
+      "o_orderkey": 5984582,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1992-03-16"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "494398.79"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "312.00"
+      }
+    },
+    {
+      "c_name": "Customer#000024341",
+      "c_custkey": 24341,
+      "o_orderkey": 1474818,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1992-11-15"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "491348.26"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "302.00"
+      }
+    },
+    {
+      "c_name": "Customer#000137446",
+      "c_custkey": 137446,
+      "o_orderkey": 5489475,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1997-05-23"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "487763.25"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "311.00"
+      }
+    },
+    {
+      "c_name": "Customer#000107590",
+      "c_custkey": 107590,
+      "o_orderkey": 4267751,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1994-11-04"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "485141.38"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "301.00"
+      }
+    },
+    {
+      "c_name": "Customer#000050008",
+      "c_custkey": 50008,
+      "o_orderkey": 2366755,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1996-12-09"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "483891.26"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "302.00"
+      }
+    },
+    {
+      "c_name": "Customer#000015619",
+      "c_custkey": 15619,
+      "o_orderkey": 3767271,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1996-08-07"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "480083.96"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "318.00"
+      }
+    },
+    {
+      "c_name": "Customer#000077260",
+      "c_custkey": 77260,
+      "o_orderkey": 1436544,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1992-09-12"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "479499.43"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "307.00"
+      }
+    },
+    {
+      "c_name": "Customer#000109379",
+      "c_custkey": 109379,
+      "o_orderkey": 5746311,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1996-10-10"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "478064.11"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "302.00"
+      }
+    },
+    {
+      "c_name": "Customer#000054602",
+      "c_custkey": 54602,
+      "o_orderkey": 5832321,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1997-02-09"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "471220.08"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "307.00"
+      }
+    },
+    {
+      "c_name": "Customer#000105995",
+      "c_custkey": 105995,
+      "o_orderkey": 2096705,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1994-07-03"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "469692.58"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "307.00"
+      }
+    },
+    {
+      "c_name": "Customer#000148885",
+      "c_custkey": 148885,
+      "o_orderkey": 2942469,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1992-05-31"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "469630.44"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "313.00"
+      }
+    },
+    {
+      "c_name": "Customer#000114586",
+      "c_custkey": 114586,
+      "o_orderkey": 551136,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1993-05-19"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "469605.59"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "308.00"
+      }
+    },
+    {
+      "c_name": "Customer#000105260",
+      "c_custkey": 105260,
+      "o_orderkey": 5296167,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1996-09-06"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "469360.57"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "303.00"
+      }
+    },
+    {
+      "c_name": "Customer#000147197",
+      "c_custkey": 147197,
+      "o_orderkey": 1263015,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1997-02-02"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "467149.67"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "320.00"
+      }
+    },
+    {
+      "c_name": "Customer#000064483",
+      "c_custkey": 64483,
+      "o_orderkey": 2745894,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1996-07-04"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "466991.35"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "304.00"
+      }
+    },
+    {
+      "c_name": "Customer#000136573",
+      "c_custkey": 136573,
+      "o_orderkey": 2761378,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1996-05-31"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "461282.73"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "301.00"
+      }
+    },
+    {
+      "c_name": "Customer#000016384",
+      "c_custkey": 16384,
+      "o_orderkey": 502886,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1994-04-12"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "458378.92"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "312.00"
+      }
+    },
+    {
+      "c_name": "Customer#000117919",
+      "c_custkey": 117919,
+      "o_orderkey": 2869152,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1996-06-20"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "456815.92"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "317.00"
+      }
+    },
+    {
+      "c_name": "Customer#000012251",
+      "c_custkey": 12251,
+      "o_orderkey": 735366,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1993-11-24"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "455107.26"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "309.00"
+      }
+    },
+    {
+      "c_name": "Customer#000120098",
+      "c_custkey": 120098,
+      "o_orderkey": 1971680,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1995-06-14"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "453451.23"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "308.00"
+      }
+    },
+    {
+      "c_name": "Customer#000066098",
+      "c_custkey": 66098,
+      "o_orderkey": 5007490,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1992-08-07"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "453436.16"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "304.00"
+      }
+    },
+    {
+      "c_name": "Customer#000117076",
+      "c_custkey": 117076,
+      "o_orderkey": 4290656,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1997-02-05"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "449545.85"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "301.00"
+      }
+    },
+    {
+      "c_name": "Customer#000129379",
+      "c_custkey": 129379,
+      "o_orderkey": 4720454,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1997-06-07"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "448665.79"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "303.00"
+      }
+    },
+    {
+      "c_name": "Customer#000126865",
+      "c_custkey": 126865,
+      "o_orderkey": 4702759,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1994-11-07"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "447606.65"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "320.00"
+      }
+    },
+    {
+      "c_name": "Customer#000088876",
+      "c_custkey": 88876,
+      "o_orderkey": 983201,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1993-12-30"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "446717.46"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "304.00"
+      }
+    },
+    {
+      "c_name": "Customer#000036619",
+      "c_custkey": 36619,
+      "o_orderkey": 4806726,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1995-01-17"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "446704.09"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "328.00"
+      }
+    },
+    {
+      "c_name": "Customer#000141823",
+      "c_custkey": 141823,
+      "o_orderkey": 2806245,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1996-12-29"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "446269.12"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "310.00"
+      }
+    },
+    {
+      "c_name": "Customer#000053029",
+      "c_custkey": 53029,
+      "o_orderkey": 2662214,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1993-08-13"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "446144.49"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "302.00"
+      }
+    },
+    {
+      "c_name": "Customer#000018188",
+      "c_custkey": 18188,
+      "o_orderkey": 3037414,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1995-01-25"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "443807.22"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "308.00"
+      }
+    },
+    {
+      "c_name": "Customer#000066533",
+      "c_custkey": 66533,
+      "o_orderkey": 29158,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1995-10-21"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "443576.50"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "305.00"
+      }
+    },
+    {
+      "c_name": "Customer#000037729",
+      "c_custkey": 37729,
+      "o_orderkey": 4134341,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1995-06-29"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "441082.97"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "309.00"
+      }
+    },
+    {
+      "c_name": "Customer#000003566",
+      "c_custkey": 3566,
+      "o_orderkey": 2329187,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1998-01-04"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "439803.36"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "304.00"
+      }
+    },
+    {
+      "c_name": "Customer#000045538",
+      "c_custkey": 45538,
+      "o_orderkey": 4527553,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1994-05-22"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "436275.31"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "305.00"
+      }
+    },
+    {
+      "c_name": "Customer#000081581",
+      "c_custkey": 81581,
+      "o_orderkey": 4739650,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1995-11-04"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "435405.90"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "305.00"
+      }
+    },
+    {
+      "c_name": "Customer#000119989",
+      "c_custkey": 119989,
+      "o_orderkey": 1544643,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1997-09-20"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "434568.25"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "320.00"
+      }
+    },
+    {
+      "c_name": "Customer#000003680",
+      "c_custkey": 3680,
+      "o_orderkey": 3861123,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1998-07-03"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "433525.97"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "301.00"
+      }
+    },
+    {
+      "c_name": "Customer#000113131",
+      "c_custkey": 113131,
+      "o_orderkey": 967334,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1995-12-15"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "432957.75"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "301.00"
+      }
+    },
+    {
+      "c_name": "Customer#000141098",
+      "c_custkey": 141098,
+      "o_orderkey": 565574,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1995-09-24"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "430986.69"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "301.00"
+      }
+    },
+    {
+      "c_name": "Customer#000093392",
+      "c_custkey": 93392,
+      "o_orderkey": 5200102,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1997-01-22"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "425487.51"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "304.00"
+      }
+    },
+    {
+      "c_name": "Customer#000015631",
+      "c_custkey": 15631,
+      "o_orderkey": 1845057,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1994-05-12"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "419879.59"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "302.00"
+      }
+    },
+    {
+      "c_name": "Customer#000112987",
+      "c_custkey": 112987,
+      "o_orderkey": 4439686,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1996-09-17"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "418161.49"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "305.00"
+      }
+    },
+    {
+      "c_name": "Customer#000012599",
+      "c_custkey": 12599,
+      "o_orderkey": 4259524,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1998-02-12"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "415200.61"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "304.00"
+      }
+    },
+    {
+      "c_name": "Customer#000105410",
+      "c_custkey": 105410,
+      "o_orderkey": 4478371,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1996-03-05"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "412754.51"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "302.00"
+      }
+    },
+    {
+      "c_name": "Customer#000149842",
+      "c_custkey": 149842,
+      "o_orderkey": 5156581,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1994-05-30"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "411329.35"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "302.00"
+      }
+    },
+    {
+      "c_name": "Customer#000010129",
+      "c_custkey": 10129,
+      "o_orderkey": 5849444,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1994-03-21"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "409129.85"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "309.00"
+      }
+    },
+    {
+      "c_name": "Customer#000069904",
+      "c_custkey": 69904,
+      "o_orderkey": 1742403,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1996-10-19"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "408513.00"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "305.00"
+      }
+    },
+    {
+      "c_name": "Customer#000017746",
+      "c_custkey": 17746,
+      "o_orderkey": 6882,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1997-04-09"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "408446.93"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "303.00"
+      }
+    },
+    {
+      "c_name": "Customer#000013072",
+      "c_custkey": 13072,
+      "o_orderkey": 1481925,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1998-03-15"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "399195.47"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "301.00"
+      }
+    },
+    {
+      "c_name": "Customer#000082441",
+      "c_custkey": 82441,
+      "o_orderkey": 857959,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1994-02-07"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "382579.74"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "305.00"
+      }
+    },
+    {
+      "c_name": "Customer#000088703",
+      "c_custkey": 88703,
+      "o_orderkey": 2995076,
+      "o_orderdate": {
+        "type": "date",
+        "value": "1994-01-30"
+      },
+      "o_totalprice": {
+        "type": "Decimal",
+        "value": "363812.12"
+      },
+      "total_qty": {
+        "type": "Decimal",
+        "value": "302.00"
+      }
+    }
+  ],
+  "statements": [
+    {
+      "sql": "withheld-sha256:3ff496505ce8cb78ecaea73e53368ea6a78c11c1936de76ad19203cb67d21235",
+      "params": null,
+      "many": false
+    }
+  ],
+  "result_sha256": "4ad5a62ee48b970c7c4b6444c066e3d77c58292811503e3db81057761c51c1c7"
+}

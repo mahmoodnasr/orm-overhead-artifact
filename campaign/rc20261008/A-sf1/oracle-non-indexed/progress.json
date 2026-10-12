@@ -1,0 +1,269 @@
+{
+ "run_id": "5ac11348a42b43dba76e7e83ef198f36",
+ "pid": 714946,
+ "phase": "A",
+ "dbms": "oracle",
+ "schema": "non-indexed",
+ "scale": 1,
+ "mode": "main",
+ "queries": [
+  2,
+  22,
+  16,
+  11,
+  6,
+  14,
+  13,
+  10,
+  4,
+  8,
+  3,
+  12,
+  7,
+  15,
+  19,
+  5,
+  18,
+  9,
+  21,
+  1,
+  20,
+  17
+ ],
+ "planned_timed": 704,
+ "counts": {
+  "saved_cell_warmup": 88,
+  "status_cell_warmup_ok": 87,
+  "saved_block_warmup": 696,
+  "status_block_warmup_ok": 696,
+  "saved_timed": 696,
+  "status_timed_ok": 696,
+  "accepted_pairs": 344,
+  "accepted_timed": 688,
+  "status_cell_warmup_not_expressible": 1,
+  "pairs_not_run": 8
+ },
+ "environment_id": "8903e5f18711dbf1ae02f0af097fde70d6c8c42ef8fe0df244bd6f65faa56476",
+ "started": {
+  "utc": "2026-10-08T06:25:10.223846+00:00",
+  "cairo": "2026-10-08T09:25:10.223846+03:00"
+ },
+ "state": "complete",
+ "utc": "2026-10-08T10:43:58.588548+00:00",
+ "cairo": "2026-10-08T13:43:58.588548+03:00",
+ "current": {
+  "query": 17,
+  "path": "sqlalchemy/sql",
+  "kind": "timed",
+  "block": 8,
+  "attempt": 1,
+  "input_id": "q17s7",
+  "limit_s": {
+   "type": "float",
+   "value": "900.0"
+  },
+  "server_session": {
+   "sid": "206",
+   "tag": "220169"
+  },
+  "utc": "2026-10-08T10:43:54.623542+00:00",
+  "cairo": "2026-10-08T13:43:54.623542+03:00"
+ },
+ "cells_done": [
+  {
+   "query": 2,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "9.238731683995866"
+   }
+  },
+  {
+   "query": 22,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "19.40122689800046"
+   }
+  },
+  {
+   "query": 16,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "77.15536325299763"
+   }
+  },
+  {
+   "query": 11,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "29.28089826500218"
+   }
+  },
+  {
+   "query": 6,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "46.37577282200073"
+   }
+  },
+  {
+   "query": 14,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "48.911334676995466"
+   }
+  },
+  {
+   "query": 13,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "67.9868571640036"
+   }
+  },
+  {
+   "query": 10,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "64.31478692399833"
+   }
+  },
+  {
+   "query": 4,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "69.88964023299923"
+   }
+  },
+  {
+   "query": 8,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "73.45685035900533"
+   }
+  },
+  {
+   "query": 3,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "76.75191651500063"
+   }
+  },
+  {
+   "query": 12,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "80.33559080900159"
+   }
+  },
+  {
+   "query": 7,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "84.08755791899603"
+   }
+  },
+  {
+   "query": 15,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "86.59664559299563"
+   }
+  },
+  {
+   "query": 19,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "93.29175642199698"
+   }
+  },
+  {
+   "query": 5,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "92.07694030600396"
+   }
+  },
+  {
+   "query": 18,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "154.8537742749977"
+   }
+  },
+  {
+   "query": 9,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "194.40942493900366"
+   }
+  },
+  {
+   "query": 21,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "214.06838332800544"
+   }
+  },
+  {
+   "query": 1,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "305.76148187000217"
+   }
+  },
+  {
+   "query": 20,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "4613.7845285"
+   }
+  },
+  {
+   "query": 17,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "9022.748799213994"
+   }
+  }
+ ],
+ "_obs": [
+  {
+   "type": "float",
+   "value": "15524.778261968997"
+  },
+  {
+   "type": "float",
+   "value": "15475.6"
+  }
+ ],
+ "observed_over_predicted": {
+  "type": "float",
+  "value": "1.0031777935568893"
+ },
+ "remaining_predicted_s": 0,
+ "eta_s": {
+  "type": "float",
+  "value": "0.0"
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "run_id": "ab8d8b565d8a41858ad83f936f05c42b",
+ "pid": 2365077,
+ "phase": "F",
+ "dbms": "postgresql",
+ "schema": "non-indexed",
+ "scale": 1,
+ "mode": "main",
+ "queries": [
+  10
+ ],
+ "planned_timed": 32,
+ "counts": {
+  "saved_cell_warmup": 4,
+  "status_cell_warmup_ok": 4,
+  "saved_block_warmup": 32,
+  "status_block_warmup_ok": 32,
+  "saved_timed": 32,
+  "status_timed_ok": 32
+ },
+ "environment_id": "44db7dfeaf64e910d8667b78aa3d8dfe21a7667d977bf56a8fb796ef2cff13e9",
+ "started": {
+  "utc": "2026-10-09T21:42:53.018365+00:00",
+  "cairo": "2026-10-10T00:42:53.018365+03:00"
+ },
+ "state": "complete",
+ "utc": "2026-10-09T21:45:17.842149+00:00",
+ "cairo": "2026-10-10T00:45:17.842149+03:00",
+ "current": {
+  "query": 10,
+  "path": "sqlalchemy/G",
+  "kind": "timed",
+  "block": 8,
+  "utc": "2026-10-09T21:45:13.759962+00:00",
+  "cairo": "2026-10-10T00:45:13.759962+03:00"
+ },
+ "cells_done": [
+  {
+   "query": 10,
+   "wall_s": {
+    "type": "float",
+    "value": "142.84449641802348"
+   }
+  }
+ ]
+}

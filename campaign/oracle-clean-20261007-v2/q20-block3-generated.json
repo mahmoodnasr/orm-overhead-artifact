@@ -1,0 +1,670 @@
+{
+  "followup_id": "3b3b8f9c-bb10-4333-bb95-6e54d322bfbb",
+  "environment_sha256": "ff1063e738f014b7e9a705893371a0d8165bad69981602b6f628088df8f3ffd0",
+  "query": 20,
+  "schema": "non-indexed",
+  "dbms": "oracle",
+  "block": 3,
+  "position": 0,
+  "path": "generated",
+  "parameter_set_id": "q20s3",
+  "parameters": {
+    "color": "chartreuse",
+    "date": {
+      "type": "date",
+      "value": "1994-01-01"
+    },
+    "nation": "KENYA",
+    "date_end": {
+      "type": "date",
+      "value": "1995-01-01"
+    }
+  },
+  "utc": "2026-10-07T19:01:17.974324+00:00",
+  "elapsed_s": {
+    "type": "float",
+    "value": "230.28759924800033"
+  },
+  "status": "ok",
+  "rows": [
+    {
+      "S_NAME": "Supplier#000000006",
+      "S_ADDRESS": "zaux5FTzToEg"
+    },
+    {
+      "S_NAME": "Supplier#000000047",
+      "S_ADDRESS": "Y3eZu1bOuAw0jgW4dFKPE1ePfKpjfq"
+    },
+    {
+      "S_NAME": "Supplier#000000079",
+      "S_ADDRESS": "C,xXyty836oYhSwmLfdlegz 9awTAt7y7p7r"
+    },
+    {
+      "S_NAME": "Supplier#000000228",
+      "S_ADDRESS": "Ct72ryCOQ8Rzi6FAj6Ppwe0 0"
+    },
+    {
+      "S_NAME": "Supplier#000000263",
+      "S_ADDRESS": "U5NCx14Hjm"
+    },
+    {
+      "S_NAME": "Supplier#000000307",
+      "S_ADDRESS": "YvfR2kliwNOusJXFvtU89 BLEtgwvqlE3g"
+    },
+    {
+      "S_NAME": "Supplier#000000480",
+      "S_ADDRESS": "BS0fjW6aIbY7wU, Fczlt30je0ibOvf, nTNKrN"
+    },
+    {
+      "S_NAME": "Supplier#000000482",
+      "S_ADDRESS": "gG5 QXC eo "
+    },
+    {
+      "S_NAME": "Supplier#000000492",
+      "S_ADDRESS": "TvmxFn2erslwe3LoddmvXp"
+    },
+    {
+      "S_NAME": "Supplier#000000614",
+      "S_ADDRESS": "oyMomzVVT3C8CSoNH66PmEr9K8M7WlasTPo1UF"
+    },
+    {
+      "S_NAME": "Supplier#000000715",
+      "S_ADDRESS": "MMePRkGLkeTM0WI"
+    },
+    {
+      "S_NAME": "Supplier#000000728",
+      "S_ADDRESS": "yB TIR84kzFDMaF64ILO9MhaW"
+    },
+    {
+      "S_NAME": "Supplier#000000797",
+      "S_ADDRESS": "YGOb6SHrN6sI"
+    },
+    {
+      "S_NAME": "Supplier#000000914",
+      "S_ADDRESS": "GITNeSo blZZX0hHJXeha89JH9p0v9fxcwIOaKSx"
+    },
+    {
+      "S_NAME": "Supplier#000000924",
+      "S_ADDRESS": ",Xid54fdHB7RM7zDOWNfNIN"
+    },
+    {
+      "S_NAME": "Supplier#000001050",
+      "S_ADDRESS": "nxVm77Jeyi"
+    },
+    {
+      "S_NAME": "Supplier#000001079",
+      "S_ADDRESS": "7Q4lm4KnCTUVbaGiC"
+    },
+    {
+      "S_NAME": "Supplier#000001188",
+      "S_ADDRESS": "Ws6Gi OnGP"
+    },
+    {
+      "S_NAME": "Supplier#000001465",
+      "S_ADDRESS": "NxpnisVTLZ8jZM"
+    },
+    {
+      "S_NAME": "Supplier#000001553",
+      "S_ADDRESS": "lE8Zti7ugDzqbk"
+    },
+    {
+      "S_NAME": "Supplier#000001628",
+      "S_ADDRESS": "l9zQBMXEwT6v"
+    },
+    {
+      "S_NAME": "Supplier#000001642",
+      "S_ADDRESS": "PDc836RMJtYxSzClGRbXhjJ3dtO7"
+    },
+    {
+      "S_NAME": "Supplier#000001670",
+      "S_ADDRESS": "FaIPPY7b1YF pg,"
+    },
+    {
+      "S_NAME": "Supplier#000001781",
+      "S_ADDRESS": "pzRXGpk9qUkFd51IK 60WlIrZmXrwu"
+    },
+    {
+      "S_NAME": "Supplier#000001782",
+      "S_ADDRESS": "gaANVnDDXTR 0iWxqdlRT2NQWUViED7yDCPxbp5"
+    },
+    {
+      "S_NAME": "Supplier#000001831",
+      "S_ADDRESS": "1VVUDyLqs2JQZR"
+    },
+    {
+      "S_NAME": "Supplier#000001893",
+      "S_ADDRESS": "OddrBVqzGNktLybba zkTTGH7V9AUCwOfc2jwv"
+    },
+    {
+      "S_NAME": "Supplier#000001899",
+      "S_ADDRESS": "rZXU1FGJWp6"
+    },
+    {
+      "S_NAME": "Supplier#000001971",
+      "S_ADDRESS": "fo5R2ZgvZ8wvz4i MA4F"
+    },
+    {
+      "S_NAME": "Supplier#000001982",
+      "S_ADDRESS": "BVKVOGW5Y8 GUwz67yblqCSF7TKfOaAPCHnukzd"
+    },
+    {
+      "S_NAME": "Supplier#000001992",
+      "S_ADDRESS": "f9vyhrEPwSmzGxc60fPwiJ fQdBSPc"
+    },
+    {
+      "S_NAME": "Supplier#000002045",
+      "S_ADDRESS": "Yk5H46H3Gk46MlSZQLfQ1q"
+    },
+    {
+      "S_NAME": "Supplier#000002126",
+      "S_ADDRESS": "NleXgxzXpS5 mIZHtu0T14a05"
+    },
+    {
+      "S_NAME": "Supplier#000002191",
+      "S_ADDRESS": "SaurvjQTfC6xQlYwH7pMQHTOW0d6KRjG16ai"
+    },
+    {
+      "S_NAME": "Supplier#000002287",
+      "S_ADDRESS": "z7zfaEglfUqP6oE2LKBUpjL5J6HSfEiLt"
+    },
+    {
+      "S_NAME": "Supplier#000002299",
+      "S_ADDRESS": "TkpjZXYVvn4b"
+    },
+    {
+      "S_NAME": "Supplier#000002354",
+      "S_ADDRESS": "dILhq8FMdJ,XLGzUgy4Vbz52YVqp,J3pHHa5"
+    },
+    {
+      "S_NAME": "Supplier#000002362",
+      "S_ADDRESS": "Tna 4N,5wPvi"
+    },
+    {
+      "S_NAME": "Supplier#000002366",
+      "S_ADDRESS": "WkJ51vnV86NtKnegmT"
+    },
+    {
+      "S_NAME": "Supplier#000002394",
+      "S_ADDRESS": "vkjvbtLDa9"
+    },
+    {
+      "S_NAME": "Supplier#000002581",
+      "S_ADDRESS": "idJ4NHoz2R,XGqovRsc8HnDHYHADtj"
+    },
+    {
+      "S_NAME": "Supplier#000002599",
+      "S_ADDRESS": "iIcIxrqa  uOxFkGQjjH6aQZ2MOI"
+    },
+    {
+      "S_NAME": "Supplier#000002773",
+      "S_ADDRESS": "IQsSZpYsRjhs0K0SQZsTlNOV25NCQ"
+    },
+    {
+      "S_NAME": "Supplier#000002813",
+      "S_ADDRESS": "SrlLGiy8dy9GzX"
+    },
+    {
+      "S_NAME": "Supplier#000002824",
+      "S_ADDRESS": "zJI2SgqsRECQNuo,6tTZpbn r6eO2FVvWo5I6VLl"
+    },
+    {
+      "S_NAME": "Supplier#000003100",
+      "S_ADDRESS": "mUMUoORcuInDb2mxwmXmvHSV2T63TMs24TQ"
+    },
+    {
+      "S_NAME": "Supplier#000003181",
+      "S_ADDRESS": "qjSqTU7dMmLWlIjGyZq"
+    },
+    {
+      "S_NAME": "Supplier#000003263",
+      "S_ADDRESS": "h04hsFI N4qVh7Yy25M2pPryBjwsSsOoBu"
+    },
+    {
+      "S_NAME": "Supplier#000003264",
+      "S_ADDRESS": "xD0sNUsjFpoM8qP91wQWftd"
+    },
+    {
+      "S_NAME": "Supplier#000003285",
+      "S_ADDRESS": "AnMS2sWB54sZ2NsqEtG"
+    },
+    {
+      "S_NAME": "Supplier#000003286",
+      "S_ADDRESS": "SPxJIDT3Qlt0efxa7sCzuvu"
+    },
+    {
+      "S_NAME": "Supplier#000003425",
+      "S_ADDRESS": "BBbsfQ 4GMd0AZAQzpCkUwiERR8YXkU7urj"
+    },
+    {
+      "S_NAME": "Supplier#000003663",
+      "S_ADDRESS": "0A,4VtthkQ3ofQuoZRoK9Q"
+    },
+    {
+      "S_NAME": "Supplier#000003674",
+      "S_ADDRESS": "0CcGgdjmX,7Ze41syoSZmG,c2WyfByWVsXDgOTe"
+    },
+    {
+      "S_NAME": "Supplier#000003678",
+      "S_ADDRESS": "gdRe3oGhYK1enI4hNxH EposE0ORbs82ezI"
+    },
+    {
+      "S_NAME": "Supplier#000003742",
+      "S_ADDRESS": "4BGCiXdrENuKFFs6FoZ84wmYRcG,vE"
+    },
+    {
+      "S_NAME": "Supplier#000003775",
+      "S_ADDRESS": "7zGwK2DkcKm9wXcY"
+    },
+    {
+      "S_NAME": "Supplier#000003832",
+      "S_ADDRESS": "i3FPgNh6fPDcEUDAOQMUpO,Dfkahbn2YI7gB"
+    },
+    {
+      "S_NAME": "Supplier#000003889",
+      "S_ADDRESS": "vmz78RVCkSqHf,8iNmNoP7KYfKcKxtxa"
+    },
+    {
+      "S_NAME": "Supplier#000003929",
+      "S_ADDRESS": "B,05diNZ7wbq9UfCyVlDy2o"
+    },
+    {
+      "S_NAME": "Supplier#000003959",
+      "S_ADDRESS": "XfJMRX5tDWU9"
+    },
+    {
+      "S_NAME": "Supplier#000004013",
+      "S_ADDRESS": "1UpWlBycczmMhMnuXSMdR9Gq WhEVo4gyJg"
+    },
+    {
+      "S_NAME": "Supplier#000004038",
+      "S_ADDRESS": "oIlB2YZZeyqb7ZctO4fbJr RzAmHpfsMve HYNUq"
+    },
+    {
+      "S_NAME": "Supplier#000004052",
+      "S_ADDRESS": "6gNAQB5yKl4JIwQeat6yvDCjdv3Wcr0YiDuQ9i"
+    },
+    {
+      "S_NAME": "Supplier#000004162",
+      "S_ADDRESS": "7Zcr1vBcGejTg"
+    },
+    {
+      "S_NAME": "Supplier#000004180",
+      "S_ADDRESS": "LWnKGinfRAW8JX6dcETOnk59wgEDj"
+    },
+    {
+      "S_NAME": "Supplier#000004337",
+      "S_ADDRESS": "3hUcehbJispnhsTltpk8"
+    },
+    {
+      "S_NAME": "Supplier#000004386",
+      "S_ADDRESS": "h,kaofZPd0Al3iKz8pFI0Y"
+    },
+    {
+      "S_NAME": "Supplier#000004488",
+      "S_ADDRESS": "X2wxwAwBBYfmUa m7,pEm"
+    },
+    {
+      "S_NAME": "Supplier#000004515",
+      "S_ADDRESS": "jgwmDn0pLITQJRZo9a7nmLBUovkyL,HrO"
+    },
+    {
+      "S_NAME": "Supplier#000004615",
+      "S_ADDRESS": "6Ho7o8d  W5FPv,CcqYYcoEF99bfouOBST"
+    },
+    {
+      "S_NAME": "Supplier#000004676",
+      "S_ADDRESS": "3VGDBpXry6XpioYNst9QPZPk7IorAJjPSVBrU7o"
+    },
+    {
+      "S_NAME": "Supplier#000004696",
+      "S_ADDRESS": "iZA uHC7LrKc8xUX3cLFAsxKk6zoTbloFR30"
+    },
+    {
+      "S_NAME": "Supplier#000004808",
+      "S_ADDRESS": "3WNBIpJM6CtSeH gK7PrPbaskCJ RJcCfCYJZY"
+    },
+    {
+      "S_NAME": "Supplier#000004828",
+      "S_ADDRESS": "HG,UhRnH2lokHiR0qsPBX8OfmwQNZey82ocqQgo"
+    },
+    {
+      "S_NAME": "Supplier#000004865",
+      "S_ADDRESS": "6fWllKvWRLbne2EcxF97i"
+    },
+    {
+      "S_NAME": "Supplier#000004875",
+      "S_ADDRESS": "Rg7dvWkpJHII6Yb"
+    },
+    {
+      "S_NAME": "Supplier#000004931",
+      "S_ADDRESS": "X57PcREDN8fU6"
+    },
+    {
+      "S_NAME": "Supplier#000004963",
+      "S_ADDRESS": "mVDQonqNaJKHEXiwhzFQUrclUFePPHzjR,"
+    },
+    {
+      "S_NAME": "Supplier#000004988",
+      "S_ADDRESS": "IJsJkXlIVMZAtpL4wvFJutwRo Ct6io73cvCK66l"
+    },
+    {
+      "S_NAME": "Supplier#000005044",
+      "S_ADDRESS": "bapMOeX16LczJC,9Fu"
+    },
+    {
+      "S_NAME": "Supplier#000005050",
+      "S_ADDRESS": "JPK4v5v0GnVd cvEY2WsDoc7mKtn5"
+    },
+    {
+      "S_NAME": "Supplier#000005156",
+      "S_ADDRESS": "DsWonnXqzj8 xTVGEnRh833YshA"
+    },
+    {
+      "S_NAME": "Supplier#000005267",
+      "S_ADDRESS": "px5PX0E5miD izBMm"
+    },
+    {
+      "S_NAME": "Supplier#000005281",
+      "S_ADDRESS": "Q4wRazgkxJ4V8fKEkbHLb2thxhuDvJKxAYPB"
+    },
+    {
+      "S_NAME": "Supplier#000005384",
+      "S_ADDRESS": "T6L cWQtl70DWfmE56OM9TP3"
+    },
+    {
+      "S_NAME": "Supplier#000005412",
+      "S_ADDRESS": "FTyE6yJe88HRvjERPli,3mHxE13j4f"
+    },
+    {
+      "S_NAME": "Supplier#000005525",
+      "S_ADDRESS": "Px0Q zINtsJXnLjS,cx45hosGu"
+    },
+    {
+      "S_NAME": "Supplier#000005679",
+      "S_ADDRESS": "WK8Q0YOyc2ZvW9HGLbDzjQrD"
+    },
+    {
+      "S_NAME": "Supplier#000005861",
+      "S_ADDRESS": "AjVwrjlJKvIMrLIjZq"
+    },
+    {
+      "S_NAME": "Supplier#000005862",
+      "S_ADDRESS": "JdTggIftq0hO6RzU"
+    },
+    {
+      "S_NAME": "Supplier#000005929",
+      "S_ADDRESS": ",lx,DOFnd1z"
+    },
+    {
+      "S_NAME": "Supplier#000005994",
+      "S_ADDRESS": "OR540dbUtNtFJh8YUgQCUj Fk88 ARSsjN"
+    },
+    {
+      "S_NAME": "Supplier#000005996",
+      "S_ADDRESS": "zLc5AI6 pT87uo11czb12tD50pTv27ZZj2xSi0eB"
+    },
+    {
+      "S_NAME": "Supplier#000006111",
+      "S_ADDRESS": "9gTlb36pCuX,5KV4urgASTPtYWP3HzbW,w7"
+    },
+    {
+      "S_NAME": "Supplier#000006169",
+      "S_ADDRESS": "FBa4j0aLXFqxlaTnEWpyVw"
+    },
+    {
+      "S_NAME": "Supplier#000006201",
+      "S_ADDRESS": "6pSbJIoy,I5O8v8LVv,DEF0nW4N1Ln"
+    },
+    {
+      "S_NAME": "Supplier#000006213",
+      "S_ADDRESS": "XKlHk1ww388SS"
+    },
+    {
+      "S_NAME": "Supplier#000006245",
+      "S_ADDRESS": "hG9cCLd21DEdHHCKuQe9ArqZ"
+    },
+    {
+      "S_NAME": "Supplier#000006364",
+      "S_ADDRESS": "Fth1F6q6hPccNERsjwWm6dhw RL86my"
+    },
+    {
+      "S_NAME": "Supplier#000006368",
+      "S_ADDRESS": "3NISEJ7OnB3jOM"
+    },
+    {
+      "S_NAME": "Supplier#000006441",
+      "S_ADDRESS": "a8QUqiMMJ8b37gPdHlGNUMcdj8n2nKmqaIa"
+    },
+    {
+      "S_NAME": "Supplier#000006689",
+      "S_ADDRESS": "y0CgyjF,OSop0jSoybdwH"
+    },
+    {
+      "S_NAME": "Supplier#000006692",
+      "S_ADDRESS": "NdlulQPolgOG"
+    },
+    {
+      "S_NAME": "Supplier#000006754",
+      "S_ADDRESS": "He6okCJWb4FffNpvjp1ouBesmD1rZe6e8GF"
+    },
+    {
+      "S_NAME": "Supplier#000006810",
+      "S_ADDRESS": "MIn24sFQxaYSt"
+    },
+    {
+      "S_NAME": "Supplier#000006890",
+      "S_ADDRESS": "ECxvR5OPQgUbkXBWT1pEbB"
+    },
+    {
+      "S_NAME": "Supplier#000007013",
+      "S_ADDRESS": "cW MQXYRnJHR4 WkqURZ9WJu2T0KPkRsfB ,Owz"
+    },
+    {
+      "S_NAME": "Supplier#000007017",
+      "S_ADDRESS": "RV4Yn3HUmDDqv7mLG"
+    },
+    {
+      "S_NAME": "Supplier#000007097",
+      "S_ADDRESS": "IDkrOWFe8c98H45UYdwiHETOaiW"
+    },
+    {
+      "S_NAME": "Supplier#000007200",
+      "S_ADDRESS": "Qd2,8JGYux25CoaxAqZ4CaPSyC"
+    },
+    {
+      "S_NAME": "Supplier#000007202",
+      "S_ADDRESS": "Xic,4Nk1RJTUWlH6XsBP SFUtAfDDj8Elwi9t"
+    },
+    {
+      "S_NAME": "Supplier#000007262",
+      "S_ADDRESS": "avn35L8UcSOEHLqianuF7"
+    },
+    {
+      "S_NAME": "Supplier#000007318",
+      "S_ADDRESS": "AG03OhFQCrliMXVK16OHzUNOtvjCWcqcJeWF"
+    },
+    {
+      "S_NAME": "Supplier#000007482",
+      "S_ADDRESS": "Ue8GHHU1,M"
+    },
+    {
+      "S_NAME": "Supplier#000007520",
+      "S_ADDRESS": "RyZo7nANgLlxPj9cDu5PulfJa"
+    },
+    {
+      "S_NAME": "Supplier#000007534",
+      "S_ADDRESS": "aoy21yKSh1lc"
+    },
+    {
+      "S_NAME": "Supplier#000007747",
+      "S_ADDRESS": "ZECD2vx06U19rOoOrvs"
+    },
+    {
+      "S_NAME": "Supplier#000007786",
+      "S_ADDRESS": "ADi4xHjxUIZAVpsnVbFpFyb"
+    },
+    {
+      "S_NAME": "Supplier#000007795",
+      "S_ADDRESS": "00Nr469uCrk,Bsqsj"
+    },
+    {
+      "S_NAME": "Supplier#000007834",
+      "S_ADDRESS": "api3BtyfjEI5 lXdDnT28S05x2tfAGXk"
+    },
+    {
+      "S_NAME": "Supplier#000007857",
+      "S_ADDRESS": "A1pB18yKQ8kT"
+    },
+    {
+      "S_NAME": "Supplier#000008019",
+      "S_ADDRESS": "FofCrfRkUtMtMhUGC3lF2 DE,7fireSkZhvHSo6"
+    },
+    {
+      "S_NAME": "Supplier#000008053",
+      "S_ADDRESS": "iARPfsVTE0pgVwTvcFyaxRPRj"
+    },
+    {
+      "S_NAME": "Supplier#000008075",
+      "S_ADDRESS": "x9E008U1RDGS1G4N63T,x"
+    },
+    {
+      "S_NAME": "Supplier#000008137",
+      "S_ADDRESS": "4ak mKevEqkfn85InRenotdDXk9xBzeHlao"
+    },
+    {
+      "S_NAME": "Supplier#000008156",
+      "S_ADDRESS": "Iq7b0MvQ8Ct"
+    },
+    {
+      "S_NAME": "Supplier#000008404",
+      "S_ADDRESS": "iEEaB 7rZR2Oy33vo7CnlAK3xCMP"
+    },
+    {
+      "S_NAME": "Supplier#000008405",
+      "S_ADDRESS": ",J2JsCw3g,yzF9hVop61BErQ"
+    },
+    {
+      "S_NAME": "Supplier#000008412",
+      "S_ADDRESS": "LcpyabFA7eFbBNFHt29dMD2B0owx"
+    },
+    {
+      "S_NAME": "Supplier#000008465",
+      "S_ADDRESS": ",FHaiFGcpSfkuhV"
+    },
+    {
+      "S_NAME": "Supplier#000008609",
+      "S_ADDRESS": "1VJIqJm8Uvtb71k2pj4L82m0V"
+    },
+    {
+      "S_NAME": "Supplier#000008728",
+      "S_ADDRESS": "RGPccWaBvWk92xBdNsVH4g"
+    },
+    {
+      "S_NAME": "Supplier#000008782",
+      "S_ADDRESS": "vXzU5,XwefWBMKH3KCcRkKS"
+    },
+    {
+      "S_NAME": "Supplier#000008783",
+      "S_ADDRESS": "fS1iEQohCYI4h7kHJFk0uAaxOZiSyaJ"
+    },
+    {
+      "S_NAME": "Supplier#000008885",
+      "S_ADDRESS": "56MxggLQzjbAkUDV2MbADpOXP04gubQRccQJ"
+    },
+    {
+      "S_NAME": "Supplier#000008888",
+      "S_ADDRESS": " hj2NUJHjVnNf8bRcNE"
+    },
+    {
+      "S_NAME": "Supplier#000008924",
+      "S_ADDRESS": "KyanikaDh1OcH9XvwmRkFnIgd6QxVuoY0asH"
+    },
+    {
+      "S_NAME": "Supplier#000009080",
+      "S_ADDRESS": "Ak6rnVO8pdPvSo4,s5muXA1NUqEl00a"
+    },
+    {
+      "S_NAME": "Supplier#000009082",
+      "S_ADDRESS": "cpmZ uIOFMb7GMwgwGLk"
+    },
+    {
+      "S_NAME": "Supplier#000009206",
+      "S_ADDRESS": "Z59XGeV1TZQRzYGvNkjO9knTnuTFNi8Tlr"
+    },
+    {
+      "S_NAME": "Supplier#000009240",
+      "S_ADDRESS": "vd9tpq,RtPNO8kd"
+    },
+    {
+      "S_NAME": "Supplier#000009282",
+      "S_ADDRESS": "eFk7kOGr2fWXaP"
+    },
+    {
+      "S_NAME": "Supplier#000009362",
+      "S_ADDRESS": "aMdhJkrGRFqXk6Ycd5B8gvcx"
+    },
+    {
+      "S_NAME": "Supplier#000009482",
+      "S_ADDRESS": "lP2s7n9ZClozcMOQtvnX95k"
+    },
+    {
+      "S_NAME": "Supplier#000009512",
+      "S_ADDRESS": "oI84wqW4buKBdWJd VM,5oYa"
+    },
+    {
+      "S_NAME": "Supplier#000009525",
+      "S_ADDRESS": "37Y3k,d6AqWh344iAnU3hA1w"
+    },
+    {
+      "S_NAME": "Supplier#000009548",
+      "S_ADDRESS": "VWqDjC FUr"
+    },
+    {
+      "S_NAME": "Supplier#000009578",
+      "S_ADDRESS": "EWHl5fq a66ECv1"
+    },
+    {
+      "S_NAME": "Supplier#000009650",
+      "S_ADDRESS": "i3vb7HVm7pEKgjr,KfivTc5BLPEUvwFsm"
+    },
+    {
+      "S_NAME": "Supplier#000009706",
+      "S_ADDRESS": "6jzJ7PvIShmQYcY"
+    },
+    {
+      "S_NAME": "Supplier#000009763",
+      "S_ADDRESS": "W,ZWm0e5ty,Gy531Seo zQkBnKF"
+    },
+    {
+      "S_NAME": "Supplier#000009933",
+      "S_ADDRESS": "eCA5C1xxoHZG"
+    },
+    {
+      "S_NAME": "Supplier#000009963",
+      "S_ADDRESS": "uEzUV7Zw0xiCpieA8t426PUZvhlw00GBN"
+    }
+  ],
+  "statements": [
+    {
+      "sql": "SELECT \"SUPPLIER\".\"S_NAME\" AS \"S_NAME\", \"SUPPLIER\".\"S_ADDRESS\" AS \"S_ADDRESS\" FROM \"SUPPLIER\" INNER JOIN \"NATION\" ON (\"SUPPLIER\".\"S_NATIONKEY\" = \"NATION\".\"N_NATIONKEY\") WHERE (\"NATION\".\"N_NAME\" = %s AND \"SUPPLIER\".\"S_SUPPKEY\" IN (SELECT DISTINCT V0.\"PS_SUPPKEY\" AS \"SUPPKEY\" FROM \"PARTSUPP\" V0 WHERE (V0.\"PS_AVAILQTY\" > (SELECT (SUM(U0.\"L_QUANTITY\") * %s) AS \"HALF_QTY\" FROM \"LINEITEM\" U0 WHERE (U0.\"L_PARTKEY\" = (V0.\"PS_PARTKEY\") AND U0.\"L_SHIPDATE\" >= %s AND U0.\"L_SHIPDATE\" < %s AND U0.\"L_SUPPKEY\" = (V0.\"PS_SUPPKEY\")) GROUP BY U0.\"L_PARTKEY\", U0.\"L_SUPPKEY\") AND V0.\"PS_PARTKEY\" IN (SELECT U0.\"P_PARTKEY\" AS \"PARTKEY\" FROM \"PART\" U0 WHERE U0.\"P_NAME\" LIKE TRANSLATE(%s USING NCHAR_CS) ESCAPE TRANSLATE('\\' USING NCHAR_CS))))) ORDER BY 1 ASC",
+      "params": [
+        "KENYA",
+        {
+          "type": "Decimal",
+          "value": "0.5"
+        },
+        {
+          "type": "date",
+          "value": "1994-01-01"
+        },
+        {
+          "type": "date",
+          "value": "1995-01-01"
+        },
+        "chartreuse%"
+      ],
+      "many": false
+    }
+  ],
+  "result_sha256": "b0c13abeb9a2f32c634b8aad0e6257dacd8deb99af63bbf5c39f780514163262"
+}

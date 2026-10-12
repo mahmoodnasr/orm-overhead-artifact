@@ -1,0 +1,45 @@
+{
+  "query": 17,
+  "parameter_set": 6,
+  "parameters": {
+    "brand": "Brand#32",
+    "container": "JUMBO PACK"
+  },
+  "statements": {
+    "generated": [
+      "SELECT (SUM(\"LINEITEM\".\"L_EXTENDEDPRICE\") / %s) AS \"AVG_YEARLY\" FROM \"LINEITEM\" INNER JOIN \"PART\" ON (\"LINEITEM\".\"L_PARTKEY\" = \"PART\".\"P_PARTKEY\") WHERE (\"PART\".\"P_BRAND\" = %s AND \"PART\".\"P_CONTAINER\" = %s AND \"LINEITEM\".\"L_QUANTITY\" < ((SELECT AVG(U0.\"L_QUANTITY\") AS \"AVG_Q\" FROM \"LINEITEM\" U0 WHERE U0.\"L_PARTKEY\" = (\"LINEITEM\".\"L_PARTKEY\") GROUP BY U0.\"L_PARTKEY\") * %s))",
+      [
+        {
+          "type": "Decimal",
+          "value": "7.0"
+        },
+        "Brand#32",
+        "JUMBO PACK",
+        {
+          "type": "Decimal",
+          "value": "0.2"
+        }
+      ]
+    ],
+    "bound": [
+      "\n    SELECT SUM(l_extendedprice) / %s as avg_yearly\n    FROM lineitem, part\n    WHERE p_partkey = l_partkey\n      AND p_brand = %s\n      AND p_container = %s\n      AND l_quantity < (\n        SELECT %s * AVG(l_quantity)\n        FROM lineitem\n        WHERE l_partkey = p_partkey\n      )\n    ",
+      [
+        {
+          "type": "Decimal",
+          "value": "7.0"
+        },
+        "Brand#32",
+        "JUMBO PACK",
+        {
+          "type": "Decimal",
+          "value": "0.2"
+        }
+      ]
+    ],
+    "literal": [
+      "\n    SELECT SUM(l_extendedprice) / 7.0 as avg_yearly\n    FROM lineitem, part\n    WHERE p_partkey = l_partkey\n      AND p_brand = 'Brand#32'\n      AND p_container = 'JUMBO PACK'\n      AND l_quantity < (\n        SELECT 0.2 * AVG(l_quantity)\n        FROM lineitem\n        WHERE l_partkey = p_partkey\n      )\n    ",
+      null
+    ]
+  },
+  "environment_sha256": "ff1063e738f014b7e9a705893371a0d8165bad69981602b6f628088df8f3ffd0"
+}

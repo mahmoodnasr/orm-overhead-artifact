@@ -1,0 +1,48 @@
+{
+  "followup_id": "3b3b8f9c-bb10-4333-bb95-6e54d322bfbb",
+  "environment_sha256": "ff1063e738f014b7e9a705893371a0d8165bad69981602b6f628088df8f3ffd0",
+  "query": 17,
+  "schema": "non-indexed",
+  "dbms": "oracle",
+  "block": 1,
+  "position": 1,
+  "path": "generated",
+  "parameter_set_id": "q17s1",
+  "parameters": {
+    "brand": "Brand#54",
+    "container": "MED CAN"
+  },
+  "utc": "2026-10-07T16:33:40.535256+00:00",
+  "elapsed_s": {
+    "type": "float",
+    "value": "564.7937968609986"
+  },
+  "status": "ok",
+  "rows": [
+    {
+      "AVG_YEARLY": {
+        "type": "Decimal",
+        "value": "334977.4442857142857142857142857142857143"
+      }
+    }
+  ],
+  "statements": [
+    {
+      "sql": "SELECT (SUM(\"LINEITEM\".\"L_EXTENDEDPRICE\") / %s) AS \"AVG_YEARLY\" FROM \"LINEITEM\" INNER JOIN \"PART\" ON (\"LINEITEM\".\"L_PARTKEY\" = \"PART\".\"P_PARTKEY\") WHERE (\"PART\".\"P_BRAND\" = %s AND \"PART\".\"P_CONTAINER\" = %s AND \"LINEITEM\".\"L_QUANTITY\" < ((SELECT AVG(U0.\"L_QUANTITY\") AS \"AVG_Q\" FROM \"LINEITEM\" U0 WHERE U0.\"L_PARTKEY\" = (\"LINEITEM\".\"L_PARTKEY\") GROUP BY U0.\"L_PARTKEY\") * %s))",
+      "params": [
+        {
+          "type": "Decimal",
+          "value": "7.0"
+        },
+        "Brand#54",
+        "MED CAN",
+        {
+          "type": "Decimal",
+          "value": "0.2"
+        }
+      ],
+      "many": false
+    }
+  ],
+  "result_sha256": "6a0e8b92b37d009e56e8a960648fd6c06f64f3a06ebb16154c411b2bf8ffaf2b"
+}

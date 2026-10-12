@@ -1,0 +1,1756 @@
+{
+ "generated": {
+  "utc": "2026-10-11T19:51:55.659004+00:00",
+  "cairo": "2026-10-11T22:51:55.659004+03:00"
+ },
+ "inputs": {
+  "A": "analysis/run-20261011T2000/A-sf1",
+  "D": "analysis/run-20261011T0400/D-sf2",
+  "E": "analysis/run-20261011T2215/E-client",
+  "results": "results-all-phases.csv",
+  "paper": "<paper>/reproducibility/derived"
+ },
+ "status_counts": {
+  "A": {
+   "measured": 332,
+   "not_expressible": 4,
+   "censored": 12,
+   "numeric_mismatch": 4
+  },
+  "B": {
+   "lower_bound": 2
+  },
+  "C": {
+   "measured": 64,
+   "measured_with_rejections": 16
+  },
+  "D": {
+   "measured": 53,
+   "censored": 3,
+   "partial": 14,
+   "skipped_censored_on_host": 10
+  },
+  "E": {
+   "measured": 70,
+   "skipped_censored_on_host": 10
+  },
+  "F": {
+   "measured": 41,
+   "censored": 1
+  },
+  "G": {
+   "measured": 70,
+   "skipped_censored_on_host": 10
+  },
+  "V": {
+   "validated_by_twin": 4,
+   "validated": 8
+  }
+ },
+ "A": {
+  "summary": {
+   "pooled": {
+    "n": 332,
+    "median_pct": 0.8531165535717545,
+    "ci_pct": [
+     0.5069724537228797,
+     1.596216026837055
+    ],
+    "above100": 25
+   },
+   "django": {
+    "n": 165,
+    "median_pct": 1.3458246657068096,
+    "ci_pct": [
+     0.5336527618433166,
+     4.412076752558958
+    ],
+    "above100": 17,
+    "wilcoxon": {
+     "p": 0.004684925079345703,
+     "queries": 22
+    }
+   },
+   "sqlalchemy": {
+    "n": 167,
+    "median_pct": 0.6009322375181828,
+    "ci_pct": [
+     0.3067169287528947,
+     1.3901809330229404
+    ],
+    "above100": 8,
+    "wilcoxon": {
+     "p": 9.059906005859375e-06,
+     "queries": 22
+    }
+   },
+   "postgresql": {
+    "n": 77,
+    "median_pct": 0.37648078067786056,
+    "ci_pct": [
+     0.20066023254679005,
+     0.6936541013684828
+    ],
+    "above100": 0
+   },
+   "mysql": {
+    "n": 83,
+    "median_pct": 0.16914606743906804,
+    "ci_pct": [
+     0.04892419374114078,
+     0.5338832046696894
+    ],
+    "above100": 2
+   },
+   "oracle": {
+    "n": 86,
+    "median_pct": 1.4778332026895589,
+    "ci_pct": [
+     0.5748711069124404,
+     6.90706238609033
+    ],
+    "above100": 8
+   },
+   "commercial_a": {
+    "n": 86,
+    "median_pct": 15.27165592764606,
+    "ci_pct": [
+     3.843539007692916,
+     36.930117493104454
+    ],
+    "above100": 15
+   },
+   "indexed": {
+    "n": 172,
+    "median_pct": 0.8955065628019284,
+    "ci_pct": [
+     0.5304903042138959,
+     1.6744563125617882
+    ],
+    "above100": 14
+   },
+   "non-indexed": {
+    "n": 160,
+    "median_pct": 0.7762534072945533,
+    "ci_pct": [
+     0.2631002223538347,
+     1.8613983407906556
+    ],
+    "above100": 11
+   },
+   "coverage": {
+    "measured": 332,
+    "not_expressible": 4,
+    "unresolved": 4,
+    "censored": 12
+   },
+   "acceptance_classes": {
+    "exact": 2568,
+    "scale_equivalent": 88
+   },
+   "wilcoxon_inclusion": "a query enters with the median of its measured cells (at least one); counts of valid cells per query are reported beside it",
+   "valid_cells_per_query": {
+    "Q01:django": {
+     "measured": 8
+    },
+    "Q01:sqlalchemy": {
+     "measured": 8
+    },
+    "Q02:django": {
+     "measured": 8
+    },
+    "Q02:sqlalchemy": {
+     "measured": 8
+    },
+    "Q03:django": {
+     "measured": 8
+    },
+    "Q03:sqlalchemy": {
+     "measured": 8
+    },
+    "Q04:django": {
+     "measured": 8
+    },
+    "Q04:sqlalchemy": {
+     "measured": 8
+    },
+    "Q05:django": {
+     "measured": 8
+    },
+    "Q05:sqlalchemy": {
+     "measured": 8
+    },
+    "Q06:django": {
+     "measured": 8
+    },
+    "Q06:sqlalchemy": {
+     "measured": 8
+    },
+    "Q07:django": {
+     "measured": 8
+    },
+    "Q07:sqlalchemy": {
+     "measured": 8
+    },
+    "Q08:django": {
+     "measured": 8
+    },
+    "Q08:sqlalchemy": {
+     "measured": 6,
+     "unresolved": 2
+    },
+    "Q09:django": {
+     "measured": 8
+    },
+    "Q09:sqlalchemy": {
+     "measured": 8
+    },
+    "Q10:django": {
+     "measured": 8
+    },
+    "Q10:sqlalchemy": {
+     "measured": 8
+    },
+    "Q11:django": {
+     "measured": 8
+    },
+    "Q11:sqlalchemy": {
+     "measured": 8
+    },
+    "Q12:django": {
+     "measured": 8
+    },
+    "Q12:sqlalchemy": {
+     "measured": 8
+    },
+    "Q13:django": {
+     "not_expressible": 4,
+     "measured": 2,
+     "censored": 2
+    },
+    "Q13:sqlalchemy": {
+     "measured": 8
+    },
+    "Q14:django": {
+     "measured": 8
+    },
+    "Q14:sqlalchemy": {
+     "measured": 6,
+     "unresolved": 2
+    },
+    "Q15:django": {
+     "measured": 8
+    },
+    "Q15:sqlalchemy": {
+     "measured": 8
+    },
+    "Q16:django": {
+     "measured": 8
+    },
+    "Q16:sqlalchemy": {
+     "measured": 8
+    },
+    "Q17:django": {
+     "measured": 6,
+     "censored": 2
+    },
+    "Q17:sqlalchemy": {
+     "measured": 6,
+     "censored": 2
+    },
+    "Q18:django": {
+     "measured": 8
+    },
+    "Q18:sqlalchemy": {
+     "measured": 8
+    },
+    "Q19:django": {
+     "measured": 8
+    },
+    "Q19:sqlalchemy": {
+     "measured": 8
+    },
+    "Q20:django": {
+     "measured": 6,
+     "censored": 2
+    },
+    "Q20:sqlalchemy": {
+     "measured": 6,
+     "censored": 2
+    },
+    "Q21:django": {
+     "measured": 7,
+     "censored": 1
+    },
+    "Q21:sqlalchemy": {
+     "measured": 7,
+     "censored": 1
+    },
+    "Q22:django": {
+     "measured": 8
+    },
+    "Q22:sqlalchemy": {
+     "measured": 8
+    }
+   },
+   "variability": {
+    "paths": 664,
+    "median_cv_pct": 1.1941030093091076,
+    "p90_cv_pct": 8.37366922708347,
+    "share_above_25_pct": 0.018072289156626505,
+    "criteria": {
+     "median_le_5": true,
+     "p90_le_15": true,
+     "share_above_25_le_5pct": true
+    }
+   }
+  },
+  "sensitivity": {
+   "exclude_commercial_a": {
+    "n": 246,
+    "median_pct": 0.508058464298531,
+    "ci_pct": [
+     0.23545507680851543,
+     0.8899816387655605
+    ],
+    "above100": 10
+   },
+   "exclude_oracle": {
+    "n": 246,
+    "median_pct": 0.668781106053445,
+    "ci_pct": [
+     0.37648078067786056,
+     1.4486159236443394
+    ],
+    "above100": 17
+   },
+   "include_numeric_mismatch_cells": {
+    "n": 336,
+    "median_pct": 0.836758382722224,
+    "ci_pct": [
+     0.5054158457040291,
+     1.5651903318461236
+    ],
+    "above100": 25,
+    "added": 4
+   },
+   "exclude_scale_equivalent_cells": {
+    "n": 321,
+    "median_pct": 0.7901417413173991,
+    "ci_pct": [
+     0.4638517410604588,
+     1.5341741115559957
+    ],
+    "above100": 25
+   },
+   "above100_by_schema": {
+    "indexed": [
+     14,
+     172
+    ],
+    "non-indexed": [
+     11,
+     160
+    ]
+   },
+   "censored_worst_case": {
+    "n_measured": 332,
+    "n_censored": 12,
+    "median_pct": 1.0045230576899464,
+    "measured_only_median_pct": 0.8531165535717545,
+    "above100_including_censored": 37
+   }
+  },
+  "vs_paper": {
+   "paper": {
+    "pooled": {
+     "n": 336,
+     "median": 0.8441311438298916,
+     "ci": [
+      0.5069560805834039,
+      1.5031657782007017
+     ]
+    },
+    "django": {
+     "n": 165,
+     "median": 1.1339378992450566,
+     "ci": [
+      0.5460316823881819,
+      3.5659808585327157
+     ],
+     "wilcoxon_p": 0.0014548301696777344
+    },
+    "sqlalchemy": {
+     "n": 171,
+     "median": 0.6682262512454096,
+     "ci": [
+      0.3273345852745012,
+      1.3139595102452182
+     ],
+     "wilcoxon_p": 4.76837158203125e-07
+    },
+    "above100": 25
+   },
+   "cells": {
+    "n": 332,
+    "median_ratio_of_ratios": 0.9998185047641115,
+    "within_10pct": 313,
+    "outside_10pct": [
+     "mysql indexed Q18 django x0.829",
+     "oracle indexed Q04 django x1.110",
+     "postgresql indexed Q02 django x0.767",
+     "commercial_a indexed Q04 django x1.210",
+     "commercial_a indexed Q07 sqlalchemy x0.845",
+     "commercial_a indexed Q09 django x0.870",
+     "commercial_a indexed Q18 django x1.433",
+     "commercial_a indexed Q19 django x1.504",
+     "commercial_a indexed Q19 sqlalchemy x1.341",
+     "commercial_a non-indexed Q03 sqlalchemy x1.114",
+     "commercial_a non-indexed Q04 django x1.478",
+     "commercial_a non-indexed Q04 sqlalchemy x1.369",
+     "commercial_a non-indexed Q06 django x1.291",
+     "commercial_a non-indexed Q06 sqlalchemy x1.507",
+     "commercial_a non-indexed Q07 sqlalchemy x1.170",
+     "commercial_a non-indexed Q08 django x1.168",
+     "commercial_a non-indexed Q12 sqlalchemy x1.365",
+     "commercial_a non-indexed Q14 sqlalchemy x1.514",
+     "commercial_a non-indexed Q15 sqlalchemy x1.664"
+    ],
+    "by_engine": {
+     "postgresql": {
+      "n": 77,
+      "median_ratio_of_ratios": 0.9992455142547807,
+      "within_10pct": 76
+     },
+     "mysql": {
+      "n": 83,
+      "median_ratio_of_ratios": 1.0003003903511536,
+      "within_10pct": 82
+     },
+     "oracle": {
+      "n": 86,
+      "median_ratio_of_ratios": 1.0013752229356334,
+      "within_10pct": 85
+     },
+     "commercial_a": {
+      "n": 86,
+      "median_ratio_of_ratios": 0.9983119559739514,
+      "within_10pct": 70
+     }
+    }
+   }
+  },
+  "above100_sets": {
+   "campaign": 25,
+   "paper": 25,
+   "both": 24,
+   "campaign_only": [
+    "commercial_a indexed Q19 sqlalchemy"
+   ],
+   "paper_only": [
+    "commercial_a non-indexed Q15 django"
+   ],
+   "paper_only_status_in_A": {
+    "commercial_a non-indexed Q15 django": "measured"
+   }
+  }
+ },
+ "D": {
+  "summary": {
+   "pooled": {
+    "n": 53,
+    "median_pct": 0.29336813789074406,
+    "ci_pct": [
+     -0.10561643445271848,
+     0.8331395475948504
+    ],
+    "above100": 2
+   },
+   "django": {
+    "n": 25,
+    "median_pct": 1.322524536689576,
+    "ci_pct": [
+     0.29446148678813355,
+     9.27850101360161
+    ],
+    "above100": 2,
+    "wilcoxon": {
+     "p": 0.25,
+     "queries": 4
+    }
+   },
+   "sqlalchemy": {
+    "n": 28,
+    "median_pct": 0.10458803999234591,
+    "ci_pct": [
+     -0.25972461211173314,
+     0.3343127307428502
+    ],
+    "above100": 0,
+    "wilcoxon": {
+     "p": 0.625,
+     "queries": 4
+    }
+   },
+   "postgresql": {
+    "n": 12,
+    "median_pct": 0.22481748236917024,
+    "ci_pct": [
+     -0.46167553692310687,
+     0.32020367828845947
+    ],
+    "above100": 0
+   },
+   "mysql": {
+    "n": 12,
+    "median_pct": 0.28137849493172384,
+    "ci_pct": [
+     0.17090264484360906,
+     1.2697602815895743
+    ],
+    "above100": 0
+   },
+   "oracle": {
+    "n": 14,
+    "median_pct": -0.22375294247162525,
+    "ci_pct": [
+     -13.0376869520372,
+     1.686012970901218
+    ],
+    "above100": 0
+   },
+   "commercial_a": {
+    "n": 15,
+    "median_pct": 10.1727647999904,
+    "ci_pct": [
+     0.7951075770302345,
+     95.48270836612318
+    ],
+    "above100": 2
+   },
+   "indexed": {
+    "n": 31,
+    "median_pct": 0.29446148678813355,
+    "ci_pct": [
+     -0.0463117870557175,
+     0.6678199259995591
+    ],
+    "above100": 2
+   },
+   "non-indexed": {
+    "n": 22,
+    "median_pct": 0.2506490782984688,
+    "ci_pct": [
+     -0.16488589514209753,
+     10.1727647999904
+    ],
+    "above100": 0
+   },
+   "coverage": {
+    "measured": 53,
+    "partial": 14,
+    "censored": 3
+   },
+   "acceptance_classes": {
+    "exact": 416,
+    "scale_equivalent": 6,
+    "numeric_representation": 2
+   },
+   "wilcoxon_inclusion": "a query enters with the median of its measured cells (at least one); counts of valid cells per query are reported beside it",
+   "variability": {
+    "paths": 134,
+    "median_cv_pct": 3.0054043158251416,
+    "p90_cv_pct": 17.913590290832502,
+    "share_above_25_pct": 0.08208955223880597,
+    "criteria": {
+     "median_le_5": true,
+     "p90_le_15": false,
+     "share_above_25_le_5pct": false
+    }
+   }
+  },
+  "sensitivity": {
+   "exclude_commercial_a": {
+    "n": 38,
+    "median_pct": 0.10458803999234591,
+    "ci_pct": [
+     -0.16488589514209753,
+     0.29446148678813355
+    ],
+    "above100": 0
+   },
+   "exclude_oracle": {
+    "n": 39,
+    "median_pct": 0.5406930183471528,
+    "ci_pct": [
+     -0.0463117870557175,
+     6.398362081657942
+    ],
+    "above100": 2
+   },
+   "include_numeric_mismatch_cells": {
+    "n": 53,
+    "median_pct": 0.29336813789074406,
+    "ci_pct": [
+     -0.10561643445271848,
+     0.8331395475948504
+    ],
+    "above100": 2,
+    "added": 0
+   },
+   "exclude_scale_equivalent_cells": {
+    "n": 52,
+    "median_pct": 0.293914810849553,
+    "ci_pct": [
+     -0.16488589514209753,
+     1.8546994450126408
+    ],
+    "above100": 2
+   },
+   "above100_by_schema": {
+    "indexed": [
+     2,
+     31
+    ],
+    "non-indexed": [
+     0,
+     22
+    ]
+   },
+   "censored_worst_case": {
+    "n_measured": 53,
+    "n_censored": 3,
+    "median_pct": 0.31438512983491895,
+    "measured_only_median_pct": 0.29336813789074406,
+    "above100_including_censored": 5
+   }
+  },
+  "vs_A_sf1": {
+   "n": 53,
+   "median_ratio_of_ratios": 0.9934299791160426,
+   "within_10pct": 39,
+   "outside_10pct": [
+    "mysql indexed Q18 django x1.223",
+    "oracle indexed Q18 django x0.859",
+    "oracle indexed Q20 django x0.124",
+    "oracle indexed Q20 sqlalchemy x0.057",
+    "postgresql indexed Q17 django x0.517",
+    "postgresql non-indexed Q06 django x0.824",
+    "commercial_a indexed Q06 django x0.784",
+    "commercial_a indexed Q06 sqlalchemy x0.680",
+    "commercial_a indexed Q17 django x2.875",
+    "commercial_a indexed Q17 sqlalchemy x0.570",
+    "commercial_a indexed Q20 django x4.678",
+    "commercial_a indexed Q20 sqlalchemy x0.884",
+    "commercial_a non-indexed Q06 django x0.827",
+    "commercial_a non-indexed Q06 sqlalchemy x0.751"
+   ],
+   "by_engine": {
+    "postgresql": {
+     "n": 12,
+     "median_ratio_of_ratios": 0.997373973068415,
+     "within_10pct": 10
+    },
+    "mysql": {
+     "n": 12,
+     "median_ratio_of_ratios": 0.9993241985684648,
+     "within_10pct": 11
+    },
+    "oracle": {
+     "n": 14,
+     "median_ratio_of_ratios": 0.9890441162554315,
+     "within_10pct": 11
+    },
+    "commercial_a": {
+     "n": 15,
+     "median_ratio_of_ratios": 0.9739087084443573,
+     "within_10pct": 7
+    }
+   }
+  }
+ },
+ "E": {
+  "summary": {
+   "pooled": {
+    "n": 70,
+    "median_pct": 0.7757175471765452,
+    "ci_pct": [
+     0.34352324156291625,
+     3.8101454814694353
+    ],
+    "above100": 8
+   },
+   "django": {
+    "n": 35,
+    "median_pct": 2.0485660293080543,
+    "ci_pct": [
+     0.7593558992844885,
+     13.843954704619179
+    ],
+    "above100": 7,
+    "wilcoxon": {
+     "p": 0.0625,
+     "queries": 5
+    }
+   },
+   "sqlalchemy": {
+    "n": 35,
+    "median_pct": 0.6467276405459055,
+    "ci_pct": [
+     -0.010247998236354916,
+     2.0397644300160738
+    ],
+    "above100": 1,
+    "wilcoxon": {
+     "p": 0.125,
+     "queries": 5
+    }
+   },
+   "postgresql": {
+    "n": 14,
+    "median_pct": 0.9092789265249759,
+    "ci_pct": [
+     -0.25495519060624516,
+     3.8101454814694353
+    ],
+    "above100": 0
+   },
+   "mysql": {
+    "n": 16,
+    "median_pct": 0.3525805262405932,
+    "ci_pct": [
+     -0.06034415636613943,
+     0.7103618200034219
+    ],
+    "above100": 0
+   },
+   "oracle": {
+    "n": 20,
+    "median_pct": 0.22278795952859054,
+    "ci_pct": [
+     -4.1424864180276115,
+     2.8503291854414976
+    ],
+    "above100": 2
+   },
+   "commercial_a": {
+    "n": 20,
+    "median_pct": 49.85071761944988,
+    "ci_pct": [
+     9.808888283683011,
+     93.34262998336001
+    ],
+    "above100": 6
+   },
+   "indexed": {
+    "n": 40,
+    "median_pct": 0.7348558810079259,
+    "ci_pct": [
+     0.2110165423453807,
+     1.7291388018367746
+    ],
+    "above100": 5
+   },
+   "non-indexed": {
+    "n": 30,
+    "median_pct": 1.9563032871248518,
+    "ci_pct": [
+     0.00725433894806027,
+     37.62155721036127
+    ],
+    "above100": 3
+   },
+   "coverage": {
+    "measured": 70
+   },
+   "acceptance_classes": {
+    "exact": 552,
+    "scale_equivalent": 8
+   },
+   "wilcoxon_inclusion": "a query enters with the median of its measured cells (at least one); counts of valid cells per query are reported beside it",
+   "variability": {
+    "paths": 140,
+    "median_cv_pct": 4.140796343830878,
+    "p90_cv_pct": 14.556031791267015,
+    "share_above_25_pct": 0.03571428571428571,
+    "criteria": {
+     "median_le_5": true,
+     "p90_le_15": true,
+     "share_above_25_le_5pct": true
+    }
+   }
+  },
+  "sensitivity": {
+   "exclude_commercial_a": {
+    "n": 50,
+    "median_pct": 0.36755621226455826,
+    "ci_pct": [
+     0.2110165423453807,
+     0.7103618200034219
+    ],
+    "above100": 2
+   },
+   "exclude_oracle": {
+    "n": 50,
+    "median_pct": 1.3916748004139248,
+    "ci_pct": [
+     0.5557864408627017,
+     11.47893222803491
+    ],
+    "above100": 6
+   },
+   "include_numeric_mismatch_cells": {
+    "n": 70,
+    "median_pct": 0.7757175471765452,
+    "ci_pct": [
+     0.34352324156291625,
+     3.8101454814694353
+    ],
+    "above100": 8,
+    "added": 0
+   },
+   "exclude_scale_equivalent_cells": {
+    "n": 69,
+    "median_pct": 0.7920818519287945,
+    "ci_pct": [
+     0.34352324156291625,
+     4.109055784686304
+    ],
+    "above100": 8
+   },
+   "above100_by_schema": {
+    "indexed": [
+     5,
+     40
+    ],
+    "non-indexed": [
+     3,
+     30
+    ]
+   },
+   "censored_worst_case": {
+    "n_measured": 70,
+    "n_censored": 0,
+    "median_pct": 0.7757175471765452,
+    "measured_only_median_pct": 0.7757175471765452,
+    "above100_including_censored": 8
+   }
+  },
+  "vs_A": {
+   "n": 70,
+   "median_ratio_of_ratios": 0.9999187645864357,
+   "within_10pct": 61,
+   "outside_10pct": [
+    "mysql indexed Q18 django x1.212",
+    "oracle indexed Q17 django x0.872",
+    "oracle indexed Q20 sqlalchemy x0.803",
+    "postgresql indexed Q06 django x0.890",
+    "postgresql indexed Q06 sqlalchemy x1.104",
+    "commercial_a indexed Q17 django x0.844",
+    "commercial_a indexed Q18 django x0.888",
+    "commercial_a non-indexed Q21 django x0.741",
+    "commercial_a non-indexed Q21 sqlalchemy x0.887"
+   ],
+   "by_engine": {
+    "postgresql": {
+     "n": 14,
+     "median_ratio_of_ratios": 1.0054843162258043,
+     "within_10pct": 12
+    },
+    "mysql": {
+     "n": 16,
+     "median_ratio_of_ratios": 0.9988524209606418,
+     "within_10pct": 15
+    },
+    "oracle": {
+     "n": 20,
+     "median_ratio_of_ratios": 1.0009860540367241,
+     "within_10pct": 18
+    },
+    "commercial_a": {
+     "n": 20,
+     "median_ratio_of_ratios": 0.9912653144424545,
+     "within_10pct": 16
+    }
+   }
+  }
+ },
+ "B": [
+  {
+   "dbms": "postgresql",
+   "schema": "non-indexed",
+   "query": "Q13",
+   "framework": "django",
+   "status": "lower_bound",
+   "status_note": "django/orm censored at 900 s in phase A; 8 matched inputs, both arms: lower_bound 8; median ORM/SQL >= 475.1x (overhead >= 47407 %)"
+  },
+  {
+   "dbms": "mysql",
+   "schema": "non-indexed",
+   "query": "Q13",
+   "framework": "django",
+   "status": "lower_bound",
+   "status_note": "django/orm censored at 900 s in phase A; 8 matched inputs, both arms: lower_bound 8; median ORM/SQL >= 219.1x (overhead >= 21811 %)"
+  }
+ ],
+ "C": {
+  "pooled": {
+   "n": 80,
+   "median_overhead_pct": 104.6962849737386,
+   "median_added_ms": 7.9235500000000005,
+   "above100": 44
+  },
+  "django": {
+   "n": 40,
+   "median_overhead_pct": 136.07933646551956,
+   "median_added_ms": 8.300699999999999,
+   "above100": 32
+  },
+  "sqlalchemy": {
+   "n": 40,
+   "median_overhead_pct": 67.17813720468952,
+   "median_added_ms": 6.36085,
+   "above100": 12
+  },
+  "exclude_commercial_a": {
+   "n": 60,
+   "median_overhead_pct": 107.45519339708032,
+   "median_added_ms": 7.1894,
+   "above100": 35
+  },
+  "by_transaction": {
+   "T1": {
+    "n": 16,
+    "median_overhead_pct": 93.03397048555986,
+    "median_added_ms": 22.05145,
+    "above100": 8
+   },
+   "T2": {
+    "n": 16,
+    "median_overhead_pct": 107.29490106459446,
+    "median_added_ms": 7.9235500000000005,
+    "above100": 10
+   },
+   "T3": {
+    "n": 16,
+    "median_overhead_pct": 67.17813720468952,
+    "median_added_ms": 2.8619,
+    "above100": 4
+   },
+   "T4": {
+    "n": 16,
+    "median_overhead_pct": 182.6701723202503,
+    "median_added_ms": 77.63874999999999,
+    "above100": 16
+   },
+   "T5": {
+    "n": 16,
+    "median_overhead_pct": 76.8300434567045,
+    "median_added_ms": 4.4168,
+    "above100": 6
+   }
+  },
+  "by_engine": {
+   "postgresql": {
+    "n": 20,
+    "median_overhead_pct": 145.56256703883025,
+    "median_added_ms": 6.99475,
+    "above100": 14
+   },
+   "mysql": {
+    "n": 20,
+    "median_overhead_pct": 87.70906705018275,
+    "median_added_ms": 7.12735,
+    "above100": 8
+   },
+   "oracle": {
+    "n": 20,
+    "median_overhead_pct": 109.83638664497633,
+    "median_added_ms": 7.47405,
+    "above100": 13
+   },
+   "commercial_a": {
+    "n": 20,
+    "median_overhead_pct": 96.85955346230976,
+    "median_added_ms": 10.10435,
+    "above100": 9
+   }
+  },
+  "by_schema": {
+   "indexed": {
+    "n": 40,
+    "median_overhead_pct": 106.12287811909673,
+    "median_added_ms": 7.93375,
+    "above100": 23
+   },
+   "non-indexed": {
+    "n": 40,
+    "median_overhead_pct": 103.99346699953409,
+    "median_added_ms": 7.89635,
+    "above100": 21
+   }
+  },
+  "blocks_accepted": 1868,
+  "blocks_planned": 1920,
+  "variability": {
+   "paths": 160,
+   "median_cv_pct": 5.717702196383905,
+   "p90_cv_pct": 25.458272058591852,
+   "share_above_25_pct": 0.125,
+   "criteria": {
+    "median_le_5": false,
+    "p90_le_15": false,
+    "share_above_25_le_5pct": false
+   }
+  },
+  "variability_sql_paths": {
+   "paths": 80,
+   "median_cv_pct": 6.218264966982163,
+   "p90_cv_pct": 24.20971124494544,
+   "share_above_25_pct": 0.0625,
+   "criteria": {
+    "median_le_5": false,
+    "p90_le_15": false,
+    "share_above_25_le_5pct": false
+   }
+  },
+  "variability_orm_paths": {
+   "paths": 80,
+   "median_cv_pct": 5.275081477758243,
+   "p90_cv_pct": 25.76848535963928,
+   "share_above_25_pct": 0.1875,
+   "criteria": {
+    "median_le_5": false,
+    "p90_le_15": false,
+    "share_above_25_le_5pct": false
+   }
+  },
+  "paper": {
+   "django": {
+    "n": 40,
+    "median_overhead": 90.46046767754402
+   },
+   "sqlalchemy": {
+    "n": 40,
+    "median_overhead": 69.17500692866267
+   },
+   "pooled_median": 86.79670216106157,
+   "median_cv": 12.7,
+   "share_cv_above25": 30.0,
+   "throughput_50clients": {
+    "paths": 160,
+    "paths_with_aborts": 20,
+    "max_abort_pct": 70.5
+   }
+  },
+  "vs_paper": {
+   "n": 80,
+   "median_ratio_of_ratios": 1.1021235035463257,
+   "within_10pct": 25,
+   "outside_10pct": [
+    "mysql indexed T1 django x1.106",
+    "mysql indexed T2 django x1.243",
+    "mysql indexed T2 sqlalchemy x0.832",
+    "mysql indexed T3 django x1.215",
+    "mysql indexed T4 django x0.730",
+    "mysql indexed T4 sqlalchemy x1.561",
+    "mysql indexed T5 django x1.113",
+    "mysql indexed T5 sqlalchemy x1.557",
+    "mysql non-indexed T1 sqlalchemy x1.752",
+    "mysql non-indexed T3 django x1.721",
+    "mysql non-indexed T3 sqlalchemy x0.839",
+    "mysql non-indexed T4 django x1.561",
+    "mysql non-indexed T4 sqlalchemy x1.156",
+    "mysql non-indexed T5 django x1.285",
+    "mysql non-indexed T5 sqlalchemy x1.114",
+    "oracle indexed T1 django x1.212",
+    "oracle indexed T2 django x1.163",
+    "oracle indexed T3 django x2.003",
+    "oracle indexed T3 sqlalchemy x1.193",
+    "oracle indexed T4 django x1.217",
+    "oracle indexed T5 django x1.815",
+    "oracle indexed T5 sqlalchemy x1.276",
+    "oracle non-indexed T1 django x1.474",
+    "oracle non-indexed T1 sqlalchemy x0.793",
+    "oracle non-indexed T2 django x0.852",
+    "oracle non-indexed T3 django x0.376",
+    "oracle non-indexed T3 sqlalchemy x0.343",
+    "oracle non-indexed T4 django x1.453",
+    "oracle non-indexed T5 django x1.874",
+    "oracle non-indexed T5 sqlalchemy x1.129",
+    "postgresql indexed T1 django x1.342",
+    "postgresql indexed T1 sqlalchemy x0.825",
+    "postgresql indexed T3 django x2.192",
+    "postgresql indexed T3 sqlalchemy x1.289",
+    "postgresql indexed T4 django x1.327",
+    "postgresql indexed T5 django x2.190",
+    "postgresql indexed T5 sqlalchemy x1.556",
+    "postgresql non-indexed T2 django x1.119",
+    "postgresql non-indexed T3 sqlalchemy x0.638",
+    "postgresql non-indexed T5 django x1.880",
+    "postgresql non-indexed T5 sqlalchemy x1.670",
+    "commercial_a indexed T1 django x1.572",
+    "commercial_a indexed T2 django x0.808",
+    "commercial_a indexed T3 django x0.744",
+    "commercial_a indexed T3 sqlalchemy x1.499",
+    "commercial_a indexed T4 django x1.519",
+    "commercial_a indexed T4 sqlalchemy x1.278",
+    "commercial_a indexed T5 django x0.722",
+    "commercial_a indexed T5 sqlalchemy x0.840",
+    "commercial_a non-indexed T1 django x1.165",
+    "commercial_a non-indexed T2 sqlalchemy x0.714",
+    "commercial_a non-indexed T3 sqlalchemy x0.607",
+    "commercial_a non-indexed T4 django x1.404",
+    "commercial_a non-indexed T5 django x2.120",
+    "commercial_a non-indexed T5 sqlalchemy x1.304"
+   ]
+  }
+ },
+ "F": {
+  "cells": 42,
+  "measured": 41,
+  "not_measured": [
+   "commercial_a non-indexed Q22 django: censored"
+  ],
+  "selection": {
+   "seeded random sample": 16,
+   "paper > +100 %": 21,
+   "phase A > +100 % (127 %)": 1,
+   "October four-path diagnostic, reused (R1-4)": 3
+  },
+  "above100": 24,
+  "dominant_above100": {
+   "G/B formulation": 17,
+   "B/L binding": 7
+  },
+  "dominant_all": {
+   "G/B formulation": 21,
+   "O/G client": 6,
+   "B/L binding": 14
+  },
+  "max_abs_orm_vs_generated_pct_above100": 4.7821,
+  "median_abs_orm_vs_generated_pct_all": 0.2337,
+  "cells_detail": [
+   {
+    "cell": "mysql indexed Q12 django",
+    "selection": "seeded random sample",
+    "overhead_pct": -7.7613,
+    "paper_overhead_pct": -7.5393,
+    "orm_vs_generated_pct": 0.6557,
+    "generated_vs_bound_pct": -8.3657,
+    "bound_vs_literal_pct": 0.0855,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 1.0813726153833298
+   },
+   {
+    "cell": "mysql indexed Q15 django",
+    "selection": "paper > +100 %",
+    "overhead_pct": 108.3024,
+    "paper_overhead_pct": 109.4975,
+    "orm_vs_generated_pct": 0.1906,
+    "generated_vs_bound_pct": 107.7595,
+    "bound_vs_literal_pct": 0.1414,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 0.9964436689068907
+   },
+   {
+    "cell": "mysql indexed Q04 sqlalchemy",
+    "selection": "seeded random sample",
+    "overhead_pct": 0.1249,
+    "paper_overhead_pct": 0.0477,
+    "orm_vs_generated_pct": 0.3886,
+    "generated_vs_bound_pct": -0.2791,
+    "bound_vs_literal_pct": 0.1105,
+    "dominant": "O/G client",
+    "dominant_share_of_log_gap": null
+   },
+   {
+    "cell": "mysql non-indexed Q15 django",
+    "selection": "paper > +100 %",
+    "overhead_pct": 101.3764,
+    "paper_overhead_pct": 101.3666,
+    "orm_vs_generated_pct": 0.0284,
+    "generated_vs_bound_pct": 101.4117,
+    "bound_vs_literal_pct": -0.0249,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 1.0002503955185291
+   },
+   {
+    "cell": "mysql non-indexed Q22 django",
+    "selection": "seeded random sample",
+    "overhead_pct": 3.2313,
+    "paper_overhead_pct": 1.9011,
+    "orm_vs_generated_pct": 1.6033,
+    "generated_vs_bound_pct": 0.5113,
+    "bound_vs_literal_pct": 1.1786,
+    "dominant": "O/G client",
+    "dominant_share_of_log_gap": 0.5001531706320516
+   },
+   {
+    "cell": "mysql non-indexed Q18 sqlalchemy",
+    "selection": "seeded random sample",
+    "overhead_pct": -0.0887,
+    "paper_overhead_pct": -0.3606,
+    "orm_vs_generated_pct": -0.0817,
+    "generated_vs_bound_pct": -0.0903,
+    "bound_vs_literal_pct": 0.093,
+    "dominant": "B/L binding",
+    "dominant_share_of_log_gap": null
+   },
+   {
+    "cell": "oracle indexed Q02 django",
+    "selection": "paper > +100 %",
+    "overhead_pct": 192.7321,
+    "paper_overhead_pct": 197.8445,
+    "orm_vs_generated_pct": 4.7821,
+    "generated_vs_bound_pct": 87.6697,
+    "bound_vs_literal_pct": 49.8026,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 0.5860911861950485
+   },
+   {
+    "cell": "oracle indexed Q07 django",
+    "selection": "seeded random sample",
+    "overhead_pct": 0.0956,
+    "paper_overhead_pct": 0.5231,
+    "orm_vs_generated_pct": -0.162,
+    "generated_vs_bound_pct": 0.4365,
+    "bound_vs_literal_pct": -0.1823,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": null
+   },
+   {
+    "cell": "oracle indexed Q08 django",
+    "selection": "seeded random sample",
+    "overhead_pct": -0.2379,
+    "paper_overhead_pct": 0.5024,
+    "orm_vs_generated_pct": 0.3794,
+    "generated_vs_bound_pct": -0.6955,
+    "bound_vs_literal_pct": -0.0617,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": null
+   },
+   {
+    "cell": "oracle indexed Q15 django",
+    "selection": "paper > +100 %",
+    "overhead_pct": 108.9948,
+    "paper_overhead_pct": 106.7737,
+    "orm_vs_generated_pct": 0.1954,
+    "generated_vs_bound_pct": 105.8074,
+    "bound_vs_literal_pct": 1.0205,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 0.9791510320089115
+   },
+   {
+    "cell": "oracle indexed Q15 sqlalchemy",
+    "selection": "paper > +100 %",
+    "overhead_pct": 147.3031,
+    "paper_overhead_pct": 146.0715,
+    "orm_vs_generated_pct": 0.2415,
+    "generated_vs_bound_pct": 0.1596,
+    "bound_vs_literal_pct": 146.6181,
+    "dominant": "B/L binding",
+    "dominant_share_of_log_gap": 0.9969366167606851
+   },
+   {
+    "cell": "oracle non-indexed Q02 django",
+    "selection": "paper > +100 %",
+    "overhead_pct": 219.7597,
+    "paper_overhead_pct": 224.6047,
+    "orm_vs_generated_pct": 3.3258,
+    "generated_vs_bound_pct": 133.1073,
+    "bound_vs_literal_pct": 33.8735,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 0.7280875558817319
+   },
+   {
+    "cell": "oracle non-indexed Q07 django",
+    "selection": "seeded random sample",
+    "overhead_pct": 0.7049,
+    "paper_overhead_pct": -0.5618,
+    "orm_vs_generated_pct": 0.6438,
+    "generated_vs_bound_pct": 0.239,
+    "bound_vs_literal_pct": -0.0731,
+    "dominant": "O/G client",
+    "dominant_share_of_log_gap": null
+   },
+   {
+    "cell": "oracle non-indexed Q15 django",
+    "selection": "paper > +100 %",
+    "overhead_pct": 107.883,
+    "paper_overhead_pct": 106.7337,
+    "orm_vs_generated_pct": -0.0391,
+    "generated_vs_bound_pct": 105.7158,
+    "bound_vs_literal_pct": 0.6851,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 0.9856795000467091
+   },
+   {
+    "cell": "oracle non-indexed Q12 sqlalchemy",
+    "selection": "seeded random sample",
+    "overhead_pct": -2.6436,
+    "paper_overhead_pct": -2.6331,
+    "orm_vs_generated_pct": 0.1775,
+    "generated_vs_bound_pct": -0.0781,
+    "bound_vs_literal_pct": -3.0874,
+    "dominant": "B/L binding",
+    "dominant_share_of_log_gap": 1.1705352032977034
+   },
+   {
+    "cell": "oracle non-indexed Q15 sqlalchemy",
+    "selection": "paper > +100 %",
+    "overhead_pct": 148.3727,
+    "paper_overhead_pct": 145.7328,
+    "orm_vs_generated_pct": 0.2337,
+    "generated_vs_bound_pct": 0.1693,
+    "bound_vs_literal_pct": 147.9474,
+    "dominant": "B/L binding",
+    "dominant_share_of_log_gap": 0.9981161918933963
+   },
+   {
+    "cell": "postgresql indexed Q07 django",
+    "selection": "seeded random sample",
+    "overhead_pct": 1.2448,
+    "paper_overhead_pct": 0.2927,
+    "orm_vs_generated_pct": 0.643,
+    "generated_vs_bound_pct": 0.1001,
+    "bound_vs_literal_pct": -0.03,
+    "dominant": "O/G client",
+    "dominant_share_of_log_gap": 0.5180933236162977
+   },
+   {
+    "cell": "postgresql indexed Q22 sqlalchemy",
+    "selection": "seeded random sample",
+    "overhead_pct": 1.238,
+    "paper_overhead_pct": 1.0204,
+    "orm_vs_generated_pct": 1.5074,
+    "generated_vs_bound_pct": -0.3105,
+    "bound_vs_literal_pct": 0.1222,
+    "dominant": "O/G client",
+    "dominant_share_of_log_gap": 1.2159885387995635
+   },
+   {
+    "cell": "postgresql non-indexed Q06 django",
+    "selection": "seeded random sample",
+    "overhead_pct": 45.7147,
+    "paper_overhead_pct": 45.3012,
+    "orm_vs_generated_pct": 0.0633,
+    "generated_vs_bound_pct": 45.9458,
+    "bound_vs_literal_pct": 0.0136,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 1.0042093014429034
+   },
+   {
+    "cell": "postgresql non-indexed Q10 sqlalchemy",
+    "selection": "seeded random sample",
+    "overhead_pct": 0.2938,
+    "paper_overhead_pct": 0.2268,
+    "orm_vs_generated_pct": 0.3378,
+    "generated_vs_bound_pct": -0.2784,
+    "bound_vs_literal_pct": 0.1914,
+    "dominant": "O/G client",
+    "dominant_share_of_log_gap": null
+   },
+   {
+    "cell": "commercial_a indexed Q04 django",
+    "selection": "paper > +100 %",
+    "overhead_pct": 767.2562,
+    "paper_overhead_pct": 689.8257,
+    "orm_vs_generated_pct": -1.8284,
+    "generated_vs_bound_pct": 766.7527,
+    "bound_vs_literal_pct": 9.6244,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 0.999731161547765
+   },
+   {
+    "cell": "commercial_a indexed Q17 django",
+    "selection": "paper > +100 %",
+    "overhead_pct": 795.7752,
+    "paper_overhead_pct": 803.0258,
+    "orm_vs_generated_pct": 0.4712,
+    "generated_vs_bound_pct": 654.4183,
+    "bound_vs_literal_pct": 20.5362,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 0.9216688766580053
+   },
+   {
+    "cell": "commercial_a indexed Q19 django",
+    "selection": "paper > +100 %",
+    "overhead_pct": 204.0926,
+    "paper_overhead_pct": 100.8958,
+    "orm_vs_generated_pct": -0.1317,
+    "generated_vs_bound_pct": 189.6453,
+    "bound_vs_literal_pct": 4.5317,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 0.9562337266476483
+   },
+   {
+    "cell": "commercial_a indexed Q20 django",
+    "selection": "paper > +100 %",
+    "overhead_pct": 107.7303,
+    "paper_overhead_pct": 102.1798,
+    "orm_vs_generated_pct": -0.2452,
+    "generated_vs_bound_pct": 2015.4617,
+    "bound_vs_literal_pct": -90.3163,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 4.17450645722513
+   },
+   {
+    "cell": "commercial_a indexed Q21 django",
+    "selection": "paper > +100 %",
+    "overhead_pct": 141.1142,
+    "paper_overhead_pct": 175.3603,
+    "orm_vs_generated_pct": 3.0779,
+    "generated_vs_bound_pct": 132.3711,
+    "bound_vs_literal_pct": 0.5905,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 0.9580331817377026
+   },
+   {
+    "cell": "commercial_a indexed Q04 sqlalchemy",
+    "selection": "seeded random sample",
+    "overhead_pct": 4.3418,
+    "paper_overhead_pct": 11.6006,
+    "orm_vs_generated_pct": 0.4772,
+    "generated_vs_bound_pct": -0.185,
+    "bound_vs_literal_pct": 3.5643,
+    "dominant": "B/L binding",
+    "dominant_share_of_log_gap": 0.8240224684116225
+   },
+   {
+    "cell": "commercial_a indexed Q10 sqlalchemy",
+    "selection": "seeded random sample",
+    "overhead_pct": 3.3888,
+    "paper_overhead_pct": 4.126,
+    "orm_vs_generated_pct": 0.308,
+    "generated_vs_bound_pct": 0.9966,
+    "bound_vs_literal_pct": 2.1575,
+    "dominant": "B/L binding",
+    "dominant_share_of_log_gap": 0.6404988258516736
+   },
+   {
+    "cell": "commercial_a indexed Q13 sqlalchemy",
+    "selection": "paper > +100 %",
+    "overhead_pct": 117.0672,
+    "paper_overhead_pct": 137.8214,
+    "orm_vs_generated_pct": 0.0653,
+    "generated_vs_bound_pct": 0.151,
+    "bound_vs_literal_pct": 117.4142,
+    "dominant": "B/L binding",
+    "dominant_share_of_log_gap": 1.0020609433355736
+   },
+   {
+    "cell": "commercial_a indexed Q15 sqlalchemy",
+    "selection": "paper > +100 %",
+    "overhead_pct": 256.9524,
+    "paper_overhead_pct": 251.6108,
+    "orm_vs_generated_pct": 0.0657,
+    "generated_vs_bound_pct": 2.2722,
+    "bound_vs_literal_pct": 248.7044,
+    "dominant": "B/L binding",
+    "dominant_share_of_log_gap": 0.9816274166325648
+   },
+   {
+    "cell": "commercial_a indexed Q17 sqlalchemy",
+    "selection": "paper > +100 %",
+    "overhead_pct": 190.5125,
+    "paper_overhead_pct": 198.1495,
+    "orm_vs_generated_pct": 1.9272,
+    "generated_vs_bound_pct": 184.6238,
+    "bound_vs_literal_pct": 0.6089,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 0.9807981724049294
+   },
+   {
+    "cell": "commercial_a indexed Q19 sqlalchemy",
+    "selection": "phase A > +100 % (127 %)",
+    "overhead_pct": 128.1728,
+    "paper_overhead_pct": 69.1269,
+    "orm_vs_generated_pct": -0.1158,
+    "generated_vs_bound_pct": 129.1153,
+    "bound_vs_literal_pct": -0.2945,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 1.0049969311526545
+   },
+   {
+    "cell": "commercial_a non-indexed Q04 django",
+    "selection": "paper > +100 %",
+    "overhead_pct": 1215.2899,
+    "paper_overhead_pct": 630.5128,
+    "orm_vs_generated_pct": 0.7989,
+    "generated_vs_bound_pct": 911.249,
+    "bound_vs_literal_pct": 5.9821,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 0.897979277817235
+   },
+   {
+    "cell": "commercial_a non-indexed Q15 django",
+    "selection": "paper > +100 %",
+    "overhead_pct": 98.6073,
+    "paper_overhead_pct": 111.7413,
+    "orm_vs_generated_pct": 0.1569,
+    "generated_vs_bound_pct": -7.0292,
+    "bound_vs_literal_pct": 112.595,
+    "dominant": "B/L binding",
+    "dominant_share_of_log_gap": 1.0991889738192282
+   },
+   {
+    "cell": "commercial_a non-indexed Q21 django",
+    "selection": "paper > +100 %",
+    "overhead_pct": 1473.7609,
+    "paper_overhead_pct": 1620.1069,
+    "orm_vs_generated_pct": -1.7879,
+    "generated_vs_bound_pct": 1516.4525,
+    "bound_vs_literal_pct": -3.0335,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 1.0097116048326322
+   },
+   {
+    "cell": "commercial_a non-indexed Q03 sqlalchemy",
+    "selection": "seeded random sample",
+    "overhead_pct": 7.0174,
+    "paper_overhead_pct": 3.6625,
+    "orm_vs_generated_pct": -0.0595,
+    "generated_vs_bound_pct": -0.0448,
+    "bound_vs_literal_pct": 6.9704,
+    "dominant": "B/L binding",
+    "dominant_share_of_log_gap": 0.9935230127285329
+   },
+   {
+    "cell": "commercial_a non-indexed Q13 sqlalchemy",
+    "selection": "paper > +100 %",
+    "overhead_pct": 116.8099,
+    "paper_overhead_pct": 137.9295,
+    "orm_vs_generated_pct": 0.0693,
+    "generated_vs_bound_pct": -0.0076,
+    "bound_vs_literal_pct": 117.2084,
+    "dominant": "B/L binding",
+    "dominant_share_of_log_gap": 1.0023729751806607
+   },
+   {
+    "cell": "commercial_a non-indexed Q15 sqlalchemy",
+    "selection": "paper > +100 %",
+    "overhead_pct": 259.3005,
+    "paper_overhead_pct": 118.1556,
+    "orm_vs_generated_pct": -0.0353,
+    "generated_vs_bound_pct": 2.6362,
+    "bound_vs_literal_pct": 250.0623,
+    "dominant": "B/L binding",
+    "dominant_share_of_log_gap": 0.9796339537618112
+   },
+   {
+    "cell": "commercial_a non-indexed Q18 sqlalchemy",
+    "selection": "seeded random sample",
+    "overhead_pct": 0.1863,
+    "paper_overhead_pct": -0.1453,
+    "orm_vs_generated_pct": 0.1131,
+    "generated_vs_bound_pct": -0.0544,
+    "bound_vs_literal_pct": 0.1967,
+    "dominant": "B/L binding",
+    "dominant_share_of_log_gap": null
+   },
+   {
+    "cell": "oracle non-indexed Q17 django",
+    "selection": "October four-path diagnostic, reused (R1-4)",
+    "overhead_pct": 76397.0247,
+    "paper_overhead_pct": 75799.6953,
+    "orm_vs_generated_pct": 0.06,
+    "generated_vs_bound_pct": 76206.1973,
+    "bound_vs_literal_pct": -0.6195,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 0.9996238327098356
+   },
+   {
+    "cell": "oracle non-indexed Q20 django",
+    "selection": "October four-path diagnostic, reused (R1-4)",
+    "overhead_pct": 17324.2117,
+    "paper_overhead_pct": 31103.3468,
+    "orm_vs_generated_pct": -0.199,
+    "generated_vs_bound_pct": 18912.7215,
+    "bound_vs_literal_pct": -1.6738,
+    "dominant": "G/B formulation",
+    "dominant_share_of_log_gap": 1.0169069872936574
+   },
+   {
+    "cell": "commercial_a indexed Q18 django",
+    "selection": "October four-path diagnostic, reused (R1-4)",
+    "overhead_pct": 6330.7859,
+    "paper_overhead_pct": 6309.0665,
+    "orm_vs_generated_pct": -0.1148,
+    "generated_vs_bound_pct": -0.1633,
+    "bound_vs_literal_pct": 6330.6244,
+    "dominant": "B/L binding",
+    "dominant_share_of_log_gap": 0.9999939683463973
+   }
+  ]
+ },
+ "G": {
+  "n": 70,
+  "median_ratio_of_ratios": 0.9990725882157114,
+  "within_10pct": 59,
+  "outside_10pct": [
+   "mysql indexed Q18 django x1.212",
+   "mysql non-indexed Q21 sqlalchemy x0.703",
+   "oracle indexed Q20 django x0.440",
+   "oracle indexed Q20 sqlalchemy x0.380",
+   "oracle indexed Q21 django x1.133",
+   "oracle non-indexed Q21 django x1.139",
+   "postgresql indexed Q17 django x0.815",
+   "postgresql non-indexed Q06 django x0.806",
+   "commercial_a indexed Q18 django x0.225",
+   "commercial_a indexed Q20 django x0.890",
+   "commercial_a indexed Q21 django x1.101"
+  ],
+  "by_engine": {
+   "postgresql": {
+    "n": 14,
+    "median_ratio_of_ratios": 0.9947541822397714,
+    "within_10pct": 12
+   },
+   "mysql": {
+    "n": 16,
+    "median_ratio_of_ratios": 1.0026255356635825,
+    "within_10pct": 14
+   },
+   "oracle": {
+    "n": 20,
+    "median_ratio_of_ratios": 0.9989209586736811,
+    "within_10pct": 16
+   },
+   "commercial_a": {
+    "n": 20,
+    "median_ratio_of_ratios": 0.9980720767941056,
+    "within_10pct": 17
+   }
+  },
+  "column_check_max_abs_diff": 4.9083676438854695e-05
+ },
+ "V": [
+  {
+   "dbms": "postgresql",
+   "schema": "non-indexed",
+   "query": "Q13",
+   "framework": "django",
+   "status": "validated_by_twin"
+  },
+  {
+   "dbms": "postgresql",
+   "schema": "non-indexed",
+   "query": "Q17",
+   "framework": "django",
+   "status": "validated_by_twin"
+  },
+  {
+   "dbms": "postgresql",
+   "schema": "non-indexed",
+   "query": "Q17",
+   "framework": "sqlalchemy",
+   "status": "validated"
+  },
+  {
+   "dbms": "postgresql",
+   "schema": "non-indexed",
+   "query": "Q20",
+   "framework": "django",
+   "status": "validated"
+  },
+  {
+   "dbms": "postgresql",
+   "schema": "non-indexed",
+   "query": "Q20",
+   "framework": "sqlalchemy",
+   "status": "validated"
+  },
+  {
+   "dbms": "postgresql",
+   "schema": "non-indexed",
+   "query": "Q21",
+   "framework": "django",
+   "status": "validated"
+  },
+  {
+   "dbms": "postgresql",
+   "schema": "non-indexed",
+   "query": "Q21",
+   "framework": "sqlalchemy",
+   "status": "validated"
+  },
+  {
+   "dbms": "mysql",
+   "schema": "non-indexed",
+   "query": "Q13",
+   "framework": "django",
+   "status": "validated_by_twin"
+  },
+  {
+   "dbms": "mysql",
+   "schema": "non-indexed",
+   "query": "Q17",
+   "framework": "django",
+   "status": "validated_by_twin"
+  },
+  {
+   "dbms": "mysql",
+   "schema": "non-indexed",
+   "query": "Q17",
+   "framework": "sqlalchemy",
+   "status": "validated"
+  },
+  {
+   "dbms": "mysql",
+   "schema": "non-indexed",
+   "query": "Q20",
+   "framework": "django",
+   "status": "validated"
+  },
+  {
+   "dbms": "mysql",
+   "schema": "non-indexed",
+   "query": "Q20",
+   "framework": "sqlalchemy",
+   "status": "validated"
+  }
+ ],
+ "background_jobs": {
+  "A": {
+   "cells": 332,
+   "touched_blocks": 24,
+   "touched_cells": 18,
+   "pooled_median_pct": 0.8531165535717545,
+   "pooled_median_pct_without_touched_blocks": 0.8531165535717545,
+   "max_abs_cell_change_pct_points": 11523.515124632191
+  },
+  "D": {
+   "cells": 53,
+   "touched_blocks": 12,
+   "touched_cells": 6,
+   "pooled_median_pct": 0.29336813789074406,
+   "pooled_median_pct_without_touched_blocks": 0.29336813789074406,
+   "max_abs_cell_change_pct_points": 1.5920749880582097
+  },
+  "E": {
+   "cells": 70,
+   "touched_blocks": 9,
+   "touched_cells": 7,
+   "pooled_median_pct": 0.7757175471765452,
+   "pooled_median_pct_without_touched_blocks": 0.7757175471765452,
+   "max_abs_cell_change_pct_points": 2800.7113297084725
+  },
+  "C": {
+   "cells": 80,
+   "touched_blocks": 2,
+   "touched_cells": 2,
+   "pooled_median_pct": 104.69629068304289,
+   "pooled_median_pct_without_touched_blocks": 104.69629068304289,
+   "max_abs_cell_change_pct_points": 1.3626011290003248
+  },
+  "F": {
+   "timed_records": 1472,
+   "overlapping_records": 7
+  },
+  "B": {
+   "timed_records": 32,
+   "overlapping_records": 4
+  }
+ }
+}

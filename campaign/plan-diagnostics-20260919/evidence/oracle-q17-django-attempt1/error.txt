@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<host-workspace>/b8-plan-followup-2026-09-19/capture.py", line 330, in <module>
+    main()
+  File "<host-workspace>/b8-plan-followup-2026-09-19/capture.py", line 316, in main
+    else capture_oracle(module,path,params,'capture-'+path))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<host-workspace>/b8-plan-followup-2026-09-19/capture.py", line 267, in capture_oracle
+    assert any(r['last_starts'] for r in operators), 'Runtime operator counters missing'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Runtime operator counters missing

@@ -1,0 +1,42 @@
+{
+  "label": "capture-sql",
+  "elapsed_s": {
+    "type": "float",
+    "value": "0.7528265020009712"
+  },
+  "api_statements": [
+    {
+      "sql": "\n    SELECT SUM(l_extendedprice) / 7.0 as avg_yearly\n    FROM lineitem, part\n    WHERE p_partkey = l_partkey\n      AND p_brand = 'Brand#23'\n      AND p_container = 'MED BOX'\n      AND l_quantity < (\n        SELECT 0.2 * AVG(l_quantity)\n        FROM lineitem\n        WHERE l_partkey = p_partkey\n      )\n    ",
+      "params": null,
+      "many": false
+    }
+  ],
+  "driver_statements": [
+    {
+      "sql": "\n    SELECT SUM(l_extendedprice) / 7.0 as avg_yearly\n    FROM lineitem, part\n    WHERE p_partkey = l_partkey\n      AND p_brand = 'Brand#23'\n      AND p_container = 'MED BOX'\n      AND l_quantity < (\n        SELECT 0.2 * AVG(l_quantity)\n        FROM lineitem\n        WHERE l_partkey = p_partkey\n      )\n    ",
+      "args": [
+        []
+      ],
+      "kwargs": {}
+    }
+  ],
+  "rows": [
+    {
+      "AVG_YEARLY": {
+        "type": "Decimal",
+        "value": "348406.0542857142857142857142857142857143"
+      }
+    }
+  ],
+  "utc": "2026-09-19T14:36:08.551711+00:00",
+  "plan_identity": {
+    "sql_id": "arpakbk36szp2",
+    "child_number": 1
+  },
+  "actual_plan_operators": 7,
+  "instrumentation": {
+    "statistics_level": "ALL",
+    "client_statement_cache_before": 0,
+    "client_statement_cache_during_capture": 0
+  }
+}

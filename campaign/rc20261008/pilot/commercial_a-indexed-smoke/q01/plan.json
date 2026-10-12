@@ -1,0 +1,31 @@
+{
+ "seed": 10167699255547544927,
+ "block_sequences": [],
+ "cell_warmup_sequence": 3,
+ "williams": [
+  [
+   "django/sql",
+   "django/orm",
+   "sqlalchemy/sql",
+   "sqlalchemy/orm"
+  ],
+  [
+   "django/orm",
+   "sqlalchemy/orm",
+   "django/sql",
+   "sqlalchemy/sql"
+  ],
+  [
+   "sqlalchemy/orm",
+   "sqlalchemy/sql",
+   "django/orm",
+   "django/sql"
+  ],
+  [
+   "sqlalchemy/sql",
+   "django/sql",
+   "sqlalchemy/orm",
+   "django/orm"
+  ]
+ ]
+}

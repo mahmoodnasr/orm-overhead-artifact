@@ -1,0 +1,41 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:db6fff74f581eea4197d9fc602de0b2de8cd2905b426545fdeed404379d1ddcc",
+   "params": [
+    "F",
+    "SAUDI ARABIA",
+    1,
+    true,
+    false,
+    false,
+    1,
+    true,
+    false,
+    true
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:e4e0dd4fb4983f6c4901e1ac669e8a40ec4a3179f69ffa631711f7f7c23ea2a4",
+    "values": [
+     "SAUDI ARABIA"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:a1f35028c54ef6ce49aea5dd6e8b1564462611a45306a940103f122f11a8b47f",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 1
+ }
+}

@@ -1,0 +1,111 @@
+{
+ "run_id": "16f2c359536946dc8c68eb76efc512a7",
+ "pid": 1,
+ "phase": "E",
+ "dbms": "mysql",
+ "schema": "indexed",
+ "scale": 1,
+ "mode": "main",
+ "queries": [
+  6,
+  17,
+  18,
+  20,
+  21
+ ],
+ "planned_timed": 160,
+ "counts": {
+  "saved_cell_warmup": 20,
+  "status_cell_warmup_ok": 20,
+  "saved_block_warmup": 160,
+  "status_block_warmup_ok": 160,
+  "saved_timed": 160,
+  "status_timed_ok": 160,
+  "accepted_pairs": 80,
+  "accepted_timed": 160
+ },
+ "environment_id": "16bf16233d34af5d01371fc6e2d07aac1c0373a4b8d261382be62c733a39be0f",
+ "started": {
+  "utc": "2026-10-11T15:53:58.124872+00:00",
+  "cairo": "2026-10-11T18:53:58.124872+03:00"
+ },
+ "state": "complete",
+ "utc": "2026-10-11T16:47:47.361699+00:00",
+ "cairo": "2026-10-11T19:47:47.361699+03:00",
+ "current": {
+  "query": 21,
+  "path": "sqlalchemy/orm",
+  "kind": "timed",
+  "block": 8,
+  "attempt": 1,
+  "input_id": "q21s7",
+  "limit_s": 900,
+  "server_session": {
+   "sid": "43",
+   "tag": null
+  },
+  "utc": "2026-10-11T16:47:36.355627+00:00",
+  "cairo": "2026-10-11T19:47:36.355627+03:00"
+ },
+ "cells_done": [
+  {
+   "query": 6,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "552.4164989209967"
+   }
+  },
+  {
+   "query": 17,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "73.21637732698582"
+   }
+  },
+  {
+   "query": 18,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "2258.450016490009"
+   }
+  },
+  {
+   "query": 20,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "105.49178035999648"
+   }
+  },
+  {
+   "query": 21,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "231.9191377189709"
+   }
+  }
+ ],
+ "_obs": [
+  {
+   "type": "float",
+   "value": "3221.493810816959"
+  },
+  {
+   "type": "float",
+   "value": "2343.7999999999997"
+  }
+ ],
+ "observed_over_predicted": {
+  "type": "float",
+  "value": "1.3744747038215546"
+ },
+ "remaining_predicted_s": 0,
+ "eta_s": {
+  "type": "float",
+  "value": "0.0"
+ }
+}

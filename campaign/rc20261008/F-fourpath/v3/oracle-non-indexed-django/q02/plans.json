@@ -1,0 +1,1241 @@
+{
+ "G": [
+  {
+   "ok": true,
+   "plan": [
+    [
+     "Plan hash value: 2379831721"
+    ],
+    [
+     " "
+    ],
+    [
+     "-------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     "| Id  | Operation                               | Name        | Rows  | Bytes | Cost (%CPU)| Time     |"
+    ],
+    [
+     "-------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     "|   0 | SELECT STATEMENT                        |             |     1 |   500 |  2671   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  1 |  COUNT STOPKEY                          |             |       |       |            |          |"
+    ],
+    [
+     "|   2 |   VIEW                                  |             |     1 |   500 |  2671   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  3 |    SORT ORDER BY STOPKEY                |             |     1 |   222 |  2671   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  4 |     FILTER                              |             |       |       |            |          |"
+    ],
+    [
+     "|*  5 |      HASH JOIN                          |             |   158 | 35076 |  1597   (1)| 00:00:01 |"
+    ],
+    [
+     "|   6 |       TABLE ACCESS FULL                 | NATION      |    25 |   375 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|*  7 |       HASH JOIN                         |             |   792 |   160K|  1594   (1)| 00:00:01 |"
+    ],
+    [
+     "|   8 |        NESTED LOOPS                     |             |   792 | 55440 |  1526   (1)| 00:00:01 |"
+    ],
+    [
+     "|   9 |         NESTED LOOPS                    |             |   800 | 55440 |  1526   (1)| 00:00:01 |"
+    ],
+    [
+     "|  10 |          MERGE JOIN CARTESIAN           |             |   200 | 11200 |   926   (1)| 00:00:01 |"
+    ],
+    [
+     "|* 11 |           TABLE ACCESS FULL             | REGION      |     1 |    11 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|  12 |           BUFFER SORT                   |             |   200 |  9000 |   923   (1)| 00:00:01 |"
+    ],
+    [
+     "|* 13 |            TABLE ACCESS FULL            | PART        |   200 |  9000 |   923   (1)| 00:00:01 |"
+    ],
+    [
+     "|* 14 |          INDEX RANGE SCAN               | PK_PARTSUPP |     4 |       |     2   (0)| 00:00:01 |"
+    ],
+    [
+     "|  15 |         TABLE ACCESS BY INDEX ROWID     | PARTSUPP    |     4 |    56 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|  16 |        TABLE ACCESS FULL                | SUPPLIER    | 10000 |  1337K|    68   (0)| 00:00:01 |"
+    ],
+    [
+     "|* 17 |      COUNT STOPKEY                      |             |       |       |            |          |"
+    ],
+    [
+     "|  18 |       VIEW                              |             |     1 |    13 |    13   (0)| 00:00:01 |"
+    ],
+    [
+     "|  19 |        SORT GROUP BY NOSORT             |             |     1 |    38 |    13   (0)| 00:00:01 |"
+    ],
+    [
+     "|* 20 |         HASH JOIN SEMI                  |             |     1 |    38 |    13   (0)| 00:00:01 |"
+    ],
+    [
+     "|  21 |          NESTED LOOPS                   |             |     4 |   128 |    10   (0)| 00:00:01 |"
+    ],
+    [
+     "|  22 |           NESTED LOOPS                  |             |     4 |   128 |    10   (0)| 00:00:01 |"
+    ],
+    [
+     "|  23 |            MERGE JOIN CARTESIAN         |             |     4 |   100 |     6   (0)| 00:00:01 |"
+    ],
+    [
+     "|* 24 |             TABLE ACCESS FULL           | REGION      |     1 |    11 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|  25 |             BUFFER SORT                 |             |     4 |    56 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|  26 |              TABLE ACCESS BY INDEX ROWID| PARTSUPP    |     4 |    56 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|* 27 |               INDEX RANGE SCAN          | PK_PARTSUPP |     4 |       |     2   (0)| 00:00:01 |"
+    ],
+    [
+     "|* 28 |            INDEX UNIQUE SCAN            | PK_SUPPLIER |     1 |       |     0   (0)| 00:00:01 |"
+    ],
+    [
+     "|  29 |           TABLE ACCESS BY INDEX ROWID   | SUPPLIER    |     1 |     7 |     1   (0)| 00:00:01 |"
+    ],
+    [
+     "|  30 |          TABLE ACCESS FULL              | NATION      |    25 |   150 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "-------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "Query Block Name / Object Alias (identified by operation id):"
+    ],
+    [
+     "-------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - SEL$11      "
+    ],
+    [
+     "   2 - SEL$611F3AB4 / \"from$_subquery$_018\"@\"SEL$11\""
+    ],
+    [
+     "   3 - SEL$611F3AB4"
+    ],
+    [
+     "   6 - SEL$611F3AB4 / \"NATION\"@\"SEL$7\""
+    ],
+    [
+     "  11 - SEL$611F3AB4 / \"REGION\"@\"SEL$8\""
+    ],
+    [
+     "  13 - SEL$611F3AB4 / \"PART\"@\"SEL$5\""
+    ],
+    [
+     "  14 - SEL$611F3AB4 / \"PARTSUPP\"@\"SEL$5\""
+    ],
+    [
+     "  15 - SEL$611F3AB4 / \"PARTSUPP\"@\"SEL$5\""
+    ],
+    [
+     "  16 - SEL$611F3AB4 / \"SUPPLIER\"@\"SEL$6\""
+    ],
+    [
+     "  17 - SEL$10      "
+    ],
+    [
+     "  18 - SEL$EE94F965 / \"from$_subquery$_017\"@\"SEL$10\""
+    ],
+    [
+     "  19 - SEL$EE94F965"
+    ],
+    [
+     "  24 - SEL$EE94F965 / \"U4\"@\"SEL$3\""
+    ],
+    [
+     "  26 - SEL$EE94F965 / \"U0\"@\"SEL$1\""
+    ],
+    [
+     "  27 - SEL$EE94F965 / \"U0\"@\"SEL$1\""
+    ],
+    [
+     "  28 - SEL$EE94F965 / \"U2\"@\"SEL$1\""
+    ],
+    [
+     "  29 - SEL$EE94F965 / \"U2\"@\"SEL$1\""
+    ],
+    [
+     "  30 - SEL$EE94F965 / \"U3\"@\"SEL$2\""
+    ],
+    [
+     " "
+    ],
+    [
+     "Predicate Information (identified by operation id):"
+    ],
+    [
+     "---------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - filter(ROWNUM<=100)"
+    ],
+    [
+     "   3 - filter(ROWNUM<=100)"
+    ],
+    [
+     "   4 - filter(\"PARTSUPP\".\"PS_SUPPLYCOST\"= (SELECT \"from$_subquery$_017\".\"MIN_COST\" FROM  "
+    ],
+    [
+     "              (SELECT MIN(\"U0\".\"PS_SUPPLYCOST\") \"MIN_COST\" FROM \"REGION\" \"U4\",\"NATION\" \"U3\",\"SUPPLIER\" "
+    ],
+    [
+     "              \"U2\",\"PARTSUPP\" \"U0\" WHERE \"U0\".\"PS_PARTKEY\"=:B1 AND \"U0\".\"PS_SUPPKEY\"=\"U2\".\"S_SUPPKEY\" AND "
+    ],
+    [
+     "              \"U2\".\"S_NATIONKEY\"=\"U3\".\"N_NATIONKEY\" AND \"U3\".\"N_REGIONKEY\"=\"U4\".\"R_REGIONKEY\" AND "
+    ],
+    [
+     "              \"U4\".\"R_NAME\"=:P4 GROUP BY \"U0\".\"PS_PARTKEY\") \"from$_subquery$_017\" WHERE ROWNUM<=1))"
+    ],
+    [
+     "   5 - access(\"NATION\".\"N_REGIONKEY\"=\"REGION\".\"R_REGIONKEY\" AND "
+    ],
+    [
+     "              \"SUPPLIER\".\"S_NATIONKEY\"=\"NATION\".\"N_NATIONKEY\")"
+    ],
+    [
+     "   7 - access(\"PARTSUPP\".\"PS_SUPPKEY\"=\"SUPPLIER\".\"S_SUPPKEY\")"
+    ],
+    [
+     "  11 - filter(\"REGION\".\"R_NAME\"=:P3)"
+    ],
+    [
+     "  13 - filter(\"PART\".\"P_SIZE\"=:P1 AND \"PART\".\"P_TYPE\" LIKE "
+    ],
+    [
+     "              SYS_OP_C2C(CSCONVERT(:P2,'NCHAR_CS')) ESCAPE '\\')"
+    ],
+    [
+     "  14 - access(\"PARTSUPP\".\"PS_PARTKEY\"=\"PART\".\"P_PARTKEY\")"
+    ],
+    [
+     "  17 - filter(ROWNUM<=1)"
+    ],
+    [
+     "  20 - access(\"U3\".\"N_REGIONKEY\"=\"U4\".\"R_REGIONKEY\" AND \"U2\".\"S_NATIONKEY\"=\"U3\".\"N_NATIONKEY\")"
+    ],
+    [
+     "  24 - filter(\"U4\".\"R_NAME\"=:P4)"
+    ],
+    [
+     "  27 - access(\"U0\".\"PS_PARTKEY\"=:B1)"
+    ],
+    [
+     "  28 - access(\"U0\".\"PS_SUPPKEY\"=\"U2\".\"S_SUPPKEY\")"
+    ],
+    [
+     " "
+    ],
+    [
+     "Column Projection Information (identified by operation id):"
+    ],
+    [
+     "-----------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - (rowset=100) \"from$_subquery$_018\".\"S_ACCTBAL\"[NUMBER,22], "
+    ],
+    [
+     "       \"from$_subquery$_018\".\"S_NAME\"[VARCHAR2,100], \"from$_subquery$_018\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"from$_subquery$_018\".\"P_PARTKEY\"[NUMBER,22], \"from$_subquery$_018\".\"P_MFGR\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"from$_subquery$_018\".\"S_ADDRESS\"[VARCHAR2,160], \"from$_subquery$_018\".\"S_PHONE\"[VARCHAR2,60], "
+    ],
+    [
+     "       \"from$_subquery$_018\".\"S_COMMENT\"[VARCHAR2,404]"
+    ],
+    [
+     "   2 - (rowset=100) \"from$_subquery$_018\".\"S_ACCTBAL\"[NUMBER,22], "
+    ],
+    [
+     "       \"from$_subquery$_018\".\"S_NAME\"[VARCHAR2,100], \"from$_subquery$_018\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"from$_subquery$_018\".\"P_PARTKEY\"[NUMBER,22], \"from$_subquery$_018\".\"P_MFGR\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"from$_subquery$_018\".\"S_ADDRESS\"[VARCHAR2,160], \"from$_subquery$_018\".\"S_PHONE\"[VARCHAR2,60], "
+    ],
+    [
+     "       \"from$_subquery$_018\".\"S_COMMENT\"[VARCHAR2,404]"
+    ],
+    [
+     "   3 - (#keys=4; rowset=100) INTERNAL_FUNCTION(\"SUPPLIER\".\"S_ACCTBAL\")[22], "
+    ],
+    [
+     "       \"NATION\".\"N_NAME\"[VARCHAR2,100], \"SUPPLIER\".\"S_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"PARTSUPP\".\"PS_PARTKEY\"[NUMBER,22], \"PART\".\"P_MFGR\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"SUPPLIER\".\"S_ADDRESS\"[VARCHAR2,160], \"SUPPLIER\".\"S_PHONE\"[VARCHAR2,60], "
+    ],
+    [
+     "       \"SUPPLIER\".\"S_COMMENT\"[VARCHAR2,404]"
+    ],
+    [
+     "   4 - \"NATION\".\"N_NAME\"[VARCHAR2,100], \"SUPPLIER\".\"S_ACCTBAL\"[NUMBER,22], "
+    ],
+    [
+     "       \"PART\".\"P_MFGR\"[VARCHAR2,100], \"PARTSUPP\".\"PS_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"SUPPLIER\".\"S_COMMENT\"[VARCHAR2,404], \"SUPPLIER\".\"S_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"SUPPLIER\".\"S_ADDRESS\"[VARCHAR2,160], \"SUPPLIER\".\"S_PHONE\"[VARCHAR2,60]"
+    ],
+    [
+     "   5 - (#keys=2) \"NATION\".\"N_NAME\"[VARCHAR2,100], \"SUPPLIER\".\"S_ACCTBAL\"[NUMBER,22], "
+    ],
+    [
+     "       \"PART\".\"P_MFGR\"[VARCHAR2,100], \"PARTSUPP\".\"PS_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"PARTSUPP\".\"PS_SUPPLYCOST\"[NUMBER,22], \"SUPPLIER\".\"S_COMMENT\"[VARCHAR2,404], "
+    ],
+    [
+     "       \"SUPPLIER\".\"S_NAME\"[VARCHAR2,100], \"SUPPLIER\".\"S_ADDRESS\"[VARCHAR2,160], "
+    ],
+    [
+     "       \"SUPPLIER\".\"S_PHONE\"[VARCHAR2,60]"
+    ],
+    [
+     "   6 - (rowset=256) \"NATION\".\"N_NATIONKEY\"[NUMBER,22], \"NATION\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"NATION\".\"N_REGIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "   7 - (#keys=1) \"REGION\".\"R_REGIONKEY\"[NUMBER,22], \"PART\".\"P_MFGR\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"PARTSUPP\".\"PS_PARTKEY\"[NUMBER,22], \"PARTSUPP\".\"PS_SUPPLYCOST\"[NUMBER,22], "
+    ],
+    [
+     "       \"SUPPLIER\".\"S_COMMENT\"[VARCHAR2,404], \"SUPPLIER\".\"S_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"SUPPLIER\".\"S_ADDRESS\"[VARCHAR2,160], \"SUPPLIER\".\"S_NATIONKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"SUPPLIER\".\"S_PHONE\"[VARCHAR2,60], \"SUPPLIER\".\"S_ACCTBAL\"[NUMBER,22]"
+    ],
+    [
+     "   8 - (#keys=0) \"REGION\".\"R_REGIONKEY\"[NUMBER,22], \"PART\".\"P_MFGR\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"PARTSUPP\".\"PS_PARTKEY\"[NUMBER,22], \"PARTSUPP\".\"PS_SUPPKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"PARTSUPP\".\"PS_SUPPLYCOST\"[NUMBER,22]"
+    ],
+    [
+     "   9 - (#keys=0) \"REGION\".\"R_REGIONKEY\"[NUMBER,22], \"PART\".\"P_MFGR\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"PARTSUPP\".ROWID[ROWID,10], \"PARTSUPP\".\"PS_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"PARTSUPP\".\"PS_SUPPKEY\"[NUMBER,22]"
+    ],
+    [
+     "  10 - (#keys=0) \"REGION\".\"R_REGIONKEY\"[NUMBER,22], \"PART\".\"P_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"PART\".\"P_MFGR\"[VARCHAR2,100]"
+    ],
+    [
+     "  11 - \"REGION\".\"R_REGIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "  12 - (#keys=0) \"PART\".\"P_PARTKEY\"[NUMBER,22], \"PART\".\"P_MFGR\"[VARCHAR2,100]"
+    ],
+    [
+     "  13 - (rowset=256) \"PART\".\"P_PARTKEY\"[NUMBER,22], \"PART\".\"P_MFGR\"[VARCHAR2,100]"
+    ],
+    [
+     "  14 - \"PARTSUPP\".ROWID[ROWID,10], \"PARTSUPP\".\"PS_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"PARTSUPP\".\"PS_SUPPKEY\"[NUMBER,22]"
+    ],
+    [
+     "  15 - \"PARTSUPP\".\"PS_SUPPLYCOST\"[NUMBER,22]"
+    ],
+    [
+     "  16 - \"SUPPLIER\".\"S_SUPPKEY\"[NUMBER,22], \"SUPPLIER\".\"S_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"SUPPLIER\".\"S_ADDRESS\"[VARCHAR2,160], \"SUPPLIER\".\"S_NATIONKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"SUPPLIER\".\"S_PHONE\"[VARCHAR2,60], \"SUPPLIER\".\"S_ACCTBAL\"[NUMBER,22], "
+    ],
+    [
+     "       \"SUPPLIER\".\"S_COMMENT\"[VARCHAR2,404]"
+    ],
+    [
+     "  17 - \"from$_subquery$_017\".\"MIN_COST\"[NUMBER,22]"
+    ],
+    [
+     "  18 - \"from$_subquery$_017\".\"MIN_COST\"[NUMBER,22]"
+    ],
+    [
+     "  19 - (#keys=1) \"U0\".\"PS_PARTKEY\"[NUMBER,22], MIN(\"U0\".\"PS_SUPPLYCOST\")[22]"
+    ],
+    [
+     "  20 - (#keys=2; rowset=256) \"U0\".\"PS_PARTKEY\"[NUMBER,22], \"U0\".\"PS_SUPPLYCOST\"[NUMBER,22]"
+    ],
+    [
+     "  21 - (#keys=0) \"U4\".\"R_REGIONKEY\"[NUMBER,22], \"U0\".\"PS_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"U0\".\"PS_SUPPLYCOST\"[NUMBER,22], \"U2\".\"S_NATIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "  22 - (#keys=0) \"U4\".\"R_REGIONKEY\"[NUMBER,22], \"U0\".\"PS_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"U0\".\"PS_SUPPLYCOST\"[NUMBER,22], \"U2\".ROWID[ROWID,10]"
+    ],
+    [
+     "  23 - (#keys=0) \"U4\".\"R_REGIONKEY\"[NUMBER,22], \"U0\".\"PS_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"U0\".\"PS_SUPPKEY\"[NUMBER,22], \"U0\".\"PS_SUPPLYCOST\"[NUMBER,22]"
+    ],
+    [
+     "  24 - \"U4\".\"R_REGIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "  25 - (#keys=0) \"U0\".\"PS_PARTKEY\"[NUMBER,22], \"U0\".\"PS_SUPPKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"U0\".\"PS_SUPPLYCOST\"[NUMBER,22]"
+    ],
+    [
+     "  26 - \"U0\".\"PS_PARTKEY\"[NUMBER,22], \"U0\".\"PS_SUPPKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"U0\".\"PS_SUPPLYCOST\"[NUMBER,22]"
+    ],
+    [
+     "  27 - \"U0\".ROWID[ROWID,10], \"U0\".\"PS_PARTKEY\"[NUMBER,22], \"U0\".\"PS_SUPPKEY\"[NUMBER,22]"
+    ],
+    [
+     "  28 - \"U2\".ROWID[ROWID,10]"
+    ],
+    [
+     "  29 - \"U2\".\"S_NATIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "  30 - (rowset=256) \"U3\".\"N_NATIONKEY\"[NUMBER,22], \"U3\".\"N_REGIONKEY\"[NUMBER,22]"
+    ]
+   ],
+   "note": "EXPLAIN PLAN does not peek bind values"
+  }
+ ],
+ "B": [
+  {
+   "ok": true,
+   "plan": [
+    [
+     "Plan hash value: 1424029126"
+    ],
+    [
+     " "
+    ],
+    [
+     "--------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     "| Id  | Operation                                | Name        | Rows  | Bytes | Cost (%CPU)| Time     |"
+    ],
+    [
+     "--------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     "|   0 | SELECT STATEMENT                         |             |     1 |   500 |  2146   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  1 |  COUNT STOPKEY                           |             |       |       |            |          |"
+    ],
+    [
+     "|   2 |   VIEW                                   |             |     1 |   500 |  2146   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  3 |    FILTER                                |             |       |       |            |          |"
+    ],
+    [
+     "|   4 |     SORT GROUP BY                        |             |     1 |   308 |  2146   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  5 |      HASH JOIN                           |             |   126 | 38808 |  2145   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  6 |       TABLE ACCESS FULL                  | REGION      |     1 |    23 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|*  7 |       HASH JOIN                          |             |   628 |   174K|  2142   (1)| 00:00:01 |"
+    ],
+    [
+     "|   8 |        TABLE ACCESS FULL                 | NATION      |    25 |   675 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|*  9 |        HASH JOIN                         |             |   628 |   158K|  2139   (1)| 00:00:01 |"
+    ],
+    [
+     "|  10 |         NESTED LOOPS                     |             |   628 | 75988 |  2071   (1)| 00:00:01 |"
+    ],
+    [
+     "|  11 |          NESTED LOOPS                    |             |   632 | 75988 |  2071   (1)| 00:00:01 |"
+    ],
+    [
+     "|* 12 |           HASH JOIN RIGHT SEMI           |             |   158 | 15010 |  1597   (1)| 00:00:01 |"
+    ],
+    [
+     "|* 13 |            TABLE ACCESS FULL             | REGION      |     1 |    11 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|* 14 |            HASH JOIN                     |             |   792 | 66528 |  1594   (1)| 00:00:01 |"
+    ],
+    [
+     "|  15 |             TABLE ACCESS FULL            | NATION      |    25 |   150 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|* 16 |             HASH JOIN                    |             |   792 | 61776 |  1591   (1)| 00:00:01 |"
+    ],
+    [
+     "|  17 |              NESTED LOOPS                |             |   792 | 56232 |  1523   (1)| 00:00:01 |"
+    ],
+    [
+     "|  18 |               NESTED LOOPS               |             |   800 | 56232 |  1523   (1)| 00:00:01 |"
+    ],
+    [
+     "|* 19 |                TABLE ACCESS FULL         | PART        |   200 | 11400 |   923   (1)| 00:00:01 |"
+    ],
+    [
+     "|* 20 |                INDEX RANGE SCAN          | PK_PARTSUPP |     4 |       |     2   (0)| 00:00:01 |"
+    ],
+    [
+     "|  21 |               TABLE ACCESS BY INDEX ROWID| PARTSUPP    |     4 |    56 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|  22 |              TABLE ACCESS FULL           | SUPPLIER    | 10000 | 70000 |    68   (0)| 00:00:01 |"
+    ],
+    [
+     "|* 23 |           INDEX RANGE SCAN               | PK_PARTSUPP |     4 |       |     2   (0)| 00:00:01 |"
+    ],
+    [
+     "|  24 |          TABLE ACCESS BY INDEX ROWID     | PARTSUPP    |     4 |   104 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|  25 |         TABLE ACCESS FULL                | SUPPLIER    | 10000 |  1337K|    68   (0)| 00:00:01 |"
+    ],
+    [
+     "--------------------------------------------------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "Query Block Name / Object Alias (identified by operation id):"
+    ],
+    [
+     "-------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - SEL$3       "
+    ],
+    [
+     "   2 - SEL$841DDE77 / \"from$_subquery$_010\"@\"SEL$3\""
+    ],
+    [
+     "   3 - SEL$841DDE77"
+    ],
+    [
+     "   6 - SEL$841DDE77 / \"REGION\"@\"SEL$1\""
+    ],
+    [
+     "   8 - SEL$841DDE77 / \"NATION\"@\"SEL$1\""
+    ],
+    [
+     "  13 - SEL$841DDE77 / \"REGION\"@\"SEL$2\""
+    ],
+    [
+     "  15 - SEL$841DDE77 / \"NATION\"@\"SEL$2\""
+    ],
+    [
+     "  19 - SEL$841DDE77 / \"PART\"@\"SEL$1\""
+    ],
+    [
+     "  20 - SEL$841DDE77 / \"PARTSUPP\"@\"SEL$2\""
+    ],
+    [
+     "  21 - SEL$841DDE77 / \"PARTSUPP\"@\"SEL$2\""
+    ],
+    [
+     "  22 - SEL$841DDE77 / \"SUPPLIER\"@\"SEL$2\""
+    ],
+    [
+     "  23 - SEL$841DDE77 / \"PARTSUPP\"@\"SEL$1\""
+    ],
+    [
+     "  24 - SEL$841DDE77 / \"PARTSUPP\"@\"SEL$1\""
+    ],
+    [
+     "  25 - SEL$841DDE77 / \"SUPPLIER\"@\"SEL$1\""
+    ],
+    [
+     " "
+    ],
+    [
+     "Predicate Information (identified by operation id):"
+    ],
+    [
+     "---------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - filter(ROWNUM<=100)"
+    ],
+    [
+     "   3 - filter(\"PS_SUPPLYCOST\"=MIN(\"PS_SUPPLYCOST\"))"
+    ],
+    [
+     "   5 - access(\"N_REGIONKEY\"=\"R_REGIONKEY\")"
+    ],
+    [
+     "   6 - filter(\"R_NAME\"=:P3)"
+    ],
+    [
+     "   7 - access(\"S_NATIONKEY\"=\"N_NATIONKEY\")"
+    ],
+    [
+     "   9 - access(\"S_SUPPKEY\"=\"PS_SUPPKEY\")"
+    ],
+    [
+     "  12 - access(\"N_REGIONKEY\"=\"R_REGIONKEY\")"
+    ],
+    [
+     "  13 - filter(\"R_NAME\"=:P4)"
+    ],
+    [
+     "  14 - access(\"S_NATIONKEY\"=\"N_NATIONKEY\")"
+    ],
+    [
+     "  16 - access(\"S_SUPPKEY\"=\"PS_SUPPKEY\")"
+    ],
+    [
+     "  19 - filter(\"P_SIZE\"=:P1 AND \"P_TYPE\" LIKE :P2)"
+    ],
+    [
+     "  20 - access(\"P_PARTKEY\"=\"PS_PARTKEY\")"
+    ],
+    [
+     "  23 - access(\"P_PARTKEY\"=\"PS_PARTKEY\")"
+    ],
+    [
+     " "
+    ],
+    [
+     "Column Projection Information (identified by operation id):"
+    ],
+    [
+     "-----------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - (rowset=100) \"from$_subquery$_010\".\"S_ACCTBAL\"[NUMBER,22], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"S_NAME\"[VARCHAR2,100], \"from$_subquery$_010\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"P_PARTKEY\"[NUMBER,22], \"from$_subquery$_010\".\"P_MFGR\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"S_ADDRESS\"[VARCHAR2,160], \"from$_subquery$_010\".\"S_PHONE\"[VARCHAR2,60], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"S_COMMENT\"[VARCHAR2,404]"
+    ],
+    [
+     "   2 - (rowset=100) \"from$_subquery$_010\".\"S_ACCTBAL\"[NUMBER,22], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"S_NAME\"[VARCHAR2,100], \"from$_subquery$_010\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"P_PARTKEY\"[NUMBER,22], \"from$_subquery$_010\".\"P_MFGR\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"S_ADDRESS\"[VARCHAR2,160], \"from$_subquery$_010\".\"S_PHONE\"[VARCHAR2,60], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"S_COMMENT\"[VARCHAR2,404]"
+    ],
+    [
+     "   3 - (rowset=100) INTERNAL_FUNCTION(\"S_ACCTBAL\")[22], \"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"S_NAME\"[VARCHAR2,100], \"P_PARTKEY\"[NUMBER,22], \"S_COMMENT\"[VARCHAR2,404], "
+    ],
+    [
+     "       \"S_PHONE\"[VARCHAR2,60], \"S_ADDRESS\"[VARCHAR2,160], \"P_MFGR\"[VARCHAR2,100]"
+    ],
+    [
+     "   4 - (#keys=15; rowset=100) INTERNAL_FUNCTION(\"S_ACCTBAL\")[22], \"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"S_NAME\"[VARCHAR2,100], \"P_PARTKEY\"[NUMBER,22], ROWID[ROWID,10], ROWID[ROWID,10], "
+    ],
+    [
+     "       \"PS_SUPPLYCOST\"[NUMBER,22], \"S_COMMENT\"[VARCHAR2,404], \"S_PHONE\"[VARCHAR2,60], "
+    ],
+    [
+     "       \"S_ADDRESS\"[VARCHAR2,160], \"P_MFGR\"[VARCHAR2,100], ROWID[ROWID,10], ROWID[ROWID,10], "
+    ],
+    [
+     "       ROWID[ROWID,10], \"PS_PARTKEY\"[NUMBER,22], MIN(\"PS_SUPPLYCOST\")[22]"
+    ],
+    [
+     "   5 - (#keys=1; rowset=256) ROWID[ROWID,10], ROWID[ROWID,10], \"S_PHONE\"[VARCHAR2,60], "
+    ],
+    [
+     "       \"N_NAME\"[VARCHAR2,100], \"PS_SUPPLYCOST\"[NUMBER,22], ROWID[ROWID,10], \"P_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"P_MFGR\"[VARCHAR2,100], \"PS_PARTKEY\"[NUMBER,22], ROWID[ROWID,10], \"PS_SUPPLYCOST\"[NUMBER,22], "
+    ],
+    [
+     "       ROWID[ROWID,10], \"S_COMMENT\"[VARCHAR2,404], \"S_NAME\"[VARCHAR2,100], \"S_ADDRESS\"[VARCHAR2,160], "
+    ],
+    [
+     "       \"S_ACCTBAL\"[NUMBER,22]"
+    ],
+    [
+     "   6 - (rowset=256) ROWID[ROWID,10], \"R_REGIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "   7 - (#keys=1; rowset=256) ROWID[ROWID,10], \"N_REGIONKEY\"[NUMBER,22], \"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"PS_SUPPLYCOST\"[NUMBER,22], ROWID[ROWID,10], \"P_PARTKEY\"[NUMBER,22], \"P_MFGR\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"PS_PARTKEY\"[NUMBER,22], ROWID[ROWID,10], \"PS_SUPPLYCOST\"[NUMBER,22], ROWID[ROWID,10], "
+    ],
+    [
+     "       \"S_COMMENT\"[VARCHAR2,404], \"S_NAME\"[VARCHAR2,100], \"S_ADDRESS\"[VARCHAR2,160], "
+    ],
+    [
+     "       \"S_ACCTBAL\"[NUMBER,22], \"S_PHONE\"[VARCHAR2,60]"
+    ],
+    [
+     "   8 - (rowset=256) ROWID[ROWID,10], \"N_NATIONKEY\"[NUMBER,22], \"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"N_REGIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "   9 - (#keys=1; rowset=256) \"PS_SUPPLYCOST\"[NUMBER,22], ROWID[ROWID,10], "
+    ],
+    [
+     "       \"P_PARTKEY\"[NUMBER,22], \"P_MFGR\"[VARCHAR2,100], \"PS_PARTKEY\"[NUMBER,22], ROWID[ROWID,10], "
+    ],
+    [
+     "       \"PS_SUPPLYCOST\"[NUMBER,22], ROWID[ROWID,10], \"S_COMMENT\"[VARCHAR2,404], \"S_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"S_ADDRESS\"[VARCHAR2,160], \"S_NATIONKEY\"[NUMBER,22], \"S_PHONE\"[VARCHAR2,60], "
+    ],
+    [
+     "       \"S_ACCTBAL\"[NUMBER,22]"
+    ],
+    [
+     "  10 - (#keys=0) \"PS_SUPPLYCOST\"[NUMBER,22], ROWID[ROWID,10], \"P_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"P_MFGR\"[VARCHAR2,100], \"PS_PARTKEY\"[NUMBER,22], ROWID[ROWID,10], \"PS_SUPPKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"PS_SUPPLYCOST\"[NUMBER,22]"
+    ],
+    [
+     "  11 - (#keys=0) \"PS_SUPPLYCOST\"[NUMBER,22], ROWID[ROWID,10], \"P_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"P_MFGR\"[VARCHAR2,100], \"PS_PARTKEY\"[NUMBER,22], ROWID[ROWID,10], \"PS_SUPPKEY\"[NUMBER,22]"
+    ],
+    [
+     "  12 - (#keys=1) \"PS_SUPPLYCOST\"[NUMBER,22], ROWID[ROWID,10], \"P_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"P_MFGR\"[VARCHAR2,100], \"PS_PARTKEY\"[NUMBER,22]"
+    ],
+    [
+     "  13 - (rowset=256) \"R_REGIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "  14 - (#keys=1) \"N_REGIONKEY\"[NUMBER,22], ROWID[ROWID,10], \"P_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"P_MFGR\"[VARCHAR2,100], \"PS_PARTKEY\"[NUMBER,22], \"PS_SUPPLYCOST\"[NUMBER,22]"
+    ],
+    [
+     "  15 - (rowset=256) \"N_NATIONKEY\"[NUMBER,22], \"N_REGIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "  16 - (#keys=1) ROWID[ROWID,10], \"P_PARTKEY\"[NUMBER,22], \"P_MFGR\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"PS_PARTKEY\"[NUMBER,22], \"PS_SUPPLYCOST\"[NUMBER,22], \"S_NATIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "  17 - (#keys=0) ROWID[ROWID,10], \"P_PARTKEY\"[NUMBER,22], \"P_MFGR\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"PS_PARTKEY\"[NUMBER,22], \"PS_SUPPKEY\"[NUMBER,22], \"PS_SUPPLYCOST\"[NUMBER,22]"
+    ],
+    [
+     "  18 - (#keys=0) ROWID[ROWID,10], \"P_PARTKEY\"[NUMBER,22], \"P_MFGR\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"PARTSUPP\".ROWID[ROWID,10], \"PS_PARTKEY\"[NUMBER,22], \"PS_SUPPKEY\"[NUMBER,22]"
+    ],
+    [
+     "  19 - ROWID[ROWID,10], \"P_PARTKEY\"[NUMBER,22], \"P_MFGR\"[VARCHAR2,100]"
+    ],
+    [
+     "  20 - \"PARTSUPP\".ROWID[ROWID,10], \"PS_PARTKEY\"[NUMBER,22], \"PS_SUPPKEY\"[NUMBER,22]"
+    ],
+    [
+     "  21 - \"PS_SUPPLYCOST\"[NUMBER,22]"
+    ],
+    [
+     "  22 - \"S_SUPPKEY\"[NUMBER,22], \"S_NATIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "  23 - ROWID[ROWID,10], \"PS_SUPPKEY\"[NUMBER,22]"
+    ],
+    [
+     "  24 - ROWID[ROWID,10], \"PS_SUPPLYCOST\"[NUMBER,22]"
+    ],
+    [
+     "  25 - (rowset=256) ROWID[ROWID,10], \"S_SUPPKEY\"[NUMBER,22], \"S_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"S_ADDRESS\"[VARCHAR2,160], \"S_NATIONKEY\"[NUMBER,22], \"S_PHONE\"[VARCHAR2,60], "
+    ],
+    [
+     "       \"S_ACCTBAL\"[NUMBER,22], \"S_COMMENT\"[VARCHAR2,404]"
+    ]
+   ],
+   "note": "EXPLAIN PLAN does not peek bind values"
+  }
+ ],
+ "L": [
+  {
+   "ok": true,
+   "plan": [
+    [
+     "Plan hash value: 1919358614"
+    ],
+    [
+     " "
+    ],
+    [
+     "---------------------------------------------------------------------------------------------------"
+    ],
+    [
+     "| Id  | Operation                           | Name        | Rows  | Bytes | Cost (%CPU)| Time     |"
+    ],
+    [
+     "---------------------------------------------------------------------------------------------------"
+    ],
+    [
+     "|   0 | SELECT STATEMENT                    |             |   100 | 50000 |  1584   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  1 |  COUNT STOPKEY                      |             |       |       |            |          |"
+    ],
+    [
+     "|   2 |   VIEW                              |             |   155 | 77500 |  1584   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  3 |    SORT ORDER BY STOPKEY            |             |   155 | 79360 |  1584   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  4 |     VIEW                            | VW_WIF_1    |   155 | 79360 |  1583   (1)| 00:00:01 |"
+    ],
+    [
+     "|   5 |      WINDOW SORT                    |             |   155 | 36270 |  1583   (1)| 00:00:01 |"
+    ],
+    [
+     "|*  6 |       HASH JOIN                     |             |   155 | 36270 |  1582   (1)| 00:00:01 |"
+    ],
+    [
+     "|   7 |        TABLE ACCESS FULL            | NATION      |    25 |   375 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|*  8 |        HASH JOIN                    |             |   774 |   165K|  1579   (1)| 00:00:01 |"
+    ],
+    [
+     "|   9 |         NESTED LOOPS                |             |   774 | 63468 |  1511   (1)| 00:00:01 |"
+    ],
+    [
+     "|  10 |          NESTED LOOPS               |             |   780 | 63468 |  1511   (1)| 00:00:01 |"
+    ],
+    [
+     "|  11 |           MERGE JOIN CARTESIAN      |             |   195 | 10920 |   926   (1)| 00:00:01 |"
+    ],
+    [
+     "|* 12 |            TABLE ACCESS FULL        | REGION      |     1 |    11 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|  13 |            BUFFER SORT              |             |   195 |  8775 |   923   (1)| 00:00:01 |"
+    ],
+    [
+     "|* 14 |             TABLE ACCESS FULL       | PART        |   195 |  8775 |   923   (1)| 00:00:01 |"
+    ],
+    [
+     "|* 15 |           INDEX RANGE SCAN          | PK_PARTSUPP |     4 |       |     2   (0)| 00:00:01 |"
+    ],
+    [
+     "|  16 |          TABLE ACCESS BY INDEX ROWID| PARTSUPP    |     4 |   104 |     3   (0)| 00:00:01 |"
+    ],
+    [
+     "|  17 |         TABLE ACCESS FULL           | SUPPLIER    | 10000 |  1337K|    68   (0)| 00:00:01 |"
+    ],
+    [
+     "---------------------------------------------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "Query Block Name / Object Alias (identified by operation id):"
+    ],
+    [
+     "-------------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - SEL$3       "
+    ],
+    [
+     "   2 - SEL$599F6CA1 / \"from$_subquery$_010\"@\"SEL$3\""
+    ],
+    [
+     "   3 - SEL$599F6CA1"
+    ],
+    [
+     "   4 - SEL$9040BC2C / \"VW_WIF_1\"@\"SEL$76B8F26C\""
+    ],
+    [
+     "   5 - SEL$9040BC2C"
+    ],
+    [
+     "   7 - SEL$9040BC2C / \"NATION\"@\"SEL$1\""
+    ],
+    [
+     "  12 - SEL$9040BC2C / \"REGION\"@\"SEL$1\""
+    ],
+    [
+     "  14 - SEL$9040BC2C / \"PART\"@\"SEL$1\""
+    ],
+    [
+     "  15 - SEL$9040BC2C / \"PARTSUPP\"@\"SEL$1\""
+    ],
+    [
+     "  16 - SEL$9040BC2C / \"PARTSUPP\"@\"SEL$1\""
+    ],
+    [
+     "  17 - SEL$9040BC2C / \"SUPPLIER\"@\"SEL$1\""
+    ],
+    [
+     " "
+    ],
+    [
+     "Predicate Information (identified by operation id):"
+    ],
+    [
+     "---------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - filter(ROWNUM<=100)"
+    ],
+    [
+     "   3 - filter(ROWNUM<=100)"
+    ],
+    [
+     "   4 - filter(\"VW_COL_9\" IS NOT NULL)"
+    ],
+    [
+     "   6 - access(\"N_REGIONKEY\"=\"R_REGIONKEY\" AND \"S_NATIONKEY\"=\"N_NATIONKEY\")"
+    ],
+    [
+     "   8 - access(\"S_SUPPKEY\"=\"PS_SUPPKEY\")"
+    ],
+    [
+     "  12 - filter(\"R_NAME\"='EUROPE')"
+    ],
+    [
+     "  14 - filter(\"P_SIZE\"=15 AND \"P_TYPE\" LIKE '%BRASS' AND \"P_TYPE\" IS NOT NULL)"
+    ],
+    [
+     "  15 - access(\"P_PARTKEY\"=\"PS_PARTKEY\")"
+    ],
+    [
+     " "
+    ],
+    [
+     "Column Projection Information (identified by operation id):"
+    ],
+    [
+     "-----------------------------------------------------------"
+    ],
+    [
+     " "
+    ],
+    [
+     "   1 - (rowset=100) \"from$_subquery$_010\".\"S_ACCTBAL\"[NUMBER,22], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"S_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"P_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"P_MFGR\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"S_ADDRESS\"[VARCHAR2,160], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"S_PHONE\"[VARCHAR2,60], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"S_COMMENT\"[VARCHAR2,404]"
+    ],
+    [
+     "   2 - (rowset=100) \"from$_subquery$_010\".\"S_ACCTBAL\"[NUMBER,22], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"S_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"P_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"P_MFGR\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"S_ADDRESS\"[VARCHAR2,160], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"S_PHONE\"[VARCHAR2,60], "
+    ],
+    [
+     "       \"from$_subquery$_010\".\"S_COMMENT\"[VARCHAR2,404]"
+    ],
+    [
+     "   3 - (#keys=4; rowset=100) INTERNAL_FUNCTION(\"ITEM_1\")[22], \"ITEM_3\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"ITEM_2\"[VARCHAR2,100], \"ITEM_4\"[NUMBER,22], \"ITEM_5\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"ITEM_6\"[VARCHAR2,160], \"ITEM_7\"[VARCHAR2,60], \"ITEM_8\"[VARCHAR2,404]"
+    ],
+    [
+     "   4 - (rowset=177) \"ITEM_1\"[NUMBER,22], \"ITEM_2\"[VARCHAR2,100], \"ITEM_3\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"ITEM_4\"[NUMBER,22], \"ITEM_5\"[VARCHAR2,100], \"ITEM_6\"[VARCHAR2,160], "
+    ],
+    [
+     "       \"ITEM_7\"[VARCHAR2,60], \"ITEM_8\"[VARCHAR2,404], \"VW_COL_9\"[ROWID,10]"
+    ],
+    [
+     "   5 - (#keys=1; rowset=177) \"PS_PARTKEY\"[NUMBER,22], \"N_REGIONKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"R_REGIONKEY\"[NUMBER,22], \"N_NATIONKEY\"[NUMBER,22], \"S_NATIONKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"N_NAME\"[VARCHAR2,100], \"PS_SUPPKEY\"[NUMBER,22], \"S_SUPPKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"S_ACCTBAL\"[NUMBER,22], \"R_NAME\"[VARCHAR2,100], \"P_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"P_MFGR\"[VARCHAR2,100], \"P_TYPE\"[VARCHAR2,100], \"P_SIZE\"[NUMBER,22], ROWID[ROWID,10], "
+    ],
+    [
+     "       \"S_PHONE\"[VARCHAR2,60], \"PS_SUPPLYCOST\"[NUMBER,22], \"S_COMMENT\"[VARCHAR2,404], "
+    ],
+    [
+     "       \"S_NAME\"[VARCHAR2,100], \"S_ADDRESS\"[VARCHAR2,160], MIN(\"PS_SUPPLYCOST\") OVER ( PARTITION "
+    ],
+    [
+     "       BY \"PS_PARTKEY\")[22]"
+    ],
+    [
+     "   6 - (#keys=2; rowset=256) \"N_REGIONKEY\"[NUMBER,22], \"R_REGIONKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"N_NATIONKEY\"[NUMBER,22], \"S_NATIONKEY\"[NUMBER,22], \"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"PS_SUPPKEY\"[NUMBER,22], \"S_SUPPKEY\"[NUMBER,22], \"S_ACCTBAL\"[NUMBER,22], "
+    ],
+    [
+     "       \"R_NAME\"[VARCHAR2,100], \"P_PARTKEY\"[NUMBER,22], \"P_MFGR\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"P_TYPE\"[VARCHAR2,100], \"P_SIZE\"[NUMBER,22], ROWID[ROWID,10], \"PS_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"PS_SUPPLYCOST\"[NUMBER,22], \"S_COMMENT\"[VARCHAR2,404], \"S_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"S_ADDRESS\"[VARCHAR2,160], \"S_PHONE\"[VARCHAR2,60]"
+    ],
+    [
+     "   7 - (rowset=256) \"N_NATIONKEY\"[NUMBER,22], \"N_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"N_REGIONKEY\"[NUMBER,22]"
+    ],
+    [
+     "   8 - (#keys=1; rowset=256) \"PS_SUPPKEY\"[NUMBER,22], \"S_SUPPKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"R_REGIONKEY\"[NUMBER,22], \"R_NAME\"[VARCHAR2,100], \"P_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"P_MFGR\"[VARCHAR2,100], \"P_TYPE\"[VARCHAR2,100], \"P_SIZE\"[NUMBER,22], ROWID[ROWID,10], "
+    ],
+    [
+     "       \"PS_PARTKEY\"[NUMBER,22], \"PS_SUPPLYCOST\"[NUMBER,22], \"S_COMMENT\"[VARCHAR2,404], "
+    ],
+    [
+     "       \"S_NAME\"[VARCHAR2,100], \"S_ADDRESS\"[VARCHAR2,160], \"S_NATIONKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"S_PHONE\"[VARCHAR2,60], \"S_ACCTBAL\"[NUMBER,22]"
+    ],
+    [
+     "   9 - (#keys=0) \"R_REGIONKEY\"[NUMBER,22], \"R_NAME\"[VARCHAR2,100], \"P_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"P_MFGR\"[VARCHAR2,100], \"P_TYPE\"[VARCHAR2,100], \"P_SIZE\"[NUMBER,22], ROWID[ROWID,10], "
+    ],
+    [
+     "       \"PS_PARTKEY\"[NUMBER,22], \"PS_SUPPKEY\"[NUMBER,22], \"PS_SUPPLYCOST\"[NUMBER,22]"
+    ],
+    [
+     "  10 - (#keys=0) \"R_REGIONKEY\"[NUMBER,22], \"R_NAME\"[VARCHAR2,100], \"P_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"P_MFGR\"[VARCHAR2,100], \"P_TYPE\"[VARCHAR2,100], \"P_SIZE\"[NUMBER,22], ROWID[ROWID,10], "
+    ],
+    [
+     "       \"PS_PARTKEY\"[NUMBER,22], \"PS_SUPPKEY\"[NUMBER,22]"
+    ],
+    [
+     "  11 - (#keys=0) \"R_REGIONKEY\"[NUMBER,22], \"R_NAME\"[VARCHAR2,100], \"P_PARTKEY\"[NUMBER,22], "
+    ],
+    [
+     "       \"P_MFGR\"[VARCHAR2,100], \"P_TYPE\"[VARCHAR2,100], \"P_SIZE\"[NUMBER,22]"
+    ],
+    [
+     "  12 - \"R_REGIONKEY\"[NUMBER,22], \"R_NAME\"[VARCHAR2,100]"
+    ],
+    [
+     "  13 - (#keys=0) \"P_PARTKEY\"[NUMBER,22], \"P_MFGR\"[VARCHAR2,100], \"P_TYPE\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"P_SIZE\"[NUMBER,22]"
+    ],
+    [
+     "  14 - (rowset=256) \"P_PARTKEY\"[NUMBER,22], \"P_MFGR\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"P_TYPE\"[VARCHAR2,100], \"P_SIZE\"[NUMBER,22]"
+    ],
+    [
+     "  15 - ROWID[ROWID,10], \"PS_PARTKEY\"[NUMBER,22], \"PS_SUPPKEY\"[NUMBER,22]"
+    ],
+    [
+     "  16 - ROWID[ROWID,10], \"PS_SUPPLYCOST\"[NUMBER,22]"
+    ],
+    [
+     "  17 - (rowset=256) \"S_SUPPKEY\"[NUMBER,22], \"S_NAME\"[VARCHAR2,100], "
+    ],
+    [
+     "       \"S_ADDRESS\"[VARCHAR2,160], \"S_NATIONKEY\"[NUMBER,22], \"S_PHONE\"[VARCHAR2,60], "
+    ],
+    [
+     "       \"S_ACCTBAL\"[NUMBER,22], \"S_COMMENT\"[VARCHAR2,404]"
+    ]
+   ]
+  }
+ ],
+ "note": "EXPLAIN without execution, once per cell on input set 0, outside every timer"
+}

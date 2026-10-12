@@ -1,0 +1,111 @@
+{
+ "run_id": "2f3118d3eee2448a8f9705c0f7d79486",
+ "pid": 1,
+ "phase": "G",
+ "dbms": "oracle",
+ "schema": "indexed",
+ "scale": 1,
+ "mode": "main",
+ "queries": [
+  6,
+  17,
+  18,
+  20,
+  21
+ ],
+ "planned_timed": 160,
+ "counts": {
+  "saved_cell_warmup": 20,
+  "status_cell_warmup_ok": 20,
+  "saved_block_warmup": 160,
+  "status_block_warmup_ok": 160,
+  "saved_timed": 160,
+  "status_timed_ok": 160,
+  "accepted_pairs": 80,
+  "accepted_timed": 160
+ },
+ "environment_id": "349dbd80037962222804a5dc420000407634f35f5cb67bcabcbd6d676a2280f2",
+ "started": {
+  "utc": "2026-10-08T13:57:35.997841+00:00",
+  "cairo": "2026-10-08T16:57:35.997841+03:00"
+ },
+ "state": "complete",
+ "utc": "2026-10-08T14:00:23.528496+00:00",
+ "cairo": "2026-10-08T17:00:23.528496+03:00",
+ "current": {
+  "query": 21,
+  "path": "django/orm",
+  "kind": "timed",
+  "block": 8,
+  "attempt": 1,
+  "input_id": "q21s7",
+  "limit_s": 900,
+  "server_session": {
+   "sid": "206",
+   "tag": "70028"
+  },
+  "utc": "2026-10-08T14:00:21.811213+00:00",
+  "cairo": "2026-10-08T17:00:21.811213+03:00"
+ },
+ "cells_done": [
+  {
+   "query": 6,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "20.281948570001987"
+   }
+  },
+  {
+   "query": 17,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "2.4035873919965525"
+   }
+  },
+  {
+   "query": 18,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "46.60226502699879"
+   }
+  },
+  {
+   "query": 20,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "43.281400719002704"
+   }
+  },
+  {
+   "query": 21,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "53.987823930998275"
+   }
+  }
+ ],
+ "_obs": [
+  {
+   "type": "float",
+   "value": "166.5570256389983"
+  },
+  {
+   "type": "float",
+   "value": "549.8"
+  }
+ ],
+ "observed_over_predicted": {
+  "type": "float",
+  "value": "0.302941116113129"
+ },
+ "remaining_predicted_s": 0,
+ "eta_s": {
+  "type": "float",
+  "value": "0.0"
+ }
+}

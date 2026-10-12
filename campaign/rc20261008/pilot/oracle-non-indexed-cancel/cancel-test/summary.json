@@ -1,0 +1,87 @@
+{
+ "passed": true,
+ "paths": [
+  {
+   "path": "django/sql",
+   "probe_status": "timeout",
+   "probe_elapsed_s": {
+    "type": "float",
+    "value": "1.002903388995037"
+   },
+   "probe_limit_s": {
+    "type": "float",
+    "value": "1.0"
+   },
+   "probe_error": "DatabaseError: DPY-4024: call timeout of 1000 ms exceeded",
+   "recovery_verified": true,
+   "recovery_polls": 1,
+   "followup_status": "ok",
+   "followup_elapsed_s": {
+    "type": "float",
+    "value": "0.7009430100006284"
+   }
+  },
+  {
+   "path": "django/orm",
+   "probe_status": "timeout",
+   "probe_elapsed_s": {
+    "type": "float",
+    "value": "1.0079181130058714"
+   },
+   "probe_limit_s": {
+    "type": "float",
+    "value": "1.0"
+   },
+   "probe_error": "DatabaseError: DPY-4024: call timeout of 1000 ms exceeded",
+   "recovery_verified": true,
+   "recovery_polls": 1,
+   "followup_status": "ok",
+   "followup_elapsed_s": {
+    "type": "float",
+    "value": "0.6658735989985871"
+   }
+  },
+  {
+   "path": "sqlalchemy/sql",
+   "probe_status": "timeout",
+   "probe_elapsed_s": {
+    "type": "float",
+    "value": "1.003147221999825"
+   },
+   "probe_limit_s": {
+    "type": "float",
+    "value": "1.0"
+   },
+   "probe_error": "DatabaseError: (oracledb.exceptions.DatabaseError) DPY-4024: call timeout of 1000 ms exceeded\n[SQL: SELECT l_returnflag, l_linestatus,\n       SUM(l_quantity) sum_qty,\n       SUM(l_extendedprice) sum_base_price,\n       SUM(l_extendedprice * (1 - l_discount)) sum_disc_price,\n       SUM(l_extendedprice",
+   "recovery_verified": true,
+   "recovery_polls": 1,
+   "followup_status": "ok",
+   "followup_elapsed_s": {
+    "type": "float",
+    "value": "0.6604626289990847"
+   }
+  },
+  {
+   "path": "sqlalchemy/orm",
+   "probe_status": "timeout",
+   "probe_elapsed_s": {
+    "type": "float",
+    "value": "1.0465577700015274"
+   },
+   "probe_limit_s": {
+    "type": "float",
+    "value": "1.0"
+   },
+   "probe_error": "DatabaseError: (oracledb.exceptions.DatabaseError) DPY-4024: call timeout of 1000 ms exceeded\n[SQL: SELECT lineitem.l_returnflag AS lineitem_l_returnflag, lineitem.l_linestatus AS lineitem_l_linestatus, sum(lineitem.l_quantity) AS sum_qty, sum(lineitem.l_extendedprice) AS sum_base_price, sum(lineite",
+   "recovery_verified": true,
+   "recovery_polls": 1,
+   "followup_status": "ok",
+   "followup_elapsed_s": {
+    "type": "float",
+    "value": "0.668281061000016"
+   }
+  }
+ ],
+ "utc": "2026-10-08T01:56:20.040279+00:00",
+ "cairo": "2026-10-08T04:56:20.040279+03:00"
+}

@@ -1,0 +1,172 @@
+{
+ "G": [
+  {
+   "sql": "SELECT AVG(`customer`.`c_acctbal`) AS `avg_bal` FROM `customer` WHERE ((`customer`.`c_phone` LIKE BINARY %s OR `customer`.`c_phone` LIKE BINARY %s OR `customer`.`c_phone` LIKE BINARY %s OR `customer`.`c_phone` LIKE BINARY %s OR `customer`.`c_phone` LIKE BINARY %s OR `customer`.`c_phone` LIKE BINARY %s OR `customer`.`c_phone` LIKE BINARY %s) AND `customer`.`c_acctbal` > %s)",
+   "params": [
+    "15%",
+    "22%",
+    "24%",
+    "25%",
+    "26%",
+    "28%",
+    "32%",
+    {
+     "type": "Decimal",
+     "value": "0"
+    }
+   ]
+  },
+  {
+   "sql": "SELECT SUBSTRING(`customer`.`c_phone`, %s, %s) AS `cntrycode`, COUNT(`customer`.`c_custkey`) AS `numcust`, SUM(`customer`.`c_acctbal`) AS `totacctbal` FROM `customer` WHERE (`customer`.`c_acctbal` > %s AND SUBSTRING(`customer`.`c_phone`, %s, %s) IN (%s, %s, %s, %s, %s, %s, %s) AND NOT EXISTS(SELECT %s AS `a` FROM `orders` U0 WHERE U0.`o_custkey` = (`customer`.`c_custkey`) LIMIT 1)) GROUP BY 1 ORDER BY 1 ASC",
+   "params": [
+    1,
+    2,
+    {
+     "type": "Decimal",
+     "value": "5002.193977"
+    },
+    1,
+    2,
+    "15",
+    "22",
+    "24",
+    "25",
+    "26",
+    "28",
+    "32",
+    1
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "\n    SELECT cntrycode, COUNT(*) as numcust, SUM(c_acctbal) as totacctbal\n    FROM (\n      SELECT SUBSTRING(c_phone, 1, 2) as cntrycode, c_acctbal\n      FROM customer\n      WHERE SUBSTRING(c_phone, 1, 2) IN (%s, %s, %s, %s, %s, %s, %s)\n        AND c_acctbal > (\n          SELECT AVG(c_acctbal)\n          FROM customer\n          WHERE c_acctbal > 0.00\n            AND SUBSTRING(c_phone, 1, 2) IN (%s, %s, %s, %s, %s, %s, %s)\n        )\n        AND NOT EXISTS (\n          SELECT * FROM orders\n          WHERE o_custkey = c_custkey\n        )\n    ) as custsale\n    GROUP BY cntrycode\n    ORDER BY cntrycode\n    ",
+    "values": [
+     "15",
+     "22",
+     "24",
+     "25",
+     "26",
+     "28",
+     "32",
+     "15",
+     "22",
+     "24",
+     "25",
+     "26",
+     "28",
+     "32"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "'15'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'22'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'24'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'25'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'26'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'28'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'32'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'15'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'22'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'24'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'25'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'26'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'28'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'32'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 14
+ },
+ "G_output_columns": [
+  "cntrycode",
+  "numcust",
+  "totacctbal"
+ ]
+}

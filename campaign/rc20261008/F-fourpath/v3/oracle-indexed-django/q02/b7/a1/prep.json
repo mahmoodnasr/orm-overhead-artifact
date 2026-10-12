@@ -1,0 +1,69 @@
+{
+ "G": [
+  {
+   "sql": "SELECT \"SUPPLIER\".\"S_ACCTBAL\" AS \"S_ACCTBAL\", \"SUPPLIER\".\"S_NAME\" AS \"S_NAME\", \"NATION\".\"N_NAME\" AS \"N_NAME\", \"PARTSUPP\".\"PS_PARTKEY\" AS \"P_PARTKEY\", \"PART\".\"P_MFGR\" AS \"P_MFGR\", \"SUPPLIER\".\"S_ADDRESS\" AS \"S_ADDRESS\", \"SUPPLIER\".\"S_PHONE\" AS \"S_PHONE\", \"SUPPLIER\".\"S_COMMENT\" AS \"S_COMMENT\" FROM \"PARTSUPP\" INNER JOIN \"PART\" ON (\"PARTSUPP\".\"PS_PARTKEY\" = \"PART\".\"P_PARTKEY\") INNER JOIN \"SUPPLIER\" ON (\"PARTSUPP\".\"PS_SUPPKEY\" = \"SUPPLIER\".\"S_SUPPKEY\") INNER JOIN \"NATION\" ON (\"SUPPLIER\".\"S_NATIONKEY\" = \"NATION\".\"N_NATIONKEY\") INNER JOIN \"REGION\" ON (\"NATION\".\"N_REGIONKEY\" = \"REGION\".\"R_REGIONKEY\") WHERE (\"PART\".\"P_SIZE\" = %s AND \"PART\".\"P_TYPE\" LIKE TRANSLATE(%s USING NCHAR_CS) ESCAPE TRANSLATE('\\' USING NCHAR_CS) AND \"REGION\".\"R_NAME\" = %s AND \"PARTSUPP\".\"PS_SUPPLYCOST\" = (SELECT MIN(U0.\"PS_SUPPLYCOST\") AS \"MIN_COST\" FROM \"PARTSUPP\" U0 INNER JOIN \"SUPPLIER\" U2 ON (U0.\"PS_SUPPKEY\" = U2.\"S_SUPPKEY\") INNER JOIN \"NATION\" U3 ON (U2.\"S_NATIONKEY\" = U3.\"N_NATIONKEY\") INNER JOIN \"REGION\" U4 ON (U3.\"N_REGIONKEY\" = U4.\"R_REGIONKEY\") WHERE (U0.\"PS_PARTKEY\" = (\"PARTSUPP\".\"PS_PARTKEY\") AND U4.\"R_NAME\" = %s) GROUP BY U0.\"PS_PARTKEY\" FETCH FIRST 1 ROWS ONLY)) ORDER BY 1 DESC, 3 ASC, 2 ASC, 4 ASC FETCH FIRST 100 ROWS ONLY",
+   "params": [
+    21,
+    "%BRASS",
+    "AFRICA",
+    "AFRICA"
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "\n    SELECT s_acctbal, s_name, n_name, p_partkey, p_mfgr, s_address, s_phone, s_comment\n    FROM part, supplier, partsupp, nation, region\n    WHERE p_partkey = ps_partkey\n      AND s_suppkey = ps_suppkey\n      AND p_size = %s\n      AND p_type LIKE %s\n      AND s_nationkey = n_nationkey\n      AND n_regionkey = r_regionkey\n      AND r_name = %s\n      AND ps_supplycost = (\n        SELECT MIN(ps_supplycost)\n        FROM partsupp, supplier, nation, region\n        WHERE p_partkey = ps_partkey\n          AND s_suppkey = ps_suppkey\n          AND s_nationkey = n_nationkey\n          AND n_regionkey = r_regionkey\n          AND r_name = %s\n      )\n    ORDER BY s_acctbal DESC, n_name, s_name, p_partkey\n    FETCH FIRST 100 ROWS ONLY\n    ",
+    "values": [
+     21,
+     "%BRASS",
+     "AFRICA",
+     "AFRICA"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "21",
+     "bound": true,
+     "kind": "num",
+     "value_type": "int",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'%BRASS'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'AFRICA'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'AFRICA'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 4
+ },
+ "G_output_columns": [
+  "s_acctbal",
+  "s_name",
+  "n_name",
+  "p_partkey",
+  "p_mfgr",
+  "s_address",
+  "s_phone",
+  "s_comment"
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:70452468d39b44b3547d9639c28417e68456b560c9a4f0a1e7a0b72b501e7757",
+   "params": [
+    "19%",
+    "20%",
+    "21%",
+    "25%",
+    "27%",
+    "30%",
+    "31%",
+    {
+     "type": "Decimal",
+     "value": "0"
+    }
+   ]
+  },
+  {
+   "sql": "withheld-sha256:f401cd6d8961fdcbc2a40041264c625eb6c035ecfa959c93bc9ff5fadbafb149",
+   "params": [
+    1,
+    2,
+    {
+     "type": "Decimal",
+     "value": "4995.777110644476124434731900691986083984375"
+    },
+    1,
+    2,
+    "19",
+    "20",
+    "21",
+    "25",
+    "27",
+    "30",
+    "31",
+    1,
+    true,
+    false,
+    false,
+    1,
+    2
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:cbd1c7e22bda2f53afe76e7e2b78006962ccd9374922a6bd14f3da8defc20d65",
+    "values": [
+     "19",
+     "20",
+     "21",
+     "25",
+     "27",
+     "30",
+     "31",
+     "19",
+     "20",
+     "21",
+     "25",
+     "27",
+     "30",
+     "31"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:17e266b6efb6288891f924a6a306c84807c3d048034c8091fddb2800a4471532",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:1c3f1bedb2326707baef3e569099761a09101db2d569a5ff57e6d6a12c029767",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:ed2238cb9d77068e35d497a66cfecbb9c8591d47501b0cd39e7c79eb9708331f",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:4ded40599cdd9e57676e368ee172651fa726d8d84a07ee5717da76f75c7081a7",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:1e912e397f477bbe120fab65e0d85459187c6f0d9ce0f54c9761bfd4e81901bd",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:c11069716c1d4245250771e9189a9c436e38332dea4df0b4fa44dc1650c30617",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:0198a749af5dcf3e1b947a515989a72b04887dd56b6992b6be8f078175df6555",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:17e266b6efb6288891f924a6a306c84807c3d048034c8091fddb2800a4471532",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:1c3f1bedb2326707baef3e569099761a09101db2d569a5ff57e6d6a12c029767",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:ed2238cb9d77068e35d497a66cfecbb9c8591d47501b0cd39e7c79eb9708331f",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:4ded40599cdd9e57676e368ee172651fa726d8d84a07ee5717da76f75c7081a7",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:1e912e397f477bbe120fab65e0d85459187c6f0d9ce0f54c9761bfd4e81901bd",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:c11069716c1d4245250771e9189a9c436e38332dea4df0b4fa44dc1650c30617",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:0198a749af5dcf3e1b947a515989a72b04887dd56b6992b6be8f078175df6555",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 14
+ }
+}

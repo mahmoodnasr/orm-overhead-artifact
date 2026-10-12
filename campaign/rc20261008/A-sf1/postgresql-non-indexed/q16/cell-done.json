@@ -1,0 +1,12 @@
+{
+ "query": 16,
+ "status": "complete",
+ "censored": {},
+ "inexpressible": {},
+ "wall_s_this_run": {
+  "type": "float",
+  "value": "125.43453054600104"
+ },
+ "utc": "2026-10-09T00:57:56.208899+00:00",
+ "cairo": "2026-10-09T03:57:56.208899+03:00"
+}

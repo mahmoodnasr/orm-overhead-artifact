@@ -1,0 +1,69 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:7dc8a5325e1f97caf329e2d28c07289f229858f5655cd670ea715ff14e1e4939",
+   "params": [
+    1,
+    "1993-06-01",
+    "1993-09-01"
+   ]
+  },
+  {
+   "sql": "withheld-sha256:aa714af92f1a57b91d839c79716991c300677828e3600ca3155f49ae46e6efd1",
+   "params": [
+    1,
+    "1993-06-01",
+    "1993-09-01",
+    1,
+    {
+     "type": "Decimal",
+     "value": "1793806.3866"
+    }
+   ]
+  },
+  {
+   "sql": "withheld-sha256:665b6496eccd2ed0b3e1fb07dce32766e01370cf220f0ece34514d7d4df1e509",
+   "params": [
+    7979
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:cb3e0b6c3d6736db4ae3991c55062d4662aac60dfa46ca5e9961bc9deea71ab8",
+    "values": [
+     "1993-06-01",
+     "1993-09-01"
+    ],
+    "terminator_added": "';' before WITH: commercial-a-django-backend prepends DECLARE to statements with GROUP BY and parameters (F-v2 correction 2)"
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:82542ff8bb5ca910f323d8c467bfc881f0b33050705beb77cedbe21bff2a46b1",
+     "bound": true,
+     "kind": "date",
+     "value_type": "str",
+     "type_source": "orm: bound as a string, as the ORM binds it (F-v2 correction 4)"
+    },
+    {
+     "literal": "withheld-sha256:250d805d034e4c0adee5da9e447c8922f3ae0a1f68433bcf89aef8f9c632aec1",
+     "bound": true,
+     "kind": "date",
+     "value_type": "str",
+     "type_source": "orm: bound as a string, as the ORM binds it (F-v2 correction 4)"
+    }
+   ]
+  ],
+  "bound_literals": 2
+ },
+ "G_output_columns": [
+  "s_suppkey",
+  "s_name",
+  "s_address",
+  "s_phone",
+  "total_revenue"
+ ]
+}

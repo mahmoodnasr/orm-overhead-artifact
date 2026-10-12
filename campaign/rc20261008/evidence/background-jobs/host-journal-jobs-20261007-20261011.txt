@@ -1,0 +1,763 @@
+apt-daily | 2026-10-07T16:56:28+03:00 bench-host systemd[1]: Starting apt-daily.service - Daily apt download activities...
+apt-daily | 2026-10-07T16:56:54+03:00 bench-host systemd[1]: apt-daily.service: Deactivated successfully.
+apt-daily | 2026-10-07T16:56:54+03:00 bench-host systemd[1]: Finished apt-daily.service - Daily apt download activities.
+apt-daily | 2026-10-07T16:56:54+03:00 bench-host systemd[1]: apt-daily.service: Consumed 19.137s CPU time over 25.718s wall clock time, 516.4M memory peak.
+apt-daily | 2026-10-07T20:40:03+03:00 bench-host systemd[1]: Starting apt-daily.service - Daily apt download activities...
+apt-daily | 2026-10-07T20:40:06+03:00 bench-host systemd[1]: apt-daily.service: Deactivated successfully.
+apt-daily | 2026-10-07T20:40:06+03:00 bench-host systemd[1]: Finished apt-daily.service - Daily apt download activities.
+apt-daily | 2026-10-07T20:40:06+03:00 bench-host systemd[1]: apt-daily.service: Consumed 1.107s CPU time over 2.466s wall clock time, 27.7M memory peak.
+apt-daily | 2026-10-08T15:59:48+03:00 bench-host systemd[1]: Starting apt-daily.service - Daily apt download activities...
+apt-daily | 2026-10-08T16:00:11+03:00 bench-host systemd[1]: apt-daily.service: Deactivated successfully.
+apt-daily | 2026-10-08T16:00:11+03:00 bench-host systemd[1]: Finished apt-daily.service - Daily apt download activities.
+apt-daily | 2026-10-08T16:00:11+03:00 bench-host systemd[1]: apt-daily.service: Consumed 19.416s CPU time over 22.877s wall clock time, 516.9M memory peak.
+apt-daily | 2026-10-09T01:01:53+03:00 bench-host systemd[1]: Starting apt-daily.service - Daily apt download activities...
+apt-daily | 2026-10-09T01:02:15+03:00 bench-host systemd[1]: apt-daily.service: Deactivated successfully.
+apt-daily | 2026-10-09T01:02:15+03:00 bench-host systemd[1]: Finished apt-daily.service - Daily apt download activities.
+apt-daily | 2026-10-09T01:02:15+03:00 bench-host systemd[1]: apt-daily.service: Consumed 18.005s CPU time over 22.232s wall clock time, 405.4M memory peak.
+apt-daily | 2026-10-09T08:17:49+03:00 bench-host systemd[1]: Starting apt-daily.service - Daily apt download activities...
+apt-daily | 2026-10-09T08:17:50+03:00 bench-host systemd[1]: apt-daily.service: Deactivated successfully.
+apt-daily | 2026-10-09T08:17:50+03:00 bench-host systemd[1]: Finished apt-daily.service - Daily apt download activities.
+apt-daily | 2026-10-09T08:17:50+03:00 bench-host systemd[1]: apt-daily.service: Consumed 1.060s CPU time over 1.114s wall clock time, 48.5M memory peak.
+apt-daily | 2026-10-09T22:55:16+03:00 bench-host systemd[1]: Starting apt-daily.service - Daily apt download activities...
+apt-daily | 2026-10-09T22:55:18+03:00 bench-host systemd[1]: apt-daily.service: Deactivated successfully.
+apt-daily | 2026-10-09T22:55:18+03:00 bench-host systemd[1]: Finished apt-daily.service - Daily apt download activities.
+apt-daily | 2026-10-09T22:55:18+03:00 bench-host systemd[1]: apt-daily.service: Consumed 1.109s CPU time over 1.134s wall clock time, 28.4M memory peak.
+apt-daily | 2026-10-10T11:11:38+03:00 bench-host systemd[1]: Starting apt-daily.service - Daily apt download activities...
+apt-daily | 2026-10-10T11:12:02+03:00 bench-host systemd[1]: apt-daily.service: Deactivated successfully.
+apt-daily | 2026-10-10T11:12:02+03:00 bench-host systemd[1]: Finished apt-daily.service - Daily apt download activities.
+apt-daily | 2026-10-10T11:12:02+03:00 bench-host systemd[1]: apt-daily.service: Consumed 18.790s CPU time over 23.695s wall clock time, 522.5M memory peak.
+apt-daily | 2026-10-11T00:52:06+03:00 bench-host systemd[1]: Starting apt-daily.service - Daily apt download activities...
+apt-daily | 2026-10-11T00:52:23+03:00 bench-host systemd[1]: apt-daily.service: Deactivated successfully.
+apt-daily | 2026-10-11T00:52:23+03:00 bench-host systemd[1]: Finished apt-daily.service - Daily apt download activities.
+apt-daily | 2026-10-11T00:52:23+03:00 bench-host systemd[1]: apt-daily.service: Consumed 14.127s CPU time over 16.796s wall clock time, 460.9M memory peak.
+apt-daily | 2026-10-11T08:12:11+03:00 bench-host systemd[1]: Starting apt-daily.service - Daily apt download activities...
+apt-daily | 2026-10-11T08:12:13+03:00 bench-host systemd[1]: apt-daily.service: Deactivated successfully.
+apt-daily | 2026-10-11T08:12:13+03:00 bench-host systemd[1]: Finished apt-daily.service - Daily apt download activities.
+apt-daily | 2026-10-11T08:12:13+03:00 bench-host systemd[1]: apt-daily.service: Consumed 1.097s CPU time over 1.330s wall clock time, 27.7M memory peak.
+apt-daily-upgrade | 2026-10-07T17:52:54+03:00 bench-host systemd[1]: Starting apt-daily-upgrade.service - Daily apt upgrade and clean activities...
+apt-daily-upgrade | 2026-10-07T17:54:22+03:00 bench-host systemd[1]: apt-daily-upgrade.service: Deactivated successfully.
+apt-daily-upgrade | 2026-10-07T17:54:22+03:00 bench-host systemd[1]: Finished apt-daily-upgrade.service - Daily apt upgrade and clean activities.
+apt-daily-upgrade | 2026-10-07T17:54:22+03:00 bench-host systemd[1]: apt-daily-upgrade.service: Consumed 1min 18.951s CPU time over 1min 27.297s wall clock time, 636M memory peak.
+apt-daily-upgrade | 2026-10-08T06:45:36+03:00 bench-host systemd[1]: Starting apt-daily-upgrade.service - Daily apt upgrade and clean activities...
+apt-daily-upgrade | 2026-10-08T06:45:39+03:00 bench-host systemd[1]: apt-daily-upgrade.service: Deactivated successfully.
+apt-daily-upgrade | 2026-10-08T06:45:39+03:00 bench-host systemd[1]: Finished apt-daily-upgrade.service - Daily apt upgrade and clean activities.
+apt-daily-upgrade | 2026-10-08T06:45:39+03:00 bench-host systemd[1]: apt-daily-upgrade.service: Consumed 3.151s CPU time over 3.189s wall clock time, 56.5M memory peak.
+apt-daily-upgrade | 2026-10-09T06:01:39+03:00 bench-host systemd[1]: Starting apt-daily-upgrade.service - Daily apt upgrade and clean activities...
+apt-daily-upgrade | 2026-10-09T06:03:54+03:00 bench-host systemd[1]: apt-daily-upgrade.service: Deactivated successfully.
+apt-daily-upgrade | 2026-10-09T06:03:54+03:00 bench-host systemd[1]: Finished apt-daily-upgrade.service - Daily apt upgrade and clean activities.
+apt-daily-upgrade | 2026-10-09T06:03:54+03:00 bench-host systemd[1]: apt-daily-upgrade.service: Consumed 1min 58.873s CPU time over 2min 15.021s wall clock time, 619.9M memory peak.
+apt-daily-upgrade | 2026-10-10T06:10:29+03:00 bench-host systemd[1]: Starting apt-daily-upgrade.service - Daily apt upgrade and clean activities...
+apt-daily-upgrade | 2026-10-10T06:10:33+03:00 bench-host systemd[1]: apt-daily-upgrade.service: Deactivated successfully.
+apt-daily-upgrade | 2026-10-10T06:10:33+03:00 bench-host systemd[1]: Finished apt-daily-upgrade.service - Daily apt upgrade and clean activities.
+apt-daily-upgrade | 2026-10-10T06:10:33+03:00 bench-host systemd[1]: apt-daily-upgrade.service: Consumed 3.849s CPU time over 3.890s wall clock time, 59.2M memory peak.
+apt-daily-upgrade | 2026-10-11T06:34:28+03:00 bench-host systemd[1]: Starting apt-daily-upgrade.service - Daily apt upgrade and clean activities...
+apt-daily-upgrade | 2026-10-11T06:34:54+03:00 bench-host systemd[1]: apt-daily-upgrade.service: Deactivated successfully.
+apt-daily-upgrade | 2026-10-11T06:34:54+03:00 bench-host systemd[1]: Finished apt-daily-upgrade.service - Daily apt upgrade and clean activities.
+apt-daily-upgrade | 2026-10-11T06:34:54+03:00 bench-host systemd[1]: apt-daily-upgrade.service: Consumed 20.901s CPU time over 25.986s wall clock time, 423.9M memory peak.
+e2scrub_all | 2026-10-11T03:10:27+03:00 bench-host systemd[1]: Starting e2scrub_all.service - Online ext4 Metadata Check for All Filesystems...
+e2scrub_all | 2026-10-11T03:10:27+03:00 bench-host systemd[1]: e2scrub_all.service: Deactivated successfully.
+e2scrub_all | 2026-10-11T03:10:27+03:00 bench-host systemd[1]: Finished e2scrub_all.service - Online ext4 Metadata Check for All Filesystems.
+man-db | 2026-10-07T20:40:03+03:00 bench-host systemd[1]: Starting man-db.service - Daily man-db regeneration...
+man-db | 2026-10-07T20:40:06+03:00 bench-host systemd[1]: man-db.service: Deactivated successfully.
+man-db | 2026-10-07T20:40:06+03:00 bench-host systemd[1]: Finished man-db.service - Daily man-db regeneration.
+man-db | 2026-10-08T03:35:45+03:00 bench-host systemd[1]: Starting man-db.service - Daily man-db regeneration...
+man-db | 2026-10-08T03:35:45+03:00 bench-host systemd[1]: man-db.service: Deactivated successfully.
+man-db | 2026-10-08T03:35:45+03:00 bench-host systemd[1]: Finished man-db.service - Daily man-db regeneration.
+man-db | 2026-10-09T05:59:10+03:00 bench-host systemd[1]: Starting man-db.service - Daily man-db regeneration...
+man-db | 2026-10-09T05:59:11+03:00 bench-host systemd[1]: man-db.service: Deactivated successfully.
+man-db | 2026-10-09T05:59:11+03:00 bench-host systemd[1]: Finished man-db.service - Daily man-db regeneration.
+man-db | 2026-10-10T04:20:31+03:00 bench-host systemd[1]: Starting man-db.service - Daily man-db regeneration...
+man-db | 2026-10-10T04:20:32+03:00 bench-host systemd[1]: man-db.service: Deactivated successfully.
+man-db | 2026-10-10T04:20:32+03:00 bench-host systemd[1]: Finished man-db.service - Daily man-db regeneration.
+man-db | 2026-10-11T06:34:41+03:00 bench-host systemd[1]: Starting man-db.service - Daily man-db regeneration...
+man-db | 2026-10-11T06:34:45+03:00 bench-host systemd[1]: man-db.service: Deactivated successfully.
+man-db | 2026-10-11T06:34:45+03:00 bench-host systemd[1]: Finished man-db.service - Daily man-db regeneration.
+man-db | 2026-10-11T06:34:45+03:00 bench-host systemd[1]: man-db.service: Consumed 3.686s CPU time over 4.147s wall clock time, 29.9M memory peak.
+logrotate | 2026-10-07T17:42:58+03:00 bench-host systemd[1]: Starting logrotate.service - Rotate log files...
+logrotate | 2026-10-07T17:42:59+03:00 bench-host systemd[1]: logrotate.service: Failed with result 'exit-code'.
+logrotate | 2026-10-07T17:42:59+03:00 bench-host systemd[1]: Failed to start logrotate.service - Rotate log files.
+logrotate | 2026-10-08T00:09:55+03:00 bench-host systemd[1]: Starting logrotate.service - Rotate log files...
+logrotate | 2026-10-08T00:09:55+03:00 bench-host systemd[1]: logrotate.service: Failed with result 'exit-code'.
+logrotate | 2026-10-08T00:09:55+03:00 bench-host systemd[1]: Failed to start logrotate.service - Rotate log files.
+logrotate | 2026-10-09T00:12:20+03:00 bench-host systemd[1]: Starting logrotate.service - Rotate log files...
+logrotate | 2026-10-09T00:12:21+03:00 bench-host systemd[1]: logrotate.service: Failed with result 'exit-code'.
+logrotate | 2026-10-09T00:12:21+03:00 bench-host systemd[1]: Failed to start logrotate.service - Rotate log files.
+logrotate | 2026-10-10T00:26:45+03:00 bench-host systemd[1]: Starting logrotate.service - Rotate log files...
+logrotate | 2026-10-10T00:26:45+03:00 bench-host systemd[1]: logrotate.service: Failed with result 'exit-code'.
+logrotate | 2026-10-10T00:26:45+03:00 bench-host systemd[1]: Failed to start logrotate.service - Rotate log files.
+logrotate | 2026-10-11T00:56:18+03:00 bench-host systemd[1]: Starting logrotate.service - Rotate log files...
+logrotate | 2026-10-11T00:56:19+03:00 bench-host systemd[1]: logrotate.service: Failed with result 'exit-code'.
+logrotate | 2026-10-11T00:56:19+03:00 bench-host systemd[1]: Failed to start logrotate.service - Rotate log files.
+fwupd-refresh | 2026-10-07T17:00:11+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-07T17:00:27+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-07T17:00:27+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-07T18:53:37+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-07T18:53:37+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-07T18:53:37+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-07T19:07:17+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-07T19:07:17+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-07T19:07:17+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-07T20:40:02+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-07T20:40:03+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-07T20:40:03+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-07T21:15:19+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-07T21:15:20+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-07T21:15:20+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-07T22:53:52+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-07T22:53:53+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-07T22:53:53+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-07T23:43:56+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-07T23:43:56+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-07T23:43:56+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T00:07:49+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T00:07:49+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T00:07:49+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T01:21:09+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T01:21:09+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T01:21:09+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T02:27:02+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T02:27:03+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T02:27:03+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T03:48:49+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T03:48:49+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T03:48:49+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T04:35:38+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T04:35:38+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T04:35:38+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T05:24:11+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T05:24:11+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T05:24:11+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T06:45:16+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T06:45:17+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T06:45:17+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T07:36:09+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T07:36:09+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T07:36:09+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T08:38:38+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T08:38:38+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T08:38:38+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T09:01:52+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T09:01:53+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T09:01:53+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T10:44:21+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T10:44:21+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T10:44:21+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T11:09:23+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T11:09:23+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T11:09:23+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T12:45:09+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T12:45:09+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T12:45:09+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T13:48:01+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T13:48:01+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T13:48:01+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T14:09:38+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T14:09:38+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T14:09:38+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T15:58:59+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T15:58:59+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T15:58:59+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T16:35:42+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T16:35:43+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T16:35:43+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T17:49:26+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T17:49:30+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T17:49:30+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T18:53:06+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T18:53:06+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T18:53:06+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T19:32:33+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T19:32:33+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T19:32:33+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T20:56:17+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T20:56:17+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T20:56:17+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T21:00:07+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T21:00:07+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T21:00:07+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T22:21:33+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T22:21:34+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T22:21:34+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-08T23:05:06+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-08T23:05:06+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-08T23:05:06+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T00:36:08+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T00:36:08+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T00:36:08+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T01:34:35+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T01:34:35+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T01:34:35+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T02:12:17+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T02:12:17+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T02:12:17+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T03:44:49+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T03:44:49+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T03:44:49+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T04:58:27+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T04:58:27+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T04:58:27+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T05:07:40+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T05:07:40+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T05:07:40+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T06:32:39+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T06:32:40+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T06:32:40+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T07:20:19+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T07:20:19+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T07:20:19+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T08:55:18+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T08:55:18+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T08:55:18+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T09:59:42+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T09:59:42+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T09:59:42+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T10:44:02+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T10:44:02+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T10:44:02+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T11:37:52+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T11:37:52+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T11:37:52+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T12:14:00+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T12:14:00+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T12:14:00+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T13:22:24+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T13:22:24+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T13:22:24+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T14:28:13+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T14:28:13+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T14:28:13+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T15:00:10+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T15:00:10+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T15:00:10+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T16:38:41+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T16:38:42+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T16:38:42+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T17:47:35+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T17:47:35+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T17:47:35+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T18:24:55+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T18:25:00+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T18:25:00+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T19:35:55+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T19:35:56+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T19:35:56+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T20:20:01+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T20:20:01+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T20:20:01+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T21:15:07+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T21:15:07+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T21:15:07+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T22:58:56+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T22:58:57+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T22:58:57+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-09T23:11:50+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-09T23:11:50+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-09T23:11:50+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T00:35:27+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T00:35:27+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T00:35:27+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T01:22:23+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T01:22:23+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T01:22:23+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T02:22:58+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T02:22:58+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T02:22:58+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T03:20:28+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T03:20:28+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T03:20:28+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T04:20:08+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T04:20:09+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T04:20:09+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T05:14:57+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T05:14:57+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T05:14:57+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T06:20:07+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T06:20:08+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T06:20:08+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T07:16:44+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T07:16:44+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T07:16:44+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T08:59:20+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T08:59:20+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T08:59:20+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T09:15:28+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T09:15:28+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T09:15:28+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T10:32:26+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T10:32:26+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T10:32:26+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T11:50:41+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T11:50:41+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T11:50:41+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T12:00:49+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T12:00:50+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T12:00:50+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T13:50:18+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T13:50:18+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T13:50:18+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T14:39:59+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T14:40:00+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T14:40:00+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T15:49:02+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T15:49:03+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T15:49:03+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T16:36:54+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T16:36:54+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T16:36:54+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T17:42:38+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T17:42:38+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T17:42:38+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T18:54:34+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T18:54:39+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T18:54:39+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T19:14:21+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T19:14:21+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T19:14:21+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T20:28:42+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T20:28:42+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T20:28:42+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T21:55:35+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T21:55:35+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T21:55:35+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T22:03:35+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T22:03:35+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T22:03:35+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-10T23:49:17+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-10T23:49:17+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-10T23:49:17+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T00:31:36+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T00:31:36+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T00:31:36+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T01:11:46+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T01:11:46+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T01:11:46+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T02:37:07+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T02:37:07+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T02:37:07+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T03:36:04+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T03:36:04+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T03:36:04+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T04:53:23+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T04:53:23+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T04:53:23+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T05:36:37+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T05:36:38+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T05:36:38+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T06:34:41+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T06:34:41+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T06:34:41+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T07:59:28+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T07:59:28+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T07:59:28+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T08:12:12+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T08:12:12+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T08:12:12+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T09:56:09+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T09:56:10+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T09:56:10+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T10:45:01+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T10:45:02+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T10:45:02+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T11:02:40+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T11:02:40+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T11:02:40+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T12:14:40+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T12:14:41+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T12:14:41+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T13:15:37+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T13:15:37+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T13:15:37+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T14:03:51+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T14:03:51+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T14:03:51+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T15:44:08+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T15:44:08+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T15:44:08+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T16:37:59+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T16:38:00+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T16:38:00+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T17:00:52+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T17:00:52+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T17:00:52+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T18:22:13+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T18:22:13+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T18:22:13+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T19:18:11+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T19:18:12+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T19:18:12+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T20:30:53+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T20:30:57+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T20:30:57+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T21:36:15+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T21:36:15+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T21:36:15+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+fwupd-refresh | 2026-10-11T22:18:55+03:00 bench-host systemd[1]: Starting fwupd-refresh.service - Refresh fwupd metadata and update motd...
+fwupd-refresh | 2026-10-11T22:18:59+03:00 bench-host systemd[1]: fwupd-refresh.service: Deactivated successfully.
+fwupd-refresh | 2026-10-11T22:18:59+03:00 bench-host systemd[1]: Finished fwupd-refresh.service - Refresh fwupd metadata and update motd.
+update-notifier-download | 2026-10-07T16:59:35+03:00 bench-host systemd[1]: Starting update-notifier-download.service - Download data for packages that failed at package install time...
+update-notifier-download | 2026-10-07T16:59:36+03:00 bench-host systemd[1]: update-notifier-download.service: Deactivated successfully.
+update-notifier-download | 2026-10-07T16:59:36+03:00 bench-host systemd[1]: Finished update-notifier-download.service - Download data for packages that failed at package install time.
+update-notifier-download | 2026-10-08T16:59:44+03:00 bench-host systemd[1]: Starting update-notifier-download.service - Download data for packages that failed at package install time...
+update-notifier-download | 2026-10-08T16:59:44+03:00 bench-host systemd[1]: update-notifier-download.service: Deactivated successfully.
+update-notifier-download | 2026-10-08T16:59:44+03:00 bench-host systemd[1]: Finished update-notifier-download.service - Download data for packages that failed at package install time.
+update-notifier-download | 2026-10-09T16:59:44+03:00 bench-host systemd[1]: Starting update-notifier-download.service - Download data for packages that failed at package install time...
+update-notifier-download | 2026-10-09T16:59:45+03:00 bench-host systemd[1]: update-notifier-download.service: Deactivated successfully.
+update-notifier-download | 2026-10-09T16:59:45+03:00 bench-host systemd[1]: Finished update-notifier-download.service - Download data for packages that failed at package install time.
+update-notifier-download | 2026-10-10T16:59:48+03:00 bench-host systemd[1]: Starting update-notifier-download.service - Download data for packages that failed at package install time...
+update-notifier-download | 2026-10-10T16:59:48+03:00 bench-host systemd[1]: update-notifier-download.service: Deactivated successfully.
+update-notifier-download | 2026-10-10T16:59:48+03:00 bench-host systemd[1]: Finished update-notifier-download.service - Download data for packages that failed at package install time.
+update-notifier-download | 2026-10-11T16:59:52+03:00 bench-host systemd[1]: Starting update-notifier-download.service - Download data for packages that failed at package install time...
+update-notifier-download | 2026-10-11T16:59:52+03:00 bench-host systemd[1]: update-notifier-download.service: Deactivated successfully.
+update-notifier-download | 2026-10-11T16:59:52+03:00 bench-host systemd[1]: Finished update-notifier-download.service - Download data for packages that failed at package install time.
+update-notifier-motd | 2026-10-09T06:02:30+03:00 bench-host systemd[1]: Starting update-notifier-motd.service - Check to see whether there is a new version of Ubuntu available...
+update-notifier-motd | 2026-10-09T06:02:30+03:00 bench-host systemd[1]: update-notifier-motd.service: Deactivated successfully.
+update-notifier-motd | 2026-10-09T06:02:30+03:00 bench-host systemd[1]: Finished update-notifier-motd.service - Check to see whether there is a new version of Ubuntu available.
+dpkg-db-backup | 2026-10-07T16:54:45+03:00 bench-host systemd[1]: Starting dpkg-db-backup.service - Daily dpkg database backup service...
+dpkg-db-backup | 2026-10-07T16:54:46+03:00 bench-host systemd[1]: dpkg-db-backup.service: Deactivated successfully.
+dpkg-db-backup | 2026-10-07T16:54:46+03:00 bench-host systemd[1]: Finished dpkg-db-backup.service - Daily dpkg database backup service.
+dpkg-db-backup | 2026-10-08T00:00:07+03:00 bench-host systemd[1]: Starting dpkg-db-backup.service - Daily dpkg database backup service...
+dpkg-db-backup | 2026-10-08T00:00:07+03:00 bench-host systemd[1]: dpkg-db-backup.service: Deactivated successfully.
+dpkg-db-backup | 2026-10-08T00:00:07+03:00 bench-host systemd[1]: Finished dpkg-db-backup.service - Daily dpkg database backup service.
+dpkg-db-backup | 2026-10-09T00:00:08+03:00 bench-host systemd[1]: Starting dpkg-db-backup.service - Daily dpkg database backup service...
+dpkg-db-backup | 2026-10-09T00:00:08+03:00 bench-host systemd[1]: dpkg-db-backup.service: Deactivated successfully.
+dpkg-db-backup | 2026-10-09T00:00:08+03:00 bench-host systemd[1]: Finished dpkg-db-backup.service - Daily dpkg database backup service.
+dpkg-db-backup | 2026-10-10T00:00:03+03:00 bench-host systemd[1]: Starting dpkg-db-backup.service - Daily dpkg database backup service...
+dpkg-db-backup | 2026-10-10T00:00:03+03:00 bench-host systemd[1]: dpkg-db-backup.service: Deactivated successfully.
+dpkg-db-backup | 2026-10-10T00:00:03+03:00 bench-host systemd[1]: Finished dpkg-db-backup.service - Daily dpkg database backup service.
+dpkg-db-backup | 2026-10-11T00:00:03+03:00 bench-host systemd[1]: Starting dpkg-db-backup.service - Daily dpkg database backup service...
+dpkg-db-backup | 2026-10-11T00:00:03+03:00 bench-host systemd[1]: dpkg-db-backup.service: Deactivated successfully.
+dpkg-db-backup | 2026-10-11T00:00:03+03:00 bench-host systemd[1]: Finished dpkg-db-backup.service - Daily dpkg database backup service.
+sysstat-summary | 2026-10-08T00:07:07+03:00 bench-host systemd[1]: Starting sysstat-summary.service - Generate a daily summary of process accounting...
+sysstat-summary | 2026-10-08T00:07:07+03:00 bench-host systemd[1]: sysstat-summary.service: Deactivated successfully.
+sysstat-summary | 2026-10-08T00:07:07+03:00 bench-host systemd[1]: Finished sysstat-summary.service - Generate a daily summary of process accounting.
+sysstat-summary | 2026-10-09T00:07:00+03:00 bench-host systemd[1]: Starting sysstat-summary.service - Generate a daily summary of process accounting...
+sysstat-summary | 2026-10-09T00:07:00+03:00 bench-host systemd[1]: sysstat-summary.service: Deactivated successfully.
+sysstat-summary | 2026-10-09T00:07:00+03:00 bench-host systemd[1]: Finished sysstat-summary.service - Generate a daily summary of process accounting.
+sysstat-summary | 2026-10-10T00:07:03+03:00 bench-host systemd[1]: Starting sysstat-summary.service - Generate a daily summary of process accounting...
+sysstat-summary | 2026-10-10T00:07:04+03:00 bench-host systemd[1]: sysstat-summary.service: Deactivated successfully.
+sysstat-summary | 2026-10-10T00:07:04+03:00 bench-host systemd[1]: Finished sysstat-summary.service - Generate a daily summary of process accounting.
+sysstat-summary | 2026-10-11T00:07:05+03:00 bench-host systemd[1]: Starting sysstat-summary.service - Generate a daily summary of process accounting...
+sysstat-summary | 2026-10-11T00:07:06+03:00 bench-host systemd[1]: sysstat-summary.service: Deactivated successfully.
+sysstat-summary | 2026-10-11T00:07:06+03:00 bench-host systemd[1]: Finished sysstat-summary.service - Generate a daily summary of process accounting.
+sysstat-rotate | 2026-10-08T00:00:07+03:00 bench-host systemd[1]: Starting sysstat-rotate.service - system activity accounting tool...
+sysstat-rotate | 2026-10-08T00:00:07+03:00 bench-host systemd[1]: sysstat-rotate.service: Deactivated successfully.
+sysstat-rotate | 2026-10-08T00:00:07+03:00 bench-host systemd[1]: Finished sysstat-rotate.service - system activity accounting tool.
+sysstat-rotate | 2026-10-09T00:00:08+03:00 bench-host systemd[1]: Starting sysstat-rotate.service - system activity accounting tool...
+sysstat-rotate | 2026-10-09T00:00:08+03:00 bench-host systemd[1]: sysstat-rotate.service: Deactivated successfully.
+sysstat-rotate | 2026-10-09T00:00:08+03:00 bench-host systemd[1]: Finished sysstat-rotate.service - system activity accounting tool.
+sysstat-rotate | 2026-10-10T00:00:03+03:00 bench-host systemd[1]: Starting sysstat-rotate.service - system activity accounting tool...
+sysstat-rotate | 2026-10-10T00:00:03+03:00 bench-host systemd[1]: sysstat-rotate.service: Deactivated successfully.
+sysstat-rotate | 2026-10-10T00:00:03+03:00 bench-host systemd[1]: Finished sysstat-rotate.service - system activity accounting tool.
+sysstat-rotate | 2026-10-11T00:00:03+03:00 bench-host systemd[1]: Starting sysstat-rotate.service - system activity accounting tool...
+sysstat-rotate | 2026-10-11T00:00:03+03:00 bench-host systemd[1]: sysstat-rotate.service: Deactivated successfully.
+sysstat-rotate | 2026-10-11T00:00:03+03:00 bench-host systemd[1]: Finished sysstat-rotate.service - system activity accounting tool.
+motd-news | 2026-10-07T17:16:15+03:00 bench-host systemd[1]: Starting motd-news.service - Message of the Day...
+motd-news | 2026-10-07T17:16:15+03:00 bench-host systemd[1]: motd-news.service: Deactivated successfully.
+motd-news | 2026-10-07T17:16:15+03:00 bench-host systemd[1]: Finished motd-news.service - Message of the Day.
+motd-news | 2026-10-08T01:41:29+03:00 bench-host systemd[1]: Starting motd-news.service - Message of the Day...
+motd-news | 2026-10-08T01:41:29+03:00 bench-host systemd[1]: motd-news.service: Deactivated successfully.
+motd-news | 2026-10-08T01:41:29+03:00 bench-host systemd[1]: Finished motd-news.service - Message of the Day.
+motd-news | 2026-10-08T16:29:44+03:00 bench-host systemd[1]: Starting motd-news.service - Message of the Day...
+motd-news | 2026-10-08T16:29:44+03:00 bench-host systemd[1]: motd-news.service: Deactivated successfully.
+motd-news | 2026-10-08T16:29:44+03:00 bench-host systemd[1]: Finished motd-news.service - Message of the Day.
+motd-news | 2026-10-09T05:51:22+03:00 bench-host systemd[1]: Starting motd-news.service - Message of the Day...
+motd-news | 2026-10-09T05:51:22+03:00 bench-host systemd[1]: motd-news.service: Deactivated successfully.
+motd-news | 2026-10-09T05:51:22+03:00 bench-host systemd[1]: Finished motd-news.service - Message of the Day.
+motd-news | 2026-10-09T16:22:18+03:00 bench-host systemd[1]: Starting motd-news.service - Message of the Day...
+motd-news | 2026-10-09T16:22:18+03:00 bench-host systemd[1]: motd-news.service: Deactivated successfully.
+motd-news | 2026-10-09T16:22:18+03:00 bench-host systemd[1]: Finished motd-news.service - Message of the Day.
+motd-news | 2026-10-10T04:20:31+03:00 bench-host systemd[1]: Starting motd-news.service - Message of the Day...
+motd-news | 2026-10-10T04:20:31+03:00 bench-host systemd[1]: motd-news.service: Deactivated successfully.
+motd-news | 2026-10-10T04:20:31+03:00 bench-host systemd[1]: Finished motd-news.service - Message of the Day.
+motd-news | 2026-10-10T22:19:39+03:00 bench-host systemd[1]: Starting motd-news.service - Message of the Day...
+motd-news | 2026-10-10T22:19:39+03:00 bench-host systemd[1]: motd-news.service: Deactivated successfully.
+motd-news | 2026-10-10T22:19:39+03:00 bench-host systemd[1]: Finished motd-news.service - Message of the Day.
+motd-news | 2026-10-11T00:43:07+03:00 bench-host systemd[1]: Starting motd-news.service - Message of the Day...
+motd-news | 2026-10-11T00:43:07+03:00 bench-host systemd[1]: motd-news.service: Deactivated successfully.
+motd-news | 2026-10-11T00:43:07+03:00 bench-host systemd[1]: Finished motd-news.service - Message of the Day.
+motd-news | 2026-10-11T14:15:37+03:00 bench-host systemd[1]: Starting motd-news.service - Message of the Day...
+motd-news | 2026-10-11T14:15:37+03:00 bench-host systemd[1]: motd-news.service: Deactivated successfully.
+motd-news | 2026-10-11T14:15:37+03:00 bench-host systemd[1]: Finished motd-news.service - Message of the Day.
+apport-autoreport | 2026-10-07T17:03:27+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-07T17:03:28+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-07T17:03:28+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-07T17:54:35+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-07T17:54:36+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-07T17:54:36+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-07T20:54:38+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-07T20:54:38+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-07T20:54:38+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-07T23:54:38+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-07T23:54:38+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-07T23:54:38+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-08T02:54:38+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-08T02:54:38+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-08T02:54:38+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-08T05:54:41+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-08T05:54:41+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-08T05:54:41+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-08T08:54:42+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-08T08:54:43+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-08T08:54:43+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-08T11:54:43+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-08T11:54:43+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-08T11:54:43+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-08T14:54:44+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-08T14:54:45+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-08T14:54:45+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-08T17:54:45+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-08T17:54:45+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-08T17:54:45+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-08T20:54:47+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-08T20:54:47+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-08T20:54:47+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-08T23:54:48+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-08T23:54:48+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-08T23:54:48+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-09T02:54:49+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-09T02:54:49+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-09T02:54:49+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-09T05:54:50+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-09T05:54:50+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-09T05:54:50+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-09T08:54:51+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-09T08:54:51+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-09T08:54:51+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-09T11:54:51+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-09T11:54:52+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-09T11:54:52+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-09T14:54:53+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-09T14:54:54+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-09T14:54:54+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-09T17:54:55+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-09T17:54:55+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-09T17:54:55+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-09T20:54:56+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-09T20:54:56+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-09T20:54:56+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-09T23:54:57+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-09T23:54:57+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-09T23:54:57+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-10T02:54:57+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-10T02:54:57+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-10T02:54:57+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-10T05:54:59+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-10T05:54:59+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-10T05:54:59+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-10T08:54:59+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-10T08:55:00+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-10T08:55:00+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-10T11:55:01+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-10T11:55:01+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-10T11:55:01+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-10T14:55:02+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-10T14:55:02+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-10T14:55:02+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-10T17:55:03+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-10T17:55:03+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-10T17:55:03+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-10T20:55:04+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-10T20:55:04+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-10T20:55:04+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-10T23:55:05+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-10T23:55:05+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-10T23:55:05+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-11T02:55:07+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-11T02:55:07+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-11T02:55:07+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-11T05:55:08+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-11T05:55:08+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-11T05:55:08+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-11T08:55:09+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-11T08:55:09+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-11T08:55:09+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-11T11:55:10+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-11T11:55:11+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-11T11:55:11+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-11T14:55:11+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-11T14:55:12+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-11T14:55:12+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-11T17:55:12+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-11T17:55:13+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-11T17:55:13+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+apport-autoreport | 2026-10-11T20:55:14+03:00 bench-host systemd[1]: Starting apport-autoreport.service - Process error reports when automatic reporting is enabled...
+apport-autoreport | 2026-10-11T20:55:14+03:00 bench-host systemd[1]: apport-autoreport.service: Deactivated successfully.
+apport-autoreport | 2026-10-11T20:55:14+03:00 bench-host systemd[1]: Finished apport-autoreport.service - Process error reports when automatic reporting is enabled.
+certbot | 2026-10-07T22:15:28+03:00 bench-host systemd[1]: Starting certbot.service - Certbot...
+certbot | 2026-10-07T22:15:29+03:00 bench-host systemd[1]: certbot.service: Deactivated successfully.
+certbot | 2026-10-07T22:15:29+03:00 bench-host systemd[1]: Finished certbot.service - Certbot.
+certbot | 2026-10-08T10:02:19+03:00 bench-host systemd[1]: Starting certbot.service - Certbot...
+certbot | 2026-10-08T10:02:20+03:00 bench-host systemd[1]: certbot.service: Deactivated successfully.
+certbot | 2026-10-08T10:02:20+03:00 bench-host systemd[1]: Finished certbot.service - Certbot.
+certbot | 2026-10-08T14:33:34+03:00 bench-host systemd[1]: Starting certbot.service - Certbot...
+certbot | 2026-10-08T14:33:34+03:00 bench-host systemd[1]: certbot.service: Deactivated successfully.
+certbot | 2026-10-08T14:33:34+03:00 bench-host systemd[1]: Finished certbot.service - Certbot.
+certbot | 2026-10-09T06:02:20+03:00 bench-host systemd[1]: Starting certbot.service - Certbot...
+certbot | 2026-10-09T06:02:21+03:00 bench-host systemd[1]: certbot.service: Deactivated successfully.
+certbot | 2026-10-09T06:02:21+03:00 bench-host systemd[1]: Finished certbot.service - Certbot.
+certbot | 2026-10-09T12:18:02+03:00 bench-host systemd[1]: Starting certbot.service - Certbot...
+certbot | 2026-10-09T12:18:03+03:00 bench-host systemd[1]: certbot.service: Deactivated successfully.
+certbot | 2026-10-09T12:18:03+03:00 bench-host systemd[1]: Finished certbot.service - Certbot.
+certbot | 2026-10-10T04:20:08+03:00 bench-host systemd[1]: Starting certbot.service - Certbot...
+certbot | 2026-10-10T04:20:09+03:00 bench-host systemd[1]: certbot.service: Deactivated successfully.
+certbot | 2026-10-10T04:20:09+03:00 bench-host systemd[1]: Finished certbot.service - Certbot.
+certbot | 2026-10-10T19:01:34+03:00 bench-host systemd[1]: Starting certbot.service - Certbot...
+certbot | 2026-10-10T19:01:35+03:00 bench-host systemd[1]: certbot.service: Deactivated successfully.
+certbot | 2026-10-10T19:01:35+03:00 bench-host systemd[1]: Finished certbot.service - Certbot.
+certbot | 2026-10-11T06:28:28+03:00 bench-host systemd[1]: Starting certbot.service - Certbot...
+certbot | 2026-10-11T06:28:29+03:00 bench-host systemd[1]: certbot.service: Deactivated successfully.
+certbot | 2026-10-11T06:28:29+03:00 bench-host systemd[1]: Finished certbot.service - Certbot.
+ua-timer | 2026-10-07T17:00:25+03:00 bench-host systemd[1]: Starting ua-timer.service - Ubuntu Pro Timer for running repeated jobs...
+ua-timer | 2026-10-07T17:00:27+03:00 bench-host systemd[1]: ua-timer.service: Deactivated successfully.
+ua-timer | 2026-10-07T17:00:27+03:00 bench-host systemd[1]: Finished ua-timer.service - Ubuntu Pro Timer for running repeated jobs.
+ua-timer | 2026-10-07T17:00:27+03:00 bench-host systemd[1]: ua-timer.service: Consumed 1.421s CPU time over 2.245s wall clock time, 49.8M memory peak.
+ua-timer | 2026-10-07T23:54:36+03:00 bench-host systemd[1]: Starting ua-timer.service - Ubuntu Pro Timer for running repeated jobs...
+ua-timer | 2026-10-07T23:54:38+03:00 bench-host systemd[1]: ua-timer.service: Deactivated successfully.
+ua-timer | 2026-10-07T23:54:38+03:00 bench-host systemd[1]: Finished ua-timer.service - Ubuntu Pro Timer for running repeated jobs.
+ua-timer | 2026-10-07T23:54:38+03:00 bench-host systemd[1]: ua-timer.service: Consumed 1.381s CPU time over 1.926s wall clock time, 57.7M memory peak.
+ua-timer | 2026-10-08T05:57:02+03:00 bench-host systemd[1]: Starting ua-timer.service - Ubuntu Pro Timer for running repeated jobs...
+ua-timer | 2026-10-08T05:57:09+03:00 bench-host systemd[1]: ua-timer.service: Deactivated successfully.
+ua-timer | 2026-10-08T05:57:09+03:00 bench-host systemd[1]: Finished ua-timer.service - Ubuntu Pro Timer for running repeated jobs.
+ua-timer | 2026-10-08T05:57:09+03:00 bench-host systemd[1]: ua-timer.service: Consumed 1.399s CPU time over 6.998s wall clock time, 57M memory peak.
+ua-timer | 2026-10-08T12:23:47+03:00 bench-host systemd[1]: Starting ua-timer.service - Ubuntu Pro Timer for running repeated jobs...
+ua-timer | 2026-10-08T12:23:49+03:00 bench-host systemd[1]: ua-timer.service: Deactivated successfully.
+ua-timer | 2026-10-08T12:23:49+03:00 bench-host systemd[1]: Finished ua-timer.service - Ubuntu Pro Timer for running repeated jobs.
+ua-timer | 2026-10-08T12:23:49+03:00 bench-host systemd[1]: ua-timer.service: Consumed 1.364s CPU time over 1.894s wall clock time, 54.2M memory peak.
+ua-timer | 2026-10-08T18:57:48+03:00 bench-host systemd[1]: Starting ua-timer.service - Ubuntu Pro Timer for running repeated jobs...
+ua-timer | 2026-10-08T18:57:50+03:00 bench-host systemd[1]: ua-timer.service: Deactivated successfully.
+ua-timer | 2026-10-08T18:57:50+03:00 bench-host systemd[1]: Finished ua-timer.service - Ubuntu Pro Timer for running repeated jobs.
+ua-timer | 2026-10-08T18:57:50+03:00 bench-host systemd[1]: ua-timer.service: Consumed 1.369s CPU time over 1.813s wall clock time, 54.4M memory peak.
+ua-timer | 2026-10-09T01:01:58+03:00 bench-host systemd[1]: Starting ua-timer.service - Ubuntu Pro Timer for running repeated jobs...
+ua-timer | 2026-10-09T01:02:12+03:00 bench-host systemd[1]: ua-timer.service: Deactivated successfully.
+ua-timer | 2026-10-09T01:02:12+03:00 bench-host systemd[1]: Finished ua-timer.service - Ubuntu Pro Timer for running repeated jobs.
+ua-timer | 2026-10-09T01:02:12+03:00 bench-host systemd[1]: ua-timer.service: Consumed 3.342s CPU time over 13.730s wall clock time, 210.6M memory peak.
+ua-timer | 2026-10-09T07:50:59+03:00 bench-host systemd[1]: Starting ua-timer.service - Ubuntu Pro Timer for running repeated jobs...
+ua-timer | 2026-10-09T07:51:01+03:00 bench-host systemd[1]: ua-timer.service: Deactivated successfully.
+ua-timer | 2026-10-09T07:51:01+03:00 bench-host systemd[1]: Finished ua-timer.service - Ubuntu Pro Timer for running repeated jobs.
+ua-timer | 2026-10-09T07:51:01+03:00 bench-host systemd[1]: ua-timer.service: Consumed 1.351s CPU time over 1.960s wall clock time, 54.1M memory peak.
+ua-timer | 2026-10-09T14:50:13+03:00 bench-host systemd[1]: Starting ua-timer.service - Ubuntu Pro Timer for running repeated jobs...
+ua-timer | 2026-10-09T14:50:15+03:00 bench-host systemd[1]: ua-timer.service: Deactivated successfully.
+ua-timer | 2026-10-09T14:50:15+03:00 bench-host systemd[1]: Finished ua-timer.service - Ubuntu Pro Timer for running repeated jobs.
+ua-timer | 2026-10-09T14:50:15+03:00 bench-host systemd[1]: ua-timer.service: Consumed 1.419s CPU time over 1.935s wall clock time, 76.4M memory peak.
+ua-timer | 2026-10-09T21:29:16+03:00 bench-host systemd[1]: Starting ua-timer.service - Ubuntu Pro Timer for running repeated jobs...
+ua-timer | 2026-10-09T21:29:18+03:00 bench-host systemd[1]: ua-timer.service: Deactivated successfully.
+ua-timer | 2026-10-09T21:29:18+03:00 bench-host systemd[1]: Finished ua-timer.service - Ubuntu Pro Timer for running repeated jobs.
+ua-timer | 2026-10-09T21:29:18+03:00 bench-host systemd[1]: ua-timer.service: Consumed 1.441s CPU time over 2.043s wall clock time, 57.9M memory peak.
+ua-timer | 2026-10-10T03:36:17+03:00 bench-host systemd[1]: Starting ua-timer.service - Ubuntu Pro Timer for running repeated jobs...
+ua-timer | 2026-10-10T03:36:19+03:00 bench-host systemd[1]: ua-timer.service: Deactivated successfully.
+ua-timer | 2026-10-10T03:36:19+03:00 bench-host systemd[1]: Finished ua-timer.service - Ubuntu Pro Timer for running repeated jobs.
+ua-timer | 2026-10-10T03:36:19+03:00 bench-host systemd[1]: ua-timer.service: Consumed 1.422s CPU time over 1.913s wall clock time, 57.1M memory peak.
+ua-timer | 2026-10-10T09:41:20+03:00 bench-host systemd[1]: Starting ua-timer.service - Ubuntu Pro Timer for running repeated jobs...
+ua-timer | 2026-10-10T09:41:27+03:00 bench-host systemd[1]: ua-timer.service: Deactivated successfully.
+ua-timer | 2026-10-10T09:41:27+03:00 bench-host systemd[1]: Finished ua-timer.service - Ubuntu Pro Timer for running repeated jobs.
+ua-timer | 2026-10-10T09:41:27+03:00 bench-host systemd[1]: ua-timer.service: Consumed 1.407s CPU time over 6.691s wall clock time, 53.9M memory peak.
+ua-timer | 2026-10-10T16:33:33+03:00 bench-host systemd[1]: Starting ua-timer.service - Ubuntu Pro Timer for running repeated jobs...
+ua-timer | 2026-10-10T16:33:36+03:00 bench-host systemd[1]: ua-timer.service: Deactivated successfully.
+ua-timer | 2026-10-10T16:33:36+03:00 bench-host systemd[1]: Finished ua-timer.service - Ubuntu Pro Timer for running repeated jobs.
+ua-timer | 2026-10-10T16:33:36+03:00 bench-host systemd[1]: ua-timer.service: Consumed 1.399s CPU time over 2.742s wall clock time, 56.7M memory peak.
+ua-timer | 2026-10-10T23:18:59+03:00 bench-host systemd[1]: Starting ua-timer.service - Ubuntu Pro Timer for running repeated jobs...
+ua-timer | 2026-10-10T23:19:10+03:00 bench-host systemd[1]: ua-timer.service: Deactivated successfully.
+ua-timer | 2026-10-10T23:19:10+03:00 bench-host systemd[1]: Finished ua-timer.service - Ubuntu Pro Timer for running repeated jobs.
+ua-timer | 2026-10-10T23:19:10+03:00 bench-host systemd[1]: ua-timer.service: Consumed 1.567s CPU time over 11.025s wall clock time, 101.8M memory peak.
+ua-timer | 2026-10-11T06:02:22+03:00 bench-host systemd[1]: Starting ua-timer.service - Ubuntu Pro Timer for running repeated jobs...
+ua-timer | 2026-10-11T06:02:29+03:00 bench-host systemd[1]: ua-timer.service: Deactivated successfully.
+ua-timer | 2026-10-11T06:02:29+03:00 bench-host systemd[1]: Finished ua-timer.service - Ubuntu Pro Timer for running repeated jobs.
+ua-timer | 2026-10-11T06:02:29+03:00 bench-host systemd[1]: ua-timer.service: Consumed 1.334s CPU time over 6.840s wall clock time, 50M memory peak.
+ua-timer | 2026-10-11T12:18:40+03:00 bench-host systemd[1]: Starting ua-timer.service - Ubuntu Pro Timer for running repeated jobs...
+ua-timer | 2026-10-11T12:18:44+03:00 bench-host systemd[1]: ua-timer.service: Deactivated successfully.
+ua-timer | 2026-10-11T12:18:44+03:00 bench-host systemd[1]: Finished ua-timer.service - Ubuntu Pro Timer for running repeated jobs.
+ua-timer | 2026-10-11T12:18:44+03:00 bench-host systemd[1]: ua-timer.service: Consumed 1.481s CPU time over 3.209s wall clock time, 99.1M memory peak.
+ua-timer | 2026-10-11T18:41:34+03:00 bench-host systemd[1]: Starting ua-timer.service - Ubuntu Pro Timer for running repeated jobs...
+ua-timer | 2026-10-11T18:41:35+03:00 bench-host systemd[1]: ua-timer.service: Deactivated successfully.
+ua-timer | 2026-10-11T18:41:35+03:00 bench-host systemd[1]: Finished ua-timer.service - Ubuntu Pro Timer for running repeated jobs.
+ua-timer | 2026-10-11T18:41:35+03:00 bench-host systemd[1]: ua-timer.service: Consumed 1.402s CPU time over 1.732s wall clock time, 49.9M memory peak.
+systemd-tmpfiles-clean | 2026-10-07T17:09:31+03:00 bench-host systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd-tmpfiles-clean | 2026-10-07T17:09:31+03:00 bench-host systemd[1]: systemd-tmpfiles-clean.service: Deactivated successfully.
+systemd-tmpfiles-clean | 2026-10-07T17:09:31+03:00 bench-host systemd[1]: Finished systemd-tmpfiles-clean.service - Cleanup of Temporary Directories.
+systemd-tmpfiles-clean | 2026-10-08T17:09:35+03:00 bench-host systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd-tmpfiles-clean | 2026-10-08T17:09:35+03:00 bench-host systemd[1]: systemd-tmpfiles-clean.service: Deactivated successfully.
+systemd-tmpfiles-clean | 2026-10-08T17:09:35+03:00 bench-host systemd[1]: Finished systemd-tmpfiles-clean.service - Cleanup of Temporary Directories.
+systemd-tmpfiles-clean | 2026-10-09T17:09:35+03:00 bench-host systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd-tmpfiles-clean | 2026-10-09T17:09:36+03:00 bench-host systemd[1]: systemd-tmpfiles-clean.service: Deactivated successfully.
+systemd-tmpfiles-clean | 2026-10-09T17:09:36+03:00 bench-host systemd[1]: Finished systemd-tmpfiles-clean.service - Cleanup of Temporary Directories.
+systemd-tmpfiles-clean | 2026-10-10T17:09:37+03:00 bench-host systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd-tmpfiles-clean | 2026-10-10T17:09:37+03:00 bench-host systemd[1]: systemd-tmpfiles-clean.service: Deactivated successfully.
+systemd-tmpfiles-clean | 2026-10-10T17:09:37+03:00 bench-host systemd[1]: Finished systemd-tmpfiles-clean.service - Cleanup of Temporary Directories.
+systemd-tmpfiles-clean | 2026-10-11T17:09:37+03:00 bench-host systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd-tmpfiles-clean | 2026-10-11T17:09:37+03:00 bench-host systemd[1]: systemd-tmpfiles-clean.service: Deactivated successfully.
+systemd-tmpfiles-clean | 2026-10-11T17:09:37+03:00 bench-host systemd[1]: Finished systemd-tmpfiles-clean.service - Cleanup of Temporary Directories.
+anacron | 2026-10-07T17:03:27+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-07T17:33:08+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-07T18:33:06+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-07T19:34:20+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-07T20:32:04+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-07T21:32:12+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-07T22:32:48+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-07T23:33:29+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T07:36:49+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T08:31:28+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T09:34:17+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T10:34:48+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T11:33:13+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T12:32:44+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T13:33:22+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T14:33:24+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T15:33:55+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T16:33:35+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T17:32:45+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T18:32:16+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T19:30:06+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T20:32:37+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T21:31:37+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T22:30:24+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-08T23:32:38+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T07:39:48+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T08:30:27+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T09:33:10+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T10:33:04+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T11:33:18+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T12:34:21+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T13:34:09+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T14:30:13+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T15:34:54+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T16:31:28+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T17:33:39+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T18:30:43+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T19:30:49+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T20:33:15+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T21:30:24+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T22:31:45+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-09T23:32:47+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T07:36:28+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T08:32:27+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T09:32:30+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T10:30:01+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T11:30:28+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T12:30:52+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T13:30:42+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T14:33:12+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T15:33:03+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T16:30:53+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T17:32:33+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T18:31:44+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T19:30:14+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T20:30:14+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T21:34:29+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T22:31:15+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-10T23:34:53+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-11T07:38:48+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-11T08:33:36+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-11T09:30:59+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-11T10:32:18+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-11T11:33:38+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-11T12:34:11+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-11T13:31:10+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-11T14:31:28+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-11T15:32:12+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-11T16:34:51+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-11T17:33:45+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-11T18:32:08+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-11T19:30:13+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-11T20:34:24+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-11T21:32:04+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.
+anacron | 2026-10-11T22:35:03+03:00 bench-host systemd[1]: anacron.service: Deactivated successfully.

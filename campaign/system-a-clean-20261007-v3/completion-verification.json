@@ -1,0 +1,28 @@
+{
+  "verified_at_utc": "2026-10-07T22:18:33.927049+00:00",
+  "completed_utc": "2026-10-07T22:14:22.403721+00:00",
+  "followup_id": "ec4e175a-ef90-4155-ab5f-8adad8d1727e",
+  "database": "commercial_a",
+  "query": 18,
+  "timed_executions_completed": 32,
+  "timed_executions_accepted": 32,
+  "timed_query_input_checks": 8,
+  "warmup_executions": 4,
+  "warmup_input_checks": 1,
+  "all_record_hashes_and_environment_links_verified": true,
+  "independent_full_result_recheck_passed": true,
+  "source_files_unchanged": 102,
+  "indexes_unchanged": true,
+  "settings_unchanged": true,
+  "sf1_row_counts_unchanged": true,
+  "host_checks_returncode": 0,
+  "client_cpus": [
+    2,
+    3
+  ],
+  "final_gates_passed": true,
+  "broader_reviewer_experiments_complete": false,
+  "database_settings_unchanged": true,
+  "session_options_unchanged": true,
+  "server_identity_unchanged": true
+}

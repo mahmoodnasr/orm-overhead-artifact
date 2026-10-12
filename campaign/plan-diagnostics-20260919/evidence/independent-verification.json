@@ -1,0 +1,100 @@
+{
+  "commercial-q17-django": {
+    "complete": true,
+    "rows": 1,
+    "checks": {
+      "source_hashes_match": true,
+      "collector_version_retained": true,
+      "sf1_counts": true,
+      "host_checks": true,
+      "client_affinity": true,
+      "index_check": true,
+      "qualification_input": true,
+      "qualification_values": true,
+      "historical_rows_linked": true,
+      "exact_named_ordered_results": true,
+      "nonempty_results": true,
+      "completed_flags": true,
+      "sql_driver_sql_bindings_preserved": true,
+      "sql_runtime_counters_present": true,
+      "orm_driver_sql_bindings_preserved": true,
+      "orm_runtime_counters_present": true
+    }
+  },
+  "commercial-q18-django": {
+    "complete": true,
+    "rows": 57,
+    "checks": {
+      "source_hashes_match": true,
+      "collector_version_retained": true,
+      "sf1_counts": true,
+      "host_checks": true,
+      "client_affinity": true,
+      "index_check": true,
+      "qualification_input": true,
+      "qualification_values": true,
+      "historical_rows_linked": true,
+      "exact_named_ordered_results": true,
+      "nonempty_results": true,
+      "completed_flags": true,
+      "sql_driver_sql_bindings_preserved": true,
+      "sql_runtime_counters_present": true,
+      "orm_driver_sql_bindings_preserved": true,
+      "orm_runtime_counters_present": true
+    }
+  },
+  "oracle-q17-django": {
+    "complete": true,
+    "rows": 1,
+    "checks": {
+      "source_hashes_match": true,
+      "collector_version_retained": true,
+      "sf1_counts": true,
+      "host_checks": true,
+      "client_affinity": true,
+      "index_check": true,
+      "qualification_input": true,
+      "qualification_values": true,
+      "historical_rows_linked": true,
+      "exact_named_ordered_results": true,
+      "nonempty_results": true,
+      "completed_flags": true,
+      "sql_driver_sql_bindings_preserved": true,
+      "sql_plan_sql_matches_execution": true,
+      "sql_runtime_counters_present": true,
+      "sql_text_plan_contains_statistics": true,
+      "orm_driver_sql_bindings_preserved": true,
+      "orm_plan_sql_matches_execution": true,
+      "orm_runtime_counters_present": true,
+      "orm_text_plan_contains_statistics": true,
+      "reused_warmup_inventory_verified": true,
+      "reused_warmup_files_unchanged": true
+    }
+  },
+  "oracle-q20-django": {
+    "complete": true,
+    "rows": 186,
+    "checks": {
+      "source_hashes_match": true,
+      "collector_version_retained": true,
+      "sf1_counts": true,
+      "host_checks": true,
+      "client_affinity": true,
+      "index_check": true,
+      "qualification_input": true,
+      "qualification_values": true,
+      "historical_rows_linked": true,
+      "exact_named_ordered_results": true,
+      "nonempty_results": true,
+      "completed_flags": true,
+      "sql_driver_sql_bindings_preserved": true,
+      "sql_plan_sql_matches_execution": true,
+      "sql_runtime_counters_present": true,
+      "sql_text_plan_contains_statistics": true,
+      "orm_driver_sql_bindings_preserved": true,
+      "orm_plan_sql_matches_execution": true,
+      "orm_runtime_counters_present": true,
+      "orm_text_plan_contains_statistics": true
+    }
+  }
+}

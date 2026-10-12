@@ -1,0 +1,8 @@
+{
+  "phase_F_v3_runner": "rc_controlled3.py, a subclass of rc_controlled2.py (F-v2), which is unchanged, which subclasses rc_controlled.py (F-v1), also unchanged.",
+  "phase_F_v3_corrections": [
+    "6 G's column assembly (F-v2 correction 1) matches column names without regard to case: statements replayed on Oracle return upper-case labels (S_SUPPKEY, TOTAL_REVENUE), so F-v2 found no column to add for Django Q15 and every block was schema_error (Mac test 2026-10-09). The added column keeps the label of the statement it comes from; the comparison already ignores case (rc_common.cname)."
+  ],
+  "phase_F_v3_scope": "Every F step after the Commercial System A part of plan visits2 (PostgreSQL, MySQL and Oracle, both frameworks). F-v3 runs exactly as F-v2 except for Django Q15 on Oracle. Commercial System A's F cells stay under F-v2 (Django, and SQLAlchemy non-indexed) and F-v1 (SQLAlchemy indexed).",
+  "phase_F_v3_run_dirs": "F-fourpath/v3/<dbms>-<schema>-<framework>"
+}

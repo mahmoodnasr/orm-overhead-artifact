@@ -1,0 +1,111 @@
+{
+ "run_id": "caea6d3c0b4f4021af0e1644a8d75326",
+ "pid": 1,
+ "phase": "G",
+ "dbms": "oracle",
+ "schema": "non-indexed",
+ "scale": 1,
+ "mode": "main",
+ "queries": [
+  6,
+  17,
+  18,
+  20,
+  21
+ ],
+ "planned_timed": 160,
+ "counts": {
+  "saved_cell_warmup": 20,
+  "status_cell_warmup_ok": 20,
+  "saved_block_warmup": 160,
+  "status_block_warmup_ok": 160,
+  "saved_timed": 160,
+  "status_timed_ok": 160,
+  "accepted_pairs": 80,
+  "accepted_timed": 160
+ },
+ "environment_id": "bcd404055cf89853c379e3ad810ed92ca75a942258b9e780e72ef741920c8887",
+ "started": {
+  "utc": "2026-10-08T12:54:34.703985+00:00",
+  "cairo": "2026-10-08T15:54:34.703985+03:00"
+ },
+ "state": "complete",
+ "utc": "2026-10-08T13:55:53.915891+00:00",
+ "cairo": "2026-10-08T16:55:53.915891+03:00",
+ "current": {
+  "query": 21,
+  "path": "django/orm",
+  "kind": "timed",
+  "block": 8,
+  "attempt": 1,
+  "input_id": "q21s7",
+  "limit_s": 900,
+  "server_session": {
+   "sid": "206",
+   "tag": "10046"
+  },
+  "utc": "2026-10-08T13:55:51.973226+00:00",
+  "cairo": "2026-10-08T16:55:51.973226+03:00"
+ },
+ "cells_done": [
+  {
+   "query": 6,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "15.039847762000136"
+   }
+  },
+  {
+   "query": 17,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "2431.6873293829995"
+   }
+  },
+  {
+   "query": 18,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "29.441509570999187"
+   }
+  },
+  {
+   "query": 20,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "1149.0580352069992"
+   }
+  },
+  {
+   "query": 21,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "52.772192509997694"
+   }
+  }
+ ],
+ "_obs": [
+  {
+   "type": "float",
+   "value": "3677.9989144329957"
+  },
+  {
+   "type": "float",
+   "value": "14054.600000000002"
+  }
+ ],
+ "observed_over_predicted": {
+  "type": "float",
+  "value": "0.2616936031216111"
+ },
+ "remaining_predicted_s": 0,
+ "eta_s": {
+  "type": "float",
+  "value": "0.0"
+ }
+}

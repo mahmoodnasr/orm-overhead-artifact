@@ -1,0 +1,103 @@
+{
+ "run_dir": "<campaign>/pilot/oracle-non-indexed-main",
+ "parameters": {
+  "protocol_id": "rc20261008-P-v2",
+  "protocol_sha256": "ca9501a0cd8ce4550f2bd7825125f61d4da4e7e2dd381db63b1631c91c59edd2",
+  "phase": "P",
+  "dbms": "oracle",
+  "schema": "non-indexed",
+  "scale": 1,
+  "queries": [
+   6
+  ],
+  "timeout_s": {
+   "type": "float",
+   "value": "900.0"
+  },
+  "mode": "pilot",
+  "blocks": 8,
+  "client_mode": "same-host",
+  "database_label": "tpch"
+ },
+ "protocol_sha256": "ca9501a0cd8ce4550f2bd7825125f61d4da4e7e2dd381db63b1631c91c59edd2",
+ "environments": {
+  "8903e5f18711dbf1ae02f0af097fde70d6c8c42ef8fe0df244bd6f65faa56476": [
+   "inventory-before-2bf9d21ff74a4560b16ce49a2d5b327b.json",
+   "inventory-after-2bf9d21ff74a4560b16ce49a2d5b327b.json"
+  ]
+ },
+ "counts": {
+  "accepted_exact": 16,
+  "accepted_pairs": 16,
+  "accepted_timed": 32,
+  "cross_orm_exact": 8,
+  "cross_sql_exact": 8,
+  "incomplete_attempts": 0,
+  "saved_block_warmup": 32,
+  "saved_cell_warmup": 4,
+  "saved_timed": 32,
+  "status_block_warmup_ok": 32,
+  "status_cell_warmup_ok": 4,
+  "status_timed_ok": 32
+ },
+ "cells": {
+  "6": {
+   "blocks": {
+    "1": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "2": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "3": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "4": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "5": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "6": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "7": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    },
+    "8": {
+     "django": "accepted",
+     "sqlalchemy": "accepted"
+    }
+   },
+   "incomplete_attempts": 0,
+   "status": "complete"
+  }
+ },
+ "paired_median_ratios": {
+  "Q06:django": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "0.93588"
+   }
+  },
+  "Q06:sqlalchemy": {
+   "n": 8,
+   "median_ratio": {
+    "type": "float",
+    "value": "1.00418"
+   }
+  }
+ },
+ "problems": [],
+ "passed": true,
+ "utc": "2026-10-08T01:55:52.818669+00:00",
+ "cairo": "2026-10-08T04:55:52.818669+03:00"
+}

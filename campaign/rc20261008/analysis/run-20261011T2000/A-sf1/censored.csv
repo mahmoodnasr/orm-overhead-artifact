@@ -1,0 +1,13 @@
+system,schema,query,framework,arms
+postgresql,non-indexed,13,django,"{""django/orm"": ""censored""}"
+postgresql,non-indexed,17,django,"{""django/sql"": ""censored"", ""django/orm"": ""censored""}"
+postgresql,non-indexed,17,sqlalchemy,"{""sqlalchemy/sql"": ""censored"", ""sqlalchemy/orm"": ""censored""}"
+postgresql,non-indexed,20,django,"{""django/sql"": ""censored"", ""django/orm"": ""censored""}"
+postgresql,non-indexed,20,sqlalchemy,"{""sqlalchemy/sql"": ""censored"", ""sqlalchemy/orm"": ""censored""}"
+postgresql,non-indexed,21,django,"{""django/orm"": ""censored"", ""django/sql"": ""censored""}"
+postgresql,non-indexed,21,sqlalchemy,"{""sqlalchemy/orm"": ""censored"", ""sqlalchemy/sql"": ""censored""}"
+mysql,non-indexed,13,django,"{""django/orm"": ""censored""}"
+mysql,non-indexed,17,django,"{""django/orm"": ""censored"", ""django/sql"": ""censored""}"
+mysql,non-indexed,17,sqlalchemy,"{""sqlalchemy/orm"": ""censored"", ""sqlalchemy/sql"": ""censored""}"
+mysql,non-indexed,20,django,"{""django/sql"": ""censored"", ""django/orm"": ""censored""}"
+mysql,non-indexed,20,sqlalchemy,"{""sqlalchemy/sql"": ""censored"", ""sqlalchemy/orm"": ""censored""}"

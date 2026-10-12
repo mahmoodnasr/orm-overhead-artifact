@@ -1,0 +1,179 @@
+{
+ "run_dir": "<campaign>/pilot/commercial_a-indexed-smoke",
+ "parameters": {
+  "protocol_id": "rc20261008-P-v2",
+  "protocol_sha256": "ca9501a0cd8ce4550f2bd7825125f61d4da4e7e2dd381db63b1631c91c59edd2",
+  "phase": "P",
+  "dbms": "commercial_a",
+  "schema": "indexed",
+  "scale": 1,
+  "queries": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22
+  ],
+  "timeout_s": {
+   "type": "float",
+   "value": "900.0"
+  },
+  "mode": "pilot",
+  "blocks": 0,
+  "client_mode": "same-host",
+  "database_label": "tpch"
+ },
+ "protocol_sha256": "ca9501a0cd8ce4550f2bd7825125f61d4da4e7e2dd381db63b1631c91c59edd2",
+ "environments": {
+  "657043532a1cb674e251151fac5c679c2657874142910431594d97ba1b9170f3": [
+   "inventory-after-5f99ce8318f440f097e8243065e2ed52.json",
+   "inventory-before-5f99ce8318f440f097e8243065e2ed52.json"
+  ],
+  "f623b0f987c32036f1621ee0a712e70f5bb4aff046390953ddf0254f4a5e847f": [
+   "inventory-before-ccd28baecce14b9686dc7bd5dd943db8.json",
+   "inventory-before-7515e78b5142462eb4b9ec85ba7b777a.json",
+   "inventory-before-f637df3433fa4396bc2b8c6339b7238d.json"
+  ]
+ },
+ "counts": {
+  "accepted_timed": 0,
+  "incomplete_attempts": 0,
+  "saved_cell_warmup": 88,
+  "status_cell_warmup_not_expressible": 1,
+  "status_cell_warmup_ok": 87
+ },
+ "cells": {
+  "1": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "2": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "3": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "4": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "5": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "6": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "7": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "8": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "9": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "10": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "11": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "12": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "13": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "14": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "15": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "16": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "17": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "18": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "19": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "20": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "21": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  },
+  "22": {
+   "blocks": {},
+   "incomplete_attempts": 0,
+   "status": "complete"
+  }
+ },
+ "paired_median_ratios": {},
+ "problems": [],
+ "passed": true,
+ "utc": "2026-10-07T23:59:41.351281+00:00",
+ "cairo": "2026-10-08T02:59:41.351281+03:00"
+}

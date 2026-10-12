@@ -1,0 +1,37 @@
+{
+  "followup_id": "3b3b8f9c-bb10-4333-bb95-6e54d322bfbb",
+  "environment_sha256": "ff1063e738f014b7e9a705893371a0d8165bad69981602b6f628088df8f3ffd0",
+  "query": 17,
+  "schema": "non-indexed",
+  "dbms": "oracle",
+  "block": 3,
+  "position": 1,
+  "path": "literal",
+  "parameter_set_id": "q17s3",
+  "parameters": {
+    "brand": "Brand#51",
+    "container": "MED DRUM"
+  },
+  "utc": "2026-10-07T17:04:51.867058+00:00",
+  "elapsed_s": {
+    "type": "float",
+    "value": "0.7004946500001097"
+  },
+  "status": "ok",
+  "rows": [
+    {
+      "AVG_YEARLY": {
+        "type": "Decimal",
+        "value": "336743.3971428571428571428571428571428571"
+      }
+    }
+  ],
+  "statements": [
+    {
+      "sql": "\n    SELECT SUM(l_extendedprice) / 7.0 as avg_yearly\n    FROM lineitem, part\n    WHERE p_partkey = l_partkey\n      AND p_brand = 'Brand#51'\n      AND p_container = 'MED DRUM'\n      AND l_quantity < (\n        SELECT 0.2 * AVG(l_quantity)\n        FROM lineitem\n        WHERE l_partkey = p_partkey\n      )\n    ",
+      "params": null,
+      "many": false
+    }
+  ],
+  "result_sha256": "59dd7a82e386c06c2322bff3279d60ebfc3205dc39bf081d2874dd3d2801d9d6"
+}

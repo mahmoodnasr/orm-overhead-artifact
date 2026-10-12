@@ -1,0 +1,54 @@
+{
+ "container": {
+  "name": "rcg-postgresql",
+  "image": "postgres:18.6",
+  "repo_digests": [
+   "postgres@sha256:74935e72241653ca55e0414067e6d8763aceb8a810eb51b452253ec3dcfc4336"
+  ],
+  "image_architecture": "arm64",
+  "nano_cpus": 2000000000,
+  "cpuset_cpus": "0,1",
+  "memory": 3221225472,
+  "memory_swap": 3221225472,
+  "cmd": [
+   "-c",
+   "shared_buffers=1536MB",
+   "-c",
+   "work_mem=32MB",
+   "-c",
+   "effective_cache_size=4GB",
+   "-c",
+   "max_parallel_workers=0",
+   "-c",
+   "max_parallel_workers_per_gather=0",
+   "-c",
+   "jit=on",
+   "-c",
+   "random_page_cost=4",
+   "-c",
+   "max_wal_size=1GB",
+   "-c",
+   "timezone=Africa/Cairo"
+  ],
+  "running": true
+ },
+ "containers_running": [
+  {
+   "BlockIO": "4.15GB / 1.25MB",
+   "CPUPerc": "0.04%",
+   "Container": "eeba7c8320ca212951e720ab1fb03c2700448f2335f0f1b6cffbb583f4a5e9b4",
+   "ID": "eeba7c8320ca",
+   "MemPerc": "23.12%",
+   "MemUsage": "710.2MiB / 3GiB",
+   "Name": "rcg-postgresql",
+   "NetIO": "12MB / 1.66GB",
+   "PIDs": "9"
+  }
+ ],
+ "client_image": {
+  "id": "sha256:be2e81a968f7024f343f8e189a4c33ea9c647fa7f39551a6831422d2716d015b",
+  "architecture": "arm64",
+  "created": "2026-10-08T14:01:24.595741295+03:00"
+ },
+ "recorded": "2026-10-08T15:13:16+0300"
+}

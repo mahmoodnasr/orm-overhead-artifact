@@ -1,0 +1,84 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:ae7048bfbfbf32fd51d889897c496f5b9d15e8f1501712d609ed5f9e51f7fbd2",
+   "params": [
+    {
+     "type": "float",
+     "value": "7.0"
+    },
+    "Brand#54",
+    "MED CAN",
+    {
+     "type": "Decimal",
+     "value": "0.2"
+    }
+   ],
+   "inputsizes": [
+    [
+     "sum_1",
+     "<class 'float'>",
+     "Numeric"
+    ],
+    [
+     "p_brand_1",
+     "12",
+     "String"
+    ],
+    [
+     "p_container_1",
+     "12",
+     "String"
+    ],
+    [
+     "avg_1",
+     "<class 'float'>",
+     "Numeric"
+    ]
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:1f342a18119a90b63ad613f19dacafebf23c34fdf2553564cb87a6d5d134140b",
+    "values": [
+     "Brand#54",
+     "MED CAN"
+    ],
+    "binding_types": "orm",
+    "inputsizes": [
+     [
+      "b0",
+      "12",
+      "String"
+     ],
+     [
+      "b1",
+      "12",
+      "String"
+     ]
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:25a785d66b21957d218751b0b2175c730e4733059818418e1c93525be40a6296",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:4274135bfbe92bfb7e1d714e2ba00bcc30081042d31112cb09f0cef1af20d7de",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 2
+ }
+}

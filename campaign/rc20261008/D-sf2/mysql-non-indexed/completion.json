@@ -1,0 +1,35 @@
+{
+ "run_id": "22c3bfe674dd4cd3b3c9bf540c4c0a6d",
+ "environment_checks_pass": true,
+ "checks": {
+  "source_unchanged": true,
+  "indexes_unchanged": true,
+  "row_counts_unchanged": true,
+  "settings_unchanged": true,
+  "server_unchanged": true,
+  "gate_after": []
+ },
+ "cells": {
+  "6": "complete",
+  "18": "complete",
+  "21": "django result check failed in block 5: mismatch"
+ },
+ "cells_with_unresolved_items": {
+  "21": "django result check failed in block 5: mismatch"
+ },
+ "all_cells_complete_without_review": false,
+ "note": "completion means the run finished and its end checks passed; it does not mean every comparison was accepted - see decisions and cells_with_unresolved_items",
+ "counts": {
+  "saved_cell_warmup": 12,
+  "status_cell_warmup_ok": 12,
+  "saved_block_warmup": 84,
+  "status_block_warmup_ok": 84,
+  "saved_timed": 84,
+  "status_timed_ok": 84,
+  "accepted_pairs": 41,
+  "accepted_timed": 82,
+  "pairs_mismatch": 1
+ },
+ "utc": "2026-10-10T13:55:44.890205+00:00",
+ "cairo": "2026-10-10T16:55:44.890205+03:00"
+}

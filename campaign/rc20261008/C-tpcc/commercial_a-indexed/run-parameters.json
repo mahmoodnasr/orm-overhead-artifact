@@ -1,0 +1,16 @@
+{
+ "protocol_id": "rc20261008-C-v1",
+ "protocol_sha256": "1c91109894ab87dda321353ae9d726b62b837eddf8cb9d7599c7093f60381ec8",
+ "dbms": "commercial_a",
+ "schema": "indexed",
+ "transactions": [
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "blocks": 24,
+ "mode": "main",
+ "phase": "C"
+}

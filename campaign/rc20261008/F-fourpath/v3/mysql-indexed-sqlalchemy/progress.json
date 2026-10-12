@@ -1,0 +1,46 @@
+{
+ "run_id": "25bc8384b405463d991a4801a2750aac",
+ "pid": 2553043,
+ "phase": "F",
+ "dbms": "mysql",
+ "schema": "indexed",
+ "scale": 1,
+ "mode": "main",
+ "queries": [
+  4
+ ],
+ "planned_timed": 32,
+ "counts": {
+  "saved_cell_warmup": 4,
+  "status_cell_warmup_ok": 4,
+  "saved_block_warmup": 32,
+  "status_block_warmup_ok": 32,
+  "saved_timed": 32,
+  "status_timed_ok": 32
+ },
+ "environment_id": "b24ec892397fb503cd199fa27cdbf57c6f86b7024ca201da8553693fbfd4a120",
+ "started": {
+  "utc": "2026-10-10T02:22:45.509243+00:00",
+  "cairo": "2026-10-10T05:22:45.509243+03:00"
+ },
+ "state": "complete",
+ "utc": "2026-10-10T02:23:54.530332+00:00",
+ "cairo": "2026-10-10T05:23:54.530332+03:00",
+ "current": {
+  "query": 4,
+  "path": "sqlalchemy/O",
+  "kind": "timed",
+  "block": 8,
+  "utc": "2026-10-10T02:23:48.449050+00:00",
+  "cairo": "2026-10-10T05:23:48.449050+03:00"
+ },
+ "cells_done": [
+  {
+   "query": 4,
+   "wall_s": {
+    "type": "float",
+    "value": "63.81734276699717"
+   }
+  }
+ ]
+}

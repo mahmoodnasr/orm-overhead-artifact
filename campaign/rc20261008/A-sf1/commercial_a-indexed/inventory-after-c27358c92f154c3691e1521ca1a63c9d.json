@@ -1,0 +1,901 @@
+{
+ "label": "after",
+ "run_id": "c27358c92f154c3691e1521ca1a63c9d",
+ "utc": "2026-10-09T10:42:23.067605+00:00",
+ "cairo": "2026-10-09T13:42:23.067605+03:00",
+ "host": "bench-host",
+ "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+ "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+ "executable": "/usr/bin/python3.12",
+ "client_affinity": [
+  2,
+  3
+ ],
+ "loadavg": [
+  {
+   "type": "float",
+   "value": "0.25244140625"
+  },
+  {
+   "type": "float",
+   "value": "0.30029296875"
+  },
+  {
+   "type": "float",
+   "value": "0.3662109375"
+  }
+ ],
+ "packages": {
+  "Django": "6.0.8",
+  "SQLAlchemy": "2.0.52",
+  "psycopg2-binary": "2.9.12",
+  "mysqlclient": "2.2.8",
+  "oracledb": "4.0.2",
+  "pyodbc": "5.3.0",
+  "commercial-a-django-backend": "1.8.0"
+ },
+ "dbms": "commercial_a",
+ "schema": "indexed",
+ "scale": 1,
+ "database_label": "tpch",
+ "sa_url": "commercial_a+odbc://sa:***@127.0.0.1:1433/tpch?TrustServerCertificate=yes&driver=ODBC+Driver+18+for+SQL+Server",
+ "django_database": {
+  "ENGINE": "commercial_a",
+  "NAME": "tpch",
+  "USER": "sa",
+  "HOST": "127.0.0.1",
+  "PORT": "1433"
+ },
+ "os_release": "PRETTY_NAME=\"Ubuntu 26.04.1 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"26.04\"\nVERSION=\"26.04.1 LTS (Resolute Raccoon)\"\nVERSION_CODENAME=resolute\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=resolute\nLOGO=ubuntu-logo\n",
+ "row_counts": {
+  "region": 5,
+  "nation": 25,
+  "supplier": 10000,
+  "customer": 150000,
+  "part": 200000,
+  "partsupp": 800000,
+  "orders": 1500000,
+  "lineitem": 6001215
+ },
+ "server": {
+  "withheld": "Commercial System A server",
+  "sha256": "f6c06fc27bba755fa3762b452a7f77caf43a996cfbf579023957a4899f396f6d"
+ },
+ "settings": {
+  "withheld": "Commercial System A settings",
+  "sha256": "51bc9004d00c2957bf2c15a4979617a773952ec32fcd1f01db1e6409af4c69de"
+ },
+ "database_options": {
+  "withheld": "Commercial System A database options",
+  "sha256": "4fc06c5e20dd27ba175722fd2a6c15bf38892b32b2c72b53c2be6710ce8e32e5"
+ },
+ "indexes": [
+  {
+   "table_name": "customer",
+   "index_name": "idx_customer_mktsegment",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "c_mktsegment",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "customer",
+   "index_name": "idx_customer_nationkey",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "c_nationkey",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "customer",
+   "index_name": "pk_customer",
+   "is_primary_key": true,
+   "is_disabled": false,
+   "column_name": "c_custkey",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_orderkey",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "l_orderkey",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_partkey",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "l_partkey",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_shipdate",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "l_shipdate",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_shipdate_discount_qty",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "l_shipdate",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_shipdate_discount_qty",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "l_discount",
+   "key_ordinal": 2
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_shipdate_discount_qty",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "l_quantity",
+   "key_ordinal": 3
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_shipmode_receiptdate",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "l_shipmode",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_shipmode_receiptdate",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "l_receiptdate",
+   "key_ordinal": 2
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_shipmode_receiptdate",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "l_commitdate",
+   "key_ordinal": 3
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_shipmode_receiptdate",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "l_shipdate",
+   "key_ordinal": 4
+  },
+  {
+   "table_name": "lineitem",
+   "index_name": "idx_lineitem_suppkey",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "l_suppkey",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "nation",
+   "index_name": "idx_nation_regionkey",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "n_regionkey",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "nation",
+   "index_name": "pk_nation",
+   "is_primary_key": true,
+   "is_disabled": false,
+   "column_name": "n_nationkey",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "orders",
+   "index_name": "idx_orders_custkey",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "o_custkey",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "orders",
+   "index_name": "idx_orders_orderdate",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "o_orderdate",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "orders",
+   "index_name": "idx_orders_orderdate_custkey",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "o_orderdate",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "orders",
+   "index_name": "idx_orders_orderdate_custkey",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "o_custkey",
+   "key_ordinal": 2
+  },
+  {
+   "table_name": "orders",
+   "index_name": "pk_orders",
+   "is_primary_key": true,
+   "is_disabled": false,
+   "column_name": "o_orderkey",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "part",
+   "index_name": "pk_part",
+   "is_primary_key": true,
+   "is_disabled": false,
+   "column_name": "p_partkey",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "partsupp",
+   "index_name": "idx_partsupp_partkey",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "ps_partkey",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "partsupp",
+   "index_name": "idx_partsupp_suppkey",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "ps_suppkey",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "partsupp",
+   "index_name": "pk_partsupp",
+   "is_primary_key": true,
+   "is_disabled": false,
+   "column_name": "ps_partkey",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "partsupp",
+   "index_name": "pk_partsupp",
+   "is_primary_key": true,
+   "is_disabled": false,
+   "column_name": "ps_suppkey",
+   "key_ordinal": 2
+  },
+  {
+   "table_name": "region",
+   "index_name": "pk_region",
+   "is_primary_key": true,
+   "is_disabled": false,
+   "column_name": "r_regionkey",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "supplier",
+   "index_name": "idx_supplier_nationkey",
+   "is_primary_key": false,
+   "is_disabled": false,
+   "column_name": "s_nationkey",
+   "key_ordinal": 1
+  },
+  {
+   "table_name": "supplier",
+   "index_name": "pk_supplier",
+   "is_primary_key": true,
+   "is_disabled": false,
+   "column_name": "s_suppkey",
+   "key_ordinal": 1
+  }
+ ],
+ "stats_updated": [
+  {
+   "table_name": "customer",
+   "stat_name": "c_acctbal",
+   "updated": "2026-10-09T10:40:37.780"
+  },
+  {
+   "table_name": "customer",
+   "stat_name": "c_address",
+   "updated": "2026-10-09T10:40:37"
+  },
+  {
+   "table_name": "customer",
+   "stat_name": "c_comment",
+   "updated": "2026-10-09T10:40:38.530"
+  },
+  {
+   "table_name": "customer",
+   "stat_name": "c_mktsegment",
+   "updated": "2026-10-09T10:40:37.897"
+  },
+  {
+   "table_name": "customer",
+   "stat_name": "c_name",
+   "updated": "2026-10-09T10:40:36.520"
+  },
+  {
+   "table_name": "customer",
+   "stat_name": "c_nationkey",
+   "updated": "2026-10-09T10:40:37.083"
+  },
+  {
+   "table_name": "customer",
+   "stat_name": "c_phone",
+   "updated": "2026-10-09T10:40:37.500"
+  },
+  {
+   "table_name": "customer",
+   "stat_name": "idx_customer_mktsegment",
+   "updated": "2026-10-09T10:40:38.720"
+  },
+  {
+   "table_name": "customer",
+   "stat_name": "idx_customer_nationkey",
+   "updated": "2026-10-09T10:40:38.613"
+  },
+  {
+   "table_name": "customer",
+   "stat_name": "pk_customer",
+   "updated": "2026-10-09T10:40:36.230"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "idx_lineitem_orderkey",
+   "updated": "2026-10-09T10:39:40.447"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "idx_lineitem_partkey",
+   "updated": "2026-10-09T10:39:43.610"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "idx_lineitem_shipdate",
+   "updated": "2026-10-09T10:39:37.123"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "idx_lineitem_shipdate_discount_qty",
+   "updated": "2026-10-09T10:39:51"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "idx_lineitem_shipmode_receiptdate",
+   "updated": "2026-10-09T10:39:56.590"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "idx_lineitem_suppkey",
+   "updated": "2026-10-09T10:39:46.760"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "l_comment",
+   "updated": "2026-10-09T10:39:34.013"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "l_commitdate",
+   "updated": "2026-10-09T10:38:29.747"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "l_discount",
+   "updated": "2026-10-09T10:37:40.453"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "l_extendedprice",
+   "updated": "2026-10-09T10:37:32.257"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "l_linenumber",
+   "updated": "2026-10-09T10:37:04.707"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "l_linestatus",
+   "updated": "2026-10-09T10:38:17.627"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "l_orderkey",
+   "updated": "2026-10-09T10:36:47.493"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "l_partkey",
+   "updated": "2026-10-09T10:36:50.670"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "l_quantity",
+   "updated": "2026-10-09T10:37:14.803"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "l_receiptdate",
+   "updated": "2026-10-09T10:38:35.970"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "l_returnflag",
+   "updated": "2026-10-09T10:38:05.510"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "l_shipdate",
+   "updated": "2026-10-09T10:38:20.713"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "l_shipinstruct",
+   "updated": "2026-10-09T10:39:00.233"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "l_shipmode",
+   "updated": "2026-10-09T10:39:04.323"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "l_suppkey",
+   "updated": "2026-10-09T10:36:53.810"
+  },
+  {
+   "table_name": "lineitem",
+   "stat_name": "l_tax",
+   "updated": "2026-10-09T10:37:52.617"
+  },
+  {
+   "table_name": "nation",
+   "stat_name": "idx_nation_regionkey",
+   "updated": "2026-10-09T10:40:43.480"
+  },
+  {
+   "table_name": "nation",
+   "stat_name": "n_comment",
+   "updated": "2026-10-09T10:40:43.477"
+  },
+  {
+   "table_name": "nation",
+   "stat_name": "n_name",
+   "updated": "2026-10-09T10:40:43.467"
+  },
+  {
+   "table_name": "nation",
+   "stat_name": "n_regionkey",
+   "updated": "2026-10-09T10:40:43.470"
+  },
+  {
+   "table_name": "nation",
+   "stat_name": "pk_nation",
+   "updated": "2026-10-09T10:40:43.457"
+  },
+  {
+   "table_name": "orders",
+   "stat_name": "idx_orders_custkey",
+   "updated": "2026-10-09T10:40:25.413"
+  },
+  {
+   "table_name": "orders",
+   "stat_name": "idx_orders_orderdate",
+   "updated": "2026-10-09T10:40:26.180"
+  },
+  {
+   "table_name": "orders",
+   "stat_name": "idx_orders_orderdate_custkey",
+   "updated": "2026-10-09T10:40:27.133"
+  },
+  {
+   "table_name": "orders",
+   "stat_name": "o_clerk",
+   "updated": "2026-10-09T10:40:16.400"
+  },
+  {
+   "table_name": "orders",
+   "stat_name": "o_comment",
+   "updated": "2026-10-09T10:40:24.623"
+  },
+  {
+   "table_name": "orders",
+   "stat_name": "o_custkey",
+   "updated": "2026-10-09T10:39:58.360"
+  },
+  {
+   "table_name": "orders",
+   "stat_name": "o_orderdate",
+   "updated": "2026-10-09T10:40:05.837"
+  },
+  {
+   "table_name": "orders",
+   "stat_name": "o_orderpriority",
+   "updated": "2026-10-09T10:40:10.003"
+  },
+  {
+   "table_name": "orders",
+   "stat_name": "o_orderstatus",
+   "updated": "2026-10-09T10:40:01.463"
+  },
+  {
+   "table_name": "orders",
+   "stat_name": "o_shippriority",
+   "updated": "2026-10-09T10:40:17.553"
+  },
+  {
+   "table_name": "orders",
+   "stat_name": "o_totalprice",
+   "updated": "2026-10-09T10:40:05.033"
+  },
+  {
+   "table_name": "orders",
+   "stat_name": "pk_orders",
+   "updated": "2026-10-09T10:39:57.560"
+  },
+  {
+   "table_name": "part",
+   "stat_name": "p_brand",
+   "updated": "2026-10-09T10:40:41.060"
+  },
+  {
+   "table_name": "part",
+   "stat_name": "p_comment",
+   "updated": "2026-10-09T10:40:43.450"
+  },
+  {
+   "table_name": "part",
+   "stat_name": "p_container",
+   "updated": "2026-10-09T10:40:42.603"
+  },
+  {
+   "table_name": "part",
+   "stat_name": "p_mfgr",
+   "updated": "2026-10-09T10:40:40.523"
+  },
+  {
+   "table_name": "part",
+   "stat_name": "p_name",
+   "updated": "2026-10-09T10:40:39.810"
+  },
+  {
+   "table_name": "part",
+   "stat_name": "p_retailprice",
+   "updated": "2026-10-09T10:40:42.840"
+  },
+  {
+   "table_name": "part",
+   "stat_name": "p_size",
+   "updated": "2026-10-09T10:40:42.093"
+  },
+  {
+   "table_name": "part",
+   "stat_name": "p_type",
+   "updated": "2026-10-09T10:40:41.833"
+  },
+  {
+   "table_name": "part",
+   "stat_name": "pk_part",
+   "updated": "2026-10-09T10:40:39.043"
+  },
+  {
+   "table_name": "partsupp",
+   "stat_name": "idx_partsupp_partkey",
+   "updated": "2026-10-09T10:40:35.727"
+  },
+  {
+   "table_name": "partsupp",
+   "stat_name": "idx_partsupp_suppkey",
+   "updated": "2026-10-09T10:40:36.130"
+  },
+  {
+   "table_name": "partsupp",
+   "stat_name": "pk_partsupp",
+   "updated": "2026-10-09T10:40:27.713"
+  },
+  {
+   "table_name": "partsupp",
+   "stat_name": "ps_availqty",
+   "updated": "2026-10-09T10:40:29.570"
+  },
+  {
+   "table_name": "partsupp",
+   "stat_name": "ps_comment",
+   "updated": "2026-10-09T10:40:35.273"
+  },
+  {
+   "table_name": "partsupp",
+   "stat_name": "ps_suppkey",
+   "updated": "2026-10-09T10:40:28.140"
+  },
+  {
+   "table_name": "partsupp",
+   "stat_name": "ps_supplycost",
+   "updated": "2026-10-09T10:40:31.310"
+  },
+  {
+   "table_name": "region",
+   "stat_name": "pk_region",
+   "updated": "2026-09-04T18:48:49.573"
+  },
+  {
+   "table_name": "region",
+   "stat_name": "r_comment",
+   "updated": "2026-09-04T18:48:49.583"
+  },
+  {
+   "table_name": "region",
+   "stat_name": "r_name",
+   "updated": "2026-09-04T18:48:49.577"
+  },
+  {
+   "table_name": "supplier",
+   "stat_name": "idx_supplier_nationkey",
+   "updated": "2026-10-09T10:40:38.913"
+  },
+  {
+   "table_name": "supplier",
+   "stat_name": "pk_supplier",
+   "updated": "2026-10-09T10:40:38.733"
+  },
+  {
+   "table_name": "supplier",
+   "stat_name": "s_acctbal",
+   "updated": "2026-10-09T10:40:38.863"
+  },
+  {
+   "table_name": "supplier",
+   "stat_name": "s_address",
+   "updated": "2026-10-09T10:40:38.797"
+  },
+  {
+   "table_name": "supplier",
+   "stat_name": "s_comment",
+   "updated": "2026-10-09T10:40:38.900"
+  },
+  {
+   "table_name": "supplier",
+   "stat_name": "s_name",
+   "updated": "2026-10-09T10:40:38.760"
+  },
+  {
+   "table_name": "supplier",
+   "stat_name": "s_nationkey",
+   "updated": "2026-10-09T10:40:38.810"
+  },
+  {
+   "table_name": "supplier",
+   "stat_name": "s_phone",
+   "updated": "2026-10-09T10:40:38.840"
+  }
+ ],
+ "secondary_indexes": [
+  "idx_customer_mktsegment",
+  "idx_customer_nationkey",
+  "idx_lineitem_orderkey",
+  "idx_lineitem_partkey",
+  "idx_lineitem_shipdate",
+  "idx_lineitem_shipdate_discount_qty",
+  "idx_lineitem_shipmode_receiptdate",
+  "idx_lineitem_suppkey",
+  "idx_nation_regionkey",
+  "idx_orders_custkey",
+  "idx_orders_orderdate",
+  "idx_orders_orderdate_custkey",
+  "idx_partsupp_partkey",
+  "idx_partsupp_suppkey",
+  "idx_supplier_nationkey"
+ ],
+ "host_verification": {
+  "cmd": [
+   "sudo",
+   "-n",
+   "/usr/local/sbin/bench-host",
+   "verify",
+   "commercial_a"
+  ],
+  "returncode": 0,
+  "stdout": "  governor:      performance  want performance\n  no_turbo:      1            want 1\n  SMT:           off          want off\n  online CPUs:   0-3          want 0-3\n  AllowedCPUs:   0-1          want 0-1\n  MemoryMax:     3221225472   want 3221225472\n  AC power:      1            want 1\n  throttles:     core=0 pkg=0\n  freq now:      1800 1800 1800 1800 \n  engines:       measuring commercial_a\n    postgresql:  inactive     want inactive\n    mysql:       inactive     want inactive\n    commercial_a:       active       want active\n    oracle:      down         want inactive\n",
+  "stderr": ""
+ },
+ "oracle_process_affinity": null,
+ "storage": {
+  "cmd": [
+   "findmnt",
+   "-T",
+   "<commercial-a-data-dir>"
+  ],
+  "returncode": 0,
+  "stdout": "TARGET SOURCE    FSTYPE OPTIONS\n/      /dev/sdb2 ext4   rw,relatime,errors=remount-ro\n",
+  "stderr": ""
+ },
+ "block_devices": {
+  "cmd": [
+   "lsblk",
+   "-o",
+   "NAME,MODEL,SERIAL,ROTA,SIZE,TYPE,MOUNTPOINTS"
+  ],
+  "returncode": 0,
+  "stdout": "NAME   MODEL                     SERIAL               ROTA   SIZE TYPE MOUNTPOINTS\nloop0                                                    0     4K loop /snap/bare/5\nloop1                                                    0  13.4M loop /snap/canonical-livepatch/384\nloop2                                                    0  13.1M loop /snap/canonical-livepatch/414\nloop3                                                    0   105M loop /snap/core/17272\nloop4                                                    0 222.3M loop /snap/thunderbird/1282\nloop5                                                    0 105.2M loop /snap/core/17292\nloop6                                                    0  55.5M loop /snap/core18/2999\nloop8                                                    0  63.8M loop /snap/core20/2866\nloop9                                                    0    74M loop /snap/core22/2339\nloop10                                                   0    74M loop /snap/core22/2437\nloop11                                                   0  12.7M loop /snap/firmware-updater/262\nloop12                                                   0  66.8M loop /snap/core24/1643\nloop13                                                   0  48.8M loop /snap/cups/1146\nloop14                                                   0  47.9M loop /snap/cups/1238\nloop15                                                   0   5.2M loop /snap/curl/2414\nloop16                                                   0 261.1M loop /snap/firefox/8803\nloop17                                                   0 260.8M loop /snap/firefox/8863\nloop18                                                   0   5.2M loop /snap/curl/2421\nloop19                                                   0  63.8M loop /snap/core20/2922\nloop20                                                   0  16.5M loop /snap/firmware-updater/226\nloop21                                                   0    37M loop /snap/gh/502\nloop22                                                   0 140.4M loop /snap/gimp/560\nloop23                                                   0 140.9M loop /snap/gimp/561\nloop24                                                   0 164.8M loop /snap/gnome-3-28-1804/161\nloop25                                                   0 164.8M loop /snap/gnome-3-28-1804/198\nloop26                                                   0 218.4M loop /snap/gnome-3-34-1804/90\nloop27                                                   0 218.4M loop /snap/gnome-3-34-1804/93\nloop28                                                   0 349.7M loop /snap/gnome-3-38-2004/140\nloop29                                                   0 349.7M loop /snap/gnome-3-38-2004/143\nloop30                                                   0 531.4M loop /snap/gnome-42-2204/247\nloop31                                                   0 531.5M loop /snap/gnome-42-2204/263\nloop32                                                   0 606.1M loop /snap/gnome-46-2404/153\nloop33                                                   0 614.5M loop /snap/gnome-46-2404/164\nloop34                                                   0   140K loop /snap/gtk2-common-themes/13\nloop35                                                   0  81.3M loop /snap/gtk-common-themes/1534\nloop36                                                   0  91.7M loop /snap/gtk-common-themes/1535\nloop37                                                   0  36.2M loop /snap/heroku/4087\nloop38                                                   0  36.2M loop /snap/heroku/4092\nloop39                                                   0  10.4M loop /snap/htop/6429\nloop40                                                   0  10.4M loop /snap/htop/6487\nloop41                                                   0  37.1M loop /snap/hunspell-dictionaries-1-7-2004/2\nloop42                                                   0 436.3M loop /snap/kde-frameworks-5-96-qt-5-15-5-core20/7\nloop43                                                   0 424.2M loop /snap/kde-frameworks-5-qt-5-15-3-core20/8\nloop44                                                   0 323.5M loop /snap/kde-frameworks-5-qt-5-15-core20/14\nloop45                                                   0 448.7M loop /snap/kf5-5-104-qt-5-15-8-core22/9\nloop46                                                   0 438.3M loop /snap/kf5-5-110-qt-5-15-11-core22/3\nloop47                                                   0  13.5M loop /snap/kubectl/3833\nloop48                                                   0  13.4M loop /snap/kubectl/3855\nloop49                                                   0   395M loop /snap/mesa-2404/1165\nloop50                                                   0   402M loop /snap/mesa-2404/1839\nloop51                                                   0 175.8M loop /snap/mysql-workbench-community/12\nloop52                                                   0 165.1M loop /snap/mysql-workbench-community/13\nloop53                                                   0 168.1M loop /snap/postman/149\nloop54                                                   0 169.4M loop /snap/postman/201\nloop55                                                   0 431.9M loop /snap/qt515-core20/31\nloop56                                                   0 503.6M loop /snap/qt515-core20/46\nloop57                                                   0  11.8M loop /snap/snap-store/1390\nloop58                                                   0  11.8M loop /snap/snap-store/1427\nloop59                                                   0  50.1M loop /snap/snapd/27710\nloop60                                                   0  44.7M loop /snap/snapd/28254\nloop61                                                   0   580K loop /snap/snapd-desktop-integration/353\nloop62                                                   0   828K loop /snap/snapd-desktop-integration/391\nloop64                                                   0 221.5M loop /snap/thunderbird/1240\nloop65                                                   0  66.8M loop /snap/core24/2124\nloop66                                                   0  55.5M loop /snap/core18/3084\nsda    ST2000LM007-1R8174        <redacted>              1   1.8T disk \n└─sda1                                                   1   1.8T part /mnt/HDD\nsdb    SK hynix SC311 SATA 256GB <redacted>              0 238.5G disk \n├─sdb1                                                   0   512M part /boot/efi\n└─sdb2                                                   0   238G part /var/snap/firefox/common/host-hunspell\n                                                                       /\nsr0    PLDS DVD+/-RW DU-8A5LH    <redacted>              0  1024M rom  \n",
+  "stderr": ""
+ },
+ "top_processes": [
+  "    PID USER     %CPU   RSS     ELAPSED COMMAND",
+  "1866520 user   100  4760       00:00 ps",
+  "1701393 commercial_a    72.4 2124352  04:35:32 commercial-a-server",
+  "  21345 user   3.5  7176  1-20:35:04 htop",
+  "1757487 user   0.6 133060   02:59:48 python3.12",
+  "  20790 user   0.4 66392  1-20:35:13 gnome-terminal-",
+  "   5366 user   0.3 262668 1-20:47:24 gnome-shell",
+  "   2368 root      0.2 53460  1-20:47:38 containerd",
+  "   4359 root      0.2 96620  1-20:47:31 dockerd",
+  " 275227 root      0.1 129272 1-11:39:46 other-service",
+  " 275172 root      0.1 12548  1-11:39:46 containerd-shim",
+  " 275178 root      0.1 12592  1-11:39:46 containerd-shim",
+  "      1 root      0.0 18756  1-20:47:53 systemd",
+  "   1913 message+  0.0  9308  1-20:47:40 dbus-daemon",
+  "   3526 root      0.0 13640  1-20:47:33 upowerd"
+ ],
+ "other_engines": {
+  "cmd": [
+   "systemctl",
+   "is-active",
+   "postgresql@18-main",
+   "mysql",
+   "commercial-a-server",
+   "oracle-free"
+  ],
+  "returncode": 0,
+  "stdout": "inactive\ninactive\nactive\ninactive\n",
+  "stderr": ""
+ },
+ "index_verification": {
+  "cmd": [
+   "/usr/bin/python3.12",
+   "scripts/1-setup/manage_indexes.py",
+   "--database",
+   "default",
+   "--action",
+   "verify",
+   "--expect",
+   "indexed"
+  ],
+  "returncode": 0,
+  "stdout": "index state on default (commercial_a): 15/15 present, 0/15 missing\n  configuration claimed: indexed  (requires all present)\n  MATCHES\n",
+  "stderr": ""
+ },
+ "source_hashes": {
+  "django_app/__init__.py": "d3d425bef34c7bebe273ce9e38d20e4c5ff40ed7db6226737dcd65fa62d474b4",
+  "django_app/manage.py": "20b48ecc0efca7a4bc47e50197998e444113ecc2a5f672f7fe038ec4c5efe2ae",
+  "django_app/models.py": "ee8b1527ee7a9969b42fe3c3838c97987552fcb5b797392c83aa5d8803269f23",
+  "django_app/queries/__init__.py": "4675b68b3d2785d116822beb457b2f7658de34f02a7c532a4f3e29fe8ab1d3f9",
+  "django_app/queries/_lookups.py": "52452a8b7093b588b25859c3cd858ec01ef4c1df1c9b4ac69a69d6dc17862dcc",
+  "django_app/queries/q01.py": "4f1716577466492d9a57582b07ab910a696e353ae828e9333e8d11ef7bd4a4ac",
+  "django_app/queries/q02.py": "d679175b323effc46f2a4d42d182317a797d83a12cb038353e39d6b24ac48d1f",
+  "django_app/queries/q02_sqlserver.py": "0c3d00cfe527d219cdf7b21ecaeb4c7d8d6d3d86bbe07a3bc91b39e0691605de",
+  "django_app/queries/q03.py": "f1fadf53fe51bf83fcbed841c464650bd9fc432033fddff3984f86e6c0917b6c",
+  "django_app/queries/q03_sqlserver.py": "88b8575435a780d76c8f267556d3c16ceac56e0598b268a17746fcd8bd691440",
+  "django_app/queries/q04.py": "d1982664b247419e169ed9f40f20eace3d82ea7bbe289af05adb8014870fe8fa",
+  "django_app/queries/q04_sqlserver.py": "544033c076dec3bd3693c0e23e057127010ad0e3f06358627e6cab4b6309565f",
+  "django_app/queries/q05.py": "8eb6063f9e02ccf050136459ed6096e9798c8bf1e5eeddf7258999504dc85bc2",
+  "django_app/queries/q05_sqlserver.py": "4c0bf1f9b6557a77bb46f79aa398d631f83150538f218655204487ef3e65ac35",
+  "django_app/queries/q06.py": "b40401096a3e0cece48b922f3c59837455e0d45e982f64908710864ec0f176ac",
+  "django_app/queries/q07.py": "ac4dca2f9b4b1f589c01155d45cd86bb36e141650568dfd498309038ab52c3d3",
+  "django_app/queries/q07_oracle.py": "ac27d88764b4f81b4bea3b1969b7803667ecd9ab3704021809b8a9b37b00f2ea",
+  "django_app/queries/q07_sqlserver.py": "77d56b248f51326524166192b3cdeed822fed98a9c02b60f7bbcffa3ef1510b1",
+  "django_app/queries/q08.py": "de83aa0daec3f3c7a4249101087b0e5eabfc0c35c364800a24f4ed2397e8c8b4",
+  "django_app/queries/q08_oracle.py": "42c0661a23523cacdc070c340460a20b1fd7eb6847e6c5fd20f52ffe08431f27",
+  "django_app/queries/q08_sqlserver.py": "ae4dfa6223133f16b98e15ad2739424edeb9384a273ba891456b82caf6efcc52",
+  "django_app/queries/q09.py": "517c9178799177b76fd346555972056b24ace8801a2b6c4d51d880152c356c0b",
+  "django_app/queries/q09_oracle.py": "c1fafecb28b38d0a7aaa1874b38144ea7d7de5ad26d6159a30d1a36d8ce5c0cd",
+  "django_app/queries/q09_sqlserver.py": "846623ccb7c6c3400a4e4cdcd4ae75d7b5cf4fea19806dcc199e5166ecdbd9f9",
+  "django_app/queries/q10.py": "accc630fa2a585fb56ff10759944c69e55bf3f9f0a67cb963806ee0d4961ff88",
+  "django_app/queries/q10_sqlserver.py": "9ec14ca9586c645cf2bac73683aebf6bdbe200d134b77170a2cab5f703ac4cb6",
+  "django_app/queries/q11.py": "49f420d8a778d6903a132ba7b99b4923efe665f28ad90042f4e3b0f835037651",
+  "django_app/queries/q12.py": "dfe29522d7049d123b3ff79cb1a95079fc620a907d5ff21b31fa1c03a02e9520",
+  "django_app/queries/q12_sqlserver.py": "cf6ec56d28dea5c145d86717c6768d26feb9d774c2a7bbdf888ca7e3dca13716",
+  "django_app/queries/q13.py": "d1e226e112fbe968c13932bda46e918cc144f236de78643745f3ec57f6abf3d7",
+  "django_app/queries/q13_oracle.py": "9721860be4b929e657fa88e43602051ad14d7cffeb512916276bdce9ffcbf884",
+  "django_app/queries/q13_sqlserver.py": "3cdc66d980ee3c356dbaa963b9f848745a48b19d57cfe680042aa955bfa34d02",
+  "django_app/queries/q14.py": "184f6e13da28473756c84775937d7d0c5bae1b846cc04bc39974a88a5515642c",
+  "django_app/queries/q14_sqlserver.py": "3b3de624d222d2f28a7e566e38422486e4776b0b8e9e93924a8a0133f6d0c026",
+  "django_app/queries/q15.py": "b0650160d33e57d64167f58f96d3a0d3105fd2f0d93d550da4600b91f9a81371",
+  "django_app/queries/q15_sqlserver.py": "901c937fe518189ad7eb798eb61fb08bb79ed87197b02f874e50d5948406eb25",
+  "django_app/queries/q16.py": "7b6d39cf63aba72ff2228d08ff90d5fabcc282ec2e4a07ae02f5f5d085cb24a6",
+  "django_app/queries/q16_sqlserver.py": "843b4092ae411ee08d2d8e64638eb1e681620a1f24f2066d496cf56d55aa839d",
+  "django_app/queries/q17.py": "2d00c89a609e2001ff9513925fe6cd113b4198cf297284175dacef74e5344c98",
+  "django_app/queries/q18.py": "9377b26c7f4a52ec41b69f3f0c89b26a81a09df7d7fc57ba2569efa2323f1b97",
+  "django_app/queries/q18_sqlserver.py": "b4b6ce5bf3bc88b673799876665d77856ea2870dc275a8b2aeeecf75d4b065a2",
+  "django_app/queries/q19.py": "0da3b1f42eaf77b88cc15e3ebe90b8e5dffc29829868ab285097e2b4d35174c7",
+  "django_app/queries/q20.py": "5f343bd083da0d19aa5f773d32fba2ba1ae3605882a283665f1493f080438446",
+  "django_app/queries/q20_sqlserver.py": "d5bf495c701d0cbe5e612c9211fca105edb16c5bbecfd56457b52b0b6c07643b",
+  "django_app/queries/q21.py": "814d892fbd1c7b76ce2e013232f7ae710ca796e10609cf9850a101605fd7590f",
+  "django_app/queries/q21_sqlserver.py": "3cecef80fa379d980aee6328a6642ec0030c184acacd57451619191941d91f77",
+  "django_app/queries/q22.py": "51894db2449eb580194289cbecaed8021151706464c08b9645cfd3e005b61a36",
+  "django_app/queries/q22_oracle.py": "4d999a23c7d2529e29a4abb70fa96f8be7b87235470deb1bbe6a737bb8784913",
+  "django_app/queries/q22_sqlserver.py": "c24c745ee755633e9120aac218957b22ca74106ed0e86ecb58a8352155c5d19c",
+  "django_app/queries.py": "c6d569bc4d5634022d235b33b9e403edb5d717ff4b42c1b5dda846ab11039243",
+  "django_app/settings.py": "73b55c553bd82ab00aa0484e2589905c50bb34ac77a1d4b39183c1ed57e04045",
+  "django_app/tpcc_models.py": "4f20d90529b54e1123c054bbca90988b8bf03df6775d5ed4fe3d44430a946824",
+  "django_app/tpcc_queries/__init__.py": "6f347cd23dc5e2d1facdb7230286235735d8dbdd66a9ae1e3c5b7ffdb382de3a",
+  "django_app/tpcc_queries/db_utils.py": "b70c89e51f7c0fd1dcf38359d635ed7add4c84deeda200809a74fed8a2b17bbe",
+  "django_app/tpcc_queries/t1_neworder.py": "6de255f62a074686ad2fca64ad4bb135fcbad3daa85bd9ba3f339c0b1239e6ed",
+  "django_app/tpcc_queries/t2_payment.py": "4bd345e7380e2e53249dc2f96be75f11dea3139fb6442b1f239956e7aac88209",
+  "django_app/tpcc_queries/t3_orderstatus.py": "d78c6886c5fa9fa52f085abadaf94ee64ae7cb86629b325a8b2fc65efb0484fc",
+  "django_app/tpcc_queries/t4_delivery.py": "07a70ed96ff20010dfff084679b0b5386c3e7d83d96001552c66d7b1a6db0d6d",
+  "django_app/tpcc_queries/t5_stocklevel.py": "702300b6fb85e4734d270e824f241c2e9ab41dacb3e8e4fe559de73d3cedd8de",
+  "django_app/utils/__init__.py": "d1403f12ac7665399ff913c791fe4579393398383eae5d304d4e4e0375eec0f9",
+  "django_app/utils/database.py": "46bae759e2eb25f6f33e3125191ac0ab597331b6ce5a786dc9389e8795d0783e",
+  "django_app/utils/plan_collector.py": "858d6153a70ec20dce079ed0a2ddfb95fac8b87ea3dfe33cc400c9ed4cfa55fc",
+  "django_app/utils/resource_monitor.py": "cc4d6847ad92940dbea8baec640377cdcc6072d34ea8f3502c5ecbb58c5b0db3",
+  "django_app/utils/timer.py": "6cbe1eecf1182b3d805c6c5482e219b850bd22ce71fcdc73d78b2ae76436d896",
+  "sqlalchemy_app/__init__.py": "8053063c6028a370ab2d4be7ee04aa86716a9ef21ed3a72891aef378f1a6eed9",
+  "sqlalchemy_app/database.py": "25943d385d8fd57315ecffe85d8b3174a2e5c0c8918e7c88e1fa49aabd9363e9",
+  "sqlalchemy_app/models.py": "ff5f9aece42958211901d843029c33f467d29266eaca93749c7d5839a36a90b1",
+  "sqlalchemy_app/queries/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "sqlalchemy_app/queries/_orm.py": "238f4e5b803694f6dbf16bf663765f531cda9b9b9bc7c772c8dce85d32474100",
+  "sqlalchemy_app/queries/_sql.py": "c9d61431f2ee42dd290e23e5e124cc56aad649c19415f1ed7478e854b037c839",
+  "sqlalchemy_app/queries/q01.py": "b5faeacc56b2402f611153a6fa823844f8bfcf23c223aa7a3bc6c6e91ebe8292",
+  "sqlalchemy_app/queries/q02.py": "cb1832754cc29cddf3093cb0f5df0451b18ae885f22773eedde61f0b305b2fe8",
+  "sqlalchemy_app/queries/q03.py": "ab1966f747417817f3c2aed281e35aa2a45fc0df5ae5de04cd97bb8f1bc81e7d",
+  "sqlalchemy_app/queries/q04.py": "46fc6148b9f0c391beea5ae5354b1c390a2245fe61dbdc69bae49a97bae67413",
+  "sqlalchemy_app/queries/q05.py": "0c78689e17186c6fc1b393133b3edd49ca8d4dfd48d287bf955410dce4a77efd",
+  "sqlalchemy_app/queries/q06.py": "a91be30bc044a8c77ed14eee7bd024ab3d996dc0ec42bd2ede64811dfe1cf232",
+  "sqlalchemy_app/queries/q07.py": "83186dd6d5a287756d557e5267a7fd1e983c66876cb5bd3c488bf2e3331feac5",
+  "sqlalchemy_app/queries/q08.py": "c14c423019bf0b9dd66ba5dfddeec457e0669f2f93c916e946bc505b2edae575",
+  "sqlalchemy_app/queries/q09.py": "93c77a89a228baf3b4795f7e7c8601f4f6fb168e358adc5752a75cac45b66675",
+  "sqlalchemy_app/queries/q10.py": "dec70af4f110bae75124326242644b9d8dfd19424fa1ccb240d8374a1d803dcd",
+  "sqlalchemy_app/queries/q11.py": "4ec7711c0cc67d74751f68c9a3d456623257901310992f497dc66c4bfca54a8e",
+  "sqlalchemy_app/queries/q12.py": "b59605b38a7d555635d2e610f4968154c24b2cc9ba57b2f631d9329425f47b45",
+  "sqlalchemy_app/queries/q13.py": "9b4bf670e2266b7ef62216f5dea268be0bd8bf8cafffee025e0d76afbb4bf73b",
+  "sqlalchemy_app/queries/q14.py": "34f3416daea4e613dfe61e8a9cda53bb0b8b08b5ea6f02d834f03e8e007bd709",
+  "sqlalchemy_app/queries/q15.py": "699f3d7f4bc78b49b64490cd3f5b1dfa8d0359ea7972fb0c3a234931c60ef6a5",
+  "sqlalchemy_app/queries/q16.py": "84e9f0fbd423d74b66c04e92d3556cff8424a64dc5e89a90966678f91bbf778e",
+  "sqlalchemy_app/queries/q17.py": "7c985d14d7ed6df39d1b573d1679ccea177e9d5ba46a5cc49e04001cdabb4467",
+  "sqlalchemy_app/queries/q18.py": "5580125f4812396dcd617759bbc8da90fee7cf4cf2f2c34a3634630465bd47c1",
+  "sqlalchemy_app/queries/q19.py": "b6bf5415e76c7ae942a5b34589f08f4c4ec58f798554b0cc5a74ad34dc9e9080",
+  "sqlalchemy_app/queries/q20.py": "bf9e7294bf1badaf7e64607fba6b85281c28985ada7a07d849258bda91adabdb",
+  "sqlalchemy_app/queries/q21.py": "1a53e5cd6fd0d02e0b0a8f91cbefd27bda338aa573517b5a89c4f2e651d4ec71",
+  "sqlalchemy_app/queries/q22.py": "f1d88677a18df798cf8a002d6ef564810c2ae230cb54ab317a91fb9a68fc0306",
+  "sqlalchemy_app/tpcc_models.py": "571baaa61e3d47370f4d851b5b17212a9875654beff0036bd2167def289f11b1",
+  "sqlalchemy_app/tpcc_queries/__init__.py": "9f4e02c4d9cf869a1443f0a81a14501ad13ae194391902e481af4067874f0dab",
+  "sqlalchemy_app/tpcc_queries/db_utils.py": "c4528e55f9d10eea460895b29c61f3f09d97c82082b3c6cbd5da4321c1a86feb",
+  "sqlalchemy_app/tpcc_queries/t1.py": "513eb42903bad22fe56e0c16817b3022f53a4f4a722ff88569ab5249320ddaa5",
+  "sqlalchemy_app/tpcc_queries/t2.py": "07accc2ccf991b22519850ee5eb3f46cc22b4939c7c40daca808ae092aeeb886",
+  "sqlalchemy_app/tpcc_queries/t3.py": "2297e28ed31a830f10e8ea0ae551b4668d81d47bd67e3008b4143f8a411bf01f",
+  "sqlalchemy_app/tpcc_queries/t4.py": "e20e9e037320bf554e81ce9fe8cbe9027dc1d4c167cda82841499c147f69a273",
+  "sqlalchemy_app/tpcc_queries/t5.py": "9520cdf40cab942ee38e70c47beddaa506cb44d6cf912440c8738f1d849c23f5",
+  "tpch_paramsets.py": "dfe2f97fc803409340b6d3f0549542ff6d2233746fab3f8c0925202dde950970",
+  "tpch_params.py": "933dd6b42f23ab2e11a4033360d01c9368f7f60dfc0beb4d34b4f8c6f90013cb",
+  "tpch_domains.py": "f9850717d7796edd867d60a1a981e0662a01f7a2f39e6b74be92ac404168e042",
+  "settings_mysql.py": "1fbe3c3906d7e192a5dbfda566ce38a3ba3b7efbad3365615a792489e9c6ba5c",
+  "settings_oracle.py": "10f2490aaac3d9e5cb9e742c795f8dd975995aede93f1bd1af68fd0569c857e0",
+  "settings_sqlserver.py": "05c94f78cdc1f6aecb2ebbf97536d555d8459428a7fbfe0414912a7116d7c954",
+  "odbc_driver.py": "791a21b80c6ca367a3d9170929f96ccc2f803a8c30db582e73593d3c15e942be",
+  "mssql_decimal_fix.py": "7221b5a5bae074a963bf4b5820f458ec87288e619bb8b4528df21fb3f68ece2c",
+  "scripts/1-setup/manage_indexes.py": "585a0e1f455662c8aea6721efd4fb40be026a9eee0a1bce56beca412393f7e5c"
+ },
+ "code_hashes": {
+  "rc_analytical.py": "a324aa549af4dd8318aa042c22c6306811260da9c3449a3656a98722fbd527d7",
+  "rc_common.py": "8a44743b3e9ee3e9412d27916d8d7a987f9a5b8605ca7ede2bed6154a59eeb83"
+ },
+ "protocol_sha256": "95d87f4bbbbcc810eb85a22234bcb07c9925d66c3c423a0fb4f7612ee64e9674",
+ "inputs_sha256": "890a5743c459d1e6a708804917b3d96908af6af21f4d70a851e3c8e85ba294f5",
+ "environment_id": "c97865b9313df32b55104b3d5152eead6f1fda3918522c66ef9f20ac851bcfcf"
+}

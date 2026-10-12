@@ -1,0 +1,297 @@
+{
+  "20497": {
+    "name": "ora_pmon_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20501": {
+    "name": "ora_clmn_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20505": {
+    "name": "ora_psp0_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20509": {
+    "name": "ora_vktm_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20515": {
+    "name": "ora_gen0_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20521": {
+    "name": "ora_mman_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20527": {
+    "name": "ora_gen2_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20529": {
+    "name": "ora_diag_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20531": {
+    "name": "ora_scmn_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20533": {
+    "name": "ora_scmn_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20535": {
+    "name": "ora_dbrm_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20537": {
+    "name": "ora_vkrm_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20539": {
+    "name": "ora_pman_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20541": {
+    "name": "ora_dia0_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20543": {
+    "name": "ora_dbw0_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20545": {
+    "name": "ora_lgwr_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20549": {
+    "name": "ora_ckpt_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20551": {
+    "name": "ora_smon_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20553": {
+    "name": "ora_smco_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20557": {
+    "name": "ora_reco_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20559": {
+    "name": "ora_lreg_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20562": {
+    "name": "ora_pxmn_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20567": {
+    "name": "ora_mmon_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20571": {
+    "name": "ora_mmnl_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20587": {
+    "name": "ora_scmn_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20589": {
+    "name": "ora_m000_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20592": {
+    "name": "ora_w000_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20597": {
+    "name": "ora_scmn_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20602": {
+    "name": "ora_w001_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20607": {
+    "name": "ora_scmn_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20617": {
+    "name": "ora_d000_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20619": {
+    "name": "ora_s000_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20621": {
+    "name": "ora_tmon_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20623": {
+    "name": "ora_rcbg_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20626": {
+    "name": "ora_tt00_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20628": {
+    "name": "ora_tt01_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20632": {
+    "name": "ora_p000_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20634": {
+    "name": "ora_aqpc_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20822": {
+    "name": "ora_m001_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20824": {
+    "name": "ora_m002_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20828": {
+    "name": "ora_m003_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20830": {
+    "name": "ora_m004_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20834": {
+    "name": "ora_cjq0_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20840": {
+    "name": "ora_m005_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20848": {
+    "name": "ora_m006_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20850": {
+    "name": "ora_m007_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20852": {
+    "name": "ora_m008_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20854": {
+    "name": "ora_j000_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20856": {
+    "name": "ora_j001_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20858": {
+    "name": "ora_j002_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20860": {
+    "name": "ora_j003_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20904": {
+    "name": "ora_qm02_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20906": {
+    "name": "ora_q001_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20910": {
+    "name": "ora_q003_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20912": {
+    "name": "ora_q004_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "20914": {
+    "name": "ora_q005_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "21033": {
+    "name": "ora_q002_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "21035": {
+    "name": "ora_ir00_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  },
+  "21037": {
+    "name": "ora_ir01_free",
+    "affinity": "0-1",
+    "cgroup": "0::/user.slice/user-1001.slice/session-c3.scope"
+  }
+}

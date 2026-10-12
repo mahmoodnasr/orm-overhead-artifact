@@ -1,0 +1,74 @@
+{
+ "G": [
+  {
+   "sql": "SELECT T6.\"N_NAME\" AS \"SUPP_NATION\", \"NATION\".\"N_NAME\" AS \"CUST_NATION\", EXTRACT(YEAR FROM \"LINEITEM\".\"L_SHIPDATE\") AS \"L_YEAR\", SUM((\"LINEITEM\".\"L_EXTENDEDPRICE\" * (%s - \"LINEITEM\".\"L_DISCOUNT\"))) AS \"REVENUE\" FROM \"LINEITEM\" INNER JOIN \"ORDERS\" ON (\"LINEITEM\".\"L_ORDERKEY\" = \"ORDERS\".\"O_ORDERKEY\") INNER JOIN \"CUSTOMER\" ON (\"ORDERS\".\"O_CUSTKEY\" = \"CUSTOMER\".\"C_CUSTKEY\") INNER JOIN \"NATION\" ON (\"CUSTOMER\".\"C_NATIONKEY\" = \"NATION\".\"N_NATIONKEY\") INNER JOIN \"SUPPLIER\" ON (\"LINEITEM\".\"L_SUPPKEY\" = \"SUPPLIER\".\"S_SUPPKEY\") INNER JOIN \"NATION\" T6 ON (\"SUPPLIER\".\"S_NATIONKEY\" = T6.\"N_NATIONKEY\") WHERE (((\"NATION\".\"N_NAME\" = %s AND T6.\"N_NAME\" = %s) OR (\"NATION\".\"N_NAME\" = %s AND T6.\"N_NAME\" = %s)) AND \"LINEITEM\".\"L_SHIPDATE\" BETWEEN %s AND %s) GROUP BY T6.\"N_NAME\", \"NATION\".\"N_NAME\", EXTRACT(YEAR FROM \"LINEITEM\".\"L_SHIPDATE\") ORDER BY 1 ASC, 2 ASC, 3 ASC",
+   "params": [
+    1,
+    "KENYA",
+    "MOROCCO",
+    "MOROCCO",
+    "KENYA",
+    {
+     "type": "date",
+     "value": "1995-01-01"
+    },
+    {
+     "type": "date",
+     "value": "1996-12-31"
+    }
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "\n    SELECT\n        supp_nation,\n        cust_nation,\n        l_year,\n        SUM(volume) as revenue\n    FROM (\n        SELECT\n            n1.n_name as supp_nation,\n            n2.n_name as cust_nation,\n            EXTRACT(YEAR FROM l_shipdate) as l_year,\n            l_extendedprice * (1 - l_discount) as volume\n        FROM supplier, lineitem, orders, customer, nation n1, nation n2\n        WHERE s_suppkey = l_suppkey\n        AND o_orderkey = l_orderkey\n        AND c_custkey = o_custkey\n        AND s_nationkey = n1.n_nationkey\n        AND c_nationkey = n2.n_nationkey\n        AND ((n1.n_name = %s AND n2.n_name = %s)\n          OR (n1.n_name = %s AND n2.n_name = %s))\n        AND l_shipdate BETWEEN TO_DATE('1995-01-01', 'YYYY-MM-DD') AND TO_DATE('1996-12-31', 'YYYY-MM-DD')\n    ) shipping\n    GROUP BY supp_nation, cust_nation, l_year\n    ORDER BY supp_nation, cust_nation, l_year\n    ",
+    "values": [
+     "MOROCCO",
+     "KENYA",
+     "KENYA",
+     "MOROCCO"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "'MOROCCO'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'KENYA'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'KENYA'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "'MOROCCO'",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 4
+ },
+ "G_output_columns": [
+  "supp_nation",
+  "cust_nation",
+  "l_year",
+  "revenue"
+ ]
+}

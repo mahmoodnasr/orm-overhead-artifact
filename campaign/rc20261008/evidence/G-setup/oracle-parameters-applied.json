@@ -1,0 +1,28 @@
+{
+ "wanted": {
+  "sga_max_size": "1536M",
+  "sga_target": "0",
+  "pga_aggregate_target": "512M",
+  "pga_aggregate_limit": "2G",
+  "processes": "200",
+  "open_cursors": "300",
+  "cpu_count": "2",
+  "parallel_max_servers": "1",
+  "result_cache_mode": "MANUAL",
+  "optimizer_adaptive_plans": "TRUE",
+  "optimizer_adaptive_statistics": "FALSE"
+ },
+ "got": {
+  "processes": "200",
+  "cpu_count": "2",
+  "sga_max_size": "1610612736",
+  "pga_aggregate_limit": "2147483648",
+  "sga_target": "0",
+  "parallel_max_servers": "1",
+  "result_cache_mode": "MANUAL",
+  "open_cursors": "300",
+  "pga_aggregate_target": "536870912",
+  "optimizer_adaptive_plans": "TRUE",
+  "optimizer_adaptive_statistics": "FALSE"
+ }
+}

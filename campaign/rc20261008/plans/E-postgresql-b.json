@@ -1,0 +1,24 @@
+{
+ "plan_id": "E-postgresql-b",
+ "purpose": "Phase E host side, postgresql: SF1 indexed",
+ "first_state": "non-indexed",
+ "second_state": "indexed",
+ "steps": [
+  {
+   "id": "postgresql-E-to-indexed",
+   "kind": "index",
+   "engine": "postgresql",
+   "actions": [
+    "create",
+    "analyze",
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "postgresql-E-preflight-indexed",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh postgresql && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY scripts/0-host/preflight.py --dbms postgresql --schema indexed"
+  }
+ ]
+}

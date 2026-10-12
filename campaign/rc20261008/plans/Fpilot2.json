@@ -1,0 +1,67 @@
+{
+ "plan_id": "Fpilot2",
+ "purpose": "Phase F pilot v2 (protocol Fpilot-v2: rc_controlled.py with the driver-type and plan fixes after pilot 1), Commercial System A indexed, Django Q4 + SQLAlchemy Q13, 2 blocks; reviewed before F-v1 is frozen.",
+ "steps": [
+  {
+   "id": "commercial_a-engine",
+   "kind": "engine",
+   "engine": "commercial_a",
+   "settle": 90
+  },
+  {
+   "id": "commercial_a-sf1-verify-indexed",
+   "kind": "index",
+   "engine": "commercial_a",
+   "actions": [
+    "verify"
+   ],
+   "expect": "indexed"
+  },
+  {
+   "id": "commercial_a-Fpilot2-indexed-django",
+   "kind": "run",
+   "engine": "commercial_a",
+   "resumable": false,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "pilot-F2/commercial_a-indexed-django",
+    "protocol": "protocols/rc20261008-Fpilot-v2.json",
+    "phase": "Fpilot2",
+    "schema": "indexed",
+    "mode": "pilot",
+    "queries": [
+     4
+    ],
+    "extra": [
+     "--framework",
+     "django",
+     "--blocks",
+     "2"
+    ]
+   }
+  },
+  {
+   "id": "commercial_a-Fpilot2-indexed-sqlalchemy",
+   "kind": "run",
+   "engine": "commercial_a",
+   "resumable": false,
+   "args": {
+    "runner": "rc_controlled.py",
+    "run_dir": "pilot-F2/commercial_a-indexed-sqlalchemy",
+    "protocol": "protocols/rc20261008-Fpilot-v2.json",
+    "phase": "Fpilot2",
+    "schema": "indexed",
+    "mode": "pilot",
+    "queries": [
+     13
+    ],
+    "extra": [
+     "--framework",
+     "sqlalchemy",
+     "--blocks",
+     "2"
+    ]
+   }
+  }
+ ]
+}

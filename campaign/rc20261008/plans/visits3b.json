@@ -1,0 +1,80 @@
+{
+ "plan_id": "visits3b",
+ "purpose": "Re-measure Oracle non-indexed TPC-C alone (the first run overlapped the after-phase-F vault snapshot)",
+ "derived_from": {
+  "plan": "plans/visits3.json"
+ },
+ "steps": [
+  {
+   "id": "oracle-tpcc-fp-before-r2",
+   "kind": "fingerprint",
+   "engine": "oracle",
+   "benchmark": "tpcc",
+   "label": "oracle-tpcc-C-before-r2"
+  },
+  {
+   "id": "oracle-tpcc-to-non-indexed-r2",
+   "kind": "index",
+   "engine": "oracle",
+   "benchmark": "tpcc",
+   "actions": [
+    "drop"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "oracle-tpcc-stats-non-indexed-r2",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh oracle tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_tpcc_stats.py"
+  },
+  {
+   "id": "oracle-tpcc-verify-non-indexed-r2",
+   "kind": "index",
+   "engine": "oracle",
+   "benchmark": "tpcc",
+   "actions": [
+    "verify"
+   ],
+   "expect": "non-indexed"
+  },
+  {
+   "id": "oracle-tpcc-run-non-indexed-r2",
+   "kind": "tpcc",
+   "engine": "oracle",
+   "args": {
+    "run_dir": "C-tpcc/oracle-non-indexed-r2",
+    "protocol": "protocols/rc20261008-C-v1.json",
+    "phase": "C",
+    "src": "src-c",
+    "schema": "non-indexed",
+    "mode": "main",
+    "blocks": 24
+   }
+  },
+  {
+   "id": "oracle-tpcc-fp-after-r2",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh oracle tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_fingerprint.py --dbms oracle --benchmark tpcc --label oracle-tpcc-C-after-r2 --out $RC_CAMPAIGN/evidence/fingerprints/oracle-tpcc-C-after-r2.json && python3 -c \"import json;a=json.load(open('$RC_CAMPAIGN/evidence/fingerprints/oracle-tpcc-C-before-r2.json'))['content_sha256'];b=json.load(open('$RC_CAMPAIGN/evidence/fingerprints/oracle-tpcc-C-after-r2.json'))['content_sha256'];print('before',a,'after',b);assert a==b\""
+  },
+  {
+   "id": "oracle-tpcc-to-indexed-r2",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh oracle tpcc && cd $RC_CAMPAIGN/src && out=$(taskset -c 2,3 $RC_PY scripts/1-setup/manage_indexes.py --database default --benchmark tpcc --action create 2>&1); echo \"$out\"; echo \"$out\" | grep -q 'Summary: .* 0 failed'"
+  },
+  {
+   "id": "oracle-tpcc-stats-indexed-r2",
+   "kind": "shell",
+   "command": "source <campaign>/code/rc_env.sh oracle tpcc && cd $RC_CAMPAIGN/src && taskset -c 2,3 $RC_PY $RC_CAMPAIGN/code/rc_tpcc_stats.py"
+  },
+  {
+   "id": "oracle-tpcc-verify-indexed-r2",
+   "kind": "index",
+   "engine": "oracle",
+   "benchmark": "tpcc",
+   "actions": [
+    "verify"
+   ],
+   "expect": "indexed"
+  }
+ ]
+}

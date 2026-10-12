@@ -1,0 +1,67 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:633e02abbf9bb19afc329641c575f8b0b06e5397775eaebc7b580c489bebac13",
+   "params": [
+    "EGYPT",
+    {
+     "type": "Decimal",
+     "value": "0.5"
+    },
+    "1993-01-01",
+    "1994-01-01",
+    "violet%"
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:9c45a02155e677757beb42b1f7f9525ec58dc0b7195e380670a9c66b3071b94b",
+    "values": [
+     "violet%",
+     "1993-01-01",
+     "1994-01-01",
+     "EGYPT"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:051d5340c2ddf56ca6e37a7ca5c434e8cf484b0a4b0df437125317be5d931982",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:413e44a3ff56d41c9e490234aea5af443a6f24f6e75292f3c1e8e0f42c55a432",
+     "bound": true,
+     "kind": "date",
+     "value_type": "str",
+     "type_source": "orm: bound as a string, as the ORM binds it (F-v2 correction 4)"
+    },
+    {
+     "literal": "withheld-sha256:eba01f8a16f8ce09202eb2c0e1a7fe1c48e0fe52214bb57c2c8fedeaeb7e9663",
+     "bound": true,
+     "kind": "date",
+     "value_type": "str",
+     "type_source": "orm: bound as a string, as the ORM binds it (F-v2 correction 4)"
+    },
+    {
+     "literal": "withheld-sha256:e98a30421a7a22165d210f2482ab216fb82316f29d11c3ce99a31d3f65e2eda8",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 4
+ },
+ "G_output_columns": [
+  "s_name",
+  "s_address"
+ ]
+}

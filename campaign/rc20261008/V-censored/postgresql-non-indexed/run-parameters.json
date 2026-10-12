@@ -1,0 +1,22 @@
+{
+ "protocol_id": "rc20261008-V-v1",
+ "protocol_sha256": "b24530e3a33866f78c9d1c9286bf07cfd86f3228a4db2705ebf263a89add2122",
+ "phase": "V",
+ "dbms": "postgresql",
+ "schema": "non-indexed",
+ "scale": 1,
+ "queries": [
+  13,
+  17,
+  20,
+  21
+ ],
+ "timeout_s": {
+  "type": "float",
+  "value": "14400.0"
+ },
+ "mode": "main",
+ "blocks": 0,
+ "client_mode": "second-server-mac",
+ "database_label": "mac-tpch"
+}

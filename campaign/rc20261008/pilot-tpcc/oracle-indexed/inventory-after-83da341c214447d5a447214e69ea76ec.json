@@ -1,0 +1,70 @@
+{
+ "label": "after",
+ "run_id": "83da341c214447d5a447214e69ea76ec",
+ "utc": "2026-10-08T11:30:38.889375+00:00",
+ "cairo": "2026-10-08T14:30:38.889375+03:00",
+ "host": "bench-host",
+ "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+ "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+ "dbms": "oracle",
+ "schema": "indexed",
+ "sa_url": "oracle+oracledb://tpcc:***@127.0.0.1:1521/?service_name=FREEPDB1",
+ "tpcc_config": "TPC-C: 10 warehouses x 10 districts x 3000 customers, 100000 items, lock_district=True",
+ "packages": {
+  "Django": "6.0.8",
+  "SQLAlchemy": "2.0.52",
+  "psycopg2-binary": "2.9.12",
+  "mysqlclient": "2.2.8",
+  "oracledb": "4.0.2",
+  "pyodbc": "5.3.0",
+  "commercial-a-django-backend": "1.8.0"
+ },
+ "client_affinity": [
+  2,
+  3
+ ],
+ "counts": {
+  "warehouse": 10,
+  "district": 100,
+  "customer": 300000,
+  "history": 1151447,
+  "item": 100000,
+  "stock": 1000000,
+  "order": 487249,
+  "new_order": 461368,
+  "order_line": 4872798
+ },
+ "index_verification": {
+  "returncode": 0,
+  "stdout": "managing the TPC-C index set (9 secondary indexes across 7 tables)\nindex state on default (oracle): 9/9 present, 0/9 missing\n  configuration claimed: indexed  (requires all present)\n  MATCHES\n",
+  "stderr": ""
+ },
+ "host_verification": {
+  "returncode": 0,
+  "stdout": "  governor:      performance  want performance\n  no_turbo:      1            want 1\n  SMT:           off          want off\n  online CPUs:   0-3          want 0-3\n  AllowedCPUs:   0-1          want 0-1\n  MemoryMax:     3221225472   want 3221225472\n  AC power:      1            want 1\n  throttles:     core=0 pkg=0\n  ora_* affinity: (db down)    want 0-1\n  freq now:      1802 1801 1800 1800 \n  engines:       measuring oracle\n    postgresql:  inactive     want inactive\n    mysql:       inactive     want inactive\n    commercial_a:       inactive     want inactive\n    oracle:      active       want active\n"
+ },
+ "source_hashes": {
+  "django_app/tpcc_queries/__init__.py": "6f347cd23dc5e2d1facdb7230286235735d8dbdd66a9ae1e3c5b7ffdb382de3a",
+  "django_app/tpcc_queries/db_utils.py": "b70c89e51f7c0fd1dcf38359d635ed7add4c84deeda200809a74fed8a2b17bbe",
+  "django_app/tpcc_queries/t1_neworder.py": "6de255f62a074686ad2fca64ad4bb135fcbad3daa85bd9ba3f339c0b1239e6ed",
+  "django_app/tpcc_queries/t2_payment.py": "4bd345e7380e2e53249dc2f96be75f11dea3139fb6442b1f239956e7aac88209",
+  "django_app/tpcc_queries/t3_orderstatus.py": "d78c6886c5fa9fa52f085abadaf94ee64ae7cb86629b325a8b2fc65efb0484fc",
+  "django_app/tpcc_queries/t4_delivery.py": "07a70ed96ff20010dfff084679b0b5386c3e7d83d96001552c66d7b1a6db0d6d",
+  "django_app/tpcc_queries/t5_stocklevel.py": "702300b6fb85e4734d270e824f241c2e9ab41dacb3e8e4fe559de73d3cedd8de",
+  "sqlalchemy_app/tpcc_queries/__init__.py": "9f4e02c4d9cf869a1443f0a81a14501ad13ae194391902e481af4067874f0dab",
+  "sqlalchemy_app/tpcc_queries/db_utils.py": "c4528e55f9d10eea460895b29c61f3f09d97c82082b3c6cbd5da4321c1a86feb",
+  "sqlalchemy_app/tpcc_queries/t1.py": "513eb42903bad22fe56e0c16817b3022f53a4f4a722ff88569ab5249320ddaa5",
+  "sqlalchemy_app/tpcc_queries/t2.py": "07accc2ccf991b22519850ee5eb3f46cc22b4939c7c40daca808ae092aeeb886",
+  "sqlalchemy_app/tpcc_queries/t3.py": "2297e28ed31a830f10e8ea0ae551b4668d81d47bd67e3008b4143f8a411bf01f",
+  "sqlalchemy_app/tpcc_queries/t4.py": "e20e9e037320bf554e81ce9fe8cbe9027dc1d4c167cda82841499c147f69a273",
+  "sqlalchemy_app/tpcc_queries/t5.py": "9520cdf40cab942ee38e70c47beddaa506cb44d6cf912440c8738f1d849c23f5",
+  "django_app/tpcc_models.py": "4f20d90529b54e1123c054bbca90988b8bf03df6775d5ed4fe3d44430a946824",
+  "sqlalchemy_app/tpcc_models.py": "571baaa61e3d47370f4d851b5b17212a9875654beff0036bd2167def289f11b1",
+  "tpcc_config.py": "cca2d597dcbe81f59b68d1c8e8e4150115e44b5a67e0334ef774784eb4777d05"
+ },
+ "code_hashes": {
+  "rc_tpcc.py": "b5292d8ad4f6f7fd877f014a773e08195086c6f7285d4f1faf515021e8b8f66e",
+  "rc_common.py": "8a44743b3e9ee3e9412d27916d8d7a987f9a5b8605ca7ede2bed6154a59eeb83"
+ },
+ "environment_id": "de82449a0ce861c060624e65e9d4f846c0c1f4e85b6aeb7ad04bf7eba5595a23"
+}

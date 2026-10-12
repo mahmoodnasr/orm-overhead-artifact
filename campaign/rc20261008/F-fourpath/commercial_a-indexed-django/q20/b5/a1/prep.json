@@ -1,0 +1,69 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:633e02abbf9bb19afc329641c575f8b0b06e5397775eaebc7b580c489bebac13",
+   "params": [
+    "UNITED KINGDOM",
+    {
+     "type": "Decimal",
+     "value": "0.5"
+    },
+    "1994-01-01",
+    "1995-01-01",
+    "olive%"
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:9c45a02155e677757beb42b1f7f9525ec58dc0b7195e380670a9c66b3071b94b",
+    "values": [
+     "olive%",
+     {
+      "type": "date",
+      "value": "1994-01-01"
+     },
+     {
+      "type": "date",
+      "value": "1995-01-01"
+     },
+     "UNITED KINGDOM"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:bb3d4a5205a7d3f8282b921929ce24cdf27908af6ee8cafe4abc4c85fa0d324f",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    },
+    {
+     "literal": "withheld-sha256:eba01f8a16f8ce09202eb2c0e1a7fe1c48e0fe52214bb57c2c8fedeaeb7e9663",
+     "bound": true,
+     "kind": "date",
+     "value_type": "date",
+     "type_source": "param"
+    },
+    {
+     "literal": "withheld-sha256:f8898ccf2741563ced7bee8c7a4a8a101b5c63e870f727499a9e8fa58a22ff52",
+     "bound": true,
+     "kind": "date",
+     "value_type": "date",
+     "type_source": "param"
+    },
+    {
+     "literal": "withheld-sha256:2f4ebb9aa71402fa12a5d9aa302168c06b9b5c55da1e08654b21c4d853bc4026",
+     "bound": true,
+     "kind": "str",
+     "value_type": "str",
+     "type_source": "orm"
+    }
+   ]
+  ],
+  "bound_literals": 4
+ }
+}

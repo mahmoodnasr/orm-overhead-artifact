@@ -1,0 +1,49 @@
+{
+ "G": [
+  {
+   "sql": "withheld-sha256:f03fb78252e28f900f05e5123932bb3b0b8056ef624ed44ed092704ea0983b0b",
+   "params": [
+    "1994-08-01",
+    "1994-11-01",
+    1,
+    true,
+    false,
+    true
+   ]
+  }
+ ],
+ "B": {
+  "statements": [
+   {
+    "sql": "withheld-sha256:b51e8fa3cc46fb02576673e845aeffa833142298a9c83607fe064e18159d39f8",
+    "values": [
+     "1994-08-01",
+     "1994-11-01"
+    ]
+   }
+  ],
+  "report": [
+   [
+    {
+     "literal": "withheld-sha256:ce33b2551e74c0406b6f8e6e4b7d3fa75d3f4d7b4b3c57aade8cb2e9627afbea",
+     "bound": true,
+     "kind": "date",
+     "value_type": "str",
+     "type_source": "orm: bound as a string, as the ORM binds it (F-v2 correction 4)"
+    },
+    {
+     "literal": "withheld-sha256:4840b294ef49bbb73d51b4c02274ab148b02bc0256f27bffd027d6a4864d16b7",
+     "bound": true,
+     "kind": "date",
+     "value_type": "str",
+     "type_source": "orm: bound as a string, as the ORM binds it (F-v2 correction 4)"
+    }
+   ]
+  ],
+  "bound_literals": 2
+ },
+ "G_output_columns": [
+  "orderpriority",
+  "order_count"
+ ]
+}

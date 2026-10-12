@@ -1,0 +1,35 @@
+{
+ "container": {
+  "name": "rcg-oracle",
+  "image": "gvenzl/oracle-free:23.7-slim",
+  "repo_digests": [
+   "gvenzl/oracle-free@sha256:495c24f50020dc629574f7327b37b66f2019d7180a185de51955b368aae3d083"
+  ],
+  "image_architecture": "arm64",
+  "nano_cpus": 2000000000,
+  "cpuset_cpus": "0,1",
+  "memory": 3221225472,
+  "memory_swap": 3221225472,
+  "cmd": null,
+  "running": true
+ },
+ "containers_running": [
+  {
+   "BlockIO": "14.5GB / 4.37GB",
+   "CPUPerc": "2.68%",
+   "Container": "e23dcfa527dd7c2c441e79b634fee9d57501eadd2b19bd6b63be089e79cfec42",
+   "ID": "e23dcfa527dd",
+   "MemPerc": "34.28%",
+   "MemUsage": "1.028GiB / 3GiB",
+   "Name": "rcg-oracle",
+   "NetIO": "7.44MB / 956MB",
+   "PIDs": "66"
+  }
+ ],
+ "client_image": {
+  "id": "sha256:be2e81a968f7024f343f8e189a4c33ea9c647fa7f39551a6831422d2716d015b",
+  "architecture": "arm64",
+  "created": "2026-10-08T14:01:24.595741295+03:00"
+ },
+ "recorded": "2026-10-08T16:57:33+0300"
+}

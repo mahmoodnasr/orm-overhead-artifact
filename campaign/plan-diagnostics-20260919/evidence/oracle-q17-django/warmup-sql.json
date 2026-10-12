@@ -1,0 +1,32 @@
+{
+  "label": "warmup-sql",
+  "elapsed_s": {
+    "type": "float",
+    "value": "2.705028893999952"
+  },
+  "api_statements": [
+    {
+      "sql": "\n    SELECT SUM(l_extendedprice) / 7.0 as avg_yearly\n    FROM lineitem, part\n    WHERE p_partkey = l_partkey\n      AND p_brand = 'Brand#23'\n      AND p_container = 'MED BOX'\n      AND l_quantity < (\n        SELECT 0.2 * AVG(l_quantity)\n        FROM lineitem\n        WHERE l_partkey = p_partkey\n      )\n    ",
+      "params": null,
+      "many": false
+    }
+  ],
+  "driver_statements": [
+    {
+      "sql": "\n    SELECT SUM(l_extendedprice) / 7.0 as avg_yearly\n    FROM lineitem, part\n    WHERE p_partkey = l_partkey\n      AND p_brand = 'Brand#23'\n      AND p_container = 'MED BOX'\n      AND l_quantity < (\n        SELECT 0.2 * AVG(l_quantity)\n        FROM lineitem\n        WHERE l_partkey = p_partkey\n      )\n    ",
+      "args": [
+        []
+      ],
+      "kwargs": {}
+    }
+  ],
+  "rows": [
+    {
+      "AVG_YEARLY": {
+        "type": "Decimal",
+        "value": "348406.0542857142857142857142857142857143"
+      }
+    }
+  ],
+  "utc": "2026-09-19T13:52:00.514615+00:00"
+}

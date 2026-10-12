@@ -1,0 +1,89 @@
+{
+ "attempt": 1,
+ "censored": {
+  "sqlalchemy/sql": {
+   "input_id": "q17warm",
+   "limit_s": {
+    "type": "float",
+    "value": "120.0"
+   },
+   "elapsed_s": {
+    "type": "float",
+    "value": "120.00122842100245"
+   },
+   "stage": "cell_warmup"
+  },
+  "django/sql": {
+   "input_id": "q17warm",
+   "limit_s": {
+    "type": "float",
+    "value": "120.0"
+   },
+   "elapsed_s": {
+    "type": "float",
+    "value": "120.0009135759974"
+   },
+   "stage": "cell_warmup"
+  },
+  "sqlalchemy/orm": {
+   "input_id": "q17warm",
+   "limit_s": {
+    "type": "float",
+    "value": "120.0"
+   },
+   "elapsed_s": {
+    "type": "float",
+    "value": "120.00617598999816"
+   },
+   "stage": "cell_warmup"
+  },
+  "django/orm": {
+   "input_id": "q17warm",
+   "limit_s": {
+    "type": "float",
+    "value": "120.0"
+   },
+   "elapsed_s": {
+    "type": "float",
+    "value": "120.00454879800236"
+   },
+   "stage": "cell_warmup"
+  }
+ },
+ "inexpressible": {},
+ "errors": {},
+ "comparisons": {
+  "django": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "timeout",
+    "timeout"
+   ]
+  },
+  "sqlalchemy": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "timeout",
+    "timeout"
+   ]
+  },
+  "cross_sql": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "timeout",
+    "timeout"
+   ]
+  },
+  "cross_orm": {
+   "classification": "unavailable",
+   "accepted": false,
+   "status": [
+    "timeout",
+    "timeout"
+   ]
+  }
+ }
+}

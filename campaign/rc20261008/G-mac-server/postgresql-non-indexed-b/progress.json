@@ -1,0 +1,75 @@
+{
+ "run_id": "cf4809fb671742d099591628833a6a20",
+ "pid": 87064,
+ "phase": "G",
+ "dbms": "postgresql",
+ "schema": "non-indexed",
+ "scale": 1,
+ "mode": "main",
+ "queries": [
+  18
+ ],
+ "planned_timed": 32,
+ "counts": {
+  "saved_cell_warmup": 4,
+  "status_cell_warmup_ok": 4,
+  "saved_block_warmup": 32,
+  "status_block_warmup_ok": 32,
+  "saved_timed": 32,
+  "status_timed_ok": 32,
+  "accepted_pairs": 16,
+  "accepted_timed": 32
+ },
+ "environment_id": "c6db438af12922d60cc1d6ca8c7b8bd7fb77cb8dbb7add5fc639b73e8b8c9837",
+ "started": {
+  "utc": "2026-10-08T10:17:04.499146+00:00",
+  "cairo": "2026-10-08T13:17:04.499146+03:00"
+ },
+ "state": "complete",
+ "utc": "2026-10-08T10:19:46.387260+00:00",
+ "cairo": "2026-10-08T13:19:46.387260+03:00",
+ "current": {
+  "query": 18,
+  "path": "django/sql",
+  "kind": "timed",
+  "block": 8,
+  "attempt": 1,
+  "input_id": "q18s7",
+  "limit_s": 900,
+  "server_session": {
+   "sid": "35",
+   "tag": "2026-10-08 10:17:00.955454+00"
+  },
+  "utc": "2026-10-08T10:19:42.247400+00:00",
+  "cairo": "2026-10-08T13:19:42.247400+03:00"
+ },
+ "cells_done": [
+  {
+   "query": 18,
+   "status": "complete",
+   "wall_s": {
+    "type": "float",
+    "value": "160.0563960839936"
+   }
+  }
+ ],
+ "_obs": [
+  {
+   "type": "float",
+   "value": "160.0563960839936"
+  },
+  {
+   "type": "float",
+   "value": "696.5"
+  }
+ ],
+ "observed_over_predicted": {
+  "type": "float",
+  "value": "0.22980099940271875"
+ },
+ "remaining_predicted_s": 0,
+ "eta_s": {
+  "type": "float",
+  "value": "0.0"
+ }
+}

@@ -1,0 +1,33 @@
+{
+  "label": "warmup-sql",
+  "elapsed_s": {
+    "type": "float",
+    "value": "0.004584748000070249"
+  },
+  "api_statements": [
+    {
+      "sql": "withheld-sha256:70ba75d1d7d779a1eda31e420bca1279e81e09fa62e4503f790ce6c224ebc549",
+      "params": [
+        1
+      ],
+      "many": false
+    }
+  ],
+  "driver_statements": [
+    {
+      "sql": "withheld-sha256:eb20768ccac9d7f5642f6f185f3d5b4069fcfcc006ae93b9a1f6844c18570829",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "kwargs": {}
+    }
+  ],
+  "rows": [
+    {
+      "p_partkey": 1
+    }
+  ],
+  "utc": "2026-09-19T12:32:50.096788+00:00"
+}

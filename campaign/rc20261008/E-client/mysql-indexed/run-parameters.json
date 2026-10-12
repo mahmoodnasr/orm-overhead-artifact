@@ -1,0 +1,20 @@
+{
+ "protocol_id": "rc20261008-E-v1",
+ "protocol_sha256": "acf02bd1497658af153361b92b08ee047a450062913de7c2f86fe8209d61582f",
+ "phase": "E",
+ "dbms": "mysql",
+ "schema": "indexed",
+ "scale": 1,
+ "queries": [
+  6,
+  17,
+  18,
+  20,
+  21
+ ],
+ "timeout_s": 900,
+ "mode": "main",
+ "blocks": 8,
+ "client_mode": "separate-client",
+ "database_label": "tpch"
+}
