@@ -125,6 +125,21 @@ def run_transaction_sql(session: Session):
                 "order_found": False,
             }
 
+        # Order-Status returns the order lines (TPC-C 2.6.2.2). This baseline
+        # stopped after the ORDER row, so it did less work than the ORM path
+        # it was compared with (campaign rc20261008 transaction pilot:
+        # statements touched customer, order vs customer, order, order_line).
+        result = session.execute(
+            text("""
+            SELECT ol_i_id, ol_supply_w_id, ol_quantity, ol_amount, ol_delivery_d
+            FROM order_line
+            WHERE ol_w_id = :w_id AND ol_d_id = :d_id AND ol_o_id = :o_id
+            ORDER BY ol_number
+        """),
+            {"w_id": w_id, "d_id": d_id, "o_id": order_row[0]},
+        )
+        order_lines = result.fetchall()
+
         session.commit()
         return {
             "w_id": w_id,
@@ -136,6 +151,7 @@ def run_transaction_sql(session: Session):
             "o_id": order_row[0],
             "o_entry_d": order_row[1].isoformat() if order_row[1] else None,
             "o_carrier_id": order_row[2],
+            "order_lines": len(order_lines),
         }
     except Exception:
         session.rollback()

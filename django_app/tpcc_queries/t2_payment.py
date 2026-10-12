@@ -135,8 +135,12 @@ def run_transaction_sql(connection):
                 WHERE c_w_id = %s AND c_d_id = %s AND c_id = %s""",
                 [payment, payment, w_id, d_id, c_id],
             )
-            # Prepare h_data (truncate to 24 chars max)
-            h_data = f"C{c_id}P{payment:.2f}"[:24]
+            # Prepare h_data (truncate to 24 chars max). The same text the
+            # other three Payment paths write: this baseline wrote
+            # "C<c_id>P<payment:.2f>", so for identical inputs its committed
+            # HISTORY row differed from the ORM path's in h_data alone
+            # (campaign rc20261008 transaction pilot, Oracle T2 blocks 1-2).
+            h_data = f"Customer {c_id} paid {payment}"[:24]
 
             # Use vendor-specific timestamp function
             if connection.vendor == "oracle":
